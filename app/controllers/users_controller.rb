@@ -101,13 +101,21 @@ class UsersController < ApplicationController
     end
     
     def authorize2
-      if not User.find_by_id(session[:user_id]).advisor 
-        if not User.find_by_id(session[:user_id]).administrator
-          print session[:user_id]
-          print params[:id]
+      logged_in = User.find_by_id(session[:user_id])
+      going_to = User.find_by_id(params[:id])
+      if not logged_in.advisor 
+        if not logged_in.administrator
           unless session[:user_id].to_i == params[:id].to_i
             redirect_to users_path, notice: "You are not authorized to view this page"
           end
+        else 
+          if (going_to != logged_in)  and (going_to.advisor || going_to.administrator)
+            redirect_to users_path, notice: "You are not authorized to view this page"
+          end
+        end
+      else 
+        if (going_to != logged_in)  and (going_to.advisor || going_to.administrator)
+          redirect_to users_path, notice: "You are not authorized to view this page"
         end
       end
     end

@@ -1,6 +1,15 @@
-<div layout horizontal end-justified style="font-family: 'RobotoDraft', sans-serif;">
-  <paper-button raised id="material_logout_button"><core-icon icon="settings-power"></core-icon> logout </paper-button>
-</div>
+<core-menu-button>
+  <core-icon-button icon="settings"></core-icon-button>
+    <core-dropdown class="dropdown" layered>
+      <core-menu>
+          <paper-item id="material_edit_button"><core-icon icon="create"></core-icon>&nbsp Change Password</paper-item>
+          <paper-item id="material_logout_button"><core-icon icon="settings-power"></core-icon>&nbsp Logout</paper-item>
+      </core-menu>
+    </core-dropdown>
+</core-menu-button>
+<%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])), id: "edit_logged_in_account", style: "display:none;" %>
+<%= button_to 'Logout', logout_path, { :style => "display:none;", method: :delete, id: "logout_button" } %>
+
 <% if notice %>
  	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
 <% end %>
@@ -78,12 +87,14 @@
   </tbody>
 </table>
 <% end %>
-<br>
 
 
-<%= button_to 'Logout', logout_path, { :style => "display:none;", method: :delete, id: "logout_button" } %>
 
 <script>
+  document.getElementById("material_edit_button").addEventListener("click", function() {
+    document.getElementById("edit_logged_in_account").click();
+  });
+
   document.getElementById("material_logout_button").addEventListener("click", function() {
     document.getElementById("logout_button").click();
   });
@@ -98,7 +109,5 @@
 
   document.getElementById("advisee_signup_fab").addEventListener("click", function() {
     $("#signup_fab_link")[0].click();
-    console.log("hi");
   });  
-  
 </script>
