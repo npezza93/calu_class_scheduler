@@ -1,0 +1,90 @@
+<%= form_for(@user, remote: true) do |f| %>
+  <paper-input-decorator label="Enter Email" floatinglabel>
+    <%= f.text_field :email, is: 'core-input' %>
+  </paper-input-decorator>
+  
+  <paper-input-decorator label="Enter Password" floatinglabel>
+    <%= f.password_field :password, is: 'core-input' %>
+  </paper-input-decorator>
+  
+  <paper-input-decorator label="Confirm Password" floatinglabel>
+    <%= f.password_field :password_confirmation, is: 'core-input'%>
+  </paper-input-decorator>
+  
+  <div style="display:none;">
+    <% advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["", "-1"] %>
+    <%= f.select(:advised_by, options_for_select(advisors), {}, { id:'actual_select' }) %>
+  </div>
+  
+  <core-collapse opened allowOverflow id="advisor_collapse">
+    <div layout horizontal start-justified>
+      <paper-dropdown-menu label="Choose Advisor" id="advisor_dropdown_menu">
+        <paper-dropdown class="dropdown constrained-height" id="advisor_dropdown">
+            <core-menu class="menu" id="advisor_core_menu">
+              <% advisors.pop %>
+              <% advisors.each do |advisor| %>
+                <paper-item value=<%= advisor[1] %>><%= advisor[0] %></paper-item>
+              <% end %>
+            </core-menu>
+        </paper-dropdown>
+      </paper-dropdown-menu>
+    </div>
+  </core-collapse>
+
+  <% if session[:user_id] && (User.find_by(id: session[:user_id]).administrator || User.find_by(id: session[:user_id]).advisor) %>
+    <% if User.find_by(id: session[:user_id]).administrator %>
+        <div layout horizontal center style="margin-top:10px;">
+            <%= f.check_box :administrator, style: 'display:none;', id: 'actual_admin' %>
+            <div flex>Administrator</div>
+            <paper-toggle-button id='paper_admin'></paper-toggle-button>
+        </div>
+        <script>
+          document.getElementById("paper_admin").addEventListener('core-change', function() {
+           document.getElementById("actual_admin").checked = document.getElementById("paper_admin").checked;
+          });
+          
+          document.getElementById("paper_admin").checked = document.getElementById("actual_admin").checked;
+        </script>
+    <% end %>
+      
+    <div layout horizontal center style="margin-top:10px;">
+        <%= f.check_box :advisor, style: 'display:none;', id: 'actual_advisor' %>
+        <div flex>Advisor</div>
+        <paper-checkbox id='paper_advisor'></paper-checkbox>
+    </div>
+    
+    <script>
+      document.getElementById("paper_advisor").addEventListener('change', function() {
+       document.getElementById("actual_advisor").checked = document.getElementById("paper_advisor").checked;
+       if (document.getElementById("paper_advisor").checked) {
+         
+         $("#actual_select").val("-1");
+         document.getElementById("advisor_dropdown_menu").setAttribute("disabled",'');
+         document.getElementById("advisor_collapse").toggle()
+       } else {
+         document.getElementById("advisor_dropdown_menu").removeAttribute("disabled",'');
+         document.getElementById("advisor_collapse").toggle()
+       }
+      });
+      
+      document.getElementById("paper_advisor").checked      = document.getElementById("actual_advisor").checked;
+      
+    </script>
+  <% end %>
+  
+  <div center-justified layout horizontal style="margin-top: 14px;">
+    <paper-button>
+      <input id="submit_signup" name="commit" type="submit" value="SIGN UP">
+    </paper-button>
+  </div>
+
+<% end %>
+
+<div id="ajax_errors"></div>
+
+<script>
+  $("#actual_select").val("-1");
+  document.getElementById("advisor_dropdown").addEventListener('core-select', function(e, detail){
+    $('#actual_select').val(e.detail.item.getAttribute("value"));
+  });
+</script>

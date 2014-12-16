@@ -1,0 +1,29 @@
+<% if @errors %>
+    <% if not @user.errors[:You].blank? %>
+        $('#ajax_errors').html("<div id=\"signup_errors\" class=\"animated fadeInDown\" layout horizontal center-justified><ul id=\"ajax_errors_text\"><li>You <%= @user.errors[:You][0] %></li></ul></div>");
+    <% else %>
+        $('#ajax_errors').html("");
+    <% end %>
+    
+    <% if not @user.errors[:email].blank? %>
+        document.getElementById("user_email").parentNode.setAttribute("error","Email <%= raw @user.errors[:email][0] %>");
+        document.getElementById("user_email").parentNode.setAttribute("isInvalid","");
+    <% else %>
+         document.getElementById("user_email").parentNode.removeAttribute("isInvalid","");
+    <% end %>
+    
+    <% if not @user.errors[:password].blank? %>
+        document.getElementById("user_password").parentNode.setAttribute("error","Password <%= raw @user.errors[:password][0] %>");
+        document.getElementById("user_password").parentNode.setAttribute("isInvalid","");
+    <% else %>
+         document.getElementById("user_password").parentNode.removeAttribute("isInvalid","");
+    <% end %>
+    
+    <% if not @user.errors[:password_confirmation].blank? %>
+        document.getElementById("user_password_confirmation").parentNode.setAttribute("error","Password confirmation <%= raw @user.errors[:password_confirmation][0] %>");
+        document.getElementById("user_password_confirmation").parentNode.setAttribute("isInvalid","");
+    <% else %>
+         document.getElementById("user_password_confirmation").parentNode.removeAttribute("isInvalid","");
+    <% end %>
+    
+<% end %>

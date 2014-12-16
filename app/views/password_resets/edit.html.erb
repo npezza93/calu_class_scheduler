@@ -1,0 +1,30 @@
+<core-overlay id="overlay" autoCloseDisabled opened backdrop transition="core-transition-center" style="overflow-x: hidden;background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+
+  <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+      <paper-input-decorator label="New Password" floatinglabel>
+        <%= f.password_field :password %>
+      </paper-input-decorator>
+      
+      <paper-input-decorator label="Confirm New Password" floatinglabel>
+        <%= f.password_field :password_confirmation %>
+      </paper-input-decorator>
+  
+      <div center-justified layout horizontal style="margin-top:14px;">
+        <paper-button>
+          <input id="submit_reset" name="commit" type="submit" value="Update Password">
+	      </paper-button>
+	    </div>
+
+    
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+
+</core-overlay>

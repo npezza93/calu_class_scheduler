@@ -1,0 +1,70 @@
+<core-overlay id="overlay" autoCloseDisabled opened backdrop transition="core-transition-center" style="overflow-x: hidden;width:300px;height:500px;background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+	<section id="section" layout vertical>
+		
+		<paper-tabs selected="0" id="paperTabs" >
+		    <paper-tab id="one">LOGIN</paper-tab>
+		    <paper-tab id="two">SIGNUP</paper-tab>
+		</paper-tabs>
+		
+		<section id="section1" flex relative>
+        	<core-animated-pages id="baluga" transitions="slide-from-right">
+	          	<section id="section2" style="padding-top:40px;">
+	            	<%= form_tag(login_path, remote: true) do %>
+	            		<paper-input-decorator label="Enter Email" floatinglabel>
+	      					<%= text_field_tag :email, params[:email], is: 'core-input' %>
+	      				</paper-input-decorator>
+      					
+      					<paper-input-decorator label="Enter Password" floatinglabel>
+      						<%= password_field_tag :password, params[:password], is: 'core-input' %><br />
+      					</paper-input-decorator>
+	      					
+      					<div center-justified layout horizontal style="margin-top: 14px;">
+							<paper-button>
+								<%= submit_tag "LOGON", id: "submit_logon" %>
+							</paper-button>
+    					</div>
+    						
+						<div layout flex horizontal center-justified>
+							<paper-button raised-button id="forgot_password">
+								Forget?
+							</paper-button>
+						</div>
+
+      				<% end %>
+	    				
+	    				<%= render "forgot" %>
+	    				
+	          	</section>
+          
+	          	<section id="section3" style="padding-top:10px;">
+	          		<%= render 'users/form', :@user => User.new %>
+	          	</section>
+        	</core-animated-pages>
+      	</section>
+    </section>
+	
+	<script>
+	
+	  var tabs = {
+	      one: document.querySelector('#one'),
+	      two: document.querySelector('#two')
+	  };
+	  
+	  tabs.one.addEventListener('click', function(e) {
+	  	document.querySelector('#baluga').selected = 0;
+	    console.log(e.type + ' : ' + this.localName);
+	  });
+	
+	  tabs.two.addEventListener('click', function(e) {
+	  	document.querySelector('#baluga').selected = 1;
+	    console.log(e.type + ' : ' + this.localName);
+	  });
+
+	</script>
+
+</core-overlay>
+<% if notice %>
+	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
+<% end %>
+<div id='login_error'></div>
+<div id='reset_error'></div>

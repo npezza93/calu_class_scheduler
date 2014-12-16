@@ -1,0 +1,42 @@
+<paper-dialog id="overlay3" opened backdrop autoCloseDisabled class="forgot_overlay1" transition="core-transition-top">
+  <style>
+    .forgot_overlay1 {
+      font-family: 'RobotoDraft', sans-serif;
+      font-size: 13px;
+      background: #eceff1;
+    }
+    #overlay3 {
+      width: 250px;
+    }
+    #submit_reset {
+      display: inline-block;
+      position: relative;
+      border: 0;
+      background: transparent;
+      text-align: center;
+      text-transform: uppercase;
+      outline: none;
+      cursor: pointer;
+      font-family: 'RobotoDraft', sans-serif;
+    }
+    #forgot_header, #forgot_subheader {
+      font-family: 'RobotoDraft', sans-serif;
+    }
+  </style>
+  
+  <h3 id="forgot_header" layout horizontal center-justified>Forgot password?</h3>
+    <p layout horizontal center-justified id="forgot_subheader">We'll email you a reset link.</p>
+    
+    <%= form_tag(password_resets_path) do %>
+      <paper-input-decorator label="Email Address">
+	      <%= text_field_tag :email, params[:email], is: 'core-input' %>
+	    </paper-input-decorator>
+	    
+      <div center-justified layout horizontal>
+        <paper-button>
+	        <%= submit_tag "RESET", id: "submit_reset" %>
+	      </paper-button>
+	    </div>
+    <% end %>
+
+</paper-dialog>

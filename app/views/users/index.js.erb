@@ -1,0 +1,27 @@
+<% if (params.has_key?(:page)) %>
+    $("<div id='<%= @page_num[0] %>_advisee_pg' style='display:none;' >").insertBefore($("#pagination-item"));
+    <% @advisees.each do |advisee| %>
+        $("#<%= @page_num[0] %>_advisee_pg").append("<paper-item layout horizontal center-justified><%= escape_javascript link_to advisee.email, user_options_path(advisee_id: advisee.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>");
+    <% end %>
+    
+    $("#<%= @page_num[0] %>_advisee_pg").slideDown();
+    
+    $("#link_to_next_page").html('<%= escape_javascript(paginate(@advisees, :remote => true, param_name: 'page').to_s) %>');
+    
+    <% if @advisees.last_page? %>
+        document.getElementById("pagination-item").setAttribute("disabled",'');
+    <% end %>
+<% elsif (params.has_key?(:page_2)) %>
+    $("<div id='<%= @page_num2 %>_all_others_pg' style='display:none;' >").insertBefore($("#pagination2-item"));
+    <% @all_others.each do |other| %>
+        $("#<%= @page_num2 %>_all_others_pg").append("<paper-item layout horizontal center-justified><%= escape_javascript link_to other.email, user_options_path(advisee_id: other.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>");
+    <% end %>
+    
+    $("#<%= @page_num2 %>_all_others_pg").slideDown();
+    
+    $("#link_to_next_page2").html('<%= escape_javascript(paginate(@all_others, :remote => true, param_name: 'page_2').to_s) %>');
+    
+    <% if @all_others.last_page? %>
+        document.getElementById("pagination2-item").setAttribute("disabled",'');
+    <% end %>
+<% end %>

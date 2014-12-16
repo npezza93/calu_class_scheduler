@@ -1,0 +1,56 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#contentsd {
+  width: 275px;
+  height: 450px;
+}
+#login_email, #login_password {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+#paperTabs paper-tab::shadow #ink {
+  color: #F00000;
+}
+paper-tabs#paperTabs::shadow #selectionBar {
+  background-color: #F00000;
+}
+#one, #two {
+  font-family: 'RobotoDraft', sans-serif;
+}
+#submit_logon {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'RobotoDraft', sans-serif;
+}
+paper-toast {
+  bottom: 0;
+  left: 0;
+  font-family: 'Roboto', sans-serif;
+}
+#forgot_password {
+  text-decoration: none;
+  color: #607d8b;
+  font-family: 'RobotoDraft', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 80px;
+  text-transform: capitalize;
+}

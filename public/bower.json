@@ -1,0 +1,19 @@
+{
+  "name": "npezza",
+  "version": "0.0.0",
+  "authors": [
+    "npezza93 <pez1900@calu.edu>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "vendor/assets/components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.2"
+  }
+}
