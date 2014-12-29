@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
+  resources :offerings do
+    collection { post :import}
+  end
+
+  resources :courses, path: 'courses', :only => [:create, :new, :destroy, :index]
 
   controller :sessions do
    get 'login' => :new
@@ -9,11 +13,13 @@ Rails.application.routes.draw do
   end
 
   get 'signup'  => 'users#new'
-  resources :users, :except => :show
+  
+  resources :users, :except => :show do
+    resources :transcripts, :only => [:index, :create]
+  end
 
   resources :password_resets
-
-  # You can have the root of your site routed with "root"
+  
   root 'sessions#new'
 
   get "/user_options" => 'users#user_options', as: 'user_options'

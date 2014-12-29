@@ -1,0 +1,134 @@
+<core-toolbar>
+    <h2 flex>Offer a Course</h2>
+    <paper-fab icon="cloud-upload" justify="end" style="margin-right:5%;margin-top:64px;" id="upload-fab"></paper-fab>
+</core-toolbar>    
+
+<%= form_tag import_offerings_path, multipart: true, style: "display:none;" do %>
+    <%= file_field_tag :offering_file, id: "upload_button" %>
+
+    <%= submit_tag 'upload', id: "submit_upload_button" %>
+<% end %>
+
+<div layout horizontal center-justified center style="height:100%;">
+    <paper-shadow style="width:100%;max-width:375px;margin:15px;overflow-x: hidden;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+
+        <%= form_for(@offering, remote: true) do |f| %>
+        
+            <div style="margin-top:40px;">
+                <% courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1] %>
+                <%= f.select(:course_id, options_for_select(courses), {}, { id:'course_select', style: "display:none;" }) %>
+            </div>
+            
+            
+            <div id="offering_course_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
+                <div class="error" layout horizontal center-justified style="width:100%;max-width:260px;">
+                  <div class="error-text" flex>A course must be selected!</div>
+                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                </div>
+            </div>
+            
+            <div layout horizontal center-justified>     
+                <paper-dropdown-menu label="Choose Course" style="margin-top:0;padding-top:0;">
+                    <paper-dropdown class="dropdown" id="course_dropdown" style="height:185px;">
+                        <core-menu class="menu">
+                            <% courses.pop %>
+                            <% courses.each do |course| %>
+                                <paper-item value=<%= course[1] %>><%= course[0] %></paper-item>
+                            <% end %>
+                        </core-menu>
+                    </paper-dropdown>
+                </paper-dropdown-menu>
+            </div>
+            
+            <div>
+                <% days_n_times = (DaysTime.all.map do |day_time| 
+                        [day_time.days + ' at ' + day_time.start_time + ' to ' + day_time.end_time, day_time.id] 
+                    end
+                ) << ["",-1] %>
+                <%= f.select(:days_time_id, options_for_select(days_n_times), {}, { id:'day_select', style: "display:none;" }) %>
+            </div>
+            
+            <div id="offering_time_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
+                <div class="error" layout horizontal center-justified style="width:100%;max-width:235px;">
+                  <div class="error-text" flex>A day and time must be selected!</div>
+                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                </div>
+            </div>
+            
+            <div layout horizontal center-justified>
+                <paper-dropdown-menu label="Choose Time" style="width:100%;max-width:235px;margin-top:0;padding-top:0;">
+                    <paper-dropdown class="dropdown" id="day_dropdown" style="width:100%;max-width:235px;height:147px;">
+                        <core-menu class="menu">
+                            <% days_n_times.pop %>
+                            <% days_n_times.each do |days_n_time| %>
+                                <paper-item value=<%= days_n_time[1] %>><%= days_n_time[0] %></paper-item>
+                            <% end %>
+                        </core-menu>
+                    </paper-dropdown>
+                </paper-dropdown-menu>
+            </div>
+            
+            <div>
+                <% instructors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["",-1] %>
+                <%= f.select(:user_id, options_for_select(instructors), {}, { id:'advisor_select', style: "display:none;" }) %>
+            </div>
+    
+            <div id="offering_user_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
+                <div class="error" layout horizontal center-justified style="width:100%;max-width:200px;">
+                  <div class="error-text" flex>An instructor must be selected!</div>
+                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                </div>
+            </div>
+            <div layout horizontal center-justified>
+                <paper-dropdown-menu label="Choose Instructor" style="width:100%;max-width:200px;margin-top:0;padding-top:0;">
+                    <paper-dropdown class="dropdown" id="advisor_dropdown" style="width:100%;max-width:200px;height:108px;">
+                        <core-menu class="menu">
+                            <% instructors.pop %>
+                            <% instructors.each do |instructor| %>
+                                <paper-item value=<%= instructor[1] %>><%= instructor[0] %></paper-item>
+                            <% end %>
+                        </core-menu>
+                    </paper-dropdown>
+                </paper-dropdown-menu>
+            </div>
+            
+            <br>
+            <div layout horizontal center-justified>
+                <paper-button id="material_offer_course">offer course</paper-button>
+            </div>
+    
+            <%= f.submit 'Offer Course', style: 'display:none;', id: 'actual_offer_course' %>
+            
+        <% end %>
+    </paper-shadow>
+</div>
+
+    <div id="offering_form_errors"></div>
+
+<script>
+  $("#course_select").val("-1");
+  document.getElementById("course_dropdown").addEventListener('core-select', function(e, detail){
+    $('#course_select').val(e.detail.item.getAttribute("value"));
+  });
+  
+  $("#day_select").val("-1");
+  document.getElementById("day_dropdown").addEventListener('core-select', function(e, detail){
+    $('#day_select').val(e.detail.item.getAttribute("value"));
+  });
+
+  $("#advisor_select").val("-1");
+  document.getElementById("advisor_dropdown").addEventListener('core-select', function(e, detail){
+    $('#advisor_select').val(e.detail.item.getAttribute("value"));
+  });
+  
+  document.getElementById("material_offer_course").addEventListener('click', function(){
+    $('#actual_offer_course').click();
+  });
+  
+  document.getElementById("upload-fab").addEventListener('click', function(){
+    $('#upload_button').click();
+    document.getElementById("upload_button").addEventListener('change', function() {
+        $("#submit_upload_button").click();
+    });
+  });
+</script>

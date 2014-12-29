@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+  time:
+    formats:
+      class_time_format: '%l:%M%P'

@@ -15,5 +15,6 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#~0.5.2"
-  }
+  },
+  "homepage": "https://github.com/npezza93/calu_class_scheduler"
 }

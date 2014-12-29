@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :set_user, only: [:destroy]
+  skip_before_filter :logged_in?, only: [:new, :create, :destroy]
+
   def new
   end
 
@@ -12,7 +15,7 @@ class SessionsController < ApplicationController
           format.js { render :js => "window.location = '/users'"}
        	else
        	  flash[:notice] = "Welcome back, " + @user.email + "!"
-       	  format.js { render :js => "window.location = '/users'"}
+       	  format.js { render :js => "window.location.href='"+user_transcripts_path(@user)+"'"}
        	end
 	  	else
 	  	  format.js { @error = "Invalid email/password combination" }
@@ -21,10 +24,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: session[:user_id])
   	session[:user_id] = nil
   	respond_to do |format|
   		format.html { redirect_to login_path, notice: @user.email + ' logged out' } 
   	end
   end
+  
+  private
+    def set_user
+      @user = User.find_by(id: session[:user_id])
+    end
 end

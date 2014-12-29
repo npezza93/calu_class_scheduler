@@ -1,60 +1,67 @@
-<core-menu-button>
-  <core-icon-button icon="settings"></core-icon-button>
-    <core-dropdown class="dropdown" layered>
-      <core-menu>
-          <paper-item id="material_edit_button"><core-icon icon="create"></core-icon>&nbsp Change Password</paper-item>
-          <paper-item id="material_logout_button"><core-icon icon="settings-power"></core-icon>&nbsp Logout</paper-item>
-      </core-menu>
-    </core-dropdown>
-</core-menu-button>
-<%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])), id: "edit_logged_in_account", style: "display:none;" %>
-<%= button_to 'Logout', logout_path, { :style => "display:none;", method: :delete, id: "logout_button" } %>
-
-<% if notice %>
- 	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
-<% end %>
-
 <% if @logged_in.advisor %>
-  <h1 style="text-align:center;line-height:1;font-family: 'RobotoDraft', sans-serif;"><%= @logged_in.email + "'s "%>Advisees</h1>
+  <core-header-panel flex>
+    <core-toolbar class="medium-tall">
+      <core-menu-button>
+        <core-icon-button icon="menu"></core-icon-button>
+          <core-dropdown class="dropdown" layered>
+            <core-menu>
+              <paper-item id="material_new_course_button"><core-icon icon="add"></core-icon>&nbsp Add a New Course</paper-item>
+              <paper-item id="material_remove_course_button"><core-icon icon="clear"></core-icon>&nbsp Remove a Course</paper-item>
+              <paper-item id="material_offerings_button"><core-icon icon="event"></core-icon>&nbsp Semester Offerings</paper-item>
+              <paper-item id="material_new_offering_button"><core-icon icon="note-add"></core-icon>&nbsp Offer A Course</paper-item>
+              <paper-item id="material_edit_button"><core-icon icon="create"></core-icon>&nbsp Change Password</paper-item>
+              <paper-item id="material_logout_button"><core-icon icon="settings-power"></core-icon>&nbsp Logout</paper-item>
+            </core-menu>
+          </core-dropdown>
+      </core-menu-button>
+      <%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])), id: "edit_logged_in_account", style: "display:none;" %>
+      <%= button_to 'Logout', logout_path, { :style => "display:none;", method: :delete, id: "logout_button" } %>
+      <%= link_to "New Course", new_course_path, style:"display:none", id: "new_course_link" %>
+      <%= link_to "remove Course", courses_path, style:"display:none", id: "remove_course_link" %>
+      <%= link_to "offerings", offerings_path, style:"display:none", id: "offerings_link" %>
+      <%= link_to "new offering", new_offering_path, style: "display:none;", id: "new_offerings_link" %>
+      
+      <h2 class="bottom indent"><%= @logged_in.email + "'s "%>Advisees</h2>
+      
+    </core-toolbar>
   
-  <div layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">
-    <paper-shadow style="width: 20em;margin-top:5em;">
-      <% @advisees.each do |advisee| %>
-        <paper-item><%= link_to advisee.email, user_options_path(advisee_id: advisee.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
-      <% end %>
-      <% if @advisees.last_page? %>
-        <paper-item layout disabled horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-      <% else %>
-        <paper-item layout horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-      <% end %>
-      <div id="link_to_next_page" style="display:none;"><%= paginate @advisees, :remote=>true, param_name: 'page', id: "actual_next_pg" %></div>
-    </paper-shadow>
+  <div>
+    <div layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">
+      <paper-shadow style="width: 20em;margin-top:5em;">
+        <% @advisees.each do |advisee| %>
+          <paper-item><%= link_to advisee.email, user_options_path(advisee_id: advisee.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
+        <% end %>
+        <% if @advisees.last_page? %>
+          <paper-item layout disabled horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+        <% else %>
+          <paper-item layout horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+        <% end %>
+        <div id="link_to_next_page" style="display:none;"><%= paginate @advisees, :remote=>true, param_name: 'page', id: "actual_next_pg" %></div>
+      </paper-shadow>
+    </div>
+  
+    <h3 layout horizontal center-justified style="margin-top:5em;font-family: 'RobotoDraft', sans-serif;">All Other Students</h3>
+    
+    <div layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">
+      <paper-shadow style="width: 20em;">
+        <% @all_others.each do |student| %>
+          <paper-item layout horizontal center-justified><%= link_to student.email, user_options_path(advisee_id: student.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
+        <% end %>
+        <% if @all_others.size < 2 %>
+          <paper-item layout disabled horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+        <% else %>
+          <paper-item layout horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+        <% end %>
+        <div id="link_to_next_page2" style="display:none;"><%= paginate @all_others, :remote=>true, param_name: 'page_2', id: "actual_next_pg2" %></div>
+      </paper-shadow>
+    </div>
+  
+    <paper-dialog backdrop transition="core-transition-top" id="user_options_overlay"></paper-dialog>
+    
+      <a id="signup_fab_link" style="display:none;" href=<%= signup_path %>>LINK</a>
+      <paper-fab icon="add" id="advisee_signup_fab" title="Create New Advisee" style="position:fixed;bottom:0;right:0;margin:15px;"></paper-fab>
   </div>
-  
-  <h3 layout horizontal center-justified style="margin-top:5em;font-family: 'RobotoDraft', sans-serif;">All Other Students</h3>
-  
-  <div layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">
-    <paper-shadow style="width: 20em;">
-      <% @all_others.each do |student| %>
-        <paper-item layout horizontal center-justified><%= link_to student.email, user_options_path(advisee_id: student.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
-      <% end %>
-      <% if @all_others.size < 2 %>
-        <paper-item layout disabled horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-      <% else %>
-        <paper-item layout horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-      <% end %>
-      <div id="link_to_next_page2" style="display:none;"><%= paginate @all_others, :remote=>true, param_name: 'page_2', id: "actual_next_pg2" %></div>
-    </paper-shadow>
-  </div>
-  
-  <paper-dialog backdrop transition="core-transition-top" id="user_options_overlay">
-  </paper-dialog>
-  
-  <div layout horizontal end-justified title="Create New Advisee">
-    <a id="signup_fab_link" style="display:none;" href=<%= signup_path %>>LINK</a>
-    <paper-fab icon="add" id="advisee_signup_fab"></paper-fab>
-  </div>
-  
+  </core-header-panel>
 <% else %>
 
 <h1 layout horizontal center-justified>All Users</h1>
@@ -86,9 +93,12 @@
     <% end %>
   </tbody>
 </table>
+<%= button_to 'Logout', logout_path, {method: :delete } %>
 <% end %>
 
-
+<% if notice %>
+ 	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
+<% end %>
 
 <script>
   document.getElementById("material_edit_button").addEventListener("click", function() {
@@ -97,6 +107,22 @@
 
   document.getElementById("material_logout_button").addEventListener("click", function() {
     document.getElementById("logout_button").click();
+  });
+  
+  document.getElementById("material_new_course_button").addEventListener("click", function() {
+    document.getElementById("new_course_link").click();
+  });
+  
+  document.getElementById("material_new_offering_button").addEventListener("click", function() {
+    document.getElementById("new_offerings_link").click();
+  });
+
+  document.getElementById("material_offerings_button").addEventListener("click", function() {
+    document.getElementById("offerings_link").click();
+  });
+  
+  document.getElementById("material_remove_course_button").addEventListener("click", function() {
+    document.getElementById("remove_course_link").click();
   });
   
   document.getElementById("pagination-item").addEventListener("click", function() {

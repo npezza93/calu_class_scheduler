@@ -1,0 +1,24 @@
+<% if @errors %>
+    <% if (not @offering.errors[:course].blank?) and @offering.errors[:course][0] != "has already been taken" %>
+        $("#offering_course_error_msg").fadeIn();
+    <% elsif  @offering.errors[:course][0] == "has already been taken" %>
+        $("#offering_course_error_msg").fadeOut();
+        $("#offering_form_errors").html("<paper-toast class=\"capsule\" text=\"This is already being offered!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
+    <% else %>
+        $("#offering_course_error_msg").fadeOut();
+    <% end %>
+    
+    <% if not @offering.errors[:days_time].blank? %>
+        $("#offering_time_error_msg").fadeIn();
+    <% else %>
+        $("#offering_time_error_msg").fadeOut();
+    <% end %>
+
+    <% if not @offering.errors[:user].blank? %>
+        $("#offering_user_error_msg").fadeIn();
+    <% else %>
+        $("#offering_user_error_msg").fadeOut();
+    <% end %>
+    
+    <%= print @offering.errors[:course] %>
+<% end %>
