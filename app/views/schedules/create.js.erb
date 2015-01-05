@@ -1,0 +1,94 @@
+<% @errors.each do |error_msg_slot| %>
+    <% error_msg_slot.errors.full_messages.each do |error_message| %>
+        document.getElementById("actual_select").options[$("#actual_select option[value=" + "<%= error_msg_slot.offering_id %>" + "]").index()].selected = false;
+        document.getElementById("<%= error_msg_slot.offering_id %>").removeAttribute("checked", "");
+        console.log("<%= error_message %>");
+        $("#schedule_errors").html("<paper-toast class=\"capsule\" text=\"<%= error_message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
+    <% end %>
+<% end %>
+
+var sel_opts = [], nsel_opts = [], asel_opts = [];
+var credit_count = 0;
+var sel_dates_array = [];
+var nsel_dates_array = [];
+var disable = [];
+
+$("#actual_select option:selected").each(function() { 
+    sel_opts.push($(this).attr('value'));
+    asel_opts.push($(this).attr('value'));
+});
+
+$("#actual_select option:not(:selected)").each(function() { 
+    nsel_opts.push($(this).attr('value'));
+    asel_opts.push($(this).attr('value'));
+});
+
+$.each(sel_opts,function(index, value) {
+    var t = $("#"+value).parent().parent();
+    credit_count += parseInt(t.find(".new_schedule_credit_td").text());
+    
+    var d = [t.find(".new_schedule_days_td").text(),t.find(".new_schedule_times_td").text().split(" - ")[0],t.find(".new_schedule_times_td").text().split(" - ")[1],t.find(".new_schedule_course_td").text()];
+    
+    if (d[1].split(" ")[1] == "pm") {
+        d[1] = new Date(2000, 1, 1, d[1].split(":")[0], d[1].split(":")[1].split(" ")[0]);
+        d[1].setHours(d[1].getHours() + 12);
+    } else {
+        d[1] = new Date(2000, 1, 1, d[1].split(":")[0], d[1].split(":")[1].split(" ")[0]);
+    }
+
+    if (d[2].split(" ")[1] == "pm") {
+        d[2] = new Date(2000, 1, 1, d[2].split(":")[0], d[2].split(":")[1].split(" ")[0]);
+        d[2].setHours(d[2].getHours() + 12);
+    } else {
+        d[2] = new Date(2000, 1, 1, d[2].split(":")[0], d[2].split(":")[1].split(" ")[0]);
+    }
+    sel_dates_array.push(d);
+});
+
+$.each(nsel_opts,function(index, value) {
+    var t = $("#"+value).parent().parent();
+    if ((credit_count + parseInt(t.find(".new_schedule_credit_td").text()))>18) {
+        disable.push(value);
+    }
+    
+    var d = [t.find(".new_schedule_days_td").text(),t.find(".new_schedule_times_td").text().split(" - ")[0],t.find(".new_schedule_times_td").text().split(" - ")[1],t.find(".new_schedule_course_td").text()];
+    
+    if (d[1].split(" ")[1] == "pm") {
+        d[1] = new Date(2000, 1, 1, d[1].split(":")[0], d[1].split(":")[1].split(" ")[0]);
+        d[1].setHours(d[1].getHours() + 12);
+    } else {
+        d[1] = new Date(2000, 1, 1, d[1].split(":")[0], d[1].split(":")[1].split(" ")[0]);
+    }
+
+    if (d[2].split(" ")[1] == "pm") {
+        d[2] = new Date(2000, 1, 1, d[2].split(":")[0], d[2].split(":")[1].split(" ")[0]);
+        d[2].setHours(d[2].getHours() + 12);
+    } else {
+        d[2] = new Date(2000, 1, 1, d[2].split(":")[0], d[2].split(":")[1].split(" ")[0]);
+    }
+    nsel_dates_array.push(d);
+});
+
+$.each(nsel_opts,function(index1, value1) {
+    $.each(sel_opts,function(index2, value2) {
+        if (sel_dates_array[index2][0] == nsel_dates_array[index1][0]) {
+            if ((sel_dates_array[index2][1] <= nsel_dates_array[index1][2]) && (nsel_dates_array[index1][1] <=sel_dates_array[index2][2])) {
+                disable.push(value1);
+            }
+        }
+        
+        if (sel_dates_array[index2][3] == nsel_dates_array[index1][3]) {
+            disable.push(value1);
+        }
+    });
+});
+disable = jQuery.unique( disable );
+asel_opts = $(asel_opts).not(disable).get();
+
+$.each(disable,function(index, value) {
+    $("#"+value).attr("disabled", "");
+});
+    
+$.each(asel_opts,function(index, value) {
+    $("#"+value).removeAttr("disabled", "");
+});

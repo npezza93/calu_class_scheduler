@@ -13,7 +13,10 @@ class User < ActiveRecord::Base
   	has_secure_password
   	validates :password, presence: true, length: { minimum: 6 }, if: Proc.new { |a| !(a.password.blank?) }
     validates_with AdvisorValidator
+    validates :major, presence: true
     has_many :transcripts
+    has_many :schedules
+    belongs_to :major
      
     def send_password_reset
       generate_token(:password_reset_token)

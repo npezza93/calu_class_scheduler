@@ -1,0 +1,44 @@
+<%= form_for [@user, @schedule] do |f| %>
+
+
+    <div>
+      <% offerings = (@offerings.map { |offering| [offering.id, offering.id] }) %>
+      <%= f.select(:offering_id, options_for_select(offerings), {}, { id:'actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6 }) %>
+    </div>
+
+    <%= f.submit %>
+<% end %>
+
+
+<table>
+    <tr><th></th><th>Days</th><th>Time</th><th>Class</th><th>Instructor</th></tr>
+<% @offerings.each do |offering| %>
+    <tr>
+      <td><paper-checkbox class="offering_checkbox" id=<%= offering.id.to_s %> ></paper-checkbox></td>
+      <td><%= offering.days_time.days %></td>
+      <td><%= offering.days_time.start_time + " - " + offering.days_time.end_time %></td>
+      <td><%= offering.course.title %></td>
+      <td><%= offering.user.email[0..-10].capitalize %></td>
+    </tr>
+<% end %>
+</table>
+
+<% if not @val_errors.blank? %>
+  <ul>
+    <% @val_errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+<script>
+  $(".offering_checkbox").on("click", function(e) {
+    var x = document.getElementById("actual_select");
+    var id_string = "#actual_select option[value=" + e.currentTarget.id + "]";
+
+    if (x.options[$(id_string).index()].selected) {
+      x.options[$(id_string).index()].selected = false;
+    } else {
+      x.options[$(id_string).index()].selected = true;
+    }
+  });
+</script>

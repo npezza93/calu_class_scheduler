@@ -10,7 +10,25 @@
   <paper-input-decorator label="Confirm Password" floatinglabel>
     <%= f.password_field :password_confirmation, is: 'core-input'%>
   </paper-input-decorator>
+
+  <div style="display:none;">
+    <% majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"] %>
+    <%= f.select(:major_id, options_for_select(majors), {}, { id:'actual_major_select' }) %>
+  </div>
   
+  <div layout horizontal start-justified>
+    <paper-dropdown-menu label="Choose Major" id="major_dropdown_menu">
+      <paper-dropdown class="dropdown constrained-height" id="major_dropdown">
+          <core-menu class="menu" id="major_core_menu">
+            <% majors.pop %>
+            <% majors.each do |major| %>
+              <paper-item value=<%= major[1] %>><%= major[0] %></paper-item>
+            <% end %>
+          </core-menu>
+      </paper-dropdown>
+    </paper-dropdown-menu>
+  </div>
+
   <div style="display:none;">
     <% advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["", "-1"] %>
     <%= f.select(:advised_by, options_for_select(advisors), {}, { id:'actual_select' }) %>
@@ -86,5 +104,10 @@
   $("#actual_select").val("-1");
   document.getElementById("advisor_dropdown").addEventListener('core-select', function(e, detail){
     $('#actual_select').val(e.detail.item.getAttribute("value"));
+  });
+  
+  $("#actual_major_select").val("-1");
+  document.getElementById("major_dropdown").addEventListener('core-select', function(e, detail){
+    $('#actual_major_select').val(e.detail.item.getAttribute("value"));
   });
 </script>

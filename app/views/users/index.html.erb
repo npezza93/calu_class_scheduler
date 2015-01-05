@@ -9,6 +9,7 @@
               <paper-item id="material_remove_course_button"><core-icon icon="clear"></core-icon>&nbsp Remove a Course</paper-item>
               <paper-item id="material_offerings_button"><core-icon icon="event"></core-icon>&nbsp Semester Offerings</paper-item>
               <paper-item id="material_new_offering_button"><core-icon icon="note-add"></core-icon>&nbsp Offer A Course</paper-item>
+              <paper-item id="material_new_major_button"><core-icon icon="class"></core-icon>&nbsp Add a New Major</paper-item>
               <paper-item id="material_edit_button"><core-icon icon="create"></core-icon>&nbsp Change Password</paper-item>
               <paper-item id="material_logout_button"><core-icon icon="settings-power"></core-icon>&nbsp Logout</paper-item>
             </core-menu>
@@ -20,7 +21,7 @@
       <%= link_to "remove Course", courses_path, style:"display:none", id: "remove_course_link" %>
       <%= link_to "offerings", offerings_path, style:"display:none", id: "offerings_link" %>
       <%= link_to "new offering", new_offering_path, style: "display:none;", id: "new_offerings_link" %>
-      
+      <%= link_to "new major", new_major_path, style: "display:none;", id: "new_majors_link" %>
       <h2 class="bottom indent"><%= @logged_in.email + "'s "%>Advisees</h2>
       
     </core-toolbar>
@@ -119,6 +120,10 @@
 
   document.getElementById("material_offerings_button").addEventListener("click", function() {
     document.getElementById("offerings_link").click();
+  });
+
+  document.getElementById("material_new_major_button").addEventListener("click", function() {
+    document.getElementById("new_majors_link").click();
   });
   
   document.getElementById("material_remove_course_button").addEventListener("click", function() {

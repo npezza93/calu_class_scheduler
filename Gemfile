@@ -45,3 +45,5 @@ gem 'polymer-core-rails'
 gem 'polymer-paper-rails'
 
 gem 'kaminari'
+
+gem 'activerecord-import'

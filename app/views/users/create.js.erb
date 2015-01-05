@@ -4,6 +4,12 @@
     <% else %>
         $('#ajax_errors').html("");
     <% end %>
+
+    <% if not @user.errors[:major].blank? %>
+        $('#ajax_errors').append("<div id=\"signup_errors\" class=\"animated fadeInDown\" layout horizontal center-justified><ul id=\"ajax_errors_text\"><li>You must select a major</li></ul></div>");
+    <% else %>
+        $('#ajax_errors').html("");
+    <% end %>
     
     <% if not @user.errors[:email].blank? %>
         document.getElementById("user_email").parentNode.setAttribute("error","Email <%= raw @user.errors[:email][0] %>");

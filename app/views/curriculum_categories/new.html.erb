@@ -1,0 +1,68 @@
+<core-toolbar>
+    <h2 layout horizontal center-justified>Create a New Curriculum Category</h2>
+</core-toolbar>
+
+<div layout horizontal center-justified center style="height:100%;">
+    <paper-shadow style="width:300px;margin:15px;overflow-x: hidden;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+        <%= form_for(@category, remote: true) do |f| %>
+                
+            <paper-input-decorator label="Category (ex: Electives, Core, etc.)">
+                <%= f.text_field :category, is: 'core-input' %>
+            </paper-input-decorator>
+
+            <paper-input-decorator label="Required Number of Credits">
+                <%= f.number_field :required_amount_of_credits, is: 'core-input', in: 1..200 %>
+            </paper-input-decorator>
+
+            <div style="display:none;">
+                <% majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"] %>
+                <%= f.select(:major_id, options_for_select(majors), {}, { id:'actual_major_select' }) %>
+            </div>
+              
+            <div id="major_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
+                <div class="error" layout horizontal center-justified style="width:100%;">
+                  <div class="error-text" flex>A Major must be selected!</div>
+                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                </div>
+            </div>
+
+            <div layout horizontal center-justified>
+                <paper-dropdown-menu label="Choose Major" id="major_dropdown_menu" style="margin-top:0;padding-top:0;">
+                    <paper-dropdown class="dropdown constrained-height" id="major_dropdown" style="height:100px;">
+                        <core-menu class="menu" id="major_core_menu">
+                            <% majors.pop %>
+                            <% majors.each do |major| %>
+                                <paper-item value=<%= major[1] %>><%= major[0] %></paper-item>
+                            <% end %>
+                        </core-menu>
+                    </paper-dropdown>
+                </paper-dropdown-menu>
+            </div>
+            
+            <br>
+            <div layout horizontal center-justified>
+                <paper-button id="material_create_category">Create Category</paper-button>
+            </div>
+        
+            <%= f.submit 'Create category', style: 'display:none;', id: 'actual_create_category' %>
+            
+        <% end %>
+    </paper-shadow>
+</div>
+
+<div id="category_errors"></div>
+
+<% @category.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+<% end %>
+
+<script>
+  document.getElementById("material_create_category").addEventListener("click", function() {
+    document.getElementById("actual_create_category").click();
+  });
+  
+  $("#actual_major_select").val("-1");
+  document.getElementById("major_dropdown").addEventListener('core-select', function(e, detail){
+    $('#actual_major_select').val(e.detail.item.getAttribute("value"));
+  });
+</script>

@@ -1,0 +1,27 @@
+<core-toolbar>
+    <h2 style="line-height:1;">Curriculum Categories</h2>
+</core-toolbar>
+
+<table>
+    <tr><th>Category</th><th>Required Amount of Credits</th><th>Major</th></tr>
+<% @category.each do |category| %>
+    <tr>
+        <td><%= link_to category.category, curriculum_category_curriculum_category_courses_path(category) %></td>
+        <td><%= category.required_amount_of_credits %></td>
+        <td><%= category.major.major %></td>
+        <td><%= link_to "Remove", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' } %></td></tr> 
+<% end %>
+</table>
+
+<%= link_to "Add new Category", new_curriculum_category_path, id: "new_category_link", style: "display:none;" %>
+<paper-fab icon="add" style="position:absolute;bottom:0;right:0;margin:10px;" title="Add a New Category" id="new_category_material"></paper-fab>
+
+<% if notice %>
+    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
+<% end %>
+
+<script>
+    document.getElementById("new_category_material").addEventListener("click", function() {
+        document.getElementById("new_category_link").click();
+    });
+</script>

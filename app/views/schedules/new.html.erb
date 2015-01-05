@@ -1,0 +1,125 @@
+<!--<h1>New schedule</h1>-->
+
+<div style="margin:15px;" horizontal wrap layout around-justified>
+    <div>
+        <% (@remaining_credits.reject{|k,v| v > 0 }).each do |k, v| %>
+            <div layout horizontal center-justified>
+                <table style="margin:30px;" layout horizontal center-justified>
+                    <tr><th colspan="4" style="text-align:center;"><%= CurriculumCategory.find(k).category + " - " %>Completed</th></tr>
+                    <tr><th></th><th>Class</th><th>Credits</th><th>Grade</th></tr>
+                    <% @common_courses[k].each do |course| %>
+                        <tr height="40">
+                          <td style="text-align: left;width: 30px;height: 40px;" layout vertical center-justified><core-icon icon="check"></core-icon></td>
+                          <td style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
+                          <td style="text-align:center;"><%= course.credits %></td>
+                          <td style="text-align:center;">A</td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        <% end %>
+    </div>
+
+    <div>
+        <% @new_category_courses.each do |k, v| %>
+            <div layout horizontal center-justified>
+                <table style="margin:30px;" layout horizontal center-justified>
+                    <tr><th colspan="7" style="text-align:center;"><%= CurriculumCategory.find(k).category + " - " %><%= @remaining_credits[k].to_s + " credits remaining" %></th></tr>
+                    <tr><th></th><th>Class</th><th>Credits</th><th>Days</th><th>Time</th><th>Instructor</th><th>Grade</th></tr>
+                    <% v.each do |offering| %>
+                        <tr height="40">
+                          <td style="text-align: left;width: 30px;height: 40px;" layout vertical center-justified><paper-checkbox class="offering_checkbox" id=<%= offering.id.to_s %> ></paper-checkbox></td>
+                          <td class="new_schedule_course_td" style="padding-right:10px;width:150px;"><%= offering.course.subject + offering.course.course.to_s + ": " + offering.course.title %></td>
+                          <td class="new_schedule_credit_td" style="text-align:center;"><%= offering.course.credits %></td>
+                          <td class="new_schedule_days_td" style="text-align:center;"><%= offering.days_time.days %></td>
+                          <td class="new_schedule_times_td" style="text-align:center;"><%= offering.days_time.start_time + " - " + offering.days_time.end_time %></td>
+                          <td style="text-align:center;"><%= offering.user.email[0..-10].capitalize %></td>
+                          <td style="text-align:center;">NC</td>
+                          <td><%= offering.id %></td>
+                        </tr>
+                    <% end %>
+                    <% @common_courses[k].each do |course| %>
+                        <tr height="40">
+                          <td style="text-align: left;width: 30px;height: 40px;" layout vertical center-justified><core-icon icon="check"></core-icon></td>
+                          <td style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
+                          <td style="text-align:center;"><%= course.credits %></td>
+                          <td style="text-align:center;"></td>
+                          <td style="text-align:center;"></td>
+                          <td style="text-align:center;"></td>
+                          <td style="text-align:center;">A</td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        <% end %>
+        
+        <%= form_for [@user, @schedule], remote: true do |f| %>
+            <% offerings = (@new_category_courses.values.flatten.map { |offering| [offering.id, offering.id] }) %>
+            <%= f.select(:offering_id, options_for_select(offerings), {}, { id:'actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6, hidden: "" }) %>
+            <%= f.submit "Update Schedule", id: "submit_schedule_changes", hidden: "" %>
+        <% end %>
+        
+        <div id="schedule_errors" style="font-size:0.75em;color:#d34336;"></div>
+    </div>
+</div>
+
+<!--front end validations (can get moved off world)-->
+<script>
+  $(".offering_checkbox").on("click", function(e) {
+    var sel_opts = [], opt, nsel_opts = [];
+    var credit_count = 0;
+    var sel_dates_array = [];
+    var nsel_dates_array = [];
+    var disable = [];
+    var enable = [];
+    var x = document.getElementById("actual_select");
+    var id_string = "#actual_select option[value=" + e.currentTarget.id + "]";
+    
+    if (x.options[$(id_string).index()].selected) {
+        x.options[$(id_string).index()].selected = false;
+        document.getElementById("submit_schedule_changes").click();
+    } else {
+        x.options[$(id_string).index()].selected = true;
+        document.getElementById("submit_schedule_changes").click();
+    }
+  });
+</script>
+
+<!--check ones already signed up for-->
+<script>
+<% @schedules.each do |sch| %>
+    document.getElementById("actual_select").options[$("#actual_select option[value=" + "<%= sch.id %>" + "]").index()].selected = true;
+    document.getElementById("<%= sch.id %>").setAttribute("checked", "");
+<% end %>
+
+(function() {
+    var sel_opts = [], opt, nsel_opts = [];
+    var credit_count = 0; 
+    
+    for (var i=0, len=document.getElementById("actual_select").options.length; i<len; i++) {
+        opt = document.getElementById("actual_select").options[i];
+    
+        if ( opt.selected ) {
+            sel_opts.push(opt);
+        } else {
+            nsel_opts.push(opt);
+        }
+    }
+    for (var i=0, len=sel_opts.length; i<len; i++) {
+        opt = sel_opts[i];
+        var t = parseInt(document.getElementById(opt.innerHTML).parentNode.parentNode.getElementsByClassName("new_schedule_credit_td")[0].innerText);
+        credit_count += t;
+    }
+    
+    for (var i=0, len=nsel_opts.length; i<len; i++) {
+        opt = nsel_opts[i];
+        var t = parseInt(document.getElementById(opt.innerHTML).parentNode.parentNode.getElementsByClassName("new_schedule_credit_td")[0].innerText);
+        if ((credit_count + t)>18) {
+            document.getElementById(opt.innerHTML).setAttribute("disabled", "");
+        } else {
+            document.getElementById(opt.innerHTML).removeAttribute("disabled", "");
+        }
+    }
+    })();
+</script>
+

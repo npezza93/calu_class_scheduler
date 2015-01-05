@@ -1,0 +1,22 @@
+// Place all the styles related to the Schedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#schedule_calendar, .day_time_slot, .time_slot {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.day {
+    width:100px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.selected_class {
+    background-color: #0088cc;
+    color: white;
+    font-weight: bold;
+}
+.half_time_slot {
+    background: linear-gradient(to bottom, #0088cc 0%,#0088cc 50%,white 51%,white 100%);
+}

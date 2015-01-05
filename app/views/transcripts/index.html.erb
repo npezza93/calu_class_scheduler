@@ -1,13 +1,6 @@
 <core-toolbar>
     <h2 flex>Classes You've Taken</h2>
-    <paper-fab icon="cloud-upload" justify="end" style="margin-right:5%;margin-top:64px;" id="upload-fab"></paper-fab>
 </core-toolbar>    
-
-<div id="classes_taken_list">
-    <% @user.transcripts.all.each do |course| %>
-        <p style="text-align:center;font-weight: bold;"><%= course.course.subject + course.course.course.to_s + ": " + course.course.title %></p>
-    <% end %>
-</div>
 
 <%= form_for [@user, Transcript.new], remote: true do |f| %>
     
@@ -41,7 +34,13 @@
 <% if notice %>
  	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
 <% end %>
-    
+
+<div id="classes_taken_list">
+    <% @transcripts.each_with_index do |course, index| %>
+        <p style="text-align:center;font-weight: bold;"><%= course.course.subject + course.course.course.to_s + ": " + course.course.title %></p>
+    <% end %>
+</div>
+
 <%= button_to 'Logout', logout_path, {method: :delete } %>
 
 <script>

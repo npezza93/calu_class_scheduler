@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :only_edit_you, only: [:edit, :update]
   before_filter :reg_user_check, only: [:index, :user_options, :destroy]
-  
+  skip_before_filter :logged_in?, only: [:new, :create]
+
   # GET /users
   # GET /users.json
   def index
@@ -10,8 +11,8 @@ class UsersController < ApplicationController
     @logged_in = User.find_by_id(session[:user_id])
     
     if @logged_in.advisor
-      @advisees = User.where(advised_by: @logged_in).page(params[:page]).per(5)
-      @all_others= User.where(advisor: false, administrator: false).where.not(advised_by: @logged_in.id).page(params[:page_2]).per(5)
+      @advisees = User.where(advised_by: @logged_in, major_id: @logged_in.major_id).page(params[:page]).per(5)
+      @all_others= User.where(advisor: false, administrator: false, major_id: @logged_in.major_id).where.not(advised_by: @logged_in.id).page(params[:page_2]).per(5)
     end
     
     respond_to do |format|
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: @user.email + ' was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -91,9 +92,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       if session[:user_id] and (User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator) 
-        params.require(:user).permit(:email, :password, :password_confirmation, :administrator, :advisor, :advised_by)
+        params.require(:user).permit(:email, :password, :password_confirmation, :administrator, :advisor, :advised_by, :major_id)
       else
-        params.require(:user).permit(:email, :password, :password_confirmation, :advised_by)
+        params.require(:user).permit(:email, :password, :password_confirmation, :advised_by, :major_id)
       end
     end
     

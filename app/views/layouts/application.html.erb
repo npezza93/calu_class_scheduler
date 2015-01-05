@@ -9,8 +9,22 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 </head>
 <body unresolved fullbleed layout vertical>
+<core-drawer-panel>
+    
+      <div drawer>
+        <ul>
+          <li>HELLO</li>
+          <li>Again</li>
+        </ul>
+      </div>
+        
+      <div main>
+        <button core-drawer-toggle>toggle drawer</button>
+          <%= yield %>
+      </div>
+      
+    </core-drawer-panel>
 
-  <%= yield %>
 
 </body>
 </html>

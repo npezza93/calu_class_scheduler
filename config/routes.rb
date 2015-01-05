@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :curriculum_categories, :only => [:create, :new, :destroy, :index] do
+    resources :curriculum_category_courses, :only => [:index, :create]
+  end
+
+  resources :majors, :only => [:create, :new]
+
   resources :offerings do
     collection { post :import}
   end
@@ -16,6 +22,7 @@ Rails.application.routes.draw do
   
   resources :users, :except => :show do
     resources :transcripts, :only => [:index, :create]
+    resources :schedules, :only => [:index, :create, :new, :destroy]
   end
 
   resources :password_resets

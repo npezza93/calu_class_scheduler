@@ -1,0 +1,9 @@
+<% if not @errors %>
+    $("#course_category_list").append("<p id=\"category_<%= @category_course.course_id %>_course\" style=\"font-weight:bold;text-align:center;display:none;\"><%= @category_course.course.subject + @category_course.course.course.to_s + ": " + @category_course.course.title %></p>");
+    $("#category_<%= @category_course.course_id %>_course").slideDown();
+    $("#category_course_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @category_course.course.title %> added to <%= @category.category %>!\" style=\"padding-right: 60px;\" duration=\"10000\" opened ></paper-toast>");
+<% else %>
+    <% @category_course.errors.full_messages.each do |message| %>
+        $("#category_course_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
+    <% end %>
+<% end %>

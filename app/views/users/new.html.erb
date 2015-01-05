@@ -1,13 +1,6 @@
 <core-overlay id="overlay" autoCloseDisabled opened backdrop transition="core-transition-center" style="font-family: 'RobotoDraft', sans-serif;overflow-x: hidden;background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-    <paper-icon-button id="signup_back" icon="arrow-back"></paper-icon-button>
-    <%= link_to "Advisees", users_path, id: "actual_signup_back", style: "display:none;" %>
     <h1 layout center-justified horizontal>Signup</h1>
 
     <%= render 'form' %>
 
-    <script>
-        document.getElementById("signup_back").addEventListener("click", function() {
-          $("#actual_signup_back")[0].click(); 
-        });
-    </script>
 </core-overlay>

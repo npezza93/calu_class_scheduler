@@ -1,0 +1,22 @@
+<% if @errors %>
+    <% if not @category.errors[:major].blank? %>
+        $("#major_error_msg").fadeIn();
+    <% else %>
+        $("#major_error_msg").fadeOut();
+    <% end %>
+
+    <% if not @category.errors[:required_amount_of_credits].blank? %>
+        document.getElementById("curriculum_category_required_amount_of_credits").parentNode.setAttribute("error","<%= raw @category.errors.full_messages_for(:required_amount_of_credits)[0] %>");
+        document.getElementById("curriculum_category_required_amount_of_credits").parentNode.setAttribute("isInvalid","");
+    <% else %>
+         document.getElementById("curriculum_category_required_amount_of_credits").parentNode.removeAttribute("isInvalid","");
+    <% end %>
+    
+    <% if not @category.errors[:category].blank? %>
+        document.getElementById("curriculum_category_category").parentNode.setAttribute("error","<%= raw @category.errors.full_messages_for(:category)[0] %>");
+        document.getElementById("curriculum_category_category").parentNode.setAttribute("isInvalid","");
+    <% else %>
+         document.getElementById("curriculum_category_category").parentNode.removeAttribute("isInvalid","");
+    <% end %>
+    
+<% end %>

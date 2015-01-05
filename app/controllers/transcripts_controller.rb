@@ -4,6 +4,7 @@ class TranscriptsController < ApplicationController
   before_filter :only_yours
   
   def index
+    @transcripts = @user.transcripts.all
   end
   
   def create
