@@ -1,4 +1,4 @@
-<core-overlay id="overlay" autoCloseDisabled opened backdrop transition="core-transition-center" style="overflow-x: hidden;width:300px;height:500px;background:#f5f5f5;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<core-overlay id="new_session_overlay" autoCloseDisabled opened backdrop transition="core-transition-center">
 	<section id="section" layout vertical>
 		
 		<paper-tabs selected="0" id="paperTabs" >
@@ -15,7 +15,7 @@
 	      				</paper-input-decorator>
       					
       					<paper-input-decorator label="Enter Password" floatinglabel>
-      						<%= password_field_tag :password, params[:password], is: 'core-input' %><br />
+      						<%= password_field_tag :password, params[:password], is: 'core-input' %>
       					</paper-input-decorator>
 	      					
       					<div center-justified layout horizontal style="margin-top: 14px;">
@@ -42,27 +42,8 @@
         	</core-animated-pages>
       	</section>
     </section>
-	
-	<script>
-	
-	  var tabs = {
-	      one: document.querySelector('#one'),
-	      two: document.querySelector('#two')
-	  };
-	  
-	  tabs.one.addEventListener('click', function(e) {
-	  	document.querySelector('#baluga').selected = 0;
-	    console.log(e.type + ' : ' + this.localName);
-	  });
-	
-	  tabs.two.addEventListener('click', function(e) {
-	  	document.querySelector('#baluga').selected = 1;
-	    console.log(e.type + ' : ' + this.localName);
-	  });
-
-	</script>
-
 </core-overlay>
+
 <% if notice %>
 	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
 <% end %>

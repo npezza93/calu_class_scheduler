@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  background-color: #F9F9F9;
   color: #333;
   font-family: 'RobotoDraft', sans-serif;
   font-size: 13px;
@@ -57,4 +57,20 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+
+#cur_cat_link, #stop_offering_link, #transcript_remove_link {
+  letter-spacing: inherit;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+  transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+}
+
+#cur_cat_link:hover, #cur_cat_link:focus, #stop_offering_link:hover, #stop_offering_link:focus, #transcript_remove_link:hover, #transcript_remove_link:focus {
+  color: #2a6496;
+  text-decoration: underline;
 }

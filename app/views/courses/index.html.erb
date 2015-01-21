@@ -1,24 +1,17 @@
-<core-header-panel flex mode="scroll">
-    <core-toolbar style="line-height:1;">
-        <paper-icon-button icon="arrow-back" id="course_back_to_users"></paper-icon-button>
-        <%= link_to 'Back', users_path, id: 'actual_back_button', style: 'display:none;' %>
-        <h2 class="bottom indent">Choose a Course to Remove</h2>
-    </core-toolbar>
+<% content_for :title do %>
+    Choose a Course to Remove
+<% end %>
 
-<div layout horizontal center-justified style="margin:15px;">
-    <paper-shadow style="width:475px;font-size:13px;text-align:center;background:#f3f3f3;">
+<div layout horizontal center-justified id="remove_course_div">
+    <paper-shadow id="remove_course_shadow_div">
         <% @courses.each do |course| %>
             <paper-item>
-                <%= link_to course.subject + '' +course.course.to_s + ': ' + course.title, course, method: :delete, data: { confirm: 'Are you sure you want to remove "' + course.title + '"?' }, style: "text-decoration:none;color:black;" %>
+                <%= link_to course.subject + '' +course.course.to_s + ': ' + course.title, course, method: :delete, data: { confirm: 'Are you sure you want to remove "' + course.title + '"?' }, style: "text-decoration:none;color:rgba(0, 0, 0, 0.87);;" %>
             </paper-item>
         <% end %>
     </paper-shadow>
-    
 </div>
 
 <script>
-    document.getElementById("course_back_to_users").addEventListener("click", function() {
-        document.getElementById("actual_back_button").click();
-    });
+    $("#drawer_core_menu")[0].selected = 2;
 </script>
-</core-header-panel>

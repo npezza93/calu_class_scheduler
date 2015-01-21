@@ -1,0 +1,104 @@
+<div style="margin:15px;" >
+    <div layout horizontal center-justified style="margin-top:15px;margin-bottom:30px;color:rgba(0,0,0,.87)">
+        <table id="advisor_quick_user_courses">
+            <% if @offerings.empty? %>
+                <tr><th colspan="3"><%= @user.email %> Has Not Signed Up For Any Courses</th></tr>
+            <% else %>
+                <tr><th colspan="3"><%= @user.email %>'s Courses</th></tr>
+                <% total_credits = 0 %>
+                <% @offerings.each do |offering| %>
+                    <tr>
+                      <td><%= offering.course.subject + offering.course.course.to_s + ": " +  offering.course.title %></td>
+                      <td style="padding-left:20px;padding-right:20px;"><%= offering.course.credits %></td>
+                      <td><%= offering.user.email[0..-10].capitalize %></td>
+                    </tr>
+                    <% total_credits += offering.course.credits %>
+                <% end %>
+                <tr id="total_credits_row"><td></td><td style="padding-left:20px;padding-right:20px;border-top: solid thin rgba(0,0,0,.87);"><%= total_credits%></td><td></td></tr>
+            <% end %>
+        </table>
+    </div>
+    
+    <div layout horizontal center-justified id="big_schedule_table">
+        <paper-shadow style="background: #fafafa;border-radius:3px;">
+        <table style="margin:15px;border-collapse:separate !important;border-spacing: 2px !important;border:none;" id="schedule_calendar">
+            <tr style="background-color:#BDBDBD;border:  none;">
+                <th></th>
+                <th class="day">Monday</th>
+                <th class="day">Tuesday</th>
+                <th class="day">Wednesday</th>
+                <th class="day">Thursday</th>
+                <th class="day">Friday</th>
+            </tr>
+            
+            <% begin_time = Time.new(2000, 1, 1, 8) %>
+            <% end_time = Time.new(2000, 1, 1, 21,30) %>
+            <% while begin_time<=end_time %>
+                <tr style="<%= cycle("background-color:#fafafa;", "background-color:#BDBDBD;") -%>">
+                    <td class="time_slot"><%= begin_time.strftime("%l:%M%p") %></td>
+                    <td id="M<%= begin_time.strftime("%l%M%p").strip %>" class="day_time_slot"></td>
+                    <td class="day_time_slot" id="T<%= begin_time.strftime("%l%M%p").strip %>"></td>
+                    <td class="day_time_slot" id="W<%= begin_time.strftime("%l%M%p").strip %>"></td>
+                    <td class="day_time_slot" id="R<%= begin_time.strftime("%l%M%p").strip %>"></td>
+                    <td class="day_time_slot" id="F<%= begin_time.strftime("%l%M%p").strip %>"></td>
+                </tr>
+                <% begin_time += 1800 %>
+            <% end %>
+        
+        </table>
+        </paper-shadow>
+    </div>
+    
+    <div layout horizontal center-justified>
+        <div layout vertical id="small_schedule_table">
+            <% @day_hash.each do |k, v| %>
+                <% if not v.blank? %>
+                    <paper-shadow style="padding:20px;max-width:353px;background: #FAFAFA;border-radius:3px;margin:8px;">
+                        <h3 style="margin-bottom:27px;color:rgba(0,0,0,0.87);"><%= k %></h3>
+                        <% v.each do |offering| %>
+                            <div layout horizontal style="color:#757575;">
+                                <div flex><%= offering.course.subject + offering.course.course.to_s + ": " +  offering.course.title %></div>
+                                <div end-justified><%= offering.days_time.start_time + " - " + offering.days_time.end_time %></div>
+                            </div>
+                            <hr style="margin-top:10px;border: 0;height: 0;border-top: 1px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
+                        <% end %>
+                    </paper-shadow>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+<core-media-query id="media_query_schedule" query="max-width: 750px"></core-media-query>
+
+    
+<!--JavaScript to make the weekly schedule-->
+<script>
+    <% @offerings.each do |offering| %>
+        <% offering.days_time.days.split("").each do |letter| %>
+            <% begin_time = Time.strptime(offering.days_time.start_time, "%l:%M %P") %>
+            <% end_time = Time.strptime(offering.days_time.end_time, "%l:%M %P") %>
+            <% index = 0 %>
+            
+            <% if (end_time - 15.minutes).min == 0 or (end_time - 15.minutes).min == 30 %>
+                <% end_time -= 15.minutes %>
+                <% flag = true %>
+            <% end %>
+            
+            <% while begin_time<end_time %>
+                <% if index == 0 %>
+                    document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").innerHTML = "<%= offering.course.subject + offering.course.course.to_s %>";
+                <% elsif index == 1 %>
+                    document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").innerHTML = "<%= offering.user.email[0..-10].capitalize %>";
+                <% end %>
+                document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className = document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className + " selected_class";
+                <% begin_time += 1800 %>
+                <% index += 1 %>
+            <% end %>
+            <% if flag %>
+               document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className = document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className + " half_time_slot";
+            <% end %>
+        <% end %>
+    <% end %>
+</script>

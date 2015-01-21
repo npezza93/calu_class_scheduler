@@ -2,29 +2,104 @@
 <html>
 <head>
   <title>CalU Scheduler</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
   <%= html_import_tag "application" %>
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+  <%= csrf_meta_tags %>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="minimal-ui, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+
 </head>
 <body unresolved fullbleed layout vertical>
-<core-drawer-panel>
-    
-      <div drawer>
-        <ul>
-          <li>HELLO</li>
-          <li>Again</li>
-        </ul>
-      </div>
-        
-      <div main>
-        <button core-drawer-toggle>toggle drawer</button>
-          <%= yield %>
-      </div>
+<style>
+  core-header-panel {
+  background: white;
+}
+core-toolbar {
+  background-color: #03A9F4;
+}
+</style>
+  
+    <% if not (current_page?(signup_path) or current_page?(login_path) or current_page?(root_path) or (params.has_key?(:id) ? current_page?(edit_password_reset_path) : false)) %>
+      <core-drawer-panel responsiveWidth="1000px">
+        <core-header-panel drawer mode="scroll">
+          <core-toolbar id="navheader" style="background-color: #56BA89;font-size:21px;line-height:1.5em;">
+            <span>Menu</span>
+          </core-toolbar>
+          <core-menu style="font-size:17px;" id="drawer_core_menu">
+            <% if User.find(session[:user_id]).advisor %>
+              <% if params[:user_id] %>
+                <% if current_page?(user_schedules_path(params[:user_id])) %>
+                  <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br> Transcript</core-item>
+                  <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br> Schedule</core-item>
+                  <core-item id="drawer_new_schedule_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Modify <br> <%= @user.email %>'s <br>Schedule</core-item>
+                <% elsif current_page?(user_transcripts_path(User.find(params[:user_id]))) or current_page?(new_user_schedule_path(User.find(params[:user_id]))) %>
+                  <core-item id="drawer_transcripts_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br>Transcript</core-item>
+                  <core-item id="drawer_schedule_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br>Schedule</core-item>
+                  <core-item id="drawer_new_schedule_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Modify <br> <%= @user.email %>'s <br> Schedule</core-item>
+                  <div hidden>
+                    <%= link_to "transcripts", user_transcripts_path(User.find(params[:user_id])), id: "user_transcripts_app_link" %>
+                    <%= link_to "schdeules", user_schedules_path(User.find(params[:user_id])), id: "user_schedules_app_link" %>
+                    <%= link_to "new schedules", new_user_schedule_path(User.find(params[:user_id])), id: "new_user_schedule_app_link" %>
+                  </div>
+                <% end %>
+              <% end %>
+              <core-item id="drawer_users_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="account-child"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Students</span></core-item>
+              <core-item id="drawer_new_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="add"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Add a New Course</span></core-item>
+              <core-item id="drawer_delete_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="clear"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Remove a Course</span></core-item>
+              <core-item id="drawer_offerings_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Semester Offerings</span></core-item>
+              <core-item id="drawer_new_major_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="class"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Add a New Major</span></core-item>
+              <core-item id="drawer_categories_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="sort"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;"> Curriculum<br> Categories</span></core-item>
+              <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="lock-outline"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Change Password</span></core-item>
+            <% else %>
+              <% if current_page?(user_transcripts_path(User.find(session[:user_id]))) or current_page?(new_user_schedule_path(User.find(session[:user_id]))) or current_page?(edit_user_path(User.find(session[:user_id]))) %>
+                <core-item id="drawer_transcripts_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
+                <core-item id="drawer_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
+                <core-item id="drawer_new_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
+                <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="lock-outline"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Change Password</span></core-item>
+                <div hidden>
+                  <%= link_to "transcripts", user_transcripts_path(User.find(session[:user_id])), id: "user_transcripts_app_link" %>
+                  <%= link_to "schdeules", user_schedules_path(User.find(session[:user_id])), id: "user_schedules_app_link" %>
+                  <%= link_to "new schedules", new_user_schedule_path(User.find(session[:user_id])), id: "new_user_schedule_app_link" %>
+                </div>
+              <% else %>
+                <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
+                <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
+                <core-item id="drawer_new_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
+                <core-item id="drawer_change_password_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="lock-outline"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Change Password</span></core-item>
+              <% end %>
+            <% end %>
+              <core-item id="drawer_logout_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="settings-power"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Logout</span></core-item><br>
+          </core-menu>
+        </core-header-panel>
+  
+        <core-header-panel main mode="scroll" id="main">
+          <core-toolbar id="mainheader">
+            <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+            <span flex style="font-size:23px;line-height:1;">
+              <%= yield :title %>
+            </span>
+          </core-toolbar>
+          <div class="content">
+            <%= yield %>
+          </div>
+        </core-header-panel>
+      </core-drawer-panel>
       
-    </core-drawer-panel>
-
+      <div hidden>
+        <%= link_to "Users", users_path, id: "users_link" %>
+        <%= link_to "New Course", new_course_path, id: "new_course_link" %>
+        <%= link_to "Delete Course", courses_path, id: "delete_course_link" %>
+        <%= link_to "offerings", offerings_path, id: "offerings_link" %>
+        <%= link_to "New Major", new_major_path, id: "new_major_link" %>
+        <%= link_to "Categories", curriculum_categories_path, id: "categories_link" %>
+        <%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])), id: "change_password_link" %>
+        <%= button_to 'Logout', logout_path, { method: :delete, id: "logout_button" } %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
 
 </body>
 </html>

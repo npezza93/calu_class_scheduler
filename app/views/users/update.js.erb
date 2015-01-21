@@ -1,0 +1,30 @@
+<% if @user.errors.any? %>
+    <% print @user.errors.keys %>
+    <% if not @user.errors[:password_confirmation].blank? %>
+        $("#user_password_confirmation").parent().attr("error", "<%= @user.errors.full_messages_for(:password_confirmation)[0].html_safe %>");
+        $("#user_password_confirmation").parent().attr("isInvalid", "true");
+    <% else %>
+        $("#user_password_confirmation").parent().attr("error", "");
+        $("#user_password_confirmation").parent().attr("isInvalid", "false");
+    <% end %>
+    
+    <% if not @user.errors[:password].blank? %>
+        $("#user_password").parent().attr("error", "<%= @user.errors.full_messages_for(:password)[0].html_safe %>");
+        $("#user_password").parent().attr("isInvalid", "true");
+    <% else %>
+        $("#user_password").parent().attr("error", "");
+        $("#user_password").parent().attr("isInvalid", "false");
+    <% end %>
+<% else %>
+    <% if @user.advisor or @user.administrator %>
+        window.location = '/users'
+    <% elsif cuurent_page?(edit_user_path(@user)) %>
+        window.location = '/users/' + <%= @user.id %> +'/schedules'
+    <% end %>
+    $("#change_password_overlay")[0].toggle();
+    $("#user_password").parent().attr("error", "");
+    $("#user_password").parent().attr("isInvalid", "false");
+    $("#user_password_confirmation").parent().attr("error", "");
+    $("#user_password_confirmation").parent().attr("isInvalid", "false");
+    $("#toast_div").html("<paper-toast class=\"capsule\" text=\"Password succussfully changed!\" style=\"padding-right: 60px;color: #4CAF50;\" duration=\"10000\" opened ></paper-toast>");
+<% end %>

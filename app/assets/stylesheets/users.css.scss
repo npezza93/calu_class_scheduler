@@ -52,7 +52,7 @@
   color: black;
 }
 .constrained-height {
-max-height: 195px;
+max-height: 135px;
 }
 paper-dropdown-menu, paper-dropdown {
   width: 260px;
@@ -62,8 +62,24 @@ paper-dropdown-menu, paper-dropdown {
   font-weight: bold;
 }
 
-#advisee_signup_fab {
-  
+#major_signup_dropdown_error_msg, #advisor_signup_dropdown_error_msg {
+    color:#d34336;
+    font-size: 0.75em;
+    display:none;
+}
+#signup_dropdown_major_error {
+    width:100%;
+}
+#signup_dropdown_advisor_error {
+  width:100%;
+}
+#signup_dropdown_error_icon {
+    height:20px;
+    width: 20px;
+}
+#major_dropdown_menu {
+    margin-top:0;
+    padding-top:0;
 }
 /*  Error Message fade in animation */
 

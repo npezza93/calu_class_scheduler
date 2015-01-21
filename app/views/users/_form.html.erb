@@ -11,14 +11,21 @@
     <%= f.password_field :password_confirmation, is: 'core-input'%>
   </paper-input-decorator>
 
-  <div style="display:none;">
+  <div hidden>
     <% majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"] %>
     <%= f.select(:major_id, options_for_select(majors), {}, { id:'actual_major_select' }) %>
   </div>
-  
+
+  <div id="major_signup_dropdown_error_msg" layout horizontal center-justified>
+      <div id="signup_dropdown_major_error" layout horizontal center-justified>
+        <div id="signup_dropdown__error_text" flex>A Major must be selected!</div>
+        <core-icon class="error-icon" id="signup_dropdown_error_icon" icon="warning"></core-icon>
+      </div>
+  </div>
+        
   <div layout horizontal start-justified>
     <paper-dropdown-menu label="Choose Major" id="major_dropdown_menu">
-      <paper-dropdown class="dropdown constrained-height" id="major_dropdown">
+      <paper-dropdown class="dropdown" id="major_dropdown">
           <core-menu class="menu" id="major_core_menu">
             <% majors.pop %>
             <% majors.each do |major| %>
@@ -29,12 +36,19 @@
     </paper-dropdown-menu>
   </div>
 
-  <div style="display:none;">
+  <div hidden>
     <% advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["", "-1"] %>
     <%= f.select(:advised_by, options_for_select(advisors), {}, { id:'actual_select' }) %>
   </div>
-  
+
   <core-collapse opened allowOverflow id="advisor_collapse">
+    <div id="advisor_signup_dropdown_error_msg" layout horizontal center-justified>
+        <div id="signup_dropdown_advisor_error" layout horizontal center-justified>
+          <div id="signup_dropdown__error_text" flex>You must choose an Advisor!</div>
+          <core-icon class="error-icon" id="signup_dropdown_error_icon" icon="warning"></core-icon>
+        </div>
+    </div>
+  
     <div layout horizontal start-justified>
       <paper-dropdown-menu label="Choose Advisor" id="advisor_dropdown_menu">
         <paper-dropdown class="dropdown constrained-height" id="advisor_dropdown">
@@ -52,7 +66,7 @@
   <% if session[:user_id] && (User.find_by(id: session[:user_id]).administrator || User.find_by(id: session[:user_id]).advisor) %>
     <% if User.find_by(id: session[:user_id]).administrator %>
         <div layout horizontal center style="margin-top:10px;">
-            <%= f.check_box :administrator, style: 'display:none;', id: 'actual_admin' %>
+            <%= f.check_box :administrator, hidden: "", id: 'actual_admin' %>
             <div flex>Administrator</div>
             <paper-toggle-button id='paper_admin'></paper-toggle-button>
         </div>
@@ -66,7 +80,7 @@
     <% end %>
       
     <div layout horizontal center style="margin-top:10px;">
-        <%= f.check_box :advisor, style: 'display:none;', id: 'actual_advisor' %>
+        <%= f.check_box :advisor, hidden: "", id: 'actual_advisor' %>
         <div flex>Advisor</div>
         <paper-checkbox id='paper_advisor'></paper-checkbox>
     </div>
@@ -99,15 +113,3 @@
 <% end %>
 
 <div id="ajax_errors"></div>
-
-<script>
-  $("#actual_select").val("-1");
-  document.getElementById("advisor_dropdown").addEventListener('core-select', function(e, detail){
-    $('#actual_select').val(e.detail.item.getAttribute("value"));
-  });
-  
-  $("#actual_major_select").val("-1");
-  document.getElementById("major_dropdown").addEventListener('core-select', function(e, detail){
-    $('#actual_major_select').val(e.detail.item.getAttribute("value"));
-  });
-</script>

@@ -1,8 +1,7 @@
 <% @errors.each do |error_msg_slot| %>
     <% error_msg_slot.errors.full_messages.each do |error_message| %>
-        document.getElementById("actual_select").options[$("#actual_select option[value=" + "<%= error_msg_slot.offering_id %>" + "]").index()].selected = false;
+        document.getElementById("schedule_new_actual_select").options[$("#schedule_new_actual_select option[value=" + "<%= error_msg_slot.offering_id %>" + "]").index()].selected = false;
         document.getElementById("<%= error_msg_slot.offering_id %>").removeAttribute("checked", "");
-        console.log("<%= error_message %>");
         $("#schedule_errors").html("<paper-toast class=\"capsule\" text=\"<%= error_message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
     <% end %>
 <% end %>
@@ -13,12 +12,12 @@ var sel_dates_array = [];
 var nsel_dates_array = [];
 var disable = [];
 
-$("#actual_select option:selected").each(function() { 
+$("#schedule_new_actual_select option:selected").each(function() { 
     sel_opts.push($(this).attr('value'));
     asel_opts.push($(this).attr('value'));
 });
 
-$("#actual_select option:not(:selected)").each(function() { 
+$("#schedule_new_actual_select option:not(:selected)").each(function() { 
     nsel_opts.push($(this).attr('value'));
     asel_opts.push($(this).attr('value'));
 });
@@ -86,9 +85,68 @@ disable = jQuery.unique( disable );
 asel_opts = $(asel_opts).not(disable).get();
 
 $.each(disable,function(index, value) {
-    $("#"+value).attr("disabled", "");
+    $("."+value).attr("disabled", "");
 });
     
 $.each(asel_opts,function(index, value) {
-    $("#"+value).removeAttr("disabled", "");
+    $("."+value).removeAttr("disabled", "");
 });
+
+<% if request.path == "/users/"+@user.id.to_s+"/schedules" %>
+    <% t_string = "<tr><th colspan=\"3\">" + @user.email + "'s Courses</th></tr>" %>
+    <% total_credits = 0 %>
+    <% @user_schedules.each do |user_schedule| %>
+        <% t_string += "<tr><td>" + user_schedule.offering.course.subject + user_schedule.offering.course.course.to_s + ": " +  user_schedule.offering.course.title + "</td><td style=\"padding-left:20px;padding-right:20px;\"> " +  user_schedule.offering.course.credits.to_s + "</td>" %>
+        <% t_string += "<td>" + user_schedule.offering.user.email[0..-10].capitalize + "</td></tr>" %>
+        <% total_credits += user_schedule.offering.course.credits %>
+    <% end %>
+    <% t_string += "tr><td></td><td style=\"padding-left:20px;padding-right:20px;border-top: solid thin;\">" + total_credits.to_s + "</td><td></td></tr>" %>
+    $("#advisor_quick_user_courses").html("<%= escape_javascript t_string.html_safe %>");
+    
+    $(".selected_class").html("");
+    $(".selected_class").removeClass("selected_class");
+    $(".half_time_slot").removeClass("half_time_slot");
+    
+    <% @user_schedules.each do |user_schedule| %>
+        <% user_schedule.offering.days_time.days.split("").each do |letter| %>
+            <% begin_time = Time.strptime(user_schedule.offering.days_time.start_time, "%l:%M %P") %>
+            <% end_time = Time.strptime(user_schedule.offering.days_time.end_time, "%l:%M %P") %>
+            <% index = 0 %>
+            
+            <% if (end_time - 15.minutes).min == 0 or (end_time - 15.minutes).min == 30 %>
+                <% end_time -= 15.minutes %>
+                <% flag = true %>
+            <% end %>
+            
+            <% while begin_time<end_time %>
+                <% if index == 0 %>
+                    document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").innerHTML = "<%= user_schedule.offering.course.subject + user_schedule.offering.course.course.to_s %>";
+                <% elsif index == 1 %>
+                    document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").innerHTML = "<%= user_schedule.offering.user.email[0..-10].capitalize %>";
+                <% end %>
+                document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className = document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className + " selected_class";
+                <% begin_time += 1800 %>
+                <% index += 1 %>
+            <% end %>
+            <% if flag %>
+               document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className = document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className + " half_time_slot";
+            <% end %>
+        <% end %>
+    <% end %>
+    
+    <% t_string = "" %>
+    <% @day_hash2.each do |k, v| %>
+        <% if not v.blank? %>
+            <% t_string += "<paper-shadow style=\"padding:20px;width:353px;background: #FAFAFA;border-radius:3px;margin:8px;\">" %>
+                <% t_string += "<h3 style=\"margin-bottom:27px;color:rgba(0,0,0,0.87);\">" + k + "</h3>" %>
+                <% v.each do |offering| %>
+                    <% t_string += "<div layout horizontal style=\"color:#757575;\">" %>
+                        <% t_string += "<div flex>" + offering.course.subject + offering.course.course.to_s + ": " +  offering.course.title + "</div>" %>
+                        <% t_string += "<div end-justified>" + offering.days_time.start_time + " - " + offering.days_time.end_time + "</div></div>" %>
+                    <% t_string += "<hr style=\"margin-top:10px;border: 0;height: 0;border-top: 1px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);\">" %>
+                <% end %>
+            <% t_string += "</paper-shadow>" %>
+        <% end %>
+    <% end %>
+    $("#small_schedule_table").html("<%= escape_javascript t_string.html_safe %>");
+<% end %>

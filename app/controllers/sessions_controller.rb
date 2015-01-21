@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
           format.js { render :js => "window.location = '/users'"}
        	else
        	  flash[:notice] = "Welcome back, " + @user.email + "!"
-       	  format.js { render :js => "window.location.href='"+user_transcripts_path(@user)+"'"}
+       	  format.js { render :js => "window.location.href='"+user_schedules_path(@user)+"'"}
        	end
 	  	else
 	  	  format.js { @error = "Invalid email/password combination" }

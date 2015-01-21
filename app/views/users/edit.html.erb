@@ -1,106 +1,122 @@
-<div horizontal layout center-justified style="margin-top:10%;">
-      
-    <paper-shadow style="padding:15px;">
-      
-        <a href="/users">
-            <paper-icon-button style="color: black;" icon="arrow-back"></paper-icon-button>
-        </a>
-      <% if User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator %>  
-        <h2 style="text-align:center;line-height:1;">Editing <%= @user.email %></h2>
-      <% else %>
-        <h2 style="text-align:center;line-height:1;">Change Your Password</h2>
-      <% end %>
-      
+<% if User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator %> 
+  <% if User.find_by_id(session[:user_id]) != @user %>
+    <% content_for :title do %>
+      Editing <%= @user.email %>
+    <% end %>
+  <% else %>
+    <% content_for :title do %>
+      Change Your Password
+    <% end %>
+  <% end %>
+<% else %>
+  <% content_for :title do %>
+    Change Your Password
+  <% end %>
+<% end %>
+
+<div layout horizontal center-justified>
+    <paper-shadow id="new_major_form_shadow">
+      <% if (User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator) and @user != User.find_by_id(session[:user_id])%>
         <%= form_for(@user) do |f| %>
-          <% if User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator %>
-            <paper-input-decorator label="Enter Email" floatinglabel>
-              <%= f.text_field :email, is: 'core-input' %>
-            </paper-input-decorator>
-          <% end %>
-          
-          <paper-input-decorator label="Enter Password" floatinglabel>
-            <%= f.password_field :password, is: 'core-input' %>
-          </paper-input-decorator>
-          
-          <paper-input-decorator label="Confirm Password" floatinglabel>
-            <%= f.password_field :password_confirmation, is: 'core-input'%>
-          </paper-input-decorator>
-          
-          <% if User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator %>
-            <div style="display:none;">
-              <% advisors = User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] } << ["", "-1"] %>
-              <%= f.select(:advised_by, options_for_select(advisors), {}, { id:'actual_select' }) %>
-            </div>
+          <div hidden>
+            <% advisors = User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] } << ["", "-1"] %>
+            <%= f.select(:advised_by, options_for_select(advisors), {}, { id:'actual_select_edit_advisor' }) %>
+          </div>
             
-            <% if @user.advisor %>
-            <core-collapse allowOverflow id="advisor_collapse">
-            <% else %>
-            <core-collapse opened allowOverflow id="advisor_collapse">
-            <% end %>
-              <div layout horizontal start-justified style="padding-top:18;padding-bottom:13;">
-                <paper-dropdown-menu style="width:100%;" label="Choose Advisor" id="advisor_dropdown_menu">
-                  <paper-dropdown class="dropdown constrained-height" id="advisor_dropdown">
-                      <core-menu class="menu" id="advisor_core_menu">
-                        <% advisors.pop %>
-                        <% advisors.each do |advisor| %>
-                          <paper-item value=<%= advisor[1] %>><%= advisor[0] %></paper-item>
-                        <% end %>
-                      </core-menu>
-                  </paper-dropdown>
-                </paper-dropdown-menu>
-              </div>
-            </core-collapse>
-          
-            <% if session[:user_id] && (User.find_by(id: session[:user_id]).administrator || User.find_by(id: session[:user_id]).advisor) %>
-              <% if User.find_by(id: session[:user_id]).administrator %>
-                  <div layout horizontal center style="margin-top:10px;">
-                      <%= f.check_box :administrator, style: 'display:none;', id: 'actual_admin' %>
-                      <div flex>Administrator</div>
-                      <% if @user.administrator %>
-                        <paper-checkbox id='paper_admin' checked></paper-checkbox>
-                      <% else %>
-                        <paper-checkbox id='paper_admin'></paper-checkbox>
+          <core-collapse opened allowOverflow id="advisor_collapse">
+            <div layout horizontal start-justified style="padding-top:18;padding-bottom:13;">
+              <paper-dropdown-menu style="width:100%;" label="Choose Advisor" id="advisor_dropdown_menu">
+                <paper-dropdown class="dropdown constrained-height" id="advisor_dropdown">
+                    <core-menu class="menu" id="advisor_core_menu">
+                      <% advisors.pop %>
+                      <% advisors.each do |advisor| %>
+                        <paper-item value=<%= advisor[1] %>><%= advisor[0] %></paper-item>
                       <% end %>
-                  </div>
-                  <script>
-                    document.getElementById("paper_admin").addEventListener('core-change', function() {
-                     document.getElementById("actual_admin").checked = document.getElementById("paper_admin").checked;
-                    });
-                  </script>
-              <% end %>
-              
-              <div layout horizontal center style="margin-top:10px;">
-                  <%= f.check_box :advisor, style: 'display:none;', id: 'actual_advisor' %>
+                    </core-menu>
+                </paper-dropdown>
+              </paper-dropdown-menu>
+            </div>
+          </core-collapse>
+          
+              <% if User.find_by(id: session[:user_id]).administrator %>
+                <div layout horizontal center style="margin-top:10px;">
+                    <%= f.check_box :administrator, style: 'display:none;', id: 'actual_admin' %>
+                    <div flex>Administrator</div>
+                    <% if @user.administrator %>
+                      <paper-checkbox id='paper_admin' checked></paper-checkbox>
+                    <% else %>
+                      <paper-checkbox id='paper_admin'></paper-checkbox>
+                    <% end %>
+                </div>
+                
+                <script>
+                  document.getElementById("paper_admin").addEventListener('core-change', function() {
+                   document.getElementById("actual_admin").checked = document.getElementById("paper_admin").checked;
+                  });
+                </script>
+
+                <div layout horizontal center style="margin-top:10px;">
+                  <%= f.check_box :advisor,hidden: "", id: 'actual_advisor' %>
                   <div flex>Advisor</div>
                   <% if @user.advisor %>
                     <paper-checkbox id='paper_advisor' checked></paper-checkbox>
                   <% else %>
                     <paper-checkbox id='paper_advisor'></paper-checkbox>
                   <% end %>
+                </div>
+                <script>
+                  document.getElementById("paper_advisor").addEventListener('change', function() {
+                   document.getElementById("actual_advisor").checked = document.getElementById("paper_advisor").checked;
+                   if (document.getElementById("paper_advisor").checked) {
+                     
+                     $("#actual_select").val("-1");
+                     document.getElementById("advisor_dropdown_menu").setAttribute("disabled",'');
+                     document.getElementById("advisor_collapse").toggle()
+                   } else {
+                     document.getElementById("advisor_dropdown_menu").removeAttribute("disabled",'');
+                     document.getElementById("advisor_collapse").toggle()
+                   }
+                  });
+                </script>
+              <% end %>
+              
+              <div center-justified layout horizontal style="margin-top: 14px;">
+                <paper-button>
+                  <input id="submit_signup" name="commit" type="submit" value="UPDATE">
+                </paper-button>
               </div>
-              <script>
-                document.getElementById("paper_advisor").addEventListener('change', function() {
-                 document.getElementById("actual_advisor").checked = document.getElementById("paper_advisor").checked;
-                 if (document.getElementById("paper_advisor").checked) {
-                   
-                   $("#actual_select").val("-1");
-                   document.getElementById("advisor_dropdown_menu").setAttribute("disabled",'');
-                   document.getElementById("advisor_collapse").toggle()
-                 } else {
-                   document.getElementById("advisor_dropdown_menu").removeAttribute("disabled",'');
-                   document.getElementById("advisor_collapse").toggle()
-                 }
-                });
-              </script>
+            <% end %>
+            <script>
+              $('#actual_select_edit_advisor').val(<%= @user.advised_by %>);
+              $("#advisor_core_menu")[0].selected = $("#actual_select_edit_advisor")[0].selectedIndex;
+            </script>
+          <% else %>
+            <%= form_for(@user,remote: true) do |f| %>
+              <% if @user.advisor %>
+                <script>
+                  $("#drawer_core_menu")[0].selected=6;
+                </script>
+              <% else %>
+                <script>
+                  $("#drawer_core_menu")[0].selected=3;
+                </script>
+              <% end %>
+              <paper-input-decorator label="Enter New Password">
+                <%= f.password_field :password, is: 'core-input', required: "" %>
+              </paper-input-decorator>
+              
+              <paper-input-decorator label="Confirm Password">
+                <%= f.password_field :password_confirmation, is: 'core-input', required: ""%>
+              </paper-input-decorator>
+              
+              <div center-justified layout horizontal style="margin-top: 14px;">
+                <paper-button>
+                  <input id="submit_signup" name="commit" type="submit" value="Change password">
+                </paper-button>
+              </div>
             <% end %>
           <% end %>
-          <div center-justified layout horizontal style="margin-top: 14px;">
-            <paper-button>
-              <input id="submit_signup" name="commit" type="submit" value="UPDATE">
-            </paper-button>
-          </div>
-        
-        <% end %>
+
         
         <% if @user.errors.any? %>
             <div id="signup_errors" class="animated fadeInDown" layout horizontal center-justified>
@@ -116,11 +132,3 @@
     </paper-shadow>
 
 </div>
-<script>
-  document.getElementById("advisor_dropdown").addEventListener('core-select', function(e, detail) {
-    $('#actual_select').val(e.detail.item.getAttribute("value"));
-  });
-  
-  $('#actual_select').val(<%= @user.advised_by %>);
-  document.getElementById("advisor_core_menu").selected = document.getElementById('actual_select').selectedIndex;
-</script>

@@ -1,6 +1,7 @@
 class CurriculumCategoryCoursesController < ApplicationController
   before_action :set_category, only: [:create, :index]
-  before_action :set_category_course, only: [:index]
+  before_action :set_new_category_course, only: [:index]
+  before_filter :authorize
 
   def create
     @category_course = @category.curriculum_category_courses.create(curriculum_category_course_params)
@@ -18,6 +19,16 @@ class CurriculumCategoryCoursesController < ApplicationController
   end
 
   def index
+    @cc_courses = @category.curriculum_category_courses.all
+  end
+  
+  def destroy
+    @curriculum_category_course = CurriculumCategoryCourse.find(params[:id])
+    @curriculum_category_course.destroy
+    respond_to do |format|
+      format.html { redirect_to curriculum_category_curriculum_category_courses_path, notice: @curriculum_category_course.course.title + " removed!" }
+      format.js {}
+    end
   end
   
   private
@@ -25,11 +36,18 @@ class CurriculumCategoryCoursesController < ApplicationController
       @category = CurriculumCategory.find(params[:curriculum_category_id])
     end
     
-    def set_category_course
+    def set_new_category_course
       @category_course = CurriculumCategoryCourse.new
     end
     
     def curriculum_category_course_params
       params.require(:curriculum_category_course).permit(:course_id)
-    end  
+    end
+    
+    def authorize
+      logged_in = User.find_by_id(session[:user_id])
+      if not (logged_in.advisor or logged_in.administrator)
+        redirect_to user_transcripts_path(logged_in), notice: "You're not authorized to view this page!"
+      end
+    end
 end

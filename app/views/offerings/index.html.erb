@@ -1,29 +1,43 @@
-<core-toolbar>
-    <h2 style="line-height:1;">Courses Offered This Semester</h2>
-</core-toolbar>
-
-<table>
-    <tr><th>Days</th><th style="width:30px;">Start Time</th><th style="width:30px;">End Time</th><th>Class</th><th>Instructor</th></tr>
-<% @offerings.each do |offering| %>
-    <tr>
-        <td><%= offering.days_time.days %></td>
-        <td><%= offering.days_time.start_time %></td>
-        <td><%= offering.days_time.end_time %></td>
-        <td><%= offering.course.title %></td>
-        <td><%= offering.user.email[0..-10].capitalize %></td>
-        <td><%= link_to "Stop Offering", offering, method: :delete, data: { confirm: 'Are you sure you want to stop offering this course?' } %></td></tr> 
+<% content_for :title do %>
+    Courses Offered This Semester
 <% end %>
-</table>
 
-<%= link_to "Offer Another Course", new_offering_path, id: "new_offerings_link", style: "display:none;" %>
-<paper-fab icon="add" style="position:absolute;bottom:0;right:0;margin:10px;" title="Offer Another Course" id="new_offerings_material"></paper-fab>
+<div layout horizontal center-justified>
+    <div class="table-responsive-vertical shadow-z-1">
+        <table id="table" class="table">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Instructor</th>
+                    <th>Days</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Stop Offering</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <% @offerings.each do |offering| %>
+                    <tr>
+                        <td data-title="Course"><%= offering.course.title %></td>
+                        <td data-title="Instructor"><%= offering.user.email[0..-10].capitalize %></td>
+                        <td data-title="Days"><%= offering.days_time.days %></td>
+                        <td data-title="Start Time"><%= offering.days_time.start_time %></td>
+                        <td data-title="End Time"><%= offering.days_time.end_time %></td>
+                        <td style="text-align:center;"><%= link_to "Stop Offering", offering, method: :delete, data: { confirm: 'Are you sure you want to stop offering this course?' }, id:"stop_offering_link" %></td></tr> 
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%= link_to "Offer Another Course", new_offering_path, id: "new_offerings_link", hidden: "" %>
+<paper-fab icon="add" title="Offer Another Course" id="new_offerings_material"></paper-fab>
 
 <% if notice %>
     <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
 <% end %>
 
 <script>
-    document.getElementById("new_offerings_material").addEventListener("click", function() {
-        document.getElementById("new_offerings_link").click();
-    });
+    $("#drawer_core_menu")[0].selected = 3;
 </script>

@@ -1,3 +1,19 @@
 // Place all the styles related to the Offerings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_offerings_material {
+    position:fixed;
+    bottom:0;
+    right:0;
+    margin:15px;
+}
+
+#new_offering_shadow {
+    width:375px;
+    margin:15px;
+    background:#fafafa;
+    padding:20px 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+}

@@ -1,10 +1,10 @@
-<core-toolbar>
-    <h2 layout horizontal center-justified>Add a New Major</h2>
-</core-toolbar>
+<% content_for :title do %>
+    Add a New Major
+<% end %>
 
-<div layout horizontal center-justified center style="height:100%;">
-    <paper-shadow style="width:300px;margin:15px;overflow-x: hidden;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-        <%= form_for(@major) do |f| %>
+<div layout horizontal center-justified>
+    <paper-shadow id="new_major_form_shadow">
+        <%= form_for(@major, remote: true) do |f| %>
                 
             <paper-input-decorator label="Major">
                 <%= f.text_field :major, is: 'core-input' %>
@@ -15,14 +15,14 @@
                 <paper-button id="material_create_major">Create Major</paper-button>
             </div>
         
-            <%= f.submit 'Create Major', style: 'display:none;', id: 'actual_create_major' %>
+            <%= f.submit 'Create Major', hidden: "", id: 'actual_create_major' %>
             
         <% end %>
     </paper-shadow>
 </div>
 
+<div id="new_major_form_errors"></div>
+
 <script>
-  document.getElementById("material_create_major").addEventListener("click", function() {
-    document.getElementById("actual_create_major").click();
-  });
+  $("#drawer_core_menu")[0].selected = 4;
 </script>

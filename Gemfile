@@ -40,10 +40,10 @@ gem 'spring',        group: :development
 
 gem 'bcrypt-ruby', '3.1.2'
 
-gem 'polymer-rails'
-gem 'polymer-core-rails'
-gem 'polymer-paper-rails'
+gem 'emcee'
 
 gem 'kaminari'
 
 gem 'activerecord-import'
+
+gem 'pdf-reader'

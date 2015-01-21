@@ -1,7 +1,7 @@
 <% if not @errors %>
-    $("#classes_taken_list").append("<p id=\"user_<%= @transcript.course_id %>_transcript_class\" style=\"font-weight:bold;text-align:center;display:none;\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></p>");
-    $("#user_<%= @transcript.course_id %>_transcript_class").slideDown();
-    $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @transcript.course.title %> added to your transcript!\" style=\"padding-right: 60px;\" duration=\"10000\" opened ></paper-toast>");
+    $("#transcript_tbody").append("<tr><td data-title=\"Course\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></div></td><td data-title=\"Grade\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= @transcript.grade %></div></td>    <td style=\"text-align:center;\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= escape_javascript link_to 'Remove', user_transcript_path(@user, @transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, id: 'transcript_remove_link' %></div></td></tr>");    
+    $(".user_<%= @transcript.course_id %>_transcript_class").slideDown("slow");
+    $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @transcript.course.title %> added to your transcript!\" style=\"padding-right: 60px;color:#4CAF50;\" duration=\"10000\" opened ></paper-toast>");
 <% else %>
     <% @transcript.errors.full_messages.each do |message| %>
         $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");

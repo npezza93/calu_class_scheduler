@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231043310) do
+ActiveRecord::Schema.define(version: 20150105231255) do
 
   create_table "courses", force: true do |t|
     t.string   "subject"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20141231043310) do
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "grade",      default: "NG"
   end
 
   add_index "transcripts", ["course_id"], name: "index_transcripts_on_course_id"

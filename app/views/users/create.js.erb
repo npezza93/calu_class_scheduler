@@ -1,14 +1,14 @@
 <% if @errors %>
-    <% if not @user.errors[:You].blank? %>
-        $('#ajax_errors').html("<div id=\"signup_errors\" class=\"animated fadeInDown\" layout horizontal center-justified><ul id=\"ajax_errors_text\"><li>You <%= @user.errors[:You][0] %></li></ul></div>");
+    <% if not  @user.errors[:You].blank? %>
+        $("#advisor_signup_dropdown_error_msg").fadeIn();
     <% else %>
-        $('#ajax_errors').html("");
+        $("#advisor_signup_dropdown_error_msg").fadeOut();
     <% end %>
 
-    <% if not @user.errors[:major].blank? %>
-        $('#ajax_errors').append("<div id=\"signup_errors\" class=\"animated fadeInDown\" layout horizontal center-justified><ul id=\"ajax_errors_text\"><li>You must select a major</li></ul></div>");
+    <% if not  @user.errors[:major].blank? %>
+        $("#major_signup_dropdown_error_msg").fadeIn();
     <% else %>
-        $('#ajax_errors').html("");
+        $("#major_signup_dropdown_error_msg").fadeOut();
     <% end %>
     
     <% if not @user.errors[:email].blank? %>

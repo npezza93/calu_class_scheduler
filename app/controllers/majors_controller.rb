@@ -10,10 +10,13 @@ class MajorsController < ApplicationController
 
     respond_to do |format|
       if @major.save
+       	flash[:notice] = @major.major + " has been created as a new major!"
+       	format.js { render :js => "window.location.href='"+users_path+"'"}
         format.html { redirect_to users_path, notice: @major.major + " has been created as a new major!" }
         format.json { render :show, status: :created, location: @major }
       else
         format.html { render :new }
+        format.js {}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

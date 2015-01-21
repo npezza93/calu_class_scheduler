@@ -1,4 +1,5 @@
 class PasswordResetsController < ApplicationController
+  skip_before_filter :logged_in?, only: [:new, :create, :edit, :update]
   def new
   end
 

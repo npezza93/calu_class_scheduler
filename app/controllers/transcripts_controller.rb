@@ -1,5 +1,5 @@
 class TranscriptsController < ApplicationController
-  before_action :set_user, only: [:create, :index]
+  before_action :set_user, only: [:create, :index, :import]
   before_action :set_transcript, only: [:index]
   before_filter :only_yours
   
@@ -22,6 +22,28 @@ class TranscriptsController < ApplicationController
     end
   end
 
+  def import
+    if (File.extname(params[:transcript_file].original_filename)).downcase == ".pdf"
+      @bad_courses = Transcript.import(params[:transcript_file], @user.id)
+      respond_to do |format|
+        format.html { redirect_to user_schedules_path(@user), notice: "Transcript Uploaded successfullly!" }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to user_schedules_path(@user), notice: "Only PDF files are accepted!" }
+      end
+    end
+  end
+
+  def destroy
+    @del_transcript = Transcript.find(params[:id])
+    @del_transcript.destroy
+    respond_to do |format|
+      format.html { redirect_to user_transcripts_path, notice: @del_transcript.course.title + " removed!" }
+      format.js {}
+    end
+  end
+  
   private
     def set_user
       @user = User.find(params[:user_id])
@@ -32,7 +54,7 @@ class TranscriptsController < ApplicationController
     end
     
     def transcript_params
-      params.require(:transcript).permit(:course_id)
+      params.require(:transcript).permit(:course_id, :grade)
     end   
     
     def only_yours

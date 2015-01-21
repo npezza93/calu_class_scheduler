@@ -1,13 +1,11 @@
 class CurriculumCategoriesController < ApplicationController
   before_action :set_category, only: [:destroy]
+  before_action :set_user
   before_filter :authorize
   
   def index
-    @category = CurriculumCategory.all
-  end
-
-  def new
-    @category = CurriculumCategory.new
+    @category = CurriculumCategory.where(major_id: @user.major)
+    @new_category = CurriculumCategory.new
   end
 
   def create
@@ -43,6 +41,9 @@ class CurriculumCategoriesController < ApplicationController
       params.require(:curriculum_category).permit(:category, :required_amount_of_credits, :major_id)
     end
     
+    def set_user
+      @user = User.find(session[:user_id])
+    end
     def authorize
       logged_in = User.find_by_id(session[:user_id])
       if not (logged_in.advisor or logged_in.administrator)

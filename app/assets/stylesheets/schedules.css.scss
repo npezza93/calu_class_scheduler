@@ -3,20 +3,71 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #schedule_calendar, .day_time_slot, .time_slot {
-    border: 1px solid black;
-    border-collapse: collapse;
     text-align: center;
 }
 .day {
     width:100px;
-    border: 1px solid black;
-    border-collapse: collapse;
 }
 .selected_class {
-    background-color: #0088cc;
-    color: white;
+    background-color: #81C784;
+    color: rgba(0,0,0,0.8);
     font-weight: bold;
 }
 .half_time_slot {
-    background: linear-gradient(to bottom, #0088cc 0%,#0088cc 50%,white 51%,white 100%);
+    background: linear-gradient(to bottom, #81C784 0%,#81C784 50%,white 51%,white 100%);
+}
+#main {
+    background: #ececec;
+}
+
+.remaining_credits_tr {
+    text-align:center;
+    padding-bottom:15px;
+}
+.new_schedule_tr {
+    height:48px;
+}
+.new_schedule_check_td {
+    padding-right: 15px;
+}
+.new_schedule_course_td {
+    padding-right:10px;
+    width:150px;
+}
+.new_schedule_days_td {
+    text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+    .remaining_credits_tr {
+        text-align:center;
+        padding-bottom:10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .new_schedule_tr {
+        height:30px;
+    }
+    .new_schedule_check_td {
+        padding-right: 15px;
+        padding-top:18px;
+    }
+    .new_schedule_course_td {
+        padding-top:15px;
+        font-weight: 300;
+        font-size:12px;
+    }
+    .new_schedule_days_td {
+        text-align: center;
+        font-weight: 300;
+        font-size:12px;
+        padding-top:15px;
+    }
+    .common_credit_td, .common_course_td, .common_grade_td, .no_courses_offered_msg {
+        font-weight: 300;
+        font-size:12px;
+    }
+    .taken_courses_tr > td, .not_offered_courses > td {
+        font-weight: 300;
+        font-size:12px;
+    }
 }

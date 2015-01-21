@@ -1,3 +1,36 @@
-// Place all the styles related to the Courses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#remove_course_shadow_div {
+    width:475px;
+    text-align:center;
+    background:#fafafa;
+    border-radius:3px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+#remove_course_div {
+  margin:15px;
+}
+#new_course_shadow_div {
+  margin:15px;
+  background:#fafafa;
+  padding:20px 20px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+#actual_select_courses  {
+  font-family: 'RobotoDraft', sans-serif;
+  width:100%;
+  display: block;
+  border: none;
+  border-radius: 0 !important;
+  padding: 0;
+  color:rgba(0,0,0,0.87);
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid #757575;
+  margin-top:10px;
+}
+
+#actual_select_courses:focus {
+  border-color: #757575;
+  outline: none;
+  box-shadow: none;
+}

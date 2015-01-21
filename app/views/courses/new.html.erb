@@ -1,9 +1,9 @@
-<core-toolbar>
-    <h2 layout horizontal center-justified>Add New Course</h2>
-</core-toolbar>
+<% content_for :title do %>
+    Add New Course
+<% end %>
 
-<div layout horizontal center-justified center style="height:100%;">
-    <paper-shadow style="margin:15px;overflow-x: hidden;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<div layout horizontal center-justified>
+    <paper-shadow id="new_course_shadow_div">
         <%= form_for(@course, remote: true) do |f| %>
         
             <paper-input-decorator label="Subject (ex: CSC, CET, etc)">
@@ -22,7 +22,7 @@
             <%= f.label 'Choose Required Prerequisites (if any):' %>
             <div>
                 <% courses = (Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) %>
-                <%= f.select(:courses, options_for_select(courses), {}, { id:'actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6 }) %>
+                <%= f.select(:courses, options_for_select(courses), {}, { id:'actual_select_courses', multiple: true, size: 6 }) %>
             </div>
     
             <br>
@@ -30,15 +30,11 @@
                 <paper-button id="material_create_course">Create Course</paper-button>
             </div>
     
-            <%= f.submit 'Create Course', style: 'display:none;', id: 'actual_create_course' %>
-            
+            <%= f.submit 'Create Course', hidden: "", id: 'actual_create_course' %>
         <% end %>
-    
     </paper-shadow>
 </div>
 
 <script>
-  document.getElementById("material_create_course").addEventListener("click", function() {
-    document.getElementById("actual_create_course").click();
-  });
+    $("#drawer_core_menu")[0].selected = 1;
 </script>

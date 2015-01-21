@@ -64,9 +64,16 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        if User.find(session[:user_id]).advisor or User.find(session[:user_id]).administrator
+          format.html { redirect_to users_path, notice: @user.email + " was successfully updated." }
+        else
+          format.html {redirect_to users_schedule_path(@user), notice: 'Password was successfully changed!' }
+        end
         format.json { render :index, status: :ok, location: @user }
+        flash[:notice] = "Password was successfully changed!"
+        format.js {}
       else
+        format.js {}
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -91,8 +98,12 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      if session[:user_id] and (User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator) 
-        params.require(:user).permit(:email, :password, :password_confirmation, :administrator, :advisor, :advised_by, :major_id)
+      if session[:user_id] and ((User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator))
+        if @user.administrator or @user.advisor
+          params.require(:user).permit(:password, :password_confirmation)
+        else
+          params.require(:user).permit(:advised_by, :major_id, :advisor, :administrator)
+        end
       else
         params.require(:user).permit(:email, :password, :password_confirmation, :advised_by, :major_id)
       end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :curriculum_categories, :only => [:create, :new, :destroy, :index] do
-    resources :curriculum_category_courses, :only => [:index, :create]
+  resources :curriculum_categories, :only => [:create, :destroy, :index] do
+    resources :curriculum_category_courses, :only => [:index, :create, :destroy]
   end
 
   resources :majors, :only => [:create, :new]
@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   get 'signup'  => 'users#new'
   
   resources :users, :except => :show do
-    resources :transcripts, :only => [:index, :create]
+    resources :transcripts, :only => [:index, :create, :destroy] do
+      collection { post :import}
+    end
     resources :schedules, :only => [:index, :create, :new, :destroy]
   end
 

@@ -20,5 +20,8 @@
         $("#offering_user_error_msg").fadeOut();
     <% end %>
     
-    <%= print @offering.errors[:course] %>
+    <% if not @offering.errors[:Instructors].blank? %>
+        $("#offering_form_errors").html("<paper-toast class=\"capsule\" text=\"Instructors cannot teach two classes at the same time!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
+    <% end %>
+    
 <% end %>

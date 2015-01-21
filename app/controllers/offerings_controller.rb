@@ -36,8 +36,16 @@ class OfferingsController < ApplicationController
   end
   
   def import
-    Offering.import(params[:offering_file])
-    redirect_to offerings_path, notice: "Offerings Uploaded!"
+    if (File.extname(params[:offering_file].original_filename)).downcase == ".csv"
+      Offering.import(params[:offering_file])
+      respond_to do |format|
+        format.html { redirect_to offerings_path, notice: "Offerings Uploaded!" }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to new_offering_path, notice: "Only CSV files are acceptable!" }
+      end
+    end
   end
   
   private

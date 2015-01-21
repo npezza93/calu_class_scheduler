@@ -1,55 +1,9 @@
-<core-toolbar>
-    <h2 flex>Classes You've Taken</h2>
-</core-toolbar>    
-
-<%= form_for [@user, Transcript.new], remote: true do |f| %>
-    
-    <div style="margin-top:15px;">
-        <% courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1] %>
-        <%= f.select(:course_id, options_for_select(courses), {}, { id:'course_select', style: "display:none;" }) %>
-    </div>
-    
-    <div layout horizontal center-justified>
-        <paper-dropdown-menu label="Choose Course" style="width:100%;max-width:450px;">
-            <paper-dropdown class="dropdown" id="course_dropdown" style="width:100%;max-width:450px;">
-                <core-menu class="menu">
-                    <% courses.pop %>
-                    <% courses.each do |course| %>
-                        <paper-item value=<%= course[1] %>><%= course[0] %></paper-item>
-                    <% end %>
-                </core-menu>
-            </paper-dropdown>
-        </paper-dropdown-menu>
-    </div>
-    
-    <div layout horizontal center-justified>
-        <paper-button id='submit_taken_class_material'>Add Class to Transcript</paper-button>
-        <%= f.submit 'Add Class to Transcript', id: 'submit_taken_class_button', style: 'display:none;' %>
-    </div>
-    
-<% end %>
-    
-<div layout horizontal center-justified id="transcript_form_errors"></div>
-
-<% if notice %>
- 	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
+<% content_for :title do %>
+    Classes You've Taken
 <% end %>
 
-<div id="classes_taken_list">
-    <% @transcripts.each_with_index do |course, index| %>
-        <p style="text-align:center;font-weight: bold;"><%= course.course.subject + course.course.course.to_s + ": " + course.course.title %></p>
-    <% end %>
-</div>
-
-<%= button_to 'Logout', logout_path, {method: :delete } %>
+<%= render "index" %>
 
 <script>
-  $("#course_select").val("-1");
-  document.getElementById("course_dropdown").addEventListener('core-select', function(e, detail){
-    $('#course_select').val(e.detail.item.getAttribute("value"));
-  });
-  
-  document.getElementById("submit_taken_class_material").addEventListener('click', function(){
-    $('#submit_taken_class_button').click();
-  });
+    $("#drawer_core_menu")[0].selected = 0;
 </script>
