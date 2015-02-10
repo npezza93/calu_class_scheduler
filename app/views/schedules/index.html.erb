@@ -26,9 +26,10 @@
 </core-overlay>
 
 <%= render "users/change_password" %>
-<core-animated-pages id="baluga3" transitions="slide-from-right" selected="1">
+
+<core-animated-pages id="baluga3" selected="1" transitions="slide-from-right">
   	<section id="section0">
-    	<%= render "transcripts/index", :@transcripts => @user.transcripts.all %>
+	    <%= render "transcripts/index", :@transcripts => @user.transcripts.all %>
   	</section>
 
   	<section id="section1">
@@ -36,7 +37,9 @@
   	</section>
   	
   	<section id="section2">
-        <%= render "new" %>
+  	    <div id="temp_replace">
+            <%= render "new" %>
+        </div>
   	</section>
 </core-animated-pages>
 
@@ -49,3 +52,26 @@
 <% if notice %>
     <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
 <% end %>
+
+
+<script>
+    $(document).keydown(function(e) {
+        var pg_selected = $("#baluga3")[0].selected;
+        switch(e.which) {
+            case 37: // left
+            if (pg_selected != 0) {
+                $("#baluga3")[0].selected = pg_selected -1
+            }
+            break;
+
+            case 39: // right
+            if (pg_selected != 2) {
+                $("#baluga3")[0].selected = pg_selected +1
+            }
+            break;
+    
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+</script>

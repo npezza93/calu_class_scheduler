@@ -1,0 +1,98 @@
+<% content_for :title do %>
+    Editing Offering
+<% end %>
+
+<div layout horizontal center-justified>
+    <paper-shadow id="new_offering_shadow">
+
+        <%= form_for(@offering, remote: true) do |f| %>
+        
+            <div hidden>
+                <%= f.select(:course_id, options_for_select(@courses, @offering.course.id)) %>
+            </div>
+            
+            
+            <div hidden id="offering_course_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;">
+                <div class="error" layout horizontal center-justified style="width:100%;max-width:260px;">
+                  <div class="error-text" flex>A course must be selected!</div>
+                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                </div>
+            </div>
+            
+            <div layout horizontal center-justified>     
+                <paper-dropdown-menu label="Choose Course" style="margin-top:0;padding-top:0;">
+                    <paper-dropdown class="dropdown" id="course_dropdown" style="height:185px;">
+                        <core-menu class="menu" selected="<%= @courses.index([@offering.course.subject + @offering.course.course.to_s + ": " + @offering.course.title, @offering.course.id]) %>"> 
+                            <% @courses.each do |course| %>
+                                <paper-item value=<%= course[1] %>><%= course[0] %></paper-item>
+                            <% end %>
+                        </core-menu>
+                    </paper-dropdown>
+                </paper-dropdown-menu>
+            </div>
+            
+            <div hidden>
+                <%= f.select(:days_time_id, options_for_select(@days_n_times, @offering.days_time.id)) %>
+            </div>
+            
+            <div id="offering_time_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
+                <div class="error" layout horizontal center-justified style="width:100%;max-width:235px;">
+                  <div class="error-text" flex>A day and time must be selected!</div>
+                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                </div>
+            </div>
+            
+            <div layout horizontal center-justified>
+                <paper-dropdown-menu label="Choose Time" style="width:100%;max-width:235px;margin-top:0;padding-top:0;">
+                    <paper-dropdown class="dropdown" id="day_dropdown" style="width:100%;max-width:235px;height:147px;">
+                        <core-menu class="menu" selected="<%= @days_n_times.index([@offering.days_time.days + ' at ' + @offering.days_time.start_time + ' to ' + @offering.days_time.end_time, @offering.days_time.id]) %>">
+                            <% @days_n_times.each do |days_n_time| %>
+                                <paper-item value=<%= days_n_time[1] %>><%= days_n_time[0] %></paper-item>
+                            <% end %>
+                        </core-menu>
+                    </paper-dropdown>
+                </paper-dropdown-menu>
+            </div>
+            
+            <div hidden>
+                <%= f.select(:user_id, options_for_select(@instructors, @offering.user.id)) %>
+            </div>
+    
+            <div id="offering_user_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
+                <div class="error" layout horizontal center-justified style="width:100%;max-width:200px;">
+                  <div class="error-text" flex>An instructor must be selected!</div>
+                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                </div>
+            </div>
+            <div layout horizontal center-justified>
+                <paper-dropdown-menu label="Choose Instructor" style="width:100%;max-width:200px;margin-top:0;padding-top:0;">
+                    <paper-dropdown class="dropdown" id="advisor_dropdown" style="width:100%;max-width:200px;height:108px;">
+                        <core-menu class="menu" selected="<%= @instructors.index([@offering.user.email, @offering.user.id]) %>">
+                            <% @instructors.each do |instructor| %>
+                                <paper-item value=<%= instructor[1] %>><%= instructor[0] %></paper-item>
+                            <% end %>
+                        </core-menu>
+                    </paper-dropdown>
+                </paper-dropdown-menu>
+            </div>
+            
+            <br>
+            <div layout horizontal center-justified>
+                <paper-button id="material_offer_course">update</paper-button>
+            </div>
+    
+            <%= f.submit 'Update', style: 'display:none;', id: 'actual_offer_course' %>
+            
+        <% end %>
+    </paper-shadow>
+</div>
+
+<div id="offering_form_errors"></div>
+
+<% if notice %>
+    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color:#eeff41;" duration="10000" opened ></paper-toast>
+<% end %>
+
+<script>
+  $("#drawer_core_menu")[0].selected = 2;
+</script>

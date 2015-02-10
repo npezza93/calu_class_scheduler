@@ -10,12 +10,6 @@ jQuery ->
     $("#material_create_category").click ->
       $("#actual_create_category")[0].click()
       return
-    
-    $("#actual_cc_major_select").val "-1"
-
-    $("#major_dropdown").on "core-select", (e) ->
-        $("#actual_cc_major_select").val e.originalEvent.detail.item.getAttribute("value")
-        return
         
     $(document).ready ->
       table = $("#table")

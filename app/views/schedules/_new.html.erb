@@ -98,7 +98,7 @@
           <% end %>
         <% end %>
         
-        <%= form_for [@user, @schedule], remote: true do |f| %>
+        <%= form_for [@user, Schedule.new], remote: true do |f| %>
             <% offerings = (@new_category_courses.values.flatten.map { |offering| [offering.id, offering.id] }) %>
             <%= f.select(:offering_id, options_for_select(offerings), {}, { id:'schedule_new_actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6, hidden: ""}) %>
             <%= f.submit "Update Schedule", id: "submit_schedule_changes", hidden: "" %>

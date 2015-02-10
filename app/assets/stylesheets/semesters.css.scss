@@ -1,0 +1,24 @@
+// Place all the styles related to the semesters controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_semester_overlay {
+    width:300px;
+    margin:15px;
+    overflow-x: hidden;
+    background:#f3f3f3;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    webkit-user-select: none;
+    -moz-user-select: none;
+    padding:20px 20px;
+    outline: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+#new_semester_material {
+    position:fixed;
+    bottom:0;
+    right:0;
+    margin:15px;
+}

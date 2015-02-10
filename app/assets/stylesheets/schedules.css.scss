@@ -2,19 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#schedule_calendar, .day_time_slot, .time_slot {
+#schedule_calendar {
     text-align: center;
 }
+.day_time_slot {
+    text-align: center;
+    cursor:pointer;
+    background-color:#efefef;
+    height: 26px;
+}
+.time_slot {
+    text-align: center;
+    cursor:pointer;
+    height: 26px;
+}
 .day {
-    width:100px;
+    cursor:pointer;
 }
 .selected_class {
     background-color: #81C784;
     color: rgba(0,0,0,0.8);
     font-weight: bold;
+    cursor: text;
 }
 .half_time_slot {
-    background: linear-gradient(to bottom, #81C784 0%,#81C784 50%,white 51%,white 100%);
+    background: linear-gradient(to bottom, #81C784 0%,#81C784 50%,#efefef 51%,#efefef 100%);
+    cursor:text;
 }
 #main {
     background: #ececec;
@@ -70,4 +83,16 @@
         font-weight: 300;
         font-size:12px;
     }
+    .day_time_slot {
+        width: 250px;
+    }
+}
+
+paper-checkbox::shadow #checkbox.checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+.next_day, .prev_day {
+    background: #fafafa;
+    text-align:center;
 }

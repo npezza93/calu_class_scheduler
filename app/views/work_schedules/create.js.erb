@@ -1,0 +1,36 @@
+$("#temp_replace").html("<%= escape_javascript render 'schedules/new' %>");
+$("#media_query_schedule_new").on("core-media-change", function(e) {
+  if (e.originalEvent.detail.matches === true) {
+    $(".new_schedule_headers").attr("hidden", "");
+    $(".new_schedule_credit_td").attr("hidden", "");
+    $(".new_schedule_times_td").attr("hidden", "");
+    $(".new_schedule_prof_td").attr("hidden", "");
+    $(".new_schedule_nc_td").attr("hidden", "");
+    $(".new_schedule_check_td").attr("rowspan", 2);
+    $(".new_schedule_course_td").attr("rowspan", 2);
+    $(".new_schedule_day_times_td").removeAttr("hidden");
+    $(".resp_new_schedule_tr").removeAttr("hidden");
+    $(".common_tr").attr("hidden", "");
+  } else {
+    $(".resp_new_schedule_tr").attr("hidden", "");
+    $(".new_schedule_credit_td").removeAttr("hidden", "");
+    $(".new_schedule_times_td").removeAttr("hidden", "");
+    $(".new_schedule_prof_td").removeAttr("hidden", "");
+    $(".new_schedule_nc_td").removeAttr("hidden", "");
+    $(".new_schedule_headers").removeAttr("hidden", "");
+    $(".new_schedule_check_td").removeAttr("rowspan");
+    $(".new_schedule_course_td").removeAttr("rowspan");
+    $(".new_schedule_day_times_td").attr("hidden", "");
+    $(".common_tr").removeAttr("hidden");
+  }
+});
+$(".offering_checkbox").click(function(e) {
+  var id_string;
+  id_string = "#schedule_new_actual_select option[value=" + e.currentTarget.id + "]";
+  if ($("#schedule_new_actual_select")[0].options[$(id_string).index()].selected) {
+    $("#schedule_new_actual_select")[0].options[$(id_string).index()].selected = false;
+  } else {
+    $("#schedule_new_actual_select")[0].options[$(id_string).index()].selected = true;
+  }
+  $("#submit_schedule_changes")[0].click();
+});

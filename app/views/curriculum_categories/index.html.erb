@@ -6,7 +6,6 @@
     <%= render "new" %>
 </core-overlay>
 
-
 <div layout horizontal center-justified>
     <div class="table-responsive-vertical shadow-z-1">
         <table id="table" class="table">
@@ -34,7 +33,7 @@
 <paper-fab icon="add" title="Add a New Category" id="new_category_material"></paper-fab>
 
 <% if notice %>
-    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
+    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color: #4CAF50;" duration="10000" opened ></paper-toast>
 <% end %>
 
 <script>

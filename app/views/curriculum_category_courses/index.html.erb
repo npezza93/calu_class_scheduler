@@ -2,11 +2,10 @@
     Classes In <%= @category.category %>
 <% end %>
 
-<%= form_for [@category, CurriculumCategoryCourse.new], remote: true do |f| %>
+<%= form_for [@category, @new_category_course], remote: true do |f| %>
     
     <div hidden>
-        <% courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1] %>
-        <%= f.select(:course_id, options_for_select(courses), {}, { id:'course_select' }) %>
+        <%= f.select(:course_id, options_for_select(@courses), {}, { id:'course_select' }) %>
     </div>
     
     <div layout vertical center>
@@ -14,8 +13,8 @@
             <paper-dropdown-menu label="Choose Course">
                 <paper-dropdown class="dropdown" id="course_dropdown">
                     <core-menu class="menu">
-                        <% courses.pop %>
-                        <% courses.each do |course| %>
+                        <% @courses.pop %>
+                        <% @courses.each do |course| %>
                             <paper-item value=<%= course[1] %>><%= course[0] %></paper-item>
                         <% end %>
                     </core-menu>
@@ -29,6 +28,7 @@
         </div>
     </div>
 <% end %>
+
 <div layout horizontal center-justified id="category_course_form_errors"></div>
 <% if notice %>
  	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color:#4CAF50;" duration="10000" opened ></paper-toast>

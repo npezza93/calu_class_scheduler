@@ -1,6 +1,7 @@
 class CurriculumCategoryCoursesController < ApplicationController
   before_action :set_category, only: [:create, :index]
-  before_action :set_new_category_course, only: [:index]
+  before_action :set_category_course, only: [:destroy]
+  
   before_filter :authorize
 
   def create
@@ -19,11 +20,12 @@ class CurriculumCategoryCoursesController < ApplicationController
   end
 
   def index
+    @new_category_course = CurriculumCategoryCourse.new
+    @courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1]
     @cc_courses = @category.curriculum_category_courses.all
   end
   
   def destroy
-    @curriculum_category_course = CurriculumCategoryCourse.find(params[:id])
     @curriculum_category_course.destroy
     respond_to do |format|
       format.html { redirect_to curriculum_category_curriculum_category_courses_path, notice: @curriculum_category_course.course.title + " removed!" }
@@ -36,8 +38,8 @@ class CurriculumCategoryCoursesController < ApplicationController
       @category = CurriculumCategory.find(params[:curriculum_category_id])
     end
     
-    def set_new_category_course
-      @category_course = CurriculumCategoryCourse.new
+    def set_category_course
+      @curriculum_category_course = CurriculumCategoryCourse.find(params[:id])
     end
     
     def curriculum_category_course_params

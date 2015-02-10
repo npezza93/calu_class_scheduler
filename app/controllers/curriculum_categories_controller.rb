@@ -1,18 +1,21 @@
 class CurriculumCategoriesController < ApplicationController
   before_action :set_category, only: [:destroy]
   before_action :set_user
+  before_action :set_major
+  
   before_filter :authorize
   
   def index
-    @category = CurriculumCategory.where(major_id: @user.major)
+    @category = CurriculumCategory.where(major: @major)
     @new_category = CurriculumCategory.new
   end
 
   def create
     @category = CurriculumCategory.new(category_params)
-    
+    @category.major = @major
     respond_to do |format|
       if @category.save
+        flash[:notice] = @category.category + " successfully created!"
        	format.js { render :js => "window.location.href='"+curriculum_categories_path+"'"}
         format.html { redirect_to curriculum_categories_path, notice: @category.category + " has been created!" }
       else
@@ -25,7 +28,7 @@ class CurriculumCategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to curriculum_categories_url, notice: @category.category + " has been deleted!" }
+      format.html { redirect_to curriculum_categories_url, notice: @category.category + " successfully deleted!" }
       format.json { head :no_content }
     end
   end
@@ -36,14 +39,19 @@ class CurriculumCategoriesController < ApplicationController
       @category = CurriculumCategory.find(params[:id])
     end
     
+    def set_major
+      @major = @user.major
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:curriculum_category).permit(:category, :required_amount_of_credits, :major_id)
+      params.require(:curriculum_category).permit(:category, :required_amount_of_credits)
     end
     
     def set_user
       @user = User.find(session[:user_id])
     end
+    
     def authorize
       logged_in = User.find_by_id(session[:user_id])
       if not (logged_in.advisor or logged_in.administrator)

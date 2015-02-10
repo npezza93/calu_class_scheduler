@@ -1,5 +1,5 @@
 class MajorsController < ApplicationController
-  before_filter :reg_user_check
+  before_filter :authorize
   
   def new
     @major = Major.new
@@ -27,7 +27,7 @@ private
         params.require(:major).permit(:major)
     end
     
-    def reg_user_check
+    def authorize
       logged_in = User.find_by_id(session[:user_id])
       if not (logged_in.advisor or logged_in.administrator)
         redirect_to user_transcripts_path(logged_in), notice: "You're not authorized to view this page!"

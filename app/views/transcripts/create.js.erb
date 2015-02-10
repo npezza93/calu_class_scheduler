@@ -2,6 +2,47 @@
     $("#transcript_tbody").append("<tr><td data-title=\"Course\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></div></td><td data-title=\"Grade\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= @transcript.grade %></div></td>    <td style=\"text-align:center;\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= escape_javascript link_to 'Remove', user_transcript_path(@user, @transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, id: 'transcript_remove_link' %></div></td></tr>");    
     $(".user_<%= @transcript.course_id %>_transcript_class").slideDown("slow");
     $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @transcript.course.title %> added to your transcript!\" style=\"padding-right: 60px;color:#4CAF50;\" duration=\"10000\" opened ></paper-toast>");
+    
+    $("#temp_replace").html("<%= escape_javascript render 'schedules/new' %>");
+    $("#section1").html("<%= escape_javascript render 'schedules/index' %>");
+    
+  $("#media_query_schedule").on("core-media-change", function(e) {
+    if (e.originalEvent.detail.matches === true) {
+      $("#big_schedule_table")[0].setAttribute("hidden", "");
+      $("#small_schedule_table")[0].removeAttribute("hidden", "");
+      $(".small_schedule_course_title").removeAttr("hidden", "");
+    } else {
+      $("#big_schedule_table")[0].removeAttribute("hidden", "");
+      $("#small_schedule_table")[0].setAttribute("hidden", "");
+      $(".small_schedule_course_title").attr("hidden", "");
+    }
+  });   
+
+    $("#media_query_schedule_new").on("core-media-change", function(e) {
+      if (e.originalEvent.detail.matches === true) {
+        $(".new_schedule_headers").attr("hidden", "");
+        $(".new_schedule_credit_td").attr("hidden", "");
+        $(".new_schedule_times_td").attr("hidden", "");
+        $(".new_schedule_prof_td").attr("hidden", "");
+        $(".new_schedule_nc_td").attr("hidden", "");
+        $(".new_schedule_check_td").attr("rowspan", 2);
+        $(".new_schedule_course_td").attr("rowspan", 2);
+        $(".new_schedule_day_times_td").removeAttr("hidden");
+        $(".resp_new_schedule_tr").removeAttr("hidden");
+        $(".common_tr").attr("hidden", "");
+      } else {
+        $(".resp_new_schedule_tr").attr("hidden", "");
+        $(".new_schedule_credit_td").removeAttr("hidden", "");
+        $(".new_schedule_times_td").removeAttr("hidden", "");
+        $(".new_schedule_prof_td").removeAttr("hidden", "");
+        $(".new_schedule_nc_td").removeAttr("hidden", "");
+        $(".new_schedule_headers").removeAttr("hidden", "");
+        $(".new_schedule_check_td").removeAttr("rowspan");
+        $(".new_schedule_course_td").removeAttr("rowspan");
+        $(".new_schedule_day_times_td").attr("hidden", "");
+        $(".common_tr").removeAttr("hidden");
+      }
+    });    
 <% else %>
     <% @transcript.errors.full_messages.each do |message| %>
         $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");

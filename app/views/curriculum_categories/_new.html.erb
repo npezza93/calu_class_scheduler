@@ -8,31 +8,6 @@
             <%= f.number_field :required_amount_of_credits, is: 'core-input', in: 1..200 %>
         </paper-input-decorator>
 
-        <div hidden>
-            <% majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"] %>
-            <%= f.select(:major_id, options_for_select(majors), {}, { id:'actual_cc_major_select' }) %>
-        </div>
-          
-        <div id="major_error_msg" layout horizontal center-justified>
-            <div id="cc_major_error" layout horizontal center-justified>
-              <div id="cc_major_error_text" flex>A Major must be selected!</div>
-              <core-icon class="error-icon" id="cc_major_error_icon" icon="warning"></core-icon>
-            </div>
-        </div>
-
-        <div layout horizontal center-justified>
-            <paper-dropdown-menu label="Choose Major" id="major_dropdown_menu">
-                <paper-dropdown class="dropdown constrained-height" id="major_dropdown">
-                    <core-menu class="menu" id="major_core_menu">
-                        <% majors.pop %>
-                        <% majors.each do |major| %>
-                            <paper-item value=<%= major[1] %>><%= major[0] %></paper-item>
-                        <% end %>
-                    </core-menu>
-                </paper-dropdown>
-            </paper-dropdown-menu>
-        </div>
-        
         <br>
         <div layout horizontal center-justified>
             <paper-button id="material_create_category">Create Category</paper-button>

@@ -92,61 +92,115 @@ $.each(asel_opts,function(index, value) {
     $("."+value).removeAttr("disabled", "");
 });
 
+$("#sch_approval_div").html("<%= j render(:partial => 'schedule_approvals/show') %>");
+
 <% if request.path == "/users/"+@user.id.to_s+"/schedules" %>
-    <% t_string = "<tr><th colspan=\"3\">" + @user.email + "'s Courses</th></tr>" %>
-    <% total_credits = 0 %>
-    <% @user_schedules.each do |user_schedule| %>
-        <% t_string += "<tr><td>" + user_schedule.offering.course.subject + user_schedule.offering.course.course.to_s + ": " +  user_schedule.offering.course.title + "</td><td style=\"padding-left:20px;padding-right:20px;\"> " +  user_schedule.offering.course.credits.to_s + "</td>" %>
-        <% t_string += "<td>" + user_schedule.offering.user.email[0..-10].capitalize + "</td></tr>" %>
-        <% total_credits += user_schedule.offering.course.credits %>
-    <% end %>
-    <% t_string += "tr><td></td><td style=\"padding-left:20px;padding-right:20px;border-top: solid thin;\">" + total_credits.to_s + "</td><td></td></tr>" %>
-    $("#advisor_quick_user_courses").html("<%= escape_javascript t_string.html_safe %>");
+    $("#section1").html("<%= escape_javascript render 'index', :@offerings => @user_schedules.collect { |c| c.offering }, :@day_hash => @day_hash2%>");
+    $("#media_query_schedule").on("core-media-change", function(e) {
+      if (e.originalEvent.detail.matches === true) {
+        $("#big_schedule_table")[0].setAttribute("hidden", "");
+        $("#small_schedule_table")[0].removeAttribute("hidden", "");
+        $(".small_schedule_course_title").removeAttr("hidden", "");
+      } else {
+        $("#big_schedule_table")[0].removeAttribute("hidden", "");
+        $("#small_schedule_table")[0].setAttribute("hidden", "");
+        $(".small_schedule_course_title").attr("hidden", "");
+      }
+    });
+    $('.day_time_slot').click(function(e) {
+      var id_string;
+      if ($('.' + e.originalEvent.toElement.className.split(' ')[1]).text() === "" && !$('.' + e.originalEvent.toElement.className.split(' ')[1]).hasClass("half_time_slot")) {
+        $('.' + e.originalEvent.toElement.className.split(' ')[1]).toggleClass('selected_work_day_time_slot');
+        id_string = '#work_schedule_work_days_time_id option[value=' + e.originalEvent.toElement.id.substring(1) + ']';
+        if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+        } else {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+        }
+        $("#submit_work_schedule_button")[0].click();
+      }
+    });
     
-    $(".selected_class").html("");
-    $(".selected_class").removeClass("selected_class");
-    $(".half_time_slot").removeClass("half_time_slot");
+    $('.time_slot').click(function(e) {
+      var id_string, time_string;
+      time_string = $.trim(e.toElement.innerHTML.replace(/:/g, ''));
+      if ($('.M' + time_string).text() === "" && !$('.M' + time_string).hasClass("half_time_slot")) {
+        $('.M' + time_string).toggleClass('selected_work_day_time_slot');
+        id_string = '#work_schedule_work_days_time_id option[value=' + $('.M' + time_string)[0].id.substring(1) + ']';
+        if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+        } else {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+        }
+      }
+      if ($('.T' + time_string).text() === "" && !$('.T' + time_string).hasClass("half_time_slot")) {
+        $('.T' + time_string).toggleClass('selected_work_day_time_slot');
+        id_string = '#work_schedule_work_days_time_id option[value=' + $('.T' + time_string)[0].id.substring(1) + ']';
+        if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+        } else {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+        }
+      }
+      if ($('.W' + time_string).text() === "" && !$('.W' + time_string).hasClass("half_time_slot")) {
+        $('.W' + $.trim(e.toElement.innerHTML.replace(/:/g, ''))).toggleClass('selected_work_day_time_slot');
+        id_string = '#work_schedule_work_days_time_id option[value=' + $('.W' + time_string)[0].id.substring(1) + ']';
+        if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+        } else {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+        }
+      }
+      if ($('.R' + time_string).text() === "" && !$('.R' + time_string).hasClass("half_time_slot")) {
+        $('.R' + $.trim(e.toElement.innerHTML.replace(/:/g, ''))).toggleClass('selected_work_day_time_slot');
+        id_string = '#work_schedule_work_days_time_id option[value=' + $('.R' + time_string)[0].id.substring(1) + ']';
+        if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+        } else {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+        }
+      }
+      if ($('.F' + time_string).text() === "" && !$('.F' + time_string).hasClass("half_time_slot")) {
+        $('.F' + $.trim(e.toElement.innerHTML.replace(/:/g, ''))).toggleClass('selected_work_day_time_slot');
+        id_string = '#work_schedule_work_days_time_id option[value=' + $('.F' + time_string)[0].id.substring(1) + ']';
+        if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+        } else {
+          $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+        }
+      }
+      $("#submit_work_schedule_button")[0].click();
+    });
     
-    <% @user_schedules.each do |user_schedule| %>
-        <% user_schedule.offering.days_time.days.split("").each do |letter| %>
-            <% begin_time = Time.strptime(user_schedule.offering.days_time.start_time, "%l:%M %P") %>
-            <% end_time = Time.strptime(user_schedule.offering.days_time.end_time, "%l:%M %P") %>
-            <% index = 0 %>
-            
-            <% if (end_time - 15.minutes).min == 0 or (end_time - 15.minutes).min == 30 %>
-                <% end_time -= 15.minutes %>
-                <% flag = true %>
-            <% end %>
-            
-            <% while begin_time<end_time %>
-                <% if index == 0 %>
-                    document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").innerHTML = "<%= user_schedule.offering.course.subject + user_schedule.offering.course.course.to_s %>";
-                <% elsif index == 1 %>
-                    document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").innerHTML = "<%= user_schedule.offering.user.email[0..-10].capitalize %>";
-                <% end %>
-                document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className = document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className + " selected_class";
-                <% begin_time += 1800 %>
-                <% index += 1 %>
-            <% end %>
-            <% if flag %>
-               document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className = document.getElementById("<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").className + " half_time_slot";
-            <% end %>
-        <% end %>
-    <% end %>
-    
-    <% t_string = "" %>
-    <% @day_hash2.each do |k, v| %>
-        <% if not v.blank? %>
-            <% t_string += "<paper-shadow style=\"padding:20px;width:353px;background: #FAFAFA;border-radius:3px;margin:8px;\">" %>
-                <% t_string += "<h3 style=\"margin-bottom:27px;color:rgba(0,0,0,0.87);\">" + k + "</h3>" %>
-                <% v.each do |offering| %>
-                    <% t_string += "<div layout horizontal style=\"color:#757575;\">" %>
-                        <% t_string += "<div flex>" + offering.course.subject + offering.course.course.to_s + ": " +  offering.course.title + "</div>" %>
-                        <% t_string += "<div end-justified>" + offering.days_time.start_time + " - " + offering.days_time.end_time + "</div></div>" %>
-                    <% t_string += "<hr style=\"margin-top:10px;border: 0;height: 0;border-top: 1px solid rgba(0, 0, 0, 0.1);border-bottom: 1px solid rgba(255, 255, 255, 0.3);\">" %>
-                <% end %>
-            <% t_string += "</paper-shadow>" %>
-        <% end %>
-    <% end %>
-    $("#small_schedule_table").html("<%= escape_javascript t_string.html_safe %>");
+    $('.day').click(function(e) {
+      var id_string;
+      var begin_time, end_time, id_string;
+      begin_time = new Date(2000, 1, 1, 8, 0x0);
+      end_time = new Date(2000, 1, 1, 21, 30);
+      while (begin_time.getTime() <= end_time.getTime()) {
+        if (e.toElement.innerHTML !== 'Thursday') {
+          if ($('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).text() === '' && !$('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).hasClass("half_time_slot")) {
+            $('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).toggleClass('selected_work_day_time_slot');
+            id_string = '#work_schedule_work_days_time_id option[value=' + $('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt'))[0].id.substring(1) + ']';
+            if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+              $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+            } else {
+              $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+            }
+          }
+        } else {
+          if ($('.R' + begin_time.toString('hmmtt')).text() === '' && !$('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).hasClass("half_time_slot")) {
+            $('.R' + begin_time.toString('hmmtt')).toggleClass('selected_work_day_time_slot');
+            id_string = '#work_schedule_work_days_time_id option[value=' + $('.R' + begin_time.toString('hmmtt'))[0].id.substring(1) + ']';
+            if ($('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected) {
+              $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false;
+            } else {
+              $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true;
+            }
+          }
+        }
+        begin_time.setMinutes(begin_time.getMinutes() + 30);
+      }
+      $("#submit_work_schedule_button")[0].click();
+    });
 <% end %>

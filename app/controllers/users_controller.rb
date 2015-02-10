@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(new_user_params)
 
     respond_to do |format|
       if @user.save
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       if session[:user_id] and ((User.find_by_id(session[:user_id]).advisor or User.find_by_id(session[:user_id]).administrator))
-        if @user.administrator or @user.advisor
+        if User.find_by_id(session[:user_id]).administrator or User.find_by_id(session[:user_id]).advisor
           params.require(:user).permit(:password, :password_confirmation)
         else
           params.require(:user).permit(:advised_by, :major_id, :advisor, :administrator)
@@ -107,6 +107,10 @@ class UsersController < ApplicationController
       else
         params.require(:user).permit(:email, :password, :password_confirmation, :advised_by, :major_id)
       end
+    end
+
+    def new_user_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :advised_by, :major_id, :advisor)
     end
     
     def only_edit_you

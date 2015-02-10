@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  resources :semesters, only: [:index, :new, :create, :update]
 
   resources :curriculum_categories, :only => [:create, :destroy, :index] do
     resources :curriculum_category_courses, :only => [:index, :create, :destroy]
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
     collection { post :import}
   end
 
-  resources :courses, path: 'courses', :only => [:create, :new, :destroy, :index]
+  resources :courses
 
   controller :sessions do
    get 'login' => :new
@@ -25,6 +27,8 @@ Rails.application.routes.draw do
       collection { post :import}
     end
     resources :schedules, :only => [:index, :create, :new, :destroy]
+    resources :schedule_approvals, :only => [:create, :new, :edit, :update]
+    resources :work_schedules, only: [:create, :new, :index]
   end
 
   resources :password_resets

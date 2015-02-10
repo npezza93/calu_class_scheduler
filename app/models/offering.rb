@@ -28,7 +28,10 @@ class Offering < ActiveRecord::Base
     belongs_to :days_time
     belongs_to :user
     belongs_to :course
-
+    belongs_to :semester
+    
+    before_save :default_semester
+    
     validates_uniqueness_of :course, scope: [:days_time, :user]
   
     validates :course, presence: true
@@ -37,17 +40,27 @@ class Offering < ActiveRecord::Base
     validates_with ClassOverlapOfferingValidator
     
     def self.import(file)
-      CSV.foreach(file.path, headers: true) do |row|
-        class_id = Course.where("subject = ? AND course = ?",row["subject"].upcase,row["course"].to_i).take.id
-        instructor_id = User.where("email = ?", row["advisor"]).take.id
-        day_time_id = DaysTime.where("days = ? AND start_time = ? and end_time = ? ", row["days"], row["start_time"], row["end_time"]).take.id
+      CSV.foreach(file.path) do |row|
+        course_id = prof_id = day_time_id = nil
+        
+        begin
+          course_id = Course.where("subject = ? AND course = ?",row[1].split()[0].upcase, row[1].split()[1].to_i).take.id
+          prof_id = User.where("email = ?", row[12].split()[0][0..-2].downcase + '@calu.edu').take.id
+          day_time_id = DaysTime.where("days = ? AND start_time = ? and end_time = ? ", row[7].upcase, Time.strptime(row[8], "%I%M%P").strftime("%l:%M %P").strip, Time.strptime(row[9], "%I%M%P").strftime("%l:%M %P").strip).take.id
 
-        offering = Offering.new do |o|
-          o.user_id      = instructor_id
-          o.course_id    = class_id
-          o.days_time_id = day_time_id
+          offering = Offering.new do |o|
+            o.user_id      = prof_id
+            o.course_id    = course_id
+            o.days_time_id = day_time_id
+          end
+          offering.save
+        rescue
         end
-        offering.save
-      end      
+      end 
     end
+    
+    private
+      def default_semester
+        self.semester = Semester.where(active: true).take
+      end
 end

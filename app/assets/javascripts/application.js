@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require webcomponentsjs/webcomponents
-//= require platform/platform
 //= require jquery
+//= require date
 //= require jquery_ujs
 //= require_tree .

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105231255) do
+ActiveRecord::Schema.define(version: 20150208151021) do
 
   create_table "courses", force: true do |t|
     t.string   "subject"
@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 20150105231255) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "semester_id"
   end
 
+  add_index "offerings", ["semester_id"], name: "index_offerings_on_semester_id"
   add_index "offerings", ["user_id"], name: "index_offerings_on_user_id"
 
   create_table "prerequisites", id: false, force: true do |t|
@@ -73,15 +75,35 @@ ActiveRecord::Schema.define(version: 20150105231255) do
     t.datetime "updated_at"
   end
 
+  create_table "schedule_approvals", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "approved",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "semester_id"
+  end
+
+  add_index "schedule_approvals", ["semester_id"], name: "index_schedule_approvals_on_semester_id"
+  add_index "schedule_approvals", ["user_id"], name: "index_schedule_approvals_on_user_id"
+
   create_table "schedules", force: true do |t|
     t.integer  "offering_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "semester_id"
   end
 
   add_index "schedules", ["offering_id"], name: "index_schedules_on_offering_id"
+  add_index "schedules", ["semester_id"], name: "index_schedules_on_semester_id"
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id"
+
+  create_table "semesters", force: true do |t|
+    t.string   "semester"
+    t.boolean  "active",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "transcripts", force: true do |t|
     t.integer  "user_id"
@@ -108,5 +130,25 @@ ActiveRecord::Schema.define(version: 20150105231255) do
   end
 
   add_index "users", ["major_id"], name: "index_users_on_major_id"
+
+  create_table "work_days_times", force: true do |t|
+    t.string   "days"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "work_schedules", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "work_days_time_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "semester_id"
+  end
+
+  add_index "work_schedules", ["semester_id"], name: "index_work_schedules_on_semester_id"
+  add_index "work_schedules", ["user_id"], name: "index_work_schedules_on_user_id"
+  add_index "work_schedules", ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id"
 
 end

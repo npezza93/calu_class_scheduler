@@ -21,8 +21,7 @@
             <br>
             <%= f.label 'Choose Required Prerequisites (if any):' %>
             <div>
-                <% courses = (Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) %>
-                <%= f.select(:courses, options_for_select(courses), {}, { id:'actual_select_courses', multiple: true, size: 6 }) %>
+                <%= f.select(:courses, options_for_select(@courses), {}, { id:'actual_select_courses', multiple: true, size: 6 }) %>
             </div>
     
             <br>

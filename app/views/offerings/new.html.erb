@@ -6,11 +6,36 @@
     <paper-fab icon="cloud-upload" style="margin-top:-28px;margin-right:25px;" id="upload-fab"></paper-fab>
 </div>
 
-<%= form_tag import_offerings_path, multipart: true, hidden: "" do %>
-    <%= file_field_tag :offering_file, id: "upload_button" %>
+<core-overlay transition="core-transition-center" id="offering_overlay" backdrop>
+    <h3 style="text-align:center;">Upload a .CSV with 15 columns to quickly input offerings</h3>
 
-    <%= submit_tag 'upload', id: "submit_upload_button" %>
-<% end %>
+    <p>Column 1,3,4,5,6,7,11,12,14,15 - Anything/Empty Column</p>
+    <p>Column 2 - The course formatted:</p>
+    <ul><li>Subject(CSC) Course(110) Course Name</li></ul>
+    <p>Column 8 - Days being offered(MWF, TR, W, etc.)</p>
+    <p>Column 9 - Start time formatted:</p>
+    <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>
+    <p>Column 10 - End time formatted:</p>
+    <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>    
+    <p>Column 13 - Professor formmatted:</p>
+    <ul><li>"last name, first name"</li></ul>
+    <br><br>
+    <div layout horizontal>
+        <div flex></div>
+        <div>
+            <paper-button id="cancel_upload_offering">Cancel</paperbutton>
+        </div>
+        <div>
+            <paper-button id="material_upload_offerings">Upload</paper-button>
+        </div>
+    </div>
+    
+    <%= form_tag import_offerings_path, multipart: true, hidden: "" do %>
+        <%= file_field_tag :offering_file, id: "upload_offering_button" %>
+    
+        <%= submit_tag 'upload', id: "submit_upload_offering_button" %>
+    <% end %>
+</core-overlay>
 
 <div layout horizontal center-justified>
     <paper-shadow id="new_offering_shadow">
@@ -18,8 +43,7 @@
         <%= form_for(@offering, remote: true) do |f| %>
         
             <div hidden>
-                <% courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1] %>
-                <%= f.select(:course_id, options_for_select(courses), {}, { id:'course_select' }) %>
+                <%= f.select(:course_id, options_for_select(@courses), {}, { id:'course_select' }) %>
             </div>
             
             
@@ -34,8 +58,8 @@
                 <paper-dropdown-menu label="Choose Course" style="margin-top:0;padding-top:0;">
                     <paper-dropdown class="dropdown" id="course_dropdown" style="height:185px;">
                         <core-menu class="menu">
-                            <% courses.pop %>
-                            <% courses.each do |course| %>
+                            <% @courses.pop %>
+                            <% @courses.each do |course| %>
                                 <paper-item value=<%= course[1] %>><%= course[0] %></paper-item>
                             <% end %>
                         </core-menu>
@@ -44,11 +68,7 @@
             </div>
             
             <div hidden>
-                <% days_n_times = (DaysTime.all.map do |day_time| 
-                        [day_time.days + ' at ' + day_time.start_time + ' to ' + day_time.end_time, day_time.id] 
-                    end
-                ) << ["",-1] %>
-                <%= f.select(:days_time_id, options_for_select(days_n_times), {}, { id:'day_select' }) %>
+                <%= f.select(:days_time_id, options_for_select(@days_n_times), {}, { id:'day_select' }) %>
             </div>
             
             <div id="offering_time_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
@@ -62,8 +82,8 @@
                 <paper-dropdown-menu label="Choose Time" style="width:100%;max-width:235px;margin-top:0;padding-top:0;">
                     <paper-dropdown class="dropdown" id="day_dropdown" style="width:100%;max-width:235px;height:147px;">
                         <core-menu class="menu">
-                            <% days_n_times.pop %>
-                            <% days_n_times.each do |days_n_time| %>
+                            <% @days_n_times.pop %>
+                            <% @days_n_times.each do |days_n_time| %>
                                 <paper-item value=<%= days_n_time[1] %>><%= days_n_time[0] %></paper-item>
                             <% end %>
                         </core-menu>
@@ -72,8 +92,7 @@
             </div>
             
             <div hidden>
-                <% instructors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["",-1] %>
-                <%= f.select(:user_id, options_for_select(instructors), {}, { id:'advisor_select' }) %>
+                <%= f.select(:user_id, options_for_select(@instructors), {}, { id:'advisor_select' }) %>
             </div>
     
             <div id="offering_user_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
@@ -86,8 +105,8 @@
                 <paper-dropdown-menu label="Choose Instructor" style="width:100%;max-width:200px;margin-top:0;padding-top:0;">
                     <paper-dropdown class="dropdown" id="advisor_dropdown" style="width:100%;max-width:200px;height:108px;">
                         <core-menu class="menu">
-                            <% instructors.pop %>
-                            <% instructors.each do |instructor| %>
+                            <% @instructors.pop %>
+                            <% @instructors.each do |instructor| %>
                                 <paper-item value=<%= instructor[1] %>><%= instructor[0] %></paper-item>
                             <% end %>
                         </core-menu>
@@ -113,5 +132,5 @@
 <% end %>
 
 <script>
-  $("#drawer_core_menu")[0].selected = 3;
+  $("#drawer_core_menu")[0].selected = 2;
 </script>

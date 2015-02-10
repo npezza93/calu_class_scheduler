@@ -7,6 +7,10 @@ jQuery ->
       $("#actual_create_course")[0].click()
       return
 
+    $("#material_update_course").click ->
+      $("#actual_update_course")[0].click()
+      return
+      
     $("#course_select").val "-1"
     $("#course_dropdown").on "core-select", (e, detail) ->
       $("#course_select").val e.originalEvent.detail.item.getAttribute("value")
@@ -26,10 +30,6 @@ jQuery ->
       $("#actual_offer_course")[0].click()
       return
 
-    $("#upload-fab").click ->
-      $("#upload_button")[0].click()
-      $("#upload_button").on "change", ->
-        $("#submit_upload_button")[0].click()
+    $("#new_course_material").click ->
+        $("#new_course_link")[0].click()
         return
-    
-      return

@@ -31,12 +31,12 @@ core-toolbar {
             <% if User.find(session[:user_id]).advisor %>
               <% if params[:user_id] %>
                 <% if current_page?(user_schedules_path(params[:user_id])) %>
-                  <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br> Transcript</core-item>
-                  <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br> Schedule</core-item>
+                  <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"><%= @user.email %>'s <br> Transcript</core-item>
+                  <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"><%= @user.email %>'s <br> Schedule</core-item>
                   <core-item id="drawer_new_schedule_item_baluga" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Modify <br> <%= @user.email %>'s <br>Schedule</core-item>
                 <% elsif current_page?(user_transcripts_path(User.find(params[:user_id]))) or current_page?(new_user_schedule_path(User.find(params[:user_id]))) %>
-                  <core-item id="drawer_transcripts_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br>Transcript</core-item>
-                  <core-item id="drawer_schedule_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> View <br> <%= @user.email %>'s <br>Schedule</core-item>
+                  <core-item id="drawer_transcripts_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"><%= @user.email %>'s <br>Transcript</core-item>
+                  <core-item id="drawer_schedule_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"><%= @user.email %>'s <br>Schedule</core-item>
                   <core-item id="drawer_new_schedule_item" style="cursor:pointer;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Modify <br> <%= @user.email %>'s <br> Schedule</core-item>
                   <div hidden>
                     <%= link_to "transcripts", user_transcripts_path(User.find(params[:user_id])), id: "user_transcripts_app_link" %>
@@ -45,17 +45,17 @@ core-toolbar {
                   </div>
                 <% end %>
               <% end %>
-              <core-item id="drawer_users_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="account-child"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Students</span></core-item>
-              <core-item id="drawer_new_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="add"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Add a New Course</span></core-item>
-              <core-item id="drawer_delete_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="clear"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Remove a Course</span></core-item>
+              <core-item id="drawer_users_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="perm-identity"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Students</span></core-item>
+              <core-item id="drawer_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="class"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Courses</span></core-item>
               <core-item id="drawer_offerings_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Semester Offerings</span></core-item>
-              <core-item id="drawer_new_major_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="class"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Add a New Major</span></core-item>
+              <core-item id="drawer_new_major_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="bookmark"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Add a New Major</span></core-item>
+              <core-item id="drawer_semesters_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="today"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;"> Semesters</span></core-item>
               <core-item id="drawer_categories_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="sort"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;"> Curriculum<br> Categories</span></core-item>
               <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="lock-outline"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Change Password</span></core-item>
             <% else %>
               <% if current_page?(user_transcripts_path(User.find(session[:user_id]))) or current_page?(new_user_schedule_path(User.find(session[:user_id]))) or current_page?(edit_user_path(User.find(session[:user_id]))) %>
                 <core-item id="drawer_transcripts_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
-                <core-item id="drawer_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
+                <core-item id="drawer_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
                 <core-item id="drawer_new_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
                 <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="lock-outline"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Change Password</span></core-item>
                 <div hidden>
@@ -65,7 +65,7 @@ core-toolbar {
                 </div>
               <% else %>
                 <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
-                <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
+                <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
                 <core-item id="drawer_new_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
                 <core-item id="drawer_change_password_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="lock-outline"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Change Password</span></core-item>
               <% end %>
@@ -84,15 +84,14 @@ core-toolbar {
           <div class="content">
             <%= yield %>
           </div>
-        </core-header-panel>
       </core-drawer-panel>
       
       <div hidden>
         <%= link_to "Users", users_path, id: "users_link" %>
-        <%= link_to "New Course", new_course_path, id: "new_course_link" %>
-        <%= link_to "Delete Course", courses_path, id: "delete_course_link" %>
+        <%= link_to "Courses", courses_path, id: "delete_course_link" %>
         <%= link_to "offerings", offerings_path, id: "offerings_link" %>
         <%= link_to "New Major", new_major_path, id: "new_major_link" %>
+        <%= link_to "Semesters", semesters_path, id: "semesters_link" %>
         <%= link_to "Categories", curriculum_categories_path, id: "categories_link" %>
         <%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])), id: "change_password_link" %>
         <%= button_to 'Logout', logout_path, { method: :delete, id: "logout_button" } %>

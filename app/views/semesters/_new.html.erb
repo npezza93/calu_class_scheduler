@@ -1,0 +1,14 @@
+<%= form_for(@semester, remote: true) do |f| %>
+        
+    <paper-input-decorator label="Semester">
+        <%= f.text_field :semester, is: 'core-input' %>
+    </paper-input-decorator>
+
+    <br>
+    <div layout horizontal center-justified>
+        <paper-button id="material_create_semester">Create Semester</paper-button>
+    </div>
+
+    <%= f.submit 'Create Semester', hidden: "", id: 'actual_create_semester' %>
+    
+<% end %>

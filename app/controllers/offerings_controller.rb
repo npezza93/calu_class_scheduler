@@ -1,5 +1,9 @@
 class OfferingsController < ApplicationController
-  before_action :set_offering, only: [:destroy]
+  before_action :set_offering, only: [:destroy, :edit, :update]
+  before_action :set_offerings, only: [:index]
+  before_action :set_drop_downs, only: [:edit, :new]
+  before_action :set_file_ext, only: [:import]
+  
   before_filter :authorize
   
   def new
@@ -22,7 +26,24 @@ class OfferingsController < ApplicationController
       end
     end
   end
-
+  
+  def edit
+  end
+  
+  def update
+    respond_to do |format|
+      if @offering.update(offering_params)
+       	flash[:notice] = @offering.course.title + " successfully updated!"
+       	format.js { render :js => "window.location.href='"+offerings_path+"'"}
+        format.html { redirect_to offerings_path, notice: @offering.course.title + " successfully updated!" }
+        format.json { render :show, status: :created, location: @offering }
+      else
+        format.js { @errors = true}
+        format.html { render :new }
+        format.json { render json: @offering.errors, status: :unprocessable_entity }
+      end
+    end 
+  end    
   def destroy
     @offering.destroy
     respond_to do |format|
@@ -32,12 +53,11 @@ class OfferingsController < ApplicationController
   end
   
   def index
-    @offerings = Offering.all
   end
   
   def import
-    if (File.extname(params[:offering_file].original_filename)).downcase == ".csv"
-      Offering.import(params[:offering_file])
+    if  @ext == ".csv"
+      Offering.import(parse_params)
       respond_to do |format|
         format.html { redirect_to offerings_path, notice: "Offerings Uploaded!" }
       end
@@ -54,13 +74,28 @@ class OfferingsController < ApplicationController
       @offering = Offering.find(params[:id])
     end
     
+    def set_drop_downs
+      @courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1]
+      @days_n_times = (DaysTime.all.map { |day_time| [day_time.days + ' at ' + day_time.start_time + ' to ' + day_time.end_time, day_time.id] }) << ["",-1]
+      @instructors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["",-1]
+    end
+    
+    def set_file_ext
+      @ext = (File.extname(params[:offering_file].original_filename)).downcase
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def offering_params
       params.require(:offering).permit(:course_id, :days_time_id, :user_id)
     end
     
     def parse_params
-      params.require(:offering).permit(:uploaded_file)
+      params.require(:offering_file)
+    end
+    
+    def set_offerings
+      @active_semester = Semester.where(active: true).take
+      @offerings = Offering.where(semester: @active_semester)
     end
     
     def authorize

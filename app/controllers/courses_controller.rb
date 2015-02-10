@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:destroy]
+  before_action :set_course, only: [:destroy, :edit, :update]
   before_filter :authorize
   
   def index
@@ -7,7 +7,13 @@ class CoursesController < ApplicationController
   end
   
   def new
+    @courses = Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
     @course = Course.new
+  end
+
+  # GET /courses/1/edit
+  def edit
+    @courses = Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
   end
 
   def create
@@ -23,7 +29,7 @@ class CoursesController < ApplicationController
       if @course.save
         @course.courses = @prereqs
         flash[:notice] = @course.title + " was successfully created!"
-        format.js { render :js => "window.location = '/users'" }
+        format.js { render :js => "window.location = '/courses'" }
         format.html { redirect_to users_path, notice: @course.title + ' created' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -34,10 +40,32 @@ class CoursesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @course.update(course_params)
+        @prereqs = []
+        params[:course][:courses].each do |course_id|
+          if course_id != ""
+            @prereqs << Course.find_by_id(course_id)
+          end
+        end
+        @course.courses = @prereqs
+        flash[:notice] = @course.title + " was successfully updated!"
+        format.js { render :js => "window.location = '/courses'" }
+        format.html {redirect_to courses_path, notice: @course.subject + @course.course.to_s + 'successfully updated!' }
+        format.json { render :index, status: :ok, location: @user }
+      else
+        format.js {@errors = true}
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: @course.title + ' was successfully destroyed.'  }
+      format.html { redirect_to courses_url, notice: @course.title + ' was successfully destroyed.'  }
       format.json { head :no_content }
     end
   end

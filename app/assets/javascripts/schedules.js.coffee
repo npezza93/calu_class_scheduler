@@ -11,12 +11,15 @@ jQuery ->
       if e.originalEvent.detail.matches is true
         $("#big_schedule_table")[0].setAttribute "hidden", ""
         $("#small_schedule_table")[0].removeAttribute "hidden", ""
+        $(".small_schedule_course_title").removeAttr "hidden", ""
       else
         $("#big_schedule_table")[0].removeAttribute "hidden", ""
         $("#small_schedule_table")[0].setAttribute "hidden", ""
+        $(".small_schedule_course_title").attr "hidden", ""
       return
       
     $("#media_query_schedule_new").on "core-media-change", (e) ->
+      console.log("hi")
       if e.originalEvent.detail.matches is true
         $(".new_schedule_headers").attr "hidden", ""
         $(".new_schedule_credit_td").attr "hidden", ""
@@ -64,7 +67,7 @@ jQuery ->
       $("#baluga3")[0].selected = 2
       $("core-drawer-panel")[0].closeDrawer();
       return
-
+      
     $("#drawer_change_password_item_baluga").click ->
       $("#change_password_overlay")[0].toggle()
       return     
@@ -93,17 +96,17 @@ jQuery ->
     $("#drawer_new_major_item").click ->
       $("#new_major_link")[0].click()
       return
-    
+
+    $("#drawer_semesters_item").click ->
+      $("#semesters_link")[0].click()
+      return
+      
     $("#drawer_offerings_item").click ->
       $("#offerings_link")[0].click()
       return
     
-    $("#drawer_delete_course_item").click ->
+    $("#drawer_course_item").click ->
       $("#delete_course_link")[0].click()
-      return
-    
-    $("#drawer_new_course_item").click ->
-      $("#new_course_link")[0].click()
       return
     
     $("#drawer_users_item").click ->

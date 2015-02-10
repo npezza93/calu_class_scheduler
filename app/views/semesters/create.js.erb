@@ -1,0 +1,6 @@
+<% if @semester.errors %>
+    <% @semester.errors.full_messages.each do |message| %>
+        $("#semester_semester").parent().attr("error","<%= message.html_safe %>");
+        $("#semester_semester").parent().attr("isInvalid","true");
+    <% end %>
+<% end %>

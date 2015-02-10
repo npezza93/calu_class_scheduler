@@ -1,0 +1,42 @@
+<% content_for :title do %>
+    Editing <%= @course.subject + @course.course.to_s %>
+<% end %>
+
+<div layout horizontal center-justified>
+    <paper-shadow id="new_course_shadow_div">
+        <%= form_for(@course, remote: true) do |f| %>
+        
+            <paper-input-decorator label="Subject (ex: CSC, CET, etc)">
+                <%= f.text_field :subject, maxlength: 3, size: 3, is: 'core-input' %>
+            </paper-input-decorator>
+            
+            <paper-input-decorator label="Course Number (ex: 120, 323, etc)">
+                <%= f.text_field :course, maxlength: 3, size: 3, is: 'core-input' %>
+            </paper-input-decorator>
+            
+            <paper-input-decorator label="Title (ex: Operating Systems)">
+                <%= f.text_field :title, is: 'core-input' %>
+            </paper-input-decorator>
+            
+            <br>
+            <%= f.label 'Choose Required Prerequisites (if any):' %>
+            <div>
+                <%= f.select(:courses, options_for_select(@courses), {}, { id:'actual_select_courses', multiple: true, size: 6 }) %>
+            </div>
+    
+            <br>
+            <div layout horizontal center-justified>
+                <paper-button id="material_update_course">Update</paper-button>
+            </div>
+    
+            <%= f.submit 'Update', hidden: "", id: 'actual_update_course' %>
+        <% end %>
+    </paper-shadow>
+</div>
+
+<script>
+    $("#drawer_core_menu")[0].selected = 1;
+    <% @course.courses.each do |prereq| %>
+        $('#actual_select_courses option[value=<%= prereq.id %>]').prop('selected', true);
+    <% end %>
+</script>

@@ -1,0 +1,59 @@
+<% content_for :title do %>
+    Semesters
+<% end %>
+
+<div layout horizontal center-justified style="margin-top:15px;">
+    <% if @active_semester %>
+        <h3>Active Semester: </h3>
+        
+        <div style="margin-top: 12px;margin-left: 8px;">
+            <%= form_for(@active_semester) do |f| %>
+            
+                <div hidden>
+                    <%= f.select(:active, options_for_select(@semesters, @active_semester.id)) %>
+                </div>
+                
+                
+                <div hidden id="offering_course_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;">
+                    <div class="error" layout horizontal center-justified style="width:100%;max-width:260px;">
+                      <div class="error-text" flex>A course must be selected!</div>
+                      <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
+                    </div>
+                </div>
+                        
+                <div layout horizontal center-justified>     
+                    <paper-dropdown-menu label="Choose Active Semester" style="margin-top:0;padding-top:0;">
+                        <paper-dropdown class="dropdown" id="semester_dropdown" style="height:185px;">
+                            <core-menu class="menu" selected="<%= @semesters.index([@active_semester.semester, @active_semester.id]) %>"> 
+                                <% @semesters.each do |semester| %>
+                                    <paper-item value=<%= semester[1] %>><%= semester[0] %></paper-item>
+                                <% end %>
+                            </core-menu>
+                        </paper-dropdown>
+                    </paper-dropdown-menu>
+                </div>
+                
+                <div>
+                    <%= f.submit 'Submit', id: 'submit_active_semester', hidden: '' %>
+                </div>
+                
+            <% end %>
+        </div>
+    <% else %>
+        <h3>No Active Semester</h3>
+    <% end %>
+</div>
+
+<core-overlay backdrop id="new_semester_overlay">
+    <%= render 'new' %>
+</core-overlay>
+
+<paper-fab icon="add" title="Create New Semester" id="new_semester_material"></paper-fab>
+
+<% if notice %>
+ 	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color: #4CAF50;" duration="10000" opened ></paper-toast>
+<% end %>
+
+<script>
+    $("#drawer_core_menu")[0].selected = 4;
+</script>
