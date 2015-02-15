@@ -67,6 +67,10 @@ jQuery ->
       $("#baluga3")[0].selected = 2
       $("core-drawer-panel")[0].closeDrawer();
       return
+
+    $("#drawer_choose_minor_item_baluga").click ->
+      $("#choose_minor_overlay")[0].toggle()
+      return
       
     $("#drawer_change_password_item_baluga").click ->
       $("#change_password_overlay")[0].toggle()
@@ -117,8 +121,12 @@ jQuery ->
       $("#categories_link")[0].click()
       return
 
+    $("#choose_minor_overlay").on "core-overlay-close-completed", (e) ->
+      $("#drawer_core_menu")[0].selected= ($("#baluga3")[0].selected )
+      return
+      
     $("#change_password_overlay").on "core-overlay-close-completed", (e) ->
-      $("#drawer_core_menu")[0].selected= ($("#baluga3")[0].selected * 2)
+      $("#drawer_core_menu")[0].selected= ($("#baluga3")[0].selected)
       $("#user_password").parent().attr "error", ""
       $("#user_password").parent().attr "isInvalid", "false"
       $("#user_password_confirmation").parent().attr "error", ""

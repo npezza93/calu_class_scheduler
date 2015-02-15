@@ -1,0 +1,15 @@
+<core-overlay id="choose_minor_overlay" backdrop transition="core-transition-top" id="minor_form_modal" style="width:291px;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+    <h2 layout horizontal center-justified>Choose Minor(s)</h2>
+    <%= form_for(@user, remote: true) do |f| %>
+        <% majors = (Major.all.map { |major| [major.major, major.id] if @user.major_id != major.id}) %>
+        <%= f.select(:minor, options_for_select(majors, @user.minor), {}, { id:'actual_select_courses', multiple: true, size: 3 }) %>
+        
+        <div center-justified layout horizontal style="margin-top: 14px;">
+            <paper-button>
+              <input id="submit_signup" name="commit" type="submit" value="Submit">
+            </paper-button>
+        </div>
+        
+    <% end %>
+    
+</core-overlay>

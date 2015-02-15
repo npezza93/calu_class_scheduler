@@ -26,9 +26,9 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = false
+  config.assets.debug = true
   config.serve_static_assets=false
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
@@ -47,6 +47,6 @@ Rails.application.configure do
     :domain => 'https://cal-class-schedule-npezza.c9.io/',
     :authentication => :plain,
     :user_name => 'beautiful.soup.notification',
-    :password => 'calvulcanspython'
+    :password => 'CalU011293!!15'
   }
 end

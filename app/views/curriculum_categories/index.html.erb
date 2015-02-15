@@ -6,27 +6,66 @@
     <%= render "new" %>
 </core-overlay>
 
-<div layout horizontal center-justified>
-    <div class="table-responsive-vertical shadow-z-1">
-        <table id="table" class="table">
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Credits</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <% @category.each do |category| %>
-                    <tr>
-                        <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_courses_path(category), id:"cur_cat_link" %></td>
-                        <td data-title="Credits"><%= category.required_amount_of_credits %></td>
-                        <td style="text-align:center;" ><%= link_to "Delete Category", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' }, id:"cur_cat_link" %></td>
-                    </tr> 
-                <% end %>
-            </tbody>
-        </table>
+
+<div horizontal wrap layout around-justified>
+    <div>
+        <div layout horizontal center-justified>
+            <h4><%= @user.major.major %> Major</h4>
+        </div>
+        
+        <div layout horizontal center-justified>
+            <div class="table-responsive-vertical shadow-z-1">
+                <table id="table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Credits</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% @major_categories.each do |category| %>
+                            <tr>
+                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_courses_path(category), id:"cur_cat_link" %></td>
+                                <td data-title="Credits"><%= category.required_amount_of_credits %></td>
+                                <td style="text-align:center;" ><%= link_to "Delete Category", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' }, id:"cur_cat_link" %></td>
+                            </tr> 
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <div layout horizontal center-justified>
+            <h4><%= @user.major.major %> Minor</h4>
+        </div>
+        
+        <div layout horizontal center-justified>
+            <div class="table-responsive-vertical shadow-z-1">
+                <table id="table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Credits</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% @minor_categories.each do |category| %>
+                            <tr>
+                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_courses_path(category), id:"cur_cat_link" %></td>
+                                <td data-title="Credits"><%= category.required_amount_of_credits %></td>
+                                <td style="text-align:center;" ><%= link_to "Delete Category", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' }, id:"cur_cat_link" %></td>
+                            </tr> 
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

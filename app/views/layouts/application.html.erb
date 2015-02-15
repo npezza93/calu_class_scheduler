@@ -2,16 +2,18 @@
 <html>
 <head>
   <title>CalU Scheduler</title>
+  <%= html_import_tag "application" %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  <%= html_import_tag "application" %>
   <%= csrf_meta_tags %>
+   <link href="/assets/core-icon/core-icon.css" rel="stylesheet" shim-shadowdom>
+   <link href="/assets/core-icon/core-transition-overlay.css" rel="stylesheet" shim-shadowdom>
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="minimal-ui, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 
 </head>
-<body unresolved fullbleed layout vertical>
+<body unresolved>
 <style>
   core-header-panel {
   background: white;
@@ -67,6 +69,7 @@ core-toolbar {
                 <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
                 <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
                 <core-item id="drawer_new_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
+                <core-item id="drawer_choose_minor_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="bookmark"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Choose Minor(s)</span></core-item>
                 <core-item id="drawer_change_password_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="lock-outline"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Change Password</span></core-item>
               <% end %>
             <% end %>

@@ -6,7 +6,9 @@ class CurriculumCategoriesController < ApplicationController
   before_filter :authorize
   
   def index
-    @category = CurriculumCategory.where(major: @major)
+    @major_categories = CurriculumCategory.where(major: @major, minor: false)
+    @minor_categories = CurriculumCategory.where(major: @major, minor: true)
+    
     @new_category = CurriculumCategory.new
   end
 
@@ -45,7 +47,7 @@ class CurriculumCategoriesController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:curriculum_category).permit(:category, :required_amount_of_credits)
+      params.require(:curriculum_category).permit(:category, :required_amount_of_credits, :minor)
     end
     
     def set_user

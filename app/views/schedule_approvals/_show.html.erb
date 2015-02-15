@@ -7,20 +7,14 @@
 
 <% else %>
 
-  <% if not ScheduleApproval.exists?(user: params[:user_id], semester: @active_semester) %>
-    <% t_creds = 0 %>
-    <% Schedule.where(user_id: @user.id, semester: @active_semester).find_each { |s| t_creds += s.offering.course.credits } %>
-    <% if t_creds >= 12 %>
-      <%= form_for [@user, ScheduleApproval.new], remote: true do |f| %>
-        <%= f.submit 'submit', hidden: '', id: 'submit_approval_button' %>
-        <paper-button raised style="background-color:#fafafa;font-weight:bold;" id="submit_approval_paper_button"><core-icon style="color:#4CAF50;" icon="check"></core-icon><span style="color:#4CAF50;margin-top:4px;">&nbsp;&nbsp;&nbsp;&nbsp;Submit for Approval</span></paper-button>
-      <% end %>
-    <% else %>
-      <paper-button raised disabled style="background-color:#fafafa;font-weight:bold;"><core-icon icon="check"></core-icon><span style="margin-top:4px;">&nbsp;&nbsp;&nbsp;&nbsp;Submit for Approval</span></paper-button>
+  <% if (not ScheduleApproval.exists?(user: params[:user_id], semester: @active_semester)) and Schedule.where(user_id: @user.id, semester: @active_semester).exists? %>
+    <%= form_for [@user, ScheduleApproval.new], remote: true do |f| %>
+      <%= f.submit 'submit', hidden: '', id: 'submit_approval_button' %>
+      <paper-button raised style="background-color:#fafafa;font-weight:bold;" id="submit_approval_paper_button"><core-icon style="color:#4CAF50;" icon="check"></core-icon><span style="color:#4CAF50;margin-top:4px;">&nbsp;&nbsp;&nbsp;&nbsp;Submit for Approval</span></paper-button>
     <% end %>
-  <% elsif ScheduleApproval.where(user: params[:user_id], semester: @active_semester).take.approved %>
+  <% elsif ScheduleApproval.exists?(user: params[:user_id], semester: @active_semester) and ScheduleApproval.where(user: params[:user_id], semester: @active_semester).take.approved %>
     <paper-shadow z=0 style="border-radius:3px;padding:10px;background-color:#fafafa;color:#4CAF50;">Schedule Approved</paper-shadow>
-  <% else %>
+  <% elsif ScheduleApproval.exists?(user: params[:user_id], semester: @active_semester) %>
     <paper-shadow z=0 style="border-radius:3px;padding:10px;background-color:#fafafa;color:#e51c23;">Schedule Pending Approval</paper-shadow>
   <% end %>
 

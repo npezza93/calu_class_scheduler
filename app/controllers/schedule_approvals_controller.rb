@@ -7,6 +7,8 @@ class ScheduleApprovalsController < ApplicationController
     @approval = ScheduleApproval.new(user: @user)
     
     if @approval.save
+      # @user.send_for_approval
+      # @user.send_approval_submission_confirmation
       respond_to do |format|
         flash[:notice] = 'Schedule successfully submitted for approval' 
         format.js {}
@@ -18,6 +20,8 @@ class ScheduleApprovalsController < ApplicationController
   def update
     if User.find(session[:user_id]).advisor
       if @approval.update(approved: "true")
+        # @user.send_approved_confirmation
+        # @user.send_approved
         respond_to do |format|
           format.js {}
           format.html { redirect_to user_schedules_path(@user) }

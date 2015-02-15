@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208151021) do
+ActiveRecord::Schema.define(version: 20150215155542) do
 
   create_table "courses", force: true do |t|
     t.string   "subject"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150208151021) do
     t.integer  "major_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "minor"
   end
 
   add_index "curriculum_categories", ["major_id"], name: "index_curriculum_categories_on_major_id"
@@ -55,6 +56,18 @@ ActiveRecord::Schema.define(version: 20150208151021) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "needed_courses", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.integer  "semester_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "needed_courses", ["course_id"], name: "index_needed_courses_on_course_id"
+  add_index "needed_courses", ["semester_id"], name: "index_needed_courses_on_semester_id"
+  add_index "needed_courses", ["user_id"], name: "index_needed_courses_on_user_id"
 
   create_table "offerings", force: true do |t|
     t.integer  "course_id"
@@ -127,6 +140,7 @@ ActiveRecord::Schema.define(version: 20150208151021) do
     t.datetime "password_reset_sent_at"
     t.integer  "advised_by"
     t.integer  "major_id"
+    t.text     "minor"
   end
 
   add_index "users", ["major_id"], name: "index_users_on_major_id"

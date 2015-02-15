@@ -10,6 +10,16 @@ jQuery ->
     $("#material_create_category").click ->
       $("#actual_create_category")[0].click()
       return
+
+    $('#major_paper_radio').on 'change', ->
+      $('#curriculum_category_minor_true').prop 'checked', false
+      $('#curriculum_category_minor_false').prop 'checked', true
+      return
+      
+    $('#minor_paper_radio').on 'change', ->
+      $('#curriculum_category_minor_false').prop 'checked', false
+      $('#curriculum_category_minor_true').prop 'checked', true
+      return
         
     $(document).ready ->
       table = $("#table")

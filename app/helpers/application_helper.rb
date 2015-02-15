@@ -35,7 +35,7 @@ module ApplicationHelper
 
       @user_courses = Transcript.where(user_id: uid).collect(&:course_id)
            
-      CurriculumCategory.where(major: User.find(uid).major_id).each do |category|
+      CurriculumCategory.where(major: User.find(uid).major_id, minor: false).each do |category|
          @category_courses[category.id] = category.curriculum_category_courses.collect(&:course_id)
          category.curriculum_category_courses.each do |course|
            @class_hash[course.course_id] = Set.new (course.course.courses.collect(&:id))
@@ -52,6 +52,27 @@ module ApplicationHelper
          if @category_credits[category.id] and ((@category_credits[category.id] - category.required_amount_of_credits) >= 0)
             @category_credits.delete(category.id)
          end
+      end
+      
+      User.find(uid).minor.each do |minor_id|
+        CurriculumCategory.where(major: minor_id, minor: true).each do |category|
+           @category_courses[category.id] = category.curriculum_category_courses.collect(&:course_id)
+           category.curriculum_category_courses.each do |course|
+             @class_hash[course.course_id] = Set.new (course.course.courses.collect(&:id))
+           end
+           @common_courses[category.id] = ((@category_courses[category.id] & @user_courses).collect { |c_id| Course.find(c_id) }).sort! { |a,b| b.course <=> a.course }
+           @category_credits[category.id] = (@common_courses[category.id].collect { |c| Course.find(c).credits }).inject(:+)
+           
+           if @category_credits[category.id] != nil
+             @remaining_credits[category.id] = category.required_amount_of_credits - @category_credits[category.id]
+           else
+              @remaining_credits[category.id] = category.required_amount_of_credits
+           end
+          
+           if @category_credits[category.id] and ((@category_credits[category.id] - category.required_amount_of_credits) >= 0)
+              @category_credits.delete(category.id)
+           end
+        end    
       end
       
       @categories_left = @category_credits.keys
@@ -71,14 +92,23 @@ module ApplicationHelper
       @categories_left.each do |cat|
           @new_category_courses[cat] = @category_courses[cat] & @sorted
       end
-
+        
+        NeededCourse.where(user_id: uid, semester: Semester.where(active: true).take).destroy_all
+      @new_category_courses.values.flatten.each do |course_id|
+          if not Offering.where(course_id: course_id, semester: Semester.where(active: true).take).exists?
+               NeededCourse.create(user_id: uid, semester: Semester.where(active: true).take, course_id: course_id)
+          end
+      end
+          
+      
       work_schedules = WorkSchedule.where(user_id: uid, semester: Semester.where(active: true).take)
       @new_category_courses.each do |k, v|
         x = []
         y = []
+
         v.each do |id|
           Offering.where(course_id: id, semester: Semester.where(active: true).take).each do |offering|
-          work_schedules.each do |work|
+           work_schedules.each do |work|
             if offering.days_time.days.include?(work.work_days_time.days)
               start_time = Time.parse(offering.days_time.start_time + "00-01-01")
               end_time  = Time.parse(offering.days_time.end_time + "00-01-01")

@@ -7,7 +7,19 @@
         <paper-input-decorator label="Required Number of Credits">
             <%= f.number_field :required_amount_of_credits, is: 'core-input', in: 1..200 %>
         </paper-input-decorator>
-
+        
+        <div layout horizontal center-justified>
+            <paper-radio-group selected="major">
+              <paper-radio-button name="major" label="Major" id="major_paper_radio"></paper-radio-button>
+              <paper-radio-button name="minor" label="Minor" id="minor_paper_radio"></paper-radio-button>
+            </paper-radio-group>
+        </div>
+        
+        <div hidden>
+            <%= f.radio_button(:minor, false, options ={ checked: "checked"}) %>
+            <%= f.radio_button(:minor, true) %>
+        </div>
+        
         <br>
         <div layout horizontal center-justified>
             <paper-button id="material_create_category">Create Category</paper-button>

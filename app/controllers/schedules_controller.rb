@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_session_user
   before_action :set_user
   before_action :set_semester
   
@@ -48,6 +49,10 @@ class SchedulesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_session_user
+      @session_user = User.find(session[:user_id])
+    end
+    
     def set_schedule
       @schedule = Schedule.find(params[:id])
     end

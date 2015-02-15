@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require webcomponentsjs/webcomponents
 //= require jquery
-//= require date
 //= require jquery_ujs
+//= require webcomponentsjs/webcomponents
+//= require date
 //= require_tree .

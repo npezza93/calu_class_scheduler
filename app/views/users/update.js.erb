@@ -18,10 +18,11 @@
 <% else %>
     <% if @user.advisor or @user.administrator %>
         window.location = '/users'
-    <% elsif cuurent_page?(edit_user_path(@user)) %>
+    <% elsif controller.controller_name == 'user' && controller.action_name == 'edit' %>
         window.location = '/users/' + <%= @user.id %> +'/schedules'
     <% end %>
-    $("#change_password_overlay")[0].toggle();
+    $("#change_password_overlay")[0].close();
+    $("#choose_minor_overlay")[0].close();
     $("#user_password").parent().attr("error", "");
     $("#user_password").parent().attr("isInvalid", "false");
     $("#user_password_confirmation").parent().attr("error", "");

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :needed_courses, only: [:index]
+
   resources :semesters, only: [:index, :new, :create, :update]
 
   resources :curriculum_categories, :only => [:create, :destroy, :index] do

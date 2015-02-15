@@ -25,15 +25,17 @@
     
     
     <div layout horizontal center-justified id="big_schedule_table">
-        <core-tooltip position="top">
-            <div tip>
-                <br>
-                <p style="text-align:center;font-weight:bold;">
-                    By clicking a time slot you can indicate the times you are not available<br>
-                    Clicking the name of the day means you are unavailble that entire day<br>
-                    Clicking the time on the left means you are unavailable everyday at that time
-                </p>
-            </div>
+        <% if not @session_user.advisor %>
+            <core-tooltip position="top">
+                <div tip>
+                    <br>
+                    <p style="text-align:center;font-weight:bold;">
+                        By clicking a time slot you can indicate the times you are not available<br>
+                        Clicking the name of the day means you are unavailble that entire day<br>
+                        Clicking the time on the left means you are unavailable everyday at that time
+                    </p>
+                </div>
+        <% end %>
         <paper-shadow style="padding-top:1px;padding-bottom:1px;background: #fafafa;border-radius:3px;">
         <table style="margin:15px;border-collapse:separate !important;border-spacing: 11px 3px !important;border:none;" id="schedule_calendar">
             <tr style="border:none;">
@@ -61,18 +63,22 @@
         
         </table>
         </paper-shadow>
-        </core-tooltip>
+        <% if not @session_user.advisor %>
+            </core-tooltip>
+        <% end %>
     </div>
 </div>
 
 <div id="small_schedule_table">
-    <div>
-        <br>
-        <p style="text-align:center;font-weight:bold;">
-            By clicking a time slot you can indicate the times you are not available<br>
-            Clicking the name of the day means you are unavailble that entire day<br>
-        </p>
-    </div>
+    <% if not @session_user.advisor %>
+        <div>
+            <br>
+            <p style="text-align:center;font-weight:bold;">
+                By clicking a time slot you can indicate the times you are not available<br>
+                Clicking the name of the day means you are unavailble that entire day<br>
+            </p>
+        </div>
+    <% end %>
     <core-animated-pages selected="0" transitions="slide-from-right" id="baluga4">
         <% days_of_week_names = [["Monday","M"], ["Tuesday", "T"], ["Wednesday", "W"], ["Thursday", "R"], ["Friday", "F"]] %>
         <% days_of_week_names.each_with_index do |day_of_week, index| %>

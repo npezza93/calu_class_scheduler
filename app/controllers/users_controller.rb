@@ -67,10 +67,10 @@ class UsersController < ApplicationController
         if User.find(session[:user_id]).advisor or User.find(session[:user_id]).administrator
           format.html { redirect_to users_path, notice: @user.email + " was successfully updated." }
         else
-          format.html {redirect_to users_schedule_path(@user), notice: 'Password was successfully changed!' }
+          format.html {redirect_to users_schedule_path(@user), notice: 'Your settings were successfully updated!' }
         end
         format.json { render :index, status: :ok, location: @user }
-        flash[:notice] = "Password was successfully changed!"
+        flash[:notice] = "Your settings were successfully updated!"
         format.js {}
       else
         format.js {}
@@ -105,7 +105,7 @@ class UsersController < ApplicationController
           params.require(:user).permit(:advised_by, :major_id, :advisor, :administrator)
         end
       else
-        params.require(:user).permit(:email, :password, :password_confirmation, :advised_by, :major_id)
+        params.require(:user).permit(:password, :password_confirmation, :advised_by, :major_id, {:minor => []})
       end
     end
 
