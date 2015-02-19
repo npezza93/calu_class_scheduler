@@ -19,7 +19,7 @@
             <tbody>
                 <% @offerings.each do |offering| %>
                     <tr>
-                        <td data-title="Course"><%= offering.course.title %></td>
+                        <td data-title="Course"><%= offering.course.subject + offering.course.course.to_s + "-"+ offering.section + ": " + offering.course.title %></td>
                         <td data-title="Instructor"><%= offering.user.email[0..-10].capitalize %></td>
                         <td data-title="Days"><%= offering.days_time.days %></td>
                         <td data-title="Start Time"><%= offering.days_time.start_time %></td>
@@ -37,7 +37,3 @@
 <% if notice %>
     <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color: #4CAF50" duration="10000" opened ></paper-toast>
 <% end %>
-
-<script>
-    $("#drawer_core_menu")[0].selected = 2;
-</script>

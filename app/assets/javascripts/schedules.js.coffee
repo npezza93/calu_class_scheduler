@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+  
+    $("#drawer_core_menu")[0].setAttribute "selected", "1"
+
     $("#fab_new_schedule").click ->
         $("#new_schedule_modal")[0].toggle()
         return
@@ -16,41 +19,6 @@ jQuery ->
         $("#big_schedule_table")[0].removeAttribute "hidden", ""
         $("#small_schedule_table")[0].setAttribute "hidden", ""
         $(".small_schedule_course_title").attr "hidden", ""
-      return
-      
-    $("#media_query_schedule_new").on "core-media-change", (e) ->
-      console.log("hi")
-      if e.originalEvent.detail.matches is true
-        $(".new_schedule_headers").attr "hidden", ""
-        $(".new_schedule_credit_td").attr "hidden", ""
-        $(".new_schedule_times_td").attr "hidden", ""
-        $(".new_schedule_prof_td").attr "hidden", ""
-        $(".new_schedule_nc_td").attr "hidden", ""
-        $(".new_schedule_check_td").attr "rowspan", 2
-        $(".new_schedule_course_td").attr "rowspan", 2
-        $(".new_schedule_day_times_td").removeAttr "hidden"
-        $(".resp_new_schedule_tr").removeAttr "hidden"
-        $(".common_tr").attr "hidden", ""
-      else
-        $(".resp_new_schedule_tr").attr "hidden", ""
-        $(".new_schedule_credit_td").removeAttr "hidden", ""
-        $(".new_schedule_times_td").removeAttr "hidden", ""
-        $(".new_schedule_prof_td").removeAttr "hidden", ""
-        $(".new_schedule_nc_td").removeAttr "hidden", ""
-        $(".new_schedule_headers").removeAttr "hidden", ""
-        $(".new_schedule_check_td").removeAttr "rowspan"
-        $(".new_schedule_course_td").removeAttr "rowspan"
-        $(".new_schedule_day_times_td").attr "hidden", ""
-        $(".common_tr").removeAttr "hidden"
-      return
-      
-    $(".offering_checkbox").click (e) ->
-      id_string = "#schedule_new_actual_select option[value=" + e.currentTarget.id + "]"
-      if $("#schedule_new_actual_select")[0].options[$(id_string).index()].selected
-        $("#schedule_new_actual_select")[0].options[$(id_string).index()].selected = false
-      else
-        $("#schedule_new_actual_select")[0].options[$(id_string).index()].selected = true
-      $("#submit_schedule_changes")[0].click()
       return
 
     $("#drawer_transcripts_item_baluga").click ->
@@ -112,6 +80,10 @@ jQuery ->
     $("#drawer_course_item").click ->
       $("#delete_course_link")[0].click()
       return
+
+    $("#drawer_needed_course_item").click ->
+      $("#needed_course_link")[0].click()
+      return
     
     $("#drawer_users_item").click ->
       $("#users_link")[0].click()
@@ -143,4 +115,126 @@ jQuery ->
         $("#submit_upload_transcript_button")[0].click()
         return
     
+      return
+    
+    $('.next_day').click ->
+      page = $('#baluga4')[0].selected
+      if page < 4
+        $('#baluga4')[0].selected = $('#baluga4')[0].selected + 1
+      return
+    $('.prev_day').click ->
+      page = $('#baluga4')[0].selected
+      if page > 0
+        $('#baluga4')[0].selected = $('#baluga4')[0].selected - 1
+      return
+#work schedules
+    $('.day_time_slot').click (e) ->
+      if $("#drawer_core_menu").children().length <11
+        if $('.' + e.originalEvent.toElement.className.split(' ')[1]).text() == "" and !$('.' + e.originalEvent.toElement.className.split(' ')[1]).hasClass("half_time_slot")
+          $('.' + e.originalEvent.toElement.className.split(' ')[1]).toggleClass 'selected_work_day_time_slot'
+          id_string = '#work_schedule_work_days_time_id option[value=' + e.originalEvent.toElement.id.substring(1) + ']'
+          if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+          else
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+          $("#submit_work_schedule_button")[0].click()
+      return
+      
+    $('.time_slot').click (e) ->
+      if $("#drawer_core_menu").children().length <11
+        time_string = $.trim(e.toElement.innerHTML.replace(/:/g, ''))
+        
+        if $('.M' + time_string).text() == "" and !$('.M' + time_string).hasClass("half_time_slot")
+          $('.M' + time_string).toggleClass 'selected_work_day_time_slot'
+          id_string = '#work_schedule_work_days_time_id option[value=' + $('.M' + time_string)[0].id.substring(1) + ']'
+          if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+          else
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+        
+        if $('.T' + time_string).text() == "" and !$('.T' + time_string).hasClass("half_time_slot")
+          $('.T' + time_string).toggleClass 'selected_work_day_time_slot'
+          id_string = '#work_schedule_work_days_time_id option[value=' + $('.T' + time_string)[0].id.substring(1) + ']'
+          if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+          else
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+        
+        if $('.W' + time_string).text() == "" and !$('.W' + time_string).hasClass("half_time_slot")
+          $('.W' + $.trim(e.toElement.innerHTML.replace(/:/g, ''))).toggleClass 'selected_work_day_time_slot'
+          id_string = '#work_schedule_work_days_time_id option[value=' + $('.W' + time_string)[0].id.substring(1) + ']'
+          if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+          else
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+          
+        if $('.R' + time_string).text() == "" and !$('.R' + time_string).hasClass("half_time_slot")
+          $('.R' + $.trim(e.toElement.innerHTML.replace(/:/g, ''))).toggleClass 'selected_work_day_time_slot'
+          id_string = '#work_schedule_work_days_time_id option[value=' + $('.R' + time_string)[0].id.substring(1) + ']'
+          if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+          else
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+          
+        if $('.F' + time_string).text() == ""  and !$('.F' + time_string).hasClass("half_time_slot")
+          $('.F' + $.trim(e.toElement.innerHTML.replace(/:/g, ''))).toggleClass 'selected_work_day_time_slot'
+          id_string = '#work_schedule_work_days_time_id option[value=' + $('.F' + time_string)[0].id.substring(1) + ']'
+          if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+          else
+            $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+        $("#submit_work_schedule_button")[0].click()
+      return
+    
+    $('.day').click (e) ->
+      if $("#drawer_core_menu").children().length <11
+        `var id_string`
+        begin_time = new Date(2000, 1, 1, 8, 0o00)
+        end_time = new Date(2000, 1, 1, 21, 30)
+        while begin_time.getTime() <= end_time.getTime()
+          if e.toElement.innerHTML != 'Thursday'
+            if $('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).text() == '' and !$('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).hasClass("half_time_slot")
+              $('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).toggleClass 'selected_work_day_time_slot'
+              id_string = '#work_schedule_work_days_time_id option[value=' + $('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt'))[0].id.substring(1) + ']'
+              if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+                $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+              else
+                $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+          else
+            if $('.R' + begin_time.toString('hmmtt')).text() == '' and !$('.' + e.toElement.innerHTML.charAt(0) + begin_time.toString('hmmtt')).hasClass("half_time_slot")
+              $('.R' + begin_time.toString('hmmtt')).toggleClass 'selected_work_day_time_slot'
+              id_string = '#work_schedule_work_days_time_id option[value=' + $('.R' + begin_time.toString('hmmtt'))[0].id.substring(1) + ']'
+              if $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected
+                $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = false
+              else
+                $('#work_schedule_work_days_time_id')[0].options[$(id_string).index()].selected = true
+          begin_time.setMinutes begin_time.getMinutes() + 30
+        $("#submit_work_schedule_button")[0].click()
+      return
+      
+#schedule approvals
+    $("#submit_approval_paper_button").click ->
+      $("#submit_approval_button")[0].click()
+      return
+      
+    $("#advisor_approve_schedule_button").click ->
+      $("#advisor_approve_schedule_link")[0].click()
+      return      
+     
+    $(document).keydown (e) ->
+      pg_selected = $('#baluga3')[0].selected
+      switch e.which
+        when 37
+          # left
+          if pg_selected != 0
+            $('#baluga3')[0].selected = pg_selected - 1
+        when 39
+          # right
+          if pg_selected != 2
+            $('#baluga3')[0].selected = pg_selected + 1
+        else
+          return
+        # exit this handler for other keys
+      e.preventDefault()
+      # prevent the default action (scroll / move caret)
       return

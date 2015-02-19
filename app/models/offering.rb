@@ -52,6 +52,7 @@ class Offering < ActiveRecord::Base
             o.user_id      = prof_id
             o.course_id    = course_id
             o.days_time_id = day_time_id
+            o.section      = row[2]
           end
           offering.save
         rescue

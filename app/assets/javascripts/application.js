@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require webcomponentsjs/webcomponents
 //= require date
-//= require_tree .

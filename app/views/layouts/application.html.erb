@@ -4,10 +4,10 @@
   <title>CalU Scheduler</title>
   <%= html_import_tag "application" %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application', params[:controller] %>
   <%= csrf_meta_tags %>
    <link href="/assets/core-icon/core-icon.css" rel="stylesheet" shim-shadowdom>
-   <link href="/assets/core-icon/core-transition-overlay.css" rel="stylesheet" shim-shadowdom>
+
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="minimal-ui, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
@@ -49,6 +49,7 @@ core-toolbar {
               <% end %>
               <core-item id="drawer_users_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="perm-identity"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Students</span></core-item>
               <core-item id="drawer_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="class"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Courses</span></core-item>
+              <core-item id="drawer_needed_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="receipt"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Needed Courses</span></core-item>
               <core-item id="drawer_offerings_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Semester Offerings</span></core-item>
               <core-item id="drawer_new_major_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="bookmark"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Add a New Major</span></core-item>
               <core-item id="drawer_semesters_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="today"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;"> Semesters</span></core-item>
@@ -92,6 +93,7 @@ core-toolbar {
       <div hidden>
         <%= link_to "Users", users_path, id: "users_link" %>
         <%= link_to "Courses", courses_path, id: "delete_course_link" %>
+        <%= link_to "Needed Courses", needed_courses_path, id: "needed_course_link" %>
         <%= link_to "offerings", offerings_path, id: "offerings_link" %>
         <%= link_to "New Major", new_major_path, id: "new_major_link" %>
         <%= link_to "Semesters", semesters_path, id: "semesters_link" %>

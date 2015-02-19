@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+
     $('.day_time_slot').click (e) ->
       if $("#drawer_core_menu").children().length <11
         if $('.' + e.originalEvent.toElement.className.split(' ')[1]).text() == "" and !$('.' + e.originalEvent.toElement.className.split(' ')[1]).hasClass("half_time_slot")

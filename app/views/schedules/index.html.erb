@@ -29,24 +29,17 @@
 <%= render "users/minor" %>
 
 <core-animated-pages id="baluga3" selected="1" transitions="slide-from-right">
-  	<section id="section0">
-	    <%= render "transcripts/index", :@transcripts => @user.transcripts.all %>
-  	</section>
+    <!--Transcript page that is loaded in via ajax after the page loads-->
+  	<section id="section0"></section>
 
   	<section id="section1">
         <%= render "index" %>
   	</section>
   	
-  	<section id="section2">
-  	    <div id="temp_replace">
-            <%= render "new" %>
-        </div>
-  	</section>
+  	<!--New Schedules page that is loaded via ajax after page loads-->
+  	<section id="section2"><div id="temp_replace"></div></section>
+  	
 </core-animated-pages>
-
-<script>
-    $("#drawer_core_menu")[0].selected = 1;
-</script>
 
 <div id="toast_div"></div>
 
@@ -56,23 +49,17 @@
 
 
 <script>
-    $(document).keydown(function(e) {
-        var pg_selected = $("#baluga3")[0].selected;
-        switch(e.which) {
-            case 37: // left
-            if (pg_selected != 0) {
-                $("#baluga3")[0].selected = pg_selected -1
-            }
-            break;
-
-            case 39: // right
-            if (pg_selected != 2) {
-                $("#baluga3")[0].selected = pg_selected +1
-            }
-            break;
-    
-            default: return; // exit this handler for other keys
-        }
-        e.preventDefault(); // prevent the default action (scroll / move caret)
-    });
+    $(function() {
+        $.ajax({
+          url: "<%= new_user_schedule_path(@user) %>",
+        }).done(function(html) {
+          $("#temp_replace").append(html);
+        });
+        
+        $.ajax({
+          url: "<%= user_transcripts_path(@user) %>",
+        }).done(function(html) {
+          $("#section0").append(html);
+        });
+    }); 
 </script>

@@ -9,22 +9,30 @@ class TranscriptsController < ApplicationController
   def index
     @transcripts = @user.transcripts.all
     @courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1]
+    render :layout => false
   end
   
   def create
     @transcript = @user.transcripts.create(transcript_params)
     @transcript.user = @user
     
+    @index_reload_flag = false
     if (Schedule.where(user: @user, semester: @active_semester).collect { |c| c.offering.course.id }).include?(@transcript.course_id)
       Schedule.where(user: @user, offering_id: (Offering.where(course_id: @transcript.course_id, semester: @active_semester).take.id)).take.destroy
+      @index_reload_flag = true
     end
-    @offerings = Schedule.where(user: @user, semester: @active_semester).collect { |c| c.offering }
-    @day_hash = view_context.create_day_hash(@offerings)
-
+    
+    if @index_reload_flag
+      @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
+      @day_hash = view_context.create_day_hash(@offerings)
+      @new_work_schedule = WorkSchedule.new
+      @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
+    end
+    
     respond_to do |format|
       if @transcript.save
         format.html { redirect_to user_transcripts_path, notice: "you have taken this course" }
-        format.js {@schedules, @common_courses, @new_category_courses, @remaining_credits  = view_context.sched_algorithm(@user.id) }
+        format.js { @index_reload_flag}
       else
         format.html { render :index }
         format.js { @errors = true }

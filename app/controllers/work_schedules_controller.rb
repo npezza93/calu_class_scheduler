@@ -7,13 +7,19 @@ class WorkSchedulesController < ApplicationController
   end
 
   def create
+    inserts = []
     WorkSchedule.delete_all(user: @user)
-    ((params[:work_schedule][:work_days_time_id]).reject! { |c| c.empty? }).each do |id|
-      WorkSchedule.create(user: @user, work_days_time_id: id)
+    if (params[:work_schedule][:work_days_time_id]).count > 1
+      ((params[:work_schedule][:work_days_time_id]).reject! { |c| c.empty? }).each do |id|
+        inserts.push "(" + @user.id.to_s+ ", " + id.to_s + "," + @active_semester.id.to_s + ")"
+      end
+      sql = "INSERT INTO work_schedules (`user_id`, `work_days_time_id`, `semester_id`) VALUES #{inserts.join(", ")}"
+      (ActiveRecord::Base.connection).execute sql
     end
+    
+    @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
     respond_to do |format|
-      format.html { redirect_to user_schedules_path(@user) }
-      format.js   {@schedules, @common_courses, @new_category_courses, @remaining_credits  = view_context.sched_algorithm(@user.id)}
+      format.js   {}
     end
   end
 

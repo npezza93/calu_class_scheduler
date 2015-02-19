@@ -9,7 +9,6 @@ jQuery ->
       $("#baluga")[0].selected = 0
       return
 
-    
     $("#two").click (e) ->
       $("#baluga")[0].selected = 1
       return

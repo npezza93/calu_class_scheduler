@@ -3,18 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-
-    $("#course_select").val "-1"
-    $("#course_dropdown").on "core-select", (e, detail) ->
-      $("#course_select").val e.originalEvent.detail.item.getAttribute("value")
+  
+    $("#transcript_course_select").val "-1"
+    $("#transcript_course_dropdown").on "core-select", (e, detail) ->
+      $("#transcript_course_select").val e.originalEvent.detail.item.getAttribute("value")
       return
       
     $("#grade_select").val "-1"
-    
-    $("#submit_taken_class_material").click ->
-      $("#submit_taken_class_button")[0].click()
-      return
-          
     $("#grade_dropdown").on "core-select", (e, detail) ->
       $("#grade_select").val e.originalEvent.detail.item.getAttribute("value")
+      return
+      
+    $("#submit_taken_class_material").click ->
+      $("#submit_taken_class_button")[0].click()
       return

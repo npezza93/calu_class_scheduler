@@ -35,7 +35,6 @@
 </div>
 
 <script>
-    $("#drawer_core_menu")[0].selected = 1;
     <% @course.courses.each do |prereq| %>
         $('#actual_select_courses option[value=<%= prereq.id %>]').prop('selected', true);
     <% end %>
