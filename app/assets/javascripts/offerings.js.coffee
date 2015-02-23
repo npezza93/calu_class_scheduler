@@ -32,11 +32,9 @@ jQuery ->
         return
       return
       
-    $("#cancel_upload_offering").click ->
-      $("#offering_overlay")[0].toggle();
-      return  
-      
-      
+    $("#cancel_offering_button").click ->
+      window.history.back()
+      return         
       
       
       

@@ -12,6 +12,8 @@ class SchedulesController < ApplicationController
     @new_work_schedule = WorkSchedule.new
     @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
     @work_time_slots = WorkDaysTime.all
+    @majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"]
+    @minors = (Major.all.map { |major| [major.major, major.id] if @user.major_id != major.id})
   end
 
   def new

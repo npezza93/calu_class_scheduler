@@ -27,6 +27,7 @@ class TranscriptsController < ApplicationController
       @day_hash = view_context.create_day_hash(@offerings)
       @new_work_schedule = WorkSchedule.new
       @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
+      @work_time_slots = WorkDaysTime.all
     end
     
     respond_to do |format|
@@ -43,12 +44,23 @@ class TranscriptsController < ApplicationController
   def import
     if @ext == ".pdf"
       @bad_courses = Transcript.import(import_params, @user.id)
+      @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
+      @day_hash = view_context.create_day_hash(@offerings)
+      @new_work_schedule = WorkSchedule.new
+      @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
+      @work_time_slots = WorkDaysTime.all
+      @session_user = User.find(session[:user_id])
+      
+      Schedule.where(user: @user, semester: @active_semester).destroy_all
+      
       respond_to do |format|
+        format.js {}
         format.html { redirect_to user_schedules_path(@user), notice: "Transcript Uploaded successfullly!" }
       end
     else
       respond_to do |format|
         format.html { redirect_to user_schedules_path(@user), notice: "Only PDF files are accepted!" }
+        format.js { @error = "Only PDF files are accepted!" }
       end
     end
   end
@@ -93,9 +105,9 @@ class TranscriptsController < ApplicationController
     def only_yours
       logged_in = User.find_by_id(session[:user_id])
       # going_to = User.find_by_id(params[:id])
-      if not (logged_in.advisor or logged_in.administrator)
+      if not logged_in.advisor
         unless params[:user_id].to_i == session[:user_id].to_i
-          redirect_to user_transcripts_path(logged_in)
+          redirect_to user_schedules_path(logged_in)
         end
       else
         if User.find_by_id(params[:user_id]).advisor or User.find_by_id(params[:user_id]).administrator

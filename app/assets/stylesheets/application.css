@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #F9F9F9;
+  color: #333;
+  font-family: 'RobotoDraft', sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  margin: 0;
+}
+
+p, ol, ul, td {
+  font-family: 'RobotoDraft', sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+#whole_screen_uploader {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    height: 100%; 
+    width: 100%;
+    background: #ececec;
+    display:none;
+}
+

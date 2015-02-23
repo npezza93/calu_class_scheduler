@@ -70,7 +70,7 @@ jQuery ->
           return
       return
 
-
+    $(".offering_checkbox").click (e) ->
       asel_opts = undefined
       credit_count = undefined
       disable = undefined

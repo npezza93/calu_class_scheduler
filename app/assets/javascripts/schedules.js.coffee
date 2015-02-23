@@ -92,10 +92,6 @@ jQuery ->
     $("#drawer_categories_item").click ->
       $("#categories_link")[0].click()
       return
-
-    $("#choose_minor_overlay").on "core-overlay-close-completed", (e) ->
-      $("#drawer_core_menu")[0].selected= ($("#baluga3")[0].selected )
-      return
       
     $("#change_password_overlay").on "core-overlay-close-completed", (e) ->
       $("#drawer_core_menu")[0].selected= ($("#baluga3")[0].selected)
@@ -111,10 +107,6 @@ jQuery ->
       
     $("#upload_transcript_button").click ->
       $("#upload_transcript_link")[0].click()
-      $("#upload_transcript_link").on "change", ->
-        $("#submit_upload_transcript_button")[0].click()
-        return
-    
       return
     
     $('.next_day').click ->
@@ -228,13 +220,16 @@ jQuery ->
           # left
           if pg_selected != 0
             $('#baluga3')[0].selected = pg_selected - 1
+            $('#drawer_core_menu')[0].setAttribute 'selected', parseInt($('#drawer_core_menu')[0].selected) - 1
         when 39
           # right
           if pg_selected != 2
             $('#baluga3')[0].selected = pg_selected + 1
+            $('#drawer_core_menu')[0].setAttribute 'selected', parseInt($('#drawer_core_menu')[0].selected) + 1
         else
           return
         # exit this handler for other keys
       e.preventDefault()
       # prevent the default action (scroll / move caret)
       return
+      

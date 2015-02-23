@@ -12,7 +12,6 @@ jQuery ->
 
 
 
-
       
       
     $("#drawer_transcripts_item_baluga").click ->

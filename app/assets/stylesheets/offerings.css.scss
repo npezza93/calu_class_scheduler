@@ -6,7 +6,8 @@
     position:fixed;
     bottom:0;
     right:0;
-    margin:15px;
+    margin-bottom:15px;
+    margin-right:25px;
 }
 
 #new_offering_shadow {
@@ -30,4 +31,15 @@
     padding:20px 20px;
     outline: 1px solid rgba(0,0,0,0.2);
     box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+#stop_offering_link {
+	color: #4a89dc;
+	text-decoration: none;
+	transition: all .2s ease;
+}
+
+#stop_offering_link:hover {
+	color: #666;
+	text-decoration: underline;
 }

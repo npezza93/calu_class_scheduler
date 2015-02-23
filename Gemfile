@@ -49,3 +49,6 @@ gem 'activerecord-import'
 gem 'pdf-reader'
 
 gem 'datejs-rails'
+
+gem 'remotipart'
+gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'

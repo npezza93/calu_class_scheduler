@@ -21,8 +21,9 @@
         </div>
         
         <br>
-        <div layout horizontal center-justified>
-            <paper-button id="material_create_category">Create Category</paper-button>
+        <div layout horizontal end-justified style="color:#03A9F4;">
+            <paper-button core-overlay-toggle>Cancel</paper-button>
+            <paper-button id="material_create_category">Create</paper-button>
         </div>
     
         <%= f.submit 'Create category', hidden: "", id: 'actual_create_category' %>

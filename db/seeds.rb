@@ -37,6 +37,11 @@ Course.create(subject: 'CIS', course: 352, title: 'Global, Economic and Social E
 Course.create(subject: 'MAT', course: 381, title: 'Calculus III')
 Course.create(subject: 'MAT', course: 441, title: 'Linear Algebra II')
 Course.create(subject: 'COM', course: 101, title: 'Oral Communication')
+Course.create(subject: 'MAT', course: 382, title: 'Calculus IV')
+Course.create(subject: 'COM', course: 230, title: 'Argument/Debate')
+Course.create(subject: 'COM', course: 250, title: 'Oral Com Management')
+Course.create(subject: 'MAT', course: 181, title: 'College Algebra')
+
 
 Course.where(subject: "CSC", course: 124).take.courses = [Course.where(subject: "CSC", course: 120).take]
 Course.where(subject: "CSC", course: 216).take.courses = [Course.where(subject: "MAT", course: 195).take]
@@ -52,7 +57,7 @@ Course.where(subject: "CSC", course: 460).take.courses = [Course.where(subject: 
 Course.where(subject: "CSC", course: 475).take.courses = [Course.where(subject: "CSC", course: 216).take, Course.where(subject: "CSC", course: 328).take]
 Course.where(subject: "CSC", course: 490).take.courses = [Course.where(subject: "CSC", course: 265).take, Course.where(subject: "ENG", course: 217).take]
 Course.where(subject: "CSC", course: 492).take.courses = [Course.where(subject: "CSC", course: 490).take]
-Course.where(subject: "CIS", course: 302).take.courses = [Course.where(subject: "CSC", course: 265).take]
+Course.where(subject: "CSC", course: 302).take.courses = [Course.where(subject: "CSC", course: 265).take]
 Course.where(subject: "CSC", course: 304).take.courses = [Course.where(subject: "CSC", course: 124).take]
 Course.where(subject: "CSC", course: 306).take.courses = [Course.where(subject: "CSC", course: 120).take]
 Course.where(subject: "CSC", course: 420).take.courses = [Course.where(subject: "CSC", course: 328).take]
@@ -63,6 +68,7 @@ Course.where(subject: "ENG", course: 217).take.courses = [Course.where(subject: 
 Course.where(subject: "CET", course: 440).take.courses = [Course.where(subject: "CSC", course: 124).take]
 Course.where(subject: "MAT", course: 381).take.courses = [Course.where(subject: "MAT", course: 282).take]
 Course.where(subject: "MAT", course: 441).take.courses = [Course.where(subject: "MAT", course: 341).take]
+Course.where(subject: 'MAT', course: 382).take.courses = [Course.where(subject: "MAT", course: 381).take]
 
 DaysTime.create(days: "MWF", start_time: "8:00 am", end_time: "8:50 am")
 DaysTime.create(days: "MWF", start_time: "9:00 am", end_time: "9:50 am")
@@ -230,3 +236,86 @@ Semester.create(semester: "Fall 2015")
 Semester.create(semester: "Spring 2016")
 Semester.create(semester: "Fall 2016")
 Semester.create(semester: "Spring 2017")
+
+Major.create(major: "Computer Science")
+Major.create(major: "Mathematics")
+Major.create(major: "Computer Engineering Technology")
+Major.create(major: "Chemistry")
+
+CurriculumCategory.create!([
+  {category: "Core", required_amount_of_credits: 36, major_id: 1, minor: false},
+  {category: "Values", required_amount_of_credits: 3, major_id: 1, minor: false},
+  {category: "Elective1", required_amount_of_credits: 6, major_id: 1, minor: false},
+  {category: "Elective2", required_amount_of_credits: 6, major_id: 1, minor: false},
+  {category: "Critical Thinking Skills", required_amount_of_credits: 3, major_id: 1, minor: false},
+  {category: "Technological Literacy", required_amount_of_credits: 6, major_id: 1, minor: false},
+  {category: "Building a Sense of Community", required_amount_of_credits: 1, major_id: 1, minor: false},
+  {category: "Communication Skills", required_amount_of_credits: 9, major_id: 1, minor: false},
+  {category: "Mathematics", required_amount_of_credits: 18, major_id: 1, minor: false},
+  {category: "Required", required_amount_of_credits: 15, major_id: 1, minor: true},
+  {category: "Electives", required_amount_of_credits: 6, major_id: 1, minor: true},
+  {category: "Required", required_amount_of_credits: 15, major_id: 2, minor: true},
+  {category: "Electives", required_amount_of_credits: 6, major_id: 2, minor: true}
+])
+
+CurriculumCategoryCourse.create!([
+  {curriculum_category_id: 1, course_id: 5},
+  {curriculum_category_id: 1, course_id: 7},
+  {curriculum_category_id: 1, course_id: 9},
+  {curriculum_category_id: 1, course_id: 11},
+  {curriculum_category_id: 1, course_id: 12},
+  {curriculum_category_id: 1, course_id: 13},
+  {curriculum_category_id: 1, course_id: 21},
+  {curriculum_category_id: 1, course_id: 17},
+  {curriculum_category_id: 1, course_id: 18},
+  {curriculum_category_id: 1, course_id: 19},
+  {curriculum_category_id: 1, course_id: 20},
+  {curriculum_category_id: 1, course_id: 14},
+  {curriculum_category_id: 2, course_id: 36},
+  {curriculum_category_id: 3, course_id: 29},
+  {curriculum_category_id: 3, course_id: 30},
+  {curriculum_category_id: 3, course_id: 31},
+  {curriculum_category_id: 3, course_id: 32},
+  {curriculum_category_id: 3, course_id: 33},
+  {curriculum_category_id: 4, course_id: 6},
+  {curriculum_category_id: 4, course_id: 15},
+  {curriculum_category_id: 4, course_id: 16},
+  {curriculum_category_id: 4, course_id: 10},
+  {curriculum_category_id: 5, course_id: 2},
+  {curriculum_category_id: 6, course_id: 3},
+  {curriculum_category_id: 6, course_id: 8},
+  {curriculum_category_id: 7, course_id: 34},
+  {curriculum_category_id: 7, course_id: 35},
+  {curriculum_category_id: 8, course_id: 28},
+  {curriculum_category_id: 8, course_id: 39},
+  {curriculum_category_id: 8, course_id: 27},
+  {curriculum_category_id: 9, course_id: 22},
+  {curriculum_category_id: 9, course_id: 25},
+  {curriculum_category_id: 9, course_id: 23},
+  {curriculum_category_id: 9, course_id: 24},
+  {curriculum_category_id: 9, course_id: 26},
+  {curriculum_category_id: 9, course_id: 37},
+  {curriculum_category_id: 9, course_id: 38},
+  {curriculum_category_id: 10, course_id: 2},
+  {curriculum_category_id: 10, course_id: 3},
+  {curriculum_category_id: 10, course_id: 14},
+  {curriculum_category_id: 10, course_id: 5},
+  {curriculum_category_id: 10, course_id: 22},
+  {curriculum_category_id: 11, course_id: 6},
+  {curriculum_category_id: 11, course_id: 15},
+  {curriculum_category_id: 11, course_id: 16},
+  {curriculum_category_id: 11, course_id: 8},
+  {curriculum_category_id: 11, course_id: 10},
+  {curriculum_category_id: 12, course_id: 25},
+  {curriculum_category_id: 12, course_id: 23},
+  {curriculum_category_id: 12, course_id: 24},
+  {curriculum_category_id: 12, course_id: 37},
+  {curriculum_category_id: 13, course_id: 40}
+])
+
+User.create(first_name: "Anthony", last_name: "Pyzdrowski", email: "pyzdrowski@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 1)
+User.create(first_name: "Weifeng", last_name: "Chen", email: "chen@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 1)
+User.create(first_name: "Paul", last_name: "Sible", email: "sible@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 1)
+User.create(first_name: "Jeffrey", last_name: "Sumey", email: "sumey@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 3)
+User.create(first_name: "Ghassan", last_name: "Salim", email: "salim@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 3)
+User.create(first_name: "Gary", last_name: "DeLorenzo", email: "delorenzo@calu.edu", advisor: true, password: "password", password_confirmation: "password", major_id: 3)

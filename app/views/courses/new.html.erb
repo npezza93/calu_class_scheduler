@@ -24,8 +24,9 @@
                 <%= f.select(:courses, options_for_select(@courses), {}, { id:'actual_select_courses', multiple: true, size: 6 }) %>
             </div>
     
-            <br>
-            <div layout horizontal center-justified>
+            <br><br>
+            <div layout horizontal end-justified style="color:#03A9F4;">
+                <paper-button id="cancel_new_course">Cancel</paper-button>
                 <paper-button id="material_create_course">Create Course</paper-button>
             </div>
     

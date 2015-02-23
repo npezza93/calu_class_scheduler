@@ -30,7 +30,7 @@ $.each(nsel_opts, function(index, value) {
 $.each(nsel_opts, function(index1, value1) {
   $.each(work_opts, function(index2, value2) {
     if (!(nsel_dates_array[index1][0].indexOf(work_dates_array[index2][0]) === -1)) {
-      if (work_dates_array[index2][1] <= nsel_dates_array[index1][2] && nsel_dates_array[index1][1] <= work_dates_array[index2][2]) {
+      if (work_dates_array[index2][1] < nsel_dates_array[index1][2] && nsel_dates_array[index1][1] < work_dates_array[index2][2]) {
         disable.push(value1);
       }
     }
@@ -72,12 +72,13 @@ $(".big_new_schedule_table").each(function(index, node ) {
                 $(node).find(".remaining_credits_tr").css("border-bottom", "none");
             }
         } else {
+            $(node).find(".new_schedule_headers").removeAttr("hidden", "");
             $(node).find(".prof_th").attr("hidden", "");
             $(node).find(".days_th").attr("hidden", "");
             $(node).find(".time_th").attr("hidden", "");
             $(node).find(".common_tr").attr("hidden", "");
             if ($("#media_query_schedule_new")[0].queryMatches) {
-                $(node).find(".remaining_credits_tr").css("border-bottom", "1px solid rgba(0, 0, 0, 0.12)");
+                $(node).find(".remaining_credits_tr").css("border-bottom", "none");
             }
         }
     } else {

@@ -1,5 +1,5 @@
 <% content_for :title do %>
-    <%= @user.email %>'s Schedule
+    <%= @user.first_name.capitalize + " " + @user.last_name.capitalize %>'s Schedule
 <% end %>
 
 <div style="width:100%;" layout horizontal end-justified>
@@ -7,26 +7,28 @@
 </div>
 
 <core-overlay backdrop transition="core-transition-top" id="new_schedule_modal" style="background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-    <p>To Upload an Updated Transcript:</p>
+    <h3>To Upload an Updated Transcript:</h3>
     <ul>
-        <li>Log in to VIP and go DegreeWorks</li>
+        <li>Log in to VIP and go to DegreeWorks</li>
         <li>Click the "Class History" link</li>
-        <li>In the the new window that just opened press "ctrl + p"</li>
-        <li>Save this page as a PDF</li>
+        <li>Once the new window opens, <br>save this page as  a PDF</li>
         <li>When uploading select this PDF</li>
     </ul>
-    <div layout center-justified horizontal>
+    <br>
+    <div layout end-justified horizontal style="color:#03A9F4;">
+        <paper-button core-overlay-toggle>Cancel</paper-button>
         <paper-button id="upload_transcript_button">Upload PDF</paper-button>
     </div>
 
-    <%= form_tag import_user_transcripts_path, multipart: true do %>
+    <%= form_tag import_user_transcripts_path, multipart: true, remote: true, id: "new_transcript_pdf" do %>
         <%= file_field_tag :transcript_file, id: "upload_transcript_link", hidden: "" %>
-        <%= submit_tag 'upload', id: "submit_upload_transcript_button", hidden: "" %>
     <% end %>
+
 </core-overlay>
 
-<%= render "users/change_password" %>
-<%= render "users/minor" %>
+<% if not @session_user.advisor %>
+    <%= render "users/student_settings" %>
+<% end %>
 
 <core-animated-pages id="baluga3" selected="1" transitions="slide-from-right">
     <!--Transcript page that is loaded in via ajax after the page loads-->
@@ -62,4 +64,19 @@
           $("#section0").append(html);
         });
     }); 
+
+    $('#new_transcript_pdf').fileupload({
+        dataType: 'script',
+        add: function (e, data) {
+            types = /(\.|\/)(pdf)$/i;
+            file = data.files[0];
+            if (types.test(file.type) || types.test(file.name)) {
+                $("#new_schedule_modal")[0].toggle();
+                $("#whole_screen_uploader").fadeIn();
+                data.submit();
+            } else { 
+                $("#toast_div").html("<paper-toast class=\"capsule\" text=\"Only PDF files are accepted!\" style=\"padding-right: 60px;color:#eeff41;\" duration=\"10000\" opened ></paper-toast>");
+            }
+        }
+    });
 </script>

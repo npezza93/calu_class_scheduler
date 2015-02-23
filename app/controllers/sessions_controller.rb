@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   skip_before_filter :logged_in?, only: [:new, :create, :destroy]
 
   def new
+    @majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"]
+    @advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["", "-1"]
   end
 
   def create

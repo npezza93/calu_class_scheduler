@@ -1,3 +1,14 @@
 // Place all the styles related to the transcripts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#transcript_remove_link {
+	color: #4a89dc;
+	text-decoration: none;
+	transition: all .2s ease;
+}
+
+#transcript_remove_link:hover {
+	color: #666;
+	text-decoration: underline;
+}

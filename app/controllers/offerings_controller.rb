@@ -44,6 +44,7 @@ class OfferingsController < ApplicationController
       end
     end 
   end    
+  
   def destroy
     @offering.destroy
     respond_to do |format|

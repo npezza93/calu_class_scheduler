@@ -2,9 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-* {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent;
+paper-checkbox::shadow #ink[checked] {
+  color: #03A9F4;
+}
+paper-checkbox::shadow #checkbox.checked {
+  background-color: #03A9F4;
+  border-color: #03A9F4;
+}
+paper-input-decorator /deep/ .focused-underline {
+    /* line color when the input is focused */
+    background-color: #03A9F4;
+}
+
+#new_user_form_shadow {
+    margin:15px;
+    width: 260px;
+    background:#fafafa;
+    border-radius:3px;
+    padding:20px 20px;
 }
 
 #signup_email, #signup_password, #signup_confirmation {
@@ -58,7 +73,7 @@ paper-dropdown-menu, paper-dropdown {
   width: 260px;
 }
 
-#pagination-item, #pagination2-item {
+#pagination-item, #pagination2-item, #pagination3-item {
   font-weight: bold;
 }
 

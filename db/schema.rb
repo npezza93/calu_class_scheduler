@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216181104) do
+ActiveRecord::Schema.define(version: 20150222204652) do
 
   create_table "courses", force: true do |t|
     t.string   "subject"
@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(version: 20150216181104) do
     t.integer  "advised_by"
     t.integer  "major_id"
     t.text     "minor"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["major_id"], name: "index_users_on_major_id"

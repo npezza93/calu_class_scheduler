@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
+//= require jquery-fileupload/basic
 //= require webcomponentsjs/webcomponents
 //= require date

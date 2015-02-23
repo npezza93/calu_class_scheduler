@@ -1,9 +1,8 @@
 <% if not @errors %>
-    $("#transcript_tbody").append("<tr><td data-title=\"Course\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></div></td><td data-title=\"Grade\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= @transcript.grade %></div></td>    <td style=\"text-align:center;\"><div style=\"display:none;\" class=\"user_<%= @transcript.course_id %>_transcript_class\"><%= escape_javascript link_to 'Remove', user_transcript_path(@user, @transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, id: 'transcript_remove_link' %></div></td></tr>");    
-    $(".user_<%= @transcript.course_id %>_transcript_class").slideDown("slow");
+    $("#transcript_tbody").append("<tr id=\"transcript_<%= @transcript.id %>\"><td data-title=\"Course\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></td><td data-title=\"Grade\"><%= @transcript.grade %></td><td style=\"text-align:center;\"><%= escape_javascript link_to 'Remove', user_transcript_path(@user, @transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, remote: true, id: 'transcript_remove_link' %></td></tr>");    
+    $("#transcript_<%= @transcript.id %>").fadeIn();
     $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @transcript.course.title %> added to your transcript!\" style=\"padding-right: 60px;color:#4CAF50;\" duration=\"10000\" opened ></paper-toast>");
-    
-    
+  
     $.ajax({
       url: "<%= new_user_schedule_path(@user) %>",
     }).done(function(html) {
@@ -13,7 +12,7 @@
     <% if @index_reload_flag %>    
       $("#section1").html("<%= escape_javascript render 'schedules/index' %>");
     <% end %>
-    
+
 <% else %>
     <% @transcript.errors.full_messages.each do |message| %>
         $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");

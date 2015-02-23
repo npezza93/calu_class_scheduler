@@ -4,6 +4,10 @@
 
 jQuery ->
     $("#drawer_core_menu")[0].setAttribute "selected", "1"
+
+    $("#cancel_new_course").click ->
+      window.history.back()
+      return    
     
     $("#material_create_course").click ->
       $("#actual_create_course")[0].click()

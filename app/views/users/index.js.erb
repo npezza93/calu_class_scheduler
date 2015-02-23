@@ -24,4 +24,17 @@
     <% if @all_others.last_page? %>
         document.getElementById("pagination2-item").setAttribute("disabled",'');
     <% end %>
+<% elsif (params.has_key?(:page_3)) %>
+    $("<div id='<%= escape_javascript @page_num3 %>_faculty_pg' style='display:none;' >").insertBefore($("#pagination3-item"));
+    <% @faculty.each do |faculty| %>
+        $("#<%= escape_javascript @page_num3 %>_faculty_pg").append("<paper-item layout horizontal center-justified><a id='advisee_list' style='width:20em;text-align:center;'><%= faculty.email %></a></paper-item>");
+    <% end %>
+    
+    $("#<%= @page_num3 %>_faculty_pg").slideDown();
+    
+    $("#link_to_next_page3").html("<%= escape_javascript(paginate(@faculty, :remote => true, param_name: 'page_3').to_s) %>");
+    
+    <% if @faculty.last_page? %>
+        document.getElementById("pagination3-item").setAttribute("disabled",'');
+    <% end %>
 <% end %>

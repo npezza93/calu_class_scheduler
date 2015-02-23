@@ -3,7 +3,23 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+    $('#paper_advisor').change ->
+      document.getElementById('actual_advisor').checked = document.getElementById('paper_advisor').checked
+      if document.getElementById('paper_advisor').checked
+        $('#user_advised_by').val '-1'
+        document.getElementById('advisor_dropdown_menu').setAttribute 'disabled', ''
+        document.getElementById('advisor_collapse').toggle()
+      else
+        $('#user_advised_by').val $($('#advisor_core_menu')[0].selectedItem).attr('value')
+        document.getElementById('advisor_dropdown_menu').removeAttribute 'disabled', ''
+        document.getElementById('advisor_collapse').toggle()
+      return
+
     $("#drawer_core_menu")[0].setAttribute "selected", "0"
+
+    $("#cancel_user_button").click ->
+      window.history.back()
+      return   
     
     $("#actual_select").val "-1"
     $("#advisor_dropdown").on "core-select", (e, detail) ->
@@ -13,6 +29,7 @@ jQuery ->
     $("#actual_major_select").val "-1"
     $("#major_dropdown").on "core-select", (e, detail) ->
       $("#actual_major_select").val e.originalEvent.detail.item.getAttribute("value")
+      $("#user_major_id").val e.originalEvent.detail.item.getAttribute("value")
       return
 
     $("#advisor_dropdown").on "core-select", (e, detail) ->
@@ -26,7 +43,11 @@ jQuery ->
     $("#pagination2-item").click ->
       $("#link_to_next_page2").find("#next_link").click()
       return
-    
+
+    $("#pagination3-item").click ->
+      $("#link_to_next_page3").find("#next_link").click()
+      return
+      
     $('#advisee_signup_fab').click ->
       $('#signup_fab_link')[0].click()
       return
