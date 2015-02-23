@@ -42,6 +42,18 @@ Course.create(subject: 'COM', course: 230, title: 'Argument/Debate')
 Course.create(subject: 'COM', course: 250, title: 'Oral Com Management')
 Course.create(subject: 'MAT', course: 181, title: 'College Algebra')
 
+Course.create(subject: 'ATE', course: 340, title: 'Sports Nutrition')
+Course.create(subject: 'BIO', course: 112, title: 'Bio Sex Tr Dis')
+Course.create(subject: 'DAN', course: 233, title: 'Jazz Tech II')
+Course.create(subject: 'DAN', course: 260, title: 'Modern Dance')
+Course.create(subject: 'HSC', course: 115, title: 'Cur Iss Health')
+Course.create(subject: 'HSC', course: 250, title: 'Hth/Phy Ed Meth')
+Course.create(subject: 'HSC', course: 315, title: 'Fst Aid/Per Safe')
+Course.create(subject: 'NUR', course: 101, title: 'Women Health')
+Course.create(subject: 'PSY', course: 222, title: 'Psy Stress Mgt')
+Course.create(subject: 'REC', course: 165, title: 'Intro Rec Leis')
+Course.create(subject: 'SOW', course: 222, title: 'Human Sex/Soc')
+
 
 Course.where(subject: "CSC", course: 124).take.courses = [Course.where(subject: "CSC", course: 120).take]
 Course.where(subject: "CSC", course: 216).take.courses = [Course.where(subject: "MAT", course: 195).take]
