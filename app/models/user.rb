@@ -10,7 +10,7 @@ end
 
 class User < ActiveRecord::Base
 	  validates :email, presence: true, uniqueness: true
-	  validates_format_of :email, with: /@calu.edu\Z/
+	  validates :email, format: { with: /@calu.edu\Z/, message: "must be a CalU email address" }
   	has_secure_password
   	validates :password, presence: true, length: { minimum: 6 }, if: Proc.new { |a| !(a.password.blank?) }
     validates_with AdvisorValidator

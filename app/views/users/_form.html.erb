@@ -20,7 +20,7 @@
   </paper-input-decorator>
 
   <div hidden>
-    <%= f.select(:major_id, options_for_select(@majors), {}, { id:'actual_major_select' }) %>
+    <%= f.select(:major_id, options_for_select(@majors, ["", "-1"])) %>
   </div>
 
   <div id="major_signup_dropdown_error_msg" layout horizontal center-justified>
@@ -44,7 +44,7 @@
   </div>
   
   <div hidden>
-    <%= f.select(:advised_by, options_for_select(@advisors), {}, { id:'actual_select' }) %>
+    <%= f.select(:advised_by, options_for_select(@advisors, ["", "-1"])) %>
   </div>
 
   <core-collapse opened allowOverflow id="advisor_collapse">
@@ -88,3 +88,7 @@
 <% end %>
 
 <div id="ajax_errors"></div>
+
+<script>
+
+</script>
