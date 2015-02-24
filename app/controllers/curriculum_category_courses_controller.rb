@@ -5,24 +5,36 @@ class CurriculumCategoryCoursesController < ApplicationController
   before_filter :authorize
 
   def create
-    @category_course = @category.curriculum_category_courses.create(curriculum_category_course_params)
-    @category_course.curriculum_category_id= @category.id
+    @category.curriculum_category_courses.destroy_all
+    @course_groups = (curriculum_category_course_params[:course_id]).join("_").split("__").map{ |group| group.split("_").reject(&:empty?) }
+    @course_groups.each do |group|
+      group_id = @category.curriculum_category_courses.pluck(:course_group_id).max
+      group_id = (group_id == nil) ? 1 : group_id + 1
+      group.each do |group_course|
+        @category.curriculum_category_courses.create(course_id: group_course, course_group_id: group_id)
+      end
+    end
+    if params.has_key?(:logic_flag)
+      @category.logic_flag = true
+      @category.save
+    else
+      @category.logic_flag = false
+      @category.save
+    end
     
     respond_to do |format|
-      if @category_course.save
-        format.html { redirect_to curriculum_category_curriculum_category_courses_path, notice: "Course added to category" }
-        format.js {}
-      else
-        format.html { render :index }
-        format.js { @errors = true }
-      end
+      format.html { redirect_to curriculum_category_curriculum_category_courses_path, notice: "Courses for " + @category.category + " submitted" }
     end
   end
 
   def index
     @new_category_course = CurriculumCategoryCourse.new
-    @courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1]
-    @cc_courses = @category.curriculum_category_courses.all
+    @courses = Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
+    @cc_courses = @category.curriculum_category_courses.group_by(&:course_group_id)
+    @max_group_id = @cc_courses.keys.max
+    if @max_group_id == nil
+      @max_group_id = 1
+    end
   end
   
   def destroy
@@ -43,7 +55,7 @@ class CurriculumCategoryCoursesController < ApplicationController
     end
     
     def curriculum_category_course_params
-      params.require(:curriculum_category_course).permit(:course_id)
+      params.require(:curriculum_category_course).permit({:course_id => []})
     end
     
     def authorize

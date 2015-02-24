@@ -17,6 +17,10 @@
             <paper-input-decorator label="Title (ex: Operating Systems)">
                 <%= f.text_field :title, is: 'core-input' %>
             </paper-input-decorator>
+
+            <paper-input-decorator label="Credits (ex: Defaults to 3)">
+                <%= f.text_field :credits, is: 'core-input' %>
+            </paper-input-decorator>
             
             <br>
             <%= f.label 'Choose Required Prerequisites (if any):' %>

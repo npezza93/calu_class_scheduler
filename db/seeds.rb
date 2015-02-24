@@ -253,6 +253,7 @@ Major.create(major: "Computer Science")
 Major.create(major: "Mathematics")
 Major.create(major: "Computer Engineering Technology")
 Major.create(major: "Chemistry")
+Major.create(major: "Computer Information Systems")
 
 CurriculumCategory.create!([
   {category: "Core", required_amount_of_credits: 36, major_id: 1, minor: false},
@@ -325,9 +326,9 @@ CurriculumCategoryCourse.create!([
   {curriculum_category_id: 13, course_id: 40}
 ])
 
-User.create(first_name: "Anthony", last_name: "Pyzdrowski", email: "pyzdrowski@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 1)
-User.create(first_name: "Weifeng", last_name: "Chen", email: "chen@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 1)
-User.create(first_name: "Paul", last_name: "Sible", email: "sible@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 1)
-User.create(first_name: "Jeffrey", last_name: "Sumey", email: "sumey@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 3)
-User.create(first_name: "Ghassan", last_name: "Salim", email: "salim@calu.edu", advisor: true, password: 'password', password_confirmation: 'password', major_id: 3)
-User.create(first_name: "Gary", last_name: "DeLorenzo", email: "delorenzo@calu.edu", advisor: true, password: "password", password_confirmation: "password", major_id: 3)
+User.create(first_name: "Anthony", last_name: "Pyzdrowski", email: "pyzdrowski@calu.edu", advisor: true, password: 'password!!15', password_confirmation: 'password!!15', major_id: 1)
+User.create(first_name: "Weifeng", last_name: "Chen", email: "chen@calu.edu", advisor: true, password: 'password!!15', password_confirmation: 'password!!15', major_id: 1)
+User.create(first_name: "Paul", last_name: "Sible", email: "sible@calu.edu", advisor: true, password: 'password!!15', password_confirmation: 'password!!15', major_id: 1)
+User.create(first_name: "Jeffrey", last_name: "Sumey", email: "sumey@calu.edu", advisor: true, password: 'password!!15', password_confirmation: 'password!!15', major_id: 3)
+User.create(first_name: "Ghassan", last_name: "Salim", email: "salim@calu.edu", advisor: true, password: 'password!!15', password_confirmation: 'password!!15', major_id: 3)
+User.create(first_name: "Gary", last_name: "DeLorenzo", email: "delorenzo@calu.edu", advisor: true, password: "password!!15", password_confirmation: "password!!15", major_id: 3)

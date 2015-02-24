@@ -9,13 +9,12 @@ jQuery ->
         $("#submit_category_class_button")[0].click()
         return
     
-    $("#course_select").val "-1"
-    
     $("#course_dropdown").on "core-select", (e) ->
         $("#course_select").val e.originalEvent.detail.item.getAttribute("value")
         return
 
-
+    $("#logic_flag_toggle").on "change", (e) ->
+      $("#logic_flag")[0].checked = $("#logic_flag_toggle")[0].checked
 
 
 

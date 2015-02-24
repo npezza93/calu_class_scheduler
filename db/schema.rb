@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222204652) do
+ActiveRecord::Schema.define(version: 20150224210349) do
 
   create_table "courses", force: true do |t|
     t.string   "subject"
@@ -22,22 +22,15 @@ ActiveRecord::Schema.define(version: 20150222204652) do
     t.integer  "credits",    default: 3
   end
 
-  create_table "curriculum_categories", force: true do |t|
-    t.string   "category"
-    t.integer  "required_amount_of_credits"
-    t.integer  "major_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "minor"
-  end
-
-  add_index "curriculum_categories", ["major_id"], name: "index_curriculum_categories_on_major_id"
+# Could not dump table "curriculum_categories" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "curriculum_category_courses", force: true do |t|
     t.integer  "curriculum_category_id"
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_group_id"
   end
 
   add_index "curriculum_category_courses", ["course_id"], name: "index_curriculum_category_courses_on_course_id"
