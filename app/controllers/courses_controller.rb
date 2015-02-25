@@ -13,21 +13,30 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    @prereqs = @course.prerequisites.group_by(&:course_group_id)
+    @max_group_id = @prereqs.keys.max
+    if @max_group_id == nil
+      @max_group_id = 1
+    end
     @courses = Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
   end
 
   def create
-    @course = Course.new(course_params)
+    groups = (course_params[:prerequisites]).join("_").split("__").map{ |group| group.split("_").reject(&:empty?) }
+    temp_params = course_params
+    temp_params.delete("prerequisites")
+    @course = Course.new(temp_params)
+    
     @prereqs = []
-    params[:course][:courses].each do |course_id|
-      if course_id != ""
-        @prereqs << Course.find_by_id(course_id)
+    groups.each_with_index do |group, index|
+      group.each do |course_id|
+        @prereqs << Prerequisites.new(prerequisite_course_id: course_id, course_group_id: (index+1))
       end
     end
-    
+
     respond_to do |format|
       if @course.save
-        @course.courses = @prereqs
+        @course.prerequisites = @prereqs
         flash[:notice] = @course.title + " was successfully created!"
         format.js { render :js => "window.location = '/courses'" }
         format.html { redirect_to users_path, notice: @course.title + ' created' }
@@ -41,15 +50,19 @@ class CoursesController < ApplicationController
   end
 
   def update
+    groups = (course_params[:prerequisites]).join("_").split("__").map{ |group| group.split("_").reject(&:empty?) }
+    temp_params = course_params
+    temp_params.delete("prerequisites")
+    
     respond_to do |format|
-      if @course.update(course_params)
+      if @course.update(temp_params)
         @prereqs = []
-        params[:course][:courses].each do |course_id|
-          if course_id != ""
-            @prereqs << Course.find_by_id(course_id)
+        groups.each_with_index do |group, index|
+          group.each do |course_id|
+            @prereqs << Prerequisites.new(prerequisite_course_id: course_id, course_group_id: (index+1))
           end
         end
-        @course.courses = @prereqs
+        @course.prerequisites = @prereqs
         flash[:notice] = @course.title + " was successfully updated!"
         format.js { render :js => "window.location = '/courses'" }
         format.html {redirect_to courses_path, notice: @course.subject + @course.course.to_s + 'successfully updated!' }
@@ -78,7 +91,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:subject, :course, :title, :credits, courses: [:prerequisite_course_id])
+      params.require(:course).permit(:subject, :course, :title, :credits, {:prerequisites => []})
     end
     
     def authorize

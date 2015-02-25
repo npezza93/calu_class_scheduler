@@ -18,12 +18,38 @@
                 <%= f.text_field :title, is: 'core-input' %>
             </paper-input-decorator>
             
+            <paper-input-decorator label="Credits (ex: Defaults to 3)">
+                <%= f.text_field :credits, is: 'core-input' %>
+            </paper-input-decorator>
+            
             <br>
-            <%= f.label 'Choose Required Prerequisites (if any):' %>
-            <div>
-                <%= f.select(:courses, options_for_select(@courses), {}, { id:'actual_select_courses', multiple: true, size: 6 }) %>
+            <%= f.label 'Choose Required Prerequisites (if any):', style: "font-size:15px;font-weight:bold;"%>
+            <br><br>
+            
+            <% @prereqs.each_with_index do |(group_id, prereqs), index| %>
+                <div class="course_prereq_group <%= group_id %>" layout vertical>
+                    <%= f.label 'Group ' + group_id.to_s + ':' %>
+                    <%= f.select(:prerequisites, options_for_select(@courses, prereqs.collect(&:prerequisite_course_id)), {}, { class: "actual_select_courses", multiple: true, size: 6}) %>
+                    <br>
+                </div>
+                <% if @prereqs.size > (index +1) %>
+                    <div layout horizontal center-justified> - OR -</div>
+                <% end %>
+            <% end %>
+
+            <% if @prereqs.blank? %>
+                <div class="course_prereq_group 1" layout vertical>
+                    <%= f.label 'Group 1:' %>
+                    <%= f.select(:prerequisites, options_for_select(@courses), {}, { class: "actual_select_courses", multiple: true, size: 6}) %>
+                    <br>
+                </div>
+            <% end %>
+            
+            
+            <div layout center-justified horizontal style="color:#4CAF50;">
+                <paper-button onclick="orClause()">ADD an or group</paper-button>
             </div>
-    
+            
             <br><br>
             <div layout horizontal end-justified style="color:#03A9F4;">
                 <paper-button id="cancel_new_course">Cancel</paper-button>
@@ -31,12 +57,14 @@
             </div>
     
             <%= f.submit 'Update', hidden: "", id: 'actual_update_course' %>
+            
+            <script>
+                var max_group_id = <%= @max_group_id %>;
+                function orClause() {
+                    max_group_id = max_group_id +1;
+                    $(".course_prereq_group").last().after("<div layout horizontal center-justified> - OR -</div><div class=\"course_prereq_group " + max_group_id + "\"><label>Group " + max_group_id + "</label><%= j f.select(:prerequisites, options_for_select(@courses), {}, { class: "actual_select_courses", multiple: true, size: 6}) %></div>");
+                }
+            </script> 
         <% end %>
     </paper-shadow>
 </div>
-
-<script>
-    <% @course.courses.each do |prereq| %>
-        $('#actual_select_courses option[value=<%= prereq.id %>]').prop('selected', true);
-    <% end %>
-</script>

@@ -23,11 +23,18 @@
             </paper-input-decorator>
             
             <br>
-            <%= f.label 'Choose Required Prerequisites (if any):' %>
-            <div>
-                <%= f.select(:courses, options_for_select(@courses), {}, { id:'actual_select_courses', multiple: true, size: 6 }) %>
+            <%= f.label 'Choose Required Prerequisites (if any):', style: "font-size:15px;font-weight:bold;"%>
+            <br><br>
+            <div class="course_prereq_group 1" layout vertical>
+                <%= f.label 'Group 1:' %>
+                <%= f.select(:prerequisites, options_for_select(@courses), {}, { class: "actual_select_courses", multiple: true, size: 6}) %>
+                <br>
             </div>
-    
+            
+            <div layout center-justified horizontal style="color:#4CAF50;">
+                <paper-button onclick="orClause()">ADD an or group</paper-button>
+            </div>
+            
             <br><br>
             <div layout horizontal end-justified style="color:#03A9F4;">
                 <paper-button id="cancel_new_course">Cancel</paper-button>
@@ -35,6 +42,14 @@
             </div>
     
             <%= f.submit 'Create Course', hidden: "", id: 'actual_create_course' %>
+            
+            <script>
+                var max_group_id = 1;
+                function orClause() {
+                    max_group_id = max_group_id +1;
+                    $(".course_prereq_group").last().after("<div layout horizontal center-justified> - OR -</div><div class=\"course_prereq_group " + max_group_id + "\"><label>Group " + max_group_id + "</label><%= j f.select(:prerequisites, options_for_select(@courses), {}, { class: "actual_select_courses", multiple: true, size: 6}) %></div>");
+                }
+            </script>  
         <% end %>
     </paper-shadow>
 </div>
