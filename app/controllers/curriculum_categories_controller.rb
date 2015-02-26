@@ -1,5 +1,5 @@
 class CurriculumCategoriesController < ApplicationController
-  before_action :set_category, only: [:destroy]
+  before_action :set_category, only: [:destroy,:update]
   before_action :set_user
   before_action :set_major
   
@@ -35,6 +35,15 @@ class CurriculumCategoriesController < ApplicationController
     end
   end
   
+  def update
+    @category.update(category_flag_params)
+    respond_to do |format|
+      format.js {}
+      format.html { redirect_to curriculum_categories_url, notice: @category.category + " successfully deleted!" }
+      format.json { head :no_content }
+    end    
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
@@ -48,6 +57,10 @@ class CurriculumCategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:curriculum_category).permit(:category, :required_amount_of_credits, :minor)
+    end
+
+    def category_flag_params
+      params.require(:curriculum_category).permit(:set_and_or_flag)
     end
     
     def set_user

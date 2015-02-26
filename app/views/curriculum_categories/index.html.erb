@@ -27,7 +27,7 @@
                     <tbody>
                         <% @major_categories.each do |category| %>
                             <tr>
-                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_courses_path(category), id:"cur_cat_link" %></td>
+                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_sets_path(category), id:"cur_cat_link" %></td>
                                 <td data-title="Credits"><%= category.required_amount_of_credits %></td>
                                 <td style="text-align:center;" ><%= link_to "Delete", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' }, id:"cur_cat_link" %></td>
                             </tr> 
@@ -57,7 +57,7 @@
                     <tbody>
                         <% @minor_categories.each do |category| %>
                             <tr>
-                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_courses_path(category), id:"cur_cat_link" %></td>
+                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_sets_path(category), id:"cur_cat_link" %></td>
                                 <td data-title="Credits"><%= category.required_amount_of_credits %></td>
                                 <td style="text-align:center;" ><%= link_to "Delete Category", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' }, id:"cur_cat_link" %></td>
                             </tr> 

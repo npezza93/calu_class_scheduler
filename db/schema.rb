@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224235915) do
+ActiveRecord::Schema.define(version: 20150226182555) do
+
+  create_table "course_sets", force: true do |t|
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "curriculum_category_set_id"
+  end
+
+  add_index "course_sets", ["course_id"], name: "index_course_sets_on_course_id"
+  add_index "course_sets", ["curriculum_category_set_id"], name: "index_course_sets_on_curriculum_category_set_id"
 
   create_table "courses", force: true do |t|
     t.string   "subject"
@@ -25,16 +35,14 @@ ActiveRecord::Schema.define(version: 20150224235915) do
 # Could not dump table "curriculum_categories" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
-  create_table "curriculum_category_courses", force: true do |t|
+  create_table "curriculum_category_sets", force: true do |t|
     t.integer  "curriculum_category_id"
-    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "course_group_id"
+    t.integer  "count"
   end
 
-  add_index "curriculum_category_courses", ["course_id"], name: "index_curriculum_category_courses_on_course_id"
-  add_index "curriculum_category_courses", ["curriculum_category_id"], name: "index_curriculum_category_courses_on_curriculum_category_id"
+  add_index "curriculum_category_sets", ["curriculum_category_id"], name: "index_curriculum_category_sets_on_curriculum_category_id"
 
   create_table "days_times", force: true do |t|
     t.string   "days"

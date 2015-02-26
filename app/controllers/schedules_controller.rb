@@ -102,16 +102,112 @@ class SchedulesController < ApplicationController
       sorted
     end
     
+    def prerequisite_check(courses, user_courses)
+      ok_courses = []
+      courses.each do |course|
+        grouped_prerequisites = course.prerequisites.group_by(&:course_group_id)
+        
+        grouped_prerequisites.each do |group_id, prereq_group|
+          prereq_group.map! { |prereq| prereq.prerequisite_course }
+        end
+        
+        grouped_prerequisites.each do |group_id, prereq_group|
+          prereq_group.map! { |prereq| user_courses.include?(prereq) ? true : false }
+          prereq_group[group_id] = prereq_group.inject(:&)
+        end
+        
+        if grouped_prerequisites.values.inject(:|) 
+          ok_courses << course
+        end
+      end
+      return ok_courses
+    end
+    
     def sched_algorithm(uid) 
-      @schedule = Schedule.new
-      @category_courses = Hash.new
-      @common_courses = Hash.new
-      @category_credits = Hash.new
-      @class_hash = Hash.new
-      @remaining_credits = Hash.new
+      user = User.find(uid)
 
-      @user_courses = Transcript.where(user_id: uid).collect(&:course_id)
-           
+      user_courses = Transcript.where(user_id: 7).map { |transcript| transcript.course } 
+      
+      categories = CurriculumCategory.where(major: 1 , minor: false).group_by(&:id).flatten.flatten  
+      category_courses = categories.map { |category| (category.is_a?(CurriculumCategory)) ? category.curriculum_category_sets.group_by(&:id) : category }
+      category_courses = Hash[*category_courses]
+      
+      category_courses.each do |category_id, sets|
+        sets.each do |set_id, category_sets|
+          category_sets.map! do |category_course|
+            temp_courses = []
+            category_course.course_set.each do |set_course|
+              temp_courses << set_course.course
+            end
+            temp_courses
+          end
+        end
+      end
+      
+      category_courses.each do |category_id, sets|
+        sets.each do |set_id, category_sets|
+          category_sets.flatten!
+        end
+      end
+      
+      category_courses_tf = deep_copy(category_courses)
+      
+      category_courses_tf.each do |category_id, sets|
+        sets.each do |set_id, set_courses|
+          set_courses.map! { |set_course| (user_courses.include?(set_course)) ? true : false }
+        end
+      end
+      
+      complete_sets = []
+      category_courses_tf.each do |category_id, sets|
+        sets.each do |set_id, set_courses|
+          count = CurriculumCategorySet.find(set_id).count
+          if count != nil and set_courses.grep(true).count != count
+            category_courses_tf[category_id][set_id] = false
+          elsif count != nil and set_courses.grep(true).count == count
+            category_courses_tf[category_id][set_id] = true
+          elsif count == nil
+            category_courses_tf[category_id][set_id] = set_courses.inject(:&)
+          end
+        end
+        complete_sets <<  sets.select {|k,v| v }
+        CurriculumCategory.find(category_id).set_and_or_flag ? category_courses_tf[category_id] = sets.values.inject(:|) : category_courses_tf[category_id] = sets.values.inject(:&)
+      end  
+      
+      complete_sets.map!(&:keys).flatten!
+      category_courses_tf.keys.each { |key| category_courses_tf[key] ? category_courses_tf.delete(key) : false }
+      cats_unmet = category_courses_tf.keys
+      category_courses.select! {|k,v| cats_unmet.include?(k) }
+      
+      category_courses.each do |category_id, sets|
+        sets.each do |set_id, set_courses|
+          category_courses[category_id][set_id] = set_courses - user_courses
+        end
+        sets.keys.each { |key| complete_sets.include?(key) ? sets.delete(key) : false }
+        if CurriculumCategory.find(category_id).set_and_or_flag 
+          temp = Hash.new
+          sets.each do |set_id, set_courses|
+            temp[set_id] = set_courses.count
+          end
+          min = temp.min.uniq[0]
+          temp.select! {|k,v| v > min }
+          sets.keys.each { |key| temp.keys.include?key ? sets.delete(key) : false }
+        end
+      end
+
+      category_courses.each do |category_id, sets|
+        sets.each do |set_id, set_courses|
+          category_courses[category_id][set_id] = prerequisite_check(set_courses, user_courses)
+        end
+      end
+    
+
+
+
+
+
+
+
       CurriculumCategory.where(major: User.find(uid).major_id, minor: false).each do |category|
          @category_courses[category.id] = category.curriculum_category_courses.collect(&:course_id)
          category.curriculum_category_courses.each do |course|
@@ -191,5 +287,10 @@ class SchedulesController < ApplicationController
       @schedules = @user.schedules.collect { |course| Offering.find(course.offering_id) }
       
       return @schedules, @common_courses, @new_category_courses, @remaining_credits
+    end
+    
+    
+    def deep_copy(o)
+      Marshal.load(Marshal.dump(o))
     end
 end

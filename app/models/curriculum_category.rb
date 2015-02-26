@@ -4,6 +4,6 @@ class CurriculumCategory < ActiveRecord::Base
   validates :required_amount_of_credits, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   validates_uniqueness_of :category, scope: [:major, :minor]
-  has_many :curriculum_category_courses
+  has_many :curriculum_category_sets
   
 end

@@ -6,9 +6,50 @@ jQuery ->
     $("#drawer_core_menu")[0].setAttribute "selected", "6"
         
     $("#submit_category_class_material").click ->
-        $("#submit_category_class_button")[0].click()
+        decorator = $('#count_decorator')[0]
+        input = $('#count')[0]
+        decorator.isInvalid = !input.validity.valid
+        
+        if $("#course_id option:selected").length == 0
+          $("#cc_set_dropdown_error_msg").fadeIn();
+          $(".category_course_set_select").css("border-bottom", "1px solid #d34336")
+        else
+          $("#cc_set_dropdown_error_msg").fadeOut();
+          $(".category_course_set_select").css("border-bottom", "1px solid #757575")          
+        
+        if !decorator.isInvalid and $("#course_id option:selected").length != 0
+          $("#submit_category_class_button")[0].click()
         return
-    
+
+    $("#submit_edit_set_material").click ->
+        decorator = $('#count_decorator')[0]
+        input = $('#curriculum_category_set_count')[0]
+        decorator.isInvalid = !input.validity.valid
+        
+        if $("#course_id option:selected").length == 0
+          $("#cc_set_dropdown_error_msg").fadeIn();
+          $(".category_course_set_select").css("border-bottom", "1px solid #d34336")
+        else
+          $("#cc_set_dropdown_error_msg").fadeOut();
+          $(".category_course_set_select").css("border-bottom", "1px solid #757575")          
+        
+        if !decorator.isInvalid and $("#course_id option:selected").length != 0
+          $("#submit_category_class_button")[0].click()
+        return
+
+    $('#set_logic_and_paper_radio').on 'change', ->
+      $('#curriculum_category_set_and_or_flag_true').prop 'checked', false
+      $('#curriculum_category_set_and_or_flag_false').prop 'checked', true
+      $("#submit_and_or_flag")[0].click()
+      return
+      
+    $('#set_logic_or_paper_radio').on 'change', ->
+      $('#curriculum_category_set_and_or_flag_false').prop 'checked', false
+      $('#curriculum_category_set_and_or_flag_true').prop 'checked', true
+      $("#submit_and_or_flag")[0].click()
+      return
+      
+      
     $("#course_dropdown").on "core-select", (e) ->
         $("#course_select").val e.originalEvent.detail.item.getAttribute("value")
         return

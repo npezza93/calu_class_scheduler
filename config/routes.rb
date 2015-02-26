@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resources :semesters, only: [:index, :new, :create, :update]
 
-  resources :curriculum_categories, :only => [:create, :destroy, :index] do
-    resources :curriculum_category_courses, :only => [:index, :create, :destroy]
+  resources :curriculum_categories, :only => [:create, :destroy, :index, :update] do
+    resources :curriculum_category_sets
   end
 
   resources :majors, :only => [:create, :new]
