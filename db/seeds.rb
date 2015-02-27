@@ -26,6 +26,7 @@ Course.create(subject: 'MAT', course: 281, title: 'Calculus I')
 Course.create(subject: 'MAT', course: 215, title: 'Statistics')
 Course.create(subject: 'ENG', course: 217, title: 'Scientific and Technical Writing I')
 Course.create(subject: 'ENG', course: 101, title: 'English Composition I')
+Course.create(subject: 'ENG', course: 102, title: 'English Composition II')
 Course.create(subject: 'CIS', course: 321, title: 'Data Base Management Systems and DB Design')
 Course.create(subject: 'CSC', course: 420, title: 'Artificial Intelligence')
 Course.create(subject: 'CSC', course: 424, title: 'Numerical Analysis')
@@ -41,10 +42,8 @@ Course.create(subject: 'MAT', course: 382, title: 'Calculus IV')
 Course.create(subject: 'COM', course: 230, title: 'Argument/Debate')
 Course.create(subject: 'COM', course: 250, title: 'Oral Com Management')
 Course.create(subject: 'MAT', course: 181, title: 'College Algebra')
-
 Course.create(subject: 'ATE', course: 340, title: 'Sports Nutrition')
 Course.create(subject: 'BIO', course: 112, title: 'Bio Sex Tr Dis')
-Course.create(subject: 'DAN', course: 233, title: 'Jazz Tech II')
 Course.create(subject: 'DAN', course: 260, title: 'Modern Dance')
 Course.create(subject: 'HSC', course: 115, title: 'Cur Iss Health')
 Course.create(subject: 'HSC', course: 250, title: 'Hth/Phy Ed Meth')
@@ -52,35 +51,248 @@ Course.create(subject: 'HSC', course: 315, title: 'Fst Aid/Per Safe')
 Course.create(subject: 'NUR', course: 101, title: 'Women Health')
 Course.create(subject: 'PSY', course: 222, title: 'Psy Stress Mgt')
 Course.create(subject: 'REC', course: 165, title: 'Intro Rec Leis')
-Course.create(subject: 'SOW', course: 222, title: 'Human Sex/Soc')
+Course.create(subject: "CHE", course: 101, title: "General Chemistry I", credits: 4)
+Course.create(subject: "CHE", course: 102, title: "General Chemistry II", credits: 4)
+Course.create(subject: "CHE", course: 331, title: "Organic Chemistry I", credits: 4)
+Course.create(subject: "PHY", course: 101, title: "College Physics I", credits: 4)
+Course.create(subject: "PHY", course: 202, title: "College Physics II", credits: 4)
+Course.create(subject: "PHY", course: 203, title: "College Physics III", credits: 4)
+Course.create(subject: "BIO", course: 120, title: "General Zoology", credits: 4)
+Course.create(subject: "BIO", course: 125, title: "General Botany", credits: 4)
+Course.create(subject: "BIO", course: 215, title: "Basic Microbiology", credits: 4)
+Course.create(subject: "PHY", course: 321, title: "Intermediate Electricity and  Magnetism", credits: 4)
+Course.create(subject: "BIO", course: 488, title: "Water Pollution Biology", credits: 4)
+Course.create(subject: "BIO", course: 445, title: "Entomology", credits: 4)
+Course.create(subject: "BIO", course: 248, title: "General Ecology", credits: 4)
+Course.create(subject: "BIO", course: 305, title: "Comparative Vertebrate Anatomy", credits: 4)
+Course.create(subject: "BIO", course: 306, title: "Human Anatomy", credits: 4)
+Course.create(subject: "BIO", course: 325, title: "Animal Histology", credits: 4)
+Course.create(subject: "BIO", course: 327, title: "Parasitology", credits: 4)
+Course.create(subject: "BIO", course: 328, title: "Human Physiology", credits: 4)
+Course.create(subject: "BIO", course: 433, title: "Herpetology", credits: 4)
+Course.create(subject: "BIO", course: 486, title: "Comparative Animal Physiology", credits: 4)
+Course.create(subject: "EAS", course: 150, title: "Introduction to Geology", credits: 4)
+Course.create(subject: "EAS", course: 240, title: "Introduction to Meteorology", credits: 4)
+Course.create(subject: 'CMD', course: 350, title: "Sign/Braille I")
+Course.create(subject: 'COM', course: 351, title: "Rhet: His/The/Cr")
+Course.create(subject: 'ENG', course: 106, title: "Intro to Poetry")
+Course.create(subject: 'ENG', course: 107, title: "Intro to Fiction")
+Course.create(subject: 'ENG', course: 108, title: "Intro to Drama")
+Course.create(subject: 'ENG', course: 112, title: "Myth, Magic, Mys")
+Course.create(subject: 'ENG', course: 127, title: "Woman as Hero")
+Course.create(subject: 'ENG', course: 148, title: "Horror in Lit")
+Course.create(subject: 'ENG', course: 178, title: "Lit and Film")
+Course.create(subject: 'ENG', course: 205, title: "Wld Lit to 1600")
+Course.create(subject: 'ENG', course: 206, title: "Wld Lit after 1600")
+Course.create(subject: 'ENG', course: 301, title: "English Lit I")
+Course.create(subject: 'ENG', course: 306, title: "Press/Law/Eth")
+Course.create(subject: 'ENG', course: 315, title: "Sur/American Wom")
+Course.create(subject: 'ENG', course: 337, title: "Sur/American Lit I")
+Course.create(subject: 'ENG', course: 354, title: "Amer Journalism")
+Course.create(subject: 'ENG', course: 487, title: "Amer Lit Genres")
+Course.create(subject: 'ESP', course: 100, title: "Disab/Pop Med")
+Course.create(subject: 'ESP', course: 210, title: "Sp Ed Found/Col")
+Course.create(subject: 'FRE', course: 101, title: "Elem French I")
+Course.create(subject: 'FRE', course: 102, title: "Elem French II")
+Course.create(subject: 'FRE', course: 203, title: "Inter French I")
+Course.create(subject: 'FRE', course: 204, title: "Inter French II")
+Course.create(subject: 'FRE', course: 341, title: "17th Cent/Class")
+Course.create(subject: 'FRE', course: 343, title: "Age/Fr Romance")
+Course.create(subject: 'FRE', course: 344, title: "Age/Fr Realism")
+Course.create(subject: 'FRE', course: 345, title: "Birth Mod Fr Cul")
+Course.create(subject: 'FRE', course: 346, title: "Cont Fr Cult/Art")
+Course.create(subject: 'PHI', course: 100, title: "Persp in Philo")
+Course.create(subject: 'PHI', course: 115, title: "Logic/Lang")
+Course.create(subject: 'PHI', course: 200, title: "World Religions")
+Course.create(subject: 'PHI', course: 201, title: "Ancient Philo")
+Course.create(subject: 'PHI', course: 206, title: "16th-18th Philo")
+Course.create(subject: 'PHI', course: 220, title: "Ethics")
+Course.create(subject: 'PHI', course: 305, title: "Medieval Philo")
+Course.create(subject: 'PHI', course: 307, title: "Medieval Ethics")
+Course.create(subject: 'PHI', course: 308, title: "Bioethics")
+Course.create(subject: 'PHI', course: 311, title: "Formal Logic I")
+Course.create(subject: 'PHI', course: 312, title: "Formal Logic II")
+Course.create(subject: 'PHI', course: 320, title: "Ethical Theory")
+Course.create(subject: 'PHI', course: 326, title: "Soc/Polit Philo")
+Course.create(subject: 'PHI', course: 355, title: "Philo of Religion")
+Course.create(subject: 'PHI', course: 405, title: "Epistemology")
+Course.create(subject: 'PHI', course: 410, title: "Metaphysics")
+Course.create(subject: 'PHI', course: 415, title: "Philo of Mind")
+Course.create(subject: 'PHI', course: 426, title: "Pheno/Existent")
+Course.create(subject: 'SPN', course: 101, title: "Elm Spanish I")
+Course.create(subject: 'SPN', course: 102, title: "Elm Spanish II")
+Course.create(subject: 'SPN', course: 304, title: "Span Law Enf")
+Course.create(subject: 'SPN', course: 305, title: "Span Business")
+Course.create(subject: 'SPT', course: 305, title: "Ethics in Sport Management")
+Course.create(subject: 'WST', course: 200, title: "Intro to Women Studies")
+Course.create(subject: 'WST', course: 320, title: "Gay, BiSex, Stud")
+Course.create(subject: 'WST', course: 330, title: "Ex Gdr, Rc, Med")
+Course.create(subject: 'ART', course: 109, title: "Landmk Wld Art")
+Course.create(subject: 'ART', course: 243, title: "Intro Asian Art")
+Course.create(subject: 'ART', course: 323, title: "Women in Art")
+Course.create(subject: 'ART', course: 326, title: "Contemp Art")
+Course.create(subject: 'ART', course: 328, title: "Ital Ren Art")
+Course.create(subject: 'COM', course: 275, title: "Art of Film")
+Course.create(subject: 'DAN', course: 132, title: "Ballet Tech I")
+Course.create(subject: 'DAN', course: 133, title: "Jazz Tech I")
+Course.create(subject: 'DAN', course: 232, title: "Ballet Tech I")
+Course.create(subject: 'DAN', course: 301, title: "Theater Dan I")
+Course.create(subject: 'DAN', course: 302, title: "Theater Dan II")
+Course.create(subject: 'GCM', course: 101, title: "Time-Base Med")
+Course.create(subject: 'MUS', course: 100, title: "Intro to Music")
+Course.create(subject: 'MUS', course: 104, title: "Voice Class")
+Course.create(subject: 'MUS', course: 186, title: "Clavinova Ensemble")
+Course.create(subject: 'MUS', course: 187, title: "Guitar Ensemble")
+Course.create(subject: 'MUS', course: 188, title: "String Ensemble")
+Course.create(subject: 'MUS', course: 192, title: "California Sing")
+Course.create(subject: 'MUS', course: 193, title: "Univ Gosp Ch")
+Course.create(subject: 'MUS', course: 196, title: "Jazz Ensemble")
+Course.create(subject: 'MUS', course: 198, title: "Marching Band")
+Course.create(subject: 'MUS', course: 199, title: "Concert Band")
+Course.create(subject: 'MUS', course: 211, title: "Keyboard I")
+Course.create(subject: 'MUS', course: 215, title: "Comp Music I")
+Course.create(subject: 'MUS', course: 300, title: "Jazz (Hist/Form)")
+Course.create(subject: 'MUS', course: 304, title: "American Musical")
+Course.create(subject: 'MUS', course: 305, title: "Carib and Gosip")
+Course.create(subject: 'MUS', course: 306, title: "Opera")
+Course.create(subject: 'MUS', course: 307, title: "Spec Mus Proj")
+Course.create(subject: 'MUS', course: 310, title: "Music in Media")
+Course.create(subject: 'MUS', course: 313, title: "Rock N' Roll")
+Course.create(subject: 'MUS', course: 315, title: "Comp Mus II")
+Course.create(subject: 'MUS', course: 372, title: "Cre Art Elm Ed")
+Course.create(subject: 'PHI', course: 335, title: "Aesthetic Theo")
+Course.create(subject: 'PHI', course: 336, title: "Philo of Film")
+Course.create(subject: 'THE', course: 100, title: "Intro Theat")
+Course.create(subject: 'THE', course: 101, title: "Voice/Speech")
+Course.create(subject: 'THE', course: 131, title: "Fund of Acting")
+Course.create(subject: 'THE', course: 201, title: "Voice/Interpret")
+Course.create(subject: 'THE', course: 231, title: "Intermed Acting")
+Course.create(subject: 'THE', course: 309, title: "Readers Theat")
+Course.create(subject: "BIO", course: 488, title: "Water Pollution Biology", credits: 4)
+Course.create(subject: "BIO", course: 307, title: "Plant Anatomy", credits: 4)
+Course.create(subject: "BIO", course: 336, title: "Plant Taxonomy", credits: 4)
+Course.create(subject: "BIO", course: 407, title: "Mycology", credits: 4)
+Course.create(subject: "HON", course: 150, title: "Honors Composition I")
+Course.create(subject: "HON", course: 100, title: "Honors and University Orientation")
+Course.create(subject: "HON", course: 250, title: "Honors Composition II")
+Course.create(subject: "EDE", course: 211, title: "Instructional Strategies in Elementary and Early Childhood Education")
 
 
-Course.where(subject: "CSC", course: 124).take.courses = [Course.where(subject: "CSC", course: 120).take]
-Course.where(subject: "CSC", course: 216).take.courses = [Course.where(subject: "MAT", course: 195).take]
-Course.where(subject: "CSC", course: 265).take.courses = [Course.where(subject: "CSC", course: 124).take]
-Course.where(subject: "CSC", course: 323).take.courses = [Course.where(subject: "CSC", course: 328).take]
-Course.where(subject: "CSC", course: 328).take.courses = [Course.where(subject: "CSC", course: 265).take]
-Course.where(subject: "CET", course: 350).take.courses = [Course.where(subject: "CSC", course: 265).take]
-Course.where(subject: "CSC", course: 360).take.courses = [Course.where(subject: "CSC", course: 328).take]
-Course.where(subject: "CSC", course: 378).take.courses = [Course.where(subject: "CSC", course: 323).take]
-Course.where(subject: "CSC", course: 400).take.courses = [Course.where(subject: "CSC", course: 378).take]
-Course.where(subject: "CSC", course: 455).take.courses = [Course.where(subject: "CSC", course: 328).take]
-Course.where(subject: "CSC", course: 460).take.courses = [Course.where(subject: "CSC", course: 475).take]
-Course.where(subject: "CSC", course: 475).take.courses = [Course.where(subject: "CSC", course: 216).take, Course.where(subject: "CSC", course: 328).take]
-Course.where(subject: "CSC", course: 490).take.courses = [Course.where(subject: "CSC", course: 265).take, Course.where(subject: "ENG", course: 217).take]
-Course.where(subject: "CSC", course: 492).take.courses = [Course.where(subject: "CSC", course: 490).take]
-Course.where(subject: "CSC", course: 302).take.courses = [Course.where(subject: "CSC", course: 265).take]
-Course.where(subject: "CSC", course: 304).take.courses = [Course.where(subject: "CSC", course: 124).take]
-Course.where(subject: "CSC", course: 306).take.courses = [Course.where(subject: "CSC", course: 120).take]
-Course.where(subject: "CSC", course: 420).take.courses = [Course.where(subject: "CSC", course: 328).take]
-Course.where(subject: "CSC", course: 424).take.courses = [Course.where(subject: "CSC", course: 328).take, Course.where(subject: "MAT", course: 282).take, Course.where(subject: "MAT", course: 341).take]
-Course.where(subject: "MAT", course: 282).take.courses = [Course.where(subject: "MAT", course: 281).take]
-Course.where(subject: "MAT", course: 341).take.courses = [Course.where(subject: "MAT", course: 195).take]
-Course.where(subject: "ENG", course: 217).take.courses = [Course.where(subject: "ENG", course: 101).take]
-Course.where(subject: "CET", course: 440).take.courses = [Course.where(subject: "CSC", course: 124).take]
-Course.where(subject: "MAT", course: 381).take.courses = [Course.where(subject: "MAT", course: 282).take]
-Course.where(subject: "MAT", course: 441).take.courses = [Course.where(subject: "MAT", course: 341).take]
-Course.where(subject: 'MAT', course: 382).take.courses = [Course.where(subject: "MAT", course: 381).take]
+
+
+Prerequisites.create(parent_course_id: Course.where(subject: "HON", course: 250).take, prerequisite_course_id: Course.where(subject: "HON", course: 150).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 407).take, prerequisite_course_id: Course.where(subject: "BIO", course: 125).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 407).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 336).take, prerequisite_course_id: Course.where(subject: "BIO", course: 125).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 336).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 307).take, prerequisite_course_id: Course.where(subject: "BIO", course: 125).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 307).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 124).take, prerequisite_course_id: Course.where(subject: "CSC", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 216).take, prerequisite_course_id: Course.where(subject: "MAT", course: 195).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 265).take, prerequisite_course_id: Course.where(subject: "CSC", course: 124).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 323).take, prerequisite_course_id: Course.where(subject: "CSC", course: 328).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 328).take, prerequisite_course_id: Course.where(subject: "CSC", course: 265).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CET", course: 350).take, prerequisite_course_id: Course.where(subject: "CSC", course: 265).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 360).take, prerequisite_course_id: Course.where(subject: "CSC", course: 328).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 378).take, prerequisite_course_id: Course.where(subject: "CSC", course: 323).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 400).take, prerequisite_course_id: Course.where(subject: "CSC", course: 378).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 455).take, prerequisite_course_id: Course.where(subject: "CSC", course: 328).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 460).take, prerequisite_course_id: Course.where(subject: "CSC", course: 475).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 475).take, prerequisite_course_id: Course.where(subject: "CSC", course: 216).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 475).take, prerequisite_course_id: Course.where(subject: "CSC", course: 328).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 490).take, prerequisite_course_id: Course.where(subject: "CSC", course: 265).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 490).take, prerequisite_course_id: Course.where(subject: "ENG", course: 217).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 492).take, prerequisite_course_id: Course.where(subject: "CSC", course: 490).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 302).take, prerequisite_course_id: Course.where(subject: "CSC", course: 265).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 304).take, prerequisite_course_id: Course.where(subject: "CSC", course: 124).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 306).take, prerequisite_course_id: Course.where(subject: "CSC", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 420).take, prerequisite_course_id: Course.where(subject: "CSC", course: 328).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 424).take, prerequisite_course_id: Course.where(subject: "CSC", course: 328).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 424).take, prerequisite_course_id: Course.where(subject: "MAT", course: 282).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CSC", course: 424).take, prerequisite_course_id: Course.where(subject: "MAT", course: 341).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MAT", course: 282).take, prerequisite_course_id: Course.where(subject: "MAT", course: 281).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MAT", course: 341).take, prerequisite_course_id: Course.where(subject: "MAT", course: 195).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 217).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CET", course: 440).take, prerequisite_course_id: Course.where(subject: "CSC", course: 124).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MAT", course: 381).take, prerequisite_course_id: Course.where(subject: "MAT", course: 282).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MAT", course: 441).take, prerequisite_course_id: Course.where(subject: "MAT", course: 341).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MAT", course: 382).take, prerequisite_course_id: Course.where(subject: "MAT", course: 381).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CHE", course: 102).take, prerequisite_course_id: Course.where(subject: "CHE", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "CHE", course: 331).take, prerequisite_course_id: Course.where(subject: "CHE", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "PHY", course: 101).take, prerequisite_course_id: Course.where(subject: "MAT", course: 281).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "PHY", course: 202).take, prerequisite_course_id: Course.where(subject: "MAT", course: 282).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "PHY", course: 202).take, prerequisite_course_id: Course.where(subject: "PHY", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "PHY", course: 203).take, prerequisite_course_id: Course.where(subject: "PHY", course: 202).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "PHY", course: 321).take, prerequisite_course_id: Course.where(subject: "PHY", course: 202).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 215).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 215).take, prerequisite_course_id: Course.where(subject: "BIO", course: 125).take.id, course_group_id: 2)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 488).take, prerequisite_course_id: Course.where(subject: "CHE", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 445).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 445).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 248).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 2)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 248).take, prerequisite_course_id: Course.where(subject: "BIO", course: 125).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 248).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 305).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 305).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 306).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 306).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 325).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 325).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 327).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 327).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 328).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 328).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 433).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 433).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 486).take, prerequisite_course_id: Course.where(subject: "BIO", course: 120).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 486).take, prerequisite_course_id: Course.where(subject: "BIO", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "COM", course: 351).take, prerequisite_course_id: Course.where(subject: "COM", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "COM", course: 351).take, prerequisite_course_id: Course.where(subject: "COM", course: 230).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 205).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 205).take, prerequisite_course_id: Course.where(subject: "HON", course: 150).take.id, course_group_id: 2)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 206).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 206).take, prerequisite_course_id: Course.where(subject: "HON", course: 150).take.id, course_group_id: 2)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 102).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 301).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 301).take, prerequisite_course_id: Course.where(subject: "ENG", course: 102).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 306).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 306).take, prerequisite_course_id: Course.where(subject: "ENG", course: 102).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 315).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 315).take, prerequisite_course_id: Course.where(subject: "ENG", course: 102).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 337).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 337).take, prerequisite_course_id: Course.where(subject: "ENG", course: 102).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 354).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 354).take, prerequisite_course_id: Course.where(subject: "ENG", course: 102).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 487).take, prerequisite_course_id: Course.where(subject: "ENG", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 487).take, prerequisite_course_id: Course.where(subject: "ENG", course: 102).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "SPN", course: 304).take, prerequisite_course_id: Course.where(subject: "SPN", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "SPN", course: 304).take, prerequisite_course_id: Course.where(subject: "SPN", course: 102).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "ENG", course: 338).take, prerequisite_course_id: Course.where(subject: "ENG", course: 337).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "FRE", course: 102).take, prerequisite_course_id: Course.where(subject: "FRE", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "FRE", course: 204).take, prerequisite_course_id: Course.where(subject: "FRE", course: 203).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "PHI", course: 312).take, prerequisite_course_id: Course.where(subject: "PHI", course: 311).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "SPN", course: 102).take, prerequisite_course_id: Course.where(subject: "SPN", course: 101).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "DAN", course: 232).take, prerequisite_course_id: Course.where(subject: "DAN", course: 132).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 305).take, prerequisite_course_id: Course.where(subject: "MUS", course: 100).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 315).take, prerequisite_course_id: Course.where(subject: "MUS", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "PHI", course: 336).take, prerequisite_course_id: Course.where(subject: "PHI", course: 335).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "THE", course: 101).take, prerequisite_course_id: Course.where(subject: "THE", course: 100).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 211).take, prerequisite_course_id: Course.where(subject: "MUS", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 304).take, prerequisite_course_id: Course.where(subject: "MUS", course: 100).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 313).take, prerequisite_course_id: Course.where(subject: "MUS", course: 100).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 315).take, prerequisite_course_id: Course.where(subject: "MUS", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 372).take, prerequisite_course_id: Course.where(subject: "EDE", course: 211).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "THE", course: 231).take, prerequisite_course_id: Course.where(subject: "THE", course: 131).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "THE", course: 309).take, prerequisite_course_id: Course.where(subject: "THE", course: 201).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 306).take, prerequisite_course_id: Course.where(subject: "MUS", course: 100).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "MUS", course: 306).take, prerequisite_course_id: Course.where(subject: "MUS", course: 215).take.id, course_group_id: 1)
+Prerequisites.create(parent_course_id: Course.where(subject: "BIO", course: 488).take, prerequisite_course_id: Course.where(subject: "CHE", course: 101).take.id, course_group_id: 1)
+
+
+
+
+
+
 
 DaysTime.create(days: "MWF", start_time: "8:00 am", end_time: "8:50 am")
 DaysTime.create(days: "MWF", start_time: "9:00 am", end_time: "9:50 am")
@@ -256,75 +468,27 @@ Major.create(major: "Chemistry")
 Major.create(major: "Computer Information Systems")
 
 CurriculumCategory.create!([
-  {category: "Core", required_amount_of_credits: 36, major_id: 1, minor: false},
-  {category: "Values", required_amount_of_credits: 3, major_id: 1, minor: false},
-  {category: "Elective1", required_amount_of_credits: 6, major_id: 1, minor: false},
-  {category: "Elective2", required_amount_of_credits: 6, major_id: 1, minor: false},
-  {category: "Critical Thinking Skills", required_amount_of_credits: 3, major_id: 1, minor: false},
-  {category: "Technological Literacy", required_amount_of_credits: 6, major_id: 1, minor: false},
-  {category: "Building a Sense of Community", required_amount_of_credits: 1, major_id: 1, minor: false},
-  {category: "Communication Skills", required_amount_of_credits: 9, major_id: 1, minor: false},
-  {category: "Mathematics", required_amount_of_credits: 18, major_id: 1, minor: false},
-  {category: "Required", required_amount_of_credits: 15, major_id: 1, minor: true},
-  {category: "Electives", required_amount_of_credits: 6, major_id: 1, minor: true},
-  {category: "Required", required_amount_of_credits: 15, major_id: 2, minor: true},
-  {category: "Electives", required_amount_of_credits: 6, major_id: 2, minor: true}
+  {category: "Core", major_id: 1, minor: false},
+  {category: "Values", major_id: 1, minor: false},
+  {category: "Electives", major_id: 1, minor: false},
+  {category: "Critical Thinking Skills", major_id: 1, minor: false},
+  {category: "Technological Literacy", major_id: 1, minor: false},
+  {category: "Building a Sense of Community", major_id: 1, minor: false},
+  {category: "Communication Skills", major_id: 1, minor: false},
+  {category: "Mathematics", major_id: 1, minor: false},
+  {category: "Natural Sciences", major_id: 1, minor: false},
+  {category: "Social Sciences", major_id: 1, minor: false},
+  {category: "Humanities", major_id: 1, minor: false},
+  {category: "Fine Arts", major_id: 1, minor: false},
+  {category: "Multiculutual Awareness", major_id: 1, minor: false},
+  {category: "Health and Wellness", major_id: 1, minor: false},
+  {category: "Required", major_id: 1, minor: true},
+  {category: "Electives", major_id: 1, minor: true},
+  {category: "Required", major_id: 2, minor: true},
+  {category: "Electives", major_id: 2, minor: true}
 ])
 
-CurriculumCategoryCourse.create!([
-  {curriculum_category_id: 1, course_id: 5},
-  {curriculum_category_id: 1, course_id: 7},
-  {curriculum_category_id: 1, course_id: 9},
-  {curriculum_category_id: 1, course_id: 11},
-  {curriculum_category_id: 1, course_id: 12},
-  {curriculum_category_id: 1, course_id: 13},
-  {curriculum_category_id: 1, course_id: 21},
-  {curriculum_category_id: 1, course_id: 17},
-  {curriculum_category_id: 1, course_id: 18},
-  {curriculum_category_id: 1, course_id: 19},
-  {curriculum_category_id: 1, course_id: 20},
-  {curriculum_category_id: 1, course_id: 14},
-  {curriculum_category_id: 2, course_id: 36},
-  {curriculum_category_id: 3, course_id: 29},
-  {curriculum_category_id: 3, course_id: 30},
-  {curriculum_category_id: 3, course_id: 31},
-  {curriculum_category_id: 3, course_id: 32},
-  {curriculum_category_id: 3, course_id: 33},
-  {curriculum_category_id: 4, course_id: 6},
-  {curriculum_category_id: 4, course_id: 15},
-  {curriculum_category_id: 4, course_id: 16},
-  {curriculum_category_id: 4, course_id: 10},
-  {curriculum_category_id: 5, course_id: 2},
-  {curriculum_category_id: 6, course_id: 3},
-  {curriculum_category_id: 6, course_id: 8},
-  {curriculum_category_id: 7, course_id: 34},
-  {curriculum_category_id: 7, course_id: 35},
-  {curriculum_category_id: 8, course_id: 28},
-  {curriculum_category_id: 8, course_id: 39},
-  {curriculum_category_id: 8, course_id: 27},
-  {curriculum_category_id: 9, course_id: 22},
-  {curriculum_category_id: 9, course_id: 25},
-  {curriculum_category_id: 9, course_id: 23},
-  {curriculum_category_id: 9, course_id: 24},
-  {curriculum_category_id: 9, course_id: 26},
-  {curriculum_category_id: 9, course_id: 37},
-  {curriculum_category_id: 9, course_id: 38},
-  {curriculum_category_id: 10, course_id: 2},
-  {curriculum_category_id: 10, course_id: 3},
-  {curriculum_category_id: 10, course_id: 14},
-  {curriculum_category_id: 10, course_id: 5},
-  {curriculum_category_id: 10, course_id: 22},
-  {curriculum_category_id: 11, course_id: 6},
-  {curriculum_category_id: 11, course_id: 15},
-  {curriculum_category_id: 11, course_id: 16},
-  {curriculum_category_id: 11, course_id: 8},
-  {curriculum_category_id: 11, course_id: 10},
-  {curriculum_category_id: 12, course_id: 25},
-  {curriculum_category_id: 12, course_id: 23},
-  {curriculum_category_id: 12, course_id: 24},
-  {curriculum_category_id: 12, course_id: 37},
-  {curriculum_category_id: 13, course_id: 40}
-])
+
 
 User.create(first_name: "Anthony", last_name: "Pyzdrowski", email: "pyzdrowski@calu.edu", advisor: true, password: 'password!!15', password_confirmation: 'password!!15', major_id: 1)
 User.create(first_name: "Weifeng", last_name: "Chen", email: "chen@calu.edu", advisor: true, password: 'password!!15', password_confirmation: 'password!!15', major_id: 1)

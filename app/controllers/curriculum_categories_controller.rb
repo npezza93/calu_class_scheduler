@@ -56,7 +56,7 @@ class CurriculumCategoriesController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:curriculum_category).permit(:category, :required_amount_of_credits, :minor)
+      params.require(:curriculum_category).permit(:category, :minor)
     end
 
     def category_flag_params

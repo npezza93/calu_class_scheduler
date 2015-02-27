@@ -3,10 +3,6 @@
         <paper-input-decorator label="Category (ex: Electives, Core, etc.)">
             <%= f.text_field :category, is: 'core-input' %>
         </paper-input-decorator>
-
-        <paper-input-decorator label="Required Number of Credits">
-            <%= f.number_field :required_amount_of_credits, is: 'core-input', in: 1..200 %>
-        </paper-input-decorator>
         
         <div layout horizontal center-justified>
             <paper-radio-group selected="major">

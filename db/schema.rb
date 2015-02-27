@@ -32,8 +32,16 @@ ActiveRecord::Schema.define(version: 20150226182555) do
     t.integer  "credits",    default: 3
   end
 
-# Could not dump table "curriculum_categories" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "curriculum_categories", force: true do |t|
+    t.string   "category"
+    t.integer  "major_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "minor"
+    t.boolean  "set_and_or_flag"
+  end
+
+  add_index "curriculum_categories", ["major_id"], name: "index_curriculum_categories_on_major_id"
 
   create_table "curriculum_category_sets", force: true do |t|
     t.integer  "curriculum_category_id"

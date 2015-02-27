@@ -76,32 +76,6 @@ class SchedulesController < ApplicationController
       end
     end
 
-    def toposort(data)
-        sorted =[]
-        
-        until data.length == 0
-            temp = []
-            data.each do |k, v|
-                if v.empty?
-                    temp << k
-                end
-            end
-            
-            sorted << temp
-            
-            temp.each do |k|
-                data.delete(k)
-                
-                data.each do |key, val|
-                    if val.include?(k)
-                        val.delete(k)
-                    end
-                end
-            end
-        end
-      sorted
-    end
-    
     def prerequisite_check(courses, user_courses)
       ok_courses = []
       courses.each do |course|
