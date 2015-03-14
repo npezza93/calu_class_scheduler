@@ -218,7 +218,7 @@ class SchedulesController < ApplicationController
       needs_list.each do |course|
         inserts.push "(" + user.id.to_s+ ", " + course.id.to_s + "," + active_semester.id.to_s + ")"
       end
-      sql = "INSERT INTO needed_courses (`user_id`, `course_id`, `semester_id`) VALUES #{inserts.join(", ")}"
+      sql = "INSERT INTO needed_courses (\"user_id\", \"course_id\", \"semester_id\") VALUES #{inserts.join(", ")}"
       (ActiveRecord::Base.connection).execute sql
       
       taken_courses.each do |category_id, sets|
