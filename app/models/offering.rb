@@ -13,7 +13,7 @@ class Offering < ActiveRecord::Base
     validates :user, presence: true
 
     def self.import(file)
-      CSV.foreach("Schedul.csv") do |row|
+      CSV.foreach(file.path) do |row|
         begin
           course = Course.where("subject = ? AND course = ?",row[1].split()[0].upcase, row[1].split()[1].to_i).take
           prof = User.where("lower(last_name) = ?", row[12].split()[0][0..-2].downcase).take
