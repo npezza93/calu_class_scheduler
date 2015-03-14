@@ -13,7 +13,7 @@ class WorkSchedulesController < ApplicationController
       ((params[:work_schedule][:work_days_time_id]).reject! { |c| c.empty? }).each do |id|
         inserts.push "(" + @user.id.to_s+ ", " + id.to_s + "," + @active_semester.id.to_s + ")"
       end
-      sql = "INSERT INTO work_schedules (`user_id`, `work_days_time_id`, `semester_id`) VALUES #{inserts.join(", ")}"
+      sql = "INSERT INTO work_schedules (\"user_id\", \"work_days_time_id\", \"semester_id\") VALUES #{inserts.join(", ")}"
       (ActiveRecord::Base.connection).execute sql
     end
     
