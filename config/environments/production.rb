@@ -82,8 +82,8 @@ Rails.application.configure do
     :address        => 'smtp.gmail.com',
     :port           => 587,
     :authentication => :plain,
-    :user_name      => ENV['GMAIL_USERNAME'],
-    :password       => ENV['GMAIL_PASSWORD'],
+    :user_name => 'beautiful.soup.notification',
+    :password => 'CalU011293!!15',
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
