@@ -75,4 +75,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :domain => 'https://cal-class-schedule-npezza.c9.io/',
+    :authentication => :plain,
+    :user_name => 'beautiful.soup.notification',
+    :password => 'CalU011293!!15'
+  }
 end
