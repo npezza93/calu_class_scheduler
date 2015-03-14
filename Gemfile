@@ -58,3 +58,4 @@ gem 'pg'
 
 gem 'rails_12factor'
 gem 'puma'
+gem 'figaro'
