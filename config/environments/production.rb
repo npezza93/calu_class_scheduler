@@ -81,7 +81,7 @@ Rails.application.configure do
   :authentication => :plain,
   :user_name      => ENV['SENDGRID_USERNAME'],
   :password       => ENV['SENDGRID_PASSWORD'],
-  :domain         => 'calu-advisor.herokuapp.com',
+  :domain         => 'calu-advisor.herokuappp.com',
   :enable_starttls_auto => true
 }
 end
