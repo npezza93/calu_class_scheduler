@@ -6,12 +6,13 @@
     <paper-shadow id="new_major_form_shadow">
         <%= form_for(@major, remote: true) do |f| %>
                 
-            <paper-input-decorator label="Major">
+            <paper-input-decorator label="Major" id="major_decorator">
                 <%= f.text_field :major, is: 'core-input' %>
             </paper-input-decorator>
         
-            <br>
-            <div layout horizontal end-justified style="color:#03A9F4;">
+            <br><br>
+            <div layout horizontal end-justified style="color:#2196F3;">
+                <paper-button id='cancel_major'>Cancel</paper-button>
                 <paper-button id="material_create_major">create</paper-button>
             </div>
         

@@ -1,9 +1,14 @@
+.cat_heading {
+  color: #212121;
+}
 #new_category_material {
     position:fixed;
     bottom:0;
     right:0;
     margin-bottom:15px;
     margin-right:25px;
+    color: #FFFFFF;
+    background: #4CAF50;
 }
 #new_cc_overlay {
     width:300px;
@@ -44,18 +49,34 @@
 }
 
 #cur_cat_link:hover {
-	color: #666;
+	color: #727272;
+	text-decoration: underline;
+}
+
+#cur_cat_delete_link {
+  color: #4a89dc;
+	text-decoration: none;
+	transition: all .2s ease;
+}
+
+#cur_cat_delete_link:hover {
+	color: #F44336;
 	text-decoration: underline;
 }
 
 paper-radio-button::shadow #onRadio {
-  background-color: #4059a9;
+  background-color: #4CAF50;
 }
 paper-radio-button[checked]::shadow #offRadio {
-  border-color: #4059a9;
+  border-color: #4CAF50;
 }
 paper-radio-button::shadow #ink {
-  color: #4059a9;
+  color: #4CAF50;
+}
+
+#curriculum_category_category_decorator /deep/ .focused-underline {
+    /* line color when the input is focused */
+    background-color: #4CAF50;
 }
 
 .shadow-z-1 {

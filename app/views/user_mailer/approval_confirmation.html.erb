@@ -1,4 +1,4 @@
-You have approved <%= @user.email %>'s schedule. Their schedule is as follows:
+You have approved <%= @user.first_name + " " + @user.last_name %>'s schedule. Their schedule is as follows:
 
 <ul>
 <% @schedules.each do |schedule| %>

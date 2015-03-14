@@ -7,86 +7,67 @@
   <%= javascript_include_tag 'application', params[:controller] %>
   <%= csrf_meta_tags %>
   <link href="/assets/core-icon/core-icon.css" rel="stylesheet" shim-shadowdom>
+  
   <%= favicon_link_tag 'callogo2.png' %>
   <link href="<%= image_url('callogo2.png') %>" rel="apple-touch-icon">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="minimal-ui, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
-  <meta name="theme-color" content="#03A9F4">
+  <meta name="theme-color" content="#2196F3">
 </head>
 <body unresolved>
-<style>
-  core-header-panel {
-  background: white;
-}
-core-toolbar {
-  background-color: #03A9F4;
-}
-</style>
-  
+
     <% if not (current_page?(signup_path) or current_page?(login_path) or current_page?(root_path) or (params.has_key?(:id) ? current_page?(edit_password_reset_path) : false)) %>
       <core-drawer-panel responsiveWidth="1000px">
-        <core-header-panel drawer mode="scroll">
-          <core-toolbar id="navheader" style="background-color: #56BA89;font-size:21px;line-height:1.5em;">
-            <span>Menu</span>
+        <core-header-panel drawer mode="waterfall-tall" tallClass="medium-tall">
+          
+          <core-toolbar id="navheader" style="background-color: #4CAF50;font-size:21px;line-height:1.5em;">
+            <div class="bottom">
+              <div style="color:#FFF;">Menu</div>
+              <div style="font-style:italic;color:#C8E6C9;font-size:16px;"><%= User.find(session[:user_id]).first_name + " " + User.find(session[:user_id]).last_name %> is logged in</div>
+            </div>
           </core-toolbar>
+          
           <core-menu style="font-size:17px;" id="drawer_core_menu">
             <% if User.find(session[:user_id]).advisor %>
-              <% if params[:user_id] %>
-                <% if current_page?(user_schedules_path(params[:user_id])) %>
-                  <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;margin-top: 14px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Transcript</core-item>
-                  <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Schedule</core-item>
-                  <core-item id="drawer_new_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Classes</core-item>
-                <% elsif current_page?(user_transcripts_path(User.find(params[:user_id]))) or current_page?(new_user_schedule_path(User.find(params[:user_id]))) %>
-                  <core-item id="drawer_transcripts_item" style="cursor:pointer;height:42px;margin-top: 14px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"><%= @user.email %>'s <br>Transcript</core-item>
-                  <core-item id="drawer_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"><%= @user.email %>'s <br>Schedule</core-item>
-                  <core-item id="drawer_new_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Modify <br> <%= @user.email %>'s <br> Schedule</core-item>
-                  <div hidden>
-                    <%= link_to "transcripts", user_transcripts_path(User.find(params[:user_id])), id: "user_transcripts_app_link" %>
-                    <%= link_to "schdeules", user_schedules_path(User.find(params[:user_id])), id: "user_schedules_app_link" %>
-                    <%= link_to "new schedules", new_user_schedule_path(User.find(params[:user_id])), id: "new_user_schedule_app_link" %>
-                  </div>
-                <% end %>
-                <hr style="margin-bottom: 14px;">
+              <% if params[:user_id] and current_page?(user_schedules_path(params[:user_id]))%>
+                <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;margin-top: 14px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Transcript</core-item>
+                <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Schedule</core-item>
+                <core-item id="drawer_new_schedule_item_baluga" style="border-bottom: 1px solid #B9B9B9;padding-bottom: 10px;cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Classes</core-item>
               <% end %>
-              <core-item id="drawer_users_item" style="cursor:pointer;height:42px;margin-top: 14px;"><core-icon style="padding-left:12px;" icon="perm-identity"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Students</span></core-item>
-              <core-item id="drawer_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="class"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Courses</span></core-item>
-              <core-item id="drawer_needed_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="receipt"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Needs List</span></core-item>
+              <core-item id="drawer_users_item" style="cursor:pointer;height:42px;margin-top: 6px;"><core-icon style="padding-left:12px;" icon="perm-identity"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Students</span></core-item>
+              <core-item id="drawer_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="class"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Courses</span></core-item>
+              <core-item id="drawer_needed_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="receipt"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Needs List</span></core-item>
               <core-item id="drawer_offerings_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Offerings</span></core-item>
-              <core-item id="drawer_new_major_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="bookmark"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;"> Add a New Major</span></core-item>
-              <core-item id="drawer_semesters_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="today"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;"> Semesters</span></core-item>
-              <core-item id="drawer_categories_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="sort"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;">Categories</span></core-item>
-              <hr>
-              <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;margin-top: 14px;"><core-icon style="padding-left:12px;" icon="settings"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Settings</span></core-item>
+              <core-item id="drawer_new_major_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="bookmark"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Majors</span></core-item>
+              <core-item id="drawer_semesters_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="today"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;">Semesters</span></core-item>
+              <core-item id="drawer_categories_item" style="border-bottom: 1px solid #B9B9B9;padding-bottom: 10px;cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="sort"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;">Categories</span></core-item>
+              <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;margin-top: 6px;"><core-icon style="padding-left:12px;" icon="settings"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Settings</span></core-item>
             <% else %>
-              <% if current_page?(user_transcripts_path(User.find(session[:user_id]))) or current_page?(new_user_schedule_path(User.find(session[:user_id]))) or current_page?(edit_user_path(User.find(session[:user_id]))) %>
-                <core-item id="drawer_transcripts_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
-                <core-item id="drawer_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
-                <core-item id="drawer_new_schedule_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
-                <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="settings"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Settings</span></core-item>
-                <div hidden>
-                  <%= link_to "transcripts", user_transcripts_path(User.find(session[:user_id])), id: "user_transcripts_app_link" %>
-                  <%= link_to "schdeules", user_schedules_path(User.find(session[:user_id])), id: "user_schedules_app_link" %>
-                  <%= link_to "new schedules", new_user_schedule_path(User.find(session[:user_id])), id: "new_user_schedule_app_link" %>
-                </div>
-              <% else %>
-                <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
-                <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
-                <core-item id="drawer_new_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
-                <hr>
-                <core-item id="drawer_change_password_item_baluga" style="cursor:pointer;height:42px;margin-top: 14px;"><core-icon style="padding-left:12px;" icon="settings"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Settings</span></core-item>
-              <% end %>
+              <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
+              <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
+              <core-item id="drawer_new_schedule_item_baluga" style="border-bottom: 1px solid #B9B9B9;padding-bottom: 10px;cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
+              <core-item id="drawer_change_password_item_baluga" style="cursor:pointer;height:42px;margin-top: 6px;"><core-icon style="padding-left:12px;" icon="settings"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Settings</span></core-item>
             <% end %>
               <core-item id="drawer_logout_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="settings-power"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Logout</span></core-item><br>
           </core-menu>
         </core-header-panel>
   
-        <core-header-panel main mode="scroll" id="main">
+        <core-header-panel main mode="waterfall-tall" tallClass="medium-tall" id="main">
           <core-toolbar id="mainheader">
             <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
-            <span flex style="font-size:23px;line-height:1;">
+            <div class="bottom indent" flex style="font-size:30px;line-height:1;">
               <%= yield :title %>
-            </span>
+            </div>
+            <% if current_page?(new_offering_path)%>
+              <div class="bottom">
+                <paper-fab icon="cloud-upload" style="margin-top:56px;margin-right:25px;background: #4CAF50;color:#FFF;" id="upload-fab"></paper-fab>
+              </div>
+            <% elsif (params.has_key?(:user_id) ? current_page?(user_schedules_path) : false) %>
+              <div class="bottom">
+                <paper-fab icon="cloud-upload" style="margin-top:56px;margin-right:25px;background: #4CAF50;color:#FFF;z-index:12;" id="fab_new_schedule" layered></paper-fab>
+              </div>
+            <% end %>
           </core-toolbar>
           <div class="content">
             <%= yield %>
@@ -98,7 +79,7 @@ core-toolbar {
         <%= link_to "Courses", courses_path, id: "delete_course_link" %>
         <%= link_to "Needed Courses", needed_courses_path, id: "needed_course_link" %>
         <%= link_to "offerings", offerings_path, id: "offerings_link" %>
-        <%= link_to "New Major", new_major_path, id: "new_major_link" %>
+        <%= link_to "Majors", majors_path, id: "new_major_link" %>
         <%= link_to "Semesters", semesters_path, id: "semesters_link" %>
         <%= link_to "Categories", curriculum_categories_path, id: "categories_link" %>
         <%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])), id: "change_password_link" %>
@@ -108,7 +89,7 @@ core-toolbar {
       <%= yield %>
     <% end %>
 
-<div id="whole_screen_uploader">
+<div id="whole_screen_uploader" style="z-index:99;">
   <core-image style="width:60%; height:65%; background-color: #ececec;margin:auto;left:20%;" 
   sizing="contain" preload fade src="<%= image_url('callogo.jpg') %>"></core-image>
   <div layout horizontal center-justified style="margin-top:-.5em;">

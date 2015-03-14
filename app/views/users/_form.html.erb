@@ -1,21 +1,21 @@
 <%= form_for(@user, remote: true) do |f| %>
-  <paper-input-decorator label="First Name">
+  <paper-input-decorator label="First Name" class="password_decorator">
     <%= f.text_field :first_name, is: 'core-input'%>
   </paper-input-decorator>
   
-  <paper-input-decorator label="Last Name">
+  <paper-input-decorator label="Last Name" class="password_decorator">
     <%= f.text_field :last_name, is: 'core-input'%>
   </paper-input-decorator>
   
-  <paper-input-decorator label="Enter Email">
+  <paper-input-decorator label="Enter Email" class="password_decorator">
     <%= f.email_field :email, is: 'core-input' %>
   </paper-input-decorator>
   
-  <paper-input-decorator label="Enter Password">
+  <paper-input-decorator label="Enter Password" class="password_decorator">
     <%= f.password_field :password, is: 'core-input' %>
   </paper-input-decorator>
   
-  <paper-input-decorator label="Confirm Password">
+  <paper-input-decorator label="Confirm Password" class="password_decorator">
     <%= f.password_field :password_confirmation, is: 'core-input'%>
   </paper-input-decorator>
 
@@ -81,14 +81,10 @@
   <% end %>
   
   <br>
-  <div center-justified layout horizontal style="width:100%;color:#03A9F4;">
-    <paper-button style="width:100%;"><input id="submit_signup" name="commit" type="submit" value="SIGN UP" style="color:#03A9F4;"></paper-button>
+  <div center-justified layout horizontal style="width:100%;color:#2196F3;">
+    <paper-button style="width:100%;"><input id="submit_signup" name="commit" type="submit" value="SIGN UP" style="color:#2196F3;"></paper-button>
   </div>
 
 <% end %>
 
 <div id="ajax_errors"></div>
-
-<script>
-
-</script>

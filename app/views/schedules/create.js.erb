@@ -14,6 +14,8 @@
         $(".half_time_slot").removeClass("half_time_slot");
         $(".selected_class").removeClass("selected_class");
 
+    // schedule approvals
+        $("#sch_approval_div").html("<%= j render "schedule_approvals/show" %>");
     // schedules index quick advisor schedule
         <% if @offerings.blank? %>
             $("#advisor_quick_user_courses").append('<tr><th colspan="3">No courses have been signed up for</th></tr>');

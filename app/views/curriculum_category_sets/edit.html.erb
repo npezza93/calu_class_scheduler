@@ -7,7 +7,7 @@
     <paper-shadow style="margin-left:10px;margin-right:10px;width:475px;background:#fafafa;border-radius:2px;padding:20px 20px;">
         <%= form_for [@category, @curriculum_category_set] do |f| %>
             <div class="category_course_set">
-                <%= select_tag(:course_id, options_for_select(@courses, @set_courses), { class: "category_course_set_select", multiple: true, size: 5}) %>
+                <%= select_tag(:course_id, options_for_select(@courses, @set_courses), { class: "category_course_set_select", multiple: true, size: 8}) %>
                 <br>
             </div>
             
@@ -25,8 +25,10 @@
             </div>
             
             <br><br>
-            <div center-justified layout horizontal style="width:100%;color:#03A9F4;">
-                <paper-button id='submit_edit_set_material'>Update Set</paper-button>
+            <div end-justified layout horizontal style="color:#2196F3;">
+                <paper-button id='cancel_edit_set'>Cancel</paper-button>
+                <paper-button id='submit_edit_set_material'>Update</paper-button>
+                <%= link_to "category", curriculum_category_curriculum_category_sets_path, hidden: "", id: "category_set_index_link" %>
                 <%= f.submit 'Update set' , id: 'submit_category_class_button', hidden: "" %>
             </div>
         <% end %>

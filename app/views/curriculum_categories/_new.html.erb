@@ -1,6 +1,6 @@
 <%= form_for(@new_category, remote: true) do |f| %>
             
-        <paper-input-decorator label="Category (ex: Electives, Core, etc.)">
+        <paper-input-decorator id="curriculum_category_category_decorator" label="Category (ex: Electives, Core, etc.)">
             <%= f.text_field :category, is: 'core-input' %>
         </paper-input-decorator>
         
@@ -17,7 +17,7 @@
         </div>
         
         <br>
-        <div layout horizontal end-justified style="color:#03A9F4;">
+        <div layout horizontal end-justified style="color:#2196F3;">
             <paper-button core-overlay-toggle>Cancel</paper-button>
             <paper-button id="material_create_category">Create</paper-button>
         </div>

@@ -1,11 +1,11 @@
 <%= form_for(@semester, remote: true) do |f| %>
         
-    <paper-input-decorator label="Semester">
+    <paper-input-decorator label="Semester" id="semester_decorator">
         <%= f.text_field :semester, is: 'core-input' %>
     </paper-input-decorator>
 
     <br>
-    <div layout horizontal end-justified style="color:#03A9F4;">
+    <div layout horizontal end-justified style="color:#2196F3;">
         <paper-button core-overlay-toggle>Cancel</paper-button>
         <paper-button id="material_create_semester">Create Semester</paper-button>
     </div>

@@ -40,7 +40,7 @@ gem 'unicorn-rails'
 
 gem 'bcrypt-ruby', '3.1.2'
 
-gem 'emcee'
+gem 'emcee', github: 'berkcaputcu/emcee'
 
 gem 'kaminari'
 
@@ -52,3 +52,5 @@ gem 'datejs-rails'
 
 gem 'remotipart'
 gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
+
+gem 'seed_dump'

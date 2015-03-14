@@ -57,6 +57,14 @@ jQuery ->
     $("#logic_flag_toggle").on "change", (e) ->
       $("#logic_flag")[0].checked = $("#logic_flag_toggle")[0].checked
 
+    $("#cancel_new_set").click ->
+      $("#category_index_link")[0].click()
+      return
+
+    $("#cancel_edit_set").click ->
+      $("#category_set_index_link")[0].click()
+      return      
+      
 
 
     $("#drawer_transcripts_item_baluga").click ->

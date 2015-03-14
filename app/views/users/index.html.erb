@@ -1,98 +1,63 @@
-<% if @logged_in.advisor %>
+<% content_for :title do %>
+  <%= @logged_in.first_name + " " + @logged_in.last_name + "'s "%>Advisees
+<% end %>
 
-  <% content_for :title do %>
-    <%= @logged_in.email + "'s "%>Advisees
-  <% end %>
 
-  
-  <div horizontal wrap layout around-justified>
-    <div layout vertical style="font-family: 'RobotoDraft', sans-serif;margin-top:5em;">
-      <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">Advisees</h3>
-      
-      <paper-shadow style="width: 20em;background: #F7F7F7;">
-        <% @advisees.each do |advisee| %>
-          <paper-item><%= link_to advisee.email, user_options_path(advisee_id: advisee.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
-        <% end %>
-        <% if @advisees.last_page? %>
-          <paper-item layout disabled horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-        <% else %>
-          <paper-item layout horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-        <% end %>
-        <div id="link_to_next_page" hidden><%= paginate @advisees, :remote=>true, param_name: 'page', id: "actual_next_pg" %></div>
-      </paper-shadow>
-    </div>
-
-    <div layout vertical style="font-family: 'RobotoDraft', sans-serif;margin-top:5em;">
-      <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">Faculty</h3>
-      
-      <paper-shadow style="width: 20em;background: #F7F7F7;">
-        <% @faculty.each do |faculty| %>
-          <paper-item><a id="advisee_list" style="width:20em;text-align:center;"><%= faculty.email %></a></paper-item>
-        <% end %>
-        <% if @faculty.last_page? %>
-          <paper-item layout disabled horizontal center-justified id="pagination3-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-        <% else %>
-          <paper-item layout horizontal center-justified id="pagination3-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-        <% end %>
-        <div id="link_to_next_page3" hidden><%= paginate @faculty, :remote=>true, param_name: 'page_3', id: "actual_next_pg3" %></div>
-      </paper-shadow>
-    </div>
+<div horizontal wrap layout around-justified>
+  <div layout vertical style="font-family: 'RobotoDraft', sans-serif;margin-top:5em;">
+    <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">Advisees</h3>
     
-    <div layout vertical style="margin-top:5em; font-family: 'RobotoDraft', sans-serif;">
-      <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">All Other Students</h3>
-      
-      <paper-shadow style="width: 20em;background: #F7F7F7;">
-        <% @all_others.each do |student| %>
-          <paper-item layout horizontal center-justified><%= link_to student.email, user_options_path(advisee_id: student.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
-        <% end %>
-        <% if @all_others.last_page? %>
-          <paper-item layout disabled horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-        <% else %>
-          <paper-item layout horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-        <% end %>
-        <div id="link_to_next_page2" hidden><%= paginate @all_others, :remote=>true, param_name: 'page_2', id: "actual_next_pg2" %></div>
-      </paper-shadow>
-    </div>
-  
+    <paper-shadow style="width: 20em;background: #F7F7F7;">
+      <% @advisees.each do |advisee| %>
+        <paper-item><%= link_to advisee.email, user_options_path(advisee_id: advisee.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
+      <% end %>
+      <% if @advisees.last_page? %>
+        <paper-item layout disabled horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+      <% else %>
+        <paper-item layout horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+      <% end %>
+      <div id="link_to_next_page" hidden><%= paginate @advisees, :remote=>true, param_name: 'page', id: "actual_next_pg" %></div>
+    </paper-shadow>
+  </div>
+
+  <div layout vertical style="font-family: 'RobotoDraft', sans-serif;margin-top:5em;">
+    <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">Faculty</h3>
+    
+    <paper-shadow style="width: 20em;background: #F7F7F7;">
+      <% @faculty.each do |faculty| %>
+        <paper-item><a id="advisee_list" style="width:20em;text-align:center;"><%= faculty.email %></a></paper-item>
+      <% end %>
+      <% if @faculty.last_page? %>
+        <paper-item layout disabled horizontal center-justified id="pagination3-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+      <% else %>
+        <paper-item layout horizontal center-justified id="pagination3-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+      <% end %>
+      <div id="link_to_next_page3" hidden><%= paginate @faculty, :remote=>true, param_name: 'page_3', id: "actual_next_pg3" %></div>
+    </paper-shadow>
   </div>
   
-  <paper-dialog backdrop transition="core-transition-top" id="user_options_overlay" style="background-color:#F3F3F3;"></paper-dialog>
-  
-  <a id="signup_fab_link" style="display:none;" href=<%= signup_path %>>LINK</a>
-  <paper-fab icon="add" id="advisee_signup_fab" title="Create New Advisee" style="position:fixed;bottom:0;right:0;margin-right:25px;margin-bottom:15px;"></paper-fab>
+  <div layout vertical style="margin-top:5em; font-family: 'RobotoDraft', sans-serif;">
+    <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">All Other Students</h3>
+    
+    <paper-shadow style="width: 20em;background: #F7F7F7;">
+      <% @all_others.each do |student| %>
+        <paper-item layout horizontal center-justified><%= link_to student.email, user_options_path(advisee_id: student.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
+      <% end %>
+      <% if @all_others.last_page? %>
+        <paper-item layout disabled horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+      <% else %>
+        <paper-item layout horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+      <% end %>
+      <div id="link_to_next_page2" hidden><%= paginate @all_others, :remote=>true, param_name: 'page_2', id: "actual_next_pg2" %></div>
+    </paper-shadow>
+  </div>
 
-<% else %>
+</div>
+<br><br><br>
+<paper-dialog backdrop transition="core-transition-top" id="user_options_overlay" style="background-color:#F3F3F3;"></paper-dialog>
 
-<h1 layout horizontal center-justified>All Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Admin</th>
-      <th>Advisor</th>
-      <th>Advised By</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.administrator %></td>
-        <td><%= user.advisor %></td>
-        
-        <td><%= (User.find_by_id(user.advised_by)).try(:email) %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <% if User.find_by(id: session[:user_id]).administrator %>
-          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
+<a id="signup_fab_link" style="display:none;" href=<%= signup_path %>>LINK</a>
+<paper-fab icon="add" id="advisee_signup_fab" title="Create New Advisee"></paper-fab>
 
 <% if notice %>
  	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>

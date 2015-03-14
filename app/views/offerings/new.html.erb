@@ -2,10 +2,6 @@
     Offer a Course
 <% end %>
 
-<div style="width:100%;" layout horizontal end-justified>
-    <paper-fab icon="cloud-upload" style="margin-top:-28px;margin-right:25px;" id="upload-fab"></paper-fab>
-</div>
-
 <core-overlay transition="core-transition-center" id="offering_overlay" backdrop>
     <h3 style="text-align:center;">Upload a .CSV with 15 columns to quickly input offerings</h3>
     <div style="margin-left:15px;">
@@ -23,7 +19,7 @@
     </div>
     
     <br><br>
-    <div layout horizontal end-justified style="color:#03A9F4;">
+    <div layout horizontal end-justified style="color:#2196F3;">
         <paper-button id="cancel_upload_offering" core-overlay-toggle>Cancel</paper-button>
         <paper-button id="material_upload_offerings">Upload</paper-button>
     </div>
@@ -41,7 +37,7 @@
         <%= form_for(@offering, remote: true) do |f| %>
         
             <div hidden>
-                <%= f.select(:course_id, options_for_select(@courses), {}, { id:'course_select' }) %>
+                <%= f.select(:course_id, options_for_select(@courses, -1), {}, { id:'course_select' }) %>
             </div>
             
             
@@ -66,7 +62,7 @@
             </div>
             
             <div hidden>
-                <%= f.select(:days_time_id, options_for_select(@days_n_times), {}, { id:'day_select' }) %>
+                <%= f.select(:days_time_id, options_for_select(@days_n_times, -1), {}, { id:'day_select' }) %>
             </div>
             
             <div id="offering_time_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
@@ -90,7 +86,7 @@
             </div>
             
             <div hidden>
-                <%= f.select(:user_id, options_for_select(@instructors), {}, { id:'advisor_select' }) %>
+                <%= f.select(:user_id, options_for_select(@instructors, -1), {}, { id:'advisor_select' }) %>
             </div>
     
             <div id="offering_user_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
@@ -113,18 +109,18 @@
             </div>
             
             <div layout horizontal center-justified>
-                <paper-input-decorator label="Section" style="padding:0;">
+                <paper-input-decorator label="Section" style="padding:0;" id="section_decorator">
                     <%= f.text_field :section, maxlength: 2, style: "width: 260px;" %>
                 </paper-input-decorator>
             </div>
             
             <br><br>
-            <div layout horizontal end-justified style="color:#03A9F4;">
+            <div layout horizontal end-justified style="color:#2196F3;">
                 <paper-button id="cancel_offering_button">Cancel</paper-button>
-                <paper-button id="material_offer_course">offer course</paper-button>
+                <paper-button id="material_offer_course">offer</paper-button>
             </div>
     
-            <%= f.submit 'Offer Course', style: 'display:none;', id: 'actual_offer_course' %>
+            <%= f.submit 'Offer Course', id: "submit_offering", hidden: "" %>
             
         <% end %>
     </paper-shadow>

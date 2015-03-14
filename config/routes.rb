@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :curriculum_category_sets
   end
 
-  resources :majors, :only => [:create, :new]
+  resources :majors
 
   resources :offerings do
     collection { post :import}

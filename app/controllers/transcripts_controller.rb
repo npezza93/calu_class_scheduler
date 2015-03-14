@@ -13,7 +13,13 @@ class TranscriptsController < ApplicationController
   end
   
   def create
-    @transcript = @user.transcripts.create(transcript_params)
+    c_minus, c = grade_checker(transcript_params["grade_c_minus"])
+    tran_params = transcript_params
+
+    tran_params["grade_c_minus"] = c_minus
+    tran_params["grade_c"] = c
+
+    @transcript = @user.transcripts.create(tran_params)
     @transcript.user = @user
     
     @index_reload_flag = false
@@ -95,7 +101,7 @@ class TranscriptsController < ApplicationController
     end
     
     def transcript_params
-      params.require(:transcript).permit(:course_id, :grade)
+      params.require(:transcript).permit(:course_id, :grade_c_minus, :grade_c)
     end
     
     def import_params
@@ -114,5 +120,24 @@ class TranscriptsController < ApplicationController
           redirect_to users_path, notice: "Admins and Advisors don't have transcripts!"
         end
       end
+    end
+    
+    def grade_checker(grade)
+      grades = ["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]
+      begin
+        if grades.index(grade) >= 8
+          c_minus = c = false
+        else
+          if grades.index(grade) <= 6
+            c_minus = c = true
+          elsif grades.index(grade) == 7
+            c = false
+            c_minus = true
+          end
+        end
+      rescue
+        c_minus = c = false
+      end
+      return c_minus, c
     end
 end

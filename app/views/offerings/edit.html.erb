@@ -45,7 +45,7 @@
             <div layout horizontal center-justified>
                 <paper-dropdown-menu label="Choose Time" style="width:100%;max-width:260px;margin-top:0;padding-top:0;">
                     <paper-dropdown class="dropdown" id="day_dropdown" style="width:100%;max-width:260px;height:174px;">
-                        <core-menu class="menu" selected="<%= @days_n_times.index([@offering.days_time.days + ' at ' + @offering.days_time.start_time + ' to ' + @offering.days_time.end_time, @offering.days_time.id]) %>">
+                        <core-menu class="menu" selected="<%= @days_n_times.index([(begin @offering.days_time.days + ' at ' + @offering.days_time.start_time + ' to ' + @offering.days_time.end_time rescue @offering.days_time.days end), @offering.days_time.id]) %>">
                             <% @days_n_times.each do |days_n_time| %>
                                 <paper-item value=<%= days_n_time[1] %>><%= days_n_time[0] %></paper-item>
                             <% end %>
@@ -77,18 +77,18 @@
             </div>
             
             <div layout horizontal center-justified>
-                <paper-input-decorator label="Section" style="padding:0;">
+                <paper-input-decorator label="Section" style="padding:0;" id="section_decorator">
                     <%= f.text_field :section, maxlength: 2, style: "width: 260px;", value: @offering.section %>
                 </paper-input-decorator>
             </div>
             
             <br><br>
-            <div layout horizontal end-justified style="color:#03A9F4;">
+            <div layout horizontal end-justified style="color:#2196F3;">
                 <paper-button id="cancel_offering_button">Cancel</paper-button>
                 <paper-button id="material_offer_course">update</paper-button>
             </div>
     
-            <%= f.submit 'Update', style: 'display:none;', id: 'actual_offer_course' %>
+            <%= f.submit 'Update', hidden: "", id: 'submit_offering' %>
             
         <% end %>
     </paper-shadow>

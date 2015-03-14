@@ -1,9 +1,7 @@
-<% if @session_user.advisor and @session_user != @user%> 
-  <% content_for :title do %>
-    Editing <%= @user.email %>
-  <% end %>
-<% else %>
-  <% content_for :title do %>
+<% content_for :title do %>
+  <% if @session_user.advisor and @session_user != @user%> 
+    Editing <%= @user.first_name + " " + @user.last_name%>
+  <% else %>
     Settings
   <% end %>
 <% end %>
@@ -42,18 +40,18 @@
         </div>
 
         <br>
-        <div end-justified layout horizontal style="color:#03A9F4;">
+        <div end-justified layout horizontal style="color:#2196F3;">
           <paper-button id="cancel_user_button">Cancel</paper-button>
           <paper-button><input id="submit_signup" name="commit" type="submit" value="UPDATE" style="color:#03A9F4;"></paper-button>
         </div>
       <% end %>
     <% else %>
       <%= form_for(@user, remote: true) do |f| %>
-        <paper-input-decorator label="Enter New Password"  style="width:260px;">
+        <paper-input-decorator label="Enter New Password"  style="width:260px;" class="password_decorator">
           <%= f.password_field :password, is: 'core-input' %>
         </paper-input-decorator>
               
-        <paper-input-decorator label="Confirm Password" style="width:260px;">
+        <paper-input-decorator label="Confirm Password" style="width:260px;" class="password_decorator">
           <%= f.password_field :password_confirmation, is: 'core-input' %>
         </paper-input-decorator>
         
@@ -85,7 +83,7 @@
           <%= f.select(:minor, options_for_select(@minors, @user.minor), {}, { id:'actual_select_courses', multiple: true, size: 3 }) %>
         <% end %>
         <br>
-        <div end-justified layout horizontal style="color:#03A9F4;">
+        <div end-justified layout horizontal style="color:#2196F3;">
           <paper-button id="cancel_user_button">Cancel</paper-button>
           <paper-button><input id="submit_signup" name="commit" type="submit" value="UPDATE" style="color:#03A9F4;"></paper-button>
         </div>

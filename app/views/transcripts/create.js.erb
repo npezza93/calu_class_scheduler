@@ -1,12 +1,12 @@
 <% if not @errors %>
-    $("#transcript_tbody").append("<tr id=\"transcript_<%= @transcript.id %>\"><td data-title=\"Course\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></td><td data-title=\"Grade\"><%= @transcript.grade %></td><td style=\"text-align:center;\"><%= escape_javascript link_to 'Remove', user_transcript_path(@user, @transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, remote: true, id: 'transcript_remove_link' %></td></tr>");    
+    $("#transcript_tbody").append("<tr id=\"transcript_<%= @transcript.id %>\"><td data-title=\"Course\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></td><td style=\"text-align:center;\"><%= escape_javascript link_to 'Remove', user_transcript_path(@user, @transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, remote: true, id: 'transcript_remove_link' %></td></tr>");    
     $("#transcript_<%= @transcript.id %>").fadeIn();
     $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @transcript.course.title %> added to your transcript!\" style=\"padding-right: 60px;color:#4CAF50;\" duration=\"10000\" opened ></paper-toast>");
   
     $.ajax({
       url: "<%= new_user_schedule_path(@user) %>",
     }).done(function(html) {
-      return $("#temp_replace").append(html);
+      return $("#temp_replace").html(html);
     });
     
     <% if @index_reload_flag %>    

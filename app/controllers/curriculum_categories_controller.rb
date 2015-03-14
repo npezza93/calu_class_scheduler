@@ -28,6 +28,10 @@ class CurriculumCategoriesController < ApplicationController
   end
 
   def destroy
+    @category.curriculum_category_sets.each do |set|
+      set.course_set.destroy_all
+    end
+    @category.curriculum_category_sets.destroy_all
     @category.destroy
     respond_to do |format|
       format.html { redirect_to curriculum_categories_url, notice: @category.category + " successfully deleted!" }

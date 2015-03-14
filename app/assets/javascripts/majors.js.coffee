@@ -9,7 +9,13 @@ jQuery ->
         $("#actual_create_major").click()
         return
 
+    $("#new_major_material").click ->
+        $("#new_major_link")[0].click()
+        return
 
+    $("#cancel_major").click ->
+      window.history.back()
+      return 
 
 
       

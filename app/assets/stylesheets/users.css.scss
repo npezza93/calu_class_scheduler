@@ -2,16 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-paper-checkbox::shadow #ink[checked] {
-  color: #03A9F4;
+#paper_advisor::shadow #ink[checked] {
+  color: #4CAF50;
 }
-paper-checkbox::shadow #checkbox.checked {
-  background-color: #03A9F4;
-  border-color: #03A9F4;
-}
-paper-input-decorator /deep/ .focused-underline {
-    /* line color when the input is focused */
-    background-color: #03A9F4;
+#paper_advisor::shadow #checkbox.checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
 }
 
 #new_user_form_shadow {
@@ -81,6 +77,9 @@ paper-dropdown-menu, paper-dropdown {
     color:#d34336;
     font-size: 0.75em;
     display:none;
+}
+#major_dropdown {
+  height:135px;
 }
 #signup_dropdown_major_error {
     width:100%;
@@ -168,4 +167,42 @@ paper-dropdown-menu, paper-dropdown {
   -moz-animation-name: fadeInDown;
   -o-animation-name: fadeInDown;
   animation-name: fadeInDown;
+}
+
+
+
+#user_minor {
+  font-family: 'RobotoDraft', sans-serif;
+  width:100%;
+  display: block;
+  border: none;
+  border-radius: 0 !important;
+  padding: 0;
+  color:rgba(0,0,0,0.87);
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid #757575;
+  margin-top:10px;
+}
+
+#user_minor:focus {
+  border-color: #757575;
+  outline: none;
+  box-shadow: none;
+  border-bottom: 2px solid #03A9F4;
+}
+
+.password_decorator /deep/ .focused-underline {
+    /* line color when the input is focused */
+    background-color: #4CAF50;
+}
+
+#advisee_signup_fab {
+  position:fixed;
+  bottom:0;
+  right:0;
+  margin-right:25px;
+  margin-bottom:15px;
+  color: #FFF;
+  background: #4CAF50;
 }

@@ -8,22 +8,20 @@
 		    <paper-tab id="two">SIGNUP</paper-tab>
 		</paper-tabs>
 		
-		<section id="section1" flex relative>
+		<section id="section1" class="inner_section_session1" flex relative>
         	<core-animated-pages id="baluga" transitions="slide-from-right">
-	          	<section id="section2" style="padding-top:40px;">
+	          	<section id="section2" style="padding-top:20px;">
 	            	<%= form_tag(login_path, remote: true) do %>
-	            		<paper-input-decorator label="Enter Email" floatinglabel>
+	            		<paper-input-decorator label="Enter Email" floatinglabel class="password_decorator">
 	      					<%= text_field_tag :email, params[:email], is: 'core-input' %>
 	      				</paper-input-decorator>
       					
-      					<paper-input-decorator label="Enter Password" floatinglabel>
+      					<paper-input-decorator label="Enter Password" floatinglabel class="password_decorator">
       						<%= password_field_tag :password, params[:password], is: 'core-input' %>
       					</paper-input-decorator>
 	      					
-      					<div center-justified layout horizontal style="margin-top: 14px;">
-							<paper-button>
-								<%= submit_tag "LOGON", id: "submit_logon" %>
-							</paper-button>
+      					<div center-justified layout horizontal style="width:100%;color:#4CAF50;margin-top:14px;">
+							<paper-button style="width:100%;"><%= submit_tag "LOGON", id: "submit_logon" %></paper-button>
     					</div>
     						
 						<div layout flex horizontal center-justified>
@@ -32,7 +30,7 @@
 							</paper-button>
 						</div>
 						
-						<div style="margin-top: 15px;" layout flex horizontal center-justified>
+						<div style="margin-top: 15px;font-size:12px;" layout flex horizontal center-justified>
 							<a id="transcript_remove_link" href="https://senior-project-website-npezza.c9.io/">Project Website</a>
 						</div>
 
@@ -42,7 +40,7 @@
 	    				
 	          	</section>
           
-	          	<section id="section3" style="padding-top:10px;">
+	          	<section id="section3" style="padding-top:5px;">
 	          		<%= render 'users/form', :@user => User.new %>
 	          	</section>
         	</core-animated-pages>

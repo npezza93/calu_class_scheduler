@@ -11,7 +11,7 @@ jQuery ->
       
     $("#grade_select").val "-1"
     $("#grade_dropdown").on "core-select", (e, detail) ->
-      $("#grade_select").val e.originalEvent.detail.item.getAttribute("value")
+      $(".grade_select").val e.originalEvent.detail.item.getAttribute("value")
       return
       
     $("#submit_taken_class_material").click ->

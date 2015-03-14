@@ -1,11 +1,11 @@
 <core-overlay id="change_password_overlay" backdrop transition="core-transition-top" id="new_schedule_modal" style="width:291px;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
     <h2 layout horizontal center-justified>Change Settings</h2>
       <%= form_for(@user, remote: true) do |f| %>
-        <paper-input-decorator label="Enter New Password"  style="width:260px;">
+        <paper-input-decorator label="Enter New Password"  style="width:260px;" class="password_decorator">
           <%= f.password_field :password, is: 'core-input' %>
         </paper-input-decorator>
               
-        <paper-input-decorator label="Confirm Password" style="width:260px;">
+        <paper-input-decorator label="Confirm Password" style="width:260px;" class="password_decorator">
           <%= f.password_field :password_confirmation, is: 'core-input' %>
         </paper-input-decorator>
         
@@ -33,10 +33,10 @@
           </paper-dropdown-menu>
         </div>
         
-        <%= f.select(:minor, options_for_select(@minors, @user.minor), {}, { id:'actual_select_courses', multiple: true, size: 3 }) %>
+        <%= f.select(:minor, options_for_select(@minors, @user.minor), {}, { multiple: true, size: 3 }) %>
   
         <br>
-        <div end-justified layout horizontal style="color:#03A9F4;">
+        <div end-justified layout horizontal style="color:#2196F3;">
           <paper-button core-overlay-toggle>Cancel</paper-button>
           <paper-button><input id="submit_signup" name="commit" type="submit" value="UPDATE" style="color:#03A9F4;"></paper-button>
         </div>

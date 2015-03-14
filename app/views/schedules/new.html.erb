@@ -1,114 +1,83 @@
 <%= javascript_include_tag "schedules2" %>
 
 <core-media-query id="media_query_schedule_new" query="max-width: 750px"></core-media-query>
-
+<br>
 <div horizontal wrap layout around-justified>
-    <div>
-        <% (@remaining_credits.reject{|k,v| v > 0 }).each do |k, v| %>
-            <div layout horizontal center-justified>
-              <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;width:353px;">
-                <table style="border-collapse:collapse;margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
-                    <tr><th colspan="4" style="text-align:center;"><%= CurriculumCategory.find(k).category %></th></tr>
-                    <tr><th colspan="4" style="text-align:center;padding-bottom:15px;color:#4CAF50;">Completed</th></tr>
-                    <tr style="color:#757575;"><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);"></th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Class</th><th style="font-weight: 300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Credits</th><th style="padding-left:5px;padding-right:5px;font-weight: 300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Grade</th></tr>
-                    <% @common_courses[k].each do |course| %>
-                        <tr class="taken_courses_tr" style="height:48px;">
-                          <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
-                          <td style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
-                          <td style="text-align:center;"><%= course.credits %></td>
-                          <td style="text-align:center;"><%= Transcript.where(user_id: @user.id, course_id: course.id).take.grade %></td>
-                        </tr>
-                    <% end %>
-                </table>
-              </paper-shadow>
-            </div>
-        <% end %>
-    </div>
+  <div>
+    <% @category_courses.each do |cat_id, sets| %>
+      <div layout horizontal center-justified class="big_new_schedule_table">
+        <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;" id="classes_shadow_schedule">
+          <table style="border-collapse:collapse;margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
+              <tr class="no_courses_offered_msg" hidden><td style="text-align:center;" colspan="7"><span style="width:290px;color:#EF5350;padding-bottom:15px;">Currently no courses are being offered that will fulfill this category</span></td></tr>
+              <tr><th colspan="7" style="text-align:center;"><%= CurriculumCategory.find(cat_id).category %> <%= ("- " + CurriculumCategory.find(cat_id).major.major + " Minor") if CurriculumCategory.find(cat_id).minor %></th></tr>
+              <tr style="color:#757575;" class="new_schedule_headers"><th style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);"></th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Class</th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Credits</th><th class="days_th" style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Days</th><th class="time_th" style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Time</th><th class="prof_th" style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);font-weight:300;">Instructor</th></tr>
+              <% sets.each do |set_id, set| %>
+                <% set.each do |offering| %>
+                  <tr class="new_schedule_tr">
+                    <td class="new_schedule_check_td"><paper-checkbox class="offering_checkbox <%= offering.id.to_s %>" id=<%= offering.id.to_s %> ></paper-checkbox></td>
+                    <td class="new_schedule_course_td"><%= offering.course.subject + offering.course.course.to_s + "-" + offering.section + ": " + offering.course.title %></td>
+                    <td class="new_schedule_credit_td" style="text-align:center;"><%= offering.course.credits %></td>
+                    <td class="new_schedule_days_td" style="text-align:center;"><%= offering.days_time.days %></td>
+                    <td class="new_schedule_day_times_td" style="text-align:center;font-weight: 300;font-size:12px;width:94px;padding-top:15px;"><%= offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time if offering.days_time.start_time != nil%></td>
+                    <td class="new_schedule_times_td" style="text-align:center;"><%= offering.days_time.start_time + " - " + offering.days_time.end_time if offering.days_time.start_time != nil %></td>
+                    <td class="new_schedule_prof_td" style="text-align:center;"><%= offering.user.email[0..-10].capitalize %></td>
+                  </tr>
+                  <tr class="resp_new_schedule_tr" style="height:30px;">
+                    <td class="resp_new_schedule_credit_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.course.credits %></td>
+                    <td class="resp_new_schedule_prof_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.user.email[0..-10].capitalize %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+              <% @taken_courses[cat_id].each do |set_id, set| %>
+                <% set.each do |course| %>
+                  <tr style="height:48px;">
+                    <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
+                    <td class="common_course_td" style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
+                    <td class="common_credit_td" style="text-align:center;"><%= course.credits %></td>
+                    <td class="common_tr"></td>
+                    <td class="common_tr"></td>
+                    <td class="common_tr"></td>
+                  </tr>
+                <% end %>
+              <% end %>
+          </table>
+        </paper-shadow>
+      </div>
+    <% end %>
+  </div>
+    
+  <%  @category_courses.keys.each { |key| @taken_courses.delete(key) } %>
+    
+  <div>
+    <% @taken_courses.each do |cat_id, sets| %>
+      <div layout horizontal center-justified>
+        <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;width:353px;">
+          <table style="border-collapse:collapse;margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
+            <tr><th colspan="4" style="text-align:center;"><%= CurriculumCategory.find(cat_id).category %> <%= ("- " + CurriculumCategory.find(cat_id).major.major + " Minor") if CurriculumCategory.find(cat_id).minor %></th></tr>
+            <tr><th colspan="4" style="text-align:center;padding-bottom:15px;color:#4CAF50;">Completed</th></tr>
+            <tr style="color:#757575;"><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);"></th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Class</th><th style="font-weight: 300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Credits</th></tr>
 
-    <div>
-        <% @new_category_courses.each do |k, v| %>
-          <% if not (v.blank? and @common_courses[k].blank?) %>
-            <% if not v.blank? %>
-              <div layout horizontal center-justified class="big_new_schedule_table">
-                <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;" id="classes_shadow_schedule">
-                  <table style="border-collapse:collapse;margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
-                      <tr class="no_courses_offered_msg" hidden><td style="text-align:center;" colspan="7"><span style="width:290px;color:#EF5350;padding-bottom:15px;">Currently no courses are being offered that will fulfill this category</span></td></tr>
-                      <tr><th colspan="7" style="text-align:center;"><%= CurriculumCategory.find(k).category %> <%= ("- " + CurriculumCategory.find(k).major.major + " Minor") if CurriculumCategory.find(k).minor %></th></tr>
-                      <tr><th colspan="7" class="remaining_credits_tr"><%= @remaining_credits[k].to_s + " credits remaining" %></th></tr>
-                      <tr style="color:#757575;" class="new_schedule_headers"><th style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);"></th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Class</th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Credits</th><th class="days_th" style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Days</th><th class="time_th" style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Time</th><th class="prof_th" style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);font-weight:300;">Instructor</th><th style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);font-weight:300;">Grade</th></tr>
-                      <% v.each do |offering| %>
-                          <tr class="new_schedule_tr">
-                            <td class="new_schedule_check_td"><paper-checkbox class="offering_checkbox <%= offering.id.to_s %>" id=<%= offering.id.to_s %> ></paper-checkbox></td>
-                            <td class="new_schedule_course_td"><%= offering.course.subject + offering.course.course.to_s + "-" + offering.section + ": " + offering.course.title %></td>
-                            <td class="new_schedule_credit_td" style="text-align:center;"><%= offering.course.credits %></td>
-                            <td class="new_schedule_days_td" style="text-align:center;"><%= offering.days_time.days %></td>
-                            <td class="new_schedule_day_times_td" style="text-align:center;font-weight: 300;font-size:12px;width:94px;padding-top:15px;"><%= offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time %></td>
-                            <td class="new_schedule_times_td" style="text-align:center;"><%= offering.days_time.start_time + " - " + offering.days_time.end_time %></td>
-                            <td class="new_schedule_prof_td" style="text-align:center;"><%= offering.user.email[0..-10].capitalize %></td>
-                            <td class="new_schedule_nc_td" style="text-align:center;">NC</td>
-                          </tr>
-                          <tr class="resp_new_schedule_tr" style="height:30px;">
-                            <td class="resp_new_schedule_credit_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.course.credits %></td>
-                            <td class="resp_new_schedule_prof_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.user.email[0..-10].capitalize %></td>
-                          </tr>
-                      <% end %>
-                      <% @common_courses[k].each do |course| %>
-                          <tr style="height:48px;">
-                            <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
-                            <td class="common_course_td" style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
-                            <td class="common_credit_td" style="text-align:center;"><%= course.credits %></td>
-                            <td class="common_tr"></td>
-                            <td class="common_tr"></td>
-                            <td class="common_tr"></td>
-                            <td class="common_grade_td" style="text-align:center;"><%= Transcript.where(course_id: course.id, user_id: @user.id).take.grade %></td>
-                          </tr>
-                      <% end %>
-                  </table>
-                </paper-shadow>
-              </div>
-
-            <% else %>
-              <div layout horizontal center-justified>
-                <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;" id="classes_shadow_schedule">
-                  <table style="border-collapse:collapse;margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
-                      <tr><td class="no_courses_offered_msg" style="text-align:center;" colspan="4"><span style="color:#EF5350;padding-bottom:15px;">Currently no courses are being offered that will fulfill this category</span></td></tr>
-                      <tr><th colspan="4" style="text-align:center;"><%= CurriculumCategory.find(k).category %> <%= ("- " + CurriculumCategory.find(k).major.major + " Minor") if CurriculumCategory.find(k).minor %></th></tr>
-                      <tr><th colspan="4" style="text-align:center;"><%= @remaining_credits[k].to_s + " credits remaining" %></th></tr>
-                      <tr style="color:#757575;width:492px;"><th style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);"></th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Class</th><th style="font-weight: 300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Credits</th><th style="padding-left:5px;padding-right:5px;font-weight: 300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Grade</th></tr>
-                      <% @common_courses[k].each do |course| %>
-                          <tr style="height:48px;" class="not_offered_courses">
-                            <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
-                            <td style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
-                            <td style="text-align:center;"><%= course.credits %></td>
-                            <td style="text-align:center;">A</td>
-                          </tr>
-                      <% end %>
-                  </table>
-                </paper-shadow>
-              </div> 
+            <% sets.each do |set_id, set| %>
+              <% set.each do |course| %>
+                <tr class="taken_courses_tr" style="height:48px;">
+                  <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
+                  <td style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
+                  <td style="text-align:center;"><%= course.credits %></td>
+                </tr>
+              <% end %>
             <% end %>
-          <% else %>
-            <div layout horizontal center-justified>
-              <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;width:558px;">
-                <table style="margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
-                    <tr><td class="no_courses_offered_msg" style="text-align:center;" colspan="4"><span style="width:290px;color:#EF5350;">Currently no courses are being offered that will fulfill this category</span></td></tr>
-                    <tr><th colspan="4" style="text-align:center;"><%= CurriculumCategory.find(k).category %> <%= ("- " + CurriculumCategory.find(k).major.major + " Minor") if CurriculumCategory.find(k).minor %></th></tr>
-                    <tr><th colspan="4" style="text-align:center;"><%= @remaining_credits[k].to_s + " credits remaining" %></th></tr>
-                    <tr style="color:#757575;"><th></th><th style="font-weight:300;"></th><th style="font-weight: 400;"></th><th style="font-weight: 300;"></th></tr>
-                </table>
-              </paper-shadow>
-            </div>
-          <% end %>
-        <% end %>
-        
-        <%= form_for [@user, Schedule.new], remote: true do |f| %>
-            <% offerings = (@new_category_courses.values.flatten.map { |offering| [offering.id, offering.id] }) %>
-            <%= f.select(:offering_id, options_for_select(offerings), {}, { id:'schedule_new_actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6, hidden: ''}) %>
-            <%= f.submit "Update Schedule", id: "submit_schedule_changes", hidden: "" %>
-        <% end %>
-        
-        <div id="schedule_errors" style="font-size:0.75em;color:#d34336;"></div>
-    </div>
+          </table>
+        </paper-shadow>
+      </div>
+    <% end %>
+
+    <%= form_for [@user, Schedule.new], remote: true do |f| %>
+        <%= f.select(:offering_id, options_for_select(@offerings), {}, { id:'schedule_new_actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6, hidden: ''}) %>
+        <%= f.submit "Update Schedule", id: "submit_schedule_changes", hidden: "" %>
+    <% end %>
+  
+    <div id="schedule_errors" style="font-size:0.75em;color:#d34336;"></div>
+  </div>
 </div>
 
 <!--check ones already signed up for-->
@@ -118,120 +87,5 @@
     $(".<%= sch.id %>").attr("checked", "");
 <% end %>
 
-var asel_opts, credit_count, disable, nsel_dates_array, nsel_opts, sel_dates_array, sel_opts;
-
-asel_opts = void 0;
-
-credit_count = void 0;
-
-disable = void 0;
-
-nsel_dates_array = void 0;
-
-nsel_opts = void 0;
-
-sel_dates_array = void 0;
-
-sel_opts = void 0;
-
-sel_opts = [];
-
-nsel_opts = [];
-
-asel_opts = [];
-
-credit_count = 0;
-
-sel_dates_array = [];
-
-nsel_dates_array = [];
-
-disable = [];
-
-$('#schedule_new_actual_select option:selected').each(function() {
-  sel_opts.push($(this).attr('value'));
-  asel_opts.push($(this).attr('value'));
-});
-
-$('#schedule_new_actual_select option:not(:selected)').each(function() {
-  nsel_opts.push($(this).attr('value'));
-  asel_opts.push($(this).attr('value'));
-});
-
-$.each(sel_opts, function(index, value) {
-  var d, t;
-  d = void 0;
-  t = void 0;
-  t = $('#' + value).parent().parent();
-  credit_count += parseInt(t.find('.new_schedule_credit_td').text());
-  d = [t.find('.new_schedule_days_td').text(), t.find('.new_schedule_times_td').text().split(' - ')[0], t.find('.new_schedule_times_td').text().split(' - ')[1], t.find('.new_schedule_course_td').text().split('-')[0]];
-  if (d[1].split(' ')[1] === 'pm') {
-    d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0]);
-    d[1].setHours(d[1].getHours() + 12);
-  } else {
-    d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0]);
-  }
-  if (d[2].split(' ')[1] === 'pm') {
-    d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0]);
-    d[2].setHours(d[2].getHours() + 12);
-  } else {
-    d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0]);
-  }
-  sel_dates_array.push(d);
-});
-
-$.each(nsel_opts, function(index, value) {
-  var d, t;
-  d = void 0;
-  t = void 0;
-  t = $('#' + value).parent().parent();
-  if (credit_count + parseInt(t.find('.new_schedule_credit_td').text()) > 18) {
-    disable.push(value);
-  }
-  d = [t.find('.new_schedule_days_td').text(), t.find('.new_schedule_times_td').text().split(' - ')[0], t.find('.new_schedule_times_td').text().split(' - ')[1], t.find('.new_schedule_course_td').text().split('-')[0]];
-  if (d[1].split(' ')[1] === 'pm') {
-    d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0]);
-    d[1].setHours(d[1].getHours() + 12);
-  } else {
-    d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0]);
-  }
-  if (d[2].split(' ')[1] === 'pm') {
-    d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0]);
-    d[2].setHours(d[2].getHours() + 12);
-  } else {
-    d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0]);
-  }
-  nsel_dates_array.push(d);
-});
-
-$.each(nsel_opts, function(index1, value1) {
-  $.each(sel_opts, function(index2, value2) {
-    if (!(sel_dates_array[index2][0].indexOf(nsel_dates_array[index1][0]) === -1)) {
-      console.log('day overlap');
-      if (sel_dates_array[index2][1] <= nsel_dates_array[index1][2] && nsel_dates_array[index1][1] <= sel_dates_array[index2][2]) {
-        disable.push(value1);
-      }
-    }
-    if (sel_dates_array[index2][3] === nsel_dates_array[index1][3]) {
-      disable.push(value1);
-    }
-  });
-});
-
-disable = jQuery.unique(disable);
-
-asel_opts = $(asel_opts).not(disable).get();
-
-$.each(disable, function(index, value) {
-  $('.' + value).attr('disabled', '');
-});
-
-$.each(asel_opts, function(index, value) {
-  $('.' + value).removeAttr('disabled', '');
-});
-
-</script>
-
-<script>
-<%= raw render template: "work_schedules/create" %>
+<%= raw render template: "work_schedules/create.js" %>
 </script>

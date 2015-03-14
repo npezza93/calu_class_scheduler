@@ -3,7 +3,7 @@ class ScheduleApproval < ActiveRecord::Base
     belongs_to :semester
     before_save :set_default_semester
     
-    validates :user, uniqueness: true
+    validates_uniqueness_of :user, scope: [:semester]
 
     private
       def set_default_semester

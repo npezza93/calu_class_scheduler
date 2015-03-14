@@ -1,5 +1,5 @@
 <% content_for :title do %>
-    Classes In <%= @category.category %>
+    <%= @category.category %>
 <% end %>
 
 <br>
@@ -25,7 +25,7 @@
         <%= form_tag do |f| %>
             <div class="category_course_set">
                 <%= label_tag 'Set ' + (@cc_courses.count + 1).to_s %>
-                <%= select_tag(:course_id, options_for_select(@courses), { class: "category_course_set_select", multiple: true, size: 5}) %>
+                <%= select_tag(:course_id, options_for_select(@courses), { class: "category_course_set_select", multiple: true, size: 8}) %>
                 <br>
             </div>
             
@@ -37,14 +37,15 @@
             </div>
             
             <div>
-                <paper-input-decorator label="Enter Count (If left empty, all are required)" Error="Value must be an integer!" id="count_decorator">
+                <paper-input-decorator label="Enter Count (If left empty, all are required)" id="count_decorator" Error="Value must be an integer!" id="count_decorator">
                     <%= text_field_tag :count, nil, pattern: "^[0-9]*$" %>
                 </paper-input-decorator>
             </div>
         
             <br><br>
-            <div layout horizontal end-justified style="width:100%;color:#03A9F4;">
-                <paper-button id="cancel_new_edit_set">Cancel</paper-button>
+            <div layout horizontal end-justified style="width:100%;color:#2196F3;">
+                <paper-button id="cancel_new_set">Cancel</paper-button>
+                <%= link_to "category", curriculum_categories_path, hidden: "", id: "category_index_link" %>
                 <paper-button id='submit_category_class_material'>Create Set</paper-button>
                 <%= submit_tag 'create set' , id: 'submit_category_class_button', hidden: "" %>
             </div>
@@ -60,7 +61,7 @@
 <div vertical center layout>
     <% i = 1 %>
     <% @cc_courses.each do |set_id, cc_set|  %>
-        <paper-shadow style="background: #f7f7f7;width:300px;">
+        <paper-shadow style="background: #fafafa;width:300px;">
             <div noink layout horizontal center-justified>
                 
                 <span style="font-size:16px;margin:12px;" flex>Set <%= i %> - <%= cc_set.count == nil ? "All are required" : "Choose " + cc_set.count.to_s + " of the following"  %></span>
@@ -69,24 +70,18 @@
                         <paper-icon-button icon="more-vert" noink></paper-icon-button>
                         <paper-dropdown class="dropdown" halign="right" valign="top">
                             <core-menu class="menu">
-                                <paper-item><%= link_to 'Edit', edit_curriculum_category_curriculum_category_set_path(@category, cc_set), class: "cat_set_edit_remove"  %></paper-item>
-                                <paper-item><%= link_to 'Delete', [@category, cc_set] , method: :delete, data: {confirm: "Are you sure you want to delete this set?"}, class: "cat_set_edit_remove" %></paper-item>
+                                <paper-item><core-icon icon="create"></core-icon>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_curriculum_category_curriculum_category_set_path(@category, cc_set), class: "cat_set_edit"  %></paper-item>
+                                <paper-item><core-icon icon="close"></core-icon>&nbsp;&nbsp;&nbsp;<%= link_to 'Delete', [@category, cc_set] , method: :delete, data: {confirm: "Are you sure you want to delete this set?"}, class: "cat_set_remove" %></paper-item>
                             </core-menu>
                         </paper-dropdown>
                     </paper-menu-button>
                 </span>
             </div>
             <% cc_set.course_set.each do |course_set| %>
-                <paper-item layout horizontal center-justified style="text-align:center;"><%= course_set.course.subject + course_set.course.course.to_s + ": " + course_set.course.title %></paper-item>
+                <paper-item noink layout horizontal center-justified style="text-align:center;cursor:default;"><%= course_set.course.subject + course_set.course.course.to_s + ": " + course_set.course.title %></paper-item>
             <% end %>
         </paper-shadow>
         <% i += 1 %>
         <br>
     <% end %>
 </div>
-
-<style>
-    html /deep/ paper-dropdown {
-        width: 125px;
-    }
-</style>

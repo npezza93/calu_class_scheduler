@@ -20,13 +20,13 @@
     cursor:pointer;
 }
 .selected_class {
-    background-color: #81C784;
-    color: rgba(0,0,0,0.8);
+    background-color: #4CAF50;
+    color: #EAF6EB;
     font-weight: bold;
     cursor: text;
 }
 .half_time_slot {
-    background: linear-gradient(to bottom, #81C784 0%,#81C784 50%,#efefef 51%,#efefef 100%);
+    background: linear-gradient(to bottom, #4CAF50 0%,#4CAF50 50%,#efefef 51%,#efefef 100%);
     cursor:text;
 }
 #main {

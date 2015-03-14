@@ -3,7 +3,14 @@ class CoursesController < ApplicationController
   before_filter :authorize
   
   def index
-    @courses = Course.all
+    @pages = (Hash[Course.all.group_by(&:subject).sort]).keys
+    if params[:subject].blank?
+      @courses = (Hash[Course.all.group_by(&:subject).sort]).first[1].sort_by { |el| el[:course] }
+      @page = 0
+    else
+     @courses = (Hash[Course.all.group_by(&:subject).sort])[params[:subject]].sort_by { |el| el[:course] }
+     @page = @pages.index(params[:subject])
+    end
   end
   
   def new
@@ -26,11 +33,15 @@ class CoursesController < ApplicationController
     temp_params = course_params
     temp_params.delete("prerequisites")
     @course = Course.new(temp_params)
+    min_grade_i =0
+    prereq_min_grades = params["prereq_grades"].split("/|/")
+    prereq_min_grades.map! { |grade| (grade == "N/A") ? nil : grade }
     
     @prereqs = []
     groups.each_with_index do |group, index|
       group.each do |course_id|
-        @prereqs << Prerequisites.new(prerequisite_course_id: course_id, course_group_id: (index+1))
+        @prereqs << Prerequisites.new(prerequisite_course_id: course_id, course_group_id: (index+1), minimum_grade: prereq_min_grades[min_grade_i])
+        min_grade_i += 1
       end
     end
 
@@ -54,12 +65,17 @@ class CoursesController < ApplicationController
     temp_params = course_params
     temp_params.delete("prerequisites")
     
+    min_grade_i =0
+    prereq_min_grades = params["prereq_grades"].split("/|/")
+    prereq_min_grades.map! { |grade| (grade == "N/A") ? nil : grade }
+    
     respond_to do |format|
       if @course.update(temp_params)
         @prereqs = []
         groups.each_with_index do |group, index|
           group.each do |course_id|
-            @prereqs << Prerequisites.new(prerequisite_course_id: course_id, course_group_id: (index+1))
+            @prereqs << Prerequisites.new(prerequisite_course_id: course_id, course_group_id: (index+1), minimum_grade: prereq_min_grades[min_grade_i])
+            min_grade_i += 1
           end
         end
         @course.prerequisites = @prereqs
@@ -76,6 +92,7 @@ class CoursesController < ApplicationController
   end
   
   def destroy
+    Prerequisites.where(parent_course_id: @course.id).delete_all
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: @course.title + ' was successfully destroyed.'  }
@@ -91,7 +108,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:subject, :course, :title, :credits, {:prerequisites => []})
+      params.require(:course).permit(:subject, :course, :title, :credits, :minimum_class_standing, :minimum_sat_score,{:prerequisites => []})
     end
     
     def authorize

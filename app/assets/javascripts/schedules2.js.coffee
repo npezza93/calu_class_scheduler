@@ -71,6 +71,10 @@ jQuery ->
       return
 
     $(".offering_checkbox").click (e) ->
+      front_validation()
+      return
+      
+    front_validation = ->
       asel_opts = undefined
       credit_count = undefined
       disable = undefined
@@ -98,22 +102,25 @@ jQuery ->
         t = undefined
         t = $('#' + value).parent().parent()
         credit_count += parseInt(t.find('.new_schedule_credit_td').text())
-        d = [
-          t.find('.new_schedule_days_td').text()
-          t.find('.new_schedule_times_td').text().split(' - ')[0]
-          t.find('.new_schedule_times_td').text().split(' - ')[1]
-          t.find('.new_schedule_course_td').text().split('-')[0]
-        ]
-        if d[1].split(' ')[1] == 'pm'
-          d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-          d[1].setHours d[1].getHours() + 12
+        if !(t.find('.new_schedule_days_td').text() == "ONLINE" || t.find('.new_schedule_days_td').text() == "OFFSITE") 
+          d = [
+            t.find('.new_schedule_days_td').text()
+            t.find('.new_schedule_times_td').text().split(' - ')[0]
+            t.find('.new_schedule_times_td').text().split(' - ')[1]
+            t.find('.new_schedule_course_td').text().split('-')[0]
+          ]
+          if d[1].split(' ')[1] == 'pm'
+            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
+            d[1].setHours d[1].getHours() + 12
+          else
+            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
+          if d[2].split(' ')[1] == 'pm'
+            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
+            d[2].setHours d[2].getHours() + 12
+          else
+            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
         else
-          d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-        if d[2].split(' ')[1] == 'pm'
-          d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
-          d[2].setHours d[2].getHours() + 12
-        else
-          d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
+          d= [t.find('.new_schedule_days_td').text(), -1,-1,-1]
         sel_dates_array.push d
         return
       $.each nsel_opts, (index, value) ->
@@ -122,22 +129,25 @@ jQuery ->
         t = $('#' + value).parent().parent()
         if credit_count + parseInt(t.find('.new_schedule_credit_td').text()) > 18
           disable.push value
-        d = [
-          t.find('.new_schedule_days_td').text()
-          t.find('.new_schedule_times_td').text().split(' - ')[0]
-          t.find('.new_schedule_times_td').text().split(' - ')[1]
-          t.find('.new_schedule_course_td').text().split('-')[0]
-        ]
-        if d[1].split(' ')[1] == 'pm'
-          d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-          d[1].setHours d[1].getHours() + 12
+        if !(t.find('.new_schedule_days_td').text() == "ONLINE" || t.find('.new_schedule_days_td').text() == "OFFSITE") 
+          d = [
+            t.find('.new_schedule_days_td').text()
+            t.find('.new_schedule_times_td').text().split(' - ')[0]
+            t.find('.new_schedule_times_td').text().split(' - ')[1]
+            t.find('.new_schedule_course_td').text().split('-')[0]
+          ]
+          if d[1].split(' ')[1] == 'pm'
+            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
+            d[1].setHours d[1].getHours() + 12
+          else
+            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
+          if d[2].split(' ')[1] == 'pm'
+            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
+            d[2].setHours d[2].getHours() + 12
+          else
+            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
         else
-          d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-        if d[2].split(' ')[1] == 'pm'
-          d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
-          d[2].setHours d[2].getHours() + 12
-        else
-          d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
+          d= [t.find('.new_schedule_days_td').text(), -1,-1,-1]
         nsel_dates_array.push d
         return
       $.each nsel_opts, (index1, value1) ->

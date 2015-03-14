@@ -22,4 +22,11 @@
     right:0;
     margin-bottom:15px;
     margin-right:25px;
+    color: #FFF;
+    background: #4CAF50;
+}
+
+#semester_decorator /deep/ .focused-underline {
+    /* line color when the input is focused */
+    background-color: #4CAF50;
 }

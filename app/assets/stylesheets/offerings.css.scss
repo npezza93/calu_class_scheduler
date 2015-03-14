@@ -8,6 +8,8 @@
     right:0;
     margin-bottom:15px;
     margin-right:25px;
+    color: #FFF;
+    background: #4CAF50;
 }
 
 #new_offering_shadow {
@@ -40,6 +42,20 @@
 }
 
 #stop_offering_link:hover {
-	color: #666;
-	text-decoration: underline;
+	color: #F44336;
+}
+
+#edit_offering_link {
+	color: #4a89dc;
+	text-decoration: none;
+	transition: all .2s ease;
+}
+
+#edit_offering_link:hover {
+	color: #4CAF50;
+}
+
+#section_decorator /deep/ .focused-underline {
+    /* line color when the input is focused */
+    background-color: #4CAF50;
 }

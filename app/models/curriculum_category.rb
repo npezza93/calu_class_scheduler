@@ -4,5 +4,4 @@ class CurriculumCategory < ActiveRecord::Base
 
   validates_uniqueness_of :category, scope: [:major, :minor]
   has_many :curriculum_category_sets
-  
 end

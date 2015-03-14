@@ -1,0 +1,6 @@
+<% if @major.errors %>
+    <% @major.errors.full_messages.each do |message| %>
+        $("#major_major").parent().attr("error","<%= message.html_safe %>");
+        $("#major_major").parent().attr("isInvalid","true");
+    <% end %>
+<% end %>

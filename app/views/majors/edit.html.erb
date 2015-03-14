@@ -1,0 +1,25 @@
+<% content_for :title do %>
+    Editing <%= @major.major %>
+<% end %>
+
+<div layout horizontal center-justified>
+    <paper-shadow id="new_major_form_shadow">
+        <%= form_for(@major, remote: true) do |f| %>
+                
+            <paper-input-decorator label="Major" id="major_decorator">
+                <%= f.text_field :major, is: 'core-input' %>
+            </paper-input-decorator>
+
+            <br><br>
+            <div layout horizontal end-justified style="color:#2196F3;">
+                <paper-button id='cancel_major'>Cancel</paper-button>
+                <paper-button id="material_create_major">update</paper-button>
+            </div>
+        
+            <%= f.submit 'Create Major', hidden: "", id: 'actual_create_major' %>
+            
+        <% end %>
+    </paper-shadow>
+</div>
+
+<div id="new_major_form_errors"></div>

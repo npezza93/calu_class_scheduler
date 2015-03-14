@@ -2,10 +2,6 @@
     <%= @user.first_name.capitalize + " " + @user.last_name.capitalize %>'s Schedule
 <% end %>
 
-<div style="width:100%;" layout horizontal end-justified>
-    <paper-fab icon="cloud-upload" style="margin-top:-28px;margin-right:25px;" id="fab_new_schedule"></paper-fab>
-</div>
-
 <core-overlay backdrop transition="core-transition-top" id="new_schedule_modal" style="background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
     <h3>To Upload an Updated Transcript:</h3>
     <ul>
@@ -32,14 +28,24 @@
 
 <core-animated-pages id="baluga3" selected="1" transitions="slide-from-right">
     <!--Transcript page that is loaded in via ajax after the page loads-->
-  	<section id="section0"></section>
+  	<section id="section0">
+  	    <core-ajax id="transcript_ajax"
+            auto
+            url="<%= user_transcripts_path(@user) %>"
+            handleAs="text"></core-ajax>
+  	</section>
 
   	<section id="section1">
         <%= render "index" %>
   	</section>
   	
   	<!--New Schedules page that is loaded via ajax after page loads-->
-  	<section id="section2"><div id="temp_replace"></div></section>
+  	<section id="section2"><div id="temp_replace">
+	    <core-ajax id="new_schedule_ajax"
+            auto
+            url="<%= new_user_schedule_path(@user) %>"
+            handleAs="text"></core-ajax>
+  	</div></section>
   	
 </core-animated-pages>
 
@@ -49,22 +55,8 @@
     <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
 <% end %>
 
-
+    
 <script>
-    $(function() {
-        $.ajax({
-          url: "<%= new_user_schedule_path(@user) %>",
-        }).done(function(html) {
-          $("#temp_replace").append(html);
-        });
-        
-        $.ajax({
-          url: "<%= user_transcripts_path(@user) %>",
-        }).done(function(html) {
-          $("#section0").append(html);
-        });
-    }); 
-
     $('#new_transcript_pdf').fileupload({
         dataType: 'script',
         add: function (e, data) {

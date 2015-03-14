@@ -7,7 +7,7 @@
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
-// @version 0.5.4
+// @version 0.5.5
 window.PolymerGestures = {};
 
 (function(scope) {
@@ -3814,7 +3814,7 @@ window.PolymerGestures = {};
 })(this);
 
 Polymer = {
-  version: '0.5.4'
+  version: '0.5.5'
 };
 
 // TODO(sorvell): this ensures Polymer is an object and not a function
@@ -10188,12 +10188,7 @@ scope.styleResolver = styleResolver;
             cssText += s.textContent + '\n\n';
           }
         } else {
-          try {
-            cssText = style.textContent;
-          }
-          catch(err) {
-            console.log("KA BOOM");
-          }
+          cssText = style.textContent;
         }
         this.installScopeCssText(cssText, scope, name);
       }

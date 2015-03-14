@@ -11,14 +11,17 @@ jQuery ->
 
     $("#course_dropdown").on "core-select", (e, detail) ->
       $("#offering_course_id").val e.originalEvent.detail.item.getAttribute("value")
+      $("#course_select").val e.originalEvent.detail.item.getAttribute("value")
       return
 
     $("#day_dropdown").on "core-select", (e, detail) ->
       $("#offering_days_time_id").val e.originalEvent.detail.item.getAttribute("value")
+      $("#day_select").val e.originalEvent.detail.item.getAttribute("value")
       return      
 
     $("#advisor_dropdown").on "core-select", (e, detail) ->
       $("#offering_user_id").val e.originalEvent.detail.item.getAttribute("value")
+      $("#advisor_select").val e.originalEvent.detail.item.getAttribute("value")
       return
 
     $("#upload-fab").click ->
@@ -30,6 +33,10 @@ jQuery ->
       $("#upload_offering_button").on "change", ->
         $("#submit_upload_offering_button")[0].click()
         return
+      return
+
+    $("#material_offer_course").click ->
+      $("#submit_offering")[0].click()
       return
       
     $("#cancel_offering_button").click ->

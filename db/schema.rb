@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226182555) do
+ActiveRecord::Schema.define(version: 20150308215639) do
 
   create_table "course_sets", force: true do |t|
     t.integer  "course_id"
@@ -29,7 +29,9 @@ ActiveRecord::Schema.define(version: 20150226182555) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "credits",    default: 3
+    t.integer  "credits",                default: 3
+    t.string   "minimum_class_standing"
+    t.string   "minimum_sat_score"
   end
 
   create_table "curriculum_categories", force: true do |t|
@@ -91,12 +93,13 @@ ActiveRecord::Schema.define(version: 20150226182555) do
   add_index "offerings", ["semester_id"], name: "index_offerings_on_semester_id"
   add_index "offerings", ["user_id"], name: "index_offerings_on_user_id"
 
-  create_table "prerequisites", id: false, force: true do |t|
+  create_table "prerequisites", force: true do |t|
     t.integer  "parent_course_id"
     t.integer  "prerequisite_course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_group_id"
+    t.string   "minimum_grade"
   end
 
   create_table "schedule_approvals", force: true do |t|
@@ -134,7 +137,8 @@ ActiveRecord::Schema.define(version: 20150226182555) do
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "grade",      default: "NG"
+    t.boolean  "grade_c_minus"
+    t.boolean  "grade_c"
   end
 
   add_index "transcripts", ["course_id"], name: "index_transcripts_on_course_id"
@@ -154,6 +158,9 @@ ActiveRecord::Schema.define(version: 20150226182555) do
     t.text     "minor"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "class_standing"
+    t.boolean  "sat_520"
+    t.boolean  "sat_580"
   end
 
   add_index "users", ["major_id"], name: "index_users_on_major_id"
