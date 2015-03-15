@@ -10,7 +10,6 @@ $('#schedule_new_actual_select option:not(:selected)').each(function() {
 });
 
 work_opts = [<%= @work_schedules.pluck(:id).map(&:to_s).join(", ") %>];
-console.log(work_opts);
 
 $.each(nsel_opts, function(index, value) {
   var d, t;
@@ -27,7 +26,6 @@ $.each(nsel_opts, function(index, value) {
     d = ["<%= work.work_days_time.days%>", Date.parse("<%= work.work_days_time.start_time.strftime("%l:%M %p") %>"), Date.parse("<%= work.work_days_time.end_time.strftime("%l:%M %p") %>")]
     work_dates_array.push(d);
 <% end %>
-console.log(work_dates_array);
 
 $.each(nsel_opts, function(index1, value1) {
   $.each(work_opts, function(index2, value2) {
