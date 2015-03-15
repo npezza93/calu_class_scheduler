@@ -189,8 +189,7 @@ jQuery ->
     
     $('.day').click (e) ->
       if $("#drawer_core_menu").children().length <11
-        `var id_string`
-        begin_time = new Date(2000, 1, 1, 8, 0o00)
+        begin_time = new Date(2000, 1, 1, 8)
         end_time = new Date(2000, 1, 1, 21, 30)
         while begin_time.getTime() <= end_time.getTime()
           if e.toElement.innerHTML != 'Thursday'
