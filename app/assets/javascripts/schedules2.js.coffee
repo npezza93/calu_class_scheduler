@@ -130,16 +130,18 @@ jQuery ->
             t.find('.new_schedule_course_td').text().split('-')[0]
           ]
         else
-          d = [t.find('.new_schedule_days_td').text(), -1,-1,-1]
+          d = [t.find('.new_schedule_days_td').text(), -1,-1,t.find('.new_schedule_course_td').text().split('-')[0]]
         nsel_dates_array.push d
         return
-      
+
       $.each nsel_opts, (index1, value1) ->
         $.each sel_opts, (index2, value2) ->
             if sel_dates_array[index2][0] != "ONLINE" and nsel_dates_array[index2][0] != "ONLINE" and sel_dates_array[index2][0].indexOf(nsel_dates_array[index1][0]) != -1
               if sel_dates_array[index2][1] <= nsel_dates_array[index1][2] and nsel_dates_array[index1][1] <= sel_dates_array[index2][2]
                 disable.push value1
-          
+                console.log(sel_dates_array[index2])
+                console.log(nsel_dates_array[index1])
+                
             if sel_dates_array[index2][3] == nsel_dates_array[index1][3]
               disable.push value1
             return

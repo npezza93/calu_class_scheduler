@@ -111,6 +111,8 @@ class SchedulesController < ApplicationController
     
     def scheduler(uid) 
       user = User.find(uid)
+      used_courses = Set.new
+      
       active_semester = Semester.where(active: true).take
       user_courses = Transcript.where(user_id: uid).map { |transcript| transcript.course } 
       
@@ -201,11 +203,13 @@ class SchedulesController < ApplicationController
         sets.each do |set_id, set_courses|
           set_offerings = []
           set_courses.each do |set_course|
-            offerings = Offering.where(course: set_course, semester: active_semester).flatten
-            if offerings.blank?
-              needs_list << set_course
-            else
-              set_offerings << offerings
+            if used_courses.add?(set_course)
+              offerings = Offering.where(course: set_course, semester: active_semester).flatten
+              if offerings.blank?
+                needs_list << set_course
+              else
+                set_offerings << offerings
+              end
             end
           end
           category_courses[category_id][set_id]  = set_offerings.flatten
