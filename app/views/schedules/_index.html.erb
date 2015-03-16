@@ -143,7 +143,7 @@
     <% end %>
     
     <% @offerings.each do |offering| %>
-        <% if offering.days_time.days != "ONLINE" or offering.days_time.days != "OFFSITE" %>
+        <% if offering.days_time.days != "ONLINE" and offering.days_time.days != "OFFSITE" %>
             <% offering.days_time.days.split("").each do |letter| %>
                 <% begin_time = Time.strptime(offering.days_time.start_time, "%l:%M %P") %>
                 <% end_time = Time.strptime(offering.days_time.end_time, "%l:%M %P") %>

@@ -93,10 +93,12 @@ jQuery ->
         sel_opts.push $(this).attr('value')
         asel_opts.push $(this).attr('value')
         return
+        
       $('#schedule_new_actual_select option:not(:selected)').each ->
         nsel_opts.push $(this).attr('value')
         asel_opts.push $(this).attr('value')
         return
+        
       $.each sel_opts, (index, value) ->
         d = undefined
         t = undefined
@@ -105,24 +107,15 @@ jQuery ->
         if !(t.find('.new_schedule_days_td').text() == "ONLINE" || t.find('.new_schedule_days_td').text() == "OFFSITE") 
           d = [
             t.find('.new_schedule_days_td').text()
-            t.find('.new_schedule_times_td').text().split(' - ')[0]
-            t.find('.new_schedule_times_td').text().split(' - ')[1]
+            Date.parse(t.find('.new_schedule_times_td').text().split(' - ')[0])
+            Date.parse(t.find('.new_schedule_times_td').text().split(' - ')[1])
             t.find('.new_schedule_course_td').text().split('-')[0]
           ]
-          if d[1].split(' ')[1] == 'pm'
-            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-            d[1].setHours d[1].getHours() + 12
-          else
-            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-          if d[2].split(' ')[1] == 'pm'
-            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
-            d[2].setHours d[2].getHours() + 12
-          else
-            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
         else
-          d= [t.find('.new_schedule_days_td').text(), -1,-1,-1]
+          d = [ t.find('.new_schedule_days_td').text(),-1,-1,t.find('.new_schedule_course_td').text().split('-')[0]]          
         sel_dates_array.push d
         return
+        
       $.each nsel_opts, (index, value) ->
         d = undefined
         t = undefined
@@ -132,34 +125,27 @@ jQuery ->
         if !(t.find('.new_schedule_days_td').text() == "ONLINE" || t.find('.new_schedule_days_td').text() == "OFFSITE") 
           d = [
             t.find('.new_schedule_days_td').text()
-            t.find('.new_schedule_times_td').text().split(' - ')[0]
-            t.find('.new_schedule_times_td').text().split(' - ')[1]
+            Date.parse(t.find('.new_schedule_times_td').text().split(' - ')[0])
+            Date.parse(t.find('.new_schedule_times_td').text().split(' - ')[1])
             t.find('.new_schedule_course_td').text().split('-')[0]
           ]
-          if d[1].split(' ')[1] == 'pm'
-            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-            d[1].setHours d[1].getHours() + 12
-          else
-            d[1] = new Date(2000, 1, 1, d[1].split(':')[0], d[1].split(':')[1].split(' ')[0])
-          if d[2].split(' ')[1] == 'pm'
-            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
-            d[2].setHours d[2].getHours() + 12
-          else
-            d[2] = new Date(2000, 1, 1, d[2].split(':')[0], d[2].split(':')[1].split(' ')[0])
         else
-          d= [t.find('.new_schedule_days_td').text(), -1,-1,-1]
+          d = [t.find('.new_schedule_days_td').text(), -1,-1,-1]
         nsel_dates_array.push d
         return
+      
       $.each nsel_opts, (index1, value1) ->
         $.each sel_opts, (index2, value2) ->
-          if !(sel_dates_array[index2][0].indexOf(nsel_dates_array[index1][0]) == -1)
-            if sel_dates_array[index2][1] <= nsel_dates_array[index1][2] and nsel_dates_array[index1][1] <= sel_dates_array[index2][2]
+            if sel_dates_array[index2][0] != "ONLINE" and nsel_dates_array[index2][0] != "ONLINE" and sel_dates_array[index2][0].indexOf(nsel_dates_array[index1][0]) != -1
+              if sel_dates_array[index2][1] <= nsel_dates_array[index1][2] and nsel_dates_array[index1][1] <= sel_dates_array[index2][2]
+                disable.push value1
+          
+            if sel_dates_array[index2][3] == nsel_dates_array[index1][3]
               disable.push value1
-          if sel_dates_array[index2][3] == nsel_dates_array[index1][3]
-            disable.push value1
-          return
+            return
         return
       disable = jQuery.unique(disable)
+
       asel_opts = $(asel_opts).not(disable).get()
       $.each disable, (index, value) ->
         $('.' + value).attr 'disabled', ''
@@ -167,5 +153,5 @@ jQuery ->
       $.each asel_opts, (index, value) ->
         $('.' + value).removeAttr 'disabled', ''
         return
-      
+
       return

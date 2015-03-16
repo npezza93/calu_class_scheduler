@@ -1,10 +1,4 @@
-<% @errors.each do |error_msg_slot| %>
-    <% error_msg_slot.errors.full_messages.each do |error_message| %>
-        document.getElementById("schedule_new_actual_select").options[$("#schedule_new_actual_select option[value=" + "<%= error_msg_slot.offering_id %>" + "]").index()].selected = false;
-        document.getElementById("<%= error_msg_slot.offering_id %>").removeAttribute("checked", "");
-        $("#schedule_errors").html("<paper-toast class=\"capsule\" text=\"<%= error_message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
-    <% end %>
-<% end %>
+
 
 
 <% if request.path == "/users/"+@user.id.to_s+"/schedules" %>
@@ -25,32 +19,34 @@
             <% @offerings.each do |offering| %>
                 $("#advisor_quick_user_courses").append('<tr><td><%= offering.course.subject + offering.course.course.to_s + "-" + offering.section + ": " +  offering.course.title %></td><td style="padding-left:20px;padding-right:20px;"><%= offering.course.credits %></td><td><%= offering.user.email[0..-10].capitalize %></td></tr>');
                 <% total_credits += offering.course.credits %>
-                <% offering.days_time.days.split("").each do |letter| %>
-                    <% begin_time = Time.strptime(offering.days_time.start_time, "%l:%M %P") %>
-                    <% end_time = Time.strptime(offering.days_time.end_time, "%l:%M %P") %>
-                    <% index = 0 %>
-                    
-                    <% if (end_time - 15.minutes).min == 0 or (end_time - 15.minutes).min == 30 %>
-                        <% end_time -= 15.minutes %>
-                        <% flag = true %>
-                    <% end %>
-                    
-                    <% while begin_time<end_time %>
-                        <% if index == 0 %>
-                            $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").html("<%= offering.course.subject + offering.course.course.to_s %>" + "<span class='small_schedule_course_title'>: " + "<%= offering.course.title %>"+ "</span>");
+                <% begin %>
+                    <% offering.days_time.days.split("").each do |letter| %>
+                        <% begin_time = Time.strptime(offering.days_time.start_time, "%l:%M %P") %>
+                        <% end_time = Time.strptime(offering.days_time.end_time, "%l:%M %P") %>
+                        <% index = 0 %>
                         
-                        <% elsif index == 1 %>
-                            $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").html("<%= offering.user.email[0..-10].capitalize %>");
+                        <% if (end_time - 15.minutes).min == 0 or (end_time - 15.minutes).min == 30 %>
+                            <% end_time -= 15.minutes %>
+                            <% flag = true %>
                         <% end %>
-                        $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").addClass(" selected_class");
-                        <% begin_time += 1800 %>
-                        <% index += 1 %>
+                        
+                        <% while begin_time<end_time %>
+                            <% if index == 0 %>
+                                $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").html("<%= offering.course.subject + offering.course.course.to_s %>" + "<span class='small_schedule_course_title'>: " + "<%= offering.course.title %>"+ "</span>");
+                            
+                            <% elsif index == 1 %>
+                                $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").html("<%= offering.user.email[0..-10].capitalize %>");
+                            <% end %>
+                            $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").addClass(" selected_class");
+                            <% begin_time += 1800 %>
+                            <% index += 1 %>
+                        <% end %>
+                        <% if flag %>
+                           $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").addClass( " half_time_slot");
+                        <% end %>
                     <% end %>
-                    <% if flag %>
-                       $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").addClass( " half_time_slot");
-                    <% end %>
+                <% rescue %>
                 <% end %>
-
             <% end %>
             $("#advisor_quick_user_courses").append('<tr id="total_credits_row"><td></td><td style="padding-left:20px;padding-right:20px;border-top: solid thin rgba(0,0,0,.87);"><%= total_credits%></td><td></td></tr>');
         <% end %>
