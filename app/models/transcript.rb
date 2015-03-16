@@ -12,8 +12,7 @@ class Transcript < ActiveRecord::Base
       pdf_pages = reader.pages.collect { |page| page.text }
       page_lines = pdf_pages.join("").split("\n\n\n").collect { |lines| lines.split("\n\n") }
       page_lines.flatten!
-      # page_lines.reject! { |line| line.empty? }
-      
+
       start_line = 0
       page_lines.each_with_index do |line, index|
           if line.include?"Classification"
@@ -75,20 +74,18 @@ class Transcript < ActiveRecord::Base
       
       bad_courses = []
       courses.each do |row|
-        if !row[2].downcase.include?"reg"
-          if Course.where(subject: row[0], course: row[1]).exists?
-            c_id = Course.where(subject: row[0], course: row[1]).take.id
-            c_minus, c = self.grade_check(row[2])
-            transcript = Transcript.where(user_id: u_id, course_id: c_id)
-            
-            if transcript.exists?
-              transcript = transcript.take.update(grade_c_minus: c_minus, grade_c: c)
-            else
-              Transcript.create(user_id: u_id, course_id: c_id, grade_c_minus: c_minus, grade_c: c)
-            end
+        if Course.where(subject: row[0], course: row[1]).exists?
+          c_id = Course.where(subject: row[0], course: row[1]).take.id
+          c_minus, c = self.grade_check(row[2])
+          transcript = Transcript.where(user_id: u_id, course_id: c_id)
+          
+          if transcript.exists?
+            transcript = transcript.take.update(grade_c_minus: c_minus, grade_c: c)
           else
-            bad_courses << row
+            Transcript.create(user_id: u_id, course_id: c_id, grade_c_minus: c_minus, grade_c: c)
           end
+        else
+          bad_courses << row
         end
       end  
       return bad_courses
@@ -96,7 +93,7 @@ class Transcript < ActiveRecord::Base
     
     def self.grade_check(grade)
       grades = ["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]
-      if grade[0].downcase == "t"
+      if grade[0].downcase == "t" or grade.downcase.include?"reg"
         c_minus = true
         c = true
       else
