@@ -112,7 +112,7 @@ class SchedulesController < ApplicationController
     def scheduler(uid) 
       user = User.find(uid)
       used_courses = Set.new
-      
+
       active_semester = Semester.where(active: true).take
       user_courses = Transcript.where(user_id: uid).map { |transcript| transcript.course } 
       

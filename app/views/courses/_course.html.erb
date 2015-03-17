@@ -1,0 +1,43 @@
+<paper-item noink style="text-align:start;cursor:default;">
+                
+    <div flex>
+        <%= course.subject + '' +course.course.to_s + ': ' + course.title %>
+    </div>
+    
+    <paper-menu-button>
+        <paper-icon-button icon="more-vert" noink></paper-icon-button>
+        <paper-dropdown class="dropdown" halign="right" valign="top" layered>
+            <style>
+                .edit_course_link, .delete_course_link {
+                	color: #4a89dc;
+                	text-decoration: none;
+                	transition: all .2s ease;
+                }
+                
+                .edit_course_link:hover {
+                	color: #4CAF50;
+                }
+                .delete_course_link:hover {
+                	color: #F44336;
+                }
+                .delete_button {  
+                    display: inline-block;
+                    position: relative;
+                    border: 0;
+                    background: transparent;
+                    text-align: center;
+                    font: inherit;
+                    outline: none;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-family: 'RobotoDraft', sans-serif;
+                }
+            </style>
+            <core-menu class="menu">
+                <paper-item><core-icon icon="create"></core-icon>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_course_path(course), class: "edit_course_link"  %></paper-item>
+                <paper-item><core-icon icon="close"></core-icon>&nbsp;&nbsp;<%= button_to "Delete", course, method: :delete, onclick: "confirm('Are you sure?');", class: "delete_course_link delete_button" %></paper-item>
+            </core-menu>
+        </paper-dropdown>
+    </paper-menu-button>
+    
+</paper-item>

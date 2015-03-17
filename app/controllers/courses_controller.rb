@@ -11,6 +11,10 @@ class CoursesController < ApplicationController
      @courses = (Hash[Course.all.group_by(&:subject).sort])[params[:subject]].sort_by { |el| el[:course] }
      @page = @pages.index(params[:subject])
     end
+    respond_to do |format|
+      format.js {}
+      format.html {}
+    end
   end
   
   def new
