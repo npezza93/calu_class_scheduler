@@ -1,2 +1,3 @@
 $("#paginated_courses_div").html("<%= j render @courses %>");
 $(".title_div").text("Courses in <%= j @courses[0].subject %>");
+$("#paperTabs").[0].selected = <%= @page %>
