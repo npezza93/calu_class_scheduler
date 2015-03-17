@@ -6,11 +6,10 @@ class CoursesController < ApplicationController
     @pages = (Hash[Course.all.group_by(&:subject).sort]).keys
     if params[:subject].blank?
       @courses = (Hash[Course.all.group_by(&:subject).sort]).first[1].sort_by { |el| el[:course] }
-      @page = 0
     else
      @courses = (Hash[Course.all.group_by(&:subject).sort])[params[:subject]].sort_by { |el| el[:course] }
-     @page = @pages.index(params[:subject])
     end
+    @page = @pages.index(@courses[0].subject)
     respond_to do |format|
       format.js {}
       format.html {}
