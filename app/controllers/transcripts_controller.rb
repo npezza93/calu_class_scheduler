@@ -48,7 +48,7 @@ class TranscriptsController < ApplicationController
   end
 
   def import
-    if @ext == ".pdf"
+    if @ext == ".txt"
       @bad_courses = Transcript.import(import_params, @user.id)
       @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
       @day_hash = view_context.create_day_hash(@offerings)
@@ -66,7 +66,7 @@ class TranscriptsController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to user_schedules_path(@user), notice: "Only PDF files are accepted!" }
-        format.js { @error = "Only PDF files are accepted!" }
+        format.js { @error = "Only TXT files are accepted!" }
       end
     end
   end
