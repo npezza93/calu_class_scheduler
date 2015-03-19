@@ -19,7 +19,14 @@
     <%= form_tag import_user_transcripts_path, multipart: true, remote: true, id: "new_transcript_pdf" do %>
         <%= file_field_tag :transcript_file, id: "upload_transcript_link", hidden: "" %>
     <% end %>
+</core-overlay>
 
+<core-overlay backdrop id="schedule_bootup" opened style="overflow-x:hidden;height:400px;" autoCloseDisabled>
+    <div class="loader2">
+      <svg class="circular">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+      </svg>
+    </div>
 </core-overlay>
 
 <% if not @session_user.advisor %>

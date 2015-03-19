@@ -136,7 +136,7 @@ jQuery ->
 
       $.each nsel_opts, (index1, value1) ->
         $.each sel_opts, (index2, value2) ->
-            if sel_dates_array[index2][0] != "ONLINE" and nsel_dates_array[index2][0] != "ONLINE" and sel_dates_array[index2][0].indexOf(nsel_dates_array[index1][0]) != -1
+            if sel_dates_array[index2][0] != "ONLINE" and nsel_dates_array[index2][0] != "ONLINE" and sel_dates_array[index2][0] != "OFFSITE" and nsel_dates_array[index2][0] != "OFFSITE" and sel_dates_array[index2][0].indexOf(nsel_dates_array[index1][0]) != -1
               if sel_dates_array[index2][1] <= nsel_dates_array[index1][2] and nsel_dates_array[index1][1] <= sel_dates_array[index2][2]
                 disable.push value1
                 console.log(sel_dates_array[index2])

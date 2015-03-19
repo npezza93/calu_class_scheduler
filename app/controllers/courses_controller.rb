@@ -96,6 +96,8 @@ class CoursesController < ApplicationController
   
   def destroy
     Prerequisites.where(parent_course_id: @course.id).delete_all
+    Prerequisites.where(prerequisite_course_id: @course.id).delete_all
+    CourseSet.where(course_id: @course.id).delete_all
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: @course.title + ' was successfully destroyed.'  }
