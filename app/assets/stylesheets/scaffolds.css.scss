@@ -60,3 +60,15 @@ core-header-panel {
   background-color: #2196F3;
   color: #FFFFFF;
 }
+
+.title_div {
+  font-size:30px;
+  line-height:1;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .title_div {
+    font-size: 21px;
+  }
+}

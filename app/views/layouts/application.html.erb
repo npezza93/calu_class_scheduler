@@ -24,7 +24,7 @@
           <core-toolbar id="navheader" style="background-color: #4CAF50;font-size:21px;line-height:1.5em;">
             <div class="bottom">
               <div style="color:#FFF;">Menu</div>
-              <div style="font-style:italic;color:#C8E6C9;font-size:16px;"><%= User.find(session[:user_id]).first_name + " " + User.find(session[:user_id]).last_name %> is logged in</div>
+              <div style="font-style:italic;color:#C8E6C9;font-size:16px;"><%= User.find(session[:user_id]).last_name %> is logged in</div>
             </div>
           </core-toolbar>
           
@@ -56,7 +56,7 @@
         <core-header-panel main mode="waterfall-tall" tallClass="medium-tall" id="main">
           <core-toolbar id="mainheader">
             <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
-            <div class="bottom indent title_div" flex style="font-size:30px;line-height:1;">
+            <div class="bottom indent title_div" flex>
               <%= yield :title %>
             </div>
             <% if current_page?(new_offering_path)%>
