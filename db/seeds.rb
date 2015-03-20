@@ -1232,7 +1232,7 @@ Major.create(major: "Art")
 Major.create(major: "English")
 
 
-staff = User.new(email: "staff@calu.edu")
+staff = User.new(email: "staff@calu.edu", last_name: "Staff")
 staff.save(validate: false)
 User.create(first_name: "Barbara", last_name: "Bonfanti", email: "bonfanti@calu.edu", password: "password!!15", password_confirmation: "password!!15", major_id: 15, advisor: true)
 User.create(first_name: "Robert", last_name: "Skwarecki", email: "skwarecki@calu.edu", password: "password!!15", password_confirmation: "password!!15", major_id: 15, advisor: true)
