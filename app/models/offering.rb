@@ -24,7 +24,7 @@ class Offering < ActiveRecord::Base
               day_time = DaysTime.where("days = ?", "OFFSITE").take
             end
           else
-            day_time = DaysTime.where("days = ? AND start_time = ? and end_time = ? ", row[7].upcase, Time.strptime(row[8], "%I%M%P").strftime("%l:%M %P").strip, Time.strptime(row[9], "%I%M%P").strftime("%l:%M %P").strip).take
+            day_time = DaysTime.where("days = ? AND start_time = ? and end_time = ? ", row[7].upcase, Time.parse(row[8]).strftime("%l:%M %P"), Time.parse(row[9]).strftime("%l:%M %P")).take
           end
           
           offering = Offering.create(user: prof, days_time: day_time, course: course, section: row[2])
