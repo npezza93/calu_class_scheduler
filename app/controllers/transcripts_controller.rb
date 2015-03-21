@@ -3,7 +3,6 @@ class TranscriptsController < ApplicationController
   before_action :set_new_transcript, only: [:index]
   before_action :set_transcript, only: [:destroy]
   before_action :set_active_semester
-  before_action :get_ext, only: [:import]
   before_filter :only_yours
   
   def index
@@ -48,8 +47,7 @@ class TranscriptsController < ApplicationController
   end
 
   def import
-    if @ext == ".txt"
-      @bad_courses = Transcript.import(import_params, @user.id)
+    if Transcript.import(params["Transcript"], @user.id)
       @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
       @day_hash = view_context.create_day_hash(@offerings)
       @new_work_schedule = WorkSchedule.new
@@ -65,8 +63,8 @@ class TranscriptsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to user_schedules_path(@user), notice: "Only PDF files are accepted!" }
-        format.js { @error = "Only TXT files are accepted!" }
+        format.html { redirect_to user_schedules_path(@user), notice: "Please Upload Correct Text!" }
+        format.js { @error = "Please Upload Correct Text!" }
       end
     end
   end
@@ -94,10 +92,6 @@ class TranscriptsController < ApplicationController
     
     def set_active_semester
       @active_semester = Semester.where(active: true).take
-    end
-    
-    def get_ext
-      @ext = (File.extname(params[:transcript_file].original_filename)).downcase 
     end
     
     def transcript_params

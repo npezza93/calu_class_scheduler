@@ -7,7 +7,6 @@
   <%= javascript_include_tag 'application', params[:controller] %>
   <%= javascript_include_tag 'date' %>
   <%= csrf_meta_tags %>
-
   <%= favicon_link_tag 'callogo2.png' %>
   <link href="<%= image_url('callogo2.png') %>" rel="apple-touch-icon">
   <meta name="mobile-web-app-capable" content="yes">
@@ -96,11 +95,7 @@
     <p id="uploading_text"><b>Uploading and Inserting Data...</b></p><br>
   </div>
   <div layout horizontal center-justified>
-    <div class="loader2">
-      <svg class="circular">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-      </svg>
-    </div>
+    <div class="loading"></div>
   </div>
 </div>
 

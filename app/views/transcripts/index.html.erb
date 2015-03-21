@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'transcripts' %>
+<%= javascript_include_tag 'transcripts',  :async => true %>
 
 <%= form_for [@user, @transcript], remote: true do |f| %>
     <div hidden>

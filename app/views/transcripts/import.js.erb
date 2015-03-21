@@ -1,5 +1,7 @@
 <% if @error %>
     $("#toast_div").html("<paper-toast class=\"capsule\" text=\"<%= @error %>\" style=\"padding-right: 60px;color:#eeff41;\" duration=\"10000\" opened ></paper-toast>");
+    $("#new_schedule_modal")[0].close();
+    $("#whole_screen_uploader").fadeOut();
 <% else %>
     $("#uploading_text").html("<b>Recalculating Schedule...</b>");
     

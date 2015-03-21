@@ -19,7 +19,14 @@ jQuery ->
     $("#fab_new_schedule").click ->
         $("#new_schedule_modal")[0].toggle()
         return
-    
+ 
+    $('#upload_transcript_button').click ->
+      if $('#Transcript').val() != ''
+        $('#upload_transcript_link').click()
+        $('#new_schedule_modal')[0].toggle()
+        $('#whole_screen_uploader').fadeIn()
+      return
+  
     $("#media_query_schedule").on "core-media-change", (e) ->
       if e.originalEvent.detail.matches is true
         $("#big_schedule_table")[0].setAttribute "hidden", ""

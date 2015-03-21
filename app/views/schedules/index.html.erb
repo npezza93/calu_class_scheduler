@@ -8,30 +8,33 @@
         <li>Log in to VIP and go to DegreeWorks</li>
         <li>Click the "Class History" link</li>
         <li>Once the new window opens, <br>press CTRL+A to select all the text</li>
-        <li>Open your favorite text editor, <br> and paste all the text</li>
-        <li>Save this file as a .txt file</li>
-        <li>When uploading select this TXT</li>
+        <li>Paste this text in the space below</li>
     </ul>
     <div> 
         &nbsp;&nbsp;&nbsp;* No grades or SAT scores will be saved
     </div>
     <br>
+    
+    <%= form_tag(import_user_transcripts_path(@user), remote: true) do %>
+        <paper-input-decorator label="Paste Text Here" class="password_decorator">
+          <paper-autogrow-textarea>
+            <%= text_area_tag 'Transcript',nil, style: "width:100%;margin:0px;height:75px;overflow-x:hidden;"  %>
+          </paper-autogrow-textarea>
+        </paper-input-decorator>
+        
+        <%= submit_tag "upload", id: "upload_transcript_link", hidden: "" %>
+    <% end %>
+    
     <div layout end-justified horizontal style="color:#03A9F4;">
         <paper-button core-overlay-toggle>Cancel</paper-button>
-        <paper-button id="upload_transcript_button">Upload TXT</paper-button>
+        <paper-button id="upload_transcript_button">Upload</paper-button>
     </div>
-
-    <%= form_tag import_user_transcripts_path, multipart: true, remote: true, id: "new_transcript_pdf" do %>
-        <%= file_field_tag :transcript_file, id: "upload_transcript_link", hidden: "" %>
-    <% end %>
 </core-overlay>
 
 <core-overlay backdrop id="schedule_bootup" opened style="overflow-x:hidden;height:400px;" autoCloseDisabled>
-    <div class="loader2">
-      <svg class="circular">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-      </svg>
-    </div>
+  <div layout horizontal center-justified>
+    <div class="loading"></div>
+  </div>
 </core-overlay>
 
 <% if not @session_user.advisor %>
@@ -66,21 +69,3 @@
 <% if notice %>
     <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
 <% end %>
-
-    
-<script>
-    $('#new_transcript_pdf').fileupload({
-        dataType: 'script',
-        add: function (e, data) {
-            types = /(\.|\/)(txt)$/i;
-            file = data.files[0];
-            if (types.test(file.type) || types.test(file.name)) {
-                $("#new_schedule_modal")[0].toggle();
-                $("#whole_screen_uploader").fadeIn();
-                data.submit();
-            } else { 
-                $("#toast_div").html("<paper-toast class=\"capsule\" text=\"Only TXT files are accepted!\" style=\"padding-right: 60px;color:#eeff41;\" duration=\"10000\" opened ></paper-toast>");
-            }
-        }
-    });
-</script>
