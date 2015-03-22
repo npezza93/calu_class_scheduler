@@ -50,6 +50,7 @@ class OfferingsController < ApplicationController
   
   def destroy
     @offering.destroy
+    Schedule.where(offering: @offering).delete_all
     respond_to do |format|
       format.html { redirect_to offerings_url, notice: @offering.course.title + " is no longer being offered!" }
       format.json { head :no_content }
