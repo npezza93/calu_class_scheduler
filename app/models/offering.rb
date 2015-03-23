@@ -16,7 +16,7 @@ class Offering < ActiveRecord::Base
       CSV.foreach(file.path) do |row|
         begin
           course = Course.where("subject = ? AND course = ?",row[1].split()[0].upcase, row[1].split()[1].to_i).take
-          prof = User.where("lower(last_name) = ? AND lower(first_name) = ?", row[12].split(",")[0].strip.downcase, x.split(",")[1].strip.downcase).take
+          prof = User.where("lower(last_name) = ? AND lower(first_name) = ?", row[12].split(",")[0].strip.downcase, row[12].split(",")[1].strip.downcase).take
           if row[7].blank?
             if row[2][0].upcase == "W"
               day_time = DaysTime.where("days = ?", "ONLINE").take
