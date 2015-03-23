@@ -28,7 +28,7 @@
             <br>
             <%= f.select(:minimum_class_standing, options_for_select(["No minimum class standing","Senior", "Junior", "Sophmore", "Freshman"], @course.minimum_class_standing)) %>
             <br>
-            <%= f.select(:minimum_sat_score, options_for_select([["No minimum SAT score", ""],["520 on Mathematics or better", "520"], ["580 on Mathematics or better","580"]], @course.minimum_sat_score)) %>
+            <%= f.select(:minimum_sat_score, options_for_select([["No minimum SAT score", ""],["520 on Mathematics or better", "520"], ["580 on Mathematics or better","580"], ["440 on Mathematics or better","440"]], @course.minimum_sat_score)) %>
             <br>
             
             <div id="prereq_groups">
