@@ -274,6 +274,7 @@ jQuery ->
       
 #schedule approvals
     $("#submit_approval_paper_button").click ->
+      console.log("email sent")
       $("#submit_approval_button")[0].click()
       return
       
