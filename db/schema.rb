@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324022547) do
+ActiveRecord::Schema.define(version: 20150325130619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,8 @@ ActiveRecord::Schema.define(version: 20150324022547) do
     t.integer  "pt_b"
     t.integer  "pt_c"
     t.integer  "pt_d"
+    t.boolean  "sat_640"
+    t.boolean  "sat_700"
   end
 
   add_index "users", ["major_id"], name: "index_users_on_major_id", using: :btree

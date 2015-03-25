@@ -294,6 +294,18 @@ class SchedulesController < ApplicationController
         else
           return false
         end
+      elsif min_sat == "700"
+        if user.sat_700
+          return true
+        else
+          return false
+        end
+      elsif min_sat == "640"
+        if user.sat_640
+          return true
+        else
+          return false
+        end
       elsif min_sat == "440"
         if user.sat_440
           return true

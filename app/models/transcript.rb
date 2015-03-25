@@ -34,15 +34,19 @@ class Transcript < ActiveRecord::Base
         end
         
         User.find(u_id).update(class_standing: class_standing)
-        if sat_math >= 520
-        	User.find(u_id).update(sat_520: true)
-        	if sat_math >= 580
-        		User.find(u_id).update(sat_580: true)
-        	else
-        		User.find(u_id).update(sat_580: false)
-        	end
+        case sat_math
+        when 700..800
+          User.find(u_id).update(sat_520: true, sat_580: true, sat_440: true, sat_640: true, sat_700: true)
+        when 640..699
+          User.find(u_id).update(sat_520: true, sat_580: true, sat_440: true, sat_640: true, sat_700: false)
+        when 580..639
+          User.find(u_id).update(sat_520: true, sat_580: true, sat_440: true, sat_640: false, sat_700: false)
+        when 520..579
+          User.find(u_id).update(sat_520: true, sat_580: false, sat_440: true, sat_640: false, sat_700: false)
+        when 440..519
+          User.find(u_id).update(sat_520: false, sat_580: false, sat_440: true, sat_640: false, sat_700: false)
         else
-        	User.find(u_id).update(sat_520: false, sat_580: false)
+          User.find(u_id).update(sat_520: false, sat_580: false, sat_440: false, sat_640: false, sat_700: false)
         end
         
         file = file.drop(main_line+1)
