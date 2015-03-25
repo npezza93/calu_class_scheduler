@@ -5,4 +5,6 @@
         <li><%= schedule.offering.course.subject + schedule.offering.course.course.to_s + ": " + schedule.offering.course.title %></li>
 <% end %>    
 </ul>
-To approve <%= @user.email%>'s schedule, click <%= link_to "here", user_schedules_path(@user) %>.
+To approve <%= @user.email%>'s schedule, click the link below.
+
+<a href="<%= user_schedules_url(@user) %>"><%= user_schedules_url(@user) %></a>
