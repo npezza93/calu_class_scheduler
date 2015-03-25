@@ -265,6 +265,8 @@ class SchedulesController < ApplicationController
     def class_standing_compare(users_standing, min_standing)
       if min_standing == nil
         return true
+      elsif users_standing == nil
+        return false
       else
         standings = {1 => "Senior", 2 => "Junior", 3 => "Sophmore", 4 => "Freshman" }
         users = standings.select { |k,v| v.include? users_standing }
