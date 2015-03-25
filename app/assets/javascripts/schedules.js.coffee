@@ -274,6 +274,7 @@ jQuery ->
       
 #schedule approvals
     $("#submit_approval_paper_button").click ->
+      console.log("hiii")
       $("#submit_approval_button")[0].click()
       return
       
@@ -365,8 +366,6 @@ jQuery ->
         $.each sel_opts, (index2, value2) ->
             if sel_dates_array[index2][0] != "ONLINE" and nsel_dates_array[index2][0] != "ONLINE" and sel_dates_array[index2][0] != "OFFSITE" and nsel_dates_array[index2][0] != "OFFSITE" and sel_dates_array[index2][0].indexOf(nsel_dates_array[index1][0]) != -1
               if sel_dates_array[index2][1] <= nsel_dates_array[index1][2] and nsel_dates_array[index1][1] <= sel_dates_array[index2][2]
-                console.log(sel_dates_array[index2])
-                console.log(nsel_dates_array[index1])
                 disable.push value1
           
             if sel_dates_array[index2][3] == nsel_dates_array[index1][3]

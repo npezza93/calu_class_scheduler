@@ -9,7 +9,7 @@
 
   <% if (not ScheduleApproval.exists?(user: @user, semester: @active_semester)) and Schedule.where(user_id: @user.id, semester: @active_semester).exists? %>
     <%= form_for [@user, ScheduleApproval.new], remote: true do |f| %>
-      <%= f.submit 'submit', hidden: '', id: 'submit_approval_button' %>
+      <%= f.submit 'submit', id: 'submit_approval_button', hidden: "" %>
       <paper-button raised style="background-color:#fafafa;font-weight:bold;" id="submit_approval_paper_button"><core-icon style="color:#4CAF50;" icon="check"></core-icon><span style="color:#4CAF50;margin-top:4px;">&nbsp;&nbsp;&nbsp;&nbsp;Submit for Approval</span></paper-button>
     <% end %>
   <% elsif ScheduleApproval.exists?(user: @user, semester: @active_semester) and ScheduleApproval.where(user: @user, semester: @active_semester).take.approved %>

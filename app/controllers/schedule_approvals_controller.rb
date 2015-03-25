@@ -2,6 +2,8 @@ class ScheduleApprovalsController < ApplicationController
   before_action :set_user
   before_action :set_approval, only: [:update]
   before_action :set_active_semester
+  before_action :set_session_user
+
   
   def create
     @approval = ScheduleApproval.new(user: @user)
@@ -35,6 +37,10 @@ class ScheduleApprovalsController < ApplicationController
   end
   
   private
+    def set_session_user
+      @session_user = User.find(session[:user_id])
+    end
+    
     def set_user
       @user = User.find(params[:user_id])
     end
