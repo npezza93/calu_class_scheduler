@@ -114,7 +114,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:subject, :course, :title, :credits, :minimum_class_standing, :minimum_sat_score,{:prerequisites => []})
+      params.require(:course).permit(:subject, :course, :title, :credits, :minimum_class_standing, :minimum_sat_score, :minimum_pt, {:prerequisites => []})
     end
     
     def authorize

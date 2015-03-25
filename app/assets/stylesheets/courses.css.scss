@@ -34,7 +34,7 @@
   box-shadow: none;
 }
 
-#course_minimum_class_standing, #course_minimum_sat_score, #minimum_grades {
+#course_minimum_class_standing, #course_minimum_sat_score, #minimum_grades, #course_minimum_pt {
   font-family: 'RobotoDraft', sans-serif;
   width:100%;
   display: block;
@@ -49,7 +49,7 @@
   cursor: pointer;
 }
 
-#course_minimum_class_standing:focus, #course_minimum_sat_score:focus, #minimum_grades:focus {
+#course_minimum_class_standing:focus, #course_minimum_sat_score:focus, #minimum_grades:focus, #course_minimum_pt:focus {
   border-color: #757575;
   outline: none;
   box-shadow: none;

@@ -26,7 +26,59 @@ jQuery ->
         $('#new_schedule_modal')[0].toggle()
         $('#whole_screen_uploader').fadeIn()
       return
-  
+
+    $("#pt_yes_no").on 'core-activate', (e, detail) ->
+      $('#pt_collapse')[0].toggle()
+      return
+    
+    $("#pt_a_group").on 'core-activate', (e, detail) ->
+      if $("#pt_a_group")[0].selected == "passed"
+        $("#user_pt_a_1")[0].checked = true
+      else if $("#pt_a_group")[0].selected == "failed"
+        $("#user_pt_a_2")[0].checked = true
+      else if $("#pt_a_group")[0].selected == "na"      
+        $("#user_pt_a")[0].checked = true
+      return
+
+    $("#pt_b_group").on 'core-activate', (e, detail) ->
+      if $("#pt_b_group")[0].selected == "passed"
+        $("#user_pt_b_1")[0].checked = true
+      else if $("#pt_b_group")[0].selected == "failed"
+        $("#user_pt_b_2")[0].checked = true
+      else if $("#pt_b_group")[0].selected == "na"      
+        $("#user_pt_b")[0].checked = true
+      return
+
+    $("#pt_c_group").on 'core-activate', (e, detail) ->
+      if $("#pt_c_group")[0].selected == "passed"
+        $("#user_pt_c_1")[0].checked = true
+      else if $("#pt_c_group")[0].selected == "failed"
+        $("#user_pt_c_2")[0].checked = true
+      else if $("#pt_c_group")[0].selected == "na"      
+        $("#user_pt_c")[0].checked = true
+      return
+
+    $("#pt_d_group").on 'core-activate', (e, detail) ->
+      if $("#pt_d_group")[0].selected == "passed"
+        $("#user_pt_d_1")[0].checked = true
+      else if $("#pt_d_group")[0].selected == "failed"
+        $("#user_pt_d_2")[0].checked = true
+      else if $("#pt_d_group")[0].selected == "na"      
+        $("#user_pt_d")[0].checked = true
+      return
+
+    $("#paper_submit_pt").click ->
+      if $("#pt_yes_no")[0].selected == "yes"
+        $("#submit_pts").click()
+      else
+        $("#user_pt_a")[0].checked = true
+        $("#user_pt_b")[0].checked = true
+        $("#user_pt_c")[0].checked = true
+        $("#user_pt_d")[0].checked = true
+        $("#submit_pts").click()
+      $("#placement_test_overlay")[0].toggle()
+      return
+      
     $("#media_query_schedule").on "core-media-change", (e) ->
       if e.originalEvent.detail.matches is true
         $("#big_schedule_table")[0].setAttribute "hidden", ""
@@ -332,4 +384,3 @@ jQuery ->
         return
 
       return
-      

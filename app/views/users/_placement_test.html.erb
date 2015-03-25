@@ -1,0 +1,75 @@
+<core-overlay autoCloseDisabled opened id="placement_test_overlay" backdrop transition="core-transition-top" style="width:350px;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+  <h2 layout horizontal center-justified>Placement Test Information</h2>
+    <br>
+    <h4 horizontal center-justified layout>Did you take any placement tests?</h4>
+    <div layout horizontal center-justified>
+      <paper-radio-group selected="yes" id="pt_yes_no">
+        <paper-radio-button name="yes" label="Yes"></paper-radio-button>
+        <paper-radio-button name="no" label="No"></paper-radio-button>
+      </paper-radio-group>
+    </div>
+    
+    <core-collapse opened allowOverflow id="pt_collapse">
+      <%= form_for(@user, remote: true) do |f| %>
+        <h4 layout horizontal center-justified>Placement Test A</h4>
+        <div layout horizontal center-justified>
+          <paper-radio-group selected="passed" id="pt_a_group">
+            <paper-radio-button name="passed" label="Passed"></paper-radio-button>
+            <paper-radio-button name="failed" label="Failed"></paper-radio-button>
+            <paper-radio-button name="na" label="Didn't Take"></paper-radio-button>
+          </paper-radio-group>
+        </div>
+        
+        <%= f.radio_button 'pt_a', 1, checked: true, hidden: "" %>
+        <%= f.radio_button 'pt_a', 2, hidden: "" %>
+        <%= f.radio_button 'pt_a', nil, hidden: "" %>
+        
+        
+        <h4 layout horizontal center-justified>Placement Test B</h4>
+        <div layout horizontal center-justified>
+          <paper-radio-group selected="passed" id="pt_b_group">
+            <paper-radio-button name="passed" label="Passed"></paper-radio-button>
+            <paper-radio-button name="failed" label="Failed"></paper-radio-button>
+            <paper-radio-button name="na" label="Didn't Take"></paper-radio-button>
+          </paper-radio-group>
+        </div>
+        
+        <%= f.radio_button 'pt_b', 1, checked: true, hidden: "" %>
+        <%= f.radio_button 'pt_b', 2, checked: false, hidden: "" %>
+        <%= f.radio_button 'pt_b', nil, hidden: "" %>
+
+        <h4 layout horizontal center-justified>Placement Test C</h4>
+        <div layout horizontal center-justified>
+          <paper-radio-group selected="passed" id="pt_c_group">
+            <paper-radio-button name="passed" label="Passed"></paper-radio-button>
+            <paper-radio-button name="failed" label="Failed"></paper-radio-button>
+            <paper-radio-button name="na" label="Didn't Take"></paper-radio-button>
+          </paper-radio-group>
+        </div>
+        
+        <%= f.radio_button 'pt_c', 1, checked: true, hidden: "" %>
+        <%= f.radio_button 'pt_c', 2, hidden: "" %>
+        <%= f.radio_button 'pt_c', nil, hidden: "" %>
+
+        <h4 layout horizontal center-justified>Placement Test D</h4>
+        <div layout horizontal center-justified>
+          <paper-radio-group selected="passed" id="pt_d_group">
+            <paper-radio-button name="passed" label="Passed"></paper-radio-button>
+            <paper-radio-button name="failed" label="Failed"></paper-radio-button>
+            <paper-radio-button name="na" label="Didn't Take"></paper-radio-button>
+          </paper-radio-group>
+        </div>
+        
+        <%= f.radio_button 'pt_d', 1, checked: true, hidden: "" %>
+        <%= f.radio_button 'pt_d', 2, hidden: "" %>
+        <%= f.radio_button 'pt_d', nil, hidden: "" %>
+    
+        <%= f.submit "submit", hidden: "", id: "submit_pts" %>
+      <% end %>    
+    </core-collapse>
+              
+        <br>
+        <div end-justified layout horizontal style="color:#2196F3;">
+          <paper-button id="paper_submit_pt">Submit</paper-button>
+        </div>
+</core-overlay>

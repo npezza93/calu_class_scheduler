@@ -102,8 +102,9 @@ class UsersController < ApplicationController
       respond_to do |format|
         t_minors = @user.minor
         t_major = @user.major
+        t_pt = @user.pt_a
         if @user.update(student_params)
-          if t_minors != @user.minor or t_major != @user.major
+          if t_minors != @user.minor or t_major != @user.major or t_pt != @user.pt_a
             Schedule.where(user: @user, semester: @active_semester).destroy_all
             @minor_flag = true
           end
@@ -149,7 +150,7 @@ class UsersController < ApplicationController
     end
     
     def student_params
-      params.require(:user).permit(:password, :password_confirmation, :major_id, {:minor => []})
+      params.require(:user).permit(:password, :password_confirmation, :major_id, {:minor => []}, :pt_a, :pt_b, :pt_c, :pt_d)
     end
           
     def new_user_params

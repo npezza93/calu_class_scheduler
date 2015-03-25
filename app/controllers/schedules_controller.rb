@@ -99,11 +99,25 @@ class SchedulesController < ApplicationController
             grouped_prerequisites[group_id] = prereq_group.inject(:&)
           end
           
-          if grouped_prerequisites.values.inject(:|) and class_standing_compare(user.class_standing,course.minimum_class_standing) and sat_check(user, course.minimum_sat_score)
-            ok_courses << course
+          if course.minimum_pt != "" or course.minimum_pt != nil
+            if grouped_prerequisites.values.inject(:|) and class_standing_compare(user.class_standing,course.minimum_class_standing) and sat_check(user, course.minimum_sat_score)
+              ok_courses << course
+            end
+          else
+            if grouped_prerequisites.values.inject(:|) or pt_check(user, course.minimum_pt) or sat_check(user, course.minimum_sat_score)
+              ok_courses << course
+            end
           end
         else
-          ok_courses << course
+          if course.minimum_pt != "" or course.minimum_pt != nil
+            if class_standing_compare(user.class_standing,course.minimum_class_standing) and sat_check(user, course.minimum_sat_score)
+              ok_courses << course
+            end
+          else
+            if pt_check(user, course.minimum_pt) or sat_check(user, course.minimum_sat_score)
+              ok_courses << course
+            end
+          end
         end
       end
       return ok_courses
@@ -296,6 +310,21 @@ class SchedulesController < ApplicationController
         end
       else 
         return false, nil
+      end
+    end
+    
+    def pt_check(user, min_pt)
+      case min_pt
+      when "A"
+        user.pt_a == 1 ? true : false
+      when "B"
+        user.pt_b == 1 ? true : false
+      when "C"
+        user.pt_c == 1 ? true : false
+      when "D"
+        user.pt_d == 1 ? true : false
+      else
+        false
       end
     end
 end

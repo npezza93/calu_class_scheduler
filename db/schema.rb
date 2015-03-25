@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323134336) do
+ActiveRecord::Schema.define(version: 20150324022547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150323134336) do
     t.integer  "credits",                default: 3
     t.string   "minimum_class_standing"
     t.string   "minimum_sat_score"
+    t.string   "minimum_pt"
   end
 
   create_table "curriculum_categories", force: true do |t|
@@ -165,6 +166,10 @@ ActiveRecord::Schema.define(version: 20150323134336) do
     t.boolean  "sat_520"
     t.boolean  "sat_580"
     t.boolean  "sat_440"
+    t.integer  "pt_a"
+    t.integer  "pt_b"
+    t.integer  "pt_c"
+    t.integer  "pt_d"
   end
 
   add_index "users", ["major_id"], name: "index_users_on_major_id", using: :btree

@@ -25,6 +25,8 @@
             <br>
             <%= f.label 'Choose Required Prerequisites (if any):', style: "font-size:15px;font-weight:bold;"%>
             <br>
+            <%= f.select(:minimum_pt, options_for_select([["No Placement Test must be passed", ""],["Passing Part A of the Math Placement Exam", "A"],["Passing Part B of the Math Placement Exam", "B"],["Passing Part C of the Math Placement Exam", "C"],["Passing Part D of the Math Placement Exam", "D"]])) %>
+            <br>            
             <%= f.select(:minimum_class_standing, options_for_select(["No minimum class standing","Senior", "Junior", "Sophmore", "Freshman"])) %>
             <br>
             <%= f.select(:minimum_sat_score, options_for_select([["No minimum SAT score", ""],["520 on Mathematics or better", "520"], ["580 on Mathematics or better","580"], ["440 on Mathematics or better","440"]])) %>

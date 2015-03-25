@@ -39,6 +39,10 @@
 
 <% if not @session_user.advisor %>
     <%= render "users/student_settings" %>
+    
+    <% if @session_user.pt_a == nil or @session_user.pt_b == nil or @session_user.pt_c == nil or @session_user.pt_d == nil %>
+        <%= render "users/placement_test" %>
+    <% end %>
 <% end %>
 
 <core-animated-pages id="baluga3" selected="1" transitions="slide-from-right">
