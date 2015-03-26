@@ -5,4 +5,5 @@
 </style>
 <paper-item><%= link_to "Show " +  @user.first_name + " " + @user.last_name + "'s Schedule", user_schedules_path(@user), style:"text-decoration: none;color:#212121;font-family: 'RobotoDraft', sans-serif;width:20em;text-align:center" %></paper-item>
 <paper-item><%= link_to 'Change ' + @user.first_name + " " + @user.last_name + "'s Advisor", edit_user_path(@user), style: "width:20em;text-align:center;text-decoration: none;color: #212121;font-family: 'RobotoDraft', sans-serif;", flex: "", id: 'user_options_edit' %></paper-item>
-<paper-item id="delete_student_link"><%= link_to 'Delete ' + @user.first_name + " " + @user.last_name, user_path(@user), method: :delete, :onclick => "return confirm('Are you sure?')", style: "width:20em;text-align:center;color: #212121;font-family: 'RobotoDraft', sans-serif;text-decoration: none;transition: all .2s ease;"%></paper-item>
+<paper-item id="delete_student_link"><%= button_to 'Delete ' + @user.first_name + " " + @user.last_name, @user, method: :delete, :onclick => "return confirm('Are you sure?')", style: "width:20em;text-align:center;color: #212121;font-family: 'RobotoDraft', sans-serif;text-decoration: none;transition: all .2s ease;  display: inline-block;font:inherit;position: relative;border: 0;background: transparent;text-align: center;outline: none;border-radius: 3px;cursor: pointer;" %></paper-item>
+

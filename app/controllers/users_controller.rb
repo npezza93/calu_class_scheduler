@@ -125,7 +125,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_path, notice: @user.email + ' was successfully destroyed.' }
+      format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end
@@ -146,11 +146,11 @@ class UsersController < ApplicationController
     end
     
     def advisor_student_params
-      params.require(:user).permit(:advised_by, :advisor)
+      params.require(:user).permit(:advised_by, :advisor, :pt_a, :pt_b, :pt_c, :pt_d)
     end
     
     def student_params
-      params.require(:user).permit(:password, :password_confirmation, :major_id, {:minor => []}, :pt_a, :pt_b, :pt_c, :pt_d)
+      params.require(:user).permit(:password, :password_confirmation, :major_id, :pt_a, :pt_b, :pt_c, :pt_d, {:minor => []})
     end
           
     def new_user_params

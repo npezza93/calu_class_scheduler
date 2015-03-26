@@ -14,7 +14,7 @@ jQuery ->
       $('#temp_replace').append e.originalEvent.detail.response
       front_validation2()
       $("#schedule_bootup")[0].toggle()
-      if $("#placement_test_overlay")
+      if $("#placement_test_overlay").length
         $("#placement_test_overlay")[0].toggle()
       return
 
@@ -61,12 +61,14 @@ jQuery ->
       return
 
     $("#pt_d_group").on 'core-activate', (e, detail) ->
-      if $("#pt_d_group")[0].selected == "passed"
+      if $("#pt_d_group")[0].selected == "passed79"
         $("#user_pt_d_1")[0].checked = true
       else if $("#pt_d_group")[0].selected == "failed"
         $("#user_pt_d_2")[0].checked = true
       else if $("#pt_d_group")[0].selected == "na"      
         $("#user_pt_d")[0].checked = true
+      else if $("#pt_d_group")[0].selected == "passed10"      
+        $("#user_pt_d_3")[0].checked = true
       return
 
     $("#paper_submit_pt").click ->

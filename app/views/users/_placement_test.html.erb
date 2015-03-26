@@ -1,4 +1,4 @@
-<core-overlay backdrop autoCloseDisabled id="placement_test_overlay" transition="core-transition-center" style="width:350px;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+<core-overlay backdrop autoCloseDisabled id="placement_test_overlay" transition="core-transition-center" style="width:600px;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
   <h2 layout horizontal center-justified>Placement Test Information</h2>
     <br>
     <h4 horizontal center-justified layout>Did you take any placement tests?</h4>
@@ -53,16 +53,18 @@
 
         <h4 layout horizontal center-justified>Placement Test D</h4>
         <div layout horizontal center-justified>
-          <paper-radio-group selected="passed" id="pt_d_group">
-            <paper-radio-button name="passed" label="Passed"></paper-radio-button>
+          <paper-radio-group selected="passed79" id="pt_d_group">
+            <paper-radio-button name="passed79" label="Passed (7-9)"></paper-radio-button>
+            <paper-radio-button name="passed10" label="Passed (10 or better)"></paper-radio-button>
             <paper-radio-button name="failed" label="Failed"></paper-radio-button>
             <paper-radio-button name="na" label="Didn't Take"></paper-radio-button>
           </paper-radio-group>
         </div>
         
-        <%= f.radio_button 'pt_d', 1, checked: true, hidden: "" %>
-        <%= f.radio_button 'pt_d', 2, hidden: "" %>
-        <%= f.radio_button 'pt_d', nil, hidden: "" %>
+        <%= f.radio_button 'pt_d', 1, checked: true, hidden: ""  %>
+        <%= f.radio_button 'pt_d', 3, checked: false, hidden: "" %>
+        <%= f.radio_button 'pt_d', 2, checked: false, hidden: "" %>
+        <%= f.radio_button 'pt_d', nil, checked: false, hidden: "" %>
     
         <%= f.submit "submit", hidden: "", id: "submit_pts" %>
       <% end %>    

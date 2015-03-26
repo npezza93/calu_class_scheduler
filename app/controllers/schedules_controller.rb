@@ -77,9 +77,8 @@ class SchedulesController < ApplicationController
       end
     end
 
-    def prerequisite_check(courses, user_courses, user)
+    def prerequisite_check(courses, user_courses, user, transcripts)
       ok_courses = []
-      transcripts = Transcript.where(user: user)
       courses.each do |course|
         grouped_prerequisites = course.prerequisites.group_by(&:course_group_id)
         
@@ -99,7 +98,7 @@ class SchedulesController < ApplicationController
             grouped_prerequisites[group_id] = prereq_group.inject(:&)
           end
           
-          if course.minimum_pt != "" or course.minimum_pt != nil
+          if course.minimum_pt == "" or course.minimum_pt == nil
             if grouped_prerequisites.values.inject(:|) and class_standing_compare(user.class_standing,course.minimum_class_standing) and sat_check(user, course.minimum_sat_score)
               ok_courses << course
             end
@@ -109,7 +108,7 @@ class SchedulesController < ApplicationController
             end
           end
         else
-          if course.minimum_pt != "" or course.minimum_pt != nil
+          if course.minimum_pt == "" or course.minimum_pt == nil
             if class_standing_compare(user.class_standing,course.minimum_class_standing) and sat_check(user, course.minimum_sat_score)
               ok_courses << course
             end
@@ -129,6 +128,7 @@ class SchedulesController < ApplicationController
 
       active_semester = Semester.where(active: true).take
       user_courses = Transcript.where(user_id: uid).map { |transcript| transcript.course } 
+      transcripts = Transcript.where(user: user)
       
       categories = CurriculumCategory.where(major: user.major , minor: false).group_by(&:id).flatten.flatten  
       user.minor.each do |minor|
@@ -209,10 +209,23 @@ class SchedulesController < ApplicationController
       end
       
       needs_list = []
+      math_classes = []
+      mat_181 = Course.where(subject: "MAT", course: "181").take
+      mat_191 = Course.where(subject: "MAT", course: "191").take
+      mat_199 = Course.where(subject: "MAT", course: "199").take
+      mat_281 = Course.where(subject: "MAT", course: "281").take
+      
       category_courses.each do |category_id, sets|
         sets.each do |set_id, set_courses|
-          category_courses[category_id][set_id] = prerequisite_check(set_courses, user_courses, user)
+          category_courses[category_id][set_id] = prerequisite_check(set_courses, user_courses, user, transcripts)
+          
+          set_courses.each do |course|
+            if course == mat_181 or course == mat_191 or course == mat_199 or course == mat_281
+              math_classes << [course, category_id]
+            end
+          end
         end
+        
         set_offerings = []
         sets.each do |set_id, set_courses|
           set_offerings = []
@@ -229,6 +242,20 @@ class SchedulesController < ApplicationController
           category_courses[category_id][set_id]  = set_offerings.flatten
         end
       end
+      
+      if not math_classes.empty?
+        if (math_class_placed_in = math_pt(user, transcripts, math_classes, mat_181, mat_191, mat_199, mat_281, user_courses)) != nil
+          if used_courses.add?(math_class_placed_in[0])
+            offerings = Offering.where(course: math_class_placed_in[0], semester: active_semester).flatten
+            if offerings.blank?
+              needs_list << set_course
+            else
+              category_courses[math_class_placed_in[1]][category_courses[math_class_placed_in[1]].keys.first] += offerings
+            end
+          end
+        end
+      end
+        
       
       needs_list.flatten!
       NeededCourse.where(user: user, semester: active_semester).delete_all
@@ -335,10 +362,36 @@ class SchedulesController < ApplicationController
         user.pt_b == 1 ? true : false
       when "C"
         user.pt_c == 1 ? true : false
-      when "D"
+      when "D-"
         user.pt_d == 1 ? true : false
+      when "D"
+        user.pt_d == 3 ? true : false
       else
         false
+      end
+    end
+    
+    def math_pt(user, transcripts, math_classes, mat_181, mat_191, mat_199, mat_281, user_courses)
+      math_courses = math_classes.collect { |course| course[0] }
+      category_ids = math_classes.collect { |course| course[1] }
+      category_ids.sort.last
+      
+      mat_prereq = Hash.new
+      mat_prereq[mat_281] = (prerequisite_check([mat_281], user_courses, user, transcripts)).include?mat_281
+      mat_prereq[mat_199] = (prerequisite_check([mat_199], user_courses, user, transcripts)).include?mat_199
+      mat_prereq[mat_191] = (prerequisite_check([mat_191], user_courses, user, transcripts)).include?mat_191
+      mat_prereq[mat_181] = (prerequisite_check([mat_181], user_courses, user, transcripts)).include?mat_181
+
+      if not mat_prereq.values.inject(:|)
+        dma = Course.where(subject: "DMA", course: 92).take
+        if (prerequisite_check([dma], user_courses, user, transcripts)).include?dma
+          return [dma, category_ids.sort.last]
+        else 
+          return nil
+        end
+      else
+        highest_avail = mat_prereq.select { |k,v| v and (not user_courses.include?k) }
+        return [highest_avail.first[0], category_ids.sort.last]
       end
     end
 end
