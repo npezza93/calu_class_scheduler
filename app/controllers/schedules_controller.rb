@@ -126,7 +126,7 @@ class SchedulesController < ApplicationController
     end
     
     def scheduler(uid) 
-      user = User.includes(:major, transcripts: {course: :prerequisites}).find(112)
+      user = User.includes(:major, transcripts: {course: :prerequisites}).find(uid)
       used_courses = Set.new
 
       active_semester = Semester.where(active: true).take
