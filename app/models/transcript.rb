@@ -60,7 +60,7 @@ class Transcript < ActiveRecord::Base
         end
   
         courses = Course.all
-        transcripts = User.find(112).includes(:transcripts).transcripts
+        transcripts = User.includes(:transcripts).find(u_id).transcripts
         bad_courses = []
         courses.each do |row|
           if Course.where(subject: row[0], course: row[1]).exists? and row[2] != "w"
