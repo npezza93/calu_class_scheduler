@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
     @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
     @day_hash = view_context.create_day_hash(@offerings)
     @new_work_schedule = WorkSchedule.new
-    @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
+    @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester).includes(:work_days_time)
     @work_time_slots = WorkDaysTime.all
     @majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"]
     @minors = (Major.all.map { |major| [major.major, major.id] if @user.major_id != major.id}).compact
@@ -80,6 +80,7 @@ class SchedulesController < ApplicationController
     def prerequisite_check(courses, user_courses, user, transcripts)
       ok_courses = []
       courses.each do |course|
+        begin
         grouped_prerequisites = course.prerequisites.group_by(&:course_group_id)
         
         if not grouped_prerequisites.blank?
@@ -118,22 +119,22 @@ class SchedulesController < ApplicationController
             end
           end
         end
+        rescue
+        end
       end
       return ok_courses
     end
     
     def scheduler(uid) 
-      user = User.find(uid)
+      user = User.includes(:major, transcripts: {course: :prerequisites}).find(112)
       used_courses = Set.new
 
       active_semester = Semester.where(active: true).take
-      user_courses = Transcript.where(user_id: uid).map { |transcript| transcript.course } 
-      transcripts = Transcript.where(user: user)
+      user_courses = user.transcripts.map { |transcript| transcript.course } 
+      transcripts = user.transcripts
       
-      categories = CurriculumCategory.where(major: user.major , minor: false).group_by(&:id).flatten.flatten  
-      user.minor.each do |minor|
-        categories += CurriculumCategory.where(major: minor , minor: true).group_by(&:id).flatten.flatten  
-      end
+      categories = CurriculumCategory.where(major: user.major , minor: false).includes(curriculum_category_sets: {course_set: {course: :prerequisites}}).group_by(&:id).flatten.flatten
+      categories += CurriculumCategory.where(major: user.minor , minor: true).includes(curriculum_category_sets: {course_set: {course: :prerequisites}}).group_by(&:id).flatten.flatten
       
       category_courses = categories.map { |category| (category.is_a?(CurriculumCategory)) ? category.curriculum_category_sets.group_by(&:id) : category }
       category_courses = Hash[*category_courses]
