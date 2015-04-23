@@ -59,15 +59,15 @@ class Transcript < ActiveRecord::Base
         	end
         end
   
-        
+        courses = Course.all
+        transcripts = User.find(112).includes(:transcripts).transcripts
         bad_courses = []
         courses.each do |row|
-          if Course.where(subject: row[0], course: row[1]).exists?
+          if Course.where(subject: row[0], course: row[1]).exists? and row[2] != "w"
             c_id = Course.where(subject: row[0], course: row[1]).take.id
             c_minus, c = self.grade_check(row[2])
-            transcript = Transcript.where(user_id: u_id, course_id: c_id)
-            
-            if transcript.exists?
+
+            if transcripts.where(user_id: u_id, course_id: c_id).exists?
               transcript = transcript.take.update(grade_c_minus: c_minus, grade_c: c)
             else
               Transcript.create(user_id: u_id, course_id: c_id, grade_c_minus: c_minus, grade_c: c)
