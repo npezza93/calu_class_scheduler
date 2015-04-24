@@ -32,15 +32,15 @@ jQuery ->
       return   
 
     $("#pagination-item").click ->
-      $("#link_to_next_page").find("#next_link").click()
+      document.getElementById("link_to_next_page").querySelector("#next_link").click()
       return
     
     $("#pagination2-item").click ->
-      $("#link_to_next_page2").find("#next_link").click()
+      document.getElementById("link_to_next_page2").querySelector("#next_link").click()
       return
 
     $("#pagination3-item").click ->
-      $("#link_to_next_page3").find("#next_link").click()
+      document.getElementById("link_to_next_page3").querySelector("#next_link").click()
       return
       
     $('#advisee_signup_fab').click ->
