@@ -4,35 +4,34 @@
 <br>
 <div horizontal wrap layout around-justified>
   <div>
-    <% @category_courses.each do |cat_id, sets| %>
+    <% @incomplete_category_courses.each do |category, offerings| %>
       <div layout horizontal center-justified class="big_new_schedule_table">
         <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;" id="classes_shadow_schedule">
           <table style="border-collapse:collapse;margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
-              <tr class="no_courses_offered_msg" hidden><td style="text-align:center;" colspan="7"><span style="width:290px;color:#EF5350;padding-bottom:15px;">Currently no courses are being offered that will fulfill this category</span></td></tr>
-              <tr><th colspan="7" style="text-align:center;"><%= CurriculumCategory.find(cat_id).category %> <%= ("- " + CurriculumCategory.find(cat_id).major.major + " Minor") if CurriculumCategory.find(cat_id).minor %></th></tr>
+              <tr class="no_courses_offered_msg" <%= "hidden" if not offerings.empty? %>><td style="text-align:center;" colspan="7"><span style="width:290px;color:#EF5350;padding-bottom:15px;">Currently no courses are being offered that will fulfill this category</span></td></tr>
+              <tr><th colspan="7" style="text-align:center;"><%= category.category %> <%= ("- " + category.major.major + " Minor") if category.minor %></th></tr>
               <tr style="color:#757575;" class="new_schedule_headers"><th style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);"></th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Class</th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Credits</th><th class="days_th" style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Days</th><th class="time_th" style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Time</th><th class="prof_th" style="padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);font-weight:300;">Instructor</th></tr>
-              <% sets.each do |set_id, set| %>
-                <% set.each do |offering| %>
-                  <tr class="new_schedule_tr">
-                    <td class="new_schedule_check_td"><paper-checkbox class="offering_checkbox <%= offering.id.to_s %>" id=<%= offering.id.to_s %> ></paper-checkbox></td>
-                    <td class="new_schedule_course_td"><%= offering.course.subject + offering.course.course.to_s + "-" + offering.section + ": " + offering.course.title %></td>
-                    <td class="new_schedule_credit_td" style="text-align:center;"><%= offering.course.credits %></td>
-                    <td class="new_schedule_days_td" style="text-align:center;"><%= offering.days_time.days %></td>
-                    <td class="new_schedule_day_times_td" style="text-align:center;font-weight: 300;font-size:12px;width:94px;padding-top:15px;"><%= offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time if offering.days_time.start_time != nil%></td>
-                    <td class="new_schedule_times_td" style="text-align:center;"><%= offering.days_time.start_time + " - " + offering.days_time.end_time if offering.days_time.start_time != nil %></td>
-                    <td class="new_schedule_prof_td" style="text-align:center;"><%= offering.user.email[0..-10].capitalize %></td>
-                  </tr>
-                  <tr class="resp_new_schedule_tr" style="height:30px;">
-                    <td class="resp_new_schedule_credit_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.course.credits %></td>
-                    <td class="resp_new_schedule_prof_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.user.email[0..-10].capitalize %></td>
-                  </tr>
-                <% end %>
+              <% offerings.each do |offering| %>
+                <tr class="new_schedule_tr">
+                  <td class="new_schedule_check_td"><paper-checkbox class="offering_checkbox <%= offering.id.to_s %>" id="<%= offering.id.to_s %>" ></paper-checkbox></td>
+                  <td class="new_schedule_course_td"><%= offering.course.subject + offering.course.course.to_s + "-" + offering.section + ": " + offering.course.title %></td>
+                  <td class="new_schedule_credit_td" style="text-align:center;"><%= offering.course.credits %></td>
+                  <td class="new_schedule_days_td" style="text-align:center;"><%= offering.days_time.days %></td>
+                  <td class="new_schedule_day_times_td" style="text-align:center;font-weight: 300;font-size:12px;width:94px;padding-top:15px;"><%= offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time if offering.days_time.start_time != nil%></td>
+                  <td class="new_schedule_times_td" style="text-align:center;"><%= offering.days_time.start_time + " - " + offering.days_time.end_time if offering.days_time.start_time != nil %></td>
+                  <td class="new_schedule_prof_td" style="text-align:center;"><%= offering.user.email[0..-10].capitalize %></td>
+                </tr>
+                <tr class="resp_new_schedule_tr" style="height:30px;">
+                  <td class="resp_new_schedule_credit_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.course.credits %></td>
+                  <td class="resp_new_schedule_prof_td" style="text-align:center;font-weight: 300;font-size:12px;"><%= offering.user.email[0..-10].capitalize %></td>
+                </tr>
               <% end %>
-              <% @taken_courses[cat_id].each do |set_id, set| %>
-                <% set.each do |course| %>
+
+              <% @completed_category_courses[category].each do |set, set_courses| %>
+                <% set_courses.each do |course| %>
                   <tr style="height:48px;">
                     <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
-                    <td class="common_course_td" style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
+                    <td class="common_course_td" style="padding-right:10px;width:150px;"><%= course.pretty_course %></td>
                     <td class="common_credit_td" style="text-align:center;"><%= course.credits %></td>
                     <td class="common_tr"></td>
                     <td class="common_tr"></td>
@@ -40,31 +39,28 @@
                   </tr>
                 <% end %>
               <% end %>
+              <% @completed_category_courses.delete(category) %>
           </table>
         </paper-shadow>
       </div>
     <% end %>
   </div>
-    
-  <%  @category_courses.keys.each { |key| @taken_courses.delete(key) } %>
-    
+        
   <div>
-    <% @taken_courses.each do |cat_id, sets| %>
+    <% @completed_category_courses.each do |category, courses| %>
       <div layout horizontal center-justified>
         <paper-shadow style="border-radius:3px;background:#fafafa;margin:8px;width:353px;">
           <table style="border-collapse:collapse;margin:20px;color:rgba(0,0,0,0.87);" layout horizontal center-justified>
-            <tr><th colspan="4" style="text-align:center;"><%= CurriculumCategory.find(cat_id).category %> <%= ("- " + CurriculumCategory.find(cat_id).major.major + " Minor") if CurriculumCategory.find(cat_id).minor %></th></tr>
+            <tr><th colspan="4" style="text-align:center;"><%= category.category %> <%= ("- " + category.major.major + " Minor") if category.minor %></th></tr>
             <tr><th colspan="4" style="text-align:center;padding-bottom:15px;color:#4CAF50;">Completed</th></tr>
             <tr style="color:#757575;"><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);"></th><th style="font-weight:300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);">Class</th><th style="font-weight: 300;padding-bottom:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.12);padding-left:5px;padding-right:5px;">Credits</th></tr>
 
-            <% sets.each do |set_id, set| %>
-              <% set.each do |course| %>
-                <tr class="taken_courses_tr" style="height:48px;">
-                  <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
-                  <td style="padding-right:10px;width:150px;"><%= course.subject + course.course.to_s + ": " + course.title %></td>
-                  <td style="text-align:center;"><%= course.credits %></td>
-                </tr>
-              <% end %>
+            <% courses.each do |course| %>
+              <tr class="taken_courses_tr" style="height:48px;">
+                <td style="padding-right:15px;"><core-icon icon="check"></core-icon></td>
+                <td style="padding-right:10px;width:150px;"><%= course.pretty_course %></td>
+                <td style="text-align:center;"><%= course.credits %></td>
+              </tr>
             <% end %>
           </table>
         </paper-shadow>
@@ -72,7 +68,7 @@
     <% end %>
 
     <%= form_for [@user, Schedule.new], remote: true do |f| %>
-        <%= f.select(:offering_id, options_for_select(@offerings), {}, { id:'schedule_new_actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6, hidden: ''}) %>
+        <%= f.select(:offering_id, options_for_select(@offerings), {}, { id:'schedule_new_actual_select', multiple: true, style: "font-family: 'RobotoDraft', sans-serif;width:100%;", size: 6, hidden: '' }) %>
         <%= f.submit "Update Schedule", id: "submit_schedule_changes", hidden: "" %>
     <% end %>
   

@@ -13,7 +13,6 @@ jQuery ->
     $('#new_schedule_ajax').on 'core-response', (e) ->
       $('#temp_replace').append e.originalEvent.detail.response
       front_validation2()
-      $("#schedule_bootup")[0].toggle()
       if $("#placement_test_overlay").length
         $("#placement_test_overlay")[0].toggle()
       return

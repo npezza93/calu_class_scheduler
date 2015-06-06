@@ -2,9 +2,8 @@
 
 <%= form_for [@user, @transcript], remote: true do |f| %>
     <div hidden>
-        <%= f.select(:course_id, options_for_select(@courses), {}, { id:'transcript_course_select'}) %>
-        <%= f.select(:grade_c_minus, options_for_select(["", "A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]), {}, { class:'grade_select'}) %>
-        <%= f.select(:grade_c, options_for_select(["", "A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]), {}, { class:'grade_select'}) %>
+        <%= f.select(:course_id, options_for_select(@courses), {include_blank: true}, { id:'transcript_course_select'}) %>
+        <%= f.select(:grade_c_minus, options_for_select(["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]), {include_blank: true}, { class:'grade_select'}) %>
     </div>
     
     <div layout vertical center>
@@ -13,7 +12,6 @@
                 <paper-dropdown-menu label="Choose Course">
                     <paper-dropdown class="dropdown" id="transcript_course_dropdown">
                         <core-menu class="menu">
-                            <% @courses.pop %>
                             <% @courses.each do |course| %>
                                 <paper-item value=<%= course[1] %>><%= course[0] %></paper-item>
                             <% end %>
@@ -23,7 +21,7 @@
             </div>
             
             <div style="margin:5px">
-                <paper-dropdown-menu label="Choose Grade (optional)">
+                <paper-dropdown-menu label="Choose Grade">
                     <paper-dropdown class="dropdown" id="grade_dropdown">
                         <core-menu class="menu">
                             <paper-item value="A">A</paper-item>
@@ -65,10 +63,10 @@
             </thead>
             
             <tbody id="transcript_tbody">
-                <% @transcripts.each_with_index do |course, index| %>
-                    <tr id="transcript_<%= course.id %>">
-                        <td data-title="Course"><%= course.course.subject + course.course.course.to_s + ": " + course.course.title %></td>
-                        <td style="text-align:center;"><%= link_to 'Remove', user_transcript_path(@user, course), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, remote: true, id: "transcript_remove_link" %></td>
+                <% @transcripts_course.each do |transcript| %>
+                    <tr id="transcript_<%= transcript.id %>">
+                        <td data-title="Course"><%= transcript.course.pretty_course %></td>
+                        <td style="text-align:center;"><%= link_to 'Remove', user_transcript_path(@user, transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, remote: true, id: "transcript_remove_link" %></td>
                     </tr>
                 <% end %>
             </tbody>

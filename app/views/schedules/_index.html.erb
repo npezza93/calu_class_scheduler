@@ -48,18 +48,13 @@
                 <th class="day" style="width:100px;font-size: 14px;">Friday</th>
             </tr>
             
-            <% begin_time = Time.new(2000, 1, 1, 8) %>
-            <% end_time = Time.new(2000, 1, 1, 21,30) %>
-            <% while begin_time<=end_time %>
+            <% @work_time_slots.each_slice(5) do |slice| %>
                 <tr>
-                    <td class="time_slot"><%= begin_time.strftime("%l:%M%p") %></td>
-                    <td data-title="<%= begin_time.strftime("%l:%M%p") %>" class="day_time_slot M<%= begin_time.strftime("%l%M%p").strip %> _<%= @work_time_slots.where(days: "M", start_time: begin_time ).take.id %>" id="_<%= @work_time_slots.where(days: "M", start_time: begin_time ).take.id %>"></td>
-                    <td data-title="<%= begin_time.strftime("%l:%M%p") %>" class="day_time_slot T<%= begin_time.strftime("%l%M%p").strip %> _<%= @work_time_slots.where(days: "T", start_time: begin_time ).take.id %>" id="_<%= @work_time_slots.where(days: "T", start_time: begin_time ).take.id %>"></td>
-                    <td data-title="<%= begin_time.strftime("%l:%M%p") %>" class="day_time_slot W<%= begin_time.strftime("%l%M%p").strip %> _<%= @work_time_slots.where(days: "W", start_time: begin_time ).take.id %>" id="_<%= @work_time_slots.where(days: "W", start_time: begin_time ).take.id %>"></td>
-                    <td data-title="<%= begin_time.strftime("%l:%M%p") %>" class="day_time_slot R<%= begin_time.strftime("%l%M%p").strip %> _<%= @work_time_slots.where(days: "R", start_time: begin_time ).take.id %>" id="_<%= @work_time_slots.where(days: "R", start_time: begin_time ).take.id %>"></td>
-                    <td data-title="<%= begin_time.strftime("%l:%M%p") %>" class="day_time_slot F<%= begin_time.strftime("%l%M%p").strip %> _<%= @work_time_slots.where(days: "F", start_time: begin_time ).take.id %>" id="_<%= @work_time_slots.where(days: "F", start_time: begin_time ).take.id %>"></td>
+                    <td class="time_slot"><%= slice[0].start_time.strftime("%l:%M%p") %></td>
+                    <% slice.each do |time_slot| %>
+                        <td data-title="<%= time_slot.start_time.strftime("%l:%M%p") %>" class="day_time_slot <%= time_slot.days %><%= time_slot.start_time.strftime("%l%M%p").strip %> _<%= time_slot.id %>" id="_<%= time_slot.id %>"></td>
+                    <% end %>
                 </tr>
-                <% begin_time += 1800 %>
             <% end %>
         
         </table>
@@ -108,14 +103,11 @@
                     <paper-shadow style="background: #fafafa;border-radius:3px;padding-top:7px;padding-bottom:7px;max-width: 370px;margin-right:3.77px;margin-left:3.77px;">
                         <h2 class="day" layout horizontal center-justified><%= day_of_week[0] %></h2>
                         <table style="border-collapse:separate !important;border-spacing: 11px 3px !important;border:none;">
-                            <% begin_time = Time.new(2000, 1, 1, 8) %>
-                            <% end_time = Time.new(2000, 1, 1, 21,30) %>
-                            <% while begin_time<=end_time %>
+                            <% @work_time_slots.group_by(&:days)[day_of_week[1]].each do |time_slot| %>
                                 <tr>
-                                    <td class="time_slot"><%= begin_time.strftime("%l:%M%p") %></td>
-                                    <td class="day_time_slot <%= day_of_week[1]%><%= begin_time.strftime("%l%M%p").strip %> _<%= @work_time_slots.where(days: day_of_week[1], start_time: begin_time ).take.id %>" id="_<%= @work_time_slots.where(days: day_of_week[1], start_time: begin_time ).take.id %>"></td>
+                                    <td class="time_slot"><%= time_slot.start_time.strftime("%l:%M%p") %></td>
+                                    <td class="day_time_slot <%= day_of_week[1]%><%= time_slot.start_time.strftime("%l%M%p").strip %> _<%= time_slot.id %>" id="_<%= time_slot.id %>"></td>
                                 </tr>
-                                <% begin_time += 1800 %>
                             <% end %>
                         </table>
                     </paper-shadow>

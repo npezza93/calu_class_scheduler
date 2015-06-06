@@ -1,11 +1,12 @@
 class Transcript < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, touch: true
   belongs_to :course
   
   validates_uniqueness_of :course, scope: :user
   
   validates :course, presence: true
   
+
     def self.import(file, u_id)
       file = file.split /[\r\n]+/
       file.reject! { |c| c.empty? }

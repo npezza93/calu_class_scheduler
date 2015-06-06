@@ -31,11 +31,6 @@
     </div>
 </core-overlay>
 
-<core-overlay backdrop id="schedule_bootup" opened style="overflow-x:hidden;height:400px;" autoCloseDisabled>
-  <div layout horizontal center-justified>
-    <div class="loading"></div>
-  </div>
-</core-overlay>
 
 <% if not @session_user.advisor %>
     <%= render "users/student_settings" %>

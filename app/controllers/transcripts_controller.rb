@@ -2,13 +2,13 @@ class TranscriptsController < ApplicationController
   before_action :set_user, only: [:create, :index, :import, :destroy]
   before_action :set_new_transcript, only: [:index]
   before_action :set_transcript, only: [:destroy]
-  before_action :set_active_semester
+  before_action :set_active_semester, only: [:create, :import]
   before_filter :only_yours
   
   def index
-    @transcripts = @user.transcripts.all
-    @courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1]
-    render :layout => false
+    @transcripts_course = @user.cached_transcripts_course
+    @courses = Course.cached_select_courses
+    render layout: false
   end
   
   def create
