@@ -1,7 +1,6 @@
 class OfferingsController < ApplicationController
   before_action :set_offering, only: [:destroy, :edit, :update]
   before_action :set_offerings, only: [:index]
-  before_action :set_drop_downs, only: [:new]
   before_action :set_file_ext, only: [:import]
   
   before_filter :authorize
@@ -77,12 +76,6 @@ class OfferingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_offering
       @offering = Offering.find(params[:id])
-    end
-    
-    def set_drop_downs
-      @courses = (Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }) << ["",-1]
-      @days_n_times = (DaysTime.all.map { |day_time| (day_time.days == "ONLINE" or day_time.days == "OFFSITE") ? [day_time.days, day_time.id] : [day_time.days + ' at ' + day_time.start_time + ' to ' + day_time.end_time, day_time.id] }) << ["",-1]
-      @instructors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["",-1]
     end
     
     def set_file_ext

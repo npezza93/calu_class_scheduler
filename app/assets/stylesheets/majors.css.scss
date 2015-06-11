@@ -5,8 +5,7 @@
 #new_major_form_shadow {
     width:300px;
     margin:15px;
-    background:#fafafa;
-    border-radius:3px;
+    background:#fbfbfb;
     padding:20px 20px;
 }
 
@@ -18,9 +17,4 @@
     margin-bottom:15px;
     color: #FFF;
     background: #4CAF50;
-}
-
-#major_decorator /deep/ .focused-underline {
-    /* line color when the input is focused */
-    background-color: #4CAF50;
 }

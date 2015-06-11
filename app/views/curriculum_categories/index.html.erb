@@ -1,72 +1,41 @@
 <% content_for :title do %>
-    <%= @user.major.major %> Curriculum Categories
+    <%= @user.major.major %> Categories
 <% end %>
 
-<core-overlay backdrop id="new_cc_overlay">
-    <%= render "new" %>
-</core-overlay>
-
-
-<div horizontal wrap layout around-justified>
+<div class="horizontal wrap layout around-justified">
     <div>
-        <div layout horizontal center-justified>
+        <div class="layout horizontal center-justified">
             <h4 class="cat_heading"><%= @user.major.major %> Major</h4>
         </div>
         
-        <div layout horizontal center-justified>
-            <div class="table-responsive-vertical shadow-z-1">
-                <table id="table" class="table">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Remove</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        <% @major_categories.each do |category| %>
-                            <tr>
-                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_sets_path(category), id:"cur_cat_link" %></td>
-                                <td style="text-align:center;" ><%= link_to "Delete", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' }, id:"cur_cat_delete_link" %></td>
-                            </tr> 
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
+        <div class="layout horizontal center-justified" id="index-categroy-div">
+            <paper-material id="index-category-material">
+                <div id="paginated_courses_div">
+                    <%= render @major_categories %>
+                </div>
+            </paper-material>
         </div>
     </div>
     
     <div>
-        <div layout horizontal center-justified>
+        <div class="layout horizontal center-justified">
             <h4 class="cat_heading"><%= @user.major.major %> Minor</h4>
         </div>
         
-        <div layout horizontal center-justified>
-            <div class="table-responsive-vertical shadow-z-1">
-                <table id="table" class="table">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Remove</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        <% @minor_categories.each do |category| %>
-                            <tr>
-                                <td data-title="Category"><%= link_to category.category, curriculum_category_curriculum_category_sets_path(category), id:"cur_cat_link" %></td>
-                                <td style="text-align:center;" ><%= link_to "Delete", category, method: :delete, data: { confirm: 'Are you sure you want to remove this category?' }, id:"cur_cat_delete_link" %></td>
-                            </tr> 
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
+        <div class="layout horizontal center-justified" id="index-categroy-div">
+            <paper-material id="index-category-material">
+                <div id="paginated_courses_div">
+                    <%= render @minor_categories %>
+                </div>
+            </paper-material>
         </div>
     </div>
 </div>
 
 <paper-fab icon="add" title="Add a New Category" id="new_category_material"></paper-fab>
 
-<% if notice %>
-    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color: #4CAF50;" duration="10000" opened ></paper-toast>
-<% end %>
+<div id="categories-notice">
+  <% if notice %>
+    <paper-toast id="categories-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+  <% end %>
+</div>

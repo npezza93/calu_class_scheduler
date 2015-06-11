@@ -8,13 +8,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
     @logged_in = User.find_by_id(session[:user_id])
     
     if @logged_in.advisor
-      @advisees = User.where(advised_by: @logged_in, major_id: @logged_in.major_id).page(params[:page]).per(5)
-      @faculty = User.where(advisor: true, major_id: @logged_in.major_id).page(params[:page_3]).per(5)
-      @all_others= User.where(advisor: false, administrator: false, major_id: @logged_in.major_id).where.not(advised_by: @logged_in.id).page(params[:page_2]).per(5)
+      @advisees = User.where(advised_by: @logged_in, major_id: @logged_in.major_id)
+      @all_others= User.where(advisor: false, administrator: false, major_id: @logged_in.major_id).where.not(advised_by: @logged_in.id)
     end
     
     respond_to do |format|
@@ -22,27 +20,19 @@ class UsersController < ApplicationController
       format.html
     end
   end
-  
-  def user_options
-    @user = User.find_by_id(params[:advisee_id])
-    
-    respond_to do |format|
-      format.js {}
-    end
-  end
 
   # GET /users/new
   def new
     @user = User.new
-    @majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"]
-    @advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["", "-1"]
+    @majors = (Major.all.map { |major| [major.major, major.id] })
+    @advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] })
   end
 
   # GET /users/1/edit
   def edit
     @session_user = User.find(session[:user_id])
-    @advisors = User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] } << ["", "-1"]
-    @majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"]
+    @advisors = User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }
+    @majors = (Major.all.map { |major| [major.major, major.id] })
     @minors = (Major.all.map { |major| [major.major, major.id] if @user.major_id != major.id})
   end
 
@@ -89,7 +79,7 @@ class UsersController < ApplicationController
       else
         respond_to do |format|
           if @user.update(advisor_student_params)
-            flash[:notice] = @user.email + "'s settings were successfully updated!"
+            flash[:notice] = @user.first_name.capitalize+ " " + @user.last_name.capitalize + "'s settings were successfully updated!"
             format.js {}
             format.html { redirect_to users_path, notice: @user.email + "'s settings were successfully updated!" }
           else

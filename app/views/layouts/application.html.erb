@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>CalU Advisor</title>
-  <%= html_import_tag "application" %>
+  <link data-turbolinks-track="true" rel="import" href="/polymer_components/components" >
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application', params[:controller] %>
   <%= javascript_include_tag 'date' %>
@@ -17,44 +17,43 @@
 <body unresolved>
 
     <% if not (current_page?(signup_path) or current_page?(login_path) or current_page?(root_path) or (params.has_key?(:id) ? current_page?(edit_password_reset_path) : false)) %>
-      <core-drawer-panel responsiveWidth="1000px">
-        <core-header-panel drawer mode="waterfall-tall" tallClass="medium-tall">
-          
-          <core-toolbar id="navheader" style="background-color: #4CAF50;font-size:21px;line-height:1.5em;">
+      <paper-drawer-panel>
+
+        <paper-header-panel drawer mode="waterfall-tall" tallClass="medium-tall">
+          <paper-toolbar id="navheader" style="background-color: #4CAF50;font-size:21px;line-height:1.5em;">
             <div class="bottom">
               <div style="color:#FFF;">Menu</div>
               <div style="font-style:italic;color:#C8E6C9;font-size:16px;"><%= User.find(session[:user_id]).last_name %> is logged in</div>
             </div>
-          </core-toolbar>
+          </paper-toolbar>
           
-          <core-menu style="font-size:17px;" id="drawer_core_menu">
+          <paper-menu id="drawer-menu">
             <% if User.find(session[:user_id]).advisor %>
               <% if params[:user_id] and current_page?(user_schedules_path(params[:user_id]))%>
-                <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;margin-top: 14px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Transcript</core-item>
-                <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Schedule</core-item>
-                <core-item id="drawer_new_schedule_item_baluga" style="border-bottom: 1px solid #B9B9B9;padding-bottom: 10px;cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Classes</core-item>
+                <paper-item id="drawer_transcripts_item_baluga"><iron-icon icon="description"></iron-icon>Transcript</paper-item>
+                <paper-item id="drawer_schedule_item_baluga"><iron-icon icon="schedule"></iron-icon>Schedule</paper-item>
+                <paper-item id="drawer_new_schedule_item_baluga"><iron-icon icon="create"></iron-icon>Classes</paper-item>
               <% end %>
-              <core-item id="drawer_users_item" style="cursor:pointer;height:42px;margin-top: 6px;"><core-icon style="padding-left:12px;" icon="perm-identity"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Students</span></core-item>
-              <core-item id="drawer_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="class"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Courses</span></core-item>
-              <core-item id="drawer_needed_course_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="receipt"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Needs List</span></core-item>
-              <core-item id="drawer_offerings_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="event"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Offerings</span></core-item>
-              <core-item id="drawer_new_major_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="bookmark"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Majors</span></core-item>
-              <core-item id="drawer_semesters_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="today"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;">Semesters</span></core-item>
-              <core-item id="drawer_categories_item" style="border-bottom: 1px solid #B9B9B9;padding-bottom: 10px;cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="sort"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;width:135px;">Categories</span></core-item>
-              <core-item id="drawer_change_password_item" style="cursor:pointer;height:42px;margin-top: 6px;"><core-icon style="padding-left:12px;" icon="settings"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Settings</span></core-item>
+              <paper-item id="drawer-users"><iron-icon icon="perm-identity"></iron-icon><%= link_to "Students", users_path %></paper-item>
+              <paper-item id="drawer-courses"><iron-icon icon="class"></iron-icon><%= link_to "Courses", courses_path %></paper-item>
+              <paper-item id="drawer-offerings"><iron-icon icon="event"></iron-icon><%= link_to "Offerings", offerings_path %></paper-item>
+              <paper-item id="drawer-majors"><iron-icon icon="bookmark"></iron-icon><%= link_to "Majors", majors_path %></paper-item>
+              <paper-item id="drawer-semesters"><iron-icon icon="today"></iron-icon><%= link_to "Semesters", semesters_path %></paper-item>
+              <paper-item id="drawer-categories"><iron-icon icon="sort"></iron-icon><%= link_to "Categories", curriculum_categories_path %></paper-item>
+              <paper-item id="drawer-settings"><iron-icon icon="settings"></iron-icon><%= link_to 'Settings', edit_user_path(User.find_by_id(session[:user_id])) %></paper-item>
             <% else %>
-              <core-item id="drawer_transcripts_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="description"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Transcript</span></core-item>
-              <core-item id="drawer_schedule_item_baluga" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="schedule"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">View Schedule</span></core-item>
-              <core-item id="drawer_new_schedule_item_baluga" style="border-bottom: 1px solid #B9B9B9;padding-bottom: 10px;cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="create"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Modify Schedule</span></core-item>
-              <core-item id="drawer_change_password_item_baluga" style="cursor:pointer;height:42px;margin-top: 6px;"><core-icon style="padding-left:12px;" icon="settings"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Settings</span></core-item>
+              <paper-item id="drawer_transcripts_item_baluga"><iron-icon icon="description"></iron-icon>View Transcript</span></paper-item>
+              <paper-item id="drawer_schedule_item_baluga"><iron-icon icon="schedule"></iron-icon>View Schedule</paper-item>
+              <paper-item id="drawer_new_schedule_item_baluga"><iron-icon icon="create"></iron-icon>Modify Schedule</paper-item>
+              <paper-item id="drawer_change_password_item_baluga" ><iron-icon icon="settings"></iron-icon>Settings</paper-item>
             <% end %>
-              <core-item id="drawer_logout_item" style="cursor:pointer;height:42px;"><core-icon style="padding-left:12px;" icon="settings-power"></core-icon><span style="padding-left:35px;padding-top:12px;padding-bottom:15px;">Logout</span></core-item><br>
-          </core-menu>
-        </core-header-panel>
+              <paper-item id="drawer-logout"><iron-icon icon="settings-power"></iron-icon><%= button_to 'Logout', logout_path, { method: :delete, id: "logout-button" } %></paper-item>
+          </paper-menu>
+        </paper-header-panel>
   
-        <core-header-panel main mode="waterfall-tall" tallClass="medium-tall" id="main">
-          <core-toolbar id="mainheader">
-            <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+        <paper-header-panel main mode="waterfall-tall" tallClass="medium-tall" id="main">
+          <paper-toolbar id="mainheader">
+            <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
             <div class="bottom indent title_div" flex>
               <%= yield :title %>
             </div>
@@ -67,23 +66,12 @@
                 <paper-fab icon="cloud-upload" style="margin-top:56px;margin-right:25px;background: #4CAF50;color:#FFF;z-index:12;" id="fab_new_schedule" layered></paper-fab>
               </div>
             <% end %>
-          </core-toolbar>
+          </paper-toolbar>
           <div class="content">
             <%= yield %>
           </div>
-      </core-drawer-panel>
-      
-      <div hidden>
-        <%= link_to "Users", users_path, id: "users_link" %>
-        <%= link_to "Courses", courses_path, id: "delete_course_link" %>
-        <%= link_to "Needed Courses", needed_courses_path, id: "needed_course_link" %>
-        <%= link_to "offerings", offerings_path, id: "offerings_link" %>
-        <%= link_to "Majors", majors_path, id: "new_major_link" %>
-        <%= link_to "Semesters", semesters_path, id: "semesters_link" %>
-        <%= link_to "Categories", curriculum_categories_path, id: "categories_link" %>
-        <%= link_to 'Edit', edit_user_path(User.find_by_id(session[:user_id])), id: "change_password_link" %>
-        <%= button_to 'Logout', logout_path, { method: :delete, id: "logout_button" } %>
-      </div>
+        </paper-header-panel>
+      </paper-drawer-panel>
     <% else %>
       <%= yield %>
     <% end %>

@@ -2,35 +2,4 @@
     Editing Set In <%= @category.category %>
 <% end %>
 
-<br>
-<div layout horizontal center-justified>
-    <paper-shadow style="margin-left:10px;margin-right:10px;width:475px;background:#fafafa;border-radius:2px;padding:20px 20px;">
-        <%= form_for [@category, @curriculum_category_set] do |f| %>
-            <div class="category_course_set">
-                <%= select_tag(:course_id, options_for_select(@courses, @set_courses), { class: "category_course_set_select", multiple: true, size: 8}) %>
-                <br>
-            </div>
-            
-            <div id="cc_set_dropdown_error_msg" layout horizontal center-justified>
-              <div id="cc_set_dropdown_course_error" layout horizontal center-justified>
-                <div id="signup_dropdown__error_text" flex>At least once course must be selected!</div>
-                <core-icon class="error-icon" id="cc_set_dropdown_error_icon" icon="warning"></core-icon>
-              </div>
-            </div>
-            
-            <div>
-                <paper-input-decorator label="Enter Count (If left empty, all are required)" Error="Value must be an integer!" id="count_decorator">
-                    <%= f.text_field :count, pattern: "^[0-9]*$" %>
-                </paper-input-decorator>
-            </div>
-            
-            <br><br>
-            <div end-justified layout horizontal style="color:#2196F3;">
-                <paper-button id='cancel_edit_set'>Cancel</paper-button>
-                <paper-button id='submit_edit_set_material'>Update</paper-button>
-                <%= link_to "category", curriculum_category_curriculum_category_sets_path, hidden: "", id: "category_set_index_link" %>
-                <%= f.submit 'Update set' , id: 'submit_category_class_button', hidden: "" %>
-            </div>
-        <% end %>
-    </paper-shadow>
-</div>
+<%= render 'form' %>

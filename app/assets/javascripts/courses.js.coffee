@@ -3,111 +3,81 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-    $("#drawer_core_menu")[0].setAttribute "selected", "1"
+    $("#drawer-menu")[0].setAttribute "selected", "1"
+
+    if $("#courses-notice").find('paper-toast').length > 0
+      document.getElementById('courses-notice-toast').toggle()
 
     $("#cancel_new_course").click ->
       window.history.back()
       return    
     
-    $("#material_create_course").click ->
-      $("#actual_create_course")[0].click()
+    $("#new-course-fab").click ->
+      document.location.href = "/courses/new"
       return
 
-    $("#material_update_course").click ->
-      $("#actual_update_course")[0].click()
-      return
-      
-    $("#course_select").val "-1"
-    $("#course_dropdown").on "core-select", (e, detail) ->
-      $("#course_select").val e.originalEvent.detail.item.getAttribute("value")
-      return
-    
-    $("#day_select").val "-1"
-    $("#day_dropdown").on "core-select", (e, detail) ->
-      $("#day_select").val e.originalEvent.detail.item.getAttribute("value")
-      return
-    
-    $("#advisor_select").val "-1"
-    $("#advisor_dropdown").on "core-select", (e, detail) ->
-      $("#advisor_select").val e.originalEvent.detail.item.getAttribute("value")
-      return
-    
-    $("#material_offer_course").click ->
-      $("#actual_offer_course")[0].click()
+    $("#course_minimum_pt").change ->
+      if $("#course_minimum_pt option:selected" ).val() != ""
+        $("#course_minimum_pt" ).css "color", "#212121"
+      else
+        $("#course_minimum_pt " ).css "color", "#757575"
       return
 
-    $("#new_course_material").click ->
-        $("#new_course_link")[0].click()
-        return
-        
-    $("#drawer_transcripts_item_baluga").click ->
-      $("#baluga3")[0].selected = 0
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 1
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_new_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 2
-      $("core-drawer-panel")[0].closeDrawer();
+    $("#course_minimum_class_standing").change ->
+      if $("#course_minimum_class_standing option:selected" ).val() != ""
+        $("#course_minimum_class_standing" ).css "color", "#212121"
+      else
+        $("#course_minimum_class_standing " ).css "color", "#757575"
       return
 
-    $("#drawer_choose_minor_item_baluga").click ->
-      $("#choose_minor_overlay")[0].toggle()
-      return
-      
-    $("#drawer_change_password_item_baluga").click ->
-      $("#change_password_overlay")[0].toggle()
-      return     
-
-    $("#drawer_transcripts_item").click ->
-      $("#user_transcripts_app_link")[0].click()
-      return
+    $("#course_minimum_sat_score").change ->
+      if $("#course_minimum_sat_score option:selected" ).val() != ""
+        $("#course_minimum_sat_score" ).css "color", "#212121"
+      else
+        $("#course_minimum_sat_score " ).css "color", "#757575"
+      return      
     
-    $("#drawer_schedule_item").click ->
-      $("#user_schedules_app_link")[0].click()
-      return
-    
-    $("#drawer_new_schedule_item").click ->
-      $("#new_user_schedule_app_link")[0].click()
-      return
-    
-    
-    $("#drawer_logout_item").click ->
-      $("#logout_button")[0].click()
-      return
-    
-    $("#drawer_change_password_item").click ->
-      $("#change_password_link")[0].click()
-      return
-    
-    $("#drawer_new_major_item").click ->
-      $("#new_major_link")[0].click()
+    $("#add-or-group").click (max_group_id) ->
+      max_group_id = $("#prereq_groups").find('select').length
+      prereq_string = "<div class='layout horizontal center-justified'style='font-size: 16px;font-weight: bold;'> - OR -</div><div class='course_prereq_group " + (max_group_id + 1) + " layout vertical'><label>Group " + (max_group_id + 1) + "</label>"
+      prereq_string += $($(".actual_select_courses")[0]).clone().prop('outerHTML')
+      $("#prereq_groups").append(prereq_string)
       return
 
-    $("#drawer_semesters_item").click ->
-      $("#semesters_link")[0].click()
-      return
-      
-    $("#drawer_offerings_item").click ->
-      $("#offerings_link")[0].click()
-      return
-    
-    $("#drawer_course_item").click ->
-      $("#delete_course_link")[0].click()
+    $("#prereq_min_grades").on "change", "select", ->
+      string = ""
+      $(".prereq_grades_dropdown option:selected").each ->
+          string += $(this).text() + "/|/"
+          return
+      $("#prereq_grades").val(string)
       return
 
-    $("#drawer_needed_course_item").click ->
-      $("#needed_course_link")[0].click()
+    $("#minimum_grades").change ->
+      if $("#minimum_grades option:selected" ).val() != ""
+        $("#minimum_grades" ).css "color", "#212121"
+      else
+        $("#minimum_grades " ).css "color", "#757575"
       return
-    
-    $("#drawer_users_item").click ->
-      $("#users_link")[0].click()
+
+    $("#prereq_groups").on "change",  "select", ->
+      $("#prereq_min_grades").html("")
+      $(".actual_select_courses option:selected").each ->
+        temp_str = "<div class='layout horizontal' style='font-size: 16px;margin-top:5px;margin-bottom:5px;'><div class='flex course-min-grade'>" + $(this).text() + "</div><div>"
+        temp_str += $("#minimum_grades").clone().removeClass("copy-min-grades").addClass("prereq_grades_dropdown").removeAttr("hidden", "").prop('outerHTML')
+        temp_str += "</div></div>"
+        $("#prereq_min_grades").append(temp_str)
+
+      string = ""
+      $(".prereq_grades_dropdown option:selected").each ->
+        string += $(this).text() + "/|/"
+
+      $("#prereq_grades").val(string)
       return
-    
-    $("#drawer_categories_item").click ->
-      $("#categories_link")[0].click()
+
+    $("#create-course").click ->
+      $("#new_course").submit()
+      return
+
+    $("#update-course").click ->
+      $(".edit_course").submit()
       return

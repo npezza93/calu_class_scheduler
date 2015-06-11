@@ -1,67 +1,59 @@
 #remove_course_shadow_div {
     width:475px;
-    text-align:center;
-    background:#fafafa;
-    border-radius:3px;
-    cursor:default;
+    background:#FBFBFB;
 }
 #remove_course_div {
   margin:15px;
 }
 #new_course_shadow_div {
   margin:15px;
-  background:#fafafa;
+  background:#fbfbfb;
   padding:20px 20px;
-  border-radius: 3px;
 }
-.actual_select_courses  {
-  font-family: 'RobotoDraft', sans-serif;
-  width:100%;
-  display: block;
+
+
+
+#course_minimum_pt, #course_minimum_class_standing, #course_minimum_sat_score, #course_prerequisites {
+  background: transparent;
   border: none;
-  border-radius: 0 !important;
-  padding: 0;
-  color:rgba(0,0,0,0.87);
-  background-color: transparent;
-  box-shadow: none;
-  border-bottom: 1px solid #757575;
-  margin-top:10px;
-}
-
-.actual_select_courses:focus {
-  border-color: #757575;
+  border-bottom: 1px solid #757575;  
   outline: none;
-  box-shadow: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #757575;
+  margin-bottom: 8px;
 }
-
-#course_minimum_class_standing, #course_minimum_sat_score, #minimum_grades, #course_minimum_pt {
-  font-family: 'RobotoDraft', sans-serif;
-  width:100%;
-  display: block;
+#course_minimum_pt:focus, #course_minimum_class_standing:focus, #course_minimum_sat_score:focus, #course_prerequisites:focus, #minimum_grades:focus { 
+  border-bottom: 2px solid #4CAF50;  
+}
+#course_minimum_pt option, #course_minimum_class_standing option, #course_minimum_sat_score option, #minimum_grades option { 
+  color: #212121;  
+}
+#course_minimum_pt option:first-child, #course_minimum_class_standing option:first-child, #course_minimum_sat_score option:first-child, #minimum_grades option:first-child { 
+  color: #757575;  
+}
+.course_prereq_group {
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #757575;
+}
+#minimum_grades {
+  background: transparent;
   border: none;
-  border-radius: 0 !important;
-  padding: 0;
-  color:rgba(0,0,0,0.87);
-  background-color: transparent;
-  box-shadow: none;
-  border-bottom: 1px solid #757575;
-  margin-top:10px;
-  cursor: pointer;
-}
-
-#course_minimum_class_standing:focus, #course_minimum_sat_score:focus, #minimum_grades:focus, #course_minimum_pt:focus {
-  border-color: #757575;
+  border-bottom: 1px solid #757575;  
   outline: none;
-  box-shadow: none;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #757575;
+}
+.course-min-grade {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-
-.course_link {
-  color:rgb(51, 51, 51);
-  text-decoration: none;
-}
-
-#new_course_material {
+#new-course-fab {
     position:fixed;
     bottom:0;
     right:0;
@@ -70,9 +62,38 @@
     color: #FFFFFF;
     background: #4CAF50;
 }
-
 .subject_paginator {
   margin-top: 32px;
   text-decoration: none;
-  color: #212121;
+  color: #ffffff;
+  font-size: 16px;
+}
+#edit-course-link {
+  text-decoration: none;
+  color: #757575;
+  transition: all .2s ease;
+}
+#delete-course-link {  
+  color: #757575;
+  border:0;
+  background:transparent;
+  text-align:center;
+  outline: none;
+  border-radius: 3px;
+  cursor:pointer;
+  transition: all .2s ease;
+}
+#paginated_courses_div {
+ padding-top:12px; 
+}
+#courseTabs {
+  #selectionBar {
+    background-color: #757575;
+  }
+}
+#delete-course-link:hover {
+  color: #db4437;
+}
+#edit-course-link:hover {
+  color: #4CAF50;
 }

@@ -3,7 +3,7 @@ class Course < ActiveRecord::Base
   validates :title, presence: true
   validates :subject, presence: true
   validates :course, presence: true, numericality: { only_integer: true }
-  validates :credits, numericality: { only_integer: true }
+  validates :credits, presence: true, numericality: { only_integer: true }
   validates_uniqueness_of :course, scope: [:subject]
   
   before_save :set_class_standing

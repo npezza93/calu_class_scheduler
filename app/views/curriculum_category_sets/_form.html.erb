@@ -1,0 +1,22 @@
+<div class="layout horizontal center-justified">
+    <paper-material id="new_major_form_shadow">
+        <%= form_for([@category, @curriculum_category_set]) do |f| %>
+            
+            <div class="layout horizontal center-center" style="text-align:center;font-size:16px;font-weight:bold;font-family:'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-top:18px;">
+                <%= f.label :count, "How many of the courses in the set are required to complete this set? (Blank means all courses are required)" %>
+            </div>            
+
+            <paper-input-container id="new-set-count">
+                <%= f.label :count  %>
+                <%= f.text_field :count, is: "iron-input" %>
+                <paper-input-error></paper-input-error>
+            </paper-input-container>
+        
+            <br><br><br>
+            <div class="layout horizontal end-justified" style="color:#2196F3;">
+                <paper-button id="cancel-new-edit-set">Cancel</paper-button>
+                <paper-button id="create-set">Submit</paper-button>
+            </div>           
+        <% end %>
+    </paper-material>
+</div>

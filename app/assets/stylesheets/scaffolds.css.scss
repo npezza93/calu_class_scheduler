@@ -4,6 +4,12 @@ pre {
   font-size: 11px;
 }
 
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+paper-header-panel {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 div {
   &.field, &.actions {
     margin-bottom: 10px;
@@ -64,6 +70,7 @@ core-header-panel {
 .title_div {
   font-size:30px;
   line-height:1;
+  width:100%;
 }
 
 
@@ -71,4 +78,26 @@ core-header-panel {
   .title_div {
     font-size: 21px;
   }
+}
+
+#drawer-menu iron-icon {
+  margin-right:16px;
+}
+#drawer-menu a {
+  text-decoration: none;
+  color: #212121;
+}
+#logout-button {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px;
+  color: #212121;
 }

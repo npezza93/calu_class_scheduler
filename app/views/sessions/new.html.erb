@@ -1,55 +1,52 @@
-<%= javascript_include_tag "users" %>
-
-<core-overlay id="new_session_overlay" autoCloseDisabled opened backdrop transition="core-transition-center">
-	<section id="section" layout vertical>
+<paper-dialog id="new_session_overlay" noCancelOnOutsideClick opened modal noCancelOnEscKey >
 		
-		<paper-tabs selected="0" id="paperTabs" >
-		    <paper-tab id="one">LOGIN</paper-tab>
-		    <paper-tab id="two">SIGNUP</paper-tab>
-		</paper-tabs>
-		
-		<section id="section1" class="inner_section_session1" flex relative>
-        	<core-animated-pages id="baluga" transitions="slide-from-right">
-	          	<section id="section2" style="padding-top:20px;">
-	            	<%= form_tag(login_path, remote: true) do %>
-	            		<paper-input-decorator label="Enter Email" floatinglabel class="password_decorator">
-	      					<%= text_field_tag :email, params[:email], is: 'core-input' %>
-	      				</paper-input-decorator>
-      					
-      					<paper-input-decorator label="Enter Password" floatinglabel class="password_decorator">
-      						<%= password_field_tag :password, params[:password], is: 'core-input' %>
-      					</paper-input-decorator>
-	      					
-      					<div center-justified layout horizontal style="width:100%;color:#4CAF50;margin-top:14px;">
-							<paper-button style="width:100%;"><%= submit_tag "LOGON", id: "submit_logon" %></paper-button>
-    					</div>
-    						
-						<div layout flex horizontal center-justified>
-							<paper-button raised-button id="forgot_password">
-								Forget?
-							</paper-button>
-						</div>
+	<paper-tabs selected="0" id="paperTabs" >
+	    <paper-tab id="one">LOGIN</paper-tab>
+	    <paper-tab id="two">SIGNUP</paper-tab>
+	</paper-tabs>
+	
+	<paper-dialog-scrollable class="flex" style="height:400px;margin-top:0;">
+	   	<neon-animated-pages id="baluga" selected="0" class="flex" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation" style="height:300px;">
+	      	 <neon-animatable id="section2" style="padding-top:20px;">
+	        	<%= form_tag(login_path, remote: true) do %>
+	        		<paper-input-container id="new_session_email">
+	        			<%= label_tag :email %>
+	  					<%= text_field_tag :email, params[:email], is: "iron-input", autofocus: '' %>
+	  				</paper-input-container>
 						
-						<div style="margin-top: 15px;font-size:12px;" layout flex horizontal center-justified>
-							<a id="transcript_remove_link" href="https://senior-project-website-npezza.c9.io/">Project Website</a>
-						</div>
+					<paper-input-container id="new_session_password">
+						<%= label_tag :password %>
+						<%= password_field_tag :password, params[:password], is: "iron-input" %>
+					</paper-input-container>
+						
+					<div class="horizontal center-center layout" style="color:#4CAF50;margin-top:14px;">
+						<paper-button><%= submit_tag "LOGON", id: "submit_logon" %></paper-button>
+					</div>
+					
+					<div class="horizontal center-center layout">
+						<paper-button id="forgot_password">Forget?</paper-button>
+					</div>
+				<% end %>
+					
+	      	</neon-animatable>
+	          
+	      	<neon-animatable id="section3" style="padding-top:5px;">
+	      			<%= render 'users/form', :@user => User.new %>
+	      	</neon-animatable>
+		</neon-animated-pages>
+	</paper-dialog-scrollable>
+</paper-dialog>
 
-      				<% end %>
-	    				
-	    				<%= render "forgot" %>
-	    				
-	          	</section>
-          
-	          	<section id="section3" style="padding-top:5px;">
-	          		<%= render 'users/form', :@user => User.new %>
-	          	</section>
-        	</core-animated-pages>
-      	</section>
-    </section>
-</core-overlay>
+<%= render "forgot" %>
 
-<% if notice %>
-	<paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
-<% end %>
-<div id='login_error'></div>
+<div id="session-notice">
+	<% if notice %>
+		<paper-toast text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+	<% end %>
+</div>
+
+<div id='login_error'>
+	<paper-toast text="Invalid email/password combination" style="color:#eeff41;z-index: 13;" class="fit-bottom layout horizontal center-center" ></paper-toast>
+</div>
+
 <div id='reset_error'></div>

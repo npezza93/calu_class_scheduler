@@ -6,9 +6,9 @@ class Offering < ActiveRecord::Base
     
     before_save :default_semester
     
-    validates_uniqueness_of :course, scope: [:days_time, :user]
+    validates_uniqueness_of :course, {scope: [:days_time, :user], message: "This is already being offered!"}
   
-    validates :course, presence: true
+    validates_presence_of :course, message: "A course must be selected!"
     validates :days_time, presence: true
     validates :user, presence: true
 

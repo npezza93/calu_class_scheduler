@@ -3,15 +3,21 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-    $("#drawer_core_menu")[0].setAttribute "selected", "6"
+    $("#drawer-menu")[0].setAttribute "selected", "5"
 
+    if $("#categories-notice").find('paper-toast').length > 0
+      document.getElementById('categories-notice-toast').toggle()
 
     $("#new_category_material").click ->
-        $("#new_cc_overlay")[0].toggle()
-        return
+      document.location.href = '/curriculum_categories/new'
+      return
 
-    $("#material_create_category").click ->
-      $("#actual_create_category")[0].click()
+    $("#cancel_new_category").click ->
+      window.history.back()
+      return
+
+    $("#create-category").click ->
+      $("#new_curriculum_category").submit()
       return
 
     $('#major_paper_radio').on 'change', ->
@@ -24,78 +30,24 @@ jQuery ->
       $('#curriculum_category_minor_true').prop 'checked', true
       return
 
-
-
-
-
-    $("#drawer_transcripts_item_baluga").click ->
-      $("#baluga3")[0].selected = 0
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 1
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_new_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 2
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-
-    $("#drawer_choose_minor_item_baluga").click ->
-      $("#choose_minor_overlay")[0].toggle()
+    $('#set_logic_and_paper_radio').on 'change', ->
+      $('#curriculum_category_set_and_or_flag_true').prop 'checked', false
+      $('#curriculum_category_set_and_or_flag_false').prop 'checked', true
+      $('#curriculum_category_set_and_or_flag_0').prop 'checked', false
       return
       
-    $("#drawer_change_password_item_baluga").click ->
-      $("#change_password_overlay")[0].toggle()
-      return     
-
-    $("#drawer_transcripts_item").click ->
-      $("#user_transcripts_app_link")[0].click()
-      return
-    
-    $("#drawer_schedule_item").click ->
-      $("#user_schedules_app_link")[0].click()
-      return
-    
-    $("#drawer_new_schedule_item").click ->
-      $("#new_user_schedule_app_link")[0].click()
-      return
-    
-    
-    $("#drawer_logout_item").click ->
-      $("#logout_button")[0].click()
-      return
-    
-    $("#drawer_change_password_item").click ->
-      $("#change_password_link")[0].click()
-      return
-    
-    $("#drawer_new_major_item").click ->
-      $("#new_major_link")[0].click()
+    $('#set_logic_or_paper_radio').on 'change', ->
+      $('#curriculum_category_set_and_or_flag_false').prop 'checked', false
+      $('#curriculum_category_set_and_or_flag_true').prop 'checked', true
+      $('#curriculum_category_set_and_or_flag_0').prop 'checked', false
       return
 
-    $("#drawer_semesters_item").click ->
-      $("#semesters_link")[0].click()
-      return
-      
-    $("#drawer_offerings_item").click ->
-      $("#offerings_link")[0].click()
-      return
-    
-    $("#drawer_course_item").click ->
-      $("#delete_course_link")[0].click()
+    $('#set_logic_na_paper_radio').on 'change', ->
+      $('#curriculum_category_set_and_or_flag_false').prop 'checked', false
+      $('#curriculum_category_set_and_or_flag_true').prop 'checked', false
+      $('#curriculum_category_set_and_or_flag_0').prop 'checked', true
       return
 
-    $("#drawer_needed_course_item").click ->
-      $("#needed_course_link")[0].click()
-      return
-    
-    $("#drawer_users_item").click ->
-      $("#users_link")[0].click()
-      return
-    
-    $("#drawer_categories_item").click ->
-      $("#categories_link")[0].click()
+    $("#update-category").click ->
+      $(".edit_curriculum_category").submit()
       return

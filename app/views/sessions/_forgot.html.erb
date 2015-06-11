@@ -1,46 +1,17 @@
-<paper-dialog id="overlay3" class="forgot_overlay1" transition="core-transition-top">
-  <style>
-    .forgot_overlay1 {
-      font-family: 'RobotoDraft', sans-serif;
-      font-size: 13px;
-      background: #F3F9FE;
-    }
-    #overlay3 {
-      width: 250px;
-    }
-    #submit_reset {
-      display: inline-block;
-      position: relative;
-      border: 0;
-      background: transparent;
-      text-align: center;
-      text-transform: uppercase;
-      outline: none;
-      cursor: pointer;
-      font-family: 'RobotoDraft', sans-serif;
-      color:#2196F3;
-    }
-    #forgot_header, #forgot_subheader {
-      font-family: 'RobotoDraft', sans-serif;
-    }
-    #email_decorator /deep/ .focused-underline {
-      /* line color when the input is focused */
-      background-color: #4CAF50;
-    }
-  </style>
-  
-  <h3 id="forgot_header" layout horizontal center-justified>Forgot password?</h3>
-    <p layout horizontal center-justified id="forgot_subheader">We'll email you a reset link.</p>
+<paper-dialog id="forgot-dialog" entry-animation="scale-up-animation" exit-animation="scale-down-animation">
+  <h3 id="forgot_header" class="horizontal center-center layout">Forgot password?</h3>
+  <p class="horizontal center-center layout" id="forgot_subheader">We'll email you a reset link.</p>
     
     <%= form_for :password_reset, url: password_resets_path do |f| %>
-      <paper-input-decorator label="Email Address" error="That email doesn't exist!" id="email_decorator">
-        <%= f.text_field :email, is: 'core-input' %>  
-      </paper-input-decorator>
-      
+      <paper-input-container id="forgot_email">
+        <%= f.label :email %>
+        <%= f.text_field :email, is: 'iron-input' %>
+      </paper-input-container>
+                  
       <br>
-      <div layout horizontal end-justified style="color:#2196F3;">
-          <paper-button core-overlay-toggle>Cancel</paper-button>
-          <paper-button><%= f.submit "Reset", id: "submit_reset" %></paper-button>
+      <div class="horizontal end-justified layout" style="color:#2196F3;">
+          <paper-button dialog-dismiss>Cancel</paper-button>
+          <paper-button dialog-confirm><%= f.submit "Reset", id: "submit_reset" %></paper-button>
       </div>
     <% end %>
 

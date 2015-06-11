@@ -1,133 +1,32 @@
 <% content_for :title do %>
-    Offer a Course
+    Offer a New Course
+<% end %>
+    
+<%= form_tag import_offerings_path, multipart: true, hidden: "", id: "upload-offerings-form" do %>
+    <%= file_field_tag :offering_file, id: "upload_offering_button" %>
 <% end %>
 
-<core-overlay transition="core-transition-center" id="offering_overlay" backdrop>
-    <h3 style="text-align:center;">Upload a .CSV with 15 columns to quickly input offerings</h3>
-    <div style="margin-left:15px;">
-        <p>Column 1,4,5,6,7,11,12,14,15 - Anything/Empty Column</p>
-        <p>Column 2 - The course formatted:</p>
-        <ul><li>Subject(CSC) Course(110) Course Name</li></ul>
-        <p>Column 3 - Course section</p>
-        <p>Column 8 - Days being offered(MWF, TR, W, etc.)</p>
-        <p>Column 9 - Start time formatted:</p>
-        <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>
-        <p>Column 10 - End time formatted:</p>
-        <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>    
-        <p>Column 13 - Professor formmatted:</p>
-        <ul><li>"last name, first name"</li></ul>
-    </div>
-    
-    <br><br>
-    <div layout horizontal end-justified style="color:#2196F3;">
-        <paper-button id="cancel_upload_offering" core-overlay-toggle>Cancel</paper-button>
-        <paper-button id="material_upload_offerings">Upload</paper-button>
-    </div>
-    
-    <%= form_tag import_offerings_path, multipart: true, hidden: "" do %>
-        <%= file_field_tag :offering_file, id: "upload_offering_button" %>
-    
-        <%= submit_tag 'upload', id: "submit_upload_offering_button" %>
-    <% end %>
-</core-overlay>
+<%= render 'form' %>
 
-<div layout horizontal center-justified>
-    <paper-shadow id="new_offering_shadow">
-
-        <%= form_for(@offering, remote: true) do |f| %>
-        
-            <div hidden>
-                <%= f.select(:course_id, options_for_select(@courses, -1), {}, { id:'course_select' }) %>
-            </div>
-            
-            
-            <div hidden id="offering_course_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;">
-                <div class="error" layout horizontal center-justified style="width:100%;max-width:260px;">
-                  <div class="error-text" flex>A course must be selected!</div>
-                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
-                </div>
-            </div>
-            
-            <div layout horizontal center-justified>     
-                <paper-dropdown-menu label="Choose Course" style="margin-top:0;padding-top:0;">
-                    <paper-dropdown class="dropdown" id="course_dropdown" style="height:212px;">
-                        <core-menu class="menu">
-                            <% @courses.pop %>
-                            <% @courses.each do |course| %>
-                                <paper-item value=<%= course[1] %>><%= course[0] %></paper-item>
-                            <% end %>
-                        </core-menu>
-                    </paper-dropdown>
-                </paper-dropdown-menu>
-            </div>
-            
-            <div hidden>
-                <%= f.select(:days_time_id, options_for_select(@days_n_times, -1), {}, { id:'day_select' }) %>
-            </div>
-            
-            <div id="offering_time_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
-                <div class="error" layout horizontal center-justified style="width:100%;max-width:260px;">
-                  <div class="error-text" flex>A day and time must be selected!</div>
-                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
-                </div>
-            </div>
-            
-            <div layout horizontal center-justified>
-                <paper-dropdown-menu label="Choose Time" style="width:100%;max-width:260px;margin-top:0;padding-top:0;">
-                    <paper-dropdown class="dropdown" id="day_dropdown" style="width:100%;max-width:260px;height:174px;">
-                        <core-menu class="menu">
-                            <% @days_n_times.pop %>
-                            <% @days_n_times.each do |days_n_time| %>
-                                <paper-item value=<%= days_n_time[1] %>><%= days_n_time[0] %></paper-item>
-                            <% end %>
-                        </core-menu>
-                    </paper-dropdown>
-                </paper-dropdown-menu>
-            </div>
-            
-            <div hidden>
-                <%= f.select(:user_id, options_for_select(@instructors, -1), {}, { id:'advisor_select' }) %>
-            </div>
-    
-            <div id="offering_user_error_msg" layout horizontal center-justified style="color:#d34336;font-size: 0.75em;display:none;">
-                <div class="error" layout horizontal center-justified style="width:100%;max-width:260px;">
-                  <div class="error-text" flex>An instructor must be selected!</div>
-                  <core-icon class="error-icon" style="height:20px;width: 20px;" icon="warning"></core-icon>
-                </div>
-            </div>
-            <div layout horizontal center-justified>
-                <paper-dropdown-menu label="Choose Instructor" style="width:100%;max-width:260px;margin-top:0;padding-top:0;">
-                    <paper-dropdown class="dropdown" id="advisor_dropdown" style="width:100%;max-width:260px;height:136px;">
-                        <core-menu class="menu">
-                            <% @instructors.pop %>
-                            <% @instructors.each do |instructor| %>
-                                <paper-item value=<%= instructor[1] %>><%= instructor[0] %></paper-item>
-                            <% end %>
-                        </core-menu>
-                    </paper-dropdown>
-                </paper-dropdown-menu>
-            </div>
-            
-            <div layout horizontal center-justified>
-                <paper-input-decorator label="Section" style="padding:0;" id="section_decorator">
-                    <%= f.text_field :section, maxlength: 2, style: "width: 260px;" %>
-                </paper-input-decorator>
-            </div>
-            
-            <br><br>
-            <div layout horizontal end-justified style="color:#2196F3;">
-                <paper-button id="cancel_offering_button">Cancel</paper-button>
-                <paper-button id="material_offer_course">offer</paper-button>
-            </div>
-    
-            <%= f.submit 'Offer Course', id: "submit_offering", hidden: "" %>
-            
-        <% end %>
-    </paper-shadow>
+<div class="layout horizontal center-justified" style="color:#2196F3;margin-top:20px;">
+    <paper-button id="show-upload-offering-details">Show Upload Details</paper-button>
 </div>
 
-<div id="offering_form_errors"></div>
-
-<% if notice %>
-    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color:#eeff41;" duration="10000" opened ></paper-toast>
-<% end %>
+<iron-collapse id="upload-offering-details">
+    <h3 style="text-align:center;">Upload a .CSV with 15 columns to quickly input offerings</h3>
+    <div class="layout horizontal center-justified">
+        <div style="margin-left:15px;">
+            <p>Column 1,4,5,6,7,11,12,14,15 - Anything/Empty Column</p>
+            <p>Column 2 - The course formatted:</p>
+            <ul><li>Subject(CSC) Course(110) Course Name</li></ul>
+            <p>Column 3 - Course section</p>
+            <p>Column 8 - Days being offered(MWF, TR, W, etc.)</p>
+            <p>Column 9 - Start time formatted:</p>
+            <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>
+            <p>Column 10 - End time formatted:</p>
+            <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>    
+            <p>Column 13 - Professor formmatted:</p>
+            <ul><li>"last name, first name"</li></ul>
+        </div>
+    </div>
+</iron-collapse>

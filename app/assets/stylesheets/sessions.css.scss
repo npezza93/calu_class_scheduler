@@ -2,31 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#contentsd {
-  width: 275px;
-  height: 450px;
+#paperTabs {
+  #ink {
+    color: #00BCD4;
+  }
 }
-#login_email, #login_password {
-  font-family: 'Roboto', sans-serif;
-  font-size: 17px;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  margin: 10px;
-  text-align: center;
+
+#scrollable {
+  overflow-x: hidden;
 }
-#paperTabs paper-tab::shadow #ink {
-  color: #00BCD4;
-}
-paper-tabs#paperTabs::shadow #selectionBar {
-  background-color: #00BCD4;
-}
-#one, #two {
-  font-family: 'RobotoDraft', sans-serif;
-}
+
 #submit_logon {
   display: inline-block;
   position: relative;
@@ -41,6 +26,7 @@ paper-tabs#paperTabs::shadow #selectionBar {
   font-family: 'RobotoDraft', sans-serif;
   color:#4CAF50;
 }
+
 paper-toast {
   bottom: 0;
   left: 0;
@@ -68,6 +54,16 @@ paper-toast {
   outline: 1px solid rgba(0,0,0,0.2);
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
-.inner_section_session1 {
-  padding: 20px 20px;
+
+#submit_reset {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  font-family: 'RobotoDraft', sans-serif;
+  color:#2196F3;
 }

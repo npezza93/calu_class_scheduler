@@ -1,20 +1,11 @@
-class AdvisorValidator < ActiveModel::Validator
-  def validate(user)
-    unless user.advisor
-      if user.advised_by == -1
-        user.errors[:You] << ' must choose an advisor'
-      end
-    end
-  end
-end
-
 class User < ActiveRecord::Base
     validates :email, presence: true, uniqueness: true
     validates :email, format: { with: /@calu.edu\Z/, message: "must be a CalU email address" }
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }, if: Proc.new { |a| !(a.password.blank?) }
-    validates_with AdvisorValidator
+
     validates :major, presence: true
+    validates :advised_by, presence: true, if: "not advisor"
 
     has_many :transcripts
     has_many :taken_courses, through: :transcripts, source: :course

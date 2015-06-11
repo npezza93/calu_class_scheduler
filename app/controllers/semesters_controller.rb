@@ -4,9 +4,11 @@ class SemestersController < ApplicationController
   before_filter :authorize
 
   def index
-    @semester = Semester.new
     @semesters = (Semester.all.map { |semester| [semester.semester, semester.id] })
+  end
 
+  def new
+    @semester = Semester.new
   end
 
   def update

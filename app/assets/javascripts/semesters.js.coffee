@@ -3,93 +3,23 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-    $("#drawer_core_menu")[0].setAttribute "selected","5"
+    $("#drawer-menu")[0].setAttribute "selected", "4"
+
+    if $("#semesters-notice").find('paper-toast').length > 0
+      document.getElementById('semesters-notice-toast').toggle()
     
-    $("#material_create_semester").click ->
-        $("#actual_create_semester").click()
+    $("#create-semester").click ->
+        $("#new_semester").submit()
         return
 
-    $("#semester_dropdown").on "core-select", (e, detail) ->
-      $("#semester_active").val e.originalEvent.detail.item.getAttribute("value")
-      $("#submit_active_semester")[0].click()
+    $("#semester_active").on "change", ->
+      $(".edit_semester").submit()
       return
     
     $("#new_semester_material").click ->
-        $("#new_semester_overlay")[0].toggle()
+        document.location.href = '/semesters/new'
         return
-        
 
-
-
-
-    $("#drawer_transcripts_item_baluga").click ->
-      $("#baluga3")[0].selected = 0
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 1
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_new_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 2
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-
-    $("#drawer_choose_minor_item_baluga").click ->
-      $("#choose_minor_overlay")[0].toggle()
-      return
-      
-    $("#drawer_change_password_item_baluga").click ->
-      $("#change_password_overlay")[0].toggle()
-      return     
-
-    $("#drawer_transcripts_item").click ->
-      $("#user_transcripts_app_link")[0].click()
-      return
-    
-    $("#drawer_schedule_item").click ->
-      $("#user_schedules_app_link")[0].click()
-      return
-    
-    $("#drawer_new_schedule_item").click ->
-      $("#new_user_schedule_app_link")[0].click()
-      return
-    
-    
-    $("#drawer_logout_item").click ->
-      $("#logout_button")[0].click()
-      return
-    
-    $("#drawer_change_password_item").click ->
-      $("#change_password_link")[0].click()
-      return
-    
-    $("#drawer_new_major_item").click ->
-      $("#new_major_link")[0].click()
-      return
-
-    $("#drawer_semesters_item").click ->
-      $("#semesters_link")[0].click()
-      return
-      
-    $("#drawer_offerings_item").click ->
-      $("#offerings_link")[0].click()
-      return
-    
-    $("#drawer_course_item").click ->
-      $("#delete_course_link")[0].click()
-      return
-
-    $("#drawer_needed_course_item").click ->
-      $("#needed_course_link")[0].click()
-      return
-    
-    $("#drawer_users_item").click ->
-      $("#users_link")[0].click()
-      return
-    
-    $("#drawer_categories_item").click ->
-      $("#categories_link")[0].click()
+    $("#cancel_new_semester").click ->
+      window.history.back()
       return
