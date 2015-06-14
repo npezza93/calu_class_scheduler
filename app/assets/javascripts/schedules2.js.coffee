@@ -1,4 +1,9 @@
 jQuery ->
+
+    $(document).ready ->
+      mediaQueryCheck()
+      return
+
     $(".offering_checkbox").click (e) ->
       id_string = "#schedule_new_actual_select option[value=" + e.currentTarget.id + "]"
       if $("#schedule_new_actual_select")[0].options[$(id_string).index()].selected
@@ -7,8 +12,12 @@ jQuery ->
         $("#schedule_new_actual_select")[0].options[$(id_string).index()].selected = true
       $("#submit_schedule_changes")[0].click()
 
-    $('#media_query_schedule_new').on 'core-media-change', (e) ->
-      if e.originalEvent.detail.matches == true
+    $( window ).resize ->
+      mediaQueryCheck()
+      return
+
+    mediaQueryCheck = ->
+      if $("#media_query_schedule")[0].queryMatches
         $('.big_new_schedule_table').each (index, node) ->
           all_hidden = true
           $(node).find('paper-checkbox').each (index2, node2) ->

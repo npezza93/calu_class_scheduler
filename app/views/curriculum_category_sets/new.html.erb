@@ -3,3 +3,9 @@
 <% end %>
 
 <%= render 'form' %>
+
+<div id="category-sets-notice">
+  <% if notice %>
+    <paper-toast id="category-sets-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+  <% end %>
+</div>

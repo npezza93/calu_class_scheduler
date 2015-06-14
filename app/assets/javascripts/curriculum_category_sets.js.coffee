@@ -32,3 +32,12 @@ jQuery ->
     $("#new-course-set-fab").click ->
       document.location.href = document.location.pathname + "/course_sets/new"
       return
+
+    $("#continue-form-set").on 'change', ->
+      if $("#continue-form-set")[0].checked
+        $("#continue").prop 'checked', true
+        $("#create-set").html($("#create-set").html().split("Submit").join("Next"))
+      else
+        $("#continue").prop 'checked', false
+        $("#create-set").html($("#create-set").html().split("Next").join("Submit"))
+      return

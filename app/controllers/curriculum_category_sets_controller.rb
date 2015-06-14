@@ -13,7 +13,11 @@ class CurriculumCategorySetsController < ApplicationController
     
     respond_to do |format|
       if @category_set.save
-        format.html { redirect_to curriculum_category_curriculum_category_sets_path, notice: "Set for " + @category.category + " created!" }
+        if params[:continue] == "1"
+          format.html { redirect_to new_curriculum_category_curriculum_category_set_course_set_path(@category,@category_set), notice: "Set for " + @category.category + " created!" }
+        else
+          format.html { redirect_to curriculum_category_curriculum_category_sets_path, notice: "Set for " + @category.category + " created!" }
+        end
       else
         format.html { render :index }
       end

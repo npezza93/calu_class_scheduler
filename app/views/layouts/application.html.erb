@@ -32,7 +32,7 @@
               <% if params[:user_id] and current_page?(user_schedules_path(params[:user_id]))%>
                 <paper-item id="drawer_transcripts_item_baluga"><iron-icon icon="description"></iron-icon>Transcript</paper-item>
                 <paper-item id="drawer_schedule_item_baluga"><iron-icon icon="schedule"></iron-icon>Schedule</paper-item>
-                <paper-item id="drawer_new_schedule_item_baluga"><iron-icon icon="create"></iron-icon>Classes</paper-item>
+                <paper-item id="drawer_new_schedule_item_baluga" style="border-bottom: 1px solid #B9B9B9;"><iron-icon icon="create"></iron-icon>Classes</paper-item>
               <% end %>
               <paper-item id="drawer-users"><iron-icon icon="perm-identity"></iron-icon><%= link_to "Students", users_path %></paper-item>
               <paper-item id="drawer-courses"><iron-icon icon="class"></iron-icon><%= link_to "Courses", courses_path %></paper-item>
@@ -40,7 +40,7 @@
               <paper-item id="drawer-majors"><iron-icon icon="bookmark"></iron-icon><%= link_to "Majors", majors_path %></paper-item>
               <paper-item id="drawer-semesters"><iron-icon icon="today"></iron-icon><%= link_to "Semesters", semesters_path %></paper-item>
               <paper-item id="drawer-categories"><iron-icon icon="sort"></iron-icon><%= link_to "Categories", curriculum_categories_path %></paper-item>
-              <paper-item id="drawer-settings"><iron-icon icon="settings"></iron-icon><%= link_to 'Settings', edit_user_path(User.find_by_id(session[:user_id])) %></paper-item>
+              <paper-item id="drawer-settings" style="border-top: 1px solid #B9B9B9;"><iron-icon icon="settings"></iron-icon><%= link_to 'Settings', edit_user_path(User.find_by_id(session[:user_id])) %></paper-item>
             <% else %>
               <paper-item id="drawer_transcripts_item_baluga"><iron-icon icon="description"></iron-icon>View Transcript</span></paper-item>
               <paper-item id="drawer_schedule_item_baluga"><iron-icon icon="schedule"></iron-icon>View Schedule</paper-item>

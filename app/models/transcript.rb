@@ -2,9 +2,9 @@ class Transcript < ActiveRecord::Base
   belongs_to :user, touch: true
   belongs_to :course
   
-  validates_uniqueness_of :course, scope: :user
+  validates_uniqueness_of :course, scope: :user, message: "You've already taken this course!"
   
-  validates :course, presence: true
+  validates_presence_of :course, message: "A course must be selected!"
   
 
     def self.import(file, u_id)

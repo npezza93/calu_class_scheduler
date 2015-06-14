@@ -1,8 +1,15 @@
 <% if not @errors %>
-    $("#transcript_tbody").append("<tr id=\"transcript_<%= @transcript.id %>\"><td data-title=\"Course\"><%= @transcript.course.subject + @transcript.course.course.to_s + ": " + @transcript.course.title %></td><td style=\"text-align:center;\"><%= escape_javascript link_to 'Remove', user_transcript_path(@user, @transcript), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, remote: true, id: 'transcript_remove_link' %></td></tr>");    
-    $("#transcript_<%= @transcript.id %>").fadeIn();
-    $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @transcript.course.title %> added to your transcript!\" style=\"padding-right: 60px;color:#4CAF50;\" duration=\"10000\" opened ></paper-toast>");
-  
+    $("#transcript_course_error_text").fadeOut();
+    $("#transcript_course_id").removeClass("dropdown-error");
+    $("#transcript_course_id").val("");
+    $("#transcript_grade_c").val("");
+    $("#transcript_course_id" ).css("color", "#757575");
+    $("#transcript_grade_c" ).css("color", "#757575");
+
+    $("#transcript-items").append("<%= j render @transcript %>");    
+    $("#transcript-notice-toast").attr("text", "<%= @transcript.course.title %> added to your transcript!");
+    $("#transcript-notice-toast")[0].toggle();
+
     $.ajax({
       url: "<%= new_user_schedule_path(@user) %>",
     }).done(function(html) {
@@ -14,7 +21,9 @@
     <% end %>
 
 <% else %>
-    <% @transcript.errors.full_messages.each do |message| %>
-        $("#transcript_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
+    <% if not @transcript.errors[:course].blank? %>
+        $("#transcript_course_error_text").html("<%= raw @transcript.errors[:course][0].capitalize %>");
+        $("#transcript_course_error_text").fadeIn();
+        $("#transcript_course_id").addClass("dropdown-error");
     <% end %>
 <% end %>

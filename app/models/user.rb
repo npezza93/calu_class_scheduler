@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     has_many :courses, through: :offerings
     
     has_many :work_schedules, -> { where(semester: Semester.where(active: true).take) }   
+    has_many :work_days_times, through: :work_schedules
 
     serialize :minor, Array
     

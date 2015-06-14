@@ -15,7 +15,11 @@ class CourseSetsController < ApplicationController
     respond_to do |format|
       if @course_set.save
        	flash[:notice] = @course_set.course.pretty_course + " has been added to the set!"
-       	format.js { render :js => "window.location.href='"+curriculum_category_curriculum_category_set_path(@category,@category_set)+"'"}
+        if params[:continue] == "1"
+          format.js { render :js => "window.location.href='"+new_curriculum_category_curriculum_category_set_course_set_path(@category,@category_set)+"'"}          
+        else
+       	  format.js { render :js => "window.location.href='"+curriculum_category_curriculum_category_set_path(@category,@category_set)+"'"}
+        end
         format.html { redirect_to curriculum_category_curriculum_category_set_path(@category,@category_set), notice: @course_set.course.pretty_course + " has been added to the set!" }
       else
         format.html { render :new }

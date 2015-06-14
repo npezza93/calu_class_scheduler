@@ -51,3 +51,12 @@ jQuery ->
     $("#update-category").click ->
       $(".edit_curriculum_category").submit()
       return
+
+    $("#continue-form-category").on 'change', ->
+      if $("#continue-form-category")[0].checked
+        $("#continue").prop 'checked', true
+        $("#create-category").html($("#create-category").html().split("Submit").join("Next"))
+      else
+        $("#continue").prop 'checked', false
+        $("#create-category").html($("#create-category").html().split("Next").join("Submit"))
+      return

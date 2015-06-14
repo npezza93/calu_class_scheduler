@@ -2,35 +2,30 @@
     <%= @user.first_name.capitalize + " " + @user.last_name.capitalize %>'s Schedule
 <% end %>
 
-<core-overlay backdrop transition="core-transition-top" id="new_schedule_modal" style="background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-    <h3>To Upload an Updated Transcript:</h3>
-    <ul>
+<paper-dialog id="upload-transcript-dialog" entry-animation="scale-up-animation" exit-animation="scale-down-animation">
+    <div id="upload-transcript-header" class="layout horizontal center-center">To Upload an Updated Transcript</div>
+    <ol  id="upload-transcript-list" style="margin-left: 24px;">
         <li>Log in to VIP and go to DegreeWorks</li>
         <li>Click the "Class History" link</li>
         <li>Once the new window opens, <br>press CTRL+A to select all the text</li>
         <li>Paste this text in the space below</li>
-    </ul>
-    <div> 
-        &nbsp;&nbsp;&nbsp;* No grades or SAT scores will be saved
+    </ol>
+    <div id="upload-transcript-asterisk">
+        ** No grades or SAT scores will be saved
     </div>
-    <br>
     
     <%= form_tag(import_user_transcripts_path(@user), remote: true) do %>
-        <paper-input-decorator label="Paste Text Here" class="password_decorator">
-          <paper-autogrow-textarea>
-            <%= text_area_tag 'Transcript',nil, style: "width:100%;margin:0px;height:75px;overflow-x:hidden;"  %>
-          </paper-autogrow-textarea>
-        </paper-input-decorator>
-        
-        <%= submit_tag "upload", id: "upload_transcript_link", hidden: "" %>
+      <paper-input-container id="upload-transcript-section">
+        <%= label_tag "Paste Transcript Here" %>
+        <%= text_area_tag 'Transcript',nil, style: "width:100%;"  %>
+      </paper-input-container>
     <% end %>
     
-    <div layout end-justified horizontal style="color:#03A9F4;">
-        <paper-button core-overlay-toggle>Cancel</paper-button>
+    <div class="layout end-justified horizontal" style="color:#03A9F4;">
+        <paper-button dialog-dismiss>Cancel</paper-button>
         <paper-button id="upload_transcript_button">Upload</paper-button>
     </div>
-</core-overlay>
-
+</paper-dialog>
 
 <% if not @session_user.advisor %>
     <%= render "users/student_settings" %>
@@ -40,31 +35,17 @@
     <%= render "users/placement_test" %>
 <% end %>
 
-<core-animated-pages id="baluga3" selected="1" transitions="slide-from-right">
-    <!--Transcript page that is loaded in via ajax after the page loads-->
-  	<section id="section0">
-  	    <core-ajax id="transcript_ajax"
-            auto
-            url="<%= user_transcripts_path(@user) %>"
-            handleAs="text"></core-ajax>
-  	</section>
+<neon-animated-pages id="baluga3" selected="1" class="flex" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation">
+  	 <neon-animatable id="transcripts-animate">
+  	    <%= render "transcripts/index" %>
+  	 </neon-animatable>
 
-  	<section id="section1">
-        <%= render "index" %>
-  	</section>
-  	
-  	<!--New Schedules page that is loaded via ajax after page loads-->
-  	<section id="section2"><div id="temp_replace">
-	    <core-ajax id="new_schedule_ajax"
-            auto
-            url="<%= new_user_schedule_path(@user) %>"
-            handleAs="text"></core-ajax>
-  	</div></section>
-  	
-</core-animated-pages>
+     <neon-animatable id="schedules-animate">
+        <%= render 'index' %>
+     </neon-animatable>
 
-<div id="toast_div"></div>
+     <neon-animatable id="new-schedule-animate">
+      <%= render "new" %>
+     </neon-animatable>
+</neon-animated-pages>
 
-<% if notice %>
-    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
-<% end %>

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#user_major_id {
+#user_major_id, #user_minor {
   background: transparent;
   border: none;
   border-bottom: 1px solid #757575;  
@@ -14,7 +14,7 @@
   color: #757575;
   margin-bottom: 8px;
 }
-#user_major_id:focus { 
+#user_major_id:focus, #user_minor:focus { 
   border-bottom: 2px solid #4CAF50;  
 }
 #user_major_id option { 
@@ -91,27 +91,6 @@
   width:100%;
 }
 
-#user_minor {
-  font-family: 'RobotoDraft', sans-serif;
-  width:100%;
-  display: block;
-  border: none;
-  border-radius: 0 !important;
-  padding: 0;
-  color:rgba(0,0,0,0.87);
-  background-color: transparent;
-  box-shadow: none;
-  border-bottom: 1px solid #757575;
-  margin-top:10px;
-}
-
-#user_minor:focus {
-  border-color: #757575;
-  outline: none;
-  box-shadow: none;
-  border-bottom: 2px solid #03A9F4;
-}
-
 #advisee_signup_fab {
   position:fixed;
   bottom:0;
@@ -120,4 +99,8 @@
   margin-bottom:15px;
   color: #FFF;
   background: #4CAF50;
+}
+
+#change_password_overlay {
+  width: 350px;
 }

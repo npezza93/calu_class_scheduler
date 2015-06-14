@@ -32,7 +32,11 @@ class CurriculumCategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:notice] = @category.category + " successfully created!"
-       	format.js { render :js => "window.location.href='"+curriculum_categories_path+"'"}
+        if params[:continue] == "1"
+       	  format.js { render :js => "window.location.href='"+new_curriculum_category_curriculum_category_set_path(@category)+"'"}
+        else
+          format.js { render :js => "window.location.href='"+curriculum_categories_path+"'"}
+        end
         format.html { redirect_to curriculum_categories_path, notice: @category.category + " has been created!" }
       else
         format.js { @errors = true}

@@ -11,12 +11,25 @@
             <div id="course_set_error_msg">
                 <div id="course_set_error_text" flex>Can't be blank!</div>
             </div>
-            
+
+            <div class="layout horizontal" style="font-size:16px;margin-top:18px;">
+                <paper-checkbox id="continue-form-set" checked>Do you want to add another course to this set?</paper-checkbox>
+            </div>
+
+            <div hidden><%= check_box_tag :continue, 1, { checked: "checked"} %></div>
+           
             <br><br><br>
             <div class="layout horizontal end-justified" style="color:#2196F3;">
                 <paper-button id="cancel_course_set_button">Cancel</paper-button>
                 <paper-button id="create-course-set">Add Course</paper-button>
-            </div>            
+            </div>        
         <% end %>
     </paper-material>
+</div>
+
+
+<div id="course-set-notice">
+  <% if notice %>
+    <paper-toast id="course-set-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+  <% end %>
 </div>

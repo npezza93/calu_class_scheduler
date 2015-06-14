@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
     resources :schedules, :only => [:index, :create, :new, :destroy]
     resources :schedule_approvals, :only => [:create, :new, :edit, :update]
-    resources :work_schedules, only: [:create, :new, :index]
+    resources :work_schedules, only: [:create, :new, :index, :destroy]
   end
 
   resources :password_resets

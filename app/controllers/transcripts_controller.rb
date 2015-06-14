@@ -1,37 +1,37 @@
 class TranscriptsController < ApplicationController
   before_action :set_user, only: [:create, :index, :import, :destroy]
-  before_action :set_new_transcript, only: [:index]
   before_action :set_transcript, only: [:destroy]
   before_action :set_active_semester, only: [:create, :import]
   before_filter :only_yours
   
   def index
-    @transcripts_course = @user.cached_transcripts_course
-    @courses = Course.cached_select_courses
+    @transcript = Transcript.new
+    @transcripts = @user.transcripts.includes(:course)
+    @courses = Course.all.order(:subject)
+    @letter_grades = ["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]
     render layout: false
   end
   
   def create
-    c_minus, c = grade_checker(transcript_params["grade_c_minus"])
-    tran_params = transcript_params
+    c_minus, c = grade_checker(transcript_params[:grade_c])
 
-    tran_params["grade_c_minus"] = c_minus
-    tran_params["grade_c"] = c
-
-    @transcript = @user.transcripts.create(tran_params)
-    @transcript.user = @user
+    @transcript = @user.transcripts.new do |t|
+      t.grade_c = c
+      t.grade_c_minus = c_minus
+      t.course_id = transcript_params[:course_id]
+    end
     
     @index_reload_flag = false
-    if (Schedule.where(user: @user, semester: @active_semester).collect { |c| c.offering.course.id }).include?(@transcript.course_id)
+    if @user.courses.include?(@transcript.course)
       Schedule.where(user: @user, offering_id: (Offering.where(course_id: @transcript.course_id, semester: @active_semester).take.id)).take.destroy
       @index_reload_flag = true
     end
     
     if @index_reload_flag
-      @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
+      @offerings = @user.offerings
       @day_hash = view_context.create_day_hash(@offerings)
       @new_work_schedule = WorkSchedule.new
-      @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
+      @work_schedules = @user.work_schedules
       @work_time_slots = WorkDaysTime.all
     end
     
@@ -79,11 +79,7 @@ class TranscriptsController < ApplicationController
   
   private
     def set_user
-      @user = User.find(params[:user_id])
-    end
-    
-    def set_new_transcript
-      @transcript = Transcript.new
+      @user = User.includes(:courses, :taken_courses, :work_schedules).find(params[:user_id])
     end
 
     def set_transcript
@@ -95,7 +91,7 @@ class TranscriptsController < ApplicationController
     end
     
     def transcript_params
-      params.require(:transcript).permit(:course_id, :grade_c_minus, :grade_c)
+      params.require(:transcript).permit(:course_id, :grade_c)
     end
     
     def import_params
@@ -104,34 +100,27 @@ class TranscriptsController < ApplicationController
     
     def only_yours
       logged_in = User.find_by_id(session[:user_id])
-      # going_to = User.find_by_id(params[:id])
       if not logged_in.advisor
         unless params[:user_id].to_i == session[:user_id].to_i
           redirect_to user_schedules_path(logged_in)
         end
       else
-        if User.find_by_id(params[:user_id]).advisor or User.find_by_id(params[:user_id]).administrator
-          redirect_to users_path, notice: "Admins and Advisors don't have transcripts!"
+        if User.find_by_id(params[:user_id]).advisor
+          redirect_to users_path, notice: "Advisors don't have transcripts!"
         end
       end
     end
     
     def grade_checker(grade)
       grades = ["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]
-      begin
-        if grades.index(grade) >= 8
-          c_minus = c = false
-        else
-          if grades.index(grade) <= 6
-            c_minus = c = true
-          elsif grades.index(grade) == 7
-            c = false
-            c_minus = true
-          end
+      if grade == nil or grades.index(grade) >= 8
+        return false, false
+      else
+        if grades.index(grade) <= 6
+          return true, true
+        elsif grades.index(grade) == 7
+          return true, false
         end
-      rescue
-        c_minus = c = false
       end
-      return c_minus, c
     end
 end

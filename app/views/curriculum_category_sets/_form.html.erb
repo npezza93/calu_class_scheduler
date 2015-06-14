@@ -11,7 +11,14 @@
                 <%= f.text_field :count, is: "iron-input" %>
                 <paper-input-error></paper-input-error>
             </paper-input-container>
-        
+
+            <div class="layout horizontal" style="font-size:16px;margin-top:18px;">
+                <paper-checkbox id="continue-form-set">Do you want to add courses to this set?</paper-checkbox>
+            </div>
+
+            <div hidden><%= check_box_tag :continue %></div>
+
+
             <br><br><br>
             <div class="layout horizontal end-justified" style="color:#2196F3;">
                 <paper-button id="cancel-new-edit-set">Cancel</paper-button>

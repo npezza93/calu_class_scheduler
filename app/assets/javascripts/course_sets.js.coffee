@@ -5,8 +5,14 @@
 jQuery ->
     $("#drawer-menu")[0].setAttribute "selected", "5"
 
+    if $("#course-set-notice").find('paper-toast').length > 0
+      document.getElementById('course-set-notice-toast').toggle()
+
     $("#cancel_course_set_button").click ->
-      window.history.back()
+      loc = document.location.href.split("/")
+      loc.pop()
+      loc.pop()
+      document.location.href = loc.join("/")
       return
 
     $("#create-course-set").click ->
@@ -27,4 +33,13 @@ jQuery ->
         $("#course_set_course_id" ).css "color", "#212121"
       else
         $("#course_set_course_id" ).css "color", "#757575"
+      return
+
+    $("#continue-form-set").on 'change', ->
+      if $("#continue-form-set")[0].checked
+        $("#continue").prop 'checked', true
+        $("#create-set").html($("#create-set").html().split("Submit").join("Next"))
+      else
+        $("#continue").prop 'checked', false
+        $("#create-set").html($("#create-set").html().split("Next").join("Submit"))
       return

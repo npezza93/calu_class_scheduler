@@ -5,7 +5,11 @@
 <div class="layout horizontal center-justified" id="remove_course_div">
     <paper-material id="remove_course_shadow_div">
         <div id="paginated_courses_div">
-            <%= render @curriculum_category_set.course_set %>
+            <% if @curriculum_category_set.course_set.empty? %>
+                <paper-item style="height:88px;" class="layout horizontal center-center"><b>No courses in this set</b></paper-item>
+            <% else %>
+            	<%= render @curriculum_category_set.course_set %>
+            <% end %>
         </div>
     </paper-material>
 </div>

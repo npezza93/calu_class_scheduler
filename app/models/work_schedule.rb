@@ -18,6 +18,10 @@ class WorkSchedule < ActiveRecord::Base
   
   validates_uniqueness_of :work_days_time, scope: :user
   
+  def pretty_day_time
+    self.work_days_time.short_time
+  end
+
   private
     def default_semester
       self.semester = Semester.where(active: true).take
