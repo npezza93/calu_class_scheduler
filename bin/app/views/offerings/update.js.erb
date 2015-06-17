@@ -1,0 +1,26 @@
+<% if @errors %>
+    <% if not @offering.errors[:days_time].blank? %>
+        $("#offering_daytime_error_msg").fadeIn();
+        $("#offering_days_time_id").addClass("dropdown-error");
+    <% else %>
+        $("#offering_daytime_error_msg").fadeOut();
+        $("#offering_days_time_id").removeClass("dropdown-error");
+    <% end %>
+
+    <% if not @offering.errors[:user].blank? %>
+        $("#offering_prof_error_msg").fadeIn();
+        $("#offering_user_id").addClass("dropdown-error");
+    <% else %>
+        $("#offering_prof_error_msg").fadeOut();
+        $("#offering_user_id").removeClass("dropdown-error");
+    <% end %>
+
+    <% if not @offering.errors[:course].blank? %>
+        $("#offering_course_error_text").html("<%= raw @offering.errors[:course][0].capitalize %>");
+        $("#offering_course_error_msg").fadeIn();
+        $("#offering_course_id").addClass("dropdown-error");
+    <% else %>
+        $("#offering_course_error_msg").fadeOut();
+        $("#offering_course_id").removeClass("dropdown-error");
+    <% end %>
+<% end %>

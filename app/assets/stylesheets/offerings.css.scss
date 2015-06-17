@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#new_offerings_material {
+#new-offering-fab {
     position:fixed;
     bottom:0;
     right:0;
@@ -11,28 +11,39 @@
     color: #FFF;
     background: #4CAF50;
 }
-
 #new_offering_shadow {
     width:375px;
     margin:15px;
-    background:#fafafa;
+    background:#fbfbfb;
     padding:20px 20px;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 3px;
 }
-
-#offering_overlay {
-    // width:350px;
-    margin:15px;
-    overflow-x: hidden;
-    background:#f3f3f3;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    webkit-user-select: none;
-    -moz-user-select: none;
-    padding:20px 20px;
-    outline: 1px solid rgba(0,0,0,0.2);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+#offering_course_id, #offering_days_time_id, #offering_user_id {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;  
+  outline: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #757575;
+  margin-bottom: 8px;
+}
+#offering_course_id:focus, #offering_days_time_id:focus, #offering_user_id:focus { 
+  border-bottom: 2px solid #4CAF50;  
+}
+#offering_course_id option, #offering_days_time_id option, #offering_user_id option { 
+  color: #212121;  
+}
+#offering_course_id option:first-child, #offering_days_time_id option:first-child, #offering_user_id option:first-child { 
+  color: #757575;  
+}
+#offering_course_error_msg, #offering_daytime_error_msg, #offering_prof_error_msg {
+  color:#db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display:none;
+  margin-top: -8px;
 }
 
 #stop_offering_link {
@@ -40,22 +51,14 @@
 	text-decoration: none;
 	transition: all .2s ease;
 }
-
 #stop_offering_link:hover {
 	color: #F44336;
 }
-
 #edit_offering_link {
 	color: #4a89dc;
 	text-decoration: none;
 	transition: all .2s ease;
 }
-
 #edit_offering_link:hover {
 	color: #4CAF50;
-}
-
-#section_decorator /deep/ .focused-underline {
-    /* line color when the input is focused */
-    background-color: #4CAF50;
 }

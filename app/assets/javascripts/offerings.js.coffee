@@ -1,118 +1,56 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 jQuery ->
-    $("#drawer_core_menu")[0].setAttribute "selected", "3"
-    
-    $("#new_offerings_material").click ->
-        $("#new_offerings_link")[0].click()
+    $("#drawer-menu")[0].setAttribute "selected", "2"
+
+    if $("#offerings-notice").find('paper-toast').length > 0
+      document.getElementById('offerings-notice-toast').toggle()
+
+    $("#new-offering-fab").click ->
+        document.location.href = '/offerings/new'
         return
 
-    $("#course_dropdown").on "core-select", (e, detail) ->
-      $("#offering_course_id").val e.originalEvent.detail.item.getAttribute("value")
-      $("#course_select").val e.originalEvent.detail.item.getAttribute("value")
-      return
-
-    $("#day_dropdown").on "core-select", (e, detail) ->
-      $("#offering_days_time_id").val e.originalEvent.detail.item.getAttribute("value")
-      $("#day_select").val e.originalEvent.detail.item.getAttribute("value")
-      return      
-
-    $("#advisor_dropdown").on "core-select", (e, detail) ->
-      $("#offering_user_id").val e.originalEvent.detail.item.getAttribute("value")
-      $("#advisor_select").val e.originalEvent.detail.item.getAttribute("value")
-      return
-
-    $("#upload-fab").click ->
-      $("#offering_overlay")[0].toggle();
-      return
-      
-    $("#material_upload_offerings").click ->
-      $("#upload_offering_button")[0].click()
-      $("#upload_offering_button").on "change", ->
-        $("#submit_upload_offering_button")[0].click()
-        return
-      return
-
-    $("#material_offer_course").click ->
-      $("#submit_offering")[0].click()
-      return
-      
     $("#cancel_offering_button").click ->
       window.history.back()
-      return         
-      
-      
-      
-    $("#drawer_transcripts_item_baluga").click ->
-      $("#baluga3")[0].selected = 0
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 1
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_new_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 2
-      $("core-drawer-panel")[0].closeDrawer();
       return
 
-    $("#drawer_choose_minor_item_baluga").click ->
-      $("#choose_minor_overlay")[0].toggle()
+    $("#create-offering").click ->
+      $("#new_offering").submit()
+      return
+
+    $("#offering_course_id").change ->
+      if $("#offering_course_id option:selected" ).val() != ""
+        $("#offering_course_id" ).css "color", "#212121"
+      else
+        $("#offering_course_id" ).css "color", "#757575"
+      return
+
+    $("#offering_days_time_id").change ->
+      if $("#offering_days_time_id option:selected" ).val() != ""
+        $("#offering_days_time_id" ).css "color", "#212121"
+      else
+        $("#offering_days_time_id" ).css "color", "#757575"
+      return
+
+    $("#offering_user_id").change ->
+      if $("#offering_user_id option:selected" ).val() != ""
+        $("#offering_user_id" ).css "color", "#212121"
+      else
+        $("#offering_user_id" ).css "color", "#757575"
       return
       
-    $("#drawer_change_password_item_baluga").click ->
-      $("#change_password_overlay")[0].toggle()
-      return     
-
-    $("#drawer_transcripts_item").click ->
-      $("#user_transcripts_app_link")[0].click()
-      return
-    
-    $("#drawer_schedule_item").click ->
-      $("#user_schedules_app_link")[0].click()
-      return
-    
-    $("#drawer_new_schedule_item").click ->
-      $("#new_user_schedule_app_link")[0].click()
-      return
-    
-    
-    $("#drawer_logout_item").click ->
-      $("#logout_button")[0].click()
-      return
-    
-    $("#drawer_change_password_item").click ->
-      $("#change_password_link")[0].click()
-      return
-    
-    $("#drawer_new_major_item").click ->
-      $("#new_major_link")[0].click()
+    $("#upload-fab").click ->
+      $("#upload_offering_button")[0].click()
+      $("#upload_offering_button").on "change", ->
+        $("#upload-offerings-form").submit()
+        return
       return
 
-    $("#drawer_semesters_item").click ->
-      $("#semesters_link")[0].click()
+    $("#show-upload-offering-details").click ->
+      text = $('#show-upload-offering-details').text().trim()
+      if text == "Show Upload Details" 
+        text = "Hide Upload Details"
+      else
+        text = "Show Upload Details"
+      $('#show-upload-offering-details').text(text)
+      $("#upload-offering-details")[0].toggle()
       return
       
-    $("#drawer_offerings_item").click ->
-      $("#offerings_link")[0].click()
-      return
-    
-    $("#drawer_course_item").click ->
-      $("#delete_course_link")[0].click()
-      return
-
-    $("#drawer_needed_course_item").click ->
-      $("#needed_course_link")[0].click()
-      return
-    
-    $("#drawer_users_item").click ->
-      $("#users_link")[0].click()
-      return
-    
-    $("#drawer_categories_item").click ->
-      $("#categories_link")[0].click()
-      return

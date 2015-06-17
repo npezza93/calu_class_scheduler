@@ -1,0 +1,72 @@
+<div class="horizontal wrap layout around-justified">
+  <div >
+    <% @incomplete_category_courses.each do |category, offerings| %>
+      <div class="layout horizontal center-justified">
+          <paper-material class="category-items incomplete-category">
+            <h3 class="layout horizontal center-center"><%= category.category %> <%= ("- " + category.major.major + " Minor") if category.minor %></h3>
+            <div style="color:#EF5350;text-align:center;" <%= "hidden" if not offerings.empty? %>>Currently no courses are being offered that will fulfill this category</div>        
+            <% sorted_offerings = offerings.group_by { |o| o.course } %>
+
+            <% sorted_offerings.each do |course, course_offerings| %>
+              <div class="offering-div">
+                <paper-item class="course_<%= course.id.to_s %> course_offering">
+                  <div class="flex"><%= course.pretty_course %></div>
+                  <iron-icon icon="expand-more"></iron-icon>
+                </paper-item>
+
+                <iron-collapse class="course_<%= course.id.to_s %>">
+                <% course_offerings.each do |offering| %>
+                  <paper-icon-item class="layout horizontal" start-time="<%= offering.days_time.start_time %>" end-time="<%= offering.days_time.end_time %>" days="<%= offering.days_time.days %>" course="<%= offering.course.subject + offering.course.course.to_s %>" credits="<%= offering.course.credits%>">
+                      <paper-checkbox item-icon class="offering_checkbox <%= offering.id.to_s %>" id="<%= offering.id.to_s %>" ></paper-checkbox>
+                      <div class="flex"><%= offering.days_time.days %> from <%= offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time if offering.days_time.start_time != nil%> with Prof. <%= offering.user.last_name.capitalize %></div>
+                  </paper-icon-item>            
+                <% end %>
+                </iron-collapse>
+              </div>
+            <% end %>
+            
+            <% @completed_category_courses[category].each do |set, set_courses| %>
+              <% set_courses.each do |course| %>
+                <paper-item>
+                  <div class="flex"><%= course.pretty_course %></div>
+                  <iron-icon icon="check" style="color:#4CAF50;"></iron-icon>
+                </paper-item>
+              <% end %>
+            <% end %> 
+            <% @completed_category_courses.delete(category) %>          
+          </paper-material>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <% @completed_category_courses.each do |category, courses| %>
+      <div class="layout horizontal center-justified">
+        <paper-material class="category-items">
+          <h3 class="layout horizontal center-center"><%= category.category %> <%= ("- " + category.major.major + " Minor") if category.minor %></h3>
+          <div style="color:#4CAF50;text-align:center;">Completed</div>        
+
+          <% courses.each do |course| %>
+            <paper-item>
+              <div class="flex"><%= course.pretty_course %></div>
+              <iron-icon icon="check" style="color:#4CAF50;"></iron-icon>
+            </paper-item>
+          <% end %>
+        </paper-material>
+      </div>
+    <% end %>
+  </div>
+</div>      
+
+
+<%= form_for [@user, Schedule.new], remote: true do |f| %>
+    <%= f.select(:offering_id, options_for_select(@offerings), {}, { id:'schedule_new_actual_select', multiple: true, size: 6, hidden: '' }) %>
+<% end %>
+  
+<!--check ones already signed up for-->
+<script>
+  <% @schedules.each do |sch| %>
+      $("#schedule_new_actual_select")[0].options[$("#schedule_new_actual_select option[value=" + "<%= escape_javascript sch.id.to_s %>" + "]").index()].selected = true;
+      $(".<%= sch.id %>").attr("checked", "");
+  <% end %>
+</script>

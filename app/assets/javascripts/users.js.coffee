@@ -2,120 +2,58 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
-    $('#advisor_dropdown').on 'core-select', (e, detail) ->
-      $('#actual_select_edit_advisor').val e.originalEvent.detail.item.getAttribute('value')
-      $('#user_advised_by').val e.originalEvent.detail.item.getAttribute('value')
-      return
-    
-    $("#major_dropdown").on "core-select", (e, detail) ->
-      $("#user_major_id").val e.originalEvent.detail.item.getAttribute("value")
-      return
-      
-    $('#paper_advisor').change ->
-      document.getElementById('actual_advisor').checked = document.getElementById('paper_advisor').checked
-      if document.getElementById('paper_advisor').checked
-        $('#user_advised_by').val '-1'
-        document.getElementById('advisor_dropdown_menu').setAttribute 'disabled', ''
-        document.getElementById('advisor_collapse').toggle()
+jQuery -> 
+
+    len = location.pathname.split("/").length - 1 
+    loc = location.pathname.split("/")
+    if loc[len] == "edit" && $("#new_user_password").length > 0
+      $("#drawer-menu")[0].setAttribute "selected", "6"
+    else
+      $("#drawer-menu")[0].setAttribute "selected", "0"
+
+    if $("#users-notice").find('paper-toast').length > 0
+      document.getElementById('users-notice-toast').toggle()
+
+    $("#user_major_id").change ->
+      if $("#user_major_id option:selected" ).val() != ""
+        $("#user_major_id" ).css "color", "#212121"
       else
-        $('#user_advised_by').val $($('#advisor_core_menu')[0].selectedItem).attr('value')
-        document.getElementById('advisor_dropdown_menu').removeAttribute 'disabled', ''
-        document.getElementById('advisor_collapse').toggle()
+        $("#user_major_id" ).css "color", "#757575"
       return
 
-    if $("#drawer_core_menu").length != 0
-      $("#drawer_core_menu")[0].setAttribute "selected", "0"
+    $("#user_advised_by").change ->
+      if $("#user_advised_by option:selected" ).val() != ""
+        $("#user_advised_by" ).css "color", "#212121"
+      else
+        $("#user_advised_by" ).css "color", "#757575"
+      return
+
+    $('#advisor_checkbox').change ->
+      $('#advisor_collapse')[0].toggle()
+      if $('#advisor_checkbox')[0].checked
+        $("#user_advised_by" ).css "color", "#757575"
+        $('#actual_advisor').prop "checked", true
+        $('#user_advised_by').val ''
+        $("#advisor_signup_dropdown_error_msg").fadeOut()
+        $("#user_advised_by").removeClass("dropdown-error")
+      else
+        $('#actual_advisor').prop "checked", false
+      return
       
-    $("#cancel_user_button").click ->
+    $("#cancel-edit-user").click ->
       window.history.back()
       return   
-
-    $("#pagination-item").click ->
-      document.getElementById("link_to_next_page").querySelector("#next_link").click()
-      return
-    
-    $("#pagination2-item").click ->
-      document.getElementById("link_to_next_page2").querySelector("#next_link").click()
-      return
-
-    $("#pagination3-item").click ->
-      document.getElementById("link_to_next_page3").querySelector("#next_link").click()
-      return
       
     $('#advisee_signup_fab').click ->
-      $('#signup_fab_link')[0].click()
-      return
-      
-      
-    $("#drawer_transcripts_item_baluga").click ->
-      $("#baluga3")[0].selected = 0
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 1
-      $("core-drawer-panel")[0].closeDrawer();
-      return
-    
-    $("#drawer_new_schedule_item_baluga").click ->
-      $("#baluga3")[0].selected = 2
-      $("core-drawer-panel")[0].closeDrawer();
-      return
+      window.location.href = '/users/new'
+      return   
 
-    $("#drawer_choose_minor_item_baluga").click ->
-      $("#choose_minor_overlay")[0].toggle()
-      return
-      
-    $("#drawer_change_password_item_baluga").click ->
-      $("#change_password_overlay")[0].toggle()
-      return     
-
-    $("#drawer_transcripts_item").click ->
-      $("#user_transcripts_app_link")[0].click()
-      return
-    
-    $("#drawer_schedule_item").click ->
-      $("#user_schedules_app_link")[0].click()
-      return
-    
-    $("#drawer_new_schedule_item").click ->
-      $("#new_user_schedule_app_link")[0].click()
-      return
-    
-    
-    $("#drawer_logout_item").click ->
-      $("#logout_button")[0].click()
-      return
-    
-    $("#drawer_change_password_item").click ->
-      $("#change_password_link")[0].click()
-      return
-    
-    $("#drawer_new_major_item").click ->
-      $("#new_major_link")[0].click()
-      return
-
-    $("#drawer_semesters_item").click ->
-      $("#semesters_link")[0].click()
-      return
-      
-    $("#drawer_offerings_item").click ->
-      $("#offerings_link")[0].click()
-      return
-    
-    $("#drawer_course_item").click ->
-      $("#delete_course_link")[0].click()
-      return
-
-    $("#drawer_needed_course_item").click ->
-      $("#needed_course_link")[0].click()
-      return
-    
-    $("#drawer_users_item").click ->
-      $("#users_link")[0].click()
-      return
-    
-    $("#drawer_categories_item").click ->
-      $("#categories_link")[0].click()
+    $("#update-advisor-of-user").click ->
+      if $("#advisor_checkbox")[0].checked
+        $(".edit_user").submit()
+      else if $("#user_advised_by").val() != ""
+        $(".edit_user").submit()
+      else
+        $("#advisor_signup_dropdown_error_msg").fadeIn()
+        $("#user_advised_by").addClass("dropdown-error")
       return

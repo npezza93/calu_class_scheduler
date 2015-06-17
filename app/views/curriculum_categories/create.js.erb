@@ -1,9 +1,0 @@
-<% if @errors %>
-    <% if not @category.errors[:category].blank? %>
-        document.getElementById("curriculum_category_category").parentNode.setAttribute("error","<%= raw @category.errors.full_messages_for(:category)[0] %>");
-        document.getElementById("curriculum_category_category").parentNode.setAttribute("isInvalid","");
-    <% else %>
-         document.getElementById("curriculum_category_category").parentNode.removeAttribute("isInvalid","");
-    <% end %>
-    
-<% end %>

@@ -1,8 +1,0 @@
-$("#transcript_<%= @transcript.id %>").fadeOut();
-$("#transcript_<%= @transcript.id %>").remove();
-
-$.ajax({
-  url: "<%= new_user_schedule_path(@user) %>",
-}).done(function(html) {
-  return $("#temp_replace").html(html);
-});

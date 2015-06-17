@@ -21,6 +21,15 @@
   outline: none;
   box-shadow: none;
 }
+#set-link {
+    color: #212121;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+#set-link:hover {
+    color: #2196F3;
+}
+
 
 #cc_set_dropdown_error_msg {
     color:#d34336;
@@ -37,7 +46,7 @@
 }
 
 .cat_set_edit {
-	color: #4a89dc;
+	color: #757575;
 	text-decoration: none;
 	transition: all .2s ease;
 }
@@ -47,7 +56,7 @@
 }
 
 .cat_set_remove {
-	color: #4a89dc;
+	color: #757575;
 	text-decoration: none;
 	transition: all .2s ease;
 }
@@ -58,8 +67,4 @@
 
 #cat_set_flag_div {
     color:#212121;
-}
-#count_decorator /deep/ .focused-underline {
-    /* line color when the input is focused */
-    background-color: #4CAF50;
 }

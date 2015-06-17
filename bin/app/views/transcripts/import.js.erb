@@ -1,0 +1,19 @@
+<% if @error %>
+    $("#transcript-notice-toast").attr("text", "<%= @error %>");
+    $("#transcript-notice-toast")[0].toggle();
+    $("#upload-transcript-dialog")[0].close();
+    $("#whole_screen_uploader").fadeOut();
+<% else %>
+    $("#uploading_text").html("<b>Recalculating Schedule...</b>");
+    
+    $("#schedules-animate").html("<%= j render 'schedules/index' %>");
+    $("#transcripts-animate").html("<%= j render 'transcripts/index' %>");
+
+    $.ajax({
+      url: "<%= new_user_schedule_path(@user) %>",
+    }).done(function(html) {
+      $("#whole_screen_uploader").slideUp();
+
+      return $("#new-schedule-animate").html(html);
+    });
+<% end %>

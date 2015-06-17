@@ -2,16 +2,75 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#transcript_remove_link {
-	color: #4a89dc;
+.transcript_remove_link {
+	color: #757575;
 	text-decoration: none;
 	transition: all .2s ease;
 }
 
-#transcript_remove_link:hover {
+.transcript_remove_link:hover {
 	color: #F44336;
 }
 
 #submit_taken_class_material {
 	color:#2196F3;
+}
+
+#transcript_course_id {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;  
+  outline: none;
+  width: 60%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #757575;
+  margin-bottom: 8px;
+  margin-right: 8px;
+ -moz-appearance: none;
+  text-overflow: '';
+}
+#transcript_grade_c {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;  
+  outline: none;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #757575;
+  margin-bottom: 8px;	
+ -moz-appearance: none;
+  text-overflow: '';
+}
+#transcript_course_id:focus, #transcript_grade_c:focus { 
+  border-bottom: 2px solid #4CAF50;  
+}
+#transcript_course_id option, #transcript_grade_c option { 
+  color: #212121;  
+}
+#transcript_course_id option:first-child, #transcript_grade_c option:first-child { 
+  color: #757575;  
+}
+
+#transcript-items {
+    width:375px;
+    margin:15px;
+    background:#fbfbfb;
+    padding:20px 20px;
+}
+
+#transcript_course_error_msg, #transcript_grade_error_msg {
+  color:#db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  margin-top: -8px;
+}
+#transcript_course_error_msg {
+  width: 60%;
+  margin-right: 8px;
+}
+#transcript_course_error_text, #transcript_grade_error_text {
+  display:none;
 }

@@ -1,0 +1,39 @@
+<% content_for :title do %>
+    <%= @category.category %>'s Sets
+<% end %>
+
+<div class="layout horizontal center-justified" id="remove_course_div">
+    <paper-material id="remove_course_shadow_div">
+        <div id="paginated_courses_div">
+            <% if @category_sets.empty? %>
+                <paper-item style="height:88px;" class="layout horizontal center-center"><b>No sets in this category</b></paper-item>
+            <% else %>
+                <% @category_sets.each_with_index do |set, index| %>
+                    <paper-item style="height:72px;">
+                        <paper-item-body two-line class="layout vertical" style="width:100%;">
+                            <div class="layout horizontal">
+                                <div class="flex"><%= link_to "Set " + (index + 1).to_s, curriculum_category_curriculum_category_set_path(@category,  set), id: "set-link" %></div>
+                                <div><%= set.count == nil ? "All courses are required" : "Choose " + set.count.to_s + " of the following" %></div>
+                            </div>
+                            <div secondary style="font-size: 14px;line-height: 20px;" class="layout horizontal">
+                                <%= link_to 'Edit', edit_curriculum_category_curriculum_category_set_path(@category, set), class: "cat_set_edit"  %></paper-item> &nbsp | &nbsp 
+                                <%= link_to 'Delete', [@category, set] , method: :delete, data: {confirm: "Are you sure you want to delete this set?"}, class: "cat_set_remove" %>
+                            </div>
+                        </paper-item-body>
+                    </paper-item>
+                <% end %>
+            <% end %>
+        </div>
+    </paper-material>
+</div>
+
+
+<div id="category-sets-notice">
+  <% if notice %>
+    <paper-toast id="category-sets-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+  <% end %>
+</div>
+
+<paper-fab icon="add" title="Create a Set" id="new-course-fab"></paper-fab>
+
+

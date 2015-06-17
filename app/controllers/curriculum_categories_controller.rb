@@ -1,5 +1,5 @@
 class CurriculumCategoriesController < ApplicationController
-  before_action :set_category, only: [:destroy,:update]
+  before_action :set_category, only: [:destroy,:update, :edit]
   before_action :set_user
   before_action :set_major
   
@@ -8,17 +8,35 @@ class CurriculumCategoriesController < ApplicationController
   def index
     @major_categories = CurriculumCategory.where(major: @major, minor: false)
     @minor_categories = CurriculumCategory.where(major: @major, minor: true)
-    
-    @new_category = CurriculumCategory.new
+  end
+
+  def new
+    @category = CurriculumCategory.new
+  end
+
+  def edit
+    @set_log_op = "na"
+    if @category.set_and_or_flag == false 
+      @set_log_op = "and"
+    elsif @category.set_and_or_flag
+      @set_log_op = "or"
+    end
   end
 
   def create
     @category = CurriculumCategory.new(category_params)
+    if category_params[:set_and_or_flag] == "0"
+      @category.set_and_or_flag = nil
+    end
     @category.major = @major
     respond_to do |format|
       if @category.save
         flash[:notice] = @category.category + " successfully created!"
-       	format.js { render :js => "window.location.href='"+curriculum_categories_path+"'"}
+        if params[:continue] == "1"
+       	  format.js { render :js => "window.location.href='"+new_curriculum_category_curriculum_category_set_path(@category)+"'"}
+        else
+          format.js { render :js => "window.location.href='"+curriculum_categories_path+"'"}
+        end
         format.html { redirect_to curriculum_categories_path, notice: @category.category + " has been created!" }
       else
         format.js { @errors = true}
@@ -40,12 +58,23 @@ class CurriculumCategoriesController < ApplicationController
   end
   
   def update
-    @category.update(category_flag_params)
-    respond_to do |format|
-      format.js {}
-      format.html { redirect_to curriculum_categories_url, notice: @category.category + " successfully deleted!" }
-      format.json { head :no_content }
-    end    
+    if @category.update(category_params)
+      if category_params[:set_and_or_flag] == "0"
+        @category.update(set_and_or_flag: nil)
+      end
+      respond_to do |format|
+        flash[:notice] = @category.category + " successfully updated!"
+        format.js { render :js => "window.location.href='"+curriculum_categories_path+"'"}
+        format.html { redirect_to curriculum_categories_url, notice: @category.category + " successfully deleted!" }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.js {}
+        format.html { redirect_to curriculum_categories_url, notice: @category.category + " successfully deleted!" }
+        format.json { head :no_content }
+      end
+    end
   end
   
   private
@@ -60,11 +89,7 @@ class CurriculumCategoriesController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:curriculum_category).permit(:category, :minor)
-    end
-
-    def category_flag_params
-      params.require(:curriculum_category).permit(:set_and_or_flag)
+      params.require(:curriculum_category).permit(:category, :minor, :set_and_or_flag)
     end
     
     def set_user

@@ -1,0 +1,50 @@
+<% if @user.errors.any? %>
+    <% if not  @user.errors[:major].blank? %>
+        $("#major_signup_dropdown_error_msg").fadeIn();
+        $("#user_major_id").addClass("dropdown-error");
+    <% else %>
+        $("#major_signup_dropdown_error_msg").fadeOut();
+        $("#user_major_id").removeClass("dropdown-error");
+    <% end %>
+
+    <% if not @user.errors[:password].blank? %>
+        $("#new_user_password").find('paper-input-error').html("<%= raw @user.errors[:password][0].capitalize %>");
+        $("#new_user_password").attr('invalid', "")
+    <% else %>
+        $("#new_user_password").removeAttr('invalid', "")
+    <% end %>
+
+    <% if not @user.errors[:password_confirmation].blank? %>
+        $("#new_user_password_confirm").find('paper-input-error').html("<%= raw @user.errors[:password_confirmation][0].capitalize %>");
+        $("#new_user_password_confirm").attr('invalid', "")
+    <% else %>
+        $("#new_user_password_confirm").removeAttr('invalid', "")
+    <% end %>    
+<% else %>
+    <% if @user.advisor %>
+        window.location = '/users'
+    <% elsif controller.controller_name == 'user' && controller.action_name == 'edit' %>
+        window.location = '/users/' + <%= @user.id %> +'/schedules'
+    <% end %>
+    $("#change_password_overlay")[0].close();
+    $("#user_password").parent().attr("error", "");
+    $("#user_password").parent().attr("isInvalid", "false");
+    $("#user_password_confirmation").parent().attr("error", "");
+    $("#user_password_confirmation").parent().attr("isInvalid", "false");
+    $("#toast_div").html("<paper-toast class=\"capsule\" text=\"Settings succussfully changed!\" style=\"padding-right: 60px;color: #4CAF50;\" duration=\"10000\" opened ></paper-toast>");
+    
+    <% if @minor_flag %>
+        $.ajax({
+          url: "<%= new_user_schedule_path(@user) %>",
+        }).done(function(html) {
+          $("#temp_replace").html(html);
+        });
+    
+        // constructing schedule
+        $("#advisor_quick_user_courses").html("");
+        $(".selected_class").text("");
+        $(".half_time_slot").removeClass("half_time_slot");
+        $(".selected_class").removeClass("selected_class");
+        $("#advisor_quick_user_courses").append('<tr><th colspan="3">No courses have been signed up for</th></tr>');
+    <% end %>
+<% end %>
