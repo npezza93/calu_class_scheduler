@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   
-  resources :needed_courses, only: [:index]
-
   resources :semesters, only: [:index, :new, :create, :update]
 
-  resources :curriculum_categories, :only => [:create, :destroy, :index, :update] do
-    resources :curriculum_category_sets
+  resources :curriculum_categories, except: :show do
+    resources :curriculum_category_sets do
+      resources :course_sets, only: [:new, :create, :destroy]
+    end
   end
 
   resources :majors
@@ -30,13 +30,10 @@ Rails.application.routes.draw do
     end
     resources :schedules, :only => [:index, :create, :new, :destroy]
     resources :schedule_approvals, :only => [:create, :new, :edit, :update]
-    resources :work_schedules, only: [:create, :new, :index]
+    resources :work_schedules, only: [:create, :new, :index, :destroy]
   end
 
   resources :password_resets
   
   root 'sessions#new'
-
-  get "/user_options" => 'users#user_options', as: 'user_options'
-
 end
