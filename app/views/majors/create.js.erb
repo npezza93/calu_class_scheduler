@@ -1,0 +1,8 @@
+<% if @major.errors %>
+    <% if not @major.errors[:major].blank? %>
+        $("#new-major-major").find('paper-input-error').html("<%= raw @major.errors[:major][0].capitalize %>");
+        $("#new-major-major").attr('invalid', "")
+    <% else %>
+        $("#new-major-major").removeAttr('invalid', '');
+    <% end %>
+<% end %>

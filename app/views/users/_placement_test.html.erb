@@ -1,0 +1,85 @@
+<paper-dialog backdrop autoCloseDisabled id="placement_test_overlay" style="width:300px;" entry-animation="scale-up-animation" exit-animation="scale-down-animation">
+
+  <h2 class="layout horizontal center-justified">Placement Test Information</h2>
+
+    <h4 class="horizontal center-justified layout">Did you take any placement tests?</h4>
+    <div class="layout horizontal center-justified">
+      <paper-radio-group selected="yes" id="pt_yes_no">
+        <paper-radio-button name="yes">Yes</paper-radio-button>
+        <paper-radio-button name="no">No</paper-radio-button>
+      </paper-radio-group>
+    </div>
+    
+    <paper-dialog-scrollable id="pt_scrollable">
+        <%= form_for(@user, remote: true, html: { class: "pt_form"}) do |f| %>
+          <h4 class="layout horizontal center-justified">Placement Test A</h4>
+          <div class="layout horizontal center-center">
+            <paper-radio-group selected="passed" id="pt_a_group">
+              <paper-radio-button name="passed">Passed</paper-radio-button><br>
+              <paper-radio-button name="failed">Failed</paper-radio-button><br>
+              <paper-radio-button name="na">Didn't Take</paper-radio-button>
+            </paper-radio-group>
+          </div>
+          
+          <div >
+            <%= f.radio_button 'pt_a', 1, checked: true %>
+            <%= f.radio_button 'pt_a', 2, checked: false %>
+            <%= f.radio_button 'pt_a', nil, checked: false %>
+          </div>
+          
+          
+          <h4 class="layout horizontal center-justified">Placement Test B</h4>
+          <div class="layout horizontal center-center">
+            <paper-radio-group selected="passed" id="pt_b_group">
+              <paper-radio-button name="passed">Passed</paper-radio-button><br>
+              <paper-radio-button name="failed">Failed</paper-radio-button><br>
+              <paper-radio-button name="na">Didn't Take</paper-radio-button>
+            </paper-radio-group>
+          </div>
+          
+          <div >
+            <%= f.radio_button 'pt_b', 1, checked: true %>
+            <%= f.radio_button 'pt_b', 2, checked: false %>
+            <%= f.radio_button 'pt_b', nil, checked: false %>
+          </div>
+
+          <h4 class="layout horizontal center-justified">Placement Test C</h4>
+          <div class="layout horizontal center-center">
+            <paper-radio-group selected="passed" id="pt_c_group">
+              <paper-radio-button name="passed">Passed</paper-radio-button><br>
+              <paper-radio-button name="failed">Failed</paper-radio-button><br>
+              <paper-radio-button name="na">Didn't Take</paper-radio-button>
+            </paper-radio-group>
+          </div>
+          
+          <div >
+            <%= f.radio_button 'pt_c', 1, checked: true %>
+            <%= f.radio_button 'pt_c', 2, checked: false %>
+            <%= f.radio_button 'pt_c', nil, checked: false %>
+          </div>
+
+          <h4 class="layout horizontal center-justified">Placement Test D</h4>
+          <div class="layout horizontal center-center">
+            <paper-radio-group selected="passed79" id="pt_d_group">
+              <paper-radio-button name="passed79">Passed (7-9)</paper-radio-button><br>
+              <paper-radio-button name="passed10">Passed (10 or better)</paper-radio-button><br>
+              <paper-radio-button name="failed">Failed</paper-radio-button><br>
+              <paper-radio-button name="na">Didn't Take</paper-radio-button>
+            </paper-radio-group>
+          </div>
+          
+          <div >
+            <%= f.radio_button 'pt_d', 1, checked: true  %>
+            <%= f.radio_button 'pt_d', 3, checked: false %>
+            <%= f.radio_button 'pt_d', 2, checked: false %>
+            <%= f.radio_button 'pt_d', nil, checked: false %>
+          </div>
+        <% end %>    
+    </paper-dialog-scrollable>
+              
+        <br>
+        <div class="end-justified layout horizontal" style="color:#2196F3;">
+          <paper-button dialog-dismiss>Cancel</paper-button>
+          <paper-button id="submit-pt">Submit</paper-button>
+        </div>
+</paper-dialog>

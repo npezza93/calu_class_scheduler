@@ -1,0 +1,69 @@
+<% content_for :title do %>
+    Add New Course
+<% end %>
+
+<div class="layout horizontal center-justified">
+    <paper-material id="new_course_shadow_div">
+        <%= form_for(@course, remote: true) do |f| %>
+
+            <paper-input-container id="new-course-subject">
+                <%= f.label :subject, "Subject (ex: CSC, CET, etc)"  %>
+                <%= f.text_field :subject, is: "iron-input", maxlength: 3 %>
+                <paper-input-char-counter></paper-input-char-counter>
+                <paper-input-error></paper-input-error>
+            </paper-input-container>
+
+            <paper-input-container id="new-course-number">
+                <%= f.label :course, "Course Number (ex: 120, 323, etc)"  %>
+                <%= f.text_field :course, is: "iron-input", maxlength: 3 %>
+                <paper-input-char-counter></paper-input-char-counter>
+                <paper-input-error></paper-input-error>
+            </paper-input-container>
+
+            <paper-input-container id="new-course-title">
+                <%= f.label :title, "Title (ex: Operating Systems)"  %>
+                <%= f.text_field :title, is: "iron-input" %>
+                <paper-input-error></paper-input-error>
+            </paper-input-container>
+
+            <paper-input-container id="new-course-credits">
+                <%= f.label :credits, "Credits (Defaults to 3)"  %>
+                <%= f.text_field :credits, is: "iron-input" %>
+                <paper-input-error></paper-input-error>
+            </paper-input-container>            
+
+            <div class="layout vertical" style="margin-top:20px;">
+                <%= f.label 'Choose Required Prerequisites (if any):', style: "font-size:16px;font-weight:bold;padding-top: 10px;"%>
+                
+                <%= f.select(:minimum_pt, options_for_select(@pt_options), {include_blank: "No Placement Test Must Be Passed"}) %>
+
+                <%= f.select(:minimum_class_standing, options_for_select(@years), { include_blank: "No minimum class standing"}) %>
+
+                <%= f.select(:minimum_sat_score, options_for_select(@sat_scores), {include_blank: "No minimum SAT score"}) %>
+            </div>
+
+            <div id="prereq_groups">
+                <div class="course_prereq_group 1 layout vertical">
+                    <%= f.label 'Group 1:' %>
+                    <%= f.select(:prerequisites, options_for_select(@courses), {}, { class: "actual_select_courses", multiple: true, size: 6}) %>
+                    <br>
+                </div>
+            </div>
+
+            <div class="layout center-justified horizontal" style="color:#4CAF50;">
+                <paper-button id="add-or-group">ADD an 'or' group</paper-button>
+            </div>
+
+            <div style="width:100%;" id="prereq_min_grades"></div>
+            <%= text_field_tag :prereq_grades, nil, hidden: "" %>
+            <%= select_tag(:minimum_grades, options_for_select(['N/A','C', 'C-']), class: 'copy-min-grades', hidden: "" )%>
+
+
+            <br><br><br>
+            <div class="layout horizontal end-justified" style="color:#2196F3;">
+                <paper-button id="cancel_new_course">Cancel</paper-button>
+                <paper-button id="create-course">Create Course</paper-button>
+            </div>
+        <% end %>
+    </paper-material>
+</div>

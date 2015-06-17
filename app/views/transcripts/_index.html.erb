@@ -1,0 +1,31 @@
+<div class="layout horizontal center-justified">
+    <paper-material id="new_offering_shadow">
+        <%= form_for [@user, @transcript], remote: true do |f| %>
+            <div class="layout horizontal flex">
+                <%= f.collection_select(:course_id, @courses, :id, :pretty_course, prompt: "Choose a Course") %>
+                <%= f.select(:grade_c, options_for_select(@letter_grades), {include_blank: "Choose Grade"}, { class:'grade_select'}) %>
+            </div>
+
+            <div class="layout horizontal flex">
+                <div id="transcript_course_error_msg">
+                    <div id="transcript_course_error_text" flex>Select a Course!</div>
+                </div>
+
+                <div id="transcript_grade_error_msg">
+                    <div id="transcript_grade_error_text" flex>Select a Grade!</div>
+                </div>
+            </div>       
+            
+            <br><br>
+            <div class="layout horizontal end-justified">
+                <paper-button id="submit_taken_class_material">Add to Transcript</paper-button>
+            </div>              
+        <% end %>
+    </paper-material>
+</div>
+
+<div class="layout horizontal center-justified">
+    <paper-material id="transcript-items">
+        <%= render @transcripts %>
+    </paper-material>
+</div>

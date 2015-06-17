@@ -1,0 +1,17 @@
+<paper-dialog id="forgot-dialog" opened autoCloseDisabled modal entry-animation="scale-up-animation" exit-animation="scale-down-animation">
+  <h3 id="forgot_header" class="horizontal center-center layout">Forgot password?</h3>
+  <p class="horizontal center-center layout" id="forgot_subheader">We'll email you a reset link.</p>
+    
+  <%= form_tag(password_resets_path) do %>
+    <paper-input-container id="forgot_email">
+      <%= f.label :email %>
+      <%= f.text_field :email, params[:email], is: 'iron-input' %>
+    </paper-input-container>
+
+    <br>
+    <div class="horizontal end-justified layout" style="color:#2196F3;">
+        <paper-button id="close-forgot-dialog">Cancel</paper-button>
+        <paper-button><%= submit_tag "Reset", id: "submit_reset" %></paper-button>
+    </div>
+  <% end %>
+</paper-dialog>

@@ -1,0 +1,26 @@
+<% content_for :title do %>
+    <paper-tabs selected=<%= @page %> scrollable noink id="courseTabs" style="width:100%;margin-bottom:-16px;">
+        <% @pages.each do |subject| %>
+            <paper-tab class="course-subject-tabs">
+                <%= link_to subject, {:controller => "courses", :action => "index", :subject => subject, remote: true }, class: "subject_paginator" %>
+            </paper-tab>
+        <% end %>
+    </paper-tabs>
+<% end %>
+    
+<div class="layout horizontal center-justified" id="remove_course_div">
+    <paper-material id="remove_course_shadow_div">
+        <div id="paginated_courses_div">
+            <%= render @courses %>
+        </div>
+    </paper-material>
+</div>
+
+
+<div id="courses-notice">
+  <% if notice %>
+    <paper-toast id="courses-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+  <% end %>
+</div>
+
+<paper-fab icon="add" title="Create a Course" id="new-course-fab"></paper-fab>

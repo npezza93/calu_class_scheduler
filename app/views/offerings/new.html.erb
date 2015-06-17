@@ -1,0 +1,32 @@
+<% content_for :title do %>
+    Offer a New Course
+<% end %>
+    
+<%= form_tag import_offerings_path, multipart: true, hidden: "", id: "upload-offerings-form" do %>
+    <%= file_field_tag :offering_file, id: "upload_offering_button" %>
+<% end %>
+
+<%= render 'form' %>
+
+<div class="layout horizontal center-justified" style="color:#2196F3;margin-top:20px;">
+    <paper-button id="show-upload-offering-details">Show Upload Details</paper-button>
+</div>
+
+<iron-collapse id="upload-offering-details">
+    <h3 style="text-align:center;">Upload a .CSV with 15 columns to quickly input offerings</h3>
+    <div class="layout horizontal center-justified">
+        <div style="margin-left:15px;">
+            <p>Column 1,4,5,6,7,11,12,14,15 - Anything/Empty Column</p>
+            <p>Column 2 - The course formatted:</p>
+            <ul><li>Subject(CSC) Course(110) Course Name</li></ul>
+            <p>Column 3 - Course section</p>
+            <p>Column 8 - Days being offered(MWF, TR, W, etc.)</p>
+            <p>Column 9 - Start time formatted:</p>
+            <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>
+            <p>Column 10 - End time formatted:</p>
+            <ul><li>Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)</li></ul>    
+            <p>Column 13 - Professor formmatted:</p>
+            <ul><li>"last name, first name"</li></ul>
+        </div>
+    </div>
+</iron-collapse>
