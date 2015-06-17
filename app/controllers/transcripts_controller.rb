@@ -37,7 +37,7 @@ class TranscriptsController < ApplicationController
           @signed_up_for = @user.offerings.where(semester: @active_semester).includes(:days_time, :course)
           @day_hash = view_context.create_day_hash(@signed_up_for)
           @new_work_schedule = WorkSchedule.new
-          @work_time_slots = WorkDaysTime.order(:start_time)
+          @work_time_slots = WorkDaysTime.order(:start_time).group_by(&:days)
         end
     
         format.html { redirect_to user_transcripts_path, notice: "you have taken this course" }
@@ -54,7 +54,7 @@ class TranscriptsController < ApplicationController
       @signed_up_for = @user.offerings.where(semester: @active_semester).includes(:days_time, :course)
       @day_hash = view_context.create_day_hash(@signed_up_for)
       @new_work_schedule = WorkSchedule.new
-      @work_time_slots = WorkDaysTime.order(:start_time)
+      @work_time_slots = WorkDaysTime.order(:start_time).group_by(&:days)
       @work_schedules = @user.work_schedules.includes(:work_days_time)
       @schedules = @user.offerings
       @transcript = Transcript.new
