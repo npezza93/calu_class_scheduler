@@ -2,10 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-    
-    $("#new_session_overlay")[0].fit()
-    if $("#session-notice").find('paper-toast').length > 0
-      $("#session-notice").find('paper-toast')[0].toggle()
+    $(document).load ->
+      if $("#session-notice").find('paper-toast').length > 0
+        $("#session-notice").find('paper-toast')[0].toggle()
+      $("#new_session_overlay")[0].center()
+      return
 
     $("#forgot_password").click ->
         document.getElementById('forgot-dialog').toggle()

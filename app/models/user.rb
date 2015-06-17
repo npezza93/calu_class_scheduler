@@ -133,7 +133,7 @@ class User < ActiveRecord::Base
         end
       end
 
-      if not math_classes.empty? and ((math_class_placed_in = math_pt(user, transcripts, math_classes, mat_181, mat_191, mat_199, mat_281, user_courses)) != nil) and used_courses.add?(math_class_placed_in[0])
+      if not math_classes.empty? and ((math_class_placed_in = math_pt(self, transcripts, math_classes, mat_181, mat_191, mat_199, mat_281, user_courses)) != nil) and used_courses.add?(math_class_placed_in[0])
         offerings = Offering.where(course: math_class_placed_in[0], semester: active_semester).flatten
         if not offerings.blank?
           incomplete_category_courses[math_class_placed_in[1]] += offerings

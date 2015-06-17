@@ -65,6 +65,11 @@ core-header-panel {
 #mainheader {
   background-color: #2196F3;
   color: #FFFFFF;
+  height:192px;
+}
+select {
+  -moz-appearance: none;
+  text-overflow: '';
 }
 
 .title_div {

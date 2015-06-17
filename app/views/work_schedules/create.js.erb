@@ -14,7 +14,7 @@ $.each(nsel_opts, function(index, value) {
   var d, t;
   t = $('#' + value).parent().parent();
 
-  d = [t.find('.new_schedule_days_td').text(), t.find('.new_schedule_times_td').text().split(' - ')[0], t.find('.new_schedule_times_td').text().split(' - ')[1]];
+  d = [t.attr("days"), Date.parse(t.attr("start-time")), Date.parse(t.attr("end-time"))];
   d[1] = Date.parse(d[1]);
   d[2] = Date.parse(d[2]);
   nsel_dates_array.push(d);
@@ -37,55 +37,35 @@ $.each(disable, function(index, value) {
 });
 
 
-
-$(".big_new_schedule_table").each(function(index, node ) {
+$(".category-items.incomplete-category").each(function() {
     var all_hidden = true;
-    $(node).find("paper-checkbox").each(function(index2, node2) {
-        if($(node2).parent().parent().attr('hidden') != "hidden") {
-            all_hidden = false;
-            if ($("#media_query_schedule_new")[0].queryMatches) {
-                $(node2).parent().parent().next().removeAttr("hidden", "");
+    var categoryNode = $(this);
+
+    categoryNode.find(".offering-div").each(function() {
+        var count = $(this).find("paper-icon-item").length;
+        var offeringCourseNode = $(this);
+        offeringCourseNode.find("paper-icon-item").each(function() {
+            if ($(this).attr('hidden')) {
+                count--;
             }
+        });
+        if (count == 0) {
+            $(offeringCourseNode.children()[0])[0].classList.add("inactive");
         } else {
-            if ($("#media_query_schedule_new")[0].queryMatches) {
-                $(node2).parent().parent().next().attr("hidden", "");
-            }
+            all_hidden = false;
         }
     });
     if (all_hidden) {
-        $(node).find(".no_courses_offered_msg").removeAttr("hidden", "");
-        
-        if ($(node).find("core-icon").length == 0) {
-            $(node).find(".new_schedule_headers").attr("hidden", "");
-            if ($("#media_query_schedule_new")[0].queryMatches) {
-                $(node).find(".remaining_credits_tr").css("border-bottom", "none");
-            }
-        } else {
-            $(node).find(".new_schedule_headers").removeAttr("hidden", "");
-            $(node).find(".prof_th").attr("hidden", "");
-            $(node).find(".days_th").attr("hidden", "");
-            $(node).find(".time_th").attr("hidden", "");
-            $(node).find(".common_tr").attr("hidden", "");
-            if ($("#media_query_schedule_new")[0].queryMatches) {
-                $(node).find(".remaining_credits_tr").css("border-bottom", "none");
-            }
-        }
-    } else {
-        if (!$("#media_query_schedule_new")[0].queryMatches) {
-            $(node).find(".no_courses_offered_msg").attr("hidden", "");
-            $(node).find(".new_schedule_headers").removeAttr("hidden", "");
-            $(node).find(".prof_th").removeAttr("hidden", "");
-            $(node).find(".days_th").removeAttr("hidden", "");
-            $(node).find(".time_th").removeAttr("hidden", "");   
-            $(node).find(".common_tr").removeAttr("hidden", "");
-        } else {
-            $(node).find(".no_courses_offered_msg").attr("hidden", "");
-            $(node).find(".new_schedule_headers").attr("hidden", "");
-            $(node).find(".prof_th").attr("hidden", "");
-            $(node).find(".days_th").attr("hidden", "");
-            $(node).find(".time_th").attr("hidden", "");   
-            $(node).find(".common_tr").attr("hidden", "");        
-            $(node).find(".remaining_credits_tr").css("border-bottom", "1px solid rgba(0, 0, 0, 0.12)");
-        }
+        $(categoryNode.children()[1]).removeAttr("hidden");
     }
 });
+
+if ($("#media_query_schedule")[0].queryMatches) {
+  $("#big_schedule_table")[0].setAttribute("hidden", "");
+  $("#small_schedule_table")[0].removeAttribute("hidden", "");
+  $(".small_schedule_course_title").removeAttr("hidden", "");
+} else {
+  $("#big_schedule_table")[0].removeAttribute("hidden", "");
+  $("#small_schedule_table")[0].setAttribute("hidden", "");
+  $(".small_schedule_course_title").attr("hidden", "");
+}

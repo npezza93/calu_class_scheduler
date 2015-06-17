@@ -22,6 +22,10 @@ class WorkSchedule < ActiveRecord::Base
     self.work_days_time.short_time
   end
 
+  def prettier_day_time
+    self.work_days_time.days + self.work_days_time.start_time.strftime("%l:%M%p").strip
+  end
+
   private
     def default_semester
       self.semester = Semester.where(active: true).take

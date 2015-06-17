@@ -3,6 +3,7 @@ class TranscriptsController < ApplicationController
   before_action :set_transcript, only: [:destroy]
   before_action :set_active_semester, only: [:create, :import]
   before_filter :only_yours
+  before_action :set_session_user
   
   def index
     @transcript = Transcript.new
@@ -26,17 +27,19 @@ class TranscriptsController < ApplicationController
       Schedule.where(user: @user, offering_id: (Offering.where(course_id: @transcript.course_id, semester: @active_semester).take.id)).take.destroy
       @index_reload_flag = true
     end
-    
-    if @index_reload_flag
-      @offerings = @user.offerings
-      @day_hash = view_context.create_day_hash(@offerings)
-      @new_work_schedule = WorkSchedule.new
-      @work_schedules = @user.work_schedules
-      @work_time_slots = WorkDaysTime.all
-    end
-    
+
     respond_to do |format|
       if @transcript.save
+        @work_schedules = @user.work_schedules.includes(:work_days_time)
+        @schedules = @user.offerings
+
+        if @index_reload_flag
+          @signed_up_for = @user.offerings.where(semester: @active_semester).includes(:days_time, :course)
+          @day_hash = view_context.create_day_hash(@signed_up_for)
+          @new_work_schedule = WorkSchedule.new
+          @work_time_slots = WorkDaysTime.order(:start_time)
+        end
+    
         format.html { redirect_to user_transcripts_path, notice: "you have taken this course" }
         format.js { @index_reload_flag}
       else
@@ -48,12 +51,16 @@ class TranscriptsController < ApplicationController
 
   def import
     if Transcript.import(params["Transcript"], @user.id)
-      @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
-      @day_hash = view_context.create_day_hash(@offerings)
+      @signed_up_for = @user.offerings.where(semester: @active_semester).includes(:days_time, :course)
+      @day_hash = view_context.create_day_hash(@signed_up_for)
       @new_work_schedule = WorkSchedule.new
-      @work_schedules = WorkSchedule.where(user: @user, semester: @active_semester)
-      @work_time_slots = WorkDaysTime.all
-      @session_user = User.find(session[:user_id])
+      @work_time_slots = WorkDaysTime.order(:start_time)
+      @work_schedules = @user.work_schedules.includes(:work_days_time)
+      @schedules = @user.offerings
+      @transcript = Transcript.new
+      @transcripts = @user.transcripts.includes(:course)
+      @courses = Course.all.order(:subject)
+      @letter_grades = ["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]
       
       Schedule.where(user: @user, semester: @active_semester).destroy_all
       
@@ -70,6 +77,12 @@ class TranscriptsController < ApplicationController
   end
 
   def destroy
+    @completed_category_courses, @incomplete_category_courses = @user.scheduler
+
+    @work_schedules = @user.work_schedules.includes(:work_days_time)
+    @schedules = @user.offerings
+    @offerings = @incomplete_category_courses.values.flatten.collect(&:id)
+
     @transcript.destroy
     respond_to do |format|
       format.html { redirect_to user_schedules_path(@user), notice: @transcript.course.title + " removed!" }
@@ -78,6 +91,10 @@ class TranscriptsController < ApplicationController
   end
   
   private
+    def set_session_user
+      @session_user = User.find(session[:user_id])
+    end
+
     def set_user
       @user = User.includes(:courses, :taken_courses, :work_schedules).find(params[:user_id])
     end

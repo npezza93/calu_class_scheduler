@@ -4,7 +4,7 @@ $.ajax({
   url: "<%= new_user_schedule_path(@user) %>",
 }).done(function(html) {
   $("#transcript_<%= @transcript.id %>")[0].remove();
-  $("#transcript-notice-toast").attr("text", "<%= @transcript.course.title %> added to your transcript!");
+  $("#transcript-notice-toast").attr("text", "<%= @transcript.course.title %> removed fron your transcript!");
   $("#transcript-notice-toast")[0].toggle();
-  return $("#temp_replace").html(html);
+  return $("#new-schedule-animate").html(html);
 });

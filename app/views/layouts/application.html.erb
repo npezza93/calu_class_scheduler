@@ -47,15 +47,15 @@
               <paper-item id="drawer_new_schedule_item_baluga"><iron-icon icon="create"></iron-icon>Modify Schedule</paper-item>
               <paper-item id="drawer_change_password_item_baluga" ><iron-icon icon="settings"></iron-icon>Settings</paper-item>
             <% end %>
-              <paper-item id="drawer-logout"><iron-icon icon="settings-power"></iron-icon><%= button_to 'Logout', logout_path, { method: :delete, id: "logout-button" } %></paper-item>
+              <paper-item id="drawer-logout"><iron-icon icon="settings-power"></iron-icon><%= button_to 'Logout', logout_path, { method: :delete, id: "logout-button", style: "z-index:50;" } %></paper-item>
           </paper-menu>
         </paper-header-panel>
   
-        <paper-header-panel main mode="waterfall-tall" tallClass="medium-tall" id="main">
+        <paper-header-panel main mode="scroll" id="main">
           <paper-toolbar id="mainheader">
             <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            <div class="bottom indent title_div" flex>
-              <%= yield :title %>
+            <div class="bottom title">
+              <span class="title_div"><%= yield :title %></span>
             </div>
             <% if current_page?(new_offering_path)%>
               <div class="bottom">
@@ -77,12 +77,12 @@
     <% end %>
 
 <div id="whole_screen_uploader" style="z-index:99;">
-  <core-image style="width:60%; height:65%; background-color: #ececec;margin:auto;left:20%;" 
-  sizing="contain" preload fade src="<%= image_url('callogo.jpg') %>"></core-image>
-  <div layout horizontal center-justified style="margin-top:-.5em;">
+  <iron-image style="width:60%; height:65%; background-color: #ececec;margin:auto;left:20%;" 
+  sizing="contain" preload fade src="<%= image_url('callogo.jpg') %>"></iron-image>
+  <div class="layout horizontal center-justified" style="margin-top:-.5em;">
     <p id="uploading_text"><b>Uploading and Inserting Data...</b></p><br>
   </div>
-  <div layout horizontal center-justified>
+  <div class="layout horizontal center-justified">
     <div class="loading"></div>
   </div>
 </div>

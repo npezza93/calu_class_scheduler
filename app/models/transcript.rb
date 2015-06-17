@@ -62,25 +62,21 @@ class Transcript < ActiveRecord::Base
   
         all_courses = Course.all
         transcripts = User.includes(:transcripts).find(u_id).transcripts
-        bad_courses = []
         courses.each do |row|
           if all_courses.where(subject: row[0], course: row[1]).exists? and row[2] != "w"
             c_id = all_courses.where(subject: row[0], course: row[1]).take.id
             c_minus, c = self.grade_check(row[2])
 
-            if transcripts.where(user_id: u_id, course_id: c_id).exists?
+            if transcripts.where(course_id: c_id).exists?
               transcript = transcript.take.update(grade_c_minus: c_minus, grade_c: c)
             else
               Transcript.create(user_id: u_id, course_id: c_id, grade_c_minus: c_minus, grade_c: c)
             end
-          else
-            bad_courses << row
           end
         end
       else
         return nil
       end
-      return bad_courses
     end
     
     def self.grade_check(grade)

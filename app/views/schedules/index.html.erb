@@ -17,7 +17,7 @@
     <%= form_tag(import_user_transcripts_path(@user), remote: true) do %>
       <paper-input-container id="upload-transcript-section">
         <%= label_tag "Paste Transcript Here" %>
-        <%= text_area_tag 'Transcript',nil, style: "width:100%;"  %>
+        <%= text_area_tag 'Transcript',nil, style: "width:100%;", is: "iron-input" %>
       </paper-input-container>
     <% end %>
     
@@ -48,4 +48,8 @@
       <%= render "new" %>
      </neon-animatable>
 </neon-animated-pages>
+
+<div id="transcript-notice">
+    <paper-toast id="transcript-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+</div>
 

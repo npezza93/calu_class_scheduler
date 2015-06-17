@@ -12,9 +12,18 @@
 #big_schedule_table {
   margin: 8px;
 }
-
-
-
+.category-items {
+    width:400px;
+    margin:15px;
+    background:#fbfbfb;
+    padding:20px 20px;
+}
+.inactive {
+    color: #bdbdbd;
+}
+.active {
+    color: #2196F3;
+}
 
 
 
@@ -34,6 +43,7 @@
     text-align: center;
     cursor:pointer;
     height: 26px;
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .day {
     cursor:pointer;
@@ -43,6 +53,7 @@
     color: #EAF6EB;
     font-weight: bold;
     cursor: text;
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .half_time_slot {
     background: linear-gradient(to bottom, #4CAF50 0%,#4CAF50 50%,#efefef 51%,#efefef 100%);
@@ -110,7 +121,7 @@
         font-size:12px;
     }
     .day_time_slot {
-        width: 250px;
+        width: 100%;
     }
 }
 
