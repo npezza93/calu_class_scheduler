@@ -1,90 +1,61 @@
 <%= form_for(@user, remote: true) do |f| %>
-  <paper-input-decorator label="First Name" class="password_decorator">
-    <%= f.text_field :first_name, is: 'core-input'%>
-  </paper-input-decorator>
-  
-  <paper-input-decorator label="Last Name" class="password_decorator">
-    <%= f.text_field :last_name, is: 'core-input'%>
-  </paper-input-decorator>
-  
-  <paper-input-decorator label="Enter Email" class="password_decorator">
-    <%= f.email_field :email, is: 'core-input' %>
-  </paper-input-decorator>
-  
-  <paper-input-decorator label="Enter Password" class="password_decorator">
-    <%= f.password_field :password, is: 'core-input' %>
-  </paper-input-decorator>
-  
-  <paper-input-decorator label="Confirm Password" class="password_decorator">
-    <%= f.password_field :password_confirmation, is: 'core-input'%>
-  </paper-input-decorator>
 
-  <div hidden>
-    <%= f.select(:major_id, options_for_select(@majors, ["", "-1"])) %>
-  </div>
+  <paper-input-container id="new_user_fn">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, is: "iron-input" %>
+  </paper-input-container>
 
-  <div id="major_signup_dropdown_error_msg" layout horizontal center-justified>
-      <div id="signup_dropdown_major_error" layout horizontal center-justified>
-        <div id="signup_dropdown__error_text" flex>A Major must be selected!</div>
-        <core-icon class="error-icon" id="signup_dropdown_error_icon" icon="warning"></core-icon>
-      </div>
-  </div>
-        
-  <div layout horizontal start-justified>
-    <paper-dropdown-menu label="Choose Major" id="major_dropdown_menu">
-      <paper-dropdown class="dropdown" id="major_dropdown">
-          <core-menu class="menu" id="major_core_menu">
-            <% @majors.pop %>
-            <% @majors.each do |major| %>
-              <paper-item value=<%= major[1] %>><%= major[0] %></paper-item>
-            <% end %>
-          </core-menu>
-      </paper-dropdown>
-    </paper-dropdown-menu>
-  </div>
+  <paper-input-container id="new_user_ln">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, is: "iron-input" %>
+  </paper-input-container>
   
-  <div hidden>
-    <%= f.select(:advised_by, options_for_select(@advisors, ["", "-1"])) %>
-  </div>
+  <paper-input-container id="new_user_email">
+    <%= f.label :email %>
+    <%= f.email_field :email, is: "iron-input" %>
+    <paper-input-error></paper-input-error>
+  </paper-input-container>
+  
+  <paper-input-container id="new_user_password">
+    <%= f.label :password %>
+    <%= f.password_field :password, is: "iron-input" %>
+    <paper-input-error></paper-input-error>
+  </paper-input-container>
 
-  <core-collapse opened allowOverflow id="advisor_collapse">
-    <div id="advisor_signup_dropdown_error_msg" layout horizontal center-justified>
-        <div id="signup_dropdown_advisor_error" layout horizontal center-justified>
-          <div id="signup_dropdown__error_text" flex>You must choose an Advisor!</div>
-          <core-icon class="error-icon" id="signup_dropdown_error_icon" icon="warning"></core-icon>
-        </div>
-    </div>
+  <paper-input-container id="new_user_password_confirm">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, is: "iron-input" %>
+    <paper-input-error></paper-input-error>
+  </paper-input-container>
+
+  <%= f.select(:major_id, options_for_select(@majors), {include_blank: "Choose Major"}) %>
+
+  <div id="major_signup_dropdown_error_msg">
+    <div id="signup_dropdown_error_text" flex>A Major must be selected!</div>
+  </div>
+      
   
-    <div layout horizontal start-justified>
-      <paper-dropdown-menu label="Choose Advisor" id="advisor_dropdown_menu">
-        <paper-dropdown class="dropdown constrained-height" id="advisor_dropdown">
-            <core-menu class="menu" id="advisor_core_menu">
-              <% @advisors.pop %>
-              <% @advisors.each do |advisor| %>
-                <paper-item value=<%= advisor[1] %>><%= advisor[0] %></paper-item>
-              <% end %>
-            </core-menu>
-        </paper-dropdown>
-      </paper-dropdown-menu>
-    </div>
-  </core-collapse>
   
+  <iron-collapse opened id="advisor_collapse">
+    <%= f.select(:advised_by, options_for_select(@advisors), {include_blank: "Choose Advisor"}) %>
+  </iron-collapse>
+
+  <div id="advisor_signup_dropdown_error_msg">
+    <div id="signup_dropdown_error_text" flex>An Advisor must be selected!</div>
+  </div>
+   
   <% if session[:user_id] && User.find_by(id: session[:user_id]).advisor %>
-    <div layout horizontal center style="margin-top:10px;">
-      <%= f.check_box :advisor, hidden: "", id: 'actual_advisor' %>
-      <div flex>Advisor</div>
-      <paper-checkbox id='paper_advisor'></paper-checkbox>
+    <div class="layout horizontal flex" style="margin-top:28px;margin-left:2px;">
+      <%= f.label :advisor, id: "advisor_label", class: "flex" %>
+      <paper-checkbox id='advisor_checkbox'></paper-checkbox>
     </div>
-    <script>
-      document.getElementById("paper_advisor").checked      = document.getElementById("actual_advisor").checked;
-    </script>
+
+    <%= f.check_box :advisor, id: "actual_advisor", hidden: "" %>
   <% end %>
   
   <br>
-  <div center-justified layout horizontal style="width:100%;color:#2196F3;">
+  <div style="width:100%;color:#2196F3;">
     <paper-button style="width:100%;"><input id="submit_signup" name="commit" type="submit" value="SIGN UP" style="color:#2196F3;"></paper-button>
   </div>
 
 <% end %>
-
-<div id="ajax_errors"></div>

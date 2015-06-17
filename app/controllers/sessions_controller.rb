@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
   skip_before_filter :logged_in?, only: [:new, :create, :destroy]
 
   def new
-    @majors = (Major.all.map { |major| [major.major, major.id] }) << ["", "-1"]
-    @advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] }) << ["", "-1"]
+    @majors = (Major.all.map { |major| [major.major, major.id] })
+    @advisors = (User.where(advisor: true).map { |advisor| [advisor.email, advisor.id] })
   end
 
   def create
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
        	  format.js { render :js => "window.location.href='"+user_schedules_path(@user)+"'"}
        	end
 	  	else
-	  	  format.js { @error = "Invalid email/password combination" }
+	  	  format.js
       end
     end
   end

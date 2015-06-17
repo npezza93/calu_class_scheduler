@@ -1,23 +1,30 @@
 <% if @errors %>
     <% if not @course.errors[:subject].blank? %>
-        document.getElementById("course_subject").parentNode.setAttribute("error","Subject <%= raw @course.errors[:subject][0] %>");
-        document.getElementById("course_subject").parentNode.setAttribute("isInvalid","");
+        $("#new-course-subject").find('paper-input-error').html("<%= raw @course.errors[:subject][0].capitalize %>");
+        $("#new-course-subject").attr('invalid', "")
     <% else %>
-         document.getElementById("course_subject").parentNode.removeAttribute("isInvalid","");
+        $("#new-course-subject").removeAttr('invalid', '');
     <% end %>
     
     <% if not @course.errors[:course].blank? %>
-        document.getElementById("course_course").parentNode.setAttribute("error","Course <%= raw @course.errors[:course][0] %>");
-        document.getElementById("course_course").parentNode.setAttribute("isInvalid","");
+        $("#new-course-number").find('paper-input-error').html("<%= raw @course.errors[:course][0].capitalize %>");
+        $("#new-course-number").attr('invalid', "")
     <% else %>
-         document.getElementById("course_course").parentNode.removeAttribute("isInvalid","");
+        $("#new-course-number").removeAttr('invalid', '');
     <% end %>
     
     <% if not @course.errors[:title].blank? %>
-        document.getElementById("course_title").parentNode.setAttribute("error","Title <%= raw @course.errors[:title][0] %>");
-        document.getElementById("course_title").parentNode.setAttribute("isInvalid","");
+        $("#new-course-title").find('paper-input-error').html("<%= raw @course.errors[:title][0].capitalize %>");
+        $("#new-course-title").attr('invalid', "")
     <% else %>
-         document.getElementById("course_title").parentNode.removeAttribute("isInvalid","");
+        $("#new-course-title").removeAttr('invalid', '');
     <% end %>
-    
+
+    <% if not @course.errors[:credits].blank? %>
+        $("#new-course-credits").find('paper-input-error').html("<%= raw @course.errors[:credits][0].capitalize %>");
+        $("#new-course-credits").attr('invalid', "")
+    <% else %>
+        $("#new-course-credits").removeAttr('invalid', '');
+    <% end %>
+
 <% end %>

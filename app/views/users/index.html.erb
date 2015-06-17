@@ -2,62 +2,61 @@
   <%= @logged_in.first_name + " " + @logged_in.last_name + "'s "%>Advisees
 <% end %>
 
-<div horizontal wrap layout around-justified>
-  <div layout vertical style="font-family: 'RobotoDraft', sans-serif;margin-top:5em;">
-    <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">Advisees</h3>
+<div class="horizontal wrap layout around-justified" style="margin-top: 5em;">
+
+  <div class="layout vertical">
+    <h2 class="layout horizontal center-justified">Advisees</h2>
     
-    <paper-shadow style="width: 20em;background: #F7F7F7;">
-      <% @advisees.each do |advisee| %>
-        <paper-item><%= link_to advisee.email, user_options_path(advisee_id: advisee.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
-      <% end %>
-      <% if @advisees.last_page? %>
-        <paper-item layout disabled horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+    <paper-material class="user-index-column" elevation="2">
+      <% if @advisees.empty? %>
+        <paper-ripple></paper-ripple>
+        <paper-item style="height:88px;" class="layout horizontal center-center"><b>You have no advisees</b></paper-item>
       <% else %>
-        <paper-item layout horizontal center-justified id="pagination-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+        <% @advisees.each do |advisee| %>
+          <paper-item style="height:72px;">
+            <paper-item-body two-line class="layout vertical">
+              <div><%= advisee.first_name.capitalize + " " + advisee.last_name.capitalize %></div>
+              <div secondary style="font-size: 14px;line-height: 20px;" class="layout horizontal">
+                <%= link_to "Schedule", user_schedules_path(advisee), style: "text-decoration: none;color: #757575;" %> &nbsp | &nbsp 
+                <%= link_to 'Change Advisor', edit_user_path(advisee), style: "text-decoration: none;color: #757575;" %> &nbsp  | &nbsp  
+                <%= button_to 'Delete ', advisee, method: :delete, :onclick => "return confirm('Are you sure?')", style: "color: #757575;border:0;background:transparent;text-align:center;outline: none;border-radius: 3px;cursor:pointer;" %></div>
+            </paper-item-body>
+          </paper-item>
+
+        <% end %>
       <% end %>
-      <div id="link_to_next_page" hidden><%= paginate @advisees, :remote=>true, param_name: 'page', id: "actual_next_pg" %></div>
-    </paper-shadow>
+    </paper-material>
   </div>
 
-  <div layout vertical style="font-family: 'RobotoDraft', sans-serif;margin-top:5em;">
-    <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">Faculty</h3>
-    
-    <paper-shadow style="width: 20em;background: #F7F7F7;">
-      <% @faculty.each do |faculty| %>
-        <paper-item><a id="advisee_list" style="width:20em;text-align:center;"><%= faculty.email %></a></paper-item>
-      <% end %>
-      <% if @faculty.last_page? %>
-        <paper-item layout disabled horizontal center-justified id="pagination3-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-      <% else %>
-        <paper-item layout horizontal center-justified id="pagination3-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
-      <% end %>
-      <div id="link_to_next_page3" hidden><%= paginate @faculty, :remote=>true, param_name: 'page_3', id: "actual_next_pg3" %></div>
-    </paper-shadow>
-  </div>
   
-  <div layout vertical style="margin-top:5em; font-family: 'RobotoDraft', sans-serif;">
-    <h3 layout horizontal center-justified style="font-family: 'RobotoDraft', sans-serif;">All Other Students</h3>
+  <div class="layout vertical">
+    <h2 class="layout horizontal center-justified">All Other Students</h3>
     
-    <paper-shadow style="width: 20em;background: #F7F7F7;">
-      <% @all_others.each do |student| %>
-        <paper-item layout horizontal center-justified><%= link_to student.email, user_options_path(advisee_id: student.id), remote: true, style: "width:20em;text-align:center;", id: "advisee_list"%></paper-item>
-      <% end %>
-      <% if @all_others.last_page? %>
-        <paper-item layout disabled horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+    <paper-material class="user-index-column" elevation="2">
+      <% if @all_others.empty? %>
+        <paper-ripple></paper-ripple>
+        <paper-item style="height:88px;text-align:center;" class="layout horizontal center-center"><b>No other students in <%= @logged_in.major.major %></b></paper-item>
       <% else %>
-        <paper-item layout horizontal center-justified id="pagination2-item"><core-icon icon="expand-more"></core-icon>&nbsp Load More &nbsp<core-icon icon="expand-more"></core-icon></paper-item>
+        <% @all_others.each do |student| %>
+          <paper-item style="height:72px;">
+            <paper-item-body two-line class="layout vertical">
+              <div><%= student.first_name.capitalize + " " + student.last_name.capitalize %></div>
+              <div secondary style="font-size: 14px;line-height: 20px;">
+                <%= link_to "Schedule", user_schedules_path(student), style: "text-decoration: none;color: #757575;" %>
+              </div>
+            </paper-item-body>
+          </paper-item>
+        <% end %>
       <% end %>
-      <div id="link_to_next_page2" hidden><%= paginate @all_others, :remote=>true, param_name: 'page_2', id: "actual_next_pg2" %></div>
-    </paper-shadow>
+    </paper-material>
   </div>
 
 </div>
-<br><br><br>
-<paper-dialog backdrop transition="core-transition-top" id="user_options_overlay" style="background-color:#F3F3F3;"></paper-dialog>
 
-<a id="signup_fab_link" style="display:none;" href=<%= signup_path %>>LINK</a>
 <paper-fab icon="add" id="advisee_signup_fab" title="Create New Advisee"></paper-fab>
 
-<% if notice %>
- 	 <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;" duration="10000" opened ></paper-toast>
-<% end %>
+<div id="users-notice">
+  <% if notice %>
+    <paper-toast id="users-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+  <% end %>
+</div>

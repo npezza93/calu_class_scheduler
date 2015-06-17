@@ -1,20 +1,25 @@
 <% if @user.errors.any? %>
-    <% print @user.errors.keys %>
-    <% if not @user.errors[:password_confirmation].blank? %>
-        $("#user_password_confirmation").parent().attr("error", "<%= @user.errors.full_messages_for(:password_confirmation)[0].html_safe %>");
-        $("#user_password_confirmation").parent().attr("isInvalid", "true");
+    <% if not  @user.errors[:major].blank? %>
+        $("#major_signup_dropdown_error_msg").fadeIn();
+        $("#user_major_id").addClass("dropdown-error");
     <% else %>
-        $("#user_password_confirmation").parent().attr("error", "");
-        $("#user_password_confirmation").parent().attr("isInvalid", "false");
+        $("#major_signup_dropdown_error_msg").fadeOut();
+        $("#user_major_id").removeClass("dropdown-error");
     <% end %>
-    
+
     <% if not @user.errors[:password].blank? %>
-        $("#user_password").parent().attr("error", "<%= @user.errors.full_messages_for(:password)[0].html_safe %>");
-        $("#user_password").parent().attr("isInvalid", "true");
+        $("#new_user_password").find('paper-input-error').html("<%= raw @user.errors[:password][0].capitalize %>");
+        $("#new_user_password").attr('invalid', "")
     <% else %>
-        $("#user_password").parent().attr("error", "");
-        $("#user_password").parent().attr("isInvalid", "false");
+        $("#new_user_password").removeAttr('invalid', "")
     <% end %>
+
+    <% if not @user.errors[:password_confirmation].blank? %>
+        $("#new_user_password_confirm").find('paper-input-error').html("<%= raw @user.errors[:password_confirmation][0].capitalize %>");
+        $("#new_user_password_confirm").attr('invalid', "")
+    <% else %>
+        $("#new_user_password_confirm").removeAttr('invalid', "")
+    <% end %>    
 <% else %>
     <% if @user.advisor %>
         window.location = '/users'

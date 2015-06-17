@@ -1,18 +1,23 @@
 class CurriculumCategorySetsController < ApplicationController
-  before_action :set_category, only: [:create, :index, :edit, :update]
-  before_action :set_category_set, only: [:destroy, :edit, :update]
+  before_action :set_category, except: :destroy
+  before_action :set_category_set, only: [:destroy, :edit, :update, :show]
   
   before_filter :authorize
 
+  def new
+    @curriculum_category_set = CurriculumCategorySet.new
+  end
+
   def create
-    @category_set = @category.curriculum_category_sets.new(count: params[:count])
+    @category_set = @category.curriculum_category_sets.new(curriculum_category_course_params)
     
     respond_to do |format|
       if @category_set.save
-        params[:course_id].each do |course_id|
-          @category_set.course_set.create(course_id: course_id)
-        end 
-        format.html { redirect_to curriculum_category_curriculum_category_sets_path, notice: "Courses for " + @category.category + " submitted" }
+        if params[:continue] == "1"
+          format.html { redirect_to new_curriculum_category_curriculum_category_set_course_set_path(@category,@category_set), notice: "Set for " + @category.category + " created!" }
+        else
+          format.html { redirect_to curriculum_category_curriculum_category_sets_path, notice: "Set for " + @category.category + " created!" }
+        end
       else
         format.html { render :index }
       end
@@ -20,9 +25,7 @@ class CurriculumCategorySetsController < ApplicationController
   end
 
   def index
-    @courses = Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
-    @cc_courses = @category.curriculum_category_sets.group_by(&:id).flatten.flatten
-    @cc_courses = Hash[*@cc_courses]
+    @category_sets = @category.curriculum_category_sets
   end
   
   def destroy
@@ -33,22 +36,18 @@ class CurriculumCategorySetsController < ApplicationController
       format.js {}
     end
   end
-  
+
+  def show
+  end
+
   def edit
-    @courses = Course.all.order(:course).map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
-    @set_courses = @curriculum_category_set.course_set.map { |set| set.course.id }
   end
 
   def update
     @curriculum_category_set.update(curriculum_category_course_params)
-    @curriculum_category_set.course_set.destroy_all
-    
-    params[:course_id].each do |course_id|
-      @curriculum_category_set.course_set.create(course_id: course_id)
-    end 
-    
+
     respond_to do |format|
-      format.html { redirect_to curriculum_category_curriculum_category_sets_path, notice: "Set edited!" }
+      format.html { redirect_to curriculum_category_curriculum_category_sets_path, notice: "Set for " + @category.category + " updated!" }
       format.js {}
     end        
   end

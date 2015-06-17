@@ -26,7 +26,26 @@
     background: #4CAF50;
 }
 
-#semester_decorator /deep/ .focused-underline {
-    /* line color when the input is focused */
-    background-color: #4CAF50;
+#semester_active  {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;  
+  outline: none;
+  width: 100%;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #212121;
+  margin-top: 13px;
+  margin-left: 10px;
+}
+#semester_active:focus { 
+  border-bottom: 2px solid #4CAF50;  
+}
+#semester_active option { 
+  color: #212121;  
+}
+#active-semester-header{
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #212121;
 }

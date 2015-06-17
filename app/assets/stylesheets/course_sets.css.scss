@@ -1,0 +1,38 @@
+#new-course-set-fab {
+    position:fixed;
+    bottom:0;
+    right:0;
+    margin-right:25px;
+    margin-bottom:15px;
+    color: #FFFFFF;
+    background: #4CAF50;
+}
+
+#course_set_course_id {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;  
+  outline: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #757575;
+  margin-bottom: 8px;
+}
+#course_set_course_id:focus { 
+  border-bottom: 2px solid #4CAF50;  
+}
+#course_set_course_id option { 
+  color: #212121;  
+}
+#course_set_course_id option:first-child { 
+  color: #757575;  
+}
+#course_set_error_msg {
+  color:#db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display:none;
+  margin-top: -8px;
+}

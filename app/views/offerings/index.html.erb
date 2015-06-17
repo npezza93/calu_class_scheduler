@@ -2,7 +2,7 @@
     Courses Offered <%= @active_semester.semester %>
 <% end %>
 
-<div layout horizontal center-justified>
+<div class="layout horizontal center-justified">
     <div class="table-responsive-vertical shadow-z-1">
         <table id="table" class="table">
             <thead>
@@ -12,7 +12,7 @@
                     <th>Days</th>
                     <th>Start Time</th>
                     <th>End Time</th>
-                    <th>Edit/Remove</th>
+                    <th>Edit | Remove</th>
                 </tr>
             </thead>
             
@@ -24,18 +24,19 @@
                         <td data-title="Days"><%= offering.days_time.days %></td>
                         <td data-title="Start Time"><%= offering.days_time.start_time %></td>
                         <td data-title="End Time"><%= offering.days_time.end_time %></td>
-                        <td style="text-align:center;"><%= link_to "Edit", edit_offering_path(offering), id:"edit_offering_link" %> / <%= link_to "Remove", offering, method: :delete, data: { confirm: 'Are you sure you want to stop offering this course?' }, id:"stop_offering_link" %></td></tr> 
+                        <td style="text-align:center;"><%= link_to "Edit", edit_offering_path(offering), id:"edit_offering_link" %> | <%= link_to "Remove", offering, method: :delete, data: { confirm: 'Are you sure you want to stop offering this course?' }, id:"stop_offering_link" %></td></tr> 
                 <% end %>
             </tbody>
         </table>
     </div>
 </div>
 
-<%= link_to "Offer Another Course", new_offering_path, id: "new_offerings_link", hidden: "" %>
-<paper-fab icon="add" title="Offer Another Course" id="new_offerings_material"></paper-fab>
+<paper-fab icon="add" title="Offer Another Course" id="new-offering-fab"></paper-fab>
 
-<% if notice %>
-    <paper-toast id="toast1" class="capsule" text="<%= notice %>" style="padding-right: 60px;color: #4CAF50" duration="10000" opened ></paper-toast>
-<% end %>
+<div id="offerings-notice">
+  <% if notice %>
+    <paper-toast id="offerings-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+  <% end %>
+</div>
 
 <br><br><br>

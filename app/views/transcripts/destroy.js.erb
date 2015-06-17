@@ -1,8 +1,10 @@
-$("#transcript_<%= @transcript.id %>").fadeOut();
-$("#transcript_<%= @transcript.id %>").remove();
+$("#transcript_<%= @transcript.id %>")[0].toggle();
 
 $.ajax({
   url: "<%= new_user_schedule_path(@user) %>",
 }).done(function(html) {
-  return $("#temp_replace").html(html);
+  $("#transcript_<%= @transcript.id %>")[0].remove();
+  $("#transcript-notice-toast").attr("text", "<%= @transcript.course.title %> removed fron your transcript!");
+  $("#transcript-notice-toast")[0].toggle();
+  return $("#new-schedule-animate").html(html);
 });

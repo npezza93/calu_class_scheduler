@@ -1,35 +1,38 @@
 <% if @errors %>
-    <% if not  @user.errors[:You].blank? %>
+    <% if not  @user.errors[:advised_by].blank? %>
         $("#advisor_signup_dropdown_error_msg").fadeIn();
+        $("#user_advised_by").addClass("dropdown-error");
     <% else %>
         $("#advisor_signup_dropdown_error_msg").fadeOut();
+        $("#user_advised_by").removeClass("dropdown-error");
     <% end %>
 
     <% if not  @user.errors[:major].blank? %>
         $("#major_signup_dropdown_error_msg").fadeIn();
+        $("#user_major_id").addClass("dropdown-error");
     <% else %>
         $("#major_signup_dropdown_error_msg").fadeOut();
+        $("#user_major_id").removeClass("dropdown-error");
     <% end %>
-    
+
     <% if not @user.errors[:email].blank? %>
-        document.getElementById("user_email").parentNode.setAttribute("error","Email <%= raw @user.errors[:email][0] %>");
-        document.getElementById("user_email").parentNode.setAttribute("isInvalid","");
+        $("#new_user_email").find('paper-input-error').html("<%= raw @user.errors[:email][0].capitalize %>");
+        $("#new_user_email").attr('invalid', "")
     <% else %>
-         document.getElementById("user_email").parentNode.removeAttribute("isInvalid","");
+        $("#new_user_email").removeAttr('invalid', '');
     <% end %>
-    
+
     <% if not @user.errors[:password].blank? %>
-        document.getElementById("user_password").parentNode.setAttribute("error","Password <%= raw @user.errors[:password][0] %>");
-        document.getElementById("user_password").parentNode.setAttribute("isInvalid","");
+        $("#new_user_password").find('paper-input-error').html("<%= raw @user.errors[:password][0].capitalize %>");
+        $("#new_user_password").attr('invalid', "");
     <% else %>
-         document.getElementById("user_password").parentNode.removeAttribute("isInvalid","");
+        $("#new_user_password").removeAttr('invalid', '');
     <% end %>
-    
+
     <% if not @user.errors[:password_confirmation].blank? %>
-        document.getElementById("user_password_confirmation").parentNode.setAttribute("error","Password confirmation <%= raw @user.errors[:password_confirmation][0] %>");
-        document.getElementById("user_password_confirmation").parentNode.setAttribute("isInvalid","");
+        $("#new_user_password_confirm").find('paper-input-error').html("<%= raw @user.errors[:password_confirmation][0].capitalize %>");
+        $("#new_user_password_confirm").attr('invalid', "");
     <% else %>
-         document.getElementById("user_password_confirmation").parentNode.removeAttribute("isInvalid","");
-    <% end %>
-    
+        $("#new_user_password_confirm").removeAttr('invalid', '');
+    <% end %>    
 <% end %>

@@ -1,5 +1,31 @@
 .cat_heading {
   color: #212121;
+  font-size: 16px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+}
+#index-category-material {
+    width:300px;
+    background:#FBFBFB;
+}
+#index-categroy-div {
+  margin:15px;
+}
+#cur_cat_link {
+  color: #212121;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+#cur_cat_link:hover {
+  color: #2196F3;
+}
+#cur_cat_delete_link {
+  color: #757575;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+#cur_cat_delete_link:hover {
+  color: #db4437;
 }
 #new_category_material {
     position:fixed;
@@ -10,74 +36,23 @@
     color: #FFFFFF;
     background: #4CAF50;
 }
-#new_cc_overlay {
-    width:300px;
-    margin:15px;
-    overflow-x: hidden;
-    background:#f3f3f3;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    webkit-user-select: none;
-    -moz-user-select: none;
-    padding:20px 20px;
-    outline: 1px solid rgba(0,0,0,0.2);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-#major_error_msg {
-    color:#d34336;
-    font-size: 0.75em;
-    display:none;
-}
-#cc_major_error {
-    width:100%;
-}
-#cc_major_error_icon {
-    height:20px;
-    width: 20px;
-}
-#major_dropdown_menu {
-    margin-top:0;
-    padding-top:0;
-}
-#major_dropdown {
-    height:100px;
-}
-#cur_cat_link {
-  color: #4a89dc;
-	text-decoration: none;
-	transition: all .2s ease;
-}
 
-#cur_cat_link:hover {
-	color: #727272;
-	text-decoration: underline;
-}
 
-#cur_cat_delete_link {
-  color: #4a89dc;
-	text-decoration: none;
-	transition: all .2s ease;
-}
 
-#cur_cat_delete_link:hover {
-	color: #F44336;
-	text-decoration: underline;
-}
 
-paper-radio-button::shadow #onRadio {
-  background-color: #4CAF50;
-}
-paper-radio-button[checked]::shadow #offRadio {
-  border-color: #4CAF50;
-}
-paper-radio-button::shadow #ink {
-  color: #4CAF50;
-}
 
-#curriculum_category_category_decorator /deep/ .focused-underline {
-    /* line color when the input is focused */
-    background-color: #4CAF50;
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .shadow-z-1 {
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);

@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150325130619) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "course_sets", force: true do |t|
     t.integer  "course_id"
     t.datetime "created_at"
@@ -23,8 +20,8 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "curriculum_category_set_id"
   end
 
-  add_index "course_sets", ["course_id"], name: "index_course_sets_on_course_id", using: :btree
-  add_index "course_sets", ["curriculum_category_set_id"], name: "index_course_sets_on_curriculum_category_set_id", using: :btree
+  add_index "course_sets", ["course_id"], name: "index_course_sets_on_course_id"
+  add_index "course_sets", ["curriculum_category_set_id"], name: "index_course_sets_on_curriculum_category_set_id"
 
   create_table "courses", force: true do |t|
     t.string   "subject"
@@ -47,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.boolean  "set_and_or_flag"
   end
 
-  add_index "curriculum_categories", ["major_id"], name: "index_curriculum_categories_on_major_id", using: :btree
+  add_index "curriculum_categories", ["major_id"], name: "index_curriculum_categories_on_major_id"
 
   create_table "curriculum_category_sets", force: true do |t|
     t.integer  "curriculum_category_id"
@@ -56,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "count"
   end
 
-  add_index "curriculum_category_sets", ["curriculum_category_id"], name: "index_curriculum_category_sets_on_curriculum_category_id", using: :btree
+  add_index "curriculum_category_sets", ["curriculum_category_id"], name: "index_curriculum_category_sets_on_curriculum_category_id"
 
   create_table "days_times", force: true do |t|
     t.string   "days"
@@ -80,9 +77,9 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.datetime "updated_at"
   end
 
-  add_index "needed_courses", ["course_id"], name: "index_needed_courses_on_course_id", using: :btree
-  add_index "needed_courses", ["semester_id"], name: "index_needed_courses_on_semester_id", using: :btree
-  add_index "needed_courses", ["user_id"], name: "index_needed_courses_on_user_id", using: :btree
+  add_index "needed_courses", ["course_id"], name: "index_needed_courses_on_course_id"
+  add_index "needed_courses", ["semester_id"], name: "index_needed_courses_on_semester_id"
+  add_index "needed_courses", ["user_id"], name: "index_needed_courses_on_user_id"
 
   create_table "offerings", force: true do |t|
     t.integer  "course_id"
@@ -94,8 +91,8 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.string   "section"
   end
 
-  add_index "offerings", ["semester_id"], name: "index_offerings_on_semester_id", using: :btree
-  add_index "offerings", ["user_id"], name: "index_offerings_on_user_id", using: :btree
+  add_index "offerings", ["semester_id"], name: "index_offerings_on_semester_id"
+  add_index "offerings", ["user_id"], name: "index_offerings_on_user_id"
 
   create_table "prerequisites", force: true do |t|
     t.integer  "parent_course_id"
@@ -114,8 +111,8 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "semester_id"
   end
 
-  add_index "schedule_approvals", ["semester_id"], name: "index_schedule_approvals_on_semester_id", using: :btree
-  add_index "schedule_approvals", ["user_id"], name: "index_schedule_approvals_on_user_id", using: :btree
+  add_index "schedule_approvals", ["semester_id"], name: "index_schedule_approvals_on_semester_id"
+  add_index "schedule_approvals", ["user_id"], name: "index_schedule_approvals_on_user_id"
 
   create_table "schedules", force: true do |t|
     t.integer  "offering_id"
@@ -125,9 +122,9 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "semester_id"
   end
 
-  add_index "schedules", ["offering_id"], name: "index_schedules_on_offering_id", using: :btree
-  add_index "schedules", ["semester_id"], name: "index_schedules_on_semester_id", using: :btree
-  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
+  add_index "schedules", ["offering_id"], name: "index_schedules_on_offering_id"
+  add_index "schedules", ["semester_id"], name: "index_schedules_on_semester_id"
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id"
 
   create_table "semesters", force: true do |t|
     t.string   "semester"
@@ -145,8 +142,8 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.boolean  "grade_c"
   end
 
-  add_index "transcripts", ["course_id"], name: "index_transcripts_on_course_id", using: :btree
-  add_index "transcripts", ["user_id"], name: "index_transcripts_on_user_id", using: :btree
+  add_index "transcripts", ["course_id"], name: "index_transcripts_on_course_id"
+  add_index "transcripts", ["user_id"], name: "index_transcripts_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -174,7 +171,7 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.boolean  "sat_700"
   end
 
-  add_index "users", ["major_id"], name: "index_users_on_major_id", using: :btree
+  add_index "users", ["major_id"], name: "index_users_on_major_id"
 
   create_table "work_days_times", force: true do |t|
     t.string   "days"
@@ -192,8 +189,8 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "semester_id"
   end
 
-  add_index "work_schedules", ["semester_id"], name: "index_work_schedules_on_semester_id", using: :btree
-  add_index "work_schedules", ["user_id"], name: "index_work_schedules_on_user_id", using: :btree
-  add_index "work_schedules", ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id", using: :btree
+  add_index "work_schedules", ["semester_id"], name: "index_work_schedules_on_semester_id"
+  add_index "work_schedules", ["user_id"], name: "index_work_schedules_on_user_id"
+  add_index "work_schedules", ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id"
 
 end

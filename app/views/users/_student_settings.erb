@@ -1,44 +1,30 @@
-<core-overlay id="change_password_overlay" backdrop transition="core-transition-top" id="new_schedule_modal" style="width:291px;background:#f3f3f3;box-sizing: border-box;-moz-box-sizing: border-box;webkit-user-select: none;-moz-user-select: none;padding:20px 20px;outline: 1px solid rgba(0,0,0,0.2);box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-    <h2 layout horizontal center-justified>Change Settings</h2>
-      <%= form_for(@user, remote: true) do |f| %>
-        <paper-input-decorator label="Enter New Password"  style="width:260px;" class="password_decorator">
-          <%= f.password_field :password, is: 'core-input' %>
-        </paper-input-decorator>
-              
-        <paper-input-decorator label="Confirm Password" style="width:260px;" class="password_decorator">
-          <%= f.password_field :password_confirmation, is: 'core-input' %>
-        </paper-input-decorator>
-        
-        <div hidden>
-          <%= f.select(:major_id, options_for_select(@majors, @user.major)) %>
-        </div>
-      
-        <div id="major_signup_dropdown_error_msg" layout horizontal center-justified>
-            <div id="signup_dropdown_major_error" layout horizontal center-justified>
-              <div id="signup_dropdown__error_text" flex>A Major must be selected!</div>
-              <core-icon class="error-icon" id="signup_dropdown_error_icon" icon="warning"></core-icon>
-            </div>
-        </div>
-              
-        <div layout horizontal start-justified style="padding-top:9.75px;">
-          <paper-dropdown-menu label="Choose Major" id="major_dropdown_menu">
-            <paper-dropdown class="dropdown" id="major_dropdown">
-                <core-menu class="menu" id="major_core_menu" selected="<%= @majors.index([@user.major.major, @user.major_id]) %>"> 
-                  <% @majors.pop %>
-                  <% @majors.each do |major| %>
-                    <paper-item value=<%= major[1] %>><%= major[0] %></paper-item>
-                  <% end %>
-                </core-menu>
-            </paper-dropdown>
-          </paper-dropdown-menu>
+<paper-dialog id="change_password_overlay" id="new_schedule_modal" entry-animation="scale-up-animation" exit-animation="scale-down-animation">
+    <h2 class="layout horizontal center-justified">Change Settings</h2>
+      <%= form_for(@user, remote: true, html: {class: "student_settings_form"}) do |f| %>
+        <paper-input-container id="new_user_password">
+          <%= f.label :password %>
+          <%= f.password_field :password, is: "iron-input" %>
+          <paper-input-error></paper-input-error>
+        </paper-input-container>
+
+        <paper-input-container id="new_user_password_confirm">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, is: "iron-input" %>
+          <paper-input-error></paper-input-error>
+        </paper-input-container>
+
+        <%= f.collection_select(:major_id, @majors, :id, :major, prompt: "Choose a Course") %>
+
+        <div id="major_signup_dropdown_error_msg">
+          <div id="signup_dropdown_error_text" flex>A Major must be selected!</div>
         </div>
         
-        <%= f.select(:minor, options_for_select(@minors, @user.minor), {}, { multiple: true, size: 3 }) %>
+        <%= f.collection_select(:minor, @minors, :id, :major, {}, { multiple: true, size: 3 } ) %>
   
-        <br>
-        <div end-justified layout horizontal style="color:#2196F3;">
-          <paper-button core-overlay-toggle>Cancel</paper-button>
-          <paper-button><input id="submit_signup" name="commit" type="submit" value="UPDATE" style="color:#03A9F4;"></paper-button>
+        <br><br>
+        <div class="end-justified layout horizontal" style="color:#2196F3;">
+          <paper-button dialog-dismiss>Cancel</paper-button>
+          <paper-button id="submit_student_settings">Update</paper-button>
         </div>
       <% end %>
-</core-overlay>
+</paper-dialog>
