@@ -395,7 +395,7 @@ jQuery ->
           Date.parse($(this).text().substr(1))
           Date.parse($(this).text().substr(1))
         ]
-        d[2].setMinutes d[2].getMinutes() + 30
+        d[2].setMinutes((d[2].getMinutes()) + 30)
         work_dates_array.push d
         return
       $.each nsel_opts, (index1, value1) ->
