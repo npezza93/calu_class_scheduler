@@ -5,7 +5,7 @@ jQuery ->
     $(document).load ->
       if $("#session-notice").find('paper-toast').length > 0
         $("#session-notice").find('paper-toast')[0].toggle()
-      $("#new_session_overlay")[0].center()
+      $("#new_session_overlay")[0].fit()
       return
 
     $("#forgot_password").click ->
