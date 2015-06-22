@@ -71,6 +71,8 @@ GEM
       nokogiri
     pg (0.18.1)
     polyglot (0.3.5)
+    polymer-elements-rails (1.0.0.pre.rc.1)
+      polymer-rails (~> 1.0, >= 1.0.3)
     polymer-rails (1.0.3)
       nokogiri (~> 1.6)
       nokogumbo (~> 1.1)
@@ -156,6 +158,7 @@ DEPENDENCIES
   jquery-fileupload-rails!
   jquery-rails
   pg
+  polymer-elements-rails
   polymer-rails (~> 1.0.0)
   rails (= 4.1.1)
   rails_12factor
