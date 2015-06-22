@@ -39,18 +39,12 @@ gem 'unicorn-rails'
 
 gem 'bcrypt-ruby', '3.1.2'
 
-
-gem 'activerecord-import'
-
 gem 'remotipart'
 gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
 
 gem 'seed_dump'
 gem 'pg'
-
 gem 'rails_12factor'
-gem 'puma'
-gem 'figaro'
 
 gem 'rack-mini-profiler'
 
