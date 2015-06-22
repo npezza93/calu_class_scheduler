@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>CalU Advisor</title>
-  <link data-turbolinks-track="true" rel="import" href="/polymer_components/components" >
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application', params[:controller] %>
-  <%= javascript_include_tag 'date' %>
+  <%= html_import_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'date', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'callogo2.png' %>
   <link href="<%= image_url('callogo2.png') %>" rel="apple-touch-icon">
@@ -27,19 +27,19 @@
             </div>
           </paper-toolbar>
           
-          <paper-menu id="drawer-menu">
+          <paper-menu id="drawer-menu" style="font-size:16px;">
             <% if User.find(session[:user_id]).advisor %>
               <% if params[:user_id] and current_page?(user_schedules_path(params[:user_id]))%>
                 <paper-item id="drawer_transcripts_item_baluga"><iron-icon icon="description"></iron-icon>Transcript</paper-item>
                 <paper-item id="drawer_schedule_item_baluga"><iron-icon icon="schedule"></iron-icon>Schedule</paper-item>
                 <paper-item id="drawer_new_schedule_item_baluga" style="border-bottom: 1px solid #B9B9B9;"><iron-icon icon="create"></iron-icon>Classes</paper-item>
               <% end %>
-              <paper-item id="drawer-users"><iron-icon icon="perm-identity"></iron-icon><%= link_to "Students", users_path %></paper-item>
-              <paper-item id="drawer-courses"><iron-icon icon="class"></iron-icon><%= link_to "Courses", courses_path %></paper-item>
-              <paper-item id="drawer-offerings"><iron-icon icon="event"></iron-icon><%= link_to "Offerings", offerings_path %></paper-item>
-              <paper-item id="drawer-majors"><iron-icon icon="bookmark"></iron-icon><%= link_to "Majors", majors_path %></paper-item>
-              <paper-item id="drawer-semesters"><iron-icon icon="today"></iron-icon><%= link_to "Semesters", semesters_path %></paper-item>
-              <paper-item id="drawer-categories"><iron-icon icon="sort"></iron-icon><%= link_to "Categories", curriculum_categories_path %></paper-item>
+              <paper-item id="drawer-users"><iron-icon icon="perm-identity"></iron-icon><%= link_to "Students", users_path, style: "z-index:50;" %></paper-item>
+              <paper-item id="drawer-courses"><iron-icon icon="class"></iron-icon><%= link_to "Courses", courses_path, style: "z-index:50;" %></paper-item>
+              <paper-item id="drawer-offerings"><iron-icon icon="event"></iron-icon><%= link_to "Offerings", offerings_path, style: "z-index:50;" %></paper-item>
+              <paper-item id="drawer-majors"><iron-icon icon="bookmark"></iron-icon><%= link_to "Majors", majors_path, style: "z-index:50;" %></paper-item>
+              <paper-item id="drawer-semesters"><iron-icon icon="today"></iron-icon><%= link_to "Semesters", semesters_path, style: "z-index:50;" %></paper-item>
+              <paper-item id="drawer-categories"><iron-icon icon="sort"></iron-icon><%= link_to "Categories", curriculum_categories_path, style: "z-index:50;" %></paper-item>
               <paper-item id="drawer-settings" style="border-top: 1px solid #B9B9B9;"><iron-icon icon="settings"></iron-icon><%= link_to 'Settings', edit_user_path(User.find_by_id(session[:user_id])) %></paper-item>
             <% else %>
               <paper-item id="drawer_transcripts_item_baluga"><iron-icon icon="description"></iron-icon>View Transcript</span></paper-item>
@@ -75,17 +75,5 @@
     <% else %>
       <%= yield %>
     <% end %>
-
-<div id="whole_screen_uploader" style="z-index:99;">
-  <iron-image style="width:60%; height:65%; background-color: #ececec;margin:auto;left:20%;" 
-  sizing="contain" preload fade src="<%= image_url('callogo.jpg') %>"></iron-image>
-  <div class="layout horizontal center-justified" style="margin-top:-.5em;">
-    <p id="uploading_text"><b>Uploading and Inserting Data...</b></p><br>
-  </div>
-  <div class="layout horizontal center-justified">
-    <div class="loading"></div>
-  </div>
-</div>
-
 </body>
 </html>

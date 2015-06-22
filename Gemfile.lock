@@ -7,6 +7,17 @@ GIT
       railties (>= 4)
 
 GIT
+  remote: git://github.com/alchapone/polymer-rails.git
+  revision: 9ffc6aec04afdbafa0b25681d97c304b979dd429
+  branch: 1.0.x
+  specs:
+    polymer-rails (1.0.3)
+      nokogiri (~> 1.6)
+      nokogumbo (~> 1.1)
+      rails (>= 3.1.0)
+      sprockets (< 3.0.0)
+
+GIT
   remote: git://github.com/berkcaputcu/emcee.git
   revision: 7499e8b7746028d3d1ba044578f7462d45bc894d
   specs:
@@ -183,6 +194,7 @@ DEPENDENCIES
   kaminari
   pdf-reader
   pg
+  polymer-rails!
   puma
   rails (= 4.1.1)
   rails_12factor

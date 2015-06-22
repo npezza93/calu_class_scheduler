@@ -15,10 +15,13 @@
     </div>
     
     <%= form_tag(import_user_transcripts_path(@user), remote: true) do %>
-      <paper-input-container id="upload-transcript-section">
-        <%= label_tag "Paste Transcript Here" %>
-        <%= text_area_tag 'Transcript',nil, style: "width:100%;", is: "iron-input" %>
+      <paper-input-container id="transcript-text-area">
+        <iron-autogrow-textarea max-rows="2" rows="2" placeholder="Paste Transcript Here">
+          <%= text_area_tag 'Transcript',nil, style: "width:100%;", is: "iron-input" %>
+        </iron-autogrow-textarea>
+        <paper-input-error></paper-input-error>
       </paper-input-container>
+      <%= text_area_tag 'Transcript',nil, style: "width:100%;", hidden: "" %>
     <% end %>
     
     <div class="layout end-justified horizontal" style="color:#03A9F4;">
@@ -53,3 +56,7 @@
     <paper-toast id="transcript-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
 </div>
 
+<div id="whole_screen_uploader">
+  <iron-image style="width:85%; height:85%; background-color: #ececec;margin:auto;left:10%;" 
+  sizing="contain" preload fade src="<%= image_url('callogo.jpg') %>"></iron-image>
+</div>
