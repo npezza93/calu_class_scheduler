@@ -7,7 +7,7 @@
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
-// @version 0.7.3
+// @version 0.7.2
 window.WebComponents = window.WebComponents || {};
 
 (function(scope) {
@@ -158,7 +158,7 @@ if (WebComponents.flags.shadow) {
       defineProperty(object, name, nonEnumerableDataDescriptor);
     }
     getOwnPropertyNames(window);
-    function getWrapperConstructor(node, opt_instance) {
+    function getWrapperConstructor(node) {
       var nativePrototype = node.__proto__ || Object.getPrototypeOf(node);
       if (isFirefox) {
         try {
@@ -171,7 +171,7 @@ if (WebComponents.flags.shadow) {
       if (wrapperConstructor) return wrapperConstructor;
       var parentWrapperConstructor = getWrapperConstructor(nativePrototype);
       var GeneratedWrapper = createWrapperConstructor(parentWrapperConstructor);
-      registerInternal(nativePrototype, GeneratedWrapper, opt_instance);
+      registerInternal(nativePrototype, GeneratedWrapper, node);
       return GeneratedWrapper;
     }
     function addForwardingProperties(nativePrototype, wrapperPrototype) {
@@ -231,10 +231,8 @@ if (WebComponents.flags.shadow) {
         }
         var descriptor = getDescriptor(source, name);
         var getter, setter;
-        if (typeof descriptor.value === "function") {
-          if (allowMethod) {
-            target[name] = getMethod(name);
-          }
+        if (allowMethod && typeof descriptor.value === "function") {
+          target[name] = getMethod(name);
           continue;
         }
         var isEvent = isEventHandlerName(name);
@@ -297,11 +295,7 @@ if (WebComponents.flags.shadow) {
     function wrap(impl) {
       if (impl === null) return null;
       assert(isNative(impl));
-      var wrapper = impl.__wrapper8e3dd93a60__;
-      if (wrapper != null) {
-        return wrapper;
-      }
-      return impl.__wrapper8e3dd93a60__ = new (getWrapperConstructor(impl, impl))(impl);
+      return impl.__wrapper8e3dd93a60__ || (impl.__wrapper8e3dd93a60__ = new (getWrapperConstructor(impl))(impl));
     }
     function unwrap(wrapper) {
       if (wrapper === null) return null;
@@ -4969,7 +4963,7 @@ if (WebComponents.flags.shadow) {
 
        case "scheme data":
         if ("?" == c) {
-          this._query = "?";
+          query = "?";
           state = "query";
         } else if ("#" == c) {
           this._fragment = "#";
@@ -5821,7 +5815,7 @@ window.HTMLImports = window.HTMLImports || {
   scope.rootDocument = rootDocument;
   scope.whenReady = whenReady;
   scope.isIE = isIE;
-})(window.HTMLImports);
+})(HTMLImports);
 
 (function(scope) {
   var modules = [];
@@ -5835,9 +5829,9 @@ window.HTMLImports = window.HTMLImports || {
   };
   scope.addModule = addModule;
   scope.initializeModules = initializeModules;
-})(window.HTMLImports);
+})(HTMLImports);
 
-window.HTMLImports.addModule(function(scope) {
+HTMLImports.addModule(function(scope) {
   var CSS_URL_REGEXP = /(url\()([^)]*)(\))/g;
   var CSS_IMPORT_REGEXP = /(@import[\s]+(?!url\())([^;]*)(;)/g;
   var path = {
@@ -5867,7 +5861,7 @@ window.HTMLImports.addModule(function(scope) {
   scope.path = path;
 });
 
-window.HTMLImports.addModule(function(scope) {
+HTMLImports.addModule(function(scope) {
   var xhr = {
     async: true,
     ok: function(request) {
@@ -5899,7 +5893,7 @@ window.HTMLImports.addModule(function(scope) {
   scope.xhr = xhr;
 });
 
-window.HTMLImports.addModule(function(scope) {
+HTMLImports.addModule(function(scope) {
   var xhr = scope.xhr;
   var flags = scope.flags;
   var Loader = function(onLoad, onComplete) {
@@ -5992,7 +5986,7 @@ window.HTMLImports.addModule(function(scope) {
   scope.Loader = Loader;
 });
 
-window.HTMLImports.addModule(function(scope) {
+HTMLImports.addModule(function(scope) {
   var Observer = function(addCallback) {
     this.addCallback = addCallback;
     this.mo = new MutationObserver(this.handler.bind(this));
@@ -6025,7 +6019,7 @@ window.HTMLImports.addModule(function(scope) {
   scope.Observer = Observer;
 });
 
-window.HTMLImports.addModule(function(scope) {
+HTMLImports.addModule(function(scope) {
   var path = scope.path;
   var rootDocument = scope.rootDocument;
   var flags = scope.flags;
@@ -6257,7 +6251,7 @@ window.HTMLImports.addModule(function(scope) {
   scope.IMPORT_SELECTOR = IMPORT_SELECTOR;
 });
 
-window.HTMLImports.addModule(function(scope) {
+HTMLImports.addModule(function(scope) {
   var flags = scope.flags;
   var IMPORT_LINK_TYPE = scope.IMPORT_LINK_TYPE;
   var IMPORT_SELECTOR = scope.IMPORT_SELECTOR;
@@ -6356,7 +6350,7 @@ window.HTMLImports.addModule(function(scope) {
   scope.importLoader = importLoader;
 });
 
-window.HTMLImports.addModule(function(scope) {
+HTMLImports.addModule(function(scope) {
   var parser = scope.parser;
   var importer = scope.importer;
   var dynamic = {
@@ -6412,7 +6406,7 @@ window.HTMLImports.addModule(function(scope) {
   } else {
     document.addEventListener("DOMContentLoaded", bootstrap);
   }
-})(window.HTMLImports);
+})(HTMLImports);
 
 window.CustomElements = window.CustomElements || {
   flags: {}
@@ -6433,9 +6427,9 @@ window.CustomElements = window.CustomElements || {
   scope.initializeModules = initializeModules;
   scope.hasNative = Boolean(document.registerElement);
   scope.useNative = !flags.register && scope.hasNative && !window.ShadowDOMPolyfill && (!window.HTMLImports || HTMLImports.useNative);
-})(window.CustomElements);
+})(CustomElements);
 
-window.CustomElements.addModule(function(scope) {
+CustomElements.addModule(function(scope) {
   var IMPORT_LINK_TYPE = window.HTMLImports ? HTMLImports.IMPORT_LINK_TYPE : "none";
   function forSubtree(node, cb) {
     findAllElements(node, function(e) {
@@ -6490,7 +6484,7 @@ window.CustomElements.addModule(function(scope) {
   scope.forSubtree = forSubtree;
 });
 
-window.CustomElements.addModule(function(scope) {
+CustomElements.addModule(function(scope) {
   var flags = scope.flags;
   var forSubtree = scope.forSubtree;
   var forDocumentTree = scope.forDocumentTree;
@@ -6686,7 +6680,7 @@ window.CustomElements.addModule(function(scope) {
   scope.takeRecords = takeRecords;
 });
 
-window.CustomElements.addModule(function(scope) {
+CustomElements.addModule(function(scope) {
   var flags = scope.flags;
   function upgrade(node) {
     if (!node.__upgraded__ && node.nodeType === Node.ELEMENT_NODE) {
@@ -6746,7 +6740,7 @@ window.CustomElements.addModule(function(scope) {
   scope.implementPrototype = implementPrototype;
 });
 
-window.CustomElements.addModule(function(scope) {
+CustomElements.addModule(function(scope) {
   var isIE11OrOlder = scope.isIE11OrOlder;
   var upgradeDocumentTree = scope.upgradeDocumentTree;
   var upgradeAll = scope.upgradeAll;

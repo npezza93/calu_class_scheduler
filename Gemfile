@@ -46,6 +46,6 @@ gem 'seed_dump'
 gem 'pg'
 gem 'rails_12factor'
 
-gem 'rack-mini-profiler'
-
 gem 'html_import_tag'
+
+gem 'polymer-rails', '~> 1.0.0'

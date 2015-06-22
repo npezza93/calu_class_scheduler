@@ -2,13 +2,12 @@
 <html>
 <head>
   <title>CalU Advisor</title>
-  <link rel="import" href="/polymer_components/components" >
+  <%= html_import_tag "application" %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application', params[:controller] %>
   <%= javascript_include_tag 'date' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'callogo2.png' %>
-  <script src="/polymer_components/web-animations-js/web-animations-next-lite.min.js"></script>
   <link href="<%= image_url('callogo2.png') %>" rel="apple-touch-icon">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">

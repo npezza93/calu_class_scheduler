@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require jquery-fileupload/basic
-//= require webcomponentsjs/webcomponents-lite.min
+//= require webcomponentsjs/webcomponents-lite
+//= require web-animations-js/web-animations-next-lite.min
