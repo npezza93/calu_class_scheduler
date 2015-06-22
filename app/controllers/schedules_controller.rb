@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
     @signed_up_for = @user.offerings.where(semester: @active_semester).includes(:days_time, :course)
     @day_hash = view_context.create_day_hash(@signed_up_for)
     @new_work_schedule = WorkSchedule.new
-    @work_time_slots = WorkDaysTime.order(:start_time)
+    @work_time_slots = WorkDaysTime.order(:start_time).group_by(&:days)
     @majors = Major.all
     @minors = Major.where.not(id: @user.major_id)
 

@@ -17,7 +17,11 @@ jQuery ->
       return
 
     $(document).ajaxComplete ->
-      signedUpForInitializer()
+      try
+        signedUpForInitializer()
+      catch error 
+        console.log 
+        
       workScheduleInitializer()
       $('#schedule_new_actual_select option:selected').each ->
         front_validation $('#' + $(this).attr('value'))
@@ -31,37 +35,38 @@ jQuery ->
       signedup_for = $.makeArray($("#advisor_quick_user_courses").children().children())
       signedup_for.shift()
       signedup_for.pop()
-      $.each signedup_for, ->
-        course = $(this)
-        days = $($(this)).children()[0].getAttribute("days")
-        if days != "OFFSITE" and days != "ONLINE"
-          $.each days.split(""), ->
-            start_time = Date.parse($(course).children()[0].getAttribute("times").split(" - ")[0])
-            end_time =   Date.parse($(course).children()[0].getAttribute("times").split(" - ")[1])
+      if signedup_for.length > 0
+        $.each signedup_for, ->
+          course = $(this)
+          days = $($(this)).children()[0].getAttribute("days")
+          if days != "OFFSITE" and days != "ONLINE"
+            $.each days.split(""), ->
+              start_time = Date.parse($(course).children()[0].getAttribute("times").split(" - ")[0])
+              end_time =   Date.parse($(course).children()[0].getAttribute("times").split(" - ")[1])
 
-            flag = false
-            index = 0
+              flag = false
+              index = 0
 
-            if (end_time.getMinutes() - 15 == 0) or (end_time.getMinutes() - 15 == 30)
-              flag = true
-              end_time.setMinutes end_time.getMinutes() - 15
-        
-            while start_time.getTime() < end_time.getTime()              
-              if index == 0
-                name = $(course.children()[0]).text().split("-")
-                $("." + $(this)[0] + start_time.toString("hmmtt")).html(name[0] + "<span class='small_schedule_course_title'>: " + name[1].split(": ")[1] + "</span>")
-              else if index == 1
-                name = $(course.children()[2]).text()
-                $("." + $(this)[0] + start_time.toString("hmmtt")).html(name);
-              
-              $("." + $(this)[0] + start_time.toString("hmmtt")).addClass(" selected_class");
-              index += 1 
-              start_time.setMinutes start_time.getMinutes() + 30
-            if flag 
-              $("." + $(this)[0] + start_time.toString("hmmtt")).addClass( " half_time_slot");
+              if (end_time.getMinutes() - 15 == 0) or (end_time.getMinutes() - 15 == 30)
+                flag = true
+                end_time.setMinutes end_time.getMinutes() - 15
+          
+              while start_time.getTime() < end_time.getTime()              
+                if index == 0
+                  name = $(course.children()[0]).text().split("-")
+                  $("." + $(this)[0] + start_time.toString("hmmtt")).html(name[0] + "<span class='small_schedule_course_title'>: " + name[1].split(": ")[1] + "</span>")
+                else if index == 1
+                  name = $(course.children()[2]).text()
+                  $("." + $(this)[0] + start_time.toString("hmmtt")).html(name);
+                
+                $("." + $(this)[0] + start_time.toString("hmmtt")).addClass(" selected_class");
+                index += 1 
+                start_time.setMinutes start_time.getMinutes() + 30
+              if flag 
+                $("." + $(this)[0] + start_time.toString("hmmtt")).addClass( " half_time_slot");
 
-            return
-        return
+              return
+          return
       if $("#media_query_schedule")[0].queryMatches
         $("#big_schedule_table")[0].setAttribute "hidden", ""
         $("#small_schedule_table")[0].removeAttribute "hidden", ""
@@ -129,10 +134,18 @@ jQuery ->
 # upload transcript handlers
 #
     $('#upload_transcript_button').click ->
-      if $('#Transcript').val() != ''
+      if $("#textarea").val() != "" or $("#textarea").val().split("\n")[1].toLowerCase() == "california university degreeworks"
+        $("#Transcript").val($("#textarea").val())
+        $('#whole_screen_uploader').slideDown()
         $("#upload-transcript-dialog").find("form").submit()
-        $('#new_schedule_modal')[0].toggle()
-        $('#whole_screen_uploader').fadeIn()
+        $('#upload-transcript-dialog')[0].toggle()
+        $("#transcript-text-area").removeAttr('invalid', '');
+      else
+        if $("#textarea").val() != ""
+          $("#transcript-text-area").find('paper-input-error').html("Please Paste Your Transcript!");
+        else
+          $("#transcript-text-area").find('paper-input-error').html("Please Upload Correct Text!");
+        $("#transcript-text-area").attr('invalid', "")
       return
 
     $("#fab_new_schedule").click ->

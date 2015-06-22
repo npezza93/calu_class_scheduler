@@ -3,9 +3,7 @@
     $("#transcript-notice-toast")[0].toggle();
     $("#upload-transcript-dialog")[0].close();
     $("#whole_screen_uploader").fadeOut();
-<% else %>
-    $("#uploading_text").html("<b>Recalculating Schedule...</b>");
-    
+<% else %>   
     $("#schedules-animate").html("<%= j render 'schedules/index' %>");
     $("#transcripts-animate").html("<%= j render 'transcripts/index' %>");
 

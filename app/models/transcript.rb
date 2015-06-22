@@ -51,26 +51,29 @@ class Transcript < ActiveRecord::Base
         end
         
         file = file.drop(main_line+1)
-        courses = []
+        new_transcripts = []
+        courses = Course.all
         
         file.each_with_index do |line, index|
         	line = line.split("\t")
         	if line.length == 5
-        		courses << [line[0].strip, line[1].strip.to_i,line[3].strip]
+        		new_transcripts << [courses.where(subject: line[0].strip, course: line[1].strip.to_i).take, line[3].strip]
         	end
         end
   
-        all_courses = Course.all
-        transcripts = User.includes(:transcripts).find(u_id).transcripts
-        courses.each do |row|
-          if all_courses.where(subject: row[0], course: row[1]).exists? and row[2] != "w"
-            c_id = all_courses.where(subject: row[0], course: row[1]).take.id
-            c_minus, c = self.grade_check(row[2])
+        user = User.includes(:transcripts, :taken_courses).find(u_id)
+        taken_courses = user.taken_courses
+        transcripts = user.transcripts
 
-            if transcripts.where(course_id: c_id).exists?
-              transcript = transcript.take.update(grade_c_minus: c_minus, grade_c: c)
+        new_transcripts.each do |new_transcript|
+          if new_transcript[1] != "w"
+            c_minus, c = self.grade_check(new_transcript[1])
+
+            if taken_courses.include? new_transcript[0]
+              transcript = transcripts.where(course: new_transcript[0]).take.update(grade_c_minus: c_minus, grade_c: c)
             else
-              Transcript.create(user_id: u_id, course_id: c_id, grade_c_minus: c_minus, grade_c: c)
+              transcript = user.transcripts.new(course: new_transcript[0], grade_c_minus: c_minus, grade_c: c)
+              transcript.save
             end
           end
         end

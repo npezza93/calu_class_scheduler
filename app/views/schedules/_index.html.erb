@@ -36,12 +36,11 @@
                     <th class="day" style="width:100px;font-size: 14px;">Thursday</th>
                     <th class="day" style="width:100px;font-size: 14px;">Friday</th>
                 </tr>
-                
-                <% @work_time_slots.each_slice(5) do |slice| %>
+                <% 28.times do |i| %>
                     <tr>
-                        <td class="time_slot"><%= slice[0].start_time.strftime("%l:%M%p") %></td>
-                        <% slice.each do |time_slot| %>
-                            <td data-title="<%= time_slot.start_time.strftime("%l:%M%p") %>" class="day_time_slot <%= time_slot.short_time %> _<%= time_slot.id %>" id="_<%= time_slot.id %>"></td>
+                        <td class="time_slot"><%= @work_time_slots["M"][i].start_time.strftime("%l:%M%p") %></td>
+                        <% ["M","T","W","R","F"].each do |day| %>
+                            <td data-title="<%= @work_time_slots[day][i].start_time.strftime("%l:%M%p") %>" class="day_time_slot <%= @work_time_slots[day][i].short_time %> _<%= @work_time_slots[day][i].id %>" id="_<%= @work_time_slots[day][i].id %>"></td>
                         <% end %>
                     </tr>
                 <% end %>
@@ -68,7 +67,7 @@
                         </div>
 
                         <table style="border-collapse:separate !important;border-spacing: 11px 3px !important;border:none;">
-                            <% @work_time_slots.group_by(&:days)[day_of_week[1]].each do |time_slot| %>
+                            <% @work_time_slots[day_of_week[1]].each do |time_slot| %>
                                 <tr>
                                     <td class="time_slot"><%= time_slot.start_time.strftime("%l:%M%p") %></td>
                                     <td class="day_time_slot <%= day_of_week[1]%><%= time_slot.start_time.strftime("%l%M%p").strip %> _<%= time_slot.id %>" id="_<%= time_slot.id %>"></td>
@@ -89,7 +88,7 @@
         <% end %>
     </div>
     <%= form_for [@user, @new_work_schedule], remote: true do |f| %>
-        <%= f.collection_select(:work_days_time_id, @work_time_slots, :id, :id) %>
+        <%= f.collection_select(:work_days_time_id, @work_time_slots.values.flatten, :id, :id) %>
     <% end %>
 </div>
 
