@@ -1,0 +1,30 @@
+<% if @errors %>
+    <% if not @course.errors[:subject].blank? %>
+        $("#new-course-subject").find('paper-input-error').html("<%= raw @course.errors[:subject][0].capitalize %>");
+        $("#new-course-subject").attr('invalid', "")
+    <% else %>
+        $("#new-course-subject").removeAttr('invalid', '');
+    <% end %>
+    
+    <% if not @course.errors[:course].blank? %>
+        $("#new-course-number").find('paper-input-error').html("<%= raw @course.errors[:course][0].capitalize %>");
+        $("#new-course-number").attr('invalid', "")
+    <% else %>
+        $("#new-course-number").removeAttr('invalid', '');
+    <% end %>
+    
+    <% if not @course.errors[:title].blank? %>
+        $("#new-course-title").find('paper-input-error').html("<%= raw @course.errors[:title][0].capitalize %>");
+        $("#new-course-title").attr('invalid', "")
+    <% else %>
+        $("#new-course-title").removeAttr('invalid', '');
+    <% end %>
+
+    <% if not @course.errors[:credits].blank? %>
+        $("#new-course-credits").find('paper-input-error').html("<%= raw @course.errors[:credits][0].capitalize %>");
+        $("#new-course-credits").attr('invalid', "")
+    <% else %>
+        $("#new-course-credits").removeAttr('invalid', '');
+    <% end %>
+
+<% end %>

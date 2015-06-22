@@ -1,0 +1,26 @@
+<% content_for :title do %>
+    Needs List
+<% end %>
+
+
+<div layout horizontal center-justified>
+    <div class="table-responsive-vertical shadow-z-1">
+        <table id="table" class="table">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            
+            <tbody id="needed_courses_tbody">
+                <% @needed_course_count.each do |k,v| %>
+                    <tr>
+                        <td data-title="Course"><%= k.subject + k.course.to_s + ": " + k.title %></td>
+                        <td data-title="Count"><%= v %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<% if request.path == "/users/"+@user.id.to_s+"/schedules" %>
+    // constructing schedule
+        $("#advisor_quick_user_courses").html("");
+        $(".selected_class").text("");
+        $(".half_time_slot").removeClass("half_time_slot");
+        $(".selected_class").removeClass("selected_class");
+
+    // schedule approvals
+        $("#sch_approval_div").html("<%= j render "schedule_approvals/show" %>");
+    // schedules index quick advisor schedule
+        <% if @offerings.blank? %>
+            $("#advisor_quick_user_courses").append('<tr><th colspan="3">No courses have been signed up for</th></tr>');
+        <% else %>
+            $("#advisor_quick_user_courses").html("<tr><th colspan='3'><%= @user.email %>'s Courses</th></tr>");
+            <% total_credits = 0 %>
+            <% @offerings.each do |offering| %>
+                $("#advisor_quick_user_courses").append('<tr><td><%= offering.course.subject + offering.course.course.to_s + "-" + offering.section + ": " +  offering.course.title %></td><td style="padding-left:20px;padding-right:20px;"><%= offering.course.credits %></td><td><%= offering.user.email[0..-10].capitalize %></td></tr>');
+                <% total_credits += offering.course.credits %>
+                <% begin %>
+                    <% offering.days_time.days.split("").each do |letter| %>
+                        <% begin_time = Time.strptime(offering.days_time.start_time, "%l:%M %P") %>
+                        <% end_time = Time.strptime(offering.days_time.end_time, "%l:%M %P") %>
+                        <% index = 0 %>
+                        
+                        <% if (end_time - 15.minutes).min == 0 or (end_time - 15.minutes).min == 30 %>
+                            <% end_time -= 15.minutes %>
+                            <% flag = true %>
+                        <% end %>
+                        
+                        <% while begin_time<end_time %>
+                            <% if index == 0 %>
+                                $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").html("<%= offering.course.subject + offering.course.course.to_s %>" + "<span class='small_schedule_course_title'>: " + "<%= offering.course.title %>"+ "</span>");
+                            
+                            <% elsif index == 1 %>
+                                $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").html("<%= offering.user.email[0..-10].capitalize %>");
+                            <% end %>
+                            $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").addClass(" selected_class");
+                            <% begin_time += 1800 %>
+                            <% index += 1 %>
+                        <% end %>
+                        <% if flag %>
+                           $(".<%= letter %><%= begin_time.strftime("%l%M%p").strip %>").addClass( " half_time_slot");
+                        <% end %>
+                    <% end %>
+                <% rescue %>
+                <% end %>
+            <% end %>
+            $("#advisor_quick_user_courses").append('<tr id="total_credits_row"><td></td><td style="padding-left:20px;padding-right:20px;border-top: solid thin rgba(0,0,0,.87);"><%= total_credits%></td><td></td></tr>');
+        <% end %>
+
+        $("#transcript-notice-toast").attr("text", "Schedule Updated!");
+        $("#transcript-notice-toast")[0].toggle();
+        
+      if ($("#media_query_schedule")[0].queryMatches) {
+        $("#big_schedule_table")[0].setAttribute("hidden", "");
+        $("#small_schedule_table")[0].removeAttribute("hidden", "");
+        $(".small_schedule_course_title").removeAttr("hidden", "");
+      } else {
+        $("#big_schedule_table")[0].removeAttribute("hidden", "");
+        $("#small_schedule_table")[0].setAttribute("hidden", "");
+        $(".small_schedule_course_title").attr("hidden", "");
+      }
+<% end %>

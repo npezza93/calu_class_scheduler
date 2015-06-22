@@ -1,0 +1,8 @@
+<% if @semester.errors %>
+    <% if not @semester.errors[:semester].blank? %>
+        $("#new-semester-semester").find('paper-input-error').html("<%= raw @semester.errors[:semester][0].capitalize %>");
+        $("#new-semester-semester").attr('invalid', "")
+    <% else %>
+        $("#new-semester-semester").removeAttr('invalid', '');
+    <% end %>
+<% end %>

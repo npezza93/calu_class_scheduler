@@ -1,0 +1,9 @@
+Your advisor has approved your schedule! Your courses are as follows:
+
+<ul>
+<% @schedules.each do |schedule| %>
+        <li><%= schedule.offering.course.subject + schedule.offering.course.course.to_s + ": " + schedule.offering.course.title %></li>
+<% end %>    
+</ul>
+
+You can save this email for your records.

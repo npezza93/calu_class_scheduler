@@ -1,0 +1,30 @@
+<paper-dialog id="change_password_overlay" id="new_schedule_modal" entry-animation="scale-up-animation" exit-animation="scale-down-animation">
+    <h2 class="layout horizontal center-justified">Change Settings</h2>
+      <%= form_for(@user, remote: true, html: {class: "student_settings_form"}) do |f| %>
+        <paper-input-container id="new_user_password">
+          <%= f.label :password %>
+          <%= f.password_field :password, is: "iron-input" %>
+          <paper-input-error></paper-input-error>
+        </paper-input-container>
+
+        <paper-input-container id="new_user_password_confirm">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, is: "iron-input" %>
+          <paper-input-error></paper-input-error>
+        </paper-input-container>
+
+        <%= f.collection_select(:major_id, @majors, :id, :major, prompt: "Choose a Course") %>
+
+        <div id="major_signup_dropdown_error_msg">
+          <div id="signup_dropdown_error_text" flex>A Major must be selected!</div>
+        </div>
+        
+        <%= f.collection_select(:minor, @minors, :id, :major, {}, { multiple: true, size: 3 } ) %>
+  
+        <br><br>
+        <div class="end-justified layout horizontal" style="color:#2196F3;">
+          <paper-button dialog-dismiss>Cancel</paper-button>
+          <paper-button id="submit_student_settings">Update</paper-button>
+        </div>
+      <% end %>
+</paper-dialog>

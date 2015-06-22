@@ -1,0 +1,20 @@
+<core-overlay id="password_reset_overlay" autoCloseDisabled opened backdrop transition="core-transition-center">
+
+  <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+      <paper-input-decorator label="New Password" class="password_decorator">
+        <%= f.password_field :password %>
+      </paper-input-decorator>
+      
+      <paper-input-decorator label="Confirm New Password" class="password_decorator">
+        <%= f.password_field :password_confirmation %>
+      </paper-input-decorator>
+      
+      <br><br>
+      <div layout horizontal end-justified style="color:#2196F3;">
+        <paper-button id="cancel_new_course">Cancel</paper-button>
+        <paper-button id="password_reset_validation">Update</paper-button>
+      </div>
+      
+      <%= f.submit "Update", id: "submit_password_reset_update", hidden: "" %>
+  <% end %>
+</core-overlay>

@@ -1,0 +1,68 @@
+<% content_for :title do %>
+  <% if @session_user.advisor and @session_user != @user%> 
+    Editing <%= @user.first_name + " " + @user.last_name%>
+  <% else %>
+    Settings
+  <% end %>
+<% end %>
+
+<div class="layout horizontal center-center">
+  <paper-material style="width:300px;background-color:#FBFBFB;margin-top:20px;padding-bottom:20px;" class="layout horizontal center-center">
+    <% if @session_user.advisor and @user != @session_user %>
+      <%= form_for(@user) do |f| %>       
+        <iron-collapse opened id="advisor_collapse">
+          <%= f.select(:advised_by, options_for_select(@advisors, @user.advised_by), {include_blank: "Choose Advisor"}) %>
+        </iron-collapse>    
+
+        <div id="advisor_signup_dropdown_error_msg">
+          <div id="signup_dropdown_error_text">An Advisor must be selected!</div>
+        </div>
+
+        <div class="layout horizontal flex" style="margin-top:28px;margin-left:2px;">
+          <%= f.label :advisor, id: "advisor_label", class: "flex" %>
+          <paper-checkbox id='advisor_checkbox'></paper-checkbox>
+
+          <%= f.check_box :advisor, id: "actual_advisor", hidden: "" %>
+        </div>
+
+
+        <br><br><br>
+        <div class="end-justified layout horizontal" style="color:#2196F3;">
+          <paper-button id="cancel-edit-user">Cancel</paper-button>
+          <paper-button id="update-advisor-of-user">UPDATE</paper-button>
+        </div>
+      <% end %>
+      
+    <% else %>
+      <%= form_for(@user, remote: true) do |f| %>
+        <paper-input-container id="new_user_password">
+          <%= f.label :password %>
+          <%= f.password_field :password, is: "iron-input", autofocus: "" %>
+          <paper-input-error></paper-input-error>
+        </paper-input-container>
+
+        <paper-input-container id="new_user_password_confirm">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, is: "iron-input" %>
+          <paper-input-error></paper-input-error>
+        </paper-input-container>
+
+        <%= f.select(:major_id, options_for_select(@majors, @user.major_id), {include_blank: "Choose Major"}) %>
+
+        <div id="major_signup_dropdown_error_msg">
+          <div id="signup_dropdown_error_text" flex>A Major must be selected!</div>
+        </div>
+        
+        <% if not @session_user.advisor %>
+          <%= f.select(:minor, options_for_select(@minors, @user.minor), {}, { id:'actual_select_courses', multiple: true, size: 3 }) %>
+        <% end %>
+
+        <br><br><br>
+        <div class=" end-justified layout horizontal" style="color:#2196F3;">
+          <paper-button id="cancel-edit-user">Cancel</paper-button>
+          <paper-button><%= f.submit "Update", id: "submit_signup" %></paper-button>
+        </div>
+      <% end %>
+    <% end %>
+  </paper-material>
+</div>

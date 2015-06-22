@@ -1,0 +1,52 @@
+<paper-dialog id="new_session_overlay" no-cancel-on-esc-key no-cancel-on-outside-click opened modal >
+		
+	<paper-tabs selected="0" id="paperTabs" >
+	    <paper-tab id="one">LOGIN</paper-tab>
+	    <paper-tab id="two">SIGNUP</paper-tab>
+	</paper-tabs>
+	
+	<paper-dialog-scrollable class="flex" style="height:400px;margin-top:0;">
+	   	<neon-animated-pages id="baluga" selected="0" class="flex" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation" style="height:300px;">
+	      	 <neon-animatable id="section2" style="padding-top:20px;">
+	        	<%= form_tag(login_path, remote: true) do %>
+	        		<paper-input-container id="new_session_email">
+	        			<%= label_tag :email %>
+	  					<%= text_field_tag :email, params[:email], is: "iron-input", autofocus: '' %>
+	  				</paper-input-container>
+						
+					<paper-input-container id="new_session_password">
+						<%= label_tag :password %>
+						<%= password_field_tag :password, params[:password], is: "iron-input" %>
+					</paper-input-container>
+						
+					<div class="horizontal center-center layout" style="color:#4CAF50;margin-top:14px;">
+						<paper-button><%= submit_tag "LOGON", id: "submit_logon" %></paper-button>
+					</div>
+					
+					<div class="horizontal center-center layout">
+						<paper-button id="forgot_password">Forget?</paper-button>
+					</div>
+				<% end %>
+					
+	      	</neon-animatable>
+	          
+	      	<neon-animatable id="section3" style="padding-top:5px;">
+	      			<%= render 'users/form', :@user => User.new %>
+	      	</neon-animatable>
+		</neon-animated-pages>
+	</paper-dialog-scrollable>
+</paper-dialog>
+
+<%= render "forgot" %>
+
+<div id="session-notice">
+	<% if notice %>
+		<paper-toast text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
+	<% end %>
+</div>
+
+<div id='login_error'>
+	<paper-toast text="Invalid email/password combination" style="color:#eeff41;z-index: 13;" class="fit-bottom layout horizontal center-center" ></paper-toast>
+</div>
+
+<div id='reset_error'></div>
