@@ -39,10 +39,6 @@ gem 'unicorn-rails'
 
 gem 'bcrypt-ruby', '3.1.2'
 
-gem 'emcee', github: 'berkcaputcu/emcee'
-
-gem 'kaminari'
-
 gem 'activerecord-import'
 
 gem 'remotipart'
