@@ -45,8 +45,6 @@ gem 'kaminari'
 
 gem 'activerecord-import'
 
-gem 'pdf-reader'
-
 gem 'remotipart'
 gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
 
@@ -58,3 +56,4 @@ gem 'rails_12factor'
 gem 'puma'
 gem 'figaro'
 gem 'polymer-rails', github: 'alchapone/polymer-rails', branch: '1.0.x'
+gem 'turbolinks'
