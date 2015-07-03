@@ -45,8 +45,3 @@ gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
 gem 'seed_dump'
 gem 'pg'
 gem 'rails_12factor'
-
-gem 'html_import_tag'
-
-gem 'polymer-rails', '~> 1.0.0'
-gem 'polymer-elements-rails'

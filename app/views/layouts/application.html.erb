@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>CalU Advisor</title>
-  <%= html_import_tag "application" %>
+  <link data-turbolinks-track="true" rel="import" href="/bower_components/components" >
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application', params[:controller] %>
   <%= javascript_include_tag 'date' %>
@@ -26,7 +26,7 @@
               <div style="font-style:italic;color:#C8E6C9;font-size:16px;"><%= User.find(session[:user_id]).last_name %> is logged in</div>
             </div>
           </paper-toolbar>
-          
+
           <paper-menu id="drawer-menu" style="font-size:16px;">
             <% if User.find(session[:user_id]).advisor %>
               <% if params[:user_id] and current_page?(user_schedules_path(params[:user_id]))%>
@@ -50,7 +50,7 @@
               <paper-item id="drawer-logout"><iron-icon icon="settings-power"></iron-icon><%= button_to 'Logout', logout_path, { method: :delete, id: "logout-button", style: "z-index:50;" } %></paper-item>
           </paper-menu>
         </paper-header-panel>
-  
+
         <paper-header-panel main mode="scroll" id="main">
           <paper-toolbar id="mainheader">
             <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
