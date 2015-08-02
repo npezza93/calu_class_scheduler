@@ -27,7 +27,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -75,17 +75,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :host => 'calu-advisor.herokuapp.com' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => "caluadvisor.com" }
   config.action_mailer.delivery_method = :smtp
-  
   config.action_mailer.smtp_settings = {
-    :address        => 'smtp.gmail.com',
-    :port           => 587,
-    :authentication => :plain,
-    :user_name      => "calu.advisor",
-    :password       => "balugacal2015",
-    :domain         => 'heroku.com',
-    :enable_starttls_auto => true
+    address:              'smtp.sendgrid.net',
+    port:                  587,
+    domain:               'heroku.com',
+    user_name:             ENV['SENDGRID_USERNAME'],
+    password:              ENV['SENDGRID_PASSWORD'],
+    authentication:        'plain',
+    enable_starttls_auto: true  
   }
 
 end
