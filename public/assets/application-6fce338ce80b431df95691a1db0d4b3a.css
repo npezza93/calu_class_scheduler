@@ -1,0 +1,1381 @@
+/* line 1, /home/nick/Downloads/speedy/app/assets/stylesheets/course_sets.css.scss */
+#new-course-set-fab {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  color: #FFFFFF;
+  background: #4CAF50;
+}
+
+/* line 11, /home/nick/Downloads/speedy/app/assets/stylesheets/course_sets.css.scss */
+#course_set_course_id {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+  margin-bottom: 8px;
+}
+
+/* line 23, /home/nick/Downloads/speedy/app/assets/stylesheets/course_sets.css.scss */
+#course_set_course_id:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* line 26, /home/nick/Downloads/speedy/app/assets/stylesheets/course_sets.css.scss */
+#course_set_course_id option {
+  color: #212121;
+}
+
+/* line 29, /home/nick/Downloads/speedy/app/assets/stylesheets/course_sets.css.scss */
+#course_set_course_id option:first-child {
+  color: #757575;
+}
+
+/* line 32, /home/nick/Downloads/speedy/app/assets/stylesheets/course_sets.css.scss */
+#course_set_error_msg {
+  color: #db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display: none;
+  margin-top: -8px;
+}
+/* line 1, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#remove_course_shadow_div {
+  width: 475px;
+  background: #FBFBFB;
+}
+
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#remove_course_div {
+  margin: 15px;
+}
+
+/* line 8, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#new_course_shadow_div {
+  margin: 15px;
+  background: #fbfbfb;
+  padding: 20px 20px;
+}
+
+/* line 16, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#course_minimum_pt, #course_minimum_class_standing, #course_minimum_sat_score, #course_prerequisites {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+  margin-bottom: 8px;
+}
+
+/* line 28, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#course_minimum_pt:focus, #course_minimum_class_standing:focus, #course_minimum_sat_score:focus, #course_prerequisites:focus, #minimum_grades:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* line 31, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#course_minimum_pt option, #course_minimum_class_standing option, #course_minimum_sat_score option, #minimum_grades option {
+  color: #212121;
+}
+
+/* line 34, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#course_minimum_pt option:first-child, #course_minimum_class_standing option:first-child, #course_minimum_sat_score option:first-child, #minimum_grades option:first-child {
+  color: #757575;
+}
+
+/* line 37, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+.course_prereq_group {
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+}
+
+/* line 43, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#minimum_grades {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+}
+
+/* line 52, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+.course-min-grade {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 56, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#new-course-fab {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  color: #FFFFFF;
+  background: #4CAF50;
+}
+
+/* line 65, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+.subject_paginator {
+  margin-top: 32px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* line 71, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#edit-course-link {
+  text-decoration: none;
+  color: #757575;
+  transition: all .2s ease;
+}
+
+/* line 76, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#delete-course-link {
+  color: #757575;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+/* line 86, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#paginated_courses_div {
+  padding-top: 12px;
+}
+
+/* line 90, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#courseTabs #selectionBar {
+  background-color: #757575;
+}
+
+/* line 94, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#delete-course-link:hover {
+  color: #db4437;
+}
+
+/* line 97, /home/nick/Downloads/speedy/app/assets/stylesheets/courses.css.scss */
+#edit-course-link:hover {
+  color: #4CAF50;
+}
+/* line 1, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.cat_heading {
+  color: #212121;
+  font-size: 16px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 7, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+#index-category-material {
+  width: 300px;
+  background: #FBFBFB;
+}
+
+/* line 11, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+#index-categroy-div {
+  margin: 15px;
+}
+
+/* line 14, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+#cur_cat_link {
+  color: #212121;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 19, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+#cur_cat_link:hover {
+  color: #2196F3;
+}
+
+/* line 22, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+#cur_cat_delete_link {
+  color: #757575;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 27, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+#cur_cat_delete_link:hover {
+  color: #db4437;
+}
+
+/* line 30, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+#new_category_material {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 15px;
+  margin-right: 25px;
+  color: #FFFFFF;
+  background: #4CAF50;
+}
+
+/* line 57, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.shadow-z-1 {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  margin: 15px;
+  border-radius: 3px;
+}
+
+/* -- Material Design Table style -------------- */
+/* line 65, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table {
+  width: 100%;
+  max-width: 100%;
+  background-color: #fafafa;
+  border-collapse: collapse;
+  border-radius: 3px;
+}
+
+/* line 74, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table > thead > tr,
+.table > tbody > tr,
+.table > tfoot > tr {
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* line 84, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  text-align: left;
+  padding: 1.6rem;
+  vertical-align: top;
+  border-top: 0;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* line 93, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table > thead > tr > th {
+  font-weight: 400;
+  color: #757575;
+  vertical-align: bottom;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* line 104, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+
+/* line 107, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table > tbody + tbody {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* line 110, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table .table {
+  background-color: #ffffff;
+}
+
+/* line 113, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table .no-border {
+  border: 0;
+}
+
+/* line 121, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+  padding: 0.8rem;
+}
+
+/* line 124, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table-bordered {
+  border: 0;
+}
+
+/* line 132, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* line 137, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+}
+
+/* line 141, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #f5f5f5;
+}
+
+/* line 145, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (max-width: 768px) {
+  /* line 149, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table {
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+  /* line 154, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table > thead,
+  .table-responsive-vertical > .table > tfoot {
+    display: none;
+  }
+
+  /* line 157, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table > tbody {
+    display: block;
+  }
+
+  /* line 160, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table > tbody > tr {
+    display: block;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+  }
+
+  /* line 166, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table > tbody > tr > td {
+    background-color: #ffffff;
+    display: block;
+    vertical-align: middle;
+    text-align: right;
+  }
+
+  /* line 172, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table > tbody > tr > td[data-title]:before {
+    content: attr(data-title);
+    float: left;
+    font-size: inherit;
+    font-weight: 400;
+    color: #757575;
+  }
+
+  /* line 179, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical.shadow-z-1 {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  /* line 184, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical.shadow-z-1 > .table > tbody > tr {
+    border: none;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  /* line 190, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table-bordered {
+    border: 0;
+  }
+
+  /* line 193, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table-bordered > tbody > tr > td {
+    border: 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* line 197, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table-bordered > tbody > tr > td:last-child {
+    border-bottom: 0;
+  }
+
+  /* line 201, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table-striped > tbody > tr > td,
+  .table-responsive-vertical > .table-striped > tbody > tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  /* line 204, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table-striped > tbody > tr > td:nth-child(odd) {
+    background-color: #f5f5f5;
+  }
+
+  /* line 208, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table-hover > tbody > tr:hover > td,
+  .table-responsive-vertical > .table-hover > tbody > tr:hover {
+    background-color: #ffffff;
+  }
+
+  /* line 211, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_categories.css.scss */
+  .table-responsive-vertical > .table-hover > tbody > tr > td:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+.category_course_set_select {
+  font-family: 'RobotoDraft', sans-serif;
+  width: 100%;
+  display: block;
+  border: none;
+  border-radius: 0 !important;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid #757575;
+  margin-top: 10px;
+}
+
+/* line 19, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+.category_course_set_select:focus {
+  border-color: #757575;
+  outline: none;
+  box-shadow: none;
+}
+
+/* line 24, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+#set-link {
+  color: #212121;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 29, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+#set-link:hover {
+  color: #2196F3;
+}
+
+/* line 34, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+#cc_set_dropdown_error_msg {
+  color: #d34336;
+  font-size: 0.75em;
+  display: none;
+  margin-top: -13px;
+}
+
+/* line 40, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+#cc_set_dropdown_course_error {
+  width: 100%;
+}
+
+/* line 43, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+#cc_set_dropdown_error_icon {
+  height: 20px;
+  width: 20px;
+}
+
+/* line 48, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+.cat_set_edit {
+  color: #757575;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 54, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+.cat_set_edit:hover {
+  color: #4CAF50;
+}
+
+/* line 58, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+.cat_set_remove {
+  color: #757575;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 64, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+.cat_set_remove:hover {
+  color: #F44336;
+}
+
+/* line 68, /home/nick/Downloads/speedy/app/assets/stylesheets/curriculum_category_sets.css.scss */
+#cat_set_flag_div {
+  color: #212121;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/majors.css.scss */
+#new_major_form_shadow {
+  width: 300px;
+  margin: 15px;
+  background: #fbfbfb;
+  padding: 20px 20px;
+}
+
+/* line 12, /home/nick/Downloads/speedy/app/assets/stylesheets/majors.css.scss */
+#new_major_material {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  color: #FFF;
+  background: #4CAF50;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#new-offering-fab {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 15px;
+  margin-right: 25px;
+  color: #FFF;
+  background: #4CAF50;
+}
+
+/* line 14, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#new_offering_shadow {
+  width: 375px;
+  margin: 15px;
+  background: #fbfbfb;
+  padding: 20px 20px;
+}
+
+/* line 20, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#offering_course_id, #offering_days_time_id, #offering_user_id {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+  margin-bottom: 8px;
+}
+
+/* line 32, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#offering_course_id:focus, #offering_days_time_id:focus, #offering_user_id:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* line 35, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#offering_course_id option, #offering_days_time_id option, #offering_user_id option {
+  color: #212121;
+}
+
+/* line 38, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#offering_course_id option:first-child, #offering_days_time_id option:first-child, #offering_user_id option:first-child {
+  color: #757575;
+}
+
+/* line 41, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#offering_course_error_msg, #offering_daytime_error_msg, #offering_prof_error_msg {
+  color: #db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display: none;
+  margin-top: -8px;
+}
+
+/* line 49, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#stop_offering_link {
+  color: #4a89dc;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 54, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#stop_offering_link:hover {
+  color: #F44336;
+}
+
+/* line 57, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#edit_offering_link {
+  color: #4a89dc;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 62, /home/nick/Downloads/speedy/app/assets/stylesheets/offerings.css.scss */
+#edit_offering_link:hover {
+  color: #4CAF50;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/password_resets.css.scss */
+#reset_confirmation, #reset_password {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 10px;
+  text-align: center;
+}
+
+/* line 18, /home/nick/Downloads/speedy/app/assets/stylesheets/password_resets.css.scss */
+#submit_reset {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* line 30, /home/nick/Downloads/speedy/app/assets/stylesheets/password_resets.css.scss */
+#reset_container {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+/* line 35, /home/nick/Downloads/speedy/app/assets/stylesheets/password_resets.css.scss */
+#password_reset_overlay {
+  overflow-x: hidden;
+  width: 300px;
+  background: #f5f5f5;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  webkit-user-select: none;
+  -moz-user-select: none;
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px 20px;
+}
+/* line 1, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 7, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 10, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+paper-header-panel {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 14, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 19, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 23, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 29, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 36, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 46, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 52, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+hr {
+  border: 0;
+  height: 0;
+  width: 300px;
+  position: absolute;
+  left: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #B6B6B6;
+}
+
+/* line 62, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+core-header-panel {
+  background: white;
+}
+
+/* line 65, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#mainheader {
+  background-color: #2196F3;
+  color: #FFFFFF;
+  height: 192px;
+}
+
+/* line 70, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+select {
+  -moz-appearance: none;
+  text-overflow: '';
+}
+
+/* line 75, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+.title_div {
+  font-size: 30px;
+  line-height: 1;
+  width: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  /* line 83, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+  .title_div {
+    font-size: 21px;
+  }
+}
+/* line 88, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#drawer-menu iron-icon {
+  margin-right: 16px;
+}
+
+/* line 91, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#drawer-menu a {
+  text-decoration: none;
+  color: #212121;
+}
+
+/* line 95, /home/nick/Downloads/speedy/app/assets/stylesheets/scaffolds.css.scss */
+#logout-button {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px;
+  color: #212121;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/schedule_approvals.css.scss */
+#advisor_approve_schedule_link {
+  text-decoration: none;
+  color: #4CAF50;
+  font-weight: bold;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+#upload-transcript-header, #upload-transcript-list, #upload-transcript-asterisk {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* line 9, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+#upload-transcript-header {
+  font-weight: bold;
+}
+
+/* line 12, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+#big_schedule_table {
+  margin: 8px;
+}
+
+/* line 15, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.category-items {
+  width: 400px;
+  margin: 15px;
+  background: #fbfbfb;
+  padding: 20px 20px;
+}
+
+/* line 21, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.inactive {
+  color: #bdbdbd;
+}
+
+/* line 24, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.active {
+  color: #2196F3;
+}
+
+/* line 33, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+#schedule_calendar {
+  text-align: center;
+}
+
+/* line 36, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.day_time_slot {
+  text-align: center;
+  cursor: pointer;
+  background-color: #efefef;
+  height: 26px;
+}
+
+/* line 42, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.time_slot {
+  text-align: center;
+  cursor: pointer;
+  height: 26px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 48, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.day {
+  cursor: pointer;
+}
+
+/* line 51, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.selected_class {
+  background-color: #4CAF50;
+  color: #EAF6EB;
+  font-weight: bold;
+  cursor: text;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 58, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.half_time_slot {
+  background: linear-gradient(to bottom, #4caf50 0%, #4caf50 50%, #efefef 51%, #efefef 100%);
+  cursor: text;
+}
+
+/* line 62, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+#main {
+  background: #ececec;
+}
+
+/* line 66, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.remaining_credits_tr {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+/* line 70, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.new_schedule_tr {
+  height: 48px;
+}
+
+/* line 73, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.new_schedule_check_td {
+  padding-right: 15px;
+}
+
+/* line 76, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.new_schedule_course_td {
+  padding-right: 10px;
+  width: 150px;
+}
+
+/* line 80, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.new_schedule_days_td {
+  text-align: center;
+}
+
+/* line 84, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+#classes_shadow_schedule {
+  width: 558px;
+}
+
+@media screen and (max-width: 750px) {
+  /* line 89, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  #classes_shadow_schedule {
+    width: 367px;
+  }
+
+  /* line 92, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .remaining_credits_tr {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  /* line 97, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .new_schedule_tr {
+    height: 30px;
+  }
+
+  /* line 100, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .new_schedule_check_td {
+    padding-right: 15px;
+    padding-top: 18px;
+  }
+
+  /* line 104, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .new_schedule_course_td {
+    padding-top: 15px;
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  /* line 109, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .new_schedule_days_td {
+    text-align: center;
+    font-weight: 300;
+    font-size: 12px;
+    padding-top: 15px;
+  }
+
+  /* line 115, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .common_credit_td, .common_course_td, .common_grade_td, .no_courses_offered_msg {
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  /* line 119, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .taken_courses_tr > td, .not_offered_courses > td {
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  /* line 123, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+  .day_time_slot {
+    width: 100%;
+  }
+}
+/* line 128, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+paper-checkbox::shadow #checkbox.checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+/* line 132, /home/nick/Downloads/speedy/app/assets/stylesheets/schedules.css.scss */
+.next_day, .prev_day {
+  background: #fafafa;
+  text-align: center;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/semesters.css.scss */
+#new_semester_overlay {
+  width: 300px;
+  margin: 15px;
+  overflow-x: hidden;
+  background: #f3f3f3;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  webkit-user-select: none;
+  -moz-user-select: none;
+  padding: 20px 20px;
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* line 19, /home/nick/Downloads/speedy/app/assets/stylesheets/semesters.css.scss */
+#new_semester_material {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 15px;
+  margin-right: 25px;
+  color: #FFF;
+  background: #4CAF50;
+}
+
+/* line 29, /home/nick/Downloads/speedy/app/assets/stylesheets/semesters.css.scss */
+#semester_active {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 100%;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #212121;
+  margin-top: 13px;
+  margin-left: 10px;
+}
+
+/* line 41, /home/nick/Downloads/speedy/app/assets/stylesheets/semesters.css.scss */
+#semester_active:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* line 44, /home/nick/Downloads/speedy/app/assets/stylesheets/semesters.css.scss */
+#semester_active option {
+  color: #212121;
+}
+
+/* line 47, /home/nick/Downloads/speedy/app/assets/stylesheets/semesters.css.scss */
+#active-semester-header {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #212121;
+}
+/* line 6, /home/nick/Downloads/speedy/app/assets/stylesheets/sessions.css.scss */
+#paperTabs #ink {
+  color: #00BCD4;
+}
+
+/* line 11, /home/nick/Downloads/speedy/app/assets/stylesheets/sessions.css.scss */
+#scrollable {
+  overflow-x: hidden;
+}
+
+/* line 15, /home/nick/Downloads/speedy/app/assets/stylesheets/sessions.css.scss */
+#submit_logon {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'RobotoDraft', sans-serif;
+  color: #4CAF50;
+}
+
+/* line 30, /home/nick/Downloads/speedy/app/assets/stylesheets/sessions.css.scss */
+paper-toast {
+  bottom: 0;
+  left: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 35, /home/nick/Downloads/speedy/app/assets/stylesheets/sessions.css.scss */
+#forgot_password {
+  text-decoration: none;
+  color: #607D8B;
+  font-family: 'RobotoDraft', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 80px;
+  text-transform: capitalize;
+}
+
+/* line 45, /home/nick/Downloads/speedy/app/assets/stylesheets/sessions.css.scss */
+#new_session_overlay {
+  overflow-x: hidden;
+  width: 300px;
+  height: 500px;
+  background: #f5f5f5;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  webkit-user-select: none;
+  -moz-user-select: none;
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* line 58, /home/nick/Downloads/speedy/app/assets/stylesheets/sessions.css.scss */
+#submit_reset {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  font-family: 'RobotoDraft', sans-serif;
+  color: #2196F3;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+.transcript_remove_link {
+  color: #757575;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+/* line 11, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+.transcript_remove_link:hover {
+  color: #F44336;
+}
+
+/* line 15, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#submit_taken_class_material {
+  color: #2196F3;
+}
+
+/* line 19, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_course_id {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 60%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  -moz-appearance: none;
+  text-overflow: '';
+}
+
+/* line 34, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_grade_c {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+  margin-bottom: 8px;
+  -moz-appearance: none;
+  text-overflow: '';
+}
+
+/* line 47, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_course_id:focus, #transcript_grade_c:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* line 50, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_course_id option, #transcript_grade_c option {
+  color: #212121;
+}
+
+/* line 53, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_course_id option:first-child, #transcript_grade_c option:first-child {
+  color: #757575;
+}
+
+/* line 57, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript-items {
+  width: 375px;
+  margin: 15px;
+  background: #fbfbfb;
+  padding: 20px 20px;
+}
+
+/* line 64, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_course_error_msg, #transcript_grade_error_msg {
+  color: #db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  margin-top: -8px;
+}
+
+/* line 70, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_course_error_msg {
+  width: 60%;
+  margin-right: 8px;
+}
+
+/* line 74, /home/nick/Downloads/speedy/app/assets/stylesheets/transcripts.css.scss */
+#transcript_course_error_text, #transcript_grade_error_text {
+  display: none;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_major_id, #user_minor {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+  margin-bottom: 8px;
+}
+
+/* line 17, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_major_id:focus, #user_minor:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* line 20, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_major_id option {
+  color: #212121;
+}
+
+/* line 23, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_major_id option:first-child {
+  color: #757575;
+}
+
+/* line 27, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_advised_by {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 100%;
+  margin-top: 28px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+}
+
+/* line 38, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_advised_by:focus {
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* line 41, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_advised_by option {
+  color: #212121;
+}
+
+/* line 44, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#user_advised_by option:first-child {
+  color: #757575;
+}
+
+/* line 48, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#major_signup_dropdown_error_msg {
+  color: #db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display: none;
+  margin-top: -8px;
+}
+
+/* line 55, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#advisor_signup_dropdown_error_msg {
+  color: #db4437;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display: none;
+}
+
+/* line 62, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#advisor_label {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #757575;
+}
+
+/* line 68, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+.dropdown-error {
+  border-bottom: 2px solid #db4437 !important;
+}
+
+/* line 72, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+.user-index-column {
+  width: 25em;
+  background: #FBFBFB;
+  padding-top: 12px;
+}
+
+/* line 77, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#submit_signup {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #03A9F4;
+}
+
+/* line 90, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#signup_dropdown_advisor_error {
+  width: 100%;
+}
+
+/* line 94, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#advisee_signup_fab {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  color: #FFF;
+  background: #4CAF50;
+}
+
+/* line 104, /home/nick/Downloads/speedy/app/assets/stylesheets/users.css.scss */
+#change_password_overlay {
+  width: 350px;
+}
+/* line 5, /home/nick/Downloads/speedy/app/assets/stylesheets/work_schedules.css.scss */
+.selected_work_day_time_slot {
+  background-color: #F44336;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #F9F9F9;
+  color: #333;
+  font-family: 'RobotoDraft', sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  margin: 0;
+}
+
+p, ol, ul, td {
+  font-family: 'RobotoDraft', sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+#whole_screen_uploader {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    height: 100vh; 
+    width: 100%;
+    background: #ececec;
+    display: none;
+}
