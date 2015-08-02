@@ -5,9 +5,9 @@ These two systems should be communicating, but are not. Instead every student ha
 <br><br>
 The Calu Advisor combines these two systems. Before every semester a faculty advisor uploads all the courses that are going to be offered for the upcoming semester(.csv file) and the student uploads their current transcript from DegreeWorks. The CalU Advisor then gives the student only courses that:
 <ul>
-<li> are available
-<li> fulfill a requirement in their major or minor(s)
-<li> prerequisites are met
+<li> are available;
+<li> fulfill a requirement in their major or minor(s);
+<li> prerequisites are met;
 </ul>
 The student can also filter courses by times they don't want class. After building their schedule they can email it to their advisor and without setting up a meeting their advisor can approve their schedule. 
 ___
