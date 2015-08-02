@@ -12,11 +12,6 @@ The Calu Advisor combines these two systems. Before every semester a faculty adv
 The student can also filter courses by times they don't want class. After building their schedule they can email it to their advisor and without setting up a meeting their advisor can approve their schedule. 
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
 ___
 www.caluadvisor.com
 
