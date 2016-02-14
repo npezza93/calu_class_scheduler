@@ -1,9 +1,0 @@
-<paper-item style="height:72px;">
-    <paper-item-body two-line class="layout vertical">
-        <div><%= course.pretty_course %></div>
-        <div secondary style="font-size: 14px;line-height: 20px;" class="layout horizontal">
-            <%= link_to 'Edit', edit_course_path(course), id: "edit-course-link"  %> &nbsp | &nbsp 
-            <%= button_to "Delete", course, method: :delete, onclick: "confirm('Are you sure?');", id: "delete-course-link" %>
-        </div>
-    </paper-item-body>
-</paper-item>

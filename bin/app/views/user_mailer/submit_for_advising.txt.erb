@@ -1,9 +1,0 @@
-<%= @user.email %> has submitted their schedule for your approval. Their courses are as follows:
-
-<% @schedules.each do |schedule| %>
-        -  <%= schedule.offering.course.subject + schedule.offering.course.course.to_s + ": " + schedule.offering.course.title %>
-<% end %>    
-
-To approve <%= @user.email%>'s schedule, click the URL below.
-
-<%= user_schedules_url(@user) %>

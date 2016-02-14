@@ -1,9 +1,0 @@
-<% if not @errors %>
-    $("#category_course_tbody").append("<tr style=\"display:none;\" id=\"category_<%= @category_course.course_id %>_course\"><td style=\"text-align:center;\"><%= escape_javascript @category_course.course.subject + @category_course.course.course.to_s + ": " + @category_course.course.title %></td><td><%= escape_javascript link_to 'Remove', curriculum_category_curriculum_category_course_path(@category, @category_course), method: :delete, data: { confirm: 'Are you sure you want to remove this course?' }, id: "cur_cat_link" %></td></tr>");
-    $("#category_<%= @category_course.course_id %>_course").slideDown();
-    $("#category_course_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= @category_course.course.title %> added to <%= @category.category %>!\" style=\"padding-right: 60px;color:#4CAF50;\" duration=\"10000\" opened ></paper-toast>");
-<% else %>
-    <% @category_course.errors.full_messages.each do |message| %>
-        $("#category_course_form_errors").html("<paper-toast class=\"capsule\" text=\"<%= message %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
-    <% end %>
-<% end %>
