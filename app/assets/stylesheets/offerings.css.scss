@@ -1,6 +1,7 @@
 @import "layout";
 
-.new_offering {
+.new_offering, .edit_offering {
+  height: 100vh;
   @extend .layout.vertical;
-  @extend .layout.center;
+  @extend .layout.center-center;
 }

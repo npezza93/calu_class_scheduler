@@ -1,0 +1,5 @@
+- content_for :title do
+  Editing Offering
+
+= render 'form'
+= link_to "Remove", @offering, method: :delete, data: { confirm: 'Are you sure you want to stop offering this course?' }

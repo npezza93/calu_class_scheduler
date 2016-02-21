@@ -68,12 +68,16 @@ class FormBuilder < ActionView::Helpers::FormBuilder
       text = collection.first.send(text_method)
     end
 
-    @template.content_tag :div, class: div_classes_for_select do
+    @template.content_tag :div, class: div_classes_for_select(object.errors[method.to_s.gsub('_id', '').to_sym].blank?) do
       hidden_field(method, value: value) +
         @template.content_tag(:input, nil, select_input_attrs(random, value, text)) +
 
         @template.content_tag(:label, for: random) do
           @template.content_tag(:i, 'keyboard_arrow_down', select_arrow)
+        end +
+
+        @template.content_tag(:span, class: 'mdl-textfield__error') do
+          object.errors[method.to_s.gsub('_id', '').to_sym][0]
         end +
 
         @template.content_tag(:label, for: random) do
@@ -95,8 +99,15 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   private
 
-  def div_classes_for_select
-    'mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select'
+  def div_classes_for_select(error)
+    s = %(mdl-textfield mdl-js-textfield mdl-textfield--floating-label)
+    s += ' getmdl-select'
+
+    if !error
+      s + ' is-invalid'
+    else
+      s
+    end
   end
 
   def select_input_attrs(random, value, text)
