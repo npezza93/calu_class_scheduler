@@ -1,9 +1,27 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
+'use strict'
 $(document).on 'turbolinks:load', ->
-    # $("#drawer-menu")[0].setAttribute "selected", "5"
+  e = undefined
+  e = document.querySelectorAll('.getmdl-select')
+  [].forEach.call e, (e) ->
+    addEventListeners e
+    return
+  return
+
+addEventListeners = (e) ->
+  t = e.querySelector('input[type=text]')
+  h = e.querySelector('input[type=hidden]')
+  n = e.querySelectorAll('li')
+  e.querySelector 'i'
+  [].forEach.call n, (e) ->
+
+    e.onclick = ->
+      t.value = e.textContent
+      h.value = e.value
+      return
+
+    return
+  return
+
 $(document).on "cocoon:after-insert", (e, insertedItem) ->
   select = insertedItem.find(".getmdl-select")
   menu = insertedItem.find(".mdl-menu")
@@ -17,18 +35,5 @@ $(document).on "cocoon:after-insert", (e, insertedItem) ->
   e = document.querySelectorAll('.getmdl-select')
   [].forEach.call e, (e) ->
     addEventListeners e
-    return
-  return
-
-addEventListeners = (e) ->
-  t = e.querySelector("input[type=text]")
-  n = e.querySelectorAll('li')
-  e.querySelector 'i'
-  [].forEach.call n, (e) ->
-
-    e.onclick = ->
-      t.value = e.textContent
-      return
-
     return
   return
