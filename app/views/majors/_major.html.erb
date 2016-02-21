@@ -1,9 +1,12 @@
-<paper-item style="height:72px;">
-    <paper-item-body two-line class="layout vertical">
-        <div><%= major.major %></div>
-        <div secondary style="font-size: 14px;line-height: 20px;" class="layout horizontal">
-            <%= link_to 'Edit', edit_major_path(major), id: "edit-course-link"  %> &nbsp | &nbsp 
-            <%= button_to "Delete", major, method: :delete, onclick: "confirm('Are you sure?');", id: "delete-course-link" %>
-        </div>
-    </paper-item-body>
-</paper-item>
+<div class="mdl-list__item">
+  <span class="mdl-list__item-primary-content">
+    <span><%= major.major %></span>
+  </span>
+  <%= link_to edit_major_path(major), class: "mdl-list__item-secondary-action edit-major-link" do %>
+    <i class="material-icons">edit</i>
+  <% end %>
+
+  <%= link_to major, method: :delete, data: { confirm: 'Are you sure?' }, class: "mdl-list__item-secondary-action delete-major" do %>
+    <i class="material-icons">delete</i>
+  <% end %>
+</div>

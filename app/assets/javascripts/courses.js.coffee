@@ -3,15 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-    $("#drawer-menu")[0].setAttribute "selected", "1"
+    # $("#drawer-menu")[0].setAttribute "selected", "1"
 
     if $("#courses-notice").find('paper-toast').length > 0
       document.getElementById('courses-notice-toast').toggle()
 
     $("#cancel_new_course").click ->
       window.history.back()
-      return    
-    
+      return
+
     $("#new-course-fab").click ->
       document.location.href = "/courses/new"
       return
@@ -35,8 +35,8 @@ jQuery ->
         $("#course_minimum_sat_score" ).css "color", "#212121"
       else
         $("#course_minimum_sat_score " ).css "color", "#757575"
-      return      
-    
+      return
+
     $("#add-or-group").click (max_group_id) ->
       max_group_id = $("#prereq_groups").find('select').length
       prereq_string = "<div class='layout horizontal center-justified'style='font-size: 16px;font-weight: bold;'> - OR -</div><div class='course_prereq_group " + (max_group_id + 1) + " layout vertical'><label>Group " + (max_group_id + 1) + "</label>"

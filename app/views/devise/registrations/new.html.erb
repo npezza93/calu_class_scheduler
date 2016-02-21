@@ -1,0 +1,31 @@
+<div class="devise-container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "sign-up-form"}) do |f| %>
+    <h3 class="mdl-typography--display-2 bold center-text">Sign up</h3>
+
+    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :last_name %>
+
+    <div class="mdl-textfield mdl-js-textfield <%= "is-invalid" if resource.errors[:email].count > 0 %>">
+      <%= f.email_field :email, class: 'mdl-textfield__input' %>
+      <%= f.label :email, class: 'mdl-textfield__label' %>
+      <span class="mdl-textfield__error"><%= resource.errors.full_messages_for(:email)[0] %></span>
+    </div>
+
+    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+    <div class="mdl-textfield mdl-js-textfield <%= "is-invalid" if resource.errors[:major].count > 0 %>">
+      <%= f.select :major_id, options_from_collection_for_select(Major.all, :id, :major), { include_blank: "Choose a Major"}, { class: 'mdl-textfield__input' } %>
+      <span class="mdl-textfield__error"><%= resource.errors.full_messages_for(:major)[0] %></span>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield <%= "is-invalid" if resource.errors[:advised_by].count > 0 %>">
+      <%= f.select :advised_by, options_from_collection_for_select(User.where(advisor: true), :id, :email), { include_blank: "Choose an Advisor"}, { class: 'mdl-textfield__input' } %>
+      <span class="mdl-textfield__error"><%= resource.errors.full_messages_for(:advised_by)[0] %></span>
+    </div>
+
+    <%= f.submit "Sign up" %>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

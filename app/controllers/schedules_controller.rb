@@ -3,9 +3,9 @@ class SchedulesController < ApplicationController
   before_action :set_session_user
   before_action :set_user
   before_action :set_semester
-  
+
   before_filter :only_yours
-  
+
   def index
     @signed_up_for = @user.offerings.where(semester: @active_semester).includes(:days_time, :course)
     @day_hash = view_context.create_day_hash(@signed_up_for)
@@ -57,15 +57,16 @@ class SchedulesController < ApplicationController
     def set_session_user
       @session_user = User.find(session[:user_id])
     end
-    
+
     def set_schedule
       @schedule = Schedule.find(params[:id])
     end
 
     def set_user
-      @user = User.includes(:major, transcripts: {course: :prerequisites}, offerings: [:course, :days_time]).find(params[:user_id])
+      @user = current_user # if params[:user_id].blank
+      # @user = User.includes(:major, transcripts: {course: :prerequisites}, offerings: [:course, :days_time]).find(params[:user_id])
     end
-    
+
     def set_semester
       @active_semester = Semester.where(active: true).take
     end
@@ -74,15 +75,14 @@ class SchedulesController < ApplicationController
     def schedule_params
       params.require(:schedule).permit(:user_id, :schedule => [:offering_id])
     end
-    
+
     def only_yours
-      logged_in = User.find(session[:user_id])
-      if not (logged_in.advisor or logged_in.administrator)
+      if not (current_user.advisor or current_user.administrator)
         unless params[:user_id].to_i == session[:user_id].to_i
-          redirect_to user_transcripts_path(logged_in)
+          redirect_to user_transcripts_path(current_user)
         end
       else
-        if User.find_by_id(params[:user_id]).advisor or User.find_by_id(params[:user_id]).administrator
+        if current_user.advisor || User.find_by_id(params[:user_id]).advisor || User.find_by_id(params[:user_id]).administrator
           redirect_to users_path, notice: "Admins and Advisors don't have transcripts!"
         end
       end

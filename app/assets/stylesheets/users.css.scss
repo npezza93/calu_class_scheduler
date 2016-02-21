@@ -1,68 +1,25 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'layout';
 
-#user_major_id, #user_minor {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #757575;  
-  outline: none;
-  width: 100%;
-  margin-top: 28px;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size:16px;
-  color: #757575;
-  margin-bottom: 8px;
+.edit-user-container {
+  height: 100vh;
+  @extend .layout.vertical;
+  @extend .layout.center-center;
 }
-#user_major_id:focus, #user_minor:focus { 
-  border-bottom: 2px solid #4CAF50;  
+.edit_user {
+  @extend .layout.vertical;
 }
-#user_major_id option { 
-  color: #212121;  
-}
-#user_major_id option:first-child { 
-  color: #757575;  
+.submit-user-updates {
+  @extend .layout.horizontal;
+  @extend .layout.center-justified;
+  margin-top: 25px;
 }
 
-#user_advised_by {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #757575;  
-  outline: none;
-  width: 100%;
-  margin-top: 28px;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size:16px;
-  color: #757575;
-}
-#user_advised_by:focus { 
-  border-bottom: 2px solid #4CAF50;  
-}
-#user_advised_by option { 
-  color: #212121;  
-}
-#user_advised_by option:first-child { 
-  color: #757575;  
-}
 
-#major_signup_dropdown_error_msg {
-  color:#db4437;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  display:none;
-  margin-top: -8px;
-}
-#advisor_signup_dropdown_error_msg {
-  color:#db4437;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  display:none;
-}
 
 #advisor_label {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size:16px;
-  color: #757575; 
+  color: #757575;
 }
 
 .dropdown-error {
@@ -73,19 +30,6 @@
   width: 25em;
   background: #FBFBFB;
   padding-top:12px;
-}
-#submit_signup {
-  display: inline-block;
-  position: relative;
-  border: 0;
-  background: transparent;
-  text-align: center;
-  font: inherit;
-  text-transform: uppercase;
-  outline: none;
-  border-radius: 3px;
-  cursor: pointer;
-  color:#03A9F4;
 }
 #signup_dropdown_advisor_error {
   width:100%;

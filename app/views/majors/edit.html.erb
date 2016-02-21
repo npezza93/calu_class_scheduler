@@ -2,4 +2,10 @@
     Editing <%= @major.major %>
 <% end %>
 
-<%= render 'form' %>
+<div class="edit-major-container">
+  <%= form_for @major do |f| %>
+    <h5 class="mdl-typography--headline bold center-text">Update Major</h5>
+    <%= f.text_field :major %>
+    <%= f.submit "Update" %>
+  <% end %>
+</div>

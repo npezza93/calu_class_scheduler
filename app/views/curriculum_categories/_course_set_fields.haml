@@ -1,0 +1,9 @@
+.layout.horizontal.center.nested-fields
+  = f.collection_select :course_id,
+    Course.all.order(:subject),
+    :id,
+    :pretty_course,
+    prompt: "Choose a Course"
+
+  = link_to_remove_association f, class: "remove-course-association" do
+    %i.material-icons delete

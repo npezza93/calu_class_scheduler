@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-    $("#drawer-menu")[0].setAttribute "selected", "5"
+    # $("#drawer-menu")[0].setAttribute "selected", "5"
 
     if $("#course-set-notice").find('paper-toast').length > 0
       document.getElementById('course-set-notice-toast').toggle()

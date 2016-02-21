@@ -1,0 +1,29 @@
+- content_for :title do
+  = current_user.major.major
+  Categories
+
+.horizontal.wrap.layout.around-justified
+  %div
+    .layout.horizontal.center-justified
+      %h5.mdl-typography--headline.bold.center-text
+        = current_user.major.major
+        Major
+    .layout.horizontal.center-justified
+      .category-container
+        .mdl-list.mdl-shadow--4dp
+          = render current_user.major.major_categories
+
+  %div
+    .layout.horizontal.center-justified
+      %h5.mdl-typography--headline.bold.center-text
+        = current_user.major.major
+        Minor
+    .layout.horizontal.center-justified
+      .category-container
+        .mdl-list.mdl-shadow--4dp
+          = render current_user.major.minor_categories
+
+= link_to new_curriculum_category_path do
+  %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab
+    %i.material-icons
+      add

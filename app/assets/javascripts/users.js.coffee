@@ -2,17 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery -> 
+jQuery ->
 
-    len = location.pathname.split("/").length - 1 
-    loc = location.pathname.split("/")
-    if loc[len] == "edit" && $("#new_user_password").length > 0
-      $("#drawer-menu")[0].setAttribute "selected", "6"
-    else
-      $("#drawer-menu")[0].setAttribute "selected", "0"
-
-    if $("#users-notice").find('paper-toast').length > 0
-      document.getElementById('users-notice-toast').toggle()
+    # len = location.pathname.split("/").length - 1
+    # loc = location.pathname.split("/")
+    # if loc[len] == "edit" && $("#new_user_password").length > 0
+    #   $("#drawer-menu")[0].setAttribute "selected", "6"
+    # else
+    #   $("#drawer-menu")[0].setAttribute "selected", "0"
+    #
+    # if $("#users-notice").find('paper-toast').length > 0
+    #   document.getElementById('users-notice-toast').toggle()
 
     $("#user_major_id").change ->
       if $("#user_major_id option:selected" ).val() != ""
@@ -39,14 +39,14 @@ jQuery ->
       else
         $('#actual_advisor').prop "checked", false
       return
-      
+
     $("#cancel-edit-user").click ->
       window.history.back()
-      return   
-      
+      return
+
     $('#advisee_signup_fab').click ->
       window.location.href = '/users/new'
-      return   
+      return
 
     $("#update-advisor-of-user").click ->
       if $("#advisor_checkbox")[0].checked

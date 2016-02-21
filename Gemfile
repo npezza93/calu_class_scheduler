@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.2.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
+gem 'turbolinks', '~> 5.0.0.beta'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -29,7 +29,7 @@ gem 'spring', '~>1.3.6', group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-gem 'unicorn-rails'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -44,7 +44,14 @@ gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
 
 gem 'seed_dump'
 gem 'pg'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 gem 'polymer-rails'
 gem 'polymer-elements-rails', git: 'git://github.com/npezza93/polymer-elements-rails.git'
+gem 'devise'
+
+gem 'web-console', '~> 2.0', group: :development
+gem 'pry-rails'
+gem 'cocoon'
+gem 'haml'
+gem 'rack-mini-profiler', group: :development, git: 'git://github.com/npezza93/rack-mini-profiler'

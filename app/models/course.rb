@@ -5,12 +5,10 @@ class Course < ActiveRecord::Base
   validates :course, presence: true, numericality: { only_integer: true }
   validates :credits, presence: true, numericality: { only_integer: true }
   validates_uniqueness_of :course, scope: [:subject]
-  
+
   before_save :set_class_standing
 
   has_many :offerings
-
-  after_commit :flush_cache
   
   def pretty_course
     self.subject + self.course.to_s + ": " + self.title

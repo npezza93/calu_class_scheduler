@@ -2,61 +2,33 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
-    $("#drawer-menu")[0].setAttribute "selected", "5"
+$(document).on 'turbolinks:load', ->
+    # $("#drawer-menu")[0].setAttribute "selected", "5"
+$(document).on "cocoon:after-insert", (e, insertedItem) ->
+  select = insertedItem.find(".getmdl-select")
+  menu = insertedItem.find(".mdl-menu")
+  random = Math.random().toString(36).substr(2)
+  select.find("[for]").attr("for", random)
+  select.find(".mdl-textfield__input").attr("id", random)
+  if select.length
+    componentHandler.upgradeElement(select[0])
+    componentHandler.upgradeElement(menu[0])
+  componentHandler.upgradeElement($("div.mdl-textfield.mdl-js-textfield").last()[0])
+  e = document.querySelectorAll('.getmdl-select')
+  [].forEach.call e, (e) ->
+    addEventListeners e
+    return
+  return
 
-    if $("#categories-notice").find('paper-toast').length > 0
-      document.getElementById('categories-notice-toast').toggle()
+addEventListeners = (e) ->
+  t = e.querySelector("input[type=text]")
+  n = e.querySelectorAll('li')
+  e.querySelector 'i'
+  [].forEach.call n, (e) ->
 
-    $("#new_category_material").click ->
-      document.location.href = '/curriculum_categories/new'
-      return
-
-    $("#cancel_new_category").click ->
-      window.history.back()
-      return
-
-    $("#create-category").click ->
-      $("#new_curriculum_category").submit()
-      return
-
-    $('#major_paper_radio').on 'change', ->
-      $('#curriculum_category_minor_true').prop 'checked', false
-      $('#curriculum_category_minor_false').prop 'checked', true
-      return
-      
-    $('#minor_paper_radio').on 'change', ->
-      $('#curriculum_category_minor_false').prop 'checked', false
-      $('#curriculum_category_minor_true').prop 'checked', true
-      return
-
-    $('#set_logic_and_paper_radio').on 'change', ->
-      $('#curriculum_category_set_and_or_flag_true').prop 'checked', false
-      $('#curriculum_category_set_and_or_flag_false').prop 'checked', true
-      $('#curriculum_category_set_and_or_flag_0').prop 'checked', false
-      return
-      
-    $('#set_logic_or_paper_radio').on 'change', ->
-      $('#curriculum_category_set_and_or_flag_false').prop 'checked', false
-      $('#curriculum_category_set_and_or_flag_true').prop 'checked', true
-      $('#curriculum_category_set_and_or_flag_0').prop 'checked', false
+    e.onclick = ->
+      t.value = e.textContent
       return
 
-    $('#set_logic_na_paper_radio').on 'change', ->
-      $('#curriculum_category_set_and_or_flag_false').prop 'checked', false
-      $('#curriculum_category_set_and_or_flag_true').prop 'checked', false
-      $('#curriculum_category_set_and_or_flag_0').prop 'checked', true
-      return
-
-    $("#update-category").click ->
-      $(".edit_curriculum_category").submit()
-      return
-
-    $("#continue-form-category").on 'change', ->
-      if $("#continue-form-category")[0].checked
-        $("#continue").prop 'checked', true
-        $("#create-category").html($("#create-category").html().split("Submit").join("Next"))
-      else
-        $("#continue").prop 'checked', false
-        $("#create-category").html($("#create-category").html().split("Next").join("Submit"))
-      return
+    return
+  return

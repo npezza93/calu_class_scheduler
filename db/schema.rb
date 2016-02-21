@@ -11,19 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325130619) do
+ActiveRecord::Schema.define(version: 20160221051204) do
 
-  create_table "course_sets", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "course_sets", force: :cascade do |t|
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "curriculum_category_set_id"
   end
 
-  add_index "course_sets", ["course_id"], name: "index_course_sets_on_course_id"
-  add_index "course_sets", ["curriculum_category_set_id"], name: "index_course_sets_on_curriculum_category_set_id"
+  add_index "course_sets", ["course_id"], name: "index_course_sets_on_course_id", using: :btree
+  add_index "course_sets", ["curriculum_category_set_id"], name: "index_course_sets_on_curriculum_category_set_id", using: :btree
 
-  create_table "courses", force: true do |t|
+  create_table "courses", force: :cascade do |t|
     t.string   "subject"
     t.integer  "course"
     t.string   "title"
@@ -35,27 +38,27 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.string   "minimum_pt"
   end
 
-  create_table "curriculum_categories", force: true do |t|
+  create_table "curriculum_categories", force: :cascade do |t|
     t.string   "category"
     t.integer  "major_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "minor"
-    t.boolean  "set_and_or_flag"
+    t.string   "set_and_or_flag"
   end
 
-  add_index "curriculum_categories", ["major_id"], name: "index_curriculum_categories_on_major_id"
+  add_index "curriculum_categories", ["major_id"], name: "index_curriculum_categories_on_major_id", using: :btree
 
-  create_table "curriculum_category_sets", force: true do |t|
+  create_table "curriculum_category_sets", force: :cascade do |t|
     t.integer  "curriculum_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "count"
   end
 
-  add_index "curriculum_category_sets", ["curriculum_category_id"], name: "index_curriculum_category_sets_on_curriculum_category_id"
+  add_index "curriculum_category_sets", ["curriculum_category_id"], name: "index_curriculum_category_sets_on_curriculum_category_id", using: :btree
 
-  create_table "days_times", force: true do |t|
+  create_table "days_times", force: :cascade do |t|
     t.string   "days"
     t.string   "start_time"
     t.string   "end_time"
@@ -63,13 +66,13 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.datetime "updated_at"
   end
 
-  create_table "majors", force: true do |t|
+  create_table "majors", force: :cascade do |t|
     t.string   "major"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "needed_courses", force: true do |t|
+  create_table "needed_courses", force: :cascade do |t|
     t.integer  "course_id"
     t.integer  "user_id"
     t.integer  "semester_id"
@@ -77,11 +80,11 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.datetime "updated_at"
   end
 
-  add_index "needed_courses", ["course_id"], name: "index_needed_courses_on_course_id"
-  add_index "needed_courses", ["semester_id"], name: "index_needed_courses_on_semester_id"
-  add_index "needed_courses", ["user_id"], name: "index_needed_courses_on_user_id"
+  add_index "needed_courses", ["course_id"], name: "index_needed_courses_on_course_id", using: :btree
+  add_index "needed_courses", ["semester_id"], name: "index_needed_courses_on_semester_id", using: :btree
+  add_index "needed_courses", ["user_id"], name: "index_needed_courses_on_user_id", using: :btree
 
-  create_table "offerings", force: true do |t|
+  create_table "offerings", force: :cascade do |t|
     t.integer  "course_id"
     t.integer  "days_time_id"
     t.datetime "created_at"
@@ -91,10 +94,10 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.string   "section"
   end
 
-  add_index "offerings", ["semester_id"], name: "index_offerings_on_semester_id"
-  add_index "offerings", ["user_id"], name: "index_offerings_on_user_id"
+  add_index "offerings", ["semester_id"], name: "index_offerings_on_semester_id", using: :btree
+  add_index "offerings", ["user_id"], name: "index_offerings_on_user_id", using: :btree
 
-  create_table "prerequisites", force: true do |t|
+  create_table "prerequisites", force: :cascade do |t|
     t.integer  "parent_course_id"
     t.integer  "prerequisite_course_id"
     t.datetime "created_at"
@@ -103,7 +106,7 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.string   "minimum_grade"
   end
 
-  create_table "schedule_approvals", force: true do |t|
+  create_table "schedule_approvals", force: :cascade do |t|
     t.integer  "user_id"
     t.boolean  "approved",    default: false
     t.datetime "created_at"
@@ -111,10 +114,10 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "semester_id"
   end
 
-  add_index "schedule_approvals", ["semester_id"], name: "index_schedule_approvals_on_semester_id"
-  add_index "schedule_approvals", ["user_id"], name: "index_schedule_approvals_on_user_id"
+  add_index "schedule_approvals", ["semester_id"], name: "index_schedule_approvals_on_semester_id", using: :btree
+  add_index "schedule_approvals", ["user_id"], name: "index_schedule_approvals_on_user_id", using: :btree
 
-  create_table "schedules", force: true do |t|
+  create_table "schedules", force: :cascade do |t|
     t.integer  "offering_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -122,18 +125,18 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "semester_id"
   end
 
-  add_index "schedules", ["offering_id"], name: "index_schedules_on_offering_id"
-  add_index "schedules", ["semester_id"], name: "index_schedules_on_semester_id"
-  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id"
+  add_index "schedules", ["offering_id"], name: "index_schedules_on_offering_id", using: :btree
+  add_index "schedules", ["semester_id"], name: "index_schedules_on_semester_id", using: :btree
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
-  create_table "semesters", force: true do |t|
+  create_table "semesters", force: :cascade do |t|
     t.string   "semester"
     t.boolean  "active",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "transcripts", force: true do |t|
+  create_table "transcripts", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "course_id"
     t.datetime "created_at"
@@ -142,18 +145,15 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.boolean  "grade_c"
   end
 
-  add_index "transcripts", ["course_id"], name: "index_transcripts_on_course_id"
-  add_index "transcripts", ["user_id"], name: "index_transcripts_on_user_id"
+  add_index "transcripts", ["course_id"], name: "index_transcripts_on_course_id", using: :btree
+  add_index "transcripts", ["user_id"], name: "index_transcripts_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
-    t.string   "password_digest"
     t.boolean  "administrator",          default: false
     t.boolean  "advisor",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
     t.integer  "advised_by"
     t.integer  "major_id"
     t.text     "minor"
@@ -169,11 +169,22 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "pt_d"
     t.boolean  "sat_640"
     t.boolean  "sat_700"
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
   end
 
-  add_index "users", ["major_id"], name: "index_users_on_major_id"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["major_id"], name: "index_users_on_major_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "work_days_times", force: true do |t|
+  create_table "work_days_times", force: :cascade do |t|
     t.string   "days"
     t.time     "start_time"
     t.time     "end_time"
@@ -181,7 +192,7 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.datetime "updated_at"
   end
 
-  create_table "work_schedules", force: true do |t|
+  create_table "work_schedules", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "work_days_time_id"
     t.datetime "created_at"
@@ -189,8 +200,8 @@ ActiveRecord::Schema.define(version: 20150325130619) do
     t.integer  "semester_id"
   end
 
-  add_index "work_schedules", ["semester_id"], name: "index_work_schedules_on_semester_id"
-  add_index "work_schedules", ["user_id"], name: "index_work_schedules_on_user_id"
-  add_index "work_schedules", ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id"
+  add_index "work_schedules", ["semester_id"], name: "index_work_schedules_on_semester_id", using: :btree
+  add_index "work_schedules", ["user_id"], name: "index_work_schedules_on_user_id", using: :btree
+  add_index "work_schedules", ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id", using: :btree
 
 end

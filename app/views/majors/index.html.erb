@@ -1,21 +1,26 @@
 <% content_for :title do %>
-    Majors
+  Majors
 <% end %>
 
-<div class="layout horizontal center-justified" id="remove_course_div">
-    <paper-material id="remove_course_shadow_div">
-        <div id="paginated_courses_div">
-            <%= render @majors %>
-        </div>
-    </paper-material>
-</div>
-<br><br><br>
-
-
-<div id="majors-notice">
-  <% if notice %>
-    <paper-toast id="majors-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
-  <% end %>
+<div class="major-container">
+  <div class="mdl-list mdl-shadow--4dp">
+    <%= render @majors %>
+  </div>
 </div>
 
-<paper-fab icon="add" title="Create a Major" id="new_major_material"></paper-fab>
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored new_major_fab">
+  <i class="material-icons">add</i>
+</button>
+
+<dialog class="new_major_dialog mdl-dialog">
+	<h5 class="mdl-typography--headline bold center-text">New Major</h5>
+
+  <%= form_for Major.new do |f| %>
+		<%= f.text_field :major %>
+
+	  <div class="mdl-dialog__actions">
+	    <%= f.submit "Submit" %>
+	    <button type="button" class="mdl-button close">Cancel</button>
+	  </div>
+	<% end %>
+</dialog>

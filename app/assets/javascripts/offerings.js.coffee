@@ -1,5 +1,5 @@
 jQuery ->
-    $("#drawer-menu")[0].setAttribute "selected", "2"
+    # $("#drawer-menu")[0].setAttribute "selected", "2"
 
     if $("#offerings-notice").find('paper-toast').length > 0
       document.getElementById('offerings-notice-toast').toggle()
@@ -36,7 +36,7 @@ jQuery ->
       else
         $("#offering_user_id" ).css "color", "#757575"
       return
-      
+
     $("#upload-fab").click ->
       $("#upload_offering_button")[0].click()
       $("#upload_offering_button").on "change", ->
@@ -46,11 +46,10 @@ jQuery ->
 
     $("#show-upload-offering-details").click ->
       text = $('#show-upload-offering-details').text().trim()
-      if text == "Show Upload Details" 
+      if text == "Show Upload Details"
         text = "Hide Upload Details"
       else
         text = "Show Upload Details"
       $('#show-upload-offering-details').text(text)
       $("#upload-offering-details")[0].toggle()
       return
-      

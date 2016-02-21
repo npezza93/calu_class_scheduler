@@ -1,0 +1,12 @@
+<div class="edit-user-container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <h5 class="mdl-typography--headline bold center-text">Settings</h5>
+    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", label: "Old Password" %>
+
+    <div class="submit-user-updates">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+</div>

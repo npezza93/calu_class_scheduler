@@ -16,7 +16,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = false
-  
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -27,7 +27,7 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  config.serve_static_assets=false
+  config.serve_static_files=false
   config.action_controller.perform_caching = false
 
   # Adds additional error checking when serving assets at runtime.
@@ -37,9 +37,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  
+
   config.action_mailer.default_url_options = {host: "https://cal-class-schedule-npezza.c9.io/" }
-  
+
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => 'smtp.gmail.com',
