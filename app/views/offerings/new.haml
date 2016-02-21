@@ -1,0 +1,29 @@
+- content_for :title do
+  Offer a New Course
+
+= render 'form'
+
+.layout.horizontal.center-justified{:style => "color:#2196F3;margin-top:20px;"}
+  %paper-button#show-upload-offering-details Show Upload Details
+%iron-collapse#upload-offering-details
+  %h3{:style => "text-align:center;"} Upload a .CSV with 15 columns to quickly input offerings
+  .layout.horizontal.center-justified
+    %div{:style => "margin-left:15px;"}
+      %p Column 1,4,5,6,7,11,12,14,15 - Anything/Empty Column
+      %p Column 2 - The course formatted:
+      %ul
+        %li Subject(CSC) Course(110) Course Name
+      %p Column 3 - Course section
+      %p Column 8 - Days being offered(MWF, TR, W, etc.)
+      %p Column 9 - Start time formatted:
+      %ul
+        %li Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)
+      %p Column 10 - End time formatted:
+      %ul
+        %li Hours(leading zero)Minutes(PM or AM) (ex: 0330PM)
+      %p Column 13 - Professor formmatted:
+      %ul
+        %li "last name, first name"
+        
+= form_tag import_offerings_path, multipart: true, id: "upload-offerings-form" do
+  = file_field_tag :offering_file, id: "upload_offering_button"

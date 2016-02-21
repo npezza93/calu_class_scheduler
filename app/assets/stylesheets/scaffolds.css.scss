@@ -1,22 +1,6 @@
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
 body {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-paper-header-panel {
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-
-
 hr {
   border: 0;
   height: 0;
@@ -27,55 +11,9 @@ hr {
   border-bottom: 1px solid #B6B6B6;
 }
 
-core-header-panel {
-  background: white;
-}
-#mainheader {
-  background-color: #2196F3;
-  color: #FFFFFF;
-  height:192px;
-}
-select {
-  -moz-appearance: none;
-  text-overflow: '';
-}
-
-.title_div {
-  font-size:30px;
-  line-height:1;
-  width:100%;
-}
-
-
-@media only screen and (max-width: 500px) {
-  .title_div {
-    font-size: 21px;
-  }
-}
-
-#drawer-menu iron-icon {
-  margin-right:16px;
-}
-#drawer-menu a {
-  text-decoration: none;
-  color: #212121;
-}
-#logout-button {
-  display: inline-block;
-  position: relative;
-  border: 0;
-  background: transparent;
+.center-text {
   text-align: center;
-  font: inherit;
-  outline: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 2px;
-  color: #212121;
 }
-
-
 
 
 

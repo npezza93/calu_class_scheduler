@@ -1,0 +1,30 @@
+- content_for :title do
+  Courses Offered #{@active_semester.semester}
+.layout.horizontal.center-justified
+  .table-responsive-vertical.shadow-z-1
+    %table#table.table
+      %thead
+        %tr
+          %th Course
+          %th Instructor
+          %th Days
+          %th Start Time
+          %th End Time
+          %th Edit | Remove
+      %tbody
+        - @offerings.each do |offering|
+          %tr
+            %td{"data-title" => "Course"}= offering.course.subject + offering.course.course.to_s + "-"+ offering.section + ": " + offering.course.title
+            %td{"data-title" => "Instructor"}= offering.user.email[0..-10].capitalize
+            %td{"data-title" => "Days"}= offering.days_time.days
+            %td{"data-title" => "Start Time"}= offering.days_time.start_time
+            %td{"data-title" => "End Time"}= offering.days_time.end_time
+            %td{:style => "text-align:center;"}
+              = link_to "Edit", edit_offering_path(offering), id:"edit_offering_link"
+              | #{link_to "Remove", offering, method: :delete, data: { confirm: 'Are you sure you want to stop offering this course?' }, id:"stop_offering_link"}
+
+
+= link_to new_offering_path do
+  %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab
+    %i.material-icons
+      add

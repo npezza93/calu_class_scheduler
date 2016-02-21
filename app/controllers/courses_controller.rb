@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:destroy, :edit, :update]
-  before_filter :authorize
-  
+
   def index
     @pages = (Hash[Course.all.group_by(&:subject).sort]).keys
     if params[:subject].blank?
@@ -15,7 +14,7 @@ class CoursesController < ApplicationController
       format.html {}
     end
   end
-  
+
   def new
     @courses = Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
     @pt_options = [["Passing Part A of the Math Placement Exam", "A"],["Passing Part B of the Math Placement Exam", "B"],["Passing Part C of the Math Placement Exam", "C"],["Passing Part D of the Math Placement Exam(7-9)", "D-"],["Passing Part D of the Math Placement Exam(10 or above)", "D"]]
@@ -45,7 +44,7 @@ class CoursesController < ApplicationController
     min_grade_i =0
     prereq_min_grades = params["prereq_grades"].split("/|/")
     prereq_min_grades.map! { |grade| (grade == "N/A") ? nil : grade }
-    
+
     @prereqs = []
     groups.each_with_index do |group, index|
       group.each do |course_id|
@@ -73,11 +72,11 @@ class CoursesController < ApplicationController
     groups = (course_params[:prerequisites]).join("_").split("__").map{ |group| group.split("_").reject(&:empty?) }
     temp_params = course_params
     temp_params.delete("prerequisites")
-    
+
     min_grade_i =0
     prereq_min_grades = params["prereq_grades"].split("/|/")
     prereq_min_grades.map! { |grade| (grade == "N/A") ? nil : grade }
-    
+
     respond_to do |format|
       if @course.update(temp_params)
         @prereqs = []
@@ -99,7 +98,7 @@ class CoursesController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     Prerequisites.where(parent_course_id: @course.id).delete_all
     Prerequisites.where(prerequisite_course_id: @course.id).delete_all
@@ -113,20 +112,15 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def course_params
-      params.require(:course).permit(:subject, :course, :title, :credits, :minimum_class_standing, :minimum_sat_score, :minimum_pt, {:prerequisites => []})
-    end
-    
-    def authorize
-      logged_in = User.find_by_id(session[:user_id])
-      if not (logged_in.advisor or logged_in.administrator)
-        redirect_to user_transcripts_path(logged_in), notice: "You're not authorized to view this page!"
-      end
-    end
+  def set_course
+    @course = Course.find(params[:id])
+  end
+
+  def course_params
+    params.require(:course).permit(
+      :subject, :course, :title, :credits, :minimum_class_standing,
+      :minimum_sat_score, :minimum_pt, prerequisites: []
+    )
+  end
 end

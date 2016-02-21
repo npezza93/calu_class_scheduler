@@ -1,0 +1,17 @@
+- content_for :title do
+  Majors
+
+.major-container
+  .mdl-list.mdl-shadow--4dp
+    = render @majors
+
+%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_major_fab
+  %i.material-icons add
+
+%dialog.new_major_dialog.mdl-dialog
+  %h5.mdl-typography--headline.bold.center-text New Major
+  = form_for Major.new do |f|
+    = f.text_field :major
+    .mdl-dialog__actions
+      = f.submit "Submit"
+      %button.mdl-button.close{type: 'button'} Cancel

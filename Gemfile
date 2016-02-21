@@ -45,13 +45,9 @@ gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
 gem 'seed_dump'
 gem 'pg'
 gem 'rails_12factor', group: :production
-
-gem 'polymer-rails'
-gem 'polymer-elements-rails', git: 'git://github.com/npezza93/polymer-elements-rails.git'
 gem 'devise'
 
 gem 'web-console', '~> 2.0', group: :development
 gem 'pry-rails'
 gem 'cocoon'
 gem 'haml'
-gem 'rack-mini-profiler', group: :development, git: 'git://github.com/npezza93/rack-mini-profiler'

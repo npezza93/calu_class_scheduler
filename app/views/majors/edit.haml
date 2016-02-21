@@ -1,0 +1,11 @@
+- content_for :title do
+  Editing #{@major.major}
+.edit-major-container
+  = form_for @major do |f|
+    %h5.mdl-typography--headline.bold.center-text Update Major
+    = f.text_field :major
+    = f.submit "Update"
+
+
+
+  = link_to "Delete", @major, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-major"

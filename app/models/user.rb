@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     model.minor.reject!(&:blank?) if model.minor
   end
 
+  def name
+    first_name + ' ' + last_name
+  end
+
   def send_for_approval
     UserMailer.submit_for_advising(self).deliver
   end
