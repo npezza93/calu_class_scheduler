@@ -1,20 +1,12 @@
 @import 'layout';
 
-.edit-user-container {
-  height: 100vh;
-  @extend .layout.vertical;
-  @extend .layout.center-center;
-}
-.edit_user {
-  @extend .layout.vertical;
-}
-.submit-user-updates {
-  @extend .layout.horizontal;
-  @extend .layout.center-justified;
-  margin-top: 25px;
-}
+.advisee-row {
+  background: #FFEBEE;
 
-
+  &:hover {
+    background: #eee;
+  }
+}
 
 #advisor_label {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -22,29 +14,8 @@
   color: #757575;
 }
 
-.dropdown-error {
-  border-bottom: 2px solid #db4437 !important;
-}
-
 .user-index-column {
   width: 25em;
   background: #FBFBFB;
   padding-top:12px;
-}
-#signup_dropdown_advisor_error {
-  width:100%;
-}
-
-#advisee_signup_fab {
-  position:fixed;
-  bottom:0;
-  right:0;
-  margin-right:25px;
-  margin-bottom:15px;
-  color: #FFF;
-  background: #4CAF50;
-}
-
-#change_password_overlay {
-  width: 350px;
 }

@@ -55,7 +55,7 @@ class SchedulesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_session_user
-      @session_user = User.find(session[:user_id])
+      @session_user = current_user
     end
 
     def set_schedule

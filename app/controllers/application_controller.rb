@@ -2,11 +2,18 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  # before_filter :logged_in?
+  before_action :set_active_semester
+  before_action :set_session_semester
 
-  # def logged_in?
-  #   unless current_user
-  #     redirect_to new_user_session_path, notice: 'Please Log In!'
-  #   end
-  # end
+  def set_active_semester
+    @active_semester = Semester.active
+  end
+
+  def set_session_semester
+    if session[:semester_id]
+      @session_semester = Semester.find(session[:semester_id])
+    else
+      @session_semester = @active_semester
+    end
+  end
 end

@@ -7,7 +7,7 @@ class Offering < ActiveRecord::Base
   before_save :default_semester
 
   validates :course,
-            uniqueness: { scope: [:days_time, :user],
+            uniqueness: { scope: [:days_time, :user, :semester_id],
                           message: 'This is already being offered!'
                         }
 

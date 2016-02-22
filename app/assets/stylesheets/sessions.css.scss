@@ -12,13 +12,17 @@
   .mdl-checkbox {
     width: 132px;
   }
+
+  .mdl-button {
+    margin-top: 25px;
+  }
 }
 
-.login-form, .sign-up-form {
+.login-form, .new_user, .edit_user {
   @extend .layout.vertical;
   @extend .layout.center-center;
 }
 
-#sign_up {
+#forgot_password {
   margin-top: 50px;
 }

@@ -1,51 +1,13 @@
-// Place all the styles related to the semesters controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'layout';
 
-#new_semester_overlay {
-    width:300px;
-    margin:15px;
-    overflow-x: hidden;
-    background:#f3f3f3;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    webkit-user-select: none;
-    -moz-user-select: none;
-    padding:20px 20px;
-    outline: 1px solid rgba(0,0,0,0.2);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+.new_semester {
+  height: 100vh;
+  @extend .layout.vertical;
+  @extend .layout.center-center;
 }
 
-#new_semester_material {
-    position:fixed;
-    bottom:0;
-    right:0;
-    margin-bottom:15px;
-    margin-right:25px;
-    color: #FFF;
-    background: #4CAF50;
-}
-
-#semester_active  {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #757575;  
-  outline: none;
-  width: 100%;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size:16px;
-  color: #212121;
-  margin-top: 13px;
-  margin-left: 10px;
-}
-#semester_active:focus { 
-  border-bottom: 2px solid #4CAF50;  
-}
-#semester_active option { 
-  color: #212121;  
-}
-#active-semester-header{
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size:16px;
-  color: #212121;
+.edit_semester {
+  margin-bottom: 50px;
+  @extend .layout.vertical;
+  @extend .layout.center-center;
 }

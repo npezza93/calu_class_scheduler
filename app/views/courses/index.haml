@@ -1,0 +1,9 @@
+- content_for :title do
+  Courses
+
+= render @courses
+
+= link_to new_course_path do
+  %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab
+    %i.material-icons
+      add

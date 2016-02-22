@@ -1,39 +1,39 @@
 class Transcript < ActiveRecord::Base
   belongs_to :user, touch: true
   belongs_to :course
-  
-  validates_uniqueness_of :course, scope: :user, message: "You've already taken this course!"
-  
-  validates_presence_of :course, message: "A course must be selected!"
-  
+
+  validates_uniqueness_of :course, scope: :user, message: 'You\'ve already taken this course!'
+
+  validates_presence_of :course, message: 'A course must be selected!'
+
 
     def self.import(file, u_id)
       file = file.split /[\r\n]+/
       file.reject! { |c| c.empty? }
-      
+
       if file[0].downcase == "california university degreeworks"
         class_standing = ""
         sat_math = 0
         main_line = 0
-        
+
         file.each_with_index do |line, index|
         	split_line = line.split()
         	if split_line[0] != nil
         		if split_line[0].strip.downcase == "classification"
         			class_standing = split_line[1]
         		end
-        
+
         		if split_line[0].strip.downcase == "sat" and split_line[1].downcase == "mathematics"
         			sat_math = split_line[3].to_i
-        		end	
-        
+        		end
+
         		if split_line[0].strip.downcase == "spring" or split_line[0].strip.downcase == "fall"
         			main_line = index
         			break
         		end
         	end
         end
-        
+
         User.find(u_id).update(class_standing: class_standing)
         case sat_math
         when 700..800
@@ -49,18 +49,18 @@ class Transcript < ActiveRecord::Base
         else
           User.find(u_id).update(sat_520: false, sat_580: false, sat_440: false, sat_640: false, sat_700: false)
         end
-        
+
         file = file.drop(main_line+1)
         new_transcripts = []
         courses = Course.all
-        
+
         file.each_with_index do |line, index|
         	line = line.split("\t")
         	if line.length == 5
         		new_transcripts << [courses.where(subject: line[0].strip, course: line[1].strip.to_i).take, line[3].strip]
         	end
         end
-  
+
         user = User.includes(:transcripts, :taken_courses).find(u_id)
         taken_courses = user.taken_courses
         transcripts = user.transcripts
@@ -81,10 +81,10 @@ class Transcript < ActiveRecord::Base
         return nil
       end
     end
-    
+
     def self.grade_check(grade)
-      grades = ["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]
-      if grade[0].downcase == "t" or grade.downcase.include?"reg" or grade.downcase.include?"p"
+      grades = %w(A A- B+ B B- C+ C C- D- D D+ F)
+      if grade[0].casecmp('t') || grade.downcase.include?('reg') || grade.downcase.include?('p')
         c_minus = true
         c = true
       else

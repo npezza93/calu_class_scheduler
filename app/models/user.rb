@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, presence: true
   validates :email, uniqueness: true
-  validates :email, format: { with: /@calu.edu\Z/, message: "must be a CalU email address" }
+  validates :email, format: { with: /@calu.edu\Z/, message: 'must be a CalU email address' }
   validates :password, presence: true, length: { minimum: 6 }, if: proc { |a| !a.password.blank? }
 
   validates :major, presence: true
@@ -290,5 +290,17 @@ class User < ActiveRecord::Base
       highest_avail = mat_prereq.select { |k,v| v and (not user_courses.include?k) }
       return [highest_avail.first[0], categories.sort.last]
     end
+  end
+
+  def self.advisees(user)
+    where(advised_by: user)
+  end
+
+  def self.students(user)
+    where(advisor: false, administrator: false).where.not(advised_by: user)
+  end
+
+  def self.search(current_user, search)
+    where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%").where(advisor: false, administrator: false).to_a
   end
 end

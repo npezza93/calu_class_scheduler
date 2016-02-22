@@ -51,3 +51,4 @@ gem 'web-console', '~> 2.0', group: :development
 gem 'pry-rails'
 gem 'cocoon'
 gem 'haml'
+gem 'kaminari'

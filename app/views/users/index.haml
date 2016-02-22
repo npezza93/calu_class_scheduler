@@ -1,0 +1,25 @@
+- content_for :title do
+  Students
+
+
+%h3.mdl-display-2.bold.center-text
+  Students
+
+.layout.vertical.center
+  = form_tag users_path, method: :get, class: "search-users" do
+    .mdl-textfield.mdl-js-textfield
+      = text_field_tag :search, params[:search], class: "mdl-textfield__input", autofocus: true
+      %label.mdl-textfield__label Search
+
+  %table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+    %thead
+      %tr
+        %th.mdl-data-table__cell--non-numeric Name
+        %th
+    %tbody
+      = render @students
+
+  .layout.horizontal.justified{ style: "width: 300px;max-width:90%;margin-top: 40px;"}
+    = link_to_previous_page @students, 'Previous'
+    .flex
+    = link_to_next_page @students, 'Next'

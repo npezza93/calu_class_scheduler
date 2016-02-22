@@ -53,6 +53,10 @@
             <i class="material-icons">settings</i>
             Settings
           <% end %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "mdl-navigation__link" do %>
+            <i class="material-icons">power_settings_new</i>
+            Logout
+          <% end %>
         </nav>
       </div>
 

@@ -10,5 +10,5 @@ $(document).on 'turbolinks:load', ->
     $(this).parent().parent().parent()[0].close();
     return
 
-  if $("#notice").length > 0
+  if $("#notice").length
     $("#notice")[0].MaterialSnackbar.showSnackbar message: $(".mdl-snackbar__text").text()

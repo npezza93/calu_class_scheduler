@@ -14,6 +14,21 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def email_field(name, options = {})
+    error = 'mdl-textfield mdl-js-textfield ' +
+            (@object.errors[name.to_sym].blank? ? '' : 'is-invalid')
+    options[:class] ||= ''
+    options[:class] = options[:class] + 'mdl-textfield__input'
+
+    @template.content_tag :div, class: error, style: options[:style] do
+      super(name, options) +
+        label(name, options[:label], class: 'mdl-textfield__label') +
+        @template.content_tag(:span, class: 'mdl-textfield__error') do
+          @object.errors[name.to_sym][0]
+        end
+    end
+  end
+
   def number_field(name, options = {})
     error = 'mdl-textfield mdl-js-textfield ' +
             (@object.errors[name.to_sym].blank? ? '' : 'is-invalid')
@@ -53,6 +68,19 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     @template.content_tag :label, class: 'mdl-radio mdl-js-radio mdl-js-ripple-effect' do
       super(name, value, options) +
         @template.content_tag(:span, class: 'mdl-radio__label') do
+          label_text
+        end
+    end
+  end
+
+  def check_box(method, options = {}, checked_value = '1', unchecked_value = '0')
+    label_text = options.delete(:label)
+    options[:class] ||= ''
+    options[:class] = options[:class] + 'mdl-checkbox__input'
+
+    @template.content_tag :label, class: 'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect' do
+      super(method, options, checked_value, unchecked_value) +
+        @template.content_tag(:span, class: 'mdl-checkbox__label') do
           label_text
         end
     end

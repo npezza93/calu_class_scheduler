@@ -1,0 +1,30 @@
+- content_for :title do
+  New Course
+
+= form_for(@course) do |f|
+  = f.text_field :subject, label: 'Subject (ex: CSC, CET, etc)', maxlength: 3
+  = f.text_field :course, label: 'Course Number (ex: 120, 323, etc)', maxlength: 3
+  = f.text_field :title, label: 'Title (ex: Operating Systems)'
+  = f.number_field :credits, label: 'Credits (Defaults to 3)'
+
+
+  = f.label 'Choose Required Prerequisites (if any):', style: "font-size:16px;font-weight:bold;padding-top: 10px;"
+
+  = f.collection_select(:minimum_pt, Course::PLACEMENT_TEST_PARTS, :second, :first, prompt: "Math Placement Exam")
+  = f.collection_select(:minimum_class_standing, Course::YEARS, :second, :first, prompt: "Minimum class standing")
+  = f.collection_select(:minimum_sat_score, Course::SAT_SCORES, :second, :first, prompt: "Minimum SAT score")
+
+  #prereq_groups
+    .course_prereq_group.1.layout.vertical
+      = f.label 'Group 1:'
+      = f.select(:prerequisites, options_for_select(@courses), {}, { class: "actual_select_courses", multiple: true, size: 6})
+      %br/
+  .layout.center-justified.horizontal{:style => "color:#4CAF50;"}
+    %paper-button#add-or-group ADD an 'or' group
+  #prereq_min_grades{:style => "width:100%;"}
+  = text_field_tag :prereq_grades, nil, hidden: ""
+  = select_tag(:minimum_grades, options_for_select(['N/A','C', 'C-']), class: 'copy-min-grades', hidden: "" )
+
+  .layout.horizontal.end-justified{:style => "color:#2196F3;"}
+    %paper-button#cancel_new_course Cancel
+    %paper-button#create-course Create Course
