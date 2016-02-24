@@ -1,5 +1,7 @@
 class Course < ActiveRecord::Base
-  has_many :prerequisites, class_name: 'Prerequisites', foreign_key: 'parent_course_id'
+  has_many :prerequisite_groups
+  has_many :courses, through: :prerequisite_groups
+  
   validates :title, presence: true
   validates :subject, presence: true
   validates :course, presence: true, numericality: { only_integer: true }

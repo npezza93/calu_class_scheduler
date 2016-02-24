@@ -1,7 +1,18 @@
 - content_for :title do
   Courses
 
-= render @courses
+%h3.mdl-display-2.bold.center-text{style: "margin-top: 75px;"}
+  Courses
+
+.layout.vertical.center
+  %ul.collapsible.popout{ "data-collapsible"=>"accordion"}
+    - @courses.each do |course_code, courses|
+      %li
+        .collapsible-header
+          = course_code
+        .collapsible-body
+          %ul.demo-list-item.mdl-list
+            = render courses
 
 = link_to new_course_path do
   %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab

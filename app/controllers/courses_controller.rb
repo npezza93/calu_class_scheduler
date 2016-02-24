@@ -2,12 +2,12 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:destroy, :edit, :update]
 
   def index
-    @courses = Course.all
+    @courses = Course.all.group_by(&:subject)
   end
 
   def new
-    @courses = Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
     @course = Course.new
+    @prerequisites = @course.prerequisites.build
   end
 
   # GET /courses/1/edit
@@ -17,10 +17,6 @@ class CoursesController < ApplicationController
     if @max_group_id == nil
       @max_group_id = 1
     end
-    @courses = Course.all.map { |course| [course.subject + course.course.to_s + ": " + course.title, course.id] }
-    @pt_options = [["Passing Part A of the Math Placement Exam", "A"],["Passing Part B of the Math Placement Exam", "B"],["Passing Part C of the Math Placement Exam", "C"],["Passing Part D of the Math Placement Exam(7-9)", "D-"],["Passing Part D of the Math Placement Exam(10 or above)", "D"]]
-    @years = ["Senior", "Junior", "Sophmore", "Freshman"]
-    @sat_scores = [["440 on Mathematics or better", "440"], ["520 on Mathematics or better","520"], ["580 on Mathematics or better","580"], ["640 on Mathematics or better","640"], ["700 on Mathematics or better","700"]]
   end
 
   def create

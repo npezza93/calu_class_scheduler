@@ -14,16 +14,14 @@
   = f.collection_select(:minimum_class_standing, Course::YEARS, :second, :first, prompt: "Minimum class standing")
   = f.collection_select(:minimum_sat_score, Course::SAT_SCORES, :second, :first, prompt: "Minimum SAT score")
 
-  #prereq_groups
-    .course_prereq_group.1.layout.vertical
-      = f.label 'Group 1:'
-      = f.select(:prerequisites, options_for_select(@courses), {}, { class: "actual_select_courses", multiple: true, size: 6})
-      %br/
-  .layout.center-justified.horizontal{:style => "color:#4CAF50;"}
-    %paper-button#add-or-group ADD an 'or' group
-  #prereq_min_grades{:style => "width:100%;"}
-  = text_field_tag :prereq_grades, nil, hidden: ""
-  = select_tag(:minimum_grades, options_for_select(['N/A','C', 'C-']), class: 'copy-min-grades', hidden: "" )
+  = f.fields_for :prerequisites, @prerequisites do |builder|
+    = builder.collection_select(:prerequisite_course_id, Course.all, :id, :pretty_course)
+  -#     %br/
+  -# .layout.center-justified.horizontal{:style => "color:#4CAF50;"}
+  -#   %paper-button#add-or-group ADD an 'or' group
+  -# #prereq_min_grades{:style => "width:100%;"}
+  -# = text_field_tag :prereq_grades, nil, hidden: ""
+  -# = select_tag(:minimum_grades, options_for_select(['N/A','C', 'C-']), class: 'copy-min-grades', hidden: "" )
 
   .layout.horizontal.end-justified{:style => "color:#2196F3;"}
     %paper-button#cancel_new_course Cancel
