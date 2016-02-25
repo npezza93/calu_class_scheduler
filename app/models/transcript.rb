@@ -1,108 +1,115 @@
+# Transcript model
 class Transcript < ActiveRecord::Base
   belongs_to :user, touch: true
   belongs_to :course
 
-  validates_uniqueness_of :course, scope: :user, message: 'You\'ve already taken this course!'
+  validates_uniqueness_of :course, scope: :user,
+                                   message: 'You\'ve already taken this course!'
 
   validates_presence_of :course, message: 'A course must be selected!'
 
+  GRADES = %w(A A- B+ B B- C+ C C- D- D D+ F).freeze
 
-    def self.import(file, u_id)
-      file = file.split /[\r\n]+/
-      file.reject! { |c| c.empty? }
+  # methods for importing transcript text
+  class << self
+    def import(text, user)
+      text = text.split(/[\r\n]+/)
+      text.reject!(&:empty?)
 
-      if file[0].downcase == "california university degreeworks"
-        class_standing = ""
-        sat_math = 0
-        main_line = 0
+      return nil if text[0].casecmp('DegreeWorks: New Production') == -1
+      update_sat_scores(text, user)
+      parsed_transcripts = parse_courses(text.drop(main_line(text)), Course.all)
 
-        file.each_with_index do |line, index|
-        	split_line = line.split()
-        	if split_line[0] != nil
-        		if split_line[0].strip.downcase == "classification"
-        			class_standing = split_line[1]
-        		end
+      update_transcripts(user, parsed_transcripts)
+    end
 
-        		if split_line[0].strip.downcase == "sat" and split_line[1].downcase == "mathematics"
-        			sat_math = split_line[3].to_i
-        		end
+    def update_sat_scores(text, user)
+      math_sat_score = sat_info(text, user)
 
-        		if split_line[0].strip.downcase == "spring" or split_line[0].strip.downcase == "fall"
-        			main_line = index
-        			break
-        		end
-        	end
-        end
+      user.update(
+        sat_520: math_sat_score >= 520,
+        sat_580: math_sat_score >= 580,
+        sat_440: math_sat_score >= 440,
+        sat_640: math_sat_score >= 640,
+        sat_700: math_sat_score >= 700
+      )
+    end
 
-        User.find(u_id).update(class_standing: class_standing)
-        case sat_math
-        when 700..800
-          User.find(u_id).update(sat_520: true, sat_580: true, sat_440: true, sat_640: true, sat_700: true)
-        when 640..699
-          User.find(u_id).update(sat_520: true, sat_580: true, sat_440: true, sat_640: true, sat_700: false)
-        when 580..639
-          User.find(u_id).update(sat_520: true, sat_580: true, sat_440: true, sat_640: false, sat_700: false)
-        when 520..579
-          User.find(u_id).update(sat_520: true, sat_580: false, sat_440: true, sat_640: false, sat_700: false)
-        when 440..519
-          User.find(u_id).update(sat_520: false, sat_580: false, sat_440: true, sat_640: false, sat_700: false)
-        else
-          User.find(u_id).update(sat_520: false, sat_580: false, sat_440: false, sat_640: false, sat_700: false)
-        end
+    def sat_info(text, user)
+      text.each do |line|
+        first = line.split[0].strip
+        second = line.split[1]
+        next if first.nil?
 
-        file = file.drop(main_line+1)
-        new_transcripts = []
-        courses = Course.all
+        user.update(class_standing: second) if first =~ /classification/i
 
-        file.each_with_index do |line, index|
-        	line = line.split("\t")
-        	if line.length == 5
-        		new_transcripts << [courses.where(subject: line[0].strip, course: line[1].strip.to_i).take, line[3].strip]
-        	end
-        end
-
-        user = User.includes(:transcripts, :taken_courses).find(u_id)
-        taken_courses = user.taken_courses
-        transcripts = user.transcripts
-
-        new_transcripts.each do |new_transcript|
-          if new_transcript[1] != "w"
-            c_minus, c = self.grade_check(new_transcript[1])
-
-            if taken_courses.include? new_transcript[0]
-              transcript = transcripts.where(course: new_transcript[0]).take.update(grade_c_minus: c_minus, grade_c: c)
-            else
-              transcript = user.transcripts.new(course: new_transcript[0], grade_c_minus: c_minus, grade_c: c)
-              transcript.save
-            end
-          end
-        end
-      else
-        return nil
+        return line.split[3].to_i if first =~ /sat/i && second =~ /mathematics/i
       end
     end
 
-    def self.grade_check(grade)
-      grades = %w(A A- B+ B B- C+ C C- D- D D+ F)
-      if grade[0].casecmp('t') || grade.downcase.include?('reg') || grade.downcase.include?('p')
-        c_minus = true
-        c = true
-      else
-        begin
-          if grades.index(grade) >= 8
-            c_minus = c = false
-          else
-            if grades.index(grade) <= 6
-              c_minus = c = true
-            elsif grades.index(grade) == 7
-              c = false
-              c_minus = true
-            end
-          end
-        rescue
-          c_minus = c = false
-        end
+    def main_line(text)
+      text.each_with_index do |line, index|
+        first = line.split[0].strip
+        return (index + 1) if first =~ /spring/i || first =~ /fall/i
       end
-      return c_minus, c
     end
+
+    def parse_courses(file, courses)
+      parsed = []
+
+      file.each do |line|
+        line = line.split("\t")
+        next if line.length != 5
+
+        parsed << [
+          courses.find_by(subject: line[0].strip, course: line[1].strip.to_i),
+          line[3].strip
+        ]
+      end
+      parsed
+    end
+
+    def update_transcripts(user, parsed_transcripts)
+      transcripts = user.transcripts
+      parsed_transcripts.each do |transcript|
+        next if transcript[1] == 'w'
+
+        create_or_update(transcript, user.taken_courses, transcripts)
+      end
+    end
+
+    def create_or_update(transcript, taken_courses, transcripts)
+      grade = transcript[1]
+      c = c?(grade)
+      c_minus = c_minus?(grade)
+
+      if taken_courses.include? transcript[0]
+        transcripts.find_by(course: transcript[0])
+                   .update(grade_c_minus: c_minus, grade_c: c)
+      else
+        transcripts.create(course: transcript[0],
+                           grade_c_minus: c_minus, grade_c: c)
+      end
+    end
+
+    def c?(grade)
+      if (grade[0].casecmp('t') || grade.downcase.include?('reg') ||
+         grade.downcase.include?('p')) > -1
+        return true
+      elsif GRADES.index(grade) && GRADES.index(grade) <= 6
+        return true
+      end
+      false
+    end
+
+    def c_minus?(grade)
+      if (grade[0].casecmp('t') || grade.downcase.include?('reg') ||
+         grade.downcase.include?('p')) > -1
+        return true
+      elsif GRADES.index(grade) && GRADES.index(grade) <= 7
+        return true
+      end
+      false
+    end
+  end
 end

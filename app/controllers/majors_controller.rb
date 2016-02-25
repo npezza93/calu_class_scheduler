@@ -1,7 +1,8 @@
+# controller for Major
+# new is handled in the index action and there is no reason for a show action
 class MajorsController < ApplicationController
   before_action :set_major, only: [:destroy, :edit, :update]
   before_action :set_majors, only: [:index, :create]
-  before_filter :authorize
 
   def index
   end
@@ -45,12 +46,5 @@ class MajorsController < ApplicationController
 
   def major_params
     params.require(:major).permit(:major)
-  end
-
-  def authorize
-    unless current_user.advisor || current_user.administrator
-      redirect_to user_transcripts_path(logged_in),
-                  notice: 'You\'re not authorized to view this page!'
-    end
   end
 end

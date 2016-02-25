@@ -2,7 +2,7 @@ class CurriculumCategory < ActiveRecord::Base
   belongs_to :major
   validates :category, presence: true
   validates :minor, presence: true
-  
+
   validates_uniqueness_of :category, scope: [:major, :minor]
   has_many :curriculum_category_sets, dependent: :destroy
   has_many :course_sets, through: :curriculum_category_sets, dependent: :destroy

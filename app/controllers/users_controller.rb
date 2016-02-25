@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_active_semester, only: [:update]
-
   def index
     @students = Kaminari.paginate_array(
       if !params[:search].blank?
@@ -11,10 +9,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_active_semester
-    @active_semester = Semester.where(active: true).take
-  end
 
   def advisor_student_params
     params.require(:user).permit(

@@ -29,12 +29,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: :index do
-    resources :transcripts, only: [:index, :create, :destroy] do
-      collection do
-        post :import
-      end
+  resources :transcripts, only: [:index, :create, :destroy] do
+    collection do
+      post :import
     end
+  end
+
+  resources :users, only: :index do
     resources :schedules, only: [:index, :create, :new, :destroy]
     resources :schedule_approvals, only: [:create, :new, :edit, :update]
     resources :work_schedules, only: [:create, :new, :index, :destroy]

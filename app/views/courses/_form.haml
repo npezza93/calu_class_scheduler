@@ -1,0 +1,21 @@
+= form_for(@course) do |f|
+  .layout.horizontal.form-course-container
+    = f.text_field :subject, label: 'Subject (ex: CSC)', maxlength: 3
+    = f.text_field :course, label: 'Number (ex: 120)', maxlength: 3
+  = f.text_field :title, label: 'Title (ex: Operating Systems)'
+  = f.number_field :credits, label: 'Credits (Defaults to 3)'
+
+
+  = f.label 'Choose Required Prerequisites (if any):', style: "font-size:16px;font-weight:bold;padding-top: 10px;"
+
+  = f.collection_select(:minimum_pt, Course::PLACEMENT_TEST_PARTS, :second, :first, prompt: "Math Placement Exam")
+  = f.collection_select(:minimum_class_standing, Course::YEARS, :second, :first, prompt: "Minimum class standing")
+  = f.collection_select(:minimum_sat_score, Course::SAT_SCORES, :second, :first, prompt: "Minimum SAT score")
+
+  = f.fields_for :prerequisite_groups, @prerequisite_groups do |builder|
+    .category-sets-container
+      = render "prerequisite_group_fields", f: builder
+
+  = link_to_add_association 'Add Group', f, :prerequisite_groups
+
+  = f.submit

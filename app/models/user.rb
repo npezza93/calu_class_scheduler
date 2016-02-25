@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :work_schedules, -> { where(semester: Semester.where(active: true).take) }
   has_many :work_days_times, through: :work_schedules
 
+  scope :offering_advisors, -> { where('advisor = ? OR email = ?', true, 'staff@calu.edu') }
   serialize :minor, Array
 
   before_validation do |model|

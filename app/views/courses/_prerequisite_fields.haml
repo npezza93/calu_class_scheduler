@@ -1,6 +1,6 @@
 .layout.horizontal.center.nested-fields
   = f.collection_select :course_id,
-    @courses,
+    Course.all.order(:subject),
     :id,
     :pretty_course,
     prompt: "Choose a Course"

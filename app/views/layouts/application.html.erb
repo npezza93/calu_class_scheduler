@@ -49,6 +49,12 @@
             <i class="material-icons">sort</i>
             Categories
           <% end %>
+          <div class="mdl-menu__item--full-bleed-divider"></div>
+          <%= link_to transcripts_path, class: "mdl-navigation__link" do %>
+            <i class="material-icons">description</i>
+            Transcript
+          <% end %>
+          <div class="mdl-menu__item--full-bleed-divider"></div>
           <%= link_to edit_user_registration_path, class: "mdl-navigation__link" do %>
             <i class="material-icons">settings</i>
             Settings

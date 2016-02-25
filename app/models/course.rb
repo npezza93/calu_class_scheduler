@@ -1,14 +1,16 @@
 class Course < ActiveRecord::Base
-  has_many :prerequisite_groups
-  has_many :courses, through: :prerequisite_groups
-  
+  has_many :prerequisite_groups, dependent: :destroy
+  has_many :prerequisites, through: :prerequisite_groups, dependent: :destroy
+  has_many :courses, through: :prerequisites
+
+  accepts_nested_attributes_for :prerequisite_groups,
+                                allow_destroy: true, reject_if: :all_blank
+
   validates :title, presence: true
   validates :subject, presence: true
   validates :course, presence: true, numericality: { only_integer: true }
   validates :credits, presence: true, numericality: { only_integer: true }
   validates_uniqueness_of :course, scope: [:subject]
-
-  before_save :set_class_standing
 
   has_many :offerings
 
@@ -41,13 +43,5 @@ class Course < ActiveRecord::Base
 
   def pretty_course
     subject + course.to_s + ': ' + title
-  end
-
-  private
-
-  def set_class_standing
-    if minimum_class_standing == 'No minimum class standing'
-      minimum_class_standing = nil
-    end
   end
 end

@@ -1,8 +1,11 @@
+# CurriculumCategory
+# handles creating and updating CurriculumCategorySet and CourseSet
 class CurriculumCategoriesController < ApplicationController
   before_action :set_category, except: [:create, :new, :index]
   before_action :set_major
 
   def index
+    @courses = Course.all.order(:subject)
   end
 
   def show
@@ -15,6 +18,7 @@ class CurriculumCategoriesController < ApplicationController
   end
 
   def edit
+    @courses = Course.all.order(:subject)
   end
 
   def create
@@ -46,7 +50,8 @@ class CurriculumCategoriesController < ApplicationController
   private
 
   def set_category
-    @category = CurriculumCategory.includes(curriculum_category_sets: :courses).find(params[:id])
+    @category = CurriculumCategory.includes(curriculum_category_sets: :courses)
+                                  .find(params[:id])
   end
 
   def set_major

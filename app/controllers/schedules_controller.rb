@@ -1,6 +1,5 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
-  before_action :set_session_user
   before_action :set_user
   before_action :set_semester
 
@@ -32,7 +31,7 @@ class SchedulesController < ApplicationController
     @work_schedules = @user.work_schedules.includes(:work_days_time)
     @schedules = @user.offerings
     @offerings = @incomplete_category_courses.values.flatten.collect(&:id)
-    render :layout => false
+    render layout: false
   end
 
   def create
@@ -53,38 +52,32 @@ class SchedulesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_session_user
-      @session_user = current_user
-    end
 
-    def set_schedule
-      @schedule = Schedule.find(params[:id])
-    end
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
 
-    def set_user
-      @user = current_user # if params[:user_id].blank
-      # @user = User.includes(:major, transcripts: {course: :prerequisites}, offerings: [:course, :days_time]).find(params[:user_id])
-    end
+  def set_user
+    @user = User.includes(:major,
+                          transcripts: { course: :prerequisites },
+                          offerings: [:course, :days_time]
+                         ).find(params[:user_id])
+  end
 
-    def set_semester
-      @active_semester = Semester.where(active: true).take
-    end
+  def set_semester
+    @active_semester = Semester.where(active: true).take
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def schedule_params
-      params.require(:schedule).permit(:user_id, :schedule => [:offering_id])
-    end
+  def schedule_params
+    params.require(:schedule).permit(:user_id, schedule: [:offering_id])
+  end
 
-    def only_yours
-      if not (current_user.advisor or current_user.administrator)
-        unless params[:user_id].to_i == session[:user_id].to_i
-          redirect_to user_transcripts_path(current_user)
-        end
-      else
-        if current_user.advisor || User.find_by_id(params[:user_id]).advisor || User.find_by_id(params[:user_id]).administrator
-          redirect_to users_path, notice: "Admins and Advisors don't have transcripts!"
-        end
-      end
+  def only_yours
+    if !current_user.advisor && (params[:user_id].to_i == session[:user_id].to_i)
+      redirect_to user_transcripts_path(current_user)
+    elsif current_user.advisor || @user.advisor
+      redirect_to users_path,
+                  notice: 'Admins and Advisors don\'t have transcripts!'
     end
+  end
 end

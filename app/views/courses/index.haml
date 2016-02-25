@@ -12,7 +12,11 @@
           = course_code
         .collapsible-body
           %ul.demo-list-item.mdl-list
-            = render courses
+            - courses.each do |course|
+              %li.mdl-list__item
+                %span.mdl-list__item-primary-content
+                  = link_to course.pretty_course, edit_course_path(course)
+
 
 = link_to new_course_path do
   %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab

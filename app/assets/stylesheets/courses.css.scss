@@ -5,7 +5,9 @@
   @extend .layout.center;
   max-width: 95%;
 }
-
+.form-course-container {
+  max-width: 300px;
+}
 .collapsible {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
@@ -31,7 +33,7 @@
   cursor: pointer;
   min-height: 3rem;
   line-height: 3rem;
-  padding: 0 1rem;
+  padding: 6px 1rem;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   font-family: "Roboto","Helvetica","Arial",sans-serif;

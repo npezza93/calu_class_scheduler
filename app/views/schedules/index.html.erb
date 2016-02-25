@@ -2,33 +2,6 @@
     <%= @user.first_name.capitalize + " " + @user.last_name.capitalize %>'s Schedule
 <% end %>
 
-<paper-dialog id="upload-transcript-dialog" entry-animation="scale-up-animation" exit-animation="scale-down-animation">
-    <div id="upload-transcript-header" class="layout horizontal center-center">To Upload an Updated Transcript</div>
-    <ol  id="upload-transcript-list" style="margin-left: 24px;">
-        <li>Log in to VIP and go to DegreeWorks</li>
-        <li>Click the "Class History" link</li>
-        <li>Once the new window opens, <br>press CTRL+A to select all the text</li>
-        <li>Paste this text in the space below</li>
-    </ol>
-    <div id="upload-transcript-asterisk">
-        ** No grades or SAT scores will be saved
-    </div>
-    
-    <%= form_tag(import_user_transcripts_path(@user), remote: true) do %>
-      <paper-input-container id="transcript-text-area">
-        <iron-autogrow-textarea max-rows="2" rows="2" placeholder="Paste Transcript Here">
-          <%= text_area_tag 'Transcript',nil, style: "width:100%;", is: "iron-input" %>
-        </iron-autogrow-textarea>
-        <paper-input-error></paper-input-error>
-      </paper-input-container>
-      <%= text_area_tag 'Transcript',nil, style: "width:100%;", hidden: "" %>
-    <% end %>
-    
-    <div class="layout end-justified horizontal" style="color:#03A9F4;">
-        <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button id="upload_transcript_button">Upload</paper-button>
-    </div>
-</paper-dialog>
 
 <% if not @session_user.advisor %>
     <%= render "users/student_settings" %>
@@ -57,6 +30,6 @@
 </div>
 
 <div id="whole_screen_uploader">
-  <iron-image style="width:85%; height:85%; background-color: #ececec;margin:auto;left:10%;" 
+  <iron-image style="width:85%; height:85%; background-color: #ececec;margin:auto;left:10%;"
   sizing="contain" preload fade src="<%= image_url('callogo.jpg') %>"></iron-image>
 </div>

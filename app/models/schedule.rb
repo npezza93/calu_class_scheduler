@@ -1,12 +1,11 @@
 class CreditNCourseValidator < ActiveModel::Validator
   def validate(schedule)
-    user_id = schedule.user_id
     user = User.includes(:courses).find(112)
 
     credits = 0
     user.courses.each { |course| credits += course.credits }
 
-    if (credits+schedule.course.credits) > 18
+    if (credits + schedule.course.credits) > 18
       schedule.errors[:Credits] << 'cannot exceed the maximum of 18'
     end
 
@@ -17,10 +16,16 @@ class CreditNCourseValidator < ActiveModel::Validator
 
       days_in_q = schedule_days_time.days
 
-      day_time_ar = schedule.user.offerings.includes(:days_time).collect { |s| [s.days_time.days, Time.parse(s.days_time.start_time), Time.parse(s.days_time.end_time)] }
+      day_time_ar = schedule.user.offerings.includes(:days_time).collect do |s|
+        [
+          s.days_time.days,
+          Time.parse(s.days_time.start_time),
+          Time.parse(s.days_time.end_time)
+        ]
+      end
 
       day_time_ar.each do |off_time|
-        if (days_in_q == off_time[0]) and (start_time_in_q <= end_off_time and start_off_time <=end_time_in_q)
+        if days_in_q == off_time[0] && start_time_in_q <= end_off_time && start_off_time <= end_time_in_q
           schedule.errors[:Course_times] << 'cannot overlap'
         end
       end

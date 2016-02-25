@@ -1,9 +1,10 @@
+# Offering controller
 class OfferingsController < ApplicationController
   before_action :set_offering, only: [:destroy, :edit, :update]
 
   def index
     @active_semester = Semester.find_by(active: true)
-    @offerings = Offering.where(semester: @active_semester)
+    @offerings = Offering.includes(:course, :days_time, :user).where(semester: @active_semester)
   end
 
   def new

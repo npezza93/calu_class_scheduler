@@ -1,8 +1,11 @@
 - content_for :title do
   Majors
 
-.major-container
-  .mdl-list.mdl-shadow--4dp
+%h3.mdl-display-2.bold.center-text{style: "margin-top: 75px;"}
+  Majors
+
+.layout.vertical.center
+  %ul.collapsible.popout{ "data-collapsible"=>"accordion"}
     = render @majors
 
 %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_major_fab

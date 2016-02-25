@@ -1,6 +1,3 @@
-.mdl-list__item
-  %span.mdl-list__item-primary-content
-    %span= major.major
-
-  = link_to edit_major_path(major), class: "mdl-list__item-secondary-action edit-major-link" do
-    %i.material-icons edit
+%li
+  .collapsible-header
+    = link_to major.major, edit_major_path(major), class: "mdl-list__item-secondary-action edit-major-link"

@@ -4644,2734 +4644,1336 @@ Course.create(
   ]
 )
 
-Prerequisites.create(
-  [
-    {
-      parent_course_id: 27,
-      prerequisite_course_id: 39,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 17,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 35,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 460,
-      prerequisite_course_id: 459,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 461,
-      prerequisite_course_id: 460,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 17,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 462,
-      prerequisite_course_id: 461,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 462,
-      prerequisite_course_id: 28,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 464,
-      prerequisite_course_id: 462,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 465,
-      prerequisite_course_id: 464,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 468,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 467,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 182,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 467,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 468,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 469,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 469,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 16,
-      course_group_id: 3,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 31,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 469,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 475,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 473,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 477,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 478,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 479,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 182,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 525,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 481,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 485,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 2,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 7,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 7,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 19,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 12,
-      prerequisite_course_id: 20,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 14,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 28,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 21,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 464,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 469,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 16,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 469,
-      course_group_id: 3,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 2,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 23,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 24,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 22,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 31,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 29,
-      prerequisite_course_id: 487,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 491,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 492,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 86,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 86,
-      prerequisite_course_id: 175,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 87,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 87,
-      prerequisite_course_id: 175,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 495,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 28,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 88,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 88,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 496,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 496,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 89,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 89,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 497,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 497,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 498,
-      prerequisite_course_id: 491,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 498,
-      prerequisite_course_id: 492,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 90,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 90,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 491,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 492,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 91,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 91,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 500,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 500,
-      prerequisite_course_id: 30,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 501,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 501,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 502,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 502,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 503,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 503,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 505,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 505,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 506,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 506,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 92,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 92,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 507,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 507,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 508,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 508,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 509,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 509,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 510,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 510,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 511,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 511,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 512,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 512,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 513,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 513,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 514,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 514,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 515,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 515,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 516,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 516,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 79,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 80,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 81,
-      course_group_id: 3,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 518,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 518,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 519,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 519,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 520,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 520,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 93,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 93,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 522,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 522,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 523,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 523,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 333,
-      prerequisite_course_id: 329,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 334,
-      prerequisite_course_id: 330,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 335,
-      prerequisite_course_id: 329,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 335,
-      prerequisite_course_id: 330,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 336,
-      prerequisite_course_id: 331,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 341,
-      prerequisite_course_id: 329,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 341,
-      prerequisite_course_id: 330,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 329,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 330,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 344,
-      prerequisite_course_id: 41,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 344,
-      prerequisite_course_id: 44,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 78,
-      prerequisite_course_id: 41,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 78,
-      prerequisite_course_id: 43,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 345,
-      prerequisite_course_id: 329,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 345,
-      prerequisite_course_id: 330,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 350,
-      prerequisite_course_id: 331,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 350,
-      prerequisite_course_id: 336,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 351,
-      prerequisite_course_id: 331,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 351,
-      prerequisite_course_id: 336,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 352,
-      prerequisite_course_id: 328,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 354,
-      prerequisite_course_id: 328,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 371,
-      prerequisite_course_id: 154,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 371,
-      prerequisite_course_id: 153,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 157,
-      prerequisite_course_id: 143,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 162,
-      prerequisite_course_id: 154,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 153,
-      prerequisite_course_id: 154,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 156,
-      prerequisite_course_id: 143,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 161,
-      prerequisite_course_id: 143,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 374,
-      prerequisite_course_id: 154,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 374,
-      prerequisite_course_id: 162,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 374,
-      prerequisite_course_id: 153,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 163,
-      prerequisite_course_id: 177,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 158,
-      prerequisite_course_id: 143,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 380,
-      prerequisite_course_id: 371,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 384,
-      prerequisite_course_id: 154,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 384,
-      prerequisite_course_id: 162,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 384,
-      prerequisite_course_id: 374,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 384,
-      prerequisite_course_id: 153,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 386,
-      prerequisite_course_id: 143,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 386,
-      prerequisite_course_id: 154,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 386,
-      prerequisite_course_id: 162,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 386,
-      prerequisite_course_id: 374,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 386,
-      prerequisite_course_id: 384,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 393,
-      prerequisite_course_id: 392,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 97,
-      prerequisite_course_id: 96,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 98,
-      prerequisite_course_id: 97,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 99,
-      prerequisite_course_id: 98,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 400,
-      prerequisite_course_id: 99,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 401,
-      prerequisite_course_id: 400,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 402,
-      prerequisite_course_id: 401,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 403,
-      prerequisite_course_id: 402,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 404,
-      prerequisite_course_id: 403,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 405,
-      prerequisite_course_id: 404,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 124,
-      prerequisite_course_id: 123,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 406,
-      prerequisite_course_id: 123,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 406,
-      prerequisite_course_id: 124,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 407,
-      prerequisite_course_id: 406,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 125,
-      prerequisite_course_id: 123,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 125,
-      prerequisite_course_id: 124,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 408,
-      prerequisite_course_id: 407,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 409,
-      prerequisite_course_id: 408,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 416,
-      prerequisite_course_id: 409,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 417,
-      prerequisite_course_id: 416,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 418,
-      prerequisite_course_id: 417,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 419,
-      prerequisite_course_id: 418,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 176,
-      prerequisite_course_id: 175,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 432,
-      prerequisite_course_id: 428,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 434,
-      prerequisite_course_id: 176,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 436,
-      prerequisite_course_id: 176,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 437,
-      prerequisite_course_id: 176,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 139,
-      prerequisite_course_id: 137,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 441,
-      prerequisite_course_id: 138,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 115,
-      prerequisite_course_id: 114,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 165,
-      prerequisite_course_id: 164,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 449,
-      prerequisite_course_id: 109,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 174,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 174,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 173,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 173,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 172,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 172,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 23,
-      prerequisite_course_id: 25,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 24,
-      prerequisite_course_id: 22,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 39,
-      prerequisite_course_id: 23,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 40,
-      prerequisite_course_id: 24,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 42,
-      prerequisite_course_id: 39,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 56,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 57,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 58,
-      prerequisite_course_id: 25,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 59,
-      prerequisite_course_id: 23,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 59,
-      prerequisite_course_id: 58,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 60,
-      prerequisite_course_id: 59,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 64,
-      prerequisite_course_id: 59,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 63,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 63,
-      prerequisite_course_id: 62,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 65,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 66,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 66,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 67,
-      prerequisite_course_id: 61,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 67,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 67,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 68,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 68,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 69,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 69,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 70,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 70,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 71,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 71,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 72,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 72,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 73,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 73,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 74,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 74,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 30,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 500,
-      prerequisite_course_id: 91,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 166,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 170,
-      prerequisite_course_id: 168,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 171,
-      prerequisite_course_id: 169,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 158,
-      prerequisite_course_id: 154,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 179,
-      prerequisite_course_id: 178,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 189,
-      prerequisite_course_id: 186,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 200,
-      prerequisite_course_id: 199,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 214,
-      prerequisite_course_id: 199,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 219,
-      prerequisite_course_id: 218,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 315,
-      prerequisite_course_id: 45,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 316,
-      prerequisite_course_id: 315,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 60,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 39,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 318,
-      prerequisite_course_id: 60,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 318,
-      prerequisite_course_id: 39,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 319,
-      prerequisite_course_id: 60,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 319,
-      prerequisite_course_id: 39,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 320,
-      prerequisite_course_id: 59,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 321,
-      prerequisite_course_id: 318,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 321,
-      prerequisite_course_id: 27,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 59,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: nil,
-      prerequisite_course_id: 23,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 293,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 293,
-      prerequisite_course_id: 56,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 294,
-      prerequisite_course_id: 56,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 295,
-      prerequisite_course_id: 56,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 297,
-      prerequisite_course_id: 57,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 298,
-      prerequisite_course_id: 57,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 299,
-      prerequisite_course_id: 294,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 299,
-      prerequisite_course_id: 297,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 300,
-      prerequisite_course_id: 295,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 300,
-      prerequisite_course_id: 299,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 301,
-      prerequisite_course_id: 56,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 301,
-      prerequisite_course_id: 57,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 303,
-      prerequisite_course_id: 57,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 304,
-      prerequisite_course_id: 295,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 304,
-      prerequisite_course_id: 307,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 305,
-      prerequisite_course_id: 294,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 306,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 306,
-      prerequisite_course_id: 56,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 306,
-      prerequisite_course_id: 57,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 306,
-      prerequisite_course_id: 297,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 311,
-      prerequisite_course_id: 309,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 312,
-      prerequisite_course_id: 310,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 312,
-      prerequisite_course_id: 311,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 313,
-      prerequisite_course_id: 312,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 314,
-      prerequisite_course_id: 294,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 314,
-      prerequisite_course_id: 295,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 314,
-      prerequisite_course_id: 297,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 273,
-      prerequisite_course_id: 271,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 274,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 274,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 274,
-      prerequisite_course_id: 45,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 275,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 275,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 275,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 275,
-      prerequisite_course_id: 56,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 276,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 276,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 276,
-      prerequisite_course_id: 55,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 276,
-      prerequisite_course_id: 56,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 277,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 277,
-      prerequisite_course_id: 67,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 278,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 278,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 278,
-      prerequisite_course_id: 67,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 280,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 280,
-      prerequisite_course_id: 67,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 281,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 281,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 281,
-      prerequisite_course_id: 61,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 68,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 72,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 68,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 74,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 69,
-      course_group_id: 3,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 72,
-      course_group_id: 3,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 69,
-      course_group_id: 4,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 282,
-      prerequisite_course_id: 74,
-      course_group_id: 4,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 283,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 283,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 283,
-      prerequisite_course_id: 67,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 284,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 284,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 284,
-      prerequisite_course_id: 67,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 284,
-      prerequisite_course_id: 274,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 285,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 285,
-      prerequisite_course_id: 67,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 286,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 287,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 287,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 287,
-      prerequisite_course_id: 274,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 287,
-      prerequisite_course_id: 275,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 288,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 288,
-      prerequisite_course_id: 72,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 288,
-      prerequisite_course_id: 74,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 289,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 289,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 289,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 289,
-      prerequisite_course_id: 274,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 290,
-      prerequisite_course_id: 61,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 290,
-      prerequisite_course_id: 62,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 290,
-      prerequisite_course_id: 63,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 290,
-      prerequisite_course_id: 57,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 555,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 565,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 578,
-      prerequisite_course_id: 535,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 218,
-      prerequisite_course_id: 579,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 581,
-      prerequisite_course_id: 1,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 581,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 581,
-      prerequisite_course_id: 4,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 582,
-      prerequisite_course_id: 2,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 582,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 582,
-      prerequisite_course_id: 6,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 583,
-      prerequisite_course_id: 2,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 583,
-      prerequisite_course_id: 4,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 583,
-      prerequisite_course_id: 4,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 584,
-      prerequisite_course_id: 4,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 584,
-      prerequisite_course_id: 4,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 584,
-      prerequisite_course_id: 1,
-      course_group_id: 3,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 584,
-      prerequisite_course_id: 3,
-      course_group_id: 3,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 469,
-      prerequisite_course_id: 467,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 469,
-      prerequisite_course_id: 468,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 470,
-      prerequisite_course_id: 182,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 470,
-      prerequisite_course_id: 467,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 470,
-      prerequisite_course_id: 468,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 471,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 471,
-      prerequisite_course_id: 469,
-      course_group_id: 2,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 472,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 472,
-      prerequisite_course_id: 469,
-      course_group_id: 2,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 472,
-      prerequisite_course_id: 16,
-      course_group_id: 3,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 31,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 473,
-      prerequisite_course_id: 31,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 474,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 475,
-      prerequisite_course_id: 469,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 476,
-      prerequisite_course_id: 473,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 476,
-      prerequisite_course_id: 475,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 478,
-      prerequisite_course_id: 477,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 479,
-      prerequisite_course_id: 478,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 480,
-      prerequisite_course_id: 479,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 481,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 482,
-      prerequisite_course_id: 182,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 482,
-      prerequisite_course_id: 470,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 482,
-      prerequisite_course_id: 525,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 485,
-      prerequisite_course_id: 481,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 486,
-      prerequisite_course_id: 485,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 3,
-      prerequisite_course_id: 2,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 14,
-      prerequisite_course_id: 22,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 5,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 6,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 6,
-      prerequisite_course_id: 469,
-      course_group_id: 2,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 15,
-      prerequisite_course_id: 3,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 15,
-      prerequisite_course_id: 16,
-      course_group_id: 2,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 15,
-      prerequisite_course_id: 469,
-      course_group_id: 3,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 16,
-      prerequisite_course_id: 2,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 457,
-      prerequisite_course_id: 31,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 8,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 18,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 19,
-      prerequisite_course_id: 7,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 9,
-      prerequisite_course_id: 19,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 32,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 33,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 33,
-      prerequisite_course_id: 23,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 33,
-      prerequisite_course_id: 24,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 11,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 20,
-      prerequisite_course_id: 8,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 20,
-      prerequisite_course_id: 14,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 21,
-      prerequisite_course_id: 5,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 21,
-      prerequisite_course_id: 28,
-      course_group_id: 1,
-      minimum_grade: 'C-'
-    },
-    {
-      parent_course_id: 13,
-      prerequisite_course_id: 21,
-      course_group_id: 1,
-      minimum_grade: 'C'
-    },
-    {
-      parent_course_id: 517,
-      prerequisite_course_id: 29,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 517,
-      prerequisite_course_id: 30,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 517,
-      prerequisite_course_id: 79,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 517,
-      prerequisite_course_id: 80,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 517,
-      prerequisite_course_id: 81,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 542,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 543,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 543,
-      prerequisite_course_id: 529,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 551,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 553,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 554,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 566,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 566,
-      prerequisite_course_id: 529,
-      course_group_id: 2,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 568,
-      prerequisite_course_id: 528,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 568,
-      prerequisite_course_id: 529,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 577,
-      prerequisite_course_id: 535,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 317,
-      prerequisite_course_id: 24,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 317,
-      prerequisite_course_id: 39,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 317,
-      prerequisite_course_id: 42,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 317,
-      prerequisite_course_id: 60,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 324,
-      prerequisite_course_id: 23,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 324,
-      prerequisite_course_id: 59,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 324,
-      prerequisite_course_id: 60,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 326,
-      prerequisite_course_id: 58,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 326,
-      prerequisite_course_id: 59,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 53,
-      prerequisite_course_id: 199,
-      course_group_id: 1,
-      minimum_grade: nil
-    },
-    {
-      parent_course_id: 212,
-      prerequisite_course_id: 211,
-      course_group_id: 1,
-      minimum_grade: nil
-    }
-  ]
-)
+PrerequisiteGroup.create(course_id: 3)
+Prerequisite.create(prerequisite_group_id: 1, course_id: 2,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 5)
+Prerequisite.create(prerequisite_group_id: 2, course_id: 3,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 6)
+Prerequisite.create(prerequisite_group_id: 3, course_id: 5,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 6)
+Prerequisite.create(prerequisite_group_id: 4, course_id: 469,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 7)
+Prerequisite.create(prerequisite_group_id: 5, course_id: 8,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 8)
+Prerequisite.create(prerequisite_group_id: 6, course_id: 5,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 9)
+Prerequisite.create(prerequisite_group_id: 7, course_id: 19,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 11)
+Prerequisite.create(prerequisite_group_id: 8, course_id: 8,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 12)
+Prerequisite.create(prerequisite_group_id: 9, course_id: 20,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 13)
+Prerequisite.create(prerequisite_group_id: 10, course_id: 21,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 14)
+Prerequisite.create(prerequisite_group_id: 11, course_id: 22,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 15)
+Prerequisite.create(prerequisite_group_id: 12, course_id: 3,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 15)
+Prerequisite.create(prerequisite_group_id: 13, course_id: 16,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 15)
+Prerequisite.create(prerequisite_group_id: 14, course_id: 469,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 16)
+Prerequisite.create(prerequisite_group_id: 15, course_id: 2,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 18)
+Prerequisite.create(prerequisite_group_id: 16, course_id: 8,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 19)
+Prerequisite.create(prerequisite_group_id: 17, course_id: 7,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 20)
+Prerequisite.create(prerequisite_group_id: 18, course_id: 8,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 18, course_id: 14,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 21)
+Prerequisite.create(prerequisite_group_id: 19, course_id: 5,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 19, course_id: 28,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 28)
+Prerequisite.create(prerequisite_group_id: 20, course_id: 29,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 29)
+Prerequisite.create(prerequisite_group_id: 21, course_id: 487,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 30)
+Prerequisite.create(prerequisite_group_id: 22, course_id: 29,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 31)
+Prerequisite.create(prerequisite_group_id: 23, course_id: 470,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 32)
+Prerequisite.create(prerequisite_group_id: 24, course_id: 8,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 33)
+Prerequisite.create(prerequisite_group_id: 25, course_id: 8,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 25, course_id: 23,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 25, course_id: 24,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 35)
+Prerequisite.create(prerequisite_group_id: 26, course_id: 3,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 53)
+Prerequisite.create(prerequisite_group_id: 27, course_id: 199,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 56)
+Prerequisite.create(prerequisite_group_id: 28, course_id: 55,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 57)
+Prerequisite.create(prerequisite_group_id: 29, course_id: 55,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 58)
+Prerequisite.create(prerequisite_group_id: 30, course_id: 25,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 59)
+Prerequisite.create(prerequisite_group_id: 31, course_id: 23,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 31, course_id: 58,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 60)
+Prerequisite.create(prerequisite_group_id: 32, course_id: 59,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 63)
+Prerequisite.create(prerequisite_group_id: 33, course_id: 61,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 63)
+Prerequisite.create(prerequisite_group_id: 34, course_id: 62,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 64)
+Prerequisite.create(prerequisite_group_id: 35, course_id: 59,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 65)
+Prerequisite.create(prerequisite_group_id: 36, course_id: 55,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 66)
+Prerequisite.create(prerequisite_group_id: 37, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 37, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 68)
+Prerequisite.create(prerequisite_group_id: 38, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 38, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 69)
+Prerequisite.create(prerequisite_group_id: 39, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 39, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 70)
+Prerequisite.create(prerequisite_group_id: 40, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 40, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 71)
+Prerequisite.create(prerequisite_group_id: 41, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 41, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 72)
+Prerequisite.create(prerequisite_group_id: 42, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 42, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 73)
+Prerequisite.create(prerequisite_group_id: 43, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 43, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 74)
+Prerequisite.create(prerequisite_group_id: 44, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 44, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 78)
+Prerequisite.create(prerequisite_group_id: 45, course_id: 41,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 45, course_id: 43,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 17)
+Prerequisite.create(prerequisite_group_id: 46, course_id: 3,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 45)
+Prerequisite.create(prerequisite_group_id: 47, course_id: 618,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 22)
+Prerequisite.create(prerequisite_group_id: 48, course_id: 45,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 26)
+Prerequisite.create(prerequisite_group_id: 49, course_id: 618,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 23)
+Prerequisite.create(prerequisite_group_id: 50, course_id: 25,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 24)
+Prerequisite.create(prerequisite_group_id: 51, course_id: 625,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 24)
+Prerequisite.create(prerequisite_group_id: 52, course_id: 22,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 39)
+Prerequisite.create(prerequisite_group_id: 53, course_id: 23,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 42)
+Prerequisite.create(prerequisite_group_id: 54, course_id: 39,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 27)
+Prerequisite.create(prerequisite_group_id: 55, course_id: 39,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 40)
+Prerequisite.create(prerequisite_group_id: 56, course_id: 24,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 55)
+Prerequisite.create(prerequisite_group_id: 57, course_id: 618,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 86)
+Prerequisite.create(prerequisite_group_id: 58, course_id: 29,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 86)
+Prerequisite.create(prerequisite_group_id: 59, course_id: 175,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 87)
+Prerequisite.create(prerequisite_group_id: 60, course_id: 29,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 87)
+Prerequisite.create(prerequisite_group_id: 61, course_id: 175,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 88)
+Prerequisite.create(prerequisite_group_id: 62, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 62, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 89)
+Prerequisite.create(prerequisite_group_id: 63, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 63, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 90)
+Prerequisite.create(prerequisite_group_id: 64, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 64, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 91)
+Prerequisite.create(prerequisite_group_id: 65, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 65, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 92)
+Prerequisite.create(prerequisite_group_id: 66, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 66, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 93)
+Prerequisite.create(prerequisite_group_id: 67, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 67, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 97)
+Prerequisite.create(prerequisite_group_id: 68, course_id: 96,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 98)
+Prerequisite.create(prerequisite_group_id: 69, course_id: 97,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 99)
+Prerequisite.create(prerequisite_group_id: 70, course_id: 98,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 115)
+Prerequisite.create(prerequisite_group_id: 71, course_id: 114,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 124)
+Prerequisite.create(prerequisite_group_id: 72, course_id: 123,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 125)
+Prerequisite.create(prerequisite_group_id: 73, course_id: 123,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 73, course_id: 124,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 139)
+Prerequisite.create(prerequisite_group_id: 74, course_id: 137,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 153)
+Prerequisite.create(prerequisite_group_id: 75, course_id: 154,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 156)
+Prerequisite.create(prerequisite_group_id: 76, course_id: 143,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 157)
+Prerequisite.create(prerequisite_group_id: 77, course_id: 143,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 158)
+Prerequisite.create(prerequisite_group_id: 78, course_id: 143,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 78, course_id: 154,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 161)
+Prerequisite.create(prerequisite_group_id: 79, course_id: 143,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 162)
+Prerequisite.create(prerequisite_group_id: 80, course_id: 154,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 165)
+Prerequisite.create(prerequisite_group_id: 81, course_id: 164,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 170)
+Prerequisite.create(prerequisite_group_id: 82, course_id: 168,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 171)
+Prerequisite.create(prerequisite_group_id: 83, course_id: 169,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 172)
+Prerequisite.create(prerequisite_group_id: 84, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 84, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 173)
+Prerequisite.create(prerequisite_group_id: 85, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 85, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 174)
+Prerequisite.create(prerequisite_group_id: 86, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 86, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 176)
+Prerequisite.create(prerequisite_group_id: 87, course_id: 175,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 179)
+Prerequisite.create(prerequisite_group_id: 88, course_id: 178,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 200)
+Prerequisite.create(prerequisite_group_id: 89, course_id: 199,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 212)
+Prerequisite.create(prerequisite_group_id: 90, course_id: 211,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 214)
+Prerequisite.create(prerequisite_group_id: 91, course_id: 199,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 218)
+Prerequisite.create(prerequisite_group_id: 92, course_id: 579,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 219)
+Prerequisite.create(prerequisite_group_id: 93, course_id: 218,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 230)
+Prerequisite.create(prerequisite_group_id: 94, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 230)
+Prerequisite.create(prerequisite_group_id: 95, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 231)
+Prerequisite.create(prerequisite_group_id: 96, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 231)
+Prerequisite.create(prerequisite_group_id: 97, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 232)
+Prerequisite.create(prerequisite_group_id: 98, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 232)
+Prerequisite.create(prerequisite_group_id: 99, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 234)
+Prerequisite.create(prerequisite_group_id: 100, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 234)
+Prerequisite.create(prerequisite_group_id: 101, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 235)
+Prerequisite.create(prerequisite_group_id: 102, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 235)
+Prerequisite.create(prerequisite_group_id: 103, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 236)
+Prerequisite.create(prerequisite_group_id: 104, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 236)
+Prerequisite.create(prerequisite_group_id: 105, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 237)
+Prerequisite.create(prerequisite_group_id: 106, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 237)
+Prerequisite.create(prerequisite_group_id: 107, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 238)
+Prerequisite.create(prerequisite_group_id: 108, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 239)
+Prerequisite.create(prerequisite_group_id: 109, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 239)
+Prerequisite.create(prerequisite_group_id: 110, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 240)
+Prerequisite.create(prerequisite_group_id: 111, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 240)
+Prerequisite.create(prerequisite_group_id: 112, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 241)
+Prerequisite.create(prerequisite_group_id: 113, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 241)
+Prerequisite.create(prerequisite_group_id: 114, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 242)
+Prerequisite.create(prerequisite_group_id: 115, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 242)
+Prerequisite.create(prerequisite_group_id: 116, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 243)
+Prerequisite.create(prerequisite_group_id: 117, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 243)
+Prerequisite.create(prerequisite_group_id: 118, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 244)
+Prerequisite.create(prerequisite_group_id: 119, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 244)
+Prerequisite.create(prerequisite_group_id: 120, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 245)
+Prerequisite.create(prerequisite_group_id: 121, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 245)
+Prerequisite.create(prerequisite_group_id: 122, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 246)
+Prerequisite.create(prerequisite_group_id: 123, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 247)
+Prerequisite.create(prerequisite_group_id: 124, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 247)
+Prerequisite.create(prerequisite_group_id: 125, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 248)
+Prerequisite.create(prerequisite_group_id: 126, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 248)
+Prerequisite.create(prerequisite_group_id: 127, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 249)
+Prerequisite.create(prerequisite_group_id: 128, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 249)
+Prerequisite.create(prerequisite_group_id: 129, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 250)
+Prerequisite.create(prerequisite_group_id: 130, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 250)
+Prerequisite.create(prerequisite_group_id: 131, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 251)
+Prerequisite.create(prerequisite_group_id: 132, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 251)
+Prerequisite.create(prerequisite_group_id: 133, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 225)
+Prerequisite.create(prerequisite_group_id: 134, course_id: 45,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 274)
+Prerequisite.create(prerequisite_group_id: 135, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 135, course_id: 55,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 135, course_id: 45,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 275)
+Prerequisite.create(prerequisite_group_id: 136, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 136, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 136, course_id: 55,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 136, course_id: 56,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 276)
+Prerequisite.create(prerequisite_group_id: 137, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 137, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 137, course_id: 55,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 137, course_id: 56,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 277)
+Prerequisite.create(prerequisite_group_id: 138, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 138, course_id: 67,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 278)
+Prerequisite.create(prerequisite_group_id: 139, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 139, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 139, course_id: 67,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 280)
+Prerequisite.create(prerequisite_group_id: 140, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 140, course_id: 67,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 282)
+Prerequisite.create(prerequisite_group_id: 141, course_id: 68,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 141, course_id: 72,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 282)
+Prerequisite.create(prerequisite_group_id: 142, course_id: 68,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 142, course_id: 74,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 282)
+Prerequisite.create(prerequisite_group_id: 143, course_id: 69,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 143, course_id: 72,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 282)
+Prerequisite.create(prerequisite_group_id: 144, course_id: 69,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 144, course_id: 74,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 283)
+Prerequisite.create(prerequisite_group_id: 145, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 145, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 145, course_id: 67,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 285)
+Prerequisite.create(prerequisite_group_id: 146, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 146, course_id: 67,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 286)
+Prerequisite.create(prerequisite_group_id: 147, course_id: 61,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 287)
+Prerequisite.create(prerequisite_group_id: 148, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 148, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 148, course_id: 274,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 287)
+Prerequisite.create(prerequisite_group_id: 149, course_id: 275,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 289)
+Prerequisite.create(prerequisite_group_id: 150, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 150, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 150, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 150, course_id: 274,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 290)
+Prerequisite.create(prerequisite_group_id: 151, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 151, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 151, course_id: 63,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 151, course_id: 57,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 293)
+Prerequisite.create(prerequisite_group_id: 152, course_id: 55,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 152, course_id: 56,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 294)
+Prerequisite.create(prerequisite_group_id: 153, course_id: 56,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 295)
+Prerequisite.create(prerequisite_group_id: 154, course_id: 56,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 297)
+Prerequisite.create(prerequisite_group_id: 155, course_id: 57,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 298)
+Prerequisite.create(prerequisite_group_id: 156, course_id: 57,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 299)
+Prerequisite.create(prerequisite_group_id: 157, course_id: 294,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 157, course_id: 297,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 300)
+Prerequisite.create(prerequisite_group_id: 158, course_id: 295,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 158, course_id: 299,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 301)
+Prerequisite.create(prerequisite_group_id: 159, course_id: 56,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 159, course_id: 57,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 303)
+Prerequisite.create(prerequisite_group_id: 160, course_id: 57,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 304)
+Prerequisite.create(prerequisite_group_id: 161, course_id: 295,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 161, course_id: 307,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 305)
+Prerequisite.create(prerequisite_group_id: 162, course_id: 294,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 306)
+Prerequisite.create(prerequisite_group_id: 163, course_id: 55,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 163, course_id: 56,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 163, course_id: 57,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 163, course_id: 297,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 311)
+Prerequisite.create(prerequisite_group_id: 164, course_id: 309,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 312)
+Prerequisite.create(prerequisite_group_id: 165, course_id: 310,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 165, course_id: 311,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 313)
+Prerequisite.create(prerequisite_group_id: 166, course_id: 312,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 314)
+Prerequisite.create(prerequisite_group_id: 167, course_id: 294,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 167, course_id: 295,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 167, course_id: 297,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 315)
+Prerequisite.create(prerequisite_group_id: 168, course_id: 45,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 316)
+Prerequisite.create(prerequisite_group_id: 169, course_id: 315,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 317)
+Prerequisite.create(prerequisite_group_id: 170, course_id: 24,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 170, course_id: 39,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 170, course_id: 42,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 170, course_id: 60,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 318)
+Prerequisite.create(prerequisite_group_id: 171, course_id: 60,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 171, course_id: 39,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 319)
+Prerequisite.create(prerequisite_group_id: 172, course_id: 60,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 172, course_id: 39,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 320)
+Prerequisite.create(prerequisite_group_id: 173, course_id: 59,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 324)
+Prerequisite.create(prerequisite_group_id: 174, course_id: 23,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 174, course_id: 59,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 174, course_id: 60,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 326)
+Prerequisite.create(prerequisite_group_id: 175, course_id: 58,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 175, course_id: 59,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 321)
+Prerequisite.create(prerequisite_group_id: 176, course_id: 27,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 176, course_id: 318,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 321)
+Prerequisite.create(prerequisite_group_id: 177, course_id: 27,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 321)
+Prerequisite.create(prerequisite_group_id: 178, course_id: 318,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 254)
+Prerequisite.create(prerequisite_group_id: 179, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 254)
+Prerequisite.create(prerequisite_group_id: 180, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 255)
+Prerequisite.create(prerequisite_group_id: 181, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 255)
+Prerequisite.create(prerequisite_group_id: 182, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 256)
+Prerequisite.create(prerequisite_group_id: 183, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 256)
+Prerequisite.create(prerequisite_group_id: 184, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 257)
+Prerequisite.create(prerequisite_group_id: 185, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 257)
+Prerequisite.create(prerequisite_group_id: 186, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 258)
+Prerequisite.create(prerequisite_group_id: 187, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 258)
+Prerequisite.create(prerequisite_group_id: 188, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 262)
+Prerequisite.create(prerequisite_group_id: 189, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 262)
+Prerequisite.create(prerequisite_group_id: 190, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 263)
+Prerequisite.create(prerequisite_group_id: 191, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 263)
+Prerequisite.create(prerequisite_group_id: 192, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 265)
+Prerequisite.create(prerequisite_group_id: 193, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 336)
+Prerequisite.create(prerequisite_group_id: 194, course_id: 331,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 345)
+Prerequisite.create(prerequisite_group_id: 195, course_id: 329,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 345)
+Prerequisite.create(prerequisite_group_id: 196, course_id: 330,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 350)
+Prerequisite.create(prerequisite_group_id: 197, course_id: 331,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 197, course_id: 336,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 351)
+Prerequisite.create(prerequisite_group_id: 198, course_id: 331,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 198, course_id: 336,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 352)
+Prerequisite.create(prerequisite_group_id: 199, course_id: 328,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 354)
+Prerequisite.create(prerequisite_group_id: 200, course_id: 328,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 400)
+Prerequisite.create(prerequisite_group_id: 201, course_id: 99,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 401)
+Prerequisite.create(prerequisite_group_id: 202, course_id: 400,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 402)
+Prerequisite.create(prerequisite_group_id: 203, course_id: 401,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 403)
+Prerequisite.create(prerequisite_group_id: 204, course_id: 402,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 404)
+Prerequisite.create(prerequisite_group_id: 205, course_id: 403,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 405)
+Prerequisite.create(prerequisite_group_id: 206, course_id: 404,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 406)
+Prerequisite.create(prerequisite_group_id: 207, course_id: 123,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 207, course_id: 124,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 407)
+Prerequisite.create(prerequisite_group_id: 208, course_id: 406,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 408)
+Prerequisite.create(prerequisite_group_id: 209, course_id: 407,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 409)
+Prerequisite.create(prerequisite_group_id: 210, course_id: 408,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 416)
+Prerequisite.create(prerequisite_group_id: 211, course_id: 409,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 417)
+Prerequisite.create(prerequisite_group_id: 212, course_id: 416,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 418)
+Prerequisite.create(prerequisite_group_id: 213, course_id: 417,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 419)
+Prerequisite.create(prerequisite_group_id: 214, course_id: 418,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 432)
+Prerequisite.create(prerequisite_group_id: 215, course_id: 428,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 434)
+Prerequisite.create(prerequisite_group_id: 216, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 436)
+Prerequisite.create(prerequisite_group_id: 217, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 437)
+Prerequisite.create(prerequisite_group_id: 218, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 441)
+Prerequisite.create(prerequisite_group_id: 219, course_id: 138,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 457)
+Prerequisite.create(prerequisite_group_id: 220, course_id: 31,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 460)
+Prerequisite.create(prerequisite_group_id: 221, course_id: 459,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 461)
+Prerequisite.create(prerequisite_group_id: 222, course_id: 460,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 462)
+Prerequisite.create(prerequisite_group_id: 223, course_id: 461,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 223, course_id: 28,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 465)
+Prerequisite.create(prerequisite_group_id: 224, course_id: 464,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 469)
+Prerequisite.create(prerequisite_group_id: 225, course_id: 467,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 225, course_id: 468,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 470)
+Prerequisite.create(prerequisite_group_id: 226, course_id: 28,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 226, course_id: 182,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 226, course_id: 467,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 226, course_id: 468,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 471)
+Prerequisite.create(prerequisite_group_id: 227, course_id: 5,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 471)
+Prerequisite.create(prerequisite_group_id: 228, course_id: 469,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 472)
+Prerequisite.create(prerequisite_group_id: 229, course_id: 3,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 472)
+Prerequisite.create(prerequisite_group_id: 230, course_id: 469,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 472)
+Prerequisite.create(prerequisite_group_id: 231, course_id: 16,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 473)
+Prerequisite.create(prerequisite_group_id: 232, course_id: 31,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 474)
+Prerequisite.create(prerequisite_group_id: 233, course_id: 470,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 475)
+Prerequisite.create(prerequisite_group_id: 234, course_id: 469,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 476)
+Prerequisite.create(prerequisite_group_id: 235, course_id: 473,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 235, course_id: 475,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 478)
+Prerequisite.create(prerequisite_group_id: 236, course_id: 477,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 479)
+Prerequisite.create(prerequisite_group_id: 237, course_id: 478,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 480)
+Prerequisite.create(prerequisite_group_id: 238, course_id: 479,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 481)
+Prerequisite.create(prerequisite_group_id: 239, course_id: 470,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 482)
+Prerequisite.create(prerequisite_group_id: 240, course_id: 182,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 240, course_id: 470,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 240, course_id: 525,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 485)
+Prerequisite.create(prerequisite_group_id: 241, course_id: 473,
+                    minimum_grade: 'C-')
+Prerequisite.create(prerequisite_group_id: 241, course_id: 481,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 486)
+Prerequisite.create(prerequisite_group_id: 242, course_id: 485,
+                    minimum_grade: 'C-')
+PrerequisiteGroup.create(course_id: 491)
+Prerequisite.create(prerequisite_group_id: 243, course_id: 29,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 428)
+Prerequisite.create(prerequisite_group_id: 244, course_id: 37,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 244, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 430)
+Prerequisite.create(prerequisite_group_id: 245, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 431)
+Prerequisite.create(prerequisite_group_id: 246, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 433)
+Prerequisite.create(prerequisite_group_id: 247, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 435)
+Prerequisite.create(prerequisite_group_id: 248, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 449)
+Prerequisite.create(prerequisite_group_id: 249, course_id: 106,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 249, course_id: 109,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 449)
+Prerequisite.create(prerequisite_group_id: 250, course_id: 109,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 250, course_id: 114,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 449)
+Prerequisite.create(prerequisite_group_id: 251, course_id: 109,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 251, course_id: 115,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 495)
+Prerequisite.create(prerequisite_group_id: 252, course_id: 29,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 496)
+Prerequisite.create(prerequisite_group_id: 253, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 253, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 497)
+Prerequisite.create(prerequisite_group_id: 254, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 254, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 501)
+Prerequisite.create(prerequisite_group_id: 255, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 255, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 502)
+Prerequisite.create(prerequisite_group_id: 256, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 256, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 503)
+Prerequisite.create(prerequisite_group_id: 257, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 257, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 505)
+Prerequisite.create(prerequisite_group_id: 258, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 258, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 506)
+Prerequisite.create(prerequisite_group_id: 259, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 259, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 507)
+Prerequisite.create(prerequisite_group_id: 260, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 260, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 508)
+Prerequisite.create(prerequisite_group_id: 261, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 261, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 509)
+Prerequisite.create(prerequisite_group_id: 262, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 262, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 510)
+Prerequisite.create(prerequisite_group_id: 263, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 263, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 511)
+Prerequisite.create(prerequisite_group_id: 264, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 264, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 512)
+Prerequisite.create(prerequisite_group_id: 265, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 265, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 513)
+Prerequisite.create(prerequisite_group_id: 266, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 266, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 514)
+Prerequisite.create(prerequisite_group_id: 267, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 267, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 515)
+Prerequisite.create(prerequisite_group_id: 268, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 268, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 516)
+Prerequisite.create(prerequisite_group_id: 269, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 269, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 517)
+Prerequisite.create(prerequisite_group_id: 270, course_id: 29,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 517)
+Prerequisite.create(prerequisite_group_id: 271, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 517)
+Prerequisite.create(prerequisite_group_id: 272, course_id: 79,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 517)
+Prerequisite.create(prerequisite_group_id: 273, course_id: 80,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 517)
+Prerequisite.create(prerequisite_group_id: 274, course_id: 81,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 518)
+Prerequisite.create(prerequisite_group_id: 275, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 275, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 519)
+Prerequisite.create(prerequisite_group_id: 276, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 276, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 520)
+Prerequisite.create(prerequisite_group_id: 277, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 277, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 522)
+Prerequisite.create(prerequisite_group_id: 278, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 278, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 523)
+Prerequisite.create(prerequisite_group_id: 279, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 279, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 542)
+Prerequisite.create(prerequisite_group_id: 280, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 543)
+Prerequisite.create(prerequisite_group_id: 281, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 543)
+Prerequisite.create(prerequisite_group_id: 282, course_id: 529,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 551)
+Prerequisite.create(prerequisite_group_id: 283, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 553)
+Prerequisite.create(prerequisite_group_id: 284, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 554)
+Prerequisite.create(prerequisite_group_id: 285, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 555)
+Prerequisite.create(prerequisite_group_id: 286, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 566)
+Prerequisite.create(prerequisite_group_id: 287, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 566)
+Prerequisite.create(prerequisite_group_id: 288, course_id: 529,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 568)
+Prerequisite.create(prerequisite_group_id: 289, course_id: 528,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 289, course_id: 529,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 540)
+Prerequisite.create(prerequisite_group_id: 290, course_id: 528,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 565)
+Prerequisite.create(prerequisite_group_id: 291, course_id: 528,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 291, course_id: 553,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 565)
+Prerequisite.create(prerequisite_group_id: 292, course_id: 528,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 292, course_id: 554,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 577)
+Prerequisite.create(prerequisite_group_id: 293, course_id: 535,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 578)
+Prerequisite.create(prerequisite_group_id: 294, course_id: 535,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 67)
+Prerequisite.create(prerequisite_group_id: 295, course_id: 61,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 295, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 67)
+Prerequisite.create(prerequisite_group_id: 296, course_id: 62,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 296, course_id: 63,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 464)
+Prerequisite.create(prerequisite_group_id: 297, course_id: 28,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 297, course_id: 462,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 296)
+Prerequisite.create(prerequisite_group_id: 298, course_id: 56,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 298, course_id: 57,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 189)
+Prerequisite.create(prerequisite_group_id: 299, course_id: 186,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 189)
+Prerequisite.create(prerequisite_group_id: 300, course_id: 188,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 500)
+Prerequisite.create(prerequisite_group_id: 301, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 301, course_id: 30,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 500)
+Prerequisite.create(prerequisite_group_id: 302, course_id: 29,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 302, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 500)
+Prerequisite.create(prerequisite_group_id: 303, course_id: 30,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 303, course_id: 175,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 500)
+Prerequisite.create(prerequisite_group_id: 304, course_id: 175,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 304, course_id: 176,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 581)
+Prerequisite.create(prerequisite_group_id: 305, course_id: 154,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 581)
+Prerequisite.create(prerequisite_group_id: 306, course_id: 153,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 582)
+Prerequisite.create(prerequisite_group_id: 307, course_id: 581,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 583)
+Prerequisite.create(prerequisite_group_id: 308, course_id: 582,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 584)
+Prerequisite.create(prerequisite_group_id: 309, course_id: 583,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 252)
+Prerequisite.create(prerequisite_group_id: 310, course_id: 226,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 252)
+Prerequisite.create(prerequisite_group_id: 311, course_id: 229,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 585)
+Prerequisite.create(prerequisite_group_id: 312, course_id: 201,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 594)
+Prerequisite.create(prerequisite_group_id: 313, course_id: 593,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 597)
+Prerequisite.create(prerequisite_group_id: 314, course_id: 26,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 597)
+Prerequisite.create(prerequisite_group_id: 315, course_id: 598,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 601)
+Prerequisite.create(prerequisite_group_id: 316, course_id: 197,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 316, course_id: 198,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 316, course_id: 599,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 316, course_id: 600,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 604)
+Prerequisite.create(prerequisite_group_id: 317, course_id: 603,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 610)
+Prerequisite.create(prerequisite_group_id: 318, course_id: 607,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 318, course_id: 608,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 318, course_id: 609,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 612)
+Prerequisite.create(prerequisite_group_id: 319, course_id: 199,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 319, course_id: 611,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 613)
+Prerequisite.create(prerequisite_group_id: 320, course_id: 45,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 320, course_id: 525,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 616)
+Prerequisite.create(prerequisite_group_id: 321, course_id: 615,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 619)
+Prerequisite.create(prerequisite_group_id: 322, course_id: 618,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 622)
+Prerequisite.create(prerequisite_group_id: 323, course_id: 45,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 623)
+Prerequisite.create(prerequisite_group_id: 324, course_id: 45,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 324, course_id: 622,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 598)
+Prerequisite.create(prerequisite_group_id: 325, course_id: 45,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 625)
+Prerequisite.create(prerequisite_group_id: 326, course_id: 45,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 626)
+Prerequisite.create(prerequisite_group_id: 327, course_id: 45,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 626)
+Prerequisite.create(prerequisite_group_id: 328, course_id: 623,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 25)
+Prerequisite.create(prerequisite_group_id: 329, course_id: 45,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 329, course_id: 622,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 25)
+Prerequisite.create(prerequisite_group_id: 330, course_id: 623,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 627)
+Prerequisite.create(prerequisite_group_id: 331, course_id: 25,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 628)
+Prerequisite.create(prerequisite_group_id: 332, course_id: 45,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 332, course_id: 625,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 628)
+Prerequisite.create(prerequisite_group_id: 333, course_id: 622,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 333, course_id: 625,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 629)
+Prerequisite.create(prerequisite_group_id: 334, course_id: 23,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 334, course_id: 628,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 630)
+Prerequisite.create(prerequisite_group_id: 335, course_id: 25,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 631)
+Prerequisite.create(prerequisite_group_id: 336, course_id: 23,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 336, course_id: 22,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 631)
+Prerequisite.create(prerequisite_group_id: 337, course_id: 23,
+                    minimum_grade: nil)
+Prerequisite.create(prerequisite_group_id: 337, course_id: 625,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 632)
+Prerequisite.create(prerequisite_group_id: 338, course_id: 625,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 633)
+Prerequisite.create(prerequisite_group_id: 339, course_id: 26,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 634)
+Prerequisite.create(prerequisite_group_id: 340, course_id: 26,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 635)
+Prerequisite.create(prerequisite_group_id: 341, course_id: 26,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 636)
+Prerequisite.create(prerequisite_group_id: 342, course_id: 605,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 637)
+Prerequisite.create(prerequisite_group_id: 343, course_id: 39,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 343, course_id: 26,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 343, course_id: 24,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 638)
+Prerequisite.create(prerequisite_group_id: 344, course_id: 632,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 639)
+Prerequisite.create(prerequisite_group_id: 345, course_id: 26,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 345, course_id: 23,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 639)
+Prerequisite.create(prerequisite_group_id: 346, course_id: 23,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 346, course_id: 598,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 640)
+Prerequisite.create(prerequisite_group_id: 347, course_id: 639,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 641)
+Prerequisite.create(prerequisite_group_id: 348, course_id: 639,
+                    minimum_grade: nil)
+PrerequisiteGroup.create(course_id: 642)
+Prerequisite.create(prerequisite_group_id: 349, course_id: 42,
+                    minimum_grade: 'C')
+PrerequisiteGroup.create(course_id: 643)
+Prerequisite.create(prerequisite_group_id: 350, course_id: 39,
+                    minimum_grade: 'C')
+Prerequisite.create(prerequisite_group_id: 350, course_id: 625,
+                    minimum_grade: 'C')
 
 DaysTime.create(days: 'MWF', start_time: '8:00 am', end_time: '8:50 am')
 DaysTime.create(days: 'MWF', start_time: '9:00 am', end_time: '9:50 am')
@@ -7564,8 +6166,8 @@ Major.create(major: 'Communication Studies')
 Major.create(major: 'Art')
 Major.create(major: 'English')
 
-staff = User.new(email: 'staff@calu.edu', last_name: 'Staff')
-staff.save(validate: false)
+# staff = User.new(email: 'staff@calu.edu', last_name: 'Staff')
+# staff.save(validate: false)
 User.create(
   first_name: 'Barbara', last_name: 'Bonfanti', email: 'bonfanti@calu.edu',
   password: 'password!!15', password_confirmation: 'password!!15',

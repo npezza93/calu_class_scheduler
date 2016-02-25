@@ -5,5 +5,6 @@ class CurriculumCategorySet < ActiveRecord::Base
 
   validates :count, numericality: { only_integer: true }, allow_blank: true
 
-  accepts_nested_attributes_for :course_sets, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :course_sets,
+                                reject_if: :all_blank, allow_destroy: true
 end
