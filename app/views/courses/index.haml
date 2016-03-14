@@ -1,20 +1,25 @@
 - content_for :title do
   Courses
 
-%h3.mdl-display-2.bold.center-text{style: "margin-top: 75px;"}
+%h3.mdl-display-2.header
   Courses
 
 .layout.vertical.center
-  %ul.collapsible.popout{ "data-collapsible"=>"accordion"}
+  = form_tag courses_path, method: :get, class: 'search-courses' do
+    .mdl-textfield.mdl-js-textfield
+      = text_field_tag :search, params[:search], class: 'mdl-textfield__input', autofocus: true
+      %label.mdl-textfield__label Search
+
+  %ul.collapsible.popout{ data: { collapsible: :accordion } }
     - @courses.each do |course_code, courses|
       %li
         .collapsible-header
           = course_code
         .collapsible-body
-          %ul.demo-list-item.mdl-list
+          %ul.mdl-list
             - courses.each do |course|
               %li.mdl-list__item
-                %span.mdl-list__item-primary-content
+                %span.mdl-list__item-primary-content.layout.horizontal.center-justified.center-text
                   = link_to course.pretty_course, edit_course_path(course)
 
 

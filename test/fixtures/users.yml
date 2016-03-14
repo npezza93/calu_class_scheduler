@@ -1,13 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  password_digest: <%= BCrypt::Password.create('secret') %>
-  admin: false
+  email: one@calu.edu
+  first_name: one
+  last_name: one
   advisor: false
+  major: majors(:one)
+  advised_by: users(:advisor)
 
-two:
-  email: MyString
-  password_digest: <%= BCrypt::Password.create('secret') %>
-  admin: false
-  advisor: false
+advisor:
+  email: advisor@calu.edu
+  first_name: advisor
+  last_name: advisor
+  advisor: true
+  major: majors(:one)

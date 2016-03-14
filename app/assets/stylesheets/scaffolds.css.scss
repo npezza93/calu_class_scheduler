@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'Avenir';
+  src: url('/assets/AvenirLTStd-Book.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Avenir' !important;
+  letter-spacing: 1px !important;
   background-color: #F9F9F9;
   color: #333;
 }
@@ -18,7 +26,13 @@ hr {
 }
 
 
-
+.mdl-list__item, h3, h5, .mdl-textfield__input, .mdl-button {
+  font-family: 'Avenir' !important;
+  letter-spacing: 1px !important;
+}
+.mdl-button {
+  text-transform: lowercase !important;
+}
 .mdl-button--fab {
   position:fixed !important ;
   bottom:0;
@@ -35,19 +49,37 @@ hr {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
 }
-#whole_screen_uploader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background: #ececec;
-    display: none;
-}
 
 .bold {
   font-weight: bold !important;
 }
 a {
   text-decoration: none !important;
+}
+
+.header {
+  margin-top: 75px;
+  text-align: center;
+  text-transform: lowercase;
+  letter-spacing: 2px !important;
+  font-weight: 400;
+}
+.mdl-textfield__label {
+  text-transform: lowercase;
+}
+.mdl-layout-title, .mdl-layout__title {
+  font-family: 'Avenir' !important;
+  letter-spacing: 1.5px !important;
+}
+.mdl-navigation__link {
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  line-height: 24px !important;
+  letter-spacing: 1.75px !important;
+  text-transform: lowercase;
+
+  .material-icons {
+    font-size: 30px;
+    padding-right: 11px;
+  }
 }

@@ -1,0 +1,25 @@
+- content_for :title do
+  Calendar
+
+%div
+  #big_schedule_table.layout.horizontal.center-justified
+    %table#schedule_calendar{:style => "margin:15px;border-collapse:separate !important;border-spacing: 11px 3px !important;border:none;"}
+      %tr{:style => "border:none;"}
+        %th
+        %th.day{:style => "width:100px;font-size: 14px;"} Monday
+        %th.day{:style => "width:100px;font-size: 14px;"} Tuesday
+        %th.day{:style => "width:100px;font-size: 14px;"} Wednesday
+        %th.day{:style => "width:100px;font-size: 14px;"} Thursday
+        %th.day{:style => "width:100px;font-size: 14px;"} Friday
+      - @work_time_slots.each_slice(5) do |slots|
+        %tr
+          %td.time_slot
+            = slots.first.start_time.strftime('%l:%M%p')
+          - slots.each do |slot|
+            %td.day_time_slot
+              - if @work_times.include? slot
+                = link_to '', @work_schedules.find{ |work| work.work_days_time_id == slot.id }, data: { method: :delete }
+              - else
+                = form_for @work_schedule do |f|
+                  = f.hidden_field :work_days_time_id, value: slot.id
+                  = f.submit ''

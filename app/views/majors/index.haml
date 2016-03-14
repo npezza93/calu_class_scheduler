@@ -1,18 +1,28 @@
 - content_for :title do
   Majors
 
-%h3.mdl-display-2.bold.center-text{style: "margin-top: 75px;"}
-  Majors
+%h3.mdl-display-2.header
+  majors
 
 .layout.vertical.center
-  %ul.collapsible.popout{ "data-collapsible"=>"accordion"}
-    = render @majors
+  %ul.collapsible.popout{ data: { collapsible: :accordion } }
+    - @majors.each do |major|
+      %li
+        .collapsible-header
+          = major.major
+        .collapsible-body.layout.vertical.center
+          = form_for major do |f|
+            = f.text_field :major
+          .flex
+          = link_to "delete", @major, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-major"
+
 
 %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_major_fab
   %i.material-icons add
 
 %dialog.new_major_dialog.mdl-dialog
-  %h5.mdl-typography--headline.bold.center-text New Major
+  %h5.mdl-typography--headline.header{ style: 'margin-top: 0;' }
+    New Major
   = form_for Major.new do |f|
     = f.text_field :major
     .mdl-dialog__actions

@@ -1,8 +1,0 @@
-- if user.advised_by == current_user.id
-  %tr{ class: 'advisee-row user-row' }
-    %td.mdl-data-table__cell--non-numeric= user.name
-    %td= link_to "Schedule", user_schedules_path(user)
-- else
-  %tr{ class: 'user-row' }
-    %td.mdl-data-table__cell--non-numeric= user.name
-    %td= link_to "Schedule", user_schedules_path(user)

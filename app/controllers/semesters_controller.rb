@@ -21,7 +21,7 @@ class SemestersController < ApplicationController
     @session_semester = Semester.find(session[:semester_id])
 
     redirect_to semesters_path,
-                notice: @session_semester + ' is now viewable'
+                notice: @session_semester.semester + ' is now viewable'
   end
 
   def create

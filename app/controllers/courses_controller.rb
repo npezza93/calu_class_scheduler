@@ -1,10 +1,9 @@
-# Course controller
-# handles creating and updating PrerequisiteGroup and Prerequisite
 class CoursesController < ApplicationController
   before_action :set_course, only: [:destroy, :edit, :update]
+  authorize_resource
 
   def index
-    @courses = Course.all.order(:subject, :course).group_by(&:subject)
+    @courses = Course.search(params[:search])
   end
 
   def new
@@ -20,7 +19,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if @course.save
-      redirect_to users_path,
+      redirect_to courses_path,
                   notice: @course.title + ' was successfully created!'
     else
       render :new
@@ -28,7 +27,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    if @course.update(temp_params)
+    if @course.update(course_params)
       redirect_to courses_path,
                   notice: @course.subject + @course.course.to_s +
                           'successfully updated!'

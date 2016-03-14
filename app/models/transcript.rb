@@ -1,4 +1,3 @@
-# Transcript model
 class Transcript < ActiveRecord::Base
   belongs_to :user, touch: true
   belongs_to :course
@@ -8,7 +7,7 @@ class Transcript < ActiveRecord::Base
 
   validates_presence_of :course, message: 'A course must be selected!'
 
-  GRADES = %w(A A- B+ B B- C+ C C- D- D D+ F).freeze
+  GRADES = %w(A A\- B\+ B B\- C\+ C C\- D\- D D\+ F).freeze
 
   # methods for importing transcript text
   class << self

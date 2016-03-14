@@ -1,62 +1,16 @@
 class FormBuilder < ActionView::Helpers::FormBuilder
-  def text_field(name, options = {})
-    error = 'mdl-textfield mdl-js-textfield ' +
-            (@object.errors[name.to_sym].blank? ? '' : 'is-invalid')
-    options[:class] ||= ''
-    options[:class] = options[:class] + 'mdl-textfield__input'
+  delegate :content_tag, :tag, to: :@template
+  delegate :errors, to: :@object
 
-    @template.content_tag :div, class: error, style: options[:style] do
-      super(name, options) +
-        label(name, options[:label], class: 'mdl-textfield__label') +
-        @template.content_tag(:span, class: 'mdl-textfield__error') do
-          @object.errors[name.to_sym][0]
-        end
-    end
-  end
+  %w(text_field email_field number_field password_field).each do |method_name|
+    define_method(method_name) do |name, options = {}|
+      error = text_field_error(name)
+      options[:class] ||= ''
+      options[:class] = options[:class] + ' mdl-textfield__input'
 
-  def email_field(name, options = {})
-    error = 'mdl-textfield mdl-js-textfield ' +
-            (@object.errors[name.to_sym].blank? ? '' : 'is-invalid')
-    options[:class] ||= ''
-    options[:class] = options[:class] + 'mdl-textfield__input'
-
-    @template.content_tag :div, class: error, style: options[:style] do
-      super(name, options) +
-        label(name, options[:label], class: 'mdl-textfield__label') +
-        @template.content_tag(:span, class: 'mdl-textfield__error') do
-          @object.errors[name.to_sym][0]
-        end
-    end
-  end
-
-  def number_field(name, options = {})
-    error = 'mdl-textfield mdl-js-textfield ' +
-            (@object.errors[name.to_sym].blank? ? '' : 'is-invalid')
-    options[:class] ||= ''
-    options[:class] = options[:class] + 'mdl-textfield__input'
-    options[:pattern] = '-?[0-9]*(\.[0-9]+)?'
-
-    @template.content_tag :div, class: error, style: options[:style] do
-      super(name, options) +
-        label(name, options[:label], class: 'mdl-textfield__label') +
-        @template.content_tag(:span, class: 'mdl-textfield__error') do
-          @object.errors[name.to_sym][0]
-        end
-    end
-  end
-
-  def password_field(name, options = {})
-    error = 'mdl-textfield mdl-js-textfield ' +
-            (@object.errors[name.to_sym].blank? ? '' : 'is-invalid')
-    options[:class] ||= ''
-    options[:class] = options[:class] + ' mdl-textfield__input'
-
-    @template.content_tag :div, class: error do
-      super(name, options) +
-        label(name, options[:label], class: 'mdl-textfield__label') +
-        @template.content_tag(:span, class: 'mdl-textfield__error') do
-          @object.errors[name.to_sym][0]
-        end
+      content_tag :div, class: error do
+        super(name, options) + text_field_label(name)
+      end
     end
   end
 
@@ -65,28 +19,24 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     options[:class] ||= ''
     options[:class] = options[:class] + 'mdl-radio__button'
 
-    @template.content_tag :label, class: 'mdl-radio mdl-js-radio mdl-js-ripple-effect' do
+    content_tag :label, class: 'mdl-radio mdl-js-radio mdl-js-ripple-effect' do
       super(name, value, options) +
-        @template.content_tag(:span, class: 'mdl-radio__label') do
-          label_text
-        end
+        content_tag(:span, class: 'mdl-radio__label') { label_text }
     end
   end
 
-  def check_box(method, options = {}, checked_value = '1', unchecked_value = '0')
+  def check_box(method, options = {}, checked_val = '1', unchecked_val = '0')
     label_text = options.delete(:label)
     options[:class] ||= ''
     options[:class] = options[:class] + 'mdl-checkbox__input'
 
-    @template.content_tag :label, class: 'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect' do
-      super(method, options, checked_value, unchecked_value) +
-        @template.content_tag(:span, class: 'mdl-checkbox__label') do
-          label_text
-        end
+    content_tag :label, class: mdl_checkbox_classes do
+      super(method, options, checked_val, unchecked_val) +
+        content_tag(:span, class: 'mdl-checkbox__label') { label_text }
     end
   end
 
-  def collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
+  def collection_select(method, collection, value_method, text_method, options = {})
     random = SecureRandom.base64
     if object.send(method)
       value = object.send(method)
@@ -96,25 +46,17 @@ class FormBuilder < ActionView::Helpers::FormBuilder
       text = collection.first.send(text_method)
     end
 
-    @template.content_tag :div, class: div_classes_for_select(object.errors[method.to_s.gsub('_id', '').to_sym].blank?) do
+    content_tag :div, class: div_classes_for_select(method) do
       hidden_field(method, value: value) +
-        @template.content_tag(:input, nil, select_input_attrs(random, value, text)) +
+        generate_content_for_select(method, random, value, text) +
 
-        @template.content_tag(:label, for: random) do
-          @template.content_tag(:i, 'keyboard_arrow_down', select_arrow)
+        content_tag(:label, for: random) do
+          content_tag(:i, options[:prompt], class: 'mdl-textfield__label')
         end +
 
-        @template.content_tag(:span, class: 'mdl-textfield__error') do
-          object.errors[method.to_s.gsub('_id', '').to_sym][0]
-        end +
-
-        @template.content_tag(:label, for: random) do
-          @template.content_tag(:i, options[:prompt], class: 'mdl-textfield__label')
-        end +
-
-        @template.content_tag(:ul, select_ul_class(random)) do
-        collection.collect { |item| @template.concat(@template.content_tag(:li, item.send(text_method), class: 'mdl-menu__item', value: item.send(value_method)))}
-      end
+        content_tag(:ul, select_ul_class(random)) do
+          collection.collect { |item| @template.concat(content_tag(:li, item.send(text_method), class: 'mdl-menu__item', value: item.send(value_method)))}
+        end
     end
   end
 
@@ -127,39 +69,57 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   private
 
-  def div_classes_for_select(error)
+  def generate_content_for_select(method, random, value, text)
+    content_tag(:input, nil, select_input_attrs(random, value, text)) +
+      content_tag(:label, for: random) do
+        content_tag(:i, 'keyboard_arrow_down', select_arrow)
+      end +
+
+      content_tag(:span, class: 'mdl-textfield__error') do
+        errors[method.to_s.gsub('_id', '').to_sym][0]
+      end
+  end
+
+  def text_field_label(name)
+    label(name, options[:label], class: 'mdl-textfield__label') +
+      content_tag(:span, class: 'mdl-textfield__error') do
+        errors[name.to_sym][0]
+      end
+  end
+
+  def text_field_error(name)
+    'mdl-textfield mdl-js-textfield ' +
+      (errors[name.to_sym].blank? ? '' : 'is-invalid')
+  end
+
+  def mdl_checkbox_classes
+    'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect'
+  end
+
+  def div_classes_for_select(method)
+    error = errors[method.to_s.gsub('_id', '').to_sym].blank?
     s = %(mdl-textfield mdl-js-textfield mdl-textfield--floating-label)
     s += ' getmdl-select'
 
-    if !error
-      s + ' is-invalid'
-    else
-      s
-    end
+    !error ? s + ' is-invalid' : s
   end
 
   def select_input_attrs(random, value, text)
-    {
-      class: 'mdl-textfield__input',
+    { class: 'mdl-textfield__input',
       id: random,
       readonly: 'readonly',
       tabindex: '-1',
       type: 'text',
       select_value: value,
-      value: text
-    }
+      value: text }
   end
 
   def select_arrow
-    {
-      class: 'mdl-icon-toggle__label material-icons'
-    }
+    { class: 'mdl-icon-toggle__label material-icons' }
   end
 
   def select_ul_class(random)
-    {
-      for: random,
-      class: 'mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect'
-    }
+    { for: random,
+      class: 'mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect' }
   end
 end

@@ -23,5 +23,6 @@ module Workspace
     # config.i18n.default_locale = :de
 
     config.action_view.default_form_builder = 'FormBuilder'
+    config.active_record.time_zone_aware_types = [:datetime]
   end
 end

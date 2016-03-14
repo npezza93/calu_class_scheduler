@@ -1,35 +1,72 @@
-<% content_for :title do %>
-    <%= @user.first_name.capitalize + " " + @user.last_name.capitalize %>'s Schedule
+<%= content_for :title do %>
+  Schedule
 <% end %>
 
+<div class="horizontal wrap layout around-justified">
+  <div>
+    <% @incomplete_category_courses.each do |category, offerings| %>
+      <div class="layout vertical center">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">
+              <h4><%= category.category %> <%= ("- " + category.major.major + " Minor") if category.minor %></h4>
+              <div style="color:#EF5350;text-align:center;" class="<%= "hidden" if !offerings.empty? %>">
+                Currently no courses are being offered that will fulfill this category
+              </div>
+            </div>
+          </li>
 
-<% if not @session_user.advisor %>
-    <%= render "users/student_settings" %>
-<% end %>
+          <% offerings.group_by(&:course).each do |course, course_offerings| %>
+            <li>
+              <div class="collapsible-header"><%= course.pretty_course %></div>
+              <div class="collapsible-body">
+                <% course_offerings.each do |offering| %>
+                  <div class="layout horizontal center-center" style="height:50px;">
+                    <%= form_for Schedule.new do |f| %>
+                      <%= f.hidden_field :offering_id, value: offering.id %>
+                      <%= f.check_box :offering_id, {onClick: 'submit();'}, offering.id %>
+                    <% end %>
+                    <p class="layout vertical end-justified" style="margin:0;">
+                      <%= offering.days_time.days %> from <%= offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time if offering.days_time.start_time != nil%> Prof. <%= offering.user.last_name.capitalize %>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
 
-<% if @user.pt_a == nil or @user.pt_b == nil or @user.pt_c == nil or @user.pt_d == nil %>
-    <%= render "users/placement_test" %>
-<% end %>
+          <% @completed_category_courses.delete(category).each do |set, set_courses| %>
+            <% set_courses.each do |course| %>
+              <li>
+                <div class="collapsible-header" style="color:#4CAF50;"><%= course.pretty_course %></div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
 
-<neon-animated-pages id="baluga3" selected="1" class="flex" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation">
-  	 <neon-animatable id="transcripts-animate">
-  	    <%= render "transcripts/index" %>
-  	 </neon-animatable>
+  <div>
+    <% @completed_category_courses.each do |category, courses| %>
+      <div class="layout vertical center">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">
+              <h4><%= category.category %> <%= ("- " + category.major.major + " Minor") if category.minor %></h4>
+              <div style="color:#4CAF50;text-align:center;">Completed</div>
+            </div>
+          </li>
 
-     <neon-animatable id="schedules-animate">
-        <%= render 'index' %>
-     </neon-animatable>
-
-     <neon-animatable id="new-schedule-animate">
-      <%= render "new" %>
-     </neon-animatable>
-</neon-animated-pages>
-
-<div id="transcript-notice">
-    <paper-toast id="transcript-notice-toast" text="<%= notice %>" style="z-index: 13;" class="fit-bottom layout horizontal center-center"></paper-toast>
-</div>
-
-<div id="whole_screen_uploader">
-  <iron-image style="width:85%; height:85%; background-color: #ececec;margin:auto;left:10%;"
-  sizing="contain" preload fade src="<%= image_url('callogo.jpg') %>"></iron-image>
+          <% courses.each do |course| %>
+            <li>
+              <div class="collapsible-header">
+                <%= course.pretty_course %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
 </div>

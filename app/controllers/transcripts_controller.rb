@@ -1,5 +1,6 @@
 class TranscriptsController < ApplicationController
   before_action :set_transcript, only: :destroy
+  authorize_resource
 
   def index
     @transcript = Transcript.new

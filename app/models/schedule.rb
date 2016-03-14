@@ -1,43 +1,3 @@
-class CreditNCourseValidator < ActiveModel::Validator
-  def validate(schedule)
-    user = User.includes(:courses).find(112)
-
-    credits = 0
-    user.courses.each { |course| credits += course.credits }
-
-    if (credits + schedule.course.credits) > 18
-      schedule.errors[:Credits] << 'cannot exceed the maximum of 18'
-    end
-
-    begin
-      schedule_days_time = schedule.offering.days_time
-      start_time_in_q = Time.parse(schedule_days_time.start_time)
-      end_time_in_q = Time.parse(schedule_days_time.end_time)
-
-      days_in_q = schedule_days_time.days
-
-      day_time_ar = schedule.user.offerings.includes(:days_time).collect do |s|
-        [
-          s.days_time.days,
-          Time.parse(s.days_time.start_time),
-          Time.parse(s.days_time.end_time)
-        ]
-      end
-
-      day_time_ar.each do |off_time|
-        if days_in_q == off_time[0] && start_time_in_q <= end_off_time && start_off_time <= end_time_in_q
-          schedule.errors[:Course_times] << 'cannot overlap'
-        end
-      end
-    rescue
-    end
-
-    if user.courses.collect(&:id).include?(schedule.course.id)
-      schedule.errors[:Already_enrolled] << 'in course'
-    end
-  end
-end
-
 class Schedule < ActiveRecord::Base
   belongs_to :offering
   belongs_to :user
@@ -45,15 +5,15 @@ class Schedule < ActiveRecord::Base
 
   has_one :course, through: :offering
 
-  before_save :set_default_semester
-  before_validation :set_default_semester
+  validates :offering, uniqueness: { scope: :user }
 
-  validates_uniqueness_of :offering, scope: :user
-  validates_with CreditNCourseValidator
+  validate do
+    errors.add(:base, 'You cannot take more than 18 credits') unless
+      (user.current_credits + course.credits) > 18
+  end
 
-  private
-
-  def set_default_semester
-    self.semester = Semester.where(active: true).take
+  validate do
+    errors.add(:base, 'You\'ve already scheduled a course for that time') unless
+      offering.days_time.overlaps_any?(user.offering_day_times)
   end
 end

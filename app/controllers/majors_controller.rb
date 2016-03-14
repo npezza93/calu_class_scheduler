@@ -1,10 +1,8 @@
-# controller for Major
-# new is handled in the index action and there is no reason for a show action
 class MajorsController < ApplicationController
-  before_action :set_major, only: [:destroy, :edit, :update]
-  before_action :set_majors, only: [:index, :create]
+  load_and_authorize_resource
 
   def index
+    @majors = Major.all.order(:major)
   end
 
   def edit
@@ -16,8 +14,7 @@ class MajorsController < ApplicationController
     if @major.save
       redirect_to majors_path, notice: @major.major + ' is a new major!'
     else
-      flash[:notice] = @major.errors.full_messages.first
-      render :index
+      redirect_to majors_url, notice: @major.errors.full_messages.first
     end
   end
 
@@ -35,14 +32,6 @@ class MajorsController < ApplicationController
   end
 
   private
-
-  def set_major
-    @major = Major.find(params[:id])
-  end
-
-  def set_majors
-    @majors = Major.all
-  end
 
   def major_params
     params.require(:major).permit(:major)

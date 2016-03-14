@@ -2,10 +2,8 @@
 
 one:
   category: MyString
-  required_amount_of_credits: 1
   major_id: 
 
 two:
   category: MyString
-  required_amount_of_credits: 1
   major_id: 

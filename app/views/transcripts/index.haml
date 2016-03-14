@@ -1,16 +1,19 @@
 - content_for :title do
   Transcript
 
-= form_for @transcript do |f|
-  .transcript-fields
-    = f.collection_select(:course_id, Course.all.order(:subject, :course), :id, :pretty_course, prompt: "Choose a Course")
-    .grade
-      = f.collection_select(:grade_c, Transcript::GRADES, :first, :first, prompt: "Choose Grade", style: 'width:100px;')
-
-  = f.submit
+%h3.mdl-display-2.header
+  Transcript
 
 .layout.vertical.center
-  %ul.collapsible.popout{ "data-collapsible"=>"accordion"}
+  = form_for @transcript do |f|
+    .transcript-fields
+      = f.collection_select(:course_id, Course.all.order(:subject, :course), :id, :pretty_course, prompt: 'Choose a Course')
+      .grade
+        = f.collection_select(:grade_c, Transcript::GRADES, :first, :first, prompt: 'Choose Grade', style: 'width:100px;')
+
+    = f.submit 'add to transcript'
+
+  %ul.collapsible.popout{ data: { collapsible: :accordion }, style: 'margin-top: 35px;' }
     - @transcripts.each do |transcript|
       %li
         .collapsible-header

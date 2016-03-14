@@ -1,35 +1,38 @@
 class WorkSchedulesController < ApplicationController
-  before_action :set_user
   before_action :set_work_schedule, only: :destroy
+  authorize_resource
 
   def index
-    @work_schedules = WorkSchedule.where(user: @user,
-                                         semester: @active_semester)
+    @work_schedules = current_user.work_schedules.to_a
+
+    @work_times = current_user.work_days_times.to_a
+
+    @work_time_slots = WorkDaysTime.all.sort_by do |date_time|
+      [date_time.start_time, date_time.day_of_week]
+    end
+
+    @work_schedule = WorkSchedule.new
   end
 
   def create
-    @work_schedule = WorkSchedule.new(work_schedule_params)
-    @work_schedule.user = @user
-    respond_to do |format|
-      format.js {} if @work_schedule.save
+    unless current_user.advisor?
+      current_user.work_schedules.create(work_schedule_params)
     end
+
+    redirect_to work_schedules_path
   end
 
   def destroy
-    @work_schedule.destroy
-    respond_to do |format|
-      format.js {}
-    end
+    @work_schedule.destroy unless current_user.advisor?
+
+    redirect_to work_schedules_path
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
   def work_schedule_params
     params.require(:work_schedule).permit(:work_days_time_id)
+          .merge(user: current_user, semester: Semester.active)
   end
 
   def set_work_schedule

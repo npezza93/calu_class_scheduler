@@ -1,54 +1,27 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
-  before_action :set_semester
-
-  before_filter :only_yours
+  before_action :set_schedule, only: :destroy
+  authorize_resource
 
   def index
-    @signed_up_for = @user.offerings.where(semester: @active_semester).includes(:days_time, :course)
-    @day_hash = view_context.create_day_hash(@signed_up_for)
-    @new_work_schedule = WorkSchedule.new
-    @work_time_slots = WorkDaysTime.order(:start_time).group_by(&:days)
-    @majors = Major.all
-    @minors = Major.where.not(id: @user.major_id)
+    courses = current_user.scheduler
+    @completed_category_courses = courses.first
+    @incomplete_category_courses = courses.second
 
-    @transcript = Transcript.new
-    @transcripts = @user.transcripts.includes(:course)
-    @courses = Course.all.order(:subject)
-    @letter_grades = ["A","A-", "B+", "B", "B-", "C+", "C","C-", "D-","D","D+", "F"]
-
-    @completed_category_courses, @incomplete_category_courses = @user.scheduler
-
-    @work_schedules = @user.work_schedules.includes(:work_days_time)
-    @schedules = @user.offerings
+    @work_schedules = current_user.work_schedules.includes(:work_days_time)
+    @schedules = current_user.offerings
     @offerings = @incomplete_category_courses.values.flatten.collect(&:id)
-  end
-
-  def new
-    @completed_category_courses, @incomplete_category_courses = @user.scheduler
-
-    @work_schedules = @user.work_schedules.includes(:work_days_time)
-    @schedules = @user.offerings
-    @offerings = @incomplete_category_courses.values.flatten.collect(&:id)
-    render layout: false
+    @schedule = Schedule.new
   end
 
   def create
-    Schedule.delete_all(user: @user, semester: @active_semester)
+    @schedule = Schedule.create(schedule_params)
 
-    @errors = []
-    (params[:schedule][:offering_id].reject! { |c| c.empty? }).each do |oid|
-      if not (sch = Schedule.create(user_id: @user.id, offering_id: oid, semester: @active_semester))
-        @errors << sch
-      end
-    end
+    redirect_to schedules_path
+  end
 
-    @offerings = @user.schedules.where(semester: @active_semester).collect { |course| Offering.find(course.offering_id) }
-
-    respond_to do |format|
-      format.js {@errors}
-    end
+  def destroy
+    @schedule.destroy
+    redirect_to schedules_path
   end
 
   private
@@ -57,27 +30,8 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
   end
 
-  def set_user
-    @user = User.includes(:major,
-                          transcripts: { course: :prerequisites },
-                          offerings: [:course, :days_time]
-                         ).find(params[:user_id])
-  end
-
-  def set_semester
-    @active_semester = Semester.where(active: true).take
-  end
-
   def schedule_params
-    params.require(:schedule).permit(:user_id, schedule: [:offering_id])
-  end
-
-  def only_yours
-    if !current_user.advisor && (params[:user_id].to_i == session[:user_id].to_i)
-      redirect_to user_transcripts_path(current_user)
-    elsif current_user.advisor || @user.advisor
-      redirect_to users_path,
-                  notice: 'Admins and Advisors don\'t have transcripts!'
-    end
+    params.require(:schedule).permit(:offering_id)
+          .merge(user: current_user, semester: @active_semester)
   end
 end

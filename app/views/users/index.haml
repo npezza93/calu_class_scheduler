@@ -1,23 +1,32 @@
 - content_for :title do
   Students
 
-
-%h3.mdl-display-2.bold.center-text
+%h3.mdl-display-2.header
   Students
 
-.layout.vertical.center
-  = form_tag users_path, method: :get, class: "search-users" do
+.layout.vertical.center.users-index
+  = form_tag users_path, method: :get, class: 'search-users' do
     .mdl-textfield.mdl-js-textfield
-      = text_field_tag :search, params[:search], class: "mdl-textfield__input", autofocus: true
+      = text_field_tag :search, params[:search], class: 'mdl-textfield__input', autofocus: true
       %label.mdl-textfield__label Search
 
-  %table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
-    %thead
-      %tr
-        %th.mdl-data-table__cell--non-numeric Name
-        %th
-    %tbody
-      = render @students
+  %ul.collapsible.popout{ data: { collapsible: :accordion } }
+    - @students.each do |student|
+      %li
+        .collapsible-header.layout.horizontal.start-justified
+          %div{ style: 'padding-left: 24px;'}
+            = student.name
+          .flex
+          %div.student-schedule-link
+            Schedule
+
+        - if !student.offerings.empty?
+          .collapsible-body
+            %ul.demo-list-item.mdl-list
+              - student.offerings.each do |offering|
+                %li.mdl-list__item
+                  %span.mdl-list__item-primary-content.center-text.layout.horizontal.center-justified
+                    = offering.course.pretty_course
 
   .layout.horizontal.justified{ style: "width: 300px;max-width:90%;margin-top: 40px;"}
     = link_to_previous_page @students, 'Previous'

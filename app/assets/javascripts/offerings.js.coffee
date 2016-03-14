@@ -12,3 +12,7 @@ $(document).on 'turbolinks:load', ->
       $("#upload_offering_file").parent().submit()
       return
     return
+
+  $('.offering-row').click ->
+    document.location.pathname = $(this).attr('href')
+    return

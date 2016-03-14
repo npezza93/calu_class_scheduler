@@ -1,8 +1,7 @@
-# CurriculumCategory
-# handles creating and updating CurriculumCategorySet and CourseSet
 class CurriculumCategoriesController < ApplicationController
   before_action :set_category, except: [:create, :new, :index]
   before_action :set_major
+  authorize_resource
 
   def index
     @courses = Course.all.order(:subject)
@@ -15,6 +14,7 @@ class CurriculumCategoriesController < ApplicationController
     @category = CurriculumCategory.new
     @category_sets = @category.curriculum_category_sets.build
     @course_sets = @category.course_sets.build
+    @courses = Course.all.order(:subject)
   end
 
   def edit

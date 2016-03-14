@@ -11,35 +11,7 @@
   }
 }
 
-.edit-major-link {
-  color: #333;
-  margin-left: 10px;
-  transition: all .2s ease;
-
-  &:hover {
-    color: rgb(100,255,218);
-  }
-}
-
-.edit_major {
-  margin: 15px;
-  margin-bottom: 50px;
-  @extend .layout.vertical;
-  @extend .layout.center;
-  width: 350px;
-}
-
-.edit-major-container {
-  height: 100vh;
-  @extend .layout.vertical;
-  @extend .layout.center-center;
-}
-
 .delete-major {
-  color: #F44336;
-  transition: all .2s ease;
-
-  &:hover {
-    color: #D32F2F;
-  }
+  color: #F44336 !important;
+  padding: 14px 0;
 }

@@ -16,6 +16,26 @@ class Offering < ActiveRecord::Base
   validates :user, presence: true
   validates :section, presence: true
 
+  def self.search(search, page)
+    if search.nil? || search == ''
+      includes(:course, :days_time, :user)
+        .where(semester: Semester.find_by(active: true))
+        .page(page).per(20)
+    else
+      joins(:course, :days_time, :user)
+        .where_search(search).where(semester: Semester.find_by(active: true))
+        .page(page).per(20)
+    end
+  end
+
+  def self.where_search(search)
+    where('LOWER(courses.title) LIKE ? OR LOWER(courses.subject) LIKE ? OR
+           LOWER(days_times.days) LIKE ? OR
+           LOWER(users.first_name) LIKE ? OR LOWER(users.last_name) LIKE ?',
+          "%#{search}%", "%#{search}%", "%#{search}%",
+          "%#{search}%", "%#{search}%")
+  end
+
   def self.import(file)
     CSV.foreach(file.path) do |row|
       course   = Course.csv_get_course(row)
@@ -70,6 +90,6 @@ class Offering < ActiveRecord::Base
   private
 
   def default_semester
-    self.semester = Semester.where(active: true).take
+    self.semester = Semester.find_by(active: true)
   end
 end

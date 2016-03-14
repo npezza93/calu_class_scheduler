@@ -6,14 +6,18 @@ class ApplicationController < ActionController::Base
   before_action :set_session_semester
 
   def set_active_semester
-    @active_semester = Semester.active
+    @active_semester ||= Semester.active
   end
 
   def set_session_semester
-    if session[:semester_id]
+    if !session[:semester_id].blank?
       @session_semester = Semester.find(session[:semester_id])
     else
       @session_semester = @active_semester
     end
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
   end
 end

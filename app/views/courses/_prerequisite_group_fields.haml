@@ -1,11 +1,13 @@
-.nested-fields.category-set-container.mdl-shadow--4dp
-  = link_to_remove_association f, class: "remove-prereq-group" do
-    %i.material-icons clear
-
-  %div.layout.vertical.center
+%li.nested-fields.prerequisite_group
+  .collapsible-header
+    .layout.horizontal.start-justified
+      .prerequisite_group_number
+      .flex
+      = link_to_remove_association 'remove', f, class: "remove-prereq-group"
+  .collapsible-body{ style: 'padding: 0px 14px;'}
     = f.fields_for :prerequisites, @prerequisites do |builder|
       .set-courses-container
         = render "prerequisite_fields", f: builder
 
-    %div
+    %div.layout.horizontal.center-justified{ style: 'padding: 12px 0;'}
       = link_to_add_association 'add prereq', f, :prerequisites, class: "add-courses mdl-button"

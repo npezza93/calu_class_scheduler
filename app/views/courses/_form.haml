@@ -1,21 +1,33 @@
 = form_for(@course) do |f|
+  %h3.mdl-display-2.header
+    - if params[:action] == 'new'
+      New Course
+    - else
+      Edit Course
+
   .layout.horizontal.form-course-container
     = f.text_field :subject, label: 'Subject (ex: CSC)', maxlength: 3
     = f.text_field :course, label: 'Number (ex: 120)', maxlength: 3
-  = f.text_field :title, label: 'Title (ex: Operating Systems)'
-  = f.number_field :credits, label: 'Credits (Defaults to 3)'
+
+  .course-fields.layout.vertical.start
+    = f.text_field :title, label: 'Title (ex: Operating Systems)'
+    = f.number_field :credits, label: 'Credits (Defaults to 3)'
 
 
-  = f.label 'Choose Required Prerequisites (if any):', style: "font-size:16px;font-weight:bold;padding-top: 10px;"
+  %ul.collapsible{ data: { collapsible: :accordion }, style: 'margin-bottom: 25px;'}
+    %li
+      .collapsible-header
+        .layout.horizontal.start-justified
+          course requirements (if any)
+      .collapsible-body{ style: 'padding: 0px 14px;'}
+        .layout.vertical.center
+          = f.collection_select(:minimum_pt, Course::PLACEMENT_TEST_PARTS, :second, :first, prompt: "Math Placement Exam")
+          = f.collection_select(:minimum_class_standing, Course::YEARS, :second, :first, prompt: "Minimum class standing")
+          = f.collection_select(:minimum_sat_score, Course::SAT_SCORES, :second, :first, prompt: "Minimum SAT score")
 
-  = f.collection_select(:minimum_pt, Course::PLACEMENT_TEST_PARTS, :second, :first, prompt: "Math Placement Exam")
-  = f.collection_select(:minimum_class_standing, Course::YEARS, :second, :first, prompt: "Minimum class standing")
-  = f.collection_select(:minimum_sat_score, Course::SAT_SCORES, :second, :first, prompt: "Minimum SAT score")
-
-  = f.fields_for :prerequisite_groups, @prerequisite_groups do |builder|
-    .category-sets-container
+    = f.fields_for :prerequisite_groups, @prerequisite_groups do |builder|
       = render "prerequisite_group_fields", f: builder
 
-  = link_to_add_association 'Add Group', f, :prerequisite_groups
+  = link_to_add_association 'add group', f, :prerequisite_groups, "data-association-insertion-node" => ".collapsible", "data-association-insertion-method" => "append", style: 'margin-bottom: 35px;color: #66BB6A;'
 
   = f.submit

@@ -1,3 +1,16 @@
+class RoleConstraint
+  def initialize(role)
+    @role = role
+  end
+
+  def matches?(request)
+    return true if @role == :advisor && request.env['warden'].user && request.env['warden'].user.advisor?
+    return true if @role == :user && request.env['warden'].user && !request.env['warden'].user.advisor?
+
+    false
+  end
+end
+
 Rails.application.routes.draw do
   resources :semesters, only: [:index, :new, :create] do
     collection do
@@ -21,7 +34,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     authenticated :user do
-      root 'schedules#index', as: :authenticated_root
+      root 'schedules#index', :constraints => RoleConstraint.new(:user)
+      root 'users#index', :constraints => RoleConstraint.new(:advisor)
     end
 
     unauthenticated do
@@ -29,15 +43,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :transcripts, only: [:index, :create, :destroy] do
+  resources :transcripts, only: [:index, :create, :destroy], path: :transcript do
     collection do
       post :import
     end
   end
+  resources :work_schedules, only: [:create, :new, :index, :destroy], path: :calendar
+  resources :schedules, only: [:index, :create, :destroy], path: :schedule
+
 
   resources :users, only: :index do
-    resources :schedules, only: [:index, :create, :new, :destroy]
     resources :schedule_approvals, only: [:create, :new, :edit, :update]
-    resources :work_schedules, only: [:create, :new, :index, :destroy]
   end
 end

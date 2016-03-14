@@ -22,39 +22,51 @@
 
   <% if current_user %>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-      <div class="mdl-layout__drawer" id="drawer" data-turbolinks-permanent>
-        <span class="mdl-layout-title">Menu</span>
+      <div class="mdl-layout__drawer" id="drawer">
+        <span class="mdl-layout-title"><%= current_user.email %></span>
         <nav class="mdl-navigation">
-          <%= link_to users_path, class: "mdl-navigation__link" do %>
-            <i class="material-icons">perm_identity</i>
-            Students
+          <% if current_user.advisor? %>
+            <%= link_to users_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">perm_identity</i>
+              Students
+            <% end %>
+            <%= link_to courses_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">class</i>
+              Courses
+            <% end %>
+            <%= link_to offerings_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">event</i>
+              Offerings
+            <% end %>
+            <%= link_to majors_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">bookmark</i>
+              Majors
+            <% end %>
+            <%= link_to semesters_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">today</i>
+              Semesters
+            <% end %>
+            <%= link_to curriculum_categories_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">sort</i>
+              Categories
+            <% end %>
+            <div class="mdl-menu__item--full-bleed-divider"></div>
+          <% else %>
+            <%= link_to transcripts_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">description</i>
+              Transcript
+            <% end %>
+            <%= link_to work_schedules_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">event</i>
+              Calendar
+            <% end %>
+            <%= link_to schedules_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">event</i>
+              Schedule
+            <% end %>
+            <div class="mdl-menu__item--full-bleed-divider"></div>
           <% end %>
-          <%= link_to courses_path, class: "mdl-navigation__link" do %>
-            <i class="material-icons">class</i>
-            Courses
-          <% end %>
-          <%= link_to offerings_path, class: "mdl-navigation__link" do %>
-            <i class="material-icons">event</i>
-            Offerings
-          <% end %>
-          <%= link_to majors_path, class: "mdl-navigation__link" do %>
-            <i class="material-icons">bookmark</i>
-            Majors
-          <% end %>
-          <%= link_to semesters_path, class: "mdl-navigation__link" do %>
-            <i class="material-icons">today</i>
-            Semesters
-          <% end %>
-          <%= link_to curriculum_categories_path, class: "mdl-navigation__link" do %>
-            <i class="material-icons">sort</i>
-            Categories
-          <% end %>
-          <div class="mdl-menu__item--full-bleed-divider"></div>
-          <%= link_to transcripts_path, class: "mdl-navigation__link" do %>
-            <i class="material-icons">description</i>
-            Transcript
-          <% end %>
-          <div class="mdl-menu__item--full-bleed-divider"></div>
+
           <%= link_to edit_user_registration_path, class: "mdl-navigation__link" do %>
             <i class="material-icons">settings</i>
             Settings

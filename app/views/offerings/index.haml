@@ -1,29 +1,38 @@
 - content_for :title do
   Courses Offered #{@active_semester.semester}
 
-%h3.mdl-display-2.bold.center-text{style: "margin-top: 75px;"}
-  Offerings
+%h3.mdl-display-2.header
+  Offerings (#{@active_semester.semester})
 
-.layout.horizontal.center-justified{style: "margin-bottom:75px;"}
+.layout.vertical.center{style: "margin-bottom:75px;"}
+  = form_tag offerings_path, method: :get, class: 'search-offerings' do
+    .mdl-textfield.mdl-js-textfield
+      = text_field_tag :search, params[:search], class: 'mdl-textfield__input', autofocus: true
+      %label.mdl-textfield__label Search
+
   %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
     %thead
       %tr
         %th.mdl-data-table__cell--non-numeric
-          Course
+          course
         %th.mdl-data-table__cell--non-numeric
-          Instructor
+          instructor
         %th.mdl-data-table__cell--non-numeric
-          Time
+          time
     %tbody
       - @offerings.each do |offering|
-        %tr
+        %tr.offering-row{ href: edit_offering_path(offering) }
           %td.mdl-data-table__cell--non-numeric
-            = link_to edit_offering_path(offering) do
-              = offering.course.subject + offering.course.course.to_s + "-"+ offering.section + ": " + offering.course.title
+            = offering.course.subject + offering.course.course.to_s + "-"+ offering.section + ": " + offering.course.title
           %td.mdl-data-table__cell--non-numeric
             = offering.user.email[0..-10].capitalize
           %td.mdl-data-table__cell--non-numeric
             = offering.days_time.pretty_day_time
+
+  .layout.horizontal.justified{ style: "width: 300px;max-width:90%;margin-top: 40px;"}
+    = link_to_previous_page @offerings, 'previous', params: { search: params[:search] }
+    .flex
+    = link_to_next_page @offerings, 'next', params: { search: params[:search] }
 
 = link_to new_offering_path do
   %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab

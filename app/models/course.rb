@@ -44,4 +44,14 @@ class Course < ActiveRecord::Base
   def pretty_course
     subject + course.to_s + ': ' + title
   end
+
+  def self.search(search)
+    if search.nil? || search == ''
+      all
+    else
+      search = search.downcase
+      where('LOWER(title) LIKE ?
+             OR LOWER(subject) LIKE ?', "%#{search}%", "%#{search}%")
+    end.order(:subject, :course).group_by(&:subject)
+  end
 end
