@@ -1,14 +1,26 @@
 - content_for :title do
   = @category.category
 
-.layout.vertical.center
-  %h3.mdl-display-2.bold.center-text
+.layout.vertical.center{ style: 'margin-bottom: 35px;' }
+  %h3.mdl-display-2.header
     = @category.category
   %div
-    = @category.set_and_or_flag if @category.set_and_or_flag
+    = @category.pretty_set_flag
 
-.category-container.layout.horizontal.center-justified.wrap
-  = render @category.curriculum_category_sets
+.vertical.layout.center
+  %ul.collapsible.popout{ data: { collapsible: :accordion } }
+    - @category.curriculum_category_sets.each_with_index do |category_set, index|
+      %li.category_section
+        .collapsible-header.layout.horizontal.start-justified{ class: "#{'active' if index == 0}"}
+          .category_section_number
+          .flex
+          = category_set.pretty_count
+
+        .collapsible-body
+          %ul.mdl-list
+            - category_set.courses.each do |course|
+              %li.mdl-list__item.layout.horizontal.center-justified.center-text
+                = course.pretty_course
 
 = link_to edit_curriculum_category_path(@category) do
   %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab

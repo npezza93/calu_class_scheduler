@@ -1,4 +1,6 @@
 class SemestersController < ApplicationController
+  authorize_resource
+
   def index
   end
 
@@ -12,7 +14,7 @@ class SemestersController < ApplicationController
     @active_semester.update_attributes(active: true)
 
     redirect_to semesters_path,
-                notice: @active_semester +
+                notice: @active_semester.semester +
                         ' is now the active semeter for the system'
   end
 
@@ -39,6 +41,6 @@ class SemestersController < ApplicationController
   private
 
   def semester_params
-    params.require(:semester).permit(:id)
+    params.require(:semester).permit(:id, :semester)
   end
 end

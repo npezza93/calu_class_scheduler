@@ -1,1 +1,6 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  course: two
+  user: advisor
+  section: D3
+  semester: one
+  days_time: one

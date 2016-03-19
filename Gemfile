@@ -41,3 +41,4 @@ gem 'kaminari'
 gem 'cancancan'
 gem 'rubocop', group: :development
 gem 'simplecov', require: false, group: :test
+gem 'numbers_and_words'

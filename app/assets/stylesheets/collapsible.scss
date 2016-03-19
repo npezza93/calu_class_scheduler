@@ -40,9 +40,13 @@
   letter-spacing: 1px;
   background-color: #eee;
 
+  label {
+    font-weight: 400;
+  }
   a {
     color: #212121;
     transition: all .4s ease;
+    font-weight: 400;
 
     &:hover {
       color: #9E9E9E;

@@ -57,7 +57,7 @@ class CoursesControllerTest < ActionController::TestCase
 
     put :update, params: { id: courses(:one), course: { title: nil } }
 
-    assert_equal 'Course 1', Course.find(courses(:one)).title
+    assert_equal 'Course 1', Course.find(courses(:one).id).title
   end
 
   test 'should update as advisor' do
@@ -66,7 +66,7 @@ class CoursesControllerTest < ActionController::TestCase
 
     put :update, params: { id: courses(:one), course: { title: 'A course' } }
 
-    assert_equal 'A course', Course.find(courses(:one)).title
+    assert_equal 'A course', Course.find(courses(:one).id).title
     assert_redirected_to :courses
   end
 

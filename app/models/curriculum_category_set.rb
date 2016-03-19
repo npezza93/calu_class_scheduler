@@ -7,4 +7,12 @@ class CurriculumCategorySet < ActiveRecord::Base
 
   accepts_nested_attributes_for :course_sets,
                                 reject_if: :all_blank, allow_destroy: true
+
+  def pretty_count
+    if count.nil?
+      'all are required'
+    else
+      "choose #{count.to_words} of the following"
+    end
+  end
 end

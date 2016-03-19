@@ -12,38 +12,6 @@
   }
 }
 
-.category-container {
-  margin: 15px;
-  @extend .layout.vertical;
-  @extend .layout.center;
-
-  .mdl-list {
-    min-width: 300px;
-    background: #fff;
-    margin-bottom: 60px;
-    cursor: pointer;
-
-    .mdl-list__item-primary-content {
-      cursor: pointer;
-    }
-  }
-}
-.new_curriculum_category, .edit_curriculum_category {
-  @extend .layout.vertical;
-  @extend .layout.center;
-  max-width: 95%;
-}
-.remove-cc-set {
-  color: #9E9E9E;
-  transition: all .5s ease;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-
-  &:hover {
-    color: #E52E2A;
-  }
-}
 .remove-course-association {
   color: #9E9E9E;
   transition: all .5s ease;
@@ -51,29 +19,6 @@
   &:hover {
     color: #E52E2A;
   }
-}
-.getmdl-select .mdl-icon-toggle__label {
-    float: right;
-    margin-top: -30px;
-    color: gray
-}
-.getmdl-select.is-focused i.mdl-icon-toggle__label {
-    color: rgb(96,125,139)
-}
-.category-set-container {
-  @extend .layout.vertical;
-  @extend .layout.center;
-  background: #fff;
-  position: relative;
-  width: 450px;
-  max-width: 95%;
-  padding: 30px 15px 15px 15px;
-  margin: 15px;
-}
-.category-sets-container {
-  @extend .layout.vertical;
-  @extend .layout.center;
-  max-width: 100%;
 }
 .category-set-logic-text {
   @extend .layout.horizontal;
@@ -89,13 +34,4 @@
   @extend .layout.justified;
   width: 300px;
   margin-bottom: 30px;
-}
-.getmdl-select {
-  width:300px;
-
-  .mdl-menu {
-    width:300px;
-    height: 200px !important;
-    overflow-y: scroll;
-  }
 }

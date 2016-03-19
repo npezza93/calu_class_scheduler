@@ -21,7 +21,7 @@
           time
     %tbody
       - @offerings.each do |offering|
-        %tr.offering-row{ href: edit_offering_path(offering) }
+        %tr.pointer.offering-row{ href: edit_offering_path(offering) }
           %td.mdl-data-table__cell--non-numeric
             = offering.course.subject + offering.course.course.to_s + "-"+ offering.section + ": " + offering.course.title
           %td.mdl-data-table__cell--non-numeric

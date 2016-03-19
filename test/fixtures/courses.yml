@@ -10,6 +10,6 @@ two:
   subject: BBB
   course: 123
   title: Course 2
-  minimum_class_standing: "Senior"
+  minimum_class_standing: Senior
   minimum_sat_score: nil
   minimum_pt: nil

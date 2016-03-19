@@ -1,12 +1,11 @@
 class OfferingsController < ApplicationController
-  before_action :set_offering, only: [:destroy, :edit, :update]
+  load_and_authorize_resource
 
   def index
     @offerings = Offering.search(params[:search], params[:page])
   end
 
   def new
-    @offering = Offering.new
   end
 
   def edit
@@ -40,7 +39,7 @@ class OfferingsController < ApplicationController
   end
 
   def import
-    if File.extname(params[:offering_file].original_filename).casecmp('.csv')
+    if File.extname(params[:offering_file].original_filename) == '.csv'
       Offering.import(params[:offering_file])
       redirect_to offerings_path, notice: 'Offerings Uploaded!'
     else
@@ -49,10 +48,6 @@ class OfferingsController < ApplicationController
   end
 
   private
-
-  def set_offering
-    @offering = Offering.find(params[:id])
-  end
 
   def offering_params
     params.require(:offering).permit(:course_id, :days_time_id, :user_id,

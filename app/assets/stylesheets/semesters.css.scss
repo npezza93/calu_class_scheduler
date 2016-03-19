@@ -1,11 +1,5 @@
 @import 'layout';
 
-.new_semester {
-  height: 100vh;
-  @extend .layout.vertical;
-  @extend .layout.center-center;
-}
-
 .edit_semester {
   margin-bottom: 50px;
   @extend .layout.vertical;

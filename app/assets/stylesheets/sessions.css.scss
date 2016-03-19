@@ -18,11 +18,9 @@
   }
 }
 
-.login-form, .new_user, .edit_user {
-  @extend .layout.vertical;
-  @extend .layout.center-center;
-}
-
 #forgot_password {
+  margin-top: 20px;
+}
+#sign_up {
   margin-top: 50px;
 }

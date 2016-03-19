@@ -1,11 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   email: one@calu.edu
   first_name: one
   last_name: one
   advisor: false
-  major: majors(:one)
+  major: one
   advised_by: users(:advisor)
 
 advisor:
@@ -13,4 +11,4 @@ advisor:
   first_name: advisor
   last_name: advisor
   advisor: true
-  major: majors(:one)
+  major: one

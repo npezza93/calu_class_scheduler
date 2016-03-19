@@ -53,6 +53,9 @@ hr {
 .bold {
   font-weight: bold !important;
 }
+.pointer {
+  cursor: pointer !important;
+}
 a {
   text-decoration: none !important;
 }
@@ -81,5 +84,22 @@ a {
   .material-icons {
     font-size: 30px;
     padding-right: 11px;
+  }
+}
+.getmdl-select .mdl-icon-toggle__label {
+    float: right;
+    margin-top: -30px;
+    color: gray
+}
+.getmdl-select.is-focused i.mdl-icon-toggle__label {
+    color: rgb(96,125,139)
+}
+.getmdl-select {
+  width:300px;
+
+  .mdl-menu {
+    width:300px;
+    height: 200px !important;
+    overflow-y: scroll;
   }
 }

@@ -20,13 +20,13 @@
           %div.student-schedule-link
             Schedule
 
-        - if !student.offerings.empty?
+        - if !student.courses.to_a.empty?
           .collapsible-body
             %ul.demo-list-item.mdl-list
-              - student.offerings.each do |offering|
+              - student.courses.each do |course|
                 %li.mdl-list__item
                   %span.mdl-list__item-primary-content.center-text.layout.horizontal.center-justified
-                    = offering.course.pretty_course
+                    = course.pretty_course
 
   .layout.horizontal.justified{ style: "width: 300px;max-width:90%;margin-top: 40px;"}
     = link_to_previous_page @students, 'Previous'

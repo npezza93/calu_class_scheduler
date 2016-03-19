@@ -1,9 +1,12 @@
 AllCops:
-  TargetRubyVersion: 2.2
   Exclude:
-    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'spec/**/*'
     - 'config/**/*'
+    - 'db/**/*'
     - 'bin/*'
-    - 'test/**/*'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Rakefile'
 Documentation:
   Enabled: false

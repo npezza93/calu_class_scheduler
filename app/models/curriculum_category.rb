@@ -11,4 +11,12 @@ class CurriculumCategory < ActiveRecord::Base
 
   accepts_nested_attributes_for :curriculum_category_sets,
                                 allow_destroy: true, reject_if: :all_blank
+
+  def pretty_set_flag
+    if set_and_or_flag == 'true'
+      'One of the following sections has to be completed'
+    else
+      'All the sections have to be completed'
+    end
+  end
 end

@@ -1,9 +1,6 @@
 @import 'layout';
 
 .new_transcript {
-  @extend .layout.vertical;
-  @extend .layout.center-center;
-
 	.transcript-fields {
 		@extend .layout.horizontal;
 

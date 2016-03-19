@@ -65,11 +65,12 @@ class User < ActiveRecord::Base
   end
 
   def advisees
-    User.where(advised_by: self)
+    User.includes(:courses).where(advised_by: self)
   end
 
   def students
-    User.where(advisor: false, administrator: false).where.not(advised_by: self)
+    User.includes(:courses).where(advisor: false, administrator: false)
+        .where.not(advised_by: self)
   end
 
   def mat_181
@@ -106,11 +107,11 @@ class User < ActiveRecord::Base
   end
 
   def scheduler
-    @complete = {}
-    @incomplete = {}
+    self.complete = {}
+    self.incomplete = {}
 
-    @used_courses = Set.new
-    @math_classes = []
+    self.used_courses = Set.new
+    self.math_classes = []
 
     categories.each do |category|
       courses_for_category(category)
@@ -121,30 +122,11 @@ class User < ActiveRecord::Base
 
   def courses_for_category(category)
     sets = []
-    @complete[category] = {}
-    @incomplete[category] = {}
+    complete[category] = {}
+    incomplete[category] = {}
 
     category.curriculum_category_sets.each do |category_set|
-      set_mapping = category_set.courses.map do |course|
-        taken_courses.to_a.include?(course)
-      end
-      count = category_set.count
-
-      if !count.nil? && set_mapping.grep(true).count < count
-        sets.push(false)
-        incomplete[category][category_set] =
-          category_set.courses - taken_courses
-      elsif !count.nil? && set_mapping.grep(true).count >= count
-        sets.push(true)
-      elsif count.nil?
-        sets.push(set_mapping.inject(:&))
-        unless set_mapping.inject(:&)
-          incomplete[category][category_set] =
-            category_set.courses - taken_courses
-        end
-      end
-      complete[category][category_set] =
-        category_set.courses & taken_courses
+      sets << courses_from_category_set(category, category_set)
     end
 
     if category.set_and_or_flag ? sets.compact.inject(:|) : sets.compact.inject(:&)
@@ -177,6 +159,29 @@ class User < ActiveRecord::Base
       incomplete[category].map!(&:offerings)
       incomplete[category] = incomplete[category].flatten
     end
+  end
+
+  def courses_from_category_set(category, category_set)
+    set_mapping = category_set.courses.map do |course|
+      taken_courses.to_a.include?(course)
+    end
+    count = category_set.count
+    complete[category][category_set] = category_set.courses & taken_courses
+    incomplete_courses_from_set(category, category_set, count, set_mapping)
+  end
+
+  def incomplete_courses_from_set(category, category_set, count, set_mapping)
+    sets_complete = nil
+    if set_mapping.count(true) < count || !set_mapping.inject(:&)
+      incomplete[category][category_set] = category_set.courses - taken_courses
+      sets_complete = if count.nil?
+                        set_mapping.inject(:&)
+                      else
+                        false
+                      end
+    end
+    sets_complete = true if !count.nil? && set_mapping.count(true) >= count
+    sets_complete
   end
 
   def math_class?(course)
@@ -305,13 +310,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
-    return nil if search.nil? || search == ''
-
-    where('first_name LIKE ?
-           OR last_name LIKE ?
-           OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
-      .where(advisor: false, administrator: false).to_a
+  def self.search(user, search = nil)
+    if search.blank?
+      user.advisees + user.students
+    else
+      where('first_name LIKE ?
+             OR last_name LIKE ?
+             OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+        .where(advisor: false, administrator: false)
+    end
   end
 
   def self.sort_options

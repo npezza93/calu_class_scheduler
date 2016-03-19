@@ -1,9 +1,0 @@
-@import "layout";
-
-.new_offering, .edit_offering {
-  @extend .layout.vertical;
-  @extend .layout.center-center;
-}
-.offering-row {
-  cursor: pointer;
-}

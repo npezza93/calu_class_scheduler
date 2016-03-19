@@ -5,9 +5,10 @@ require 'simplecov'
 SimpleCov.start
 require 'active_support/testing/assertions'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+module ActiveSupport
+  class TestCase
+    fixtures :all
 
-  include ActiveSupport::Testing::Assertions
+    include ActiveSupport::Testing::Assertions
+  end
 end

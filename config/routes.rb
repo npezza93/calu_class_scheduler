@@ -34,8 +34,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     authenticated :user do
-      root 'schedules#index', :constraints => RoleConstraint.new(:user)
-      root 'users#index', :constraints => RoleConstraint.new(:advisor)
+      root 'work_schedules#index', constraints: RoleConstraint.new(:user)
+      root 'users#index', constraints: RoleConstraint.new(:advisor)
     end
 
     unauthenticated do

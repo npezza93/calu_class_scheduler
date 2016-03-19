@@ -1,9 +1,3 @@
-@import 'layout';
-
-.new_course, .edit_course {
-  @extend .layout.vertical;
-  @extend .layout.center;
-}
 .form-course-container {
   width: 450px;
   max-width: 95%;
