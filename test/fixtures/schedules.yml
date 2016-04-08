@@ -1,9 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  offering_id: 
-  user_id: 
-
-two:
-  offering_id: 
-  user_id: 
+  offering: one
+  user: one

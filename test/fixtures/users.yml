@@ -1,14 +1,14 @@
-one:
-  email: one@calu.edu
-  first_name: one
-  last_name: one
-  advisor: false
-  major: one
-  advised_by: users(:advisor)
-
 advisor:
   email: advisor@calu.edu
   first_name: advisor
   last_name: advisor
   advisor: true
   major: one
+
+one:
+  email: one@calu.edu
+  first_name: one
+  last_name: one
+  advisor: false
+  major: one
+  advised_by: advisor

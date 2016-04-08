@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  days: MyString
-  start_time: 2015-02-01 04:10:05
-  end_time: 2015-02-01 04:10:05
-
-two:
-  days: MyString
-  start_time: 2015-02-01 04:10:05
-  end_time: 2015-02-01 04:10:05
+  days: M
+  start_time: 8:00am
+  end_time: 8:30am
