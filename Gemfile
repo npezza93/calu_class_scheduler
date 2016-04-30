@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.0beta3'
+gem 'rails', '5.0.0beta4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -25,13 +25,13 @@ gem 'spring', '~>1.3.6', group: :development
 
 gem 'puma'
 
-gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
+gem 'remotipart'
 gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
 
-gem 'seed_dump'
+gem 'seed_dump', group: :development
 gem 'pg'
 gem 'rails_12factor', group: :production
-gem 'devise', '~>4.0.0rc2'
+gem 'devise'
 
 gem 'web-console', '~> 2.0', group: :development
 gem 'pry-rails'
