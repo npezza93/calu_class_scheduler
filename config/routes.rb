@@ -48,7 +48,12 @@ Rails.application.routes.draw do
       post :import
     end
   end
-  resources :work_schedules, only: [:create, :new, :index, :destroy], path: :calendar
+  resources :work_schedules, only: [:create, :new, :index, :destroy], path: :calendar do
+    collection do
+      post :create_day
+      post :create_time
+    end
+  end
   resources :schedules, only: [:index, :create, :destroy], path: :schedule
 
 

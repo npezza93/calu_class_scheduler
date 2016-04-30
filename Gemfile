@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0beta3'
 
@@ -31,14 +31,14 @@ gem 'jquery-fileupload-rails', github: 'Springest/jquery-fileupload-rails'
 gem 'seed_dump'
 gem 'pg'
 gem 'rails_12factor', group: :production
-gem 'devise', '~>4.0.0rc1'
+gem 'devise', '~>4.0.0rc2'
 
 gem 'web-console', '~> 2.0', group: :development
 gem 'pry-rails'
 gem 'cocoon'
 gem 'haml'
 gem 'kaminari'
-gem 'cancancan'
+gem 'cancancan', github: 'craig1410/cancancan', branch: 'rails_5'
 gem 'rubocop', group: :development
 gem 'simplecov', require: false, group: :test
 gem 'numbers_and_words'

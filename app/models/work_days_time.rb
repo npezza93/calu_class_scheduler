@@ -1,5 +1,12 @@
 class WorkDaysTime < ActiveRecord::Base
   validates :days, uniqueness: { scope: [:start_time, :end_time] }
+  scope :with_start_time, lambda { |sel|
+    all.select { |day_time| day_time.parsed_start_time == sel }
+  }
+
+  def parsed_start_time
+    start_time.strftime('%l:%M %P').strip
+  end
 
   def short_time
     days + start_time.strftime('%l%M%p').strip

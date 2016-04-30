@@ -9,9 +9,6 @@
 #upload-transcript-header {
   font-weight: bold;
 }
-#big_schedule_table {
-  margin: 8px;
-}
 .category-items {
     width:400px;
     margin:15px;
@@ -21,18 +18,17 @@
 .inactive {
     color: #bdbdbd;
 }
-// .active {
-//     color: #2196F3;
-// }
-
-
-
-
-
-
-#schedule_calendar {
-    text-align: center;
+.calendar {
+  margin:15px;
+  border-collapse:separate !important;
+  border-spacing: 11px 3px !important;
+  border:none;
 }
+
+
+
+
+
 .day_time_slot {
     text-align: center;
     cursor:pointer;

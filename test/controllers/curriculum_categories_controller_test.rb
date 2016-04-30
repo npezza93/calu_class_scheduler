@@ -86,19 +86,50 @@ class CurriculumCategoriesControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should not update because invalid as advisor ' do
+  test 'should create as advisor' do
     @user = users(:advisor)
     sign_in @user
 
-    put :update,
-        params: {
-          id: curriculum_categories(:one).id,
-          curriculum_category: { category: 'Math' }
-        }
+    assert_difference('CurriculumCategory.count') do
+      post :create, params: { curriculum_category:
+        { category: 'Category 1', major_id: majors(:one).id,
+          minor: false } }
+    end
 
-    assert_equal 'Communication Skills',
-                 CurriculumCategory.find(
-                   curriculum_categories(:one).id
-                 ).category
+    assert_redirected_to :curriculum_categories
+    assert_equal 'Category 1 has been created!', flash[:notice]
+  end
+
+  test 'should not create as advisor' do
+    @user = users(:advisor)
+    sign_in @user
+
+    assert_no_difference('CurriculumCategory.count') do
+      post :create, params: { curriculum_category:
+        { category: 'Category 1', major_id: majors(:one).id } }
+    end
+  end
+
+  test 'should update as advisor' do
+    @user = users(:advisor)
+    sign_in @user
+
+    put :update, params: { id: curriculum_categories(:one), curriculum_category:
+       { category: 'Test' } }
+
+    category = CurriculumCategory.find(curriculum_categories(:one).id)
+    assert_equal 'Test', category.category
+    assert_redirected_to :curriculum_categories
+  end
+
+  test 'should not update as advisor' do
+    @user = users(:advisor)
+    sign_in @user
+
+    put :update, params: { id: curriculum_categories(:one), curriculum_category:
+       { category: nil } }
+
+    category = CurriculumCategory.find(curriculum_categories(:one).id)
+    assert_equal 'Communication Skills', category.category
   end
 end

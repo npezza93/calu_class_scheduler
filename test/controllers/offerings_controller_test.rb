@@ -3,51 +3,35 @@ require 'test_helper'
 class OfferingsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
-  test 'should get index as advisor' do
+  test 'should get index, new, and edit as advisor' do
     @user = users(:advisor)
     sign_in @user
 
     get :index
     assert_response :success
+
+    get :new
+    assert_response :success
+
+    get :edit, params: { id: offerings(:one).id }
+    assert_response :success
   end
 
-  test 'should not get index as student' do
+  test 'should not do anything as student' do
     @user = users(:one)
     sign_in @user
 
     get :index
     assert_redirected_to :root
-  end
-
-  test 'should get new as advisor' do
-    @user = users(:advisor)
-    sign_in @user
-
-    get :new
-    assert_response :success
-  end
-
-  test 'should not get new as student' do
-    @user = users(:one)
-    sign_in @user
-
     get :new
     assert_redirected_to :root
-  end
-
-  test 'should get edit as advisor' do
-    @user = users(:advisor)
-    sign_in @user
-
     get :edit, params: { id: offerings(:one).id }
-    assert_response :success
-  end
-
-  test 'should not get edit as student' do
-    @user = users(:one)
-    sign_in @user
-
-    get :edit, params: { id: offerings(:one).id }
+    assert_redirected_to :root
+    post :create, params: { offering: { course_id: courses(:one).id } }
+    assert_redirected_to :root
+    delete :destroy, params: { id: offerings(:one).id }
+    assert_redirected_to :root
+    post :import, params: { offering_file: 'file text' }
     assert_redirected_to :root
   end
 
@@ -68,10 +52,7 @@ class OfferingsControllerTest < ActionController::TestCase
     @user = users(:advisor)
     sign_in @user
 
-    put :update, params: {
-      id: offerings(:one),
-      offering: { course_id: nil }
-    }
+    put :update, params: { id: offerings(:one), offering: { course_id: nil } }
 
     assert_equal courses(:two), Offering.find(offerings(:one).id).course
   end
@@ -81,9 +62,7 @@ class OfferingsControllerTest < ActionController::TestCase
     sign_in @user
 
     put :update,
-        params: {
-          id: offerings(:one),
-          offering: { course_id: courses(:one).id }
+        params: { id: offerings(:one), offering: { course_id: courses(:one).id }
         }
     assert_redirected_to :root
   end
@@ -115,14 +94,6 @@ class OfferingsControllerTest < ActionController::TestCase
     assert_equal courses(:one).title + ' is now being offered!', flash[:notice]
   end
 
-  test 'should not post create as student' do
-    @user = users(:one)
-    sign_in @user
-
-    post :create, params: { offering: { course_id: courses(:one).id } }
-    assert_redirected_to :root
-  end
-
   test 'should delete offering as advisor' do
     @user = users(:advisor)
     sign_in @user
@@ -134,24 +105,6 @@ class OfferingsControllerTest < ActionController::TestCase
     assert_redirected_to :offerings
     assert_equal courses(:two).title + ' is no longer being offered!',
                  flash[:notice]
-  end
-
-  test 'should not delete offering as student' do
-    @user = users(:one)
-    sign_in @user
-
-    delete :destroy, params: { id: offerings(:one).id }
-
-    assert_redirected_to :root
-  end
-
-  test 'should not import offerings as student' do
-    @user = users(:one)
-    sign_in @user
-
-    post :import, params: { offering_file: 'file text' }
-
-    assert_redirected_to :root
   end
 
   test 'should not import offerings as advisor' do

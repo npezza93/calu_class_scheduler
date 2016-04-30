@@ -25,7 +25,7 @@ class MajorsControllerTest < ActionController::TestCase
 
     put :update, params: { id: majors(:one), major: { major: nil } }
 
-    assert_equal 'MyString', Major.find(majors(:one)).major
+    assert_equal 'MyString', Major.find(majors(:one).id).major
   end
 
   test 'should update as advisor' do
@@ -34,7 +34,7 @@ class MajorsControllerTest < ActionController::TestCase
 
     put :update, params: { id: majors(:one), major: { major: 'A new major' } }
 
-    assert_equal 'A new major', Major.find(majors(:one)).major
+    assert_equal 'A new major', Major.find(majors(:one).id).major
     assert_redirected_to :majors
   end
 

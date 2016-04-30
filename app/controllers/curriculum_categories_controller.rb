@@ -28,6 +28,7 @@ class CurriculumCategoriesController < ApplicationController
       redirect_to curriculum_categories_path,
                   notice: @category.category + ' has been created!'
     else
+      @courses = Course.all.order(:subject)
       render :new
     end
   end
@@ -37,6 +38,7 @@ class CurriculumCategoriesController < ApplicationController
       redirect_to curriculum_categories_url,
                   notice: @category.category + ' successfully updated!'
     else
+      @courses = Course.all.order(:subject)
       render :edit
     end
   end

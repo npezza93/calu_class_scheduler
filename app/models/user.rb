@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
         .where.not(advised_by: self)
   end
 
+  def dma
+    @dma ||= Course.find_by(subject: 'DMA', course: 92)
+  end
+
   def mat_181
     @mat_181 ||= Course.find_by(subject: 'MAT', course: '181')
   end
@@ -93,17 +97,15 @@ class User < ActiveRecord::Base
     @active_semester ||= Semester.active
   end
 
-  def categories
-    @categories ||= CurriculumCategory.where(
+  def cached_categories
+    CurriculumCategory.where(
       '(major_id = ? and minor =?) or (minor = ? and major_id IN (?))',
-      1, false, true, []
+      major_id, false, true, []
     ).includes(:courses,
-               curriculum_category_sets: [
-                 { courses: [{ prerequisites: [:course] },
-                             { offerings: [:days_time, :user] }] },
-                 { course_sets: { course:
-                   [:prerequisites, { offerings: [:days_time, :user] }] } }
-               ])
+               curriculum_category_sets: [{
+                 courses: [{ prerequisites:
+                             [{ course: { offerings: [:days_time, :user] } }
+                   ] }, { offerings: [:days_time, :user] }] }]).to_a
   end
 
   def scheduler
@@ -113,75 +115,128 @@ class User < ActiveRecord::Base
     self.used_courses = Set.new
     self.math_classes = []
 
-    categories.each do |category|
-      courses_for_category(category)
+    cached_categories.each do |category|
+      init_category(category)
+      eval_category(category)
     end
 
     add_needed_math_classes
   end
 
-  def courses_for_category(category)
-    sets = []
+  def init_category(category)
     complete[category] = {}
     incomplete[category] = {}
+  end
+
+  def eval_category(category)
+    sets = []
 
     category.curriculum_category_sets.each do |category_set|
-      sets << courses_from_category_set(category, category_set)
+      sets << eval_category_set(category, category_set)
     end
 
-    if category.set_and_or_flag ? sets.compact.inject(:|) : sets.compact.inject(:&)
-      complete[category] = (category.courses & taken_courses).uniq
-      incomplete.delete(category)
-      if category.set_and_or_flag
-        complete[category] =
-          (category.curriculum_category_sets[sets.index(true)].courses &
-            taken_courses).uniq
-      end
+    if category_complete?(category, sets)
+      complete_category(category, sets.index(true))
     else
-      if category.set_and_or_flag
-        incomplete[category] = incomplete[category].select do |_, value|
-          value.count == incomplete[category].map { |_, v| v.count }.min
-        end
-        complete[category] = complete[category].select do |_, value|
-          value.count == complete[category].map { |_, v| v.count }.max
-        end
-        temp_set = complete[category].keys.first
-        temp_courses = complete[category].values.flatten.uniq
-        complete[category] = {}
-        complete[category][temp_set] = temp_courses
-      end
-      incomplete[category] =
-        prerequisite_check(incomplete[category].values.flatten)
-      used_courses.merge(incomplete[category])
-      incomplete[category].each do |course|
-        math_classes << [course, category] if math_class?(course)
-      end
-      incomplete[category].map!(&:offerings)
-      incomplete[category] = incomplete[category].flatten
+      incomplete_category(category)
     end
   end
 
-  def courses_from_category_set(category, category_set)
+  def eval_category_set(category, category_set)
     set_mapping = category_set.courses.map do |course|
       taken_courses.to_a.include?(course)
     end
-    count = category_set.count
     complete[category][category_set] = category_set.courses & taken_courses
-    incomplete_courses_from_set(category, category_set, count, set_mapping)
+
+    get_incomplete_from_set(
+      category,
+      category_set,
+      category_set.count,
+      set_mapping
+    )
   end
 
-  def incomplete_courses_from_set(category, category_set, count, set_mapping)
-    sets_complete = nil
-    if set_mapping.count(true) < count || !set_mapping.inject(:&)
-      incomplete[category][category_set] = category_set.courses - taken_courses
-      sets_complete = if count.nil?
-                        set_mapping.inject(:&)
-                      else
-                        false
-                      end
+  def get_incomplete_from_set(category, category_set, count, set_mapping)
+    if !count.nil?
+      eval_count_of_set(category, category_set, count, set_mapping)
+    else
+      unless set_mapping.inject(:&)
+        add_incomplete_from_set(category, category_set)
+      end
+      set_mapping.inject(:&)
     end
-    sets_complete = true if !count.nil? && set_mapping.count(true) >= count
-    sets_complete
+  end
+
+  def eval_count_of_set(category, category_set, count, set_mapping)
+    if set_mapping.grep(true).count < count
+      add_incomplete_from_set(category, category_set)
+      false
+    else
+      true
+    end
+  end
+
+  def add_incomplete_from_set(category, category_set)
+    incomplete[category][category_set] = category_set.courses - taken_courses
+  end
+
+  def category_complete?(category, sets)
+    if category.set_and_or_flag == 'true'
+      sets.compact.inject(:|)
+    else
+      sets.compact.inject(:&)
+    end
+  end
+
+  def add_first_complete_set_for_or_category(category, set_index)
+    complete[category] =
+      (category.curriculum_category_sets[set_index].courses &
+        taken_courses).uniq
+  end
+
+  def complete_category(category, set_index)
+    complete[category] = (category.courses & taken_courses).uniq
+    incomplete.delete(category)
+    if category.set_and_or_flag == 'true'
+      add_first_complete_set_for_or_category(category, set_index)
+    end
+  end
+
+  def incomplete_category(category)
+    incomplete_or_category(category) if category.set_and_or_flag == 'true'
+    incomplete[category] =
+      prerequisite_check(incomplete[category].values.flatten)
+    used_courses.merge(incomplete[category])
+    covert_to_offerings(category)
+  end
+
+  def covert_to_offerings(category)
+    incomplete[category].each do |course|
+      math_classes << [course, category] if math_class?(course)
+    end
+    incomplete[category].map!(&:offerings).flatten!
+  end
+
+  def incomplete_or_category(category)
+    reset_incomplete_of_or_category_sets(category)
+    reset_complete_of_or_category_sets(category)
+
+    temp_set = complete[category].keys.first
+    temp_courses = complete[category].values.flatten.uniq
+    complete[category] = {}
+    complete[category][temp_set] = temp_courses
+  end
+
+  def reset_incomplete_of_or_category_sets(category)
+    incomplete[category] = incomplete[category].select do |_, value|
+      value.count == incomplete[category].map { |_, v| v.count }.min
+    end
+  end
+
+  def reset_complete_of_or_category_sets(category)
+    complete[category] = complete[category].select do |_, value|
+      value.count == complete[category].map { |_, v| v.count }.max
+    end
   end
 
   def math_class?(course)
@@ -194,16 +249,14 @@ class User < ActiveRecord::Base
   def prerequisite_check(courses)
     ok_courses = []
     courses.each do |course|
-      prerequisite_groups = course.prerequisite_groups
-
-      prerequisite_groups = prerequisite_groups.map do |prerequisite_group|
-        prerequisite_group.prerequisites.map do |prereq|
+      groups = course.prerequisite_groups.map do |group|
+        group.prerequisites.map do |prereq|
           ok_courses << failed_class(prereq) unless failed_class(prereq).nil?
           passed_class?(prereq)
         end.inject(:&)
       end.inject(:|)
 
-      ok_courses << course if can_take_course?(course, prerequisite_groups)
+      ok_courses << course if can_take_course?(course, groups)
     end
     ok_courses
   end
@@ -281,22 +334,30 @@ class User < ActiveRecord::Base
   end
 
   def math_pt(math_classes)
-    categories = math_classes.collect(&:second)
+    category = math_classes.collect(&:second).sort.last
+    mat_prereq = eval_prereq_maths
 
-    mat_prereq = {}
-    mat_prereq[mat_281] = prerequisite_check([mat_281]).include? mat_281
-    mat_prereq[mat_199] = prerequisite_check([mat_199]).include? mat_199
-    mat_prereq[mat_191] = prerequisite_check([mat_191]).include? mat_191
-    mat_prereq[mat_181] = prerequisite_check([mat_181]).include? mat_181
-
-    if !mat_prereq.values.inject(:|)
-      dma = Course.find_by(subject: 'DMA', course: 92)
-      return [dma, categories.sort.last] if prerequisite_check([dma]).include? dma
-      nil
+    if !mat_prereq.inject(:|) && need_dma?
+      [dma, category]
     else
-      highest_avail = mat_prereq.select { |k, v| v && !taken_courses.include?(k) }
-      return [highest_avail.first[0], categories.sort.last]
+      [mat_prereq.find do |k, v|
+        v && !taken_courses.include?(k)
+      end[0], category]
     end
+  end
+
+  def need_dma?
+    prerequisite_check([dma]).include? dma
+  end
+
+  def eval_prereq_maths
+    math_check = prerequisite_check([mat_281, mat_199, mat_191, mat_181])
+    [
+      math_check.include?(mat_281),
+      math_check.include?(mat_199),
+      math_check.include?(mat_191),
+      math_check.include?(mat_181)
+    ]
   end
 
   def add_needed_math_classes

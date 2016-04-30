@@ -1,11 +1,11 @@
 class Transcript < ActiveRecord::Base
-  belongs_to :user, touch: true
+  belongs_to :user
   belongs_to :course
 
   validates_uniqueness_of :course, scope: :user,
                                    message: 'You\'ve already taken this course!'
 
-  validates_presence_of :course, message: 'A course must be selected!'
+  validates :course, presence: { message: 'A course must be selected!' }
 
   GRADES = %w(A A\- B\+ B B\- C\+ C C\- D\- D D\+ F).freeze
 
@@ -15,7 +15,8 @@ class Transcript < ActiveRecord::Base
       text = text.split(/[\r\n]+/)
       text.reject!(&:empty?)
 
-      return nil if text[0].casecmp('DegreeWorks: New Production') == -1
+      return nil if text.blank? ||
+                    text[0].casecmp('DegreeWorks: New Production') == -1
       update_sat_scores(text, user)
       parsed_transcripts = parse_courses(text.drop(main_line(text)), Course.all)
 

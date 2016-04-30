@@ -45,21 +45,16 @@ class TranscriptsController < ApplicationController
 
   def transcript_params
     attrs = params.require(:transcript).permit(:course_id, :grade_c)
-    attrs[:grade_c_minus] = Transcript.c_minus?(attrs[:grade_c])
-    attrs[:grade_c_minus] = Transcript.c?(attrs[:grade_c])
+    unless attrs[:grade_c].blank?
+      attrs[:grade_c_minus] = Transcript.c_minus?(attrs[:grade_c])
+      attrs[:grade_c_minus] = Transcript.c?(attrs[:grade_c])
+    end
     attrs
   end
 
-  def import_params
-    params.require(:transcript_file)
-  end
-
   def remove_schedules
-    if current_user.courses.include?(@transcript.course)
-      current_user.schedules.find_by(
-        offering: Offering.find_by(course: @transcript.course,
-                                   semester: @active_semester)
-      ).destroy
-    end
+    current_user.schedules.find_by(
+      offering: Offering.find_by(course: @transcript.course,
+                                 semester: @active_semester)).try(:destroy)
   end
 end

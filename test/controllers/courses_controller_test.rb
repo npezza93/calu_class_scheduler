@@ -17,6 +17,10 @@ class CoursesControllerTest < ActionController::TestCase
 
     get :index
     assert_redirected_to :root
+    get :new
+    assert_redirected_to :root
+    get :edit, params: { id: courses(:one).id }
+    assert_redirected_to :root
   end
 
   test 'should get new as advisor' do
@@ -27,28 +31,12 @@ class CoursesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should not get new as student' do
-    @user = users(:one)
-    sign_in @user
-
-    get :new
-    assert_redirected_to :root
-  end
-
   test 'should get edit as advisor' do
     @user = users(:advisor)
     sign_in @user
 
     get :edit, params: { id: courses(:one).id }
     assert_response :success
-  end
-
-  test 'should not get edit as student' do
-    @user = users(:one)
-    sign_in @user
-
-    get :edit, params: { id: courses(:one).id }
-    assert_redirected_to :root
   end
 
   test 'should not update because invalid as advisor ' do

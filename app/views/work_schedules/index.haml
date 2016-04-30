@@ -5,24 +5,28 @@
   Calendar
 
 %div
-  #big_schedule_table.layout.horizontal.center-justified
-    %table#schedule_calendar{:style => "margin:15px;border-collapse:separate !important;border-spacing: 11px 3px !important;border:none;"}
-      %tr{:style => "border:none;"}
+  .layout.horizontal.center-justified
+    %table.center-text.calendar
+      %tr{:style => 'border:none;'}
         %th
-        %th.day monday
-        %th.day tuesday
-        %th.day wednesday
-        %th.day thursday
-        %th.day friday
+        %th.day
+          = link_to 'monday', create_day_work_schedules_path(day: 'M'), method: :post
+        %th.day
+          = link_to 'tuesday', create_day_work_schedules_path(day: 'T'), method: :post
+        %th.day
+          = link_to 'wednesday', create_day_work_schedules_path(day: 'W'), method: :post
+        %th.day
+          = link_to 'thursday', create_day_work_schedules_path(day: 'R'), method: :post
+        %th.day
+          = link_to 'friday', create_day_work_schedules_path(day: 'F'), method: :post
+
       - @work_time_slots.each_slice(5) do |slots|
         %tr
           %td.time_slot
-            = slots.first.start_time.strftime('%l:%M %P')
+            = link_to slots.first.parsed_start_time, create_time_work_schedules_path(time: slots.first.parsed_start_time), method: :post
           - slots.each do |slot|
             %td.day_time_slot
               - if @work_times.include? slot
-                = link_to '', @work_schedules.find{ |work| work.work_days_time_id == slot.id }, data: { method: :delete }
+                = link_to '', @work_schedules.find{ |work| work.work_days_time_id == slot.id }, data: { method: :delete }, class: 'blocked'
               - else
-                = form_for @work_schedule do |f|
-                  = f.hidden_field :work_days_time_id, value: slot.id
-                  = f.submit ''
+                = link_to '', work_schedules_path(work_days_time_id: slot.id), method: :post

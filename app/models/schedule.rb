@@ -8,7 +8,7 @@ class Schedule < ActiveRecord::Base
   validates :offering, uniqueness: { scope: :user }
 
   validate do
-    errors.add(:base, 'You cannot take more than 18 credits') unless
+    errors.add(:base, 'You cannot take more than 18 credits') if
       (user.current_credits + course.credits) > 18
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224024809) do
+ActiveRecord::Schema.define(version: 20160323010150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20160224024809) do
     t.string   "section"
   end
 
+  add_index "offerings", ["course_id"], name: "index_offerings_on_course_id", using: :btree
+  add_index "offerings", ["days_time_id"], name: "index_offerings_on_days_time_id", using: :btree
   add_index "offerings", ["semester_id"], name: "index_offerings_on_semester_id", using: :btree
   add_index "offerings", ["user_id"], name: "index_offerings_on_user_id", using: :btree
 
@@ -112,6 +114,9 @@ ActiveRecord::Schema.define(version: 20160224024809) do
     t.integer  "prerequisite_group_id"
     t.string   "minimum_grade"
   end
+
+  add_index "prerequisites", ["course_id"], name: "index_prerequisites_on_course_id", using: :btree
+  add_index "prerequisites", ["prerequisite_group_id"], name: "index_prerequisites_on_prerequisite_group_id", using: :btree
 
   create_table "schedule_approvals", force: :cascade do |t|
     t.integer  "user_id"
