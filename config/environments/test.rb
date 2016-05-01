@@ -14,7 +14,18 @@ Rails.application.configure do
 
   # Configure static asset server for tests with Cache-Control for performance.
   config.serve_static_assets  = false
-  config.static_cache_control = 'public, max-age=3600'
+  if Rails.root.join('tmp/caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
+
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => 'public, max-age=172800'
+    }
+  else
+    config.action_controller.perform_caching = false
+
+    config.cache_store = :null_store
+  end
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
