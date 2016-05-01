@@ -56,9 +56,8 @@ GEM
     arel (7.0.0)
     ast (2.2.0)
     bcrypt (3.1.11)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    byebug (8.2.5)
     cocoon (1.2.9)
     coderay (1.1.1)
     coffee-rails (4.0.1)
@@ -79,6 +78,7 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.6.0)
+    ffi (1.9.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -95,6 +95,9 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    listen (3.0.7)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -161,9 +164,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
     rake (11.1.2)
+    rb-fsevent (0.9.7)
+    rb-inotify (0.9.7)
+      ffi (>= 0.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
-    remotipart (1.2.1)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
     rubocop (0.39.0)
@@ -192,7 +197,10 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.3.6)
+    spring (1.7.1)
+    spring-watcher-listen (2.0.0)
+      listen (>= 2.7, < 4.0)
+      spring (~> 1.2)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -213,11 +221,10 @@ GEM
     unicode-display_width (1.0.5)
     warden (1.2.6)
       rack (>= 1.0)
-    web-console (2.3.0)
-      activemodel (>= 4.0)
-      binding_of_caller (>= 0.7.2)
-      railties (>= 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
+    web-console (3.1.1)
+      activemodel (>= 4.2)
+      debug_inspector
+      railties (>= 4.2)
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -226,6 +233,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   cancancan!
   cocoon
   coffee-rails (~> 4.0.0)
@@ -235,22 +243,23 @@ DEPENDENCIES
   jquery-fileupload-rails!
   jquery-rails
   kaminari
+  listen (~> 3.0.5)
   numbers_and_words
   pg
   pry-rails
   puma
   rails (= 5.0.0beta4)
   rails_12factor
-  remotipart
   rubocop
   sass-rails
   sdoc (~> 0.4.0)
   seed_dump
   simplecov
-  spring (~> 1.3.6)
-  turbolinks (~> 5.0.0.beta2)
+  spring
+  spring-watcher-listen (~> 2.0.0)
+  turbolinks (~> 5.0.0beta2)
   uglifier (>= 1.3.0)
-  web-console (~> 2.0)
+  web-console
 
 BUNDLED WITH
    1.11.2

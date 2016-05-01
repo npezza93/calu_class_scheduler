@@ -5,8 +5,6 @@ require 'minitest/pride'
 require 'simplecov'
 SimpleCov.start
 
-module ActiveSupport
-  class TestCase
-    fixtures :all
-  end
+class ActiveSupport::TestCase
+  fixtures :all
 end
