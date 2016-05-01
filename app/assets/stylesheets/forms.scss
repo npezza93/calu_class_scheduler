@@ -6,3 +6,9 @@
   @extend .layout.vertical;
   @extend .layout.center;
 }
+
+.new_offering {
+  width: 400px;
+  max-width: 90%;
+  margin: auto;
+}

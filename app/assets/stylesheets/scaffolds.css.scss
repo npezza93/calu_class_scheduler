@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Avenir' !important;
-  letter-spacing: 1px !important;
-  background-color: #F9F9F9;
+  letter-spacing: 1.5px !important;
+  background-color: #f4f4f4;
   color: #333;
 }
 hr {
@@ -74,6 +74,9 @@ a {
   font-family: 'Avenir' !important;
   letter-spacing: 1.5px !important;
 }
+#drawer {
+  background-color: #fff;
+}
 .mdl-navigation__link {
   font-size: 20px !important;
   font-weight: 300 !important;
@@ -81,7 +84,7 @@ a {
   letter-spacing: 1.75px !important;
   text-transform: lowercase;
 
-  .material-icons {
+  i {
     font-size: 30px;
     padding-right: 11px;
   }

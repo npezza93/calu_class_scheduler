@@ -37,25 +37,14 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def collection_select(method, collection, value_method, text_method, options = {})
-    random = SecureRandom.base64
-    if object.send(method)
-      value = object.send(method)
-      text = collection.find(value).send(text_method)
-    else
-      value = collection.first.send(value_method)
-      text = collection.first.send(text_method)
-    end
+    error_msg = errors[method.to_s.gsub('_id', '').to_sym][0]
 
-    content_tag :div, class: div_classes_for_select(method) do
-      hidden_field(method, value: value) +
-        generate_content_for_select(method, random, value, text) +
-
-        content_tag(:label, for: random) do
-          content_tag(:i, options[:prompt], class: 'mdl-textfield__label')
-        end +
-
-        content_tag(:ul, select_ul_class(random)) do
-          collection.collect { |item| @template.concat(content_tag(:li, item.send(text_method), class: 'mdl-menu__item', value: item.send(value_method)))}
+    content_tag :div, class: "input-field #{'is-invalid' unless error_msg.blank?}" do
+      super(method, collection, value_method, text_method, options) +
+        if !error_msg.blank?
+          content_tag(:label, error_msg, class: 'active')
+        else
+          ''
         end
     end
   end
@@ -68,17 +57,6 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   private
-
-  def generate_content_for_select(method, random, value, text)
-    content_tag(:input, nil, select_input_attrs(random, value, text)) +
-      content_tag(:label, for: random) do
-        content_tag(:i, 'keyboard_arrow_down', select_arrow)
-      end +
-
-      content_tag(:span, class: 'mdl-textfield__error') do
-        errors[method.to_s.gsub('_id', '').to_sym][0]
-      end
-  end
 
   def text_field_label(name)
     label(name, options[:label], class: 'mdl-textfield__label') +
@@ -94,32 +72,5 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   def mdl_checkbox_classes
     'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect'
-  end
-
-  def div_classes_for_select(method)
-    error = errors[method.to_s.gsub('_id', '').to_sym].blank?
-    s = %(mdl-textfield mdl-js-textfield mdl-textfield--floating-label)
-    s += ' getmdl-select'
-
-    !error ? s + ' is-invalid' : s
-  end
-
-  def select_input_attrs(random, value, text)
-    { class: 'mdl-textfield__input',
-      id: random,
-      readonly: 'readonly',
-      tabindex: '-1',
-      type: 'text',
-      select_value: value,
-      value: text }
-  end
-
-  def select_arrow
-    { class: 'mdl-icon-toggle__label material-icons' }
-  end
-
-  def select_ul_class(random)
-    { for: random,
-      class: 'mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect' }
   end
 end

@@ -1,6 +1,6 @@
 = form_for @offering do |f|
   %h3.mdl-display-2.header
-    - if params[:action] == 'new'
+    - if @offering.new_record?
       New Offering
     - else
       Edit Offering

@@ -12,8 +12,8 @@ class Offering < ActiveRecord::Base
                         }
 
   validates :course, presence: { message: 'A course must be selected!' }
-  validates :days_time, presence: true
-  validates :user, presence: true
+  validates :days_time, presence: { message: 'A time slot must be selected!' }
+  validates :user, presence: { message: 'A professor must be selected!' }
   validates :section, presence: true
 
   def self.search(search, page)

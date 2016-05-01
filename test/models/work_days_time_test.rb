@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class WorkDaysTimeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'short time' do
+    monday = WorkDaysTime.where(days: 'M').order(:start_time).first
+    assert monday.short_time,
+           monday.days + monday.start_time.strftime('%l%M%p').strip
+  end
 end

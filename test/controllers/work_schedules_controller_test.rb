@@ -23,7 +23,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    post :create, params: { work_days_time_id: work_days_times(:one) }
+    post :create, params: { work_days_time_id: work_days_times(:day_M_8_30) }
     assert_redirected_to :work_schedules
   end
 
@@ -31,7 +31,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:advisor)
     sign_in @user
 
-    post :create, params: { work_days_time_id: work_days_times(:one) }
+    post :create, params: { work_days_time_id: work_days_times(:day_M_8_30) }
     assert_redirected_to :root
   end
 
@@ -46,7 +46,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
   test 'should remove all day columns as student' do
     @user = users(:one)
     sign_in @user
-    binding.pry
+
     post :create_day, params: { day: 'M' }
     assert_redirected_to :work_schedules
   end
@@ -79,7 +79,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    delete :destroy, params: { id: work_days_times(:one).id }
+    delete :destroy, params: { id: work_schedules(:one).id }
     assert_redirected_to :work_schedules
   end
 
@@ -87,7 +87,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:advisor)
     sign_in @user
 
-    delete :destroy, params: { id: work_days_times(:one).id }
+    delete :destroy, params: { id: work_schedules(:two).id }
     assert_redirected_to :root
   end
 end
