@@ -35,6 +35,7 @@ gem 'kaminari'
 gem 'cancancan', github: 'craig1410/cancancan', branch: 'rails_5'
 gem 'rubocop', group: :development
 gem 'simplecov', require: false, group: :test
+gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'numbers_and_words'
 
 group :development, :test do
