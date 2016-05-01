@@ -4,11 +4,11 @@
 .new_offering, .edit_offering, .new_semester, .login-form, .new_user,
 .edit_user, .new_transcript {
   @extend .layout.vertical;
-  @extend .layout.center;
+  @extend .layout.center-center;
+
+  height: 100%;
 }
 
-.new_offering {
-  width: 400px;
-  max-width: 90%;
-  margin: auto;
+.login-form {
+  height: auto;
 }

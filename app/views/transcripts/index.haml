@@ -9,7 +9,7 @@
     .transcript-fields
       = f.collection_select(:course_id, Course.all.order(:subject, :course), :id, :pretty_course, prompt: 'Choose a Course')
       .grade
-        = f.collection_select(:grade_c, Transcript::GRADES, :first, :first, prompt: 'Choose Grade', style: 'width:100px;')
+        = f.collection_select(:grade_c, Transcript::GRADES, :first, :first, prompt: 'Choose Grade')
 
     = f.submit 'add to transcript'
 

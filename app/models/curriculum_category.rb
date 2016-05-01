@@ -12,6 +12,8 @@ class CurriculumCategory < ActiveRecord::Base
   accepts_nested_attributes_for :curriculum_category_sets,
                                 allow_destroy: true, reject_if: :all_blank
 
+  scope :major, ->(major_id) { where(major_id: major_id, minor: false) }
+
   def pretty_set_flag
     if set_and_or_flag == 'true'
       'One of the following sections has to be completed'

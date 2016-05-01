@@ -11,6 +11,13 @@ body {
   background-color: #f4f4f4;
   color: #333;
 }
+main {
+  height: 100%;
+
+  .page-content {
+    height: 100%;
+  }
+}
 hr {
   border: 0;
   height: 0;
@@ -61,7 +68,9 @@ a {
 }
 
 .header {
-  margin-top: 75px;
+  padding-top: 75px;
+  padding-bottom: 24px;
+  margin: 0;
   text-align: center;
   text-transform: lowercase;
   letter-spacing: 2px !important;
@@ -105,4 +114,8 @@ a {
     height: 200px !important;
     overflow-y: scroll;
   }
+}
+.mdl-button--fab.red {
+  background-color: #E53935 !important;
+  color: #fff !important;
 }
