@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  CLASS_STANDINGS =
-    { 'Senior' => 1, 'Junior' => 2, 'Sophmore' => 3, 'Freshman' => 4 }.freeze
+  include Scheduler
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -66,10 +65,6 @@ class User < ActiveRecord::Base
   def students
     User.includes(:courses).where(advisor: false, administrator: false)
         .where.not(advised_by: self)
-  end
-
-  def scheduler
-    Scheduler.new(self).perform
   end
 
   def self.search(user, search = nil)

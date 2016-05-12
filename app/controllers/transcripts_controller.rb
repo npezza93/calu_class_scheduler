@@ -55,6 +55,7 @@ class TranscriptsController < ApplicationController
   def remove_schedules
     current_user.schedules.find_by(
       offering: Offering.find_by(course: @transcript.course,
-                                 semester: @active_semester)).try(:destroy)
+                                 semester: @active_semester)
+    ).try(:destroy)
   end
 end

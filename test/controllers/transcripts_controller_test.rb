@@ -33,8 +33,8 @@ class TranscriptsControllerTest < ActionController::TestCase
     sign_in @user
 
     assert_difference('Transcript.count') do
-      post :create, params: { transcript:
-        { course_id: courses(:one).id, grade_c: 'A' }
+      post :create, params: {
+        transcript: { course_id: courses(:one).id, grade_c: 'A' }
       }
     end
 

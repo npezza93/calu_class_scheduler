@@ -80,8 +80,8 @@ class CoursesControllerTest < ActionController::TestCase
     sign_in @user
 
     assert_difference('Course.count') do
-      post :create, params: { course:
-        { title: 'Course 1', subject: 'CCC', course: 123 }
+      post :create, params: {
+        course: { title: 'Course 1', subject: 'CCC', course: 123 }
       }
     end
 

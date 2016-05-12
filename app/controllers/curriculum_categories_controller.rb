@@ -66,6 +66,7 @@ class CurriculumCategoriesController < ApplicationController
       curriculum_category_sets_attributes: [
         :id, :count, :_destroy, course_sets_attributes:
           [:id, :course_id, :_destroy]
-      ]).merge(major_id: current_user.major_id)
+      ]
+    ).merge(major_id: current_user.major_id)
   end
 end

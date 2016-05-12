@@ -1,4 +1,6 @@
 class Transcript < ActiveRecord::Base
+  GRADES = %w(A A\- B\+ B B\- C\+ C C\- D\- D D\+ F).freeze
+
   belongs_to :user
   belongs_to :course
 
@@ -6,8 +8,6 @@ class Transcript < ActiveRecord::Base
                                    message: 'You\'ve already taken this course!'
 
   validates :course, presence: { message: 'A course must be selected!' }
-
-  GRADES = %w(A A\- B\+ B B\- C\+ C C\- D\- D D\+ F).freeze
 
   # methods for importing transcript text
   class << self

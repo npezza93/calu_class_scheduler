@@ -26,7 +26,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def check_box(method, options = {}, checked_val = '1', unchecked_val = '0')
-    label_text = options.delete(:label)
+    label_text = options.delete(:label) || method.to_s.capitalize
     options[:class] ||= ''
     options[:class] = options[:class] + 'mdl-checkbox__input'
 
@@ -36,11 +36,12 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def collection_select(method, collection, value_method, text_method, options = {})
+  def collection_select(method, collection, value, text, options = {})
     error_msg = errors[method.to_s.gsub('_id', '').to_sym][0]
+    div_class = "input-field #{'is-invalid' unless error_msg.blank?}"
 
-    content_tag :div, class: "input-field #{'is-invalid' unless error_msg.blank?}" do
-      super(method, collection, value_method, text_method, options) +
+    content_tag :div, class: div_class do
+      super(method, collection, value, text, options) +
         if !error_msg.blank?
           content_tag(:label, error_msg, class: 'active')
         else

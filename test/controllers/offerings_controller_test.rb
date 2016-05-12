@@ -62,7 +62,8 @@ class OfferingsControllerTest < ActionController::TestCase
     sign_in @user
 
     put :update,
-        params: { id: offerings(:one), offering: { course_id: courses(:one).id }
+        params: {
+          id: offerings(:one), offering: { course_id: courses(:one).id }
         }
     assert_redirected_to :root
   end
