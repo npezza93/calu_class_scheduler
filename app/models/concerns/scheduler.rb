@@ -1,7 +1,8 @@
 module Scheduler
-  include Scheduler::Instances
+  include Scheduler::CategorySets
   include Scheduler::CompleteCategory
   include Scheduler::IncompleteOrCategory
+  include Scheduler::Instances
   include Scheduler::MathClasses
 
   def scheduler
