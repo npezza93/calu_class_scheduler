@@ -36,7 +36,7 @@ module Scheduler
 
   def prerequisite_check(courses)
     courses.collect do |course|
-      course.can_take(user, transcript, taken_courses)
+      course.can_take(self, transcripts, taken_courses)
     end.flatten.compact
   end
 
