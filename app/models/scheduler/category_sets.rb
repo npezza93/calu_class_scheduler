@@ -1,4 +1,4 @@
-module Scheduler::InitializeCategory
+module Scheduler::CategorySets
   def category_sets(category)
     sets = []
 
