@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'page:change', ->
   $(".new_major_fab").click ->
     $(".new_major_dialog")[0].showModal()
 

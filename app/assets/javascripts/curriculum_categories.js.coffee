@@ -1,5 +1,4 @@
-'use strict'
-$(document).on 'turbolinks:load', ->
+$(document).on 'page:change', ->
   $(".input-field select").material_select()
 
 $(document).on "cocoon:after-insert", (e, insertedItem) ->
