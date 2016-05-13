@@ -97,16 +97,19 @@ class Transcript < ActiveRecord::Base
          grade.downcase.include?('p')) > -1
     end
 
+    def letter_grade_check(grade, index)
+      not_an_actual_letter_grade?(grade) ||
+        (GRADES.index(grade) && GRADES.index(grade) <= index)
+    end
+
     def c?(grade)
-      return true if not_an_actual_letter_grade?(grade)
-      return true if GRADES.index(grade) && GRADES.index(grade) <= 6
+      return true if letter_grade_check(grade, 6)
 
       false
     end
 
     def c_minus?(grade)
-      return true if not_an_actual_letter_grade?(grade)
-      return true if GRADES.index(grade) && GRADES.index(grade) <= 7
+      return true if letter_grade_check(grade, 7)
 
       false
     end
