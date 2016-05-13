@@ -7,8 +7,8 @@ class SchedulesControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    # get :index
-    # assert_response :success
+    get :index
+    assert_response :success
   end
 
   test 'should not get index as advisor' do

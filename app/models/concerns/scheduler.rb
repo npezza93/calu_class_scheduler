@@ -12,7 +12,7 @@ module Scheduler
       eval_category(category)
     end
 
-    math_pt
+    # math_pt
   end
 
   def eval_category(category)
@@ -26,7 +26,7 @@ module Scheduler
   end
 
   def incomplete_category(category)
-    incomplete_or_category if category.or_sets?
+    incomplete_or_category(category) if category.or_sets?
 
     incomplete[category] =
       prerequisite_check(incomplete[category].values.flatten)
@@ -40,10 +40,15 @@ module Scheduler
     end.flatten.compact
   end
 
-  def covert_to_offerings
-    incomplete.each do |course|
-      math_classes.push [course, category] if math_class?(course)
+  def covert_to_offerings(category)
+    # incomplete[category].each do |course|
+    #   math_classes.push [course, category] if math_class?(course)
+    # end
+    unless incomplete[category].empty?
+      incomplete[category].select! do |course|
+        course.is_a? Course
+      end
+      incomplete[category].map!(&:offerings).flatten!
     end
-    incomplete.map!(&:offerings).flatten!
   end
 end

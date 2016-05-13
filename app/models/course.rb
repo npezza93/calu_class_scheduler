@@ -57,15 +57,12 @@ class Course < ActiveRecord::Base
 
   def can_take(user, transcript, courses_taken)
     failed_prereqs = completed_prerequisites(transcript, courses_taken)
-    if !failed_prereqs.empty?
+    unless failed_prereqs.any?
       if passed_tests?(user) || passed_placement_test_or_sat?(user)
         failed_prereqs.push self
       end
-    elsif passed_tests?(user) || passed_sat?(user)
-      failed_prereqs.push self
-    else
-      failed_prereqs
     end
+    failed_prereqs
   end
 
   def passed_tests?(user)
@@ -88,8 +85,8 @@ class Course < ActiveRecord::Base
     user.send("sat_#{minimum_sat_score}")
   end
 
-  def passed_placement_test_or_sat?
-    passed_placement_test? || passed_sat?
+  def passed_placement_test_or_sat?(user)
+    minimum_pt? && (passed_placement_test?(user) || passed_sat?(user))
   end
 
   def passed_placement_test?(user)

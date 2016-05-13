@@ -1,8 +1,8 @@
 - content_for :title do
-  Courses Offered #{@active_semester.semester}
+  Courses Offered #{active_semester.semester}
 
 %h3.mdl-display-2.header
-  Offerings (#{@active_semester.semester})
+  Offerings (#{active_semester.semester})
 
 .layout.vertical.center{style: "margin-bottom:75px;"}
   = form_tag offerings_path, method: :get, class: 'search-offerings' do

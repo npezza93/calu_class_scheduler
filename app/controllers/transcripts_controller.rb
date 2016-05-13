@@ -22,7 +22,7 @@ class TranscriptsController < ApplicationController
 
   def import
     if Transcript.import(params['Transcript'], current_user)
-      Schedule.where(user: current_user, semester: @active_semester).destroy_all
+      Schedule.where(user: current_user, semester: active_semester).destroy_all
 
       redirect_to transcripts_path,
                   notice: 'Transcript Uploaded successfullly!'
@@ -55,7 +55,7 @@ class TranscriptsController < ApplicationController
   def remove_schedules
     current_user.schedules.find_by(
       offering: Offering.find_by(course: @transcript.course,
-                                 semester: @active_semester)
+                                 semester: active_semester)
     ).try(:destroy)
   end
 end

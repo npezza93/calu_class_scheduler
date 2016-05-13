@@ -50,6 +50,20 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def select(method, choices = nil, options = {}, html_options = {})
+    error_msg = errors[method.to_s.gsub('_id', '').to_sym][0]
+    div_class = "input-field #{'is-invalid' unless error_msg.blank?}"
+
+    content_tag :div, class: div_class do
+      super(method, choices, options, html_options) +
+        if !error_msg.blank?
+          content_tag(:label, error_msg, class: 'active')
+        else
+          ''
+        end
+    end
+  end
+
   def submit(value = nil, options = {})
     options[:class] ||= ''
     options[:class] = options[:class] + 'mdl-button'

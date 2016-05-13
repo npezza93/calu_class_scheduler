@@ -17,7 +17,7 @@ class WorkSchedulesController < ApplicationController
   def create
     current_user.work_schedules.create(
       work_days_time_id: params[:work_days_time_id],
-      semester: @active_semester
+      semester: active_semester
     )
 
     redirect_to work_schedules_path
@@ -58,21 +58,21 @@ class WorkSchedulesController < ApplicationController
   def current_day_work_schedules
     current_user.work_schedules.where(
       work_days_time: WorkDaysTime.where(days: params[:day].upcase),
-      semester: @active_semester
+      semester: active_semester
     )
   end
 
   def current_time_work_schedules
     current_user.work_schedules.where(
       work_days_time: WorkDaysTime.with_start_time(params[:time]),
-      semester: @active_semester
+      semester: active_semester
     )
   end
 
   def crete_work_schedule(day_time)
     current_user.work_schedules.create(
       work_days_time: day_time,
-      semester: @active_semester
+      semester: active_semester
     )
   end
 
