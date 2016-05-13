@@ -92,23 +92,22 @@ class Transcript < ActiveRecord::Base
       end
     end
 
-    def c?(grade)
-      if (grade[0].casecmp('t') || grade.downcase.include?('reg') ||
+    def not_an_actual_letter_grade?(grade)
+      (grade[0].casecmp('t') || grade.downcase.include?('reg') ||
          grade.downcase.include?('p')) > -1
-        return true
-      elsif GRADES.index(grade) && GRADES.index(grade) <= 6
-        return true
-      end
+    end
+
+    def c?(grade)
+      return true if not_an_actual_letter_grade?(grade)
+      return true if GRADES.index(grade) && GRADES.index(grade) <= 6
+
       false
     end
 
     def c_minus?(grade)
-      if (grade[0].casecmp('t') || grade.downcase.include?('reg') ||
-         grade.downcase.include?('p')) > -1
-        return true
-      elsif GRADES.index(grade) && GRADES.index(grade) <= 7
-        return true
-      end
+      return true if not_an_actual_letter_grade?(grade)
+      return true if GRADES.index(grade) && GRADES.index(grade) <= 7
+
       false
     end
   end
