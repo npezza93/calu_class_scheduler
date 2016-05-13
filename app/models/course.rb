@@ -1,4 +1,4 @@
-class Course < ActiveRecord::Base
+class Course < ApplicationRecord
   has_many :prerequisite_groups, dependent: :destroy
   has_many :prerequisites, through: :prerequisite_groups, dependent: :destroy
   has_many :courses, through: :prerequisites

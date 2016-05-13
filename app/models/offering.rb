@@ -1,4 +1,4 @@
-class Offering < ActiveRecord::Base
+class Offering < ApplicationRecord
   belongs_to :days_time
   belongs_to :user
   belongs_to :course

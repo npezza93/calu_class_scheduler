@@ -1,4 +1,4 @@
-class CurriculumCategorySet < ActiveRecord::Base
+class CurriculumCategorySet < ApplicationRecord
   belongs_to :curriculum_category
   has_many :course_sets
   has_many :courses, through: :course_sets

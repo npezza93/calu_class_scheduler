@@ -1,4 +1,4 @@
-class Transcript < ActiveRecord::Base
+class Transcript < ApplicationRecord
   GRADES = %w(A A- B+ B B- C+ C C- D+ D D- F).freeze
 
   belongs_to :user

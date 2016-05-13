@@ -1,4 +1,4 @@
-class ScheduleApproval < ActiveRecord::Base
+class ScheduleApproval < ApplicationRecord
   belongs_to :user
   belongs_to :semester
 

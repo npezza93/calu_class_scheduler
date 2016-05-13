@@ -1,4 +1,4 @@
-class NeededCourse < ActiveRecord::Base
+class NeededCourse < ApplicationRecord
   belongs_to :course
   belongs_to :user
   belongs_to :semester

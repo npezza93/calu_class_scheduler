@@ -1,4 +1,4 @@
-class PrerequisiteGroup < ActiveRecord::Base
+class PrerequisiteGroup < ApplicationRecord
   has_many :prerequisites
   has_many :courses, through: :prerequisites
   belongs_to :course

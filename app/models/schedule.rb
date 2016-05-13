@@ -1,4 +1,4 @@
-class Schedule < ActiveRecord::Base
+class Schedule < ApplicationRecord
   belongs_to :offering
   belongs_to :user
   belongs_to :semester

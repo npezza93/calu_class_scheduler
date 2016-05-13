@@ -1,4 +1,4 @@
-class Major < ActiveRecord::Base
+class Major < ApplicationRecord
   validates :major, uniqueness: true, presence: true
 
   has_many :major_categories, -> { where minor: false },

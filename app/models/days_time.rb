@@ -1,4 +1,4 @@
-class DaysTime < ActiveRecord::Base
+class DaysTime < ApplicationRecord
   validates_uniqueness_of :days, scope: [:start_time, :end_time]
 
   def pretty_day_time

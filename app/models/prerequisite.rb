@@ -1,4 +1,4 @@
-class Prerequisite < ActiveRecord::Base
+class Prerequisite < ApplicationRecord
   belongs_to :prerequisite_group
   belongs_to :course
 
@@ -6,7 +6,7 @@ class Prerequisite < ActiveRecord::Base
 
   # checking if yhe user completed all the required prereqs for a course
   # if they failed one of the prereqs it returns that course so they can retake
-  # it. Returns nil if they are good to go.  
+  # it. Returns nil if they are good to go.
   def passed?(transcript, courses_taken)
     if courses_taken.include?(course) && passed_minimum_grade?(transcript)
       nil

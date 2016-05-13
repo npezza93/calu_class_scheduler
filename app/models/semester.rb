@@ -1,4 +1,4 @@
-class Semester < ActiveRecord::Base
+class Semester < ApplicationRecord
   default_scope { order(:semester) }
 
   validates :semester, uniqueness: true, presence: true

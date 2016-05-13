@@ -1,4 +1,4 @@
-class CurriculumCategory < ActiveRecord::Base
+class CurriculumCategory < ApplicationRecord
   belongs_to :major
   validates :category, presence: true
   validates :minor, inclusion: { in: [true, false] }
