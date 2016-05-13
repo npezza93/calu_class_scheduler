@@ -3,12 +3,12 @@ class RoleConstraint
     @role = role
   end
 
-  def user
-    request.env['warden'].user
+  def user(request = nil)
+    @user ||= request.env['warden'].user
   end
 
-  def advisor?
-    user.advisor?
+  def advisor?(request)
+    user(request).advisor?
   end
 
   def advisor_role?
@@ -20,8 +20,8 @@ class RoleConstraint
   end
 
   def matches?(request)
-    return true if advisor_role? && user && advisor?
-    return true if user_role? && user && !advisor?
+    return true if advisor_role? && user(request) && advisor?(request)
+    return true if student_role? && user(request) && !advisor?(request)
 
     false
   end

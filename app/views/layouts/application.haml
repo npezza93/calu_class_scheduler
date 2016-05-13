@@ -27,6 +27,7 @@
         = render 'layouts/drawer'
         %main.mdl-layout__content
           .page-content
+            #avatar= current_user.email
             = yield
     - else
       = yield
