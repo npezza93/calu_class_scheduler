@@ -8,7 +8,7 @@ class RoleConstraint
   end
 
   def advisor?(request)
-    user(request).advisor?
+    user(request).try(:advisor?)
   end
 
   def advisor_role?
@@ -20,8 +20,8 @@ class RoleConstraint
   end
 
   def matches?(request)
-    return true if advisor_role? && user(request) && advisor?(request)
-    return true if student_role? && user(request) && !advisor?(request)
+    return true if advisor_role? && advisor?(request)
+    return true if student_role? && !advisor?(request)
 
     false
   end
