@@ -90,14 +90,17 @@ class Course < ApplicationRecord
   end
 
   def passed_placement_test?(user)
-    if minimum_pt == 'A' || minimum_pt == 'B' ||
-       minimum_pt == 'C' || minimum_pt == 'D-'
-      user.send("pt_#{minimum_pt.tr('-', '').downcase}") == 1
+    if %w(A B C D-).include? minimum_pt
+      user.send(user_pt_method) == 1
     elsif minimum_pt == 'D'
       user.pt_d == 3
     else
       false
     end
+  end
+
+  def user_pt_method
+    "pt_#{minimum_pt.tr('-', '').downcase}"
   end
 
   def self.search(search)
