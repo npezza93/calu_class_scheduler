@@ -39,7 +39,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    post :create_day, params: { day: 'M' }
+    post :create, params: { day: 'M', type: :day }
     assert_redirected_to :work_schedules
   end
 
@@ -47,7 +47,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    post :create_day, params: { day: 'M' }
+    post :create, params: { day: 'M', type: :day }
     assert_redirected_to :work_schedules
   end
 
@@ -55,7 +55,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:advisor)
     sign_in @user
 
-    post :create_day, params: { day: 'M' }
+    post :create, params: { day: 'M', type: :day }
     assert_redirected_to :root
   end
 
@@ -63,7 +63,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    post :create_time, params: { time: '8:00am' }
+    post :create, params: { time: '8:00am', type: :time }
     assert_redirected_to :work_schedules
   end
 
@@ -71,7 +71,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     @user = users(:advisor)
     sign_in @user
 
-    post :create_time, params: { time: '8:00am' }
+    post :create, params: { time: '8:00am', type: :time }
     assert_redirected_to :root
   end
 
