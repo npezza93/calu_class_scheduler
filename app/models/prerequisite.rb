@@ -8,12 +8,12 @@ class Prerequisite < ApplicationRecord
   # if they failed one of the prereqs it returns that course so they can retake
   # it. Returns nil if they are good to go.
   def passed?(transcript, courses_taken)
-    if courses_taken.include?(course) && passed_minimum_grade?(transcript)
+    return false unless courses_taken.include?(course)
+
+    if passed_minimum_grade?(transcript)
       nil
-    elsif courses_taken.include?(course) && !passed_minimum_grade?(transcript)
+    elsif !passed_minimum_grade?(transcript)
       course
-    elsif !courses_taken.include?(course)
-      false
     end
   end
 
