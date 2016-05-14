@@ -7,15 +7,14 @@
 .horizontal.wrap.layout.around-justified
   %div
     - current_user.incomplete.each do |category, offerings|
-      .layout.vertical.center
+      .layout.vertical.center.incomplete-card
         %ul.collapsible{ data: { collapsible: :accordion } }
           %li
-            .collapsible-header{style: 'cursor:default;'}
-              %h4{style: 'cursor:default;'}
-                = category.category
-                = ("- " + category.major.major + " Minor") if category.minor
-              %div{:class => "#{"hidden" if !offerings.empty?}", :style => "color:#EF5350;text-align:center;font-size: 15px;font-weight: 400;"}
-                Currently no courses are being offered that will fulfill this category
+            .collapsible-header.category-card-header
+              %h4= category.display
+              - if offerings.empty?
+                .no-courses-offered
+                  Currently no courses are being offered that will fulfill this category
           - offerings.group_by(&:course).each do |course, course_offerings|
             %li
               .collapsible-header= course.pretty_course
@@ -23,35 +22,19 @@
                 - course_offerings.each do |offering|
                   .layout.horizontal.center-center{:style => "height:50px;", id: "offering_#{offering.id}"}
                     - if !@schedules.to_a.include? offering
-                      = link_to schedules_path(offering_id: offering.id), method: :post, remote: true do
-                        %label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect
-                          %input.mdl-checkbox__input{:type => "checkbox"}
-                          %span.mdl-checkbox__label
-                            = offering.days_time.days
-                            from #{offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time if offering.days_time.start_time != nil} Prof. #{offering.user.last_name.capitalize}
+                      = link_to schedules_path(offering_id: offering.id), method: :post do
+                        .input-field
+                          %input{id: offering.id, type: 'checkbox'}
+                          %label{for: offering.id }= offering.display
                     - else
-                      = link_to schedule_path(current_user.schedules.find_by(offering: offering)), method: :delete, remote: true do
-                        %label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect
-                          %input.mdl-checkbox__input{:type => "checkbox", checked: true}
-                          %span.mdl-checkbox__label
-                            = offering.days_time.days
-                            from #{offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time if offering.days_time.start_time != nil} Prof. #{offering.user.last_name.capitalize}
+                      = link_to schedule_path(current_user.schedules.find_by(offering: offering)), method: :delete do
+                        .input-field
+                          %input{id: offering.id, type: 'checkbox', checked: true }
+                          %label{for: offering.id }= offering.display
 
           - current_user.complete.delete(category).each do |set, set_courses|
             - set_courses.each do |course|
               %li
                 .collapsible-header{:style => "color:#4CAF50;"}= course.pretty_course
   %div
-    - current_user.complete.each do |category, courses|
-      .layout.vertical.center
-        %ul.collapsible{ data: {collapsible: :accordion } }
-          %li
-            .collapsible-header{ style: 'cursor: initial;' }
-              %h4{ style: 'cursor: initial;' }
-                = category.category
-                = ("- " + category.major.major + " Minor") if category.minor
-              %div{:style => "color:#4CAF50;text-align:center;font-size: 15px;font-weight: 400;cursor:initial;"} Completed
-          - courses.each do |course|
-            %li
-              .collapsible-header{:style => "font-size: 15px;font-weight: 400;cursor:initial;"}
-                = course.pretty_course
+    = render 'complete_categories'

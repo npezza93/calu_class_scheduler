@@ -5,7 +5,7 @@ class WorkDaysTime < ApplicationRecord
   }
 
   def parsed_start_time
-    start_time.strftime('%l:%M %P').strip
+    start_time.strftime('%l:%M%P').strip
   end
 
   def short_time

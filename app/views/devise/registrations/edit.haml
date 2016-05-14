@@ -1,3 +1,6 @@
+- content_for :title do
+  Settings
+
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   %h3.mdl-display-2.header Settings
   = f.password_field :password, autocomplete: "off"
@@ -5,6 +8,7 @@
   = f.password_field :current_password, autocomplete: "off", label: "Old Password"
   = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
   = f.collection_select :advised_by, User.where(advisor: true), :id, :email, prompt: "Choose an Advisor"
+  = f.file_field :avatar
   -# = f.collection_select :minor, Major.all, :id, :major, {}, { multiple: true, size: 3 }
 
   = f.submit "Update"

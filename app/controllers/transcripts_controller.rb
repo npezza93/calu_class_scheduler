@@ -1,15 +1,13 @@
 class TranscriptsController < ApplicationController
   before_action :set_transcript, only: :destroy
+  before_action :set_transcripts, only: [:index, :create]
   authorize_resource
 
   def index
     @transcript = Transcript.new
-    @transcripts = current_user.transcripts.includes(:course)
-                               .order('courses.subject asc')
   end
 
   def create
-    @transcripts = current_user.transcripts.includes(:course)
     @transcript = @transcripts.new(transcript_params)
 
     if @transcript.save
@@ -23,13 +21,12 @@ class TranscriptsController < ApplicationController
   def import
     if Transcript.import(params['Transcript'], current_user)
       Schedule.where(user: current_user, semester: active_semester).destroy_all
-
-      redirect_to transcripts_path,
-                  notice: 'Transcript Uploaded successfullly!'
+      notice = 'Transcript Uploaded successfullly!'
     else
-      redirect_to transcripts_path,
-                  notice: 'Please Upload Correct Text!'
+      notice = 'Please Upload Correct Text!'
     end
+
+    redirect_to transcripts_path, notice: notice
   end
 
   def destroy
@@ -39,6 +36,11 @@ class TranscriptsController < ApplicationController
 
   private
 
+  def set_transcripts
+    @transcripts = current_user.transcripts.includes(:course)
+                               .order('courses.subject asc')
+  end
+
   def set_transcript
     @transcript = Transcript.find(params[:id])
   end
@@ -47,7 +49,7 @@ class TranscriptsController < ApplicationController
     attrs = params.require(:transcript).permit(:course_id, :grade_c)
     unless attrs[:grade_c].blank?
       attrs[:grade_c_minus] = Transcript.c_minus?(attrs[:grade_c])
-      attrs[:grade_c_minus] = Transcript.c?(attrs[:grade_c])
+      attrs[:grade_c] = Transcript.c?(attrs[:grade_c])
     end
     attrs
   end

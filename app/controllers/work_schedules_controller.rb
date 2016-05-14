@@ -3,76 +3,75 @@ class WorkSchedulesController < ApplicationController
   authorize_resource
 
   def index
+    @work_schedule = WorkSchedule.new
     @work_schedules = current_user.work_schedules.to_a
-
     @work_times = current_user.work_days_times.to_a
 
     @work_time_slots = WorkDaysTime.all.sort_by do |date_time|
       [date_time.start_time, date_time.day_of_week]
     end
-
-    @work_schedule = WorkSchedule.new
   end
 
   def create
-    current_user.work_schedules.create(
-      work_days_time_id: params[:work_days_time_id],
-      semester: active_semester
-    )
+    days = create_schedules_hash
 
-    redirect_to work_schedules_path
-  end
+    current_user.work_schedules.create(days) if days
 
-  def create_day
-    if current_day_work_schedules.count != 27
-      WorkDaysTime.where(days: params[:day]).find_each do |day_time|
-        crete_work_schedule(day_time)
-      end
-    else
-      current_day_work_schedules.delete_all
+    respond_to do |format|
+      format.html { redirect_to work_schedules_path }
+      format.js { render layout: false }
     end
-
-    redirect_to work_schedules_path
-  end
-
-  def create_time
-    if current_time_work_schedules.count != 5
-      WorkDaysTime.with_start_time(params[:time]).each do |day_time|
-        crete_work_schedule(day_time)
-      end
-    else
-      current_time_work_schedules.delete_all
-    end
-
-    redirect_to work_schedules_path
   end
 
   def destroy
     @work_schedule.destroy
 
-    redirect_to work_schedules_path
+    respond_to do |format|
+      format.html { redirect_to work_schedules_path }
+      format.js { render layout: false }
+    end
   end
 
   private
 
-  def current_day_work_schedules
-    current_user.work_schedules.where(
-      work_days_time: WorkDaysTime.where(days: params[:day].upcase),
-      semester: active_semester
-    )
+  def create_schedules_hash
+    if (type = params[:type])
+      map_type(type) if type == 'day' || type == 'time'
+    else
+      {
+        work_days_time_id: params[:work_days_time_id], semester: active_semester
+      }
+    end
   end
 
-  def current_time_work_schedules
-    current_user.work_schedules.where(
-      work_days_time: WorkDaysTime.with_start_time(params[:time]),
-      semester: active_semester
-    )
+  def map_type(type)
+    if type == 'day'
+      ws = current_work_schedules(WorkDaysTime.where(days: params[:day].upcase))
+      count = 27
+      ids = WorkDaysTime.where(days: params[:day]).pluck(:id)
+    else
+      ws = current_work_schedules(WorkDaysTime.with_start_time(params[:time]))
+      count = 5
+      ids = WorkDaysTime.with_start_time(params[:time]).pluck(:id)
+    end
+
+    make_hash(ws, count, ids)
   end
 
-  def crete_work_schedule(day_time)
-    current_user.work_schedules.create(
-      work_days_time: day_time,
-      semester: active_semester
+  def make_hash(work_days_time, count, ids)
+    if work_days_time.count != count
+      ids.map do |id|
+        { work_days_time_id: id, semester: active_semester }
+      end
+    else
+      work_days_time.delete_all
+      nil
+    end
+  end
+
+  def current_work_schedules(scope)
+    current_user.work_schedules.where(
+      work_days_time: scope, semester: active_semester
     )
   end
 

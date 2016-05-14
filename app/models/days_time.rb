@@ -30,8 +30,8 @@ class DaysTime < ApplicationRecord
   end
 
   def range_overlap?(compare_range)
-    time_range.begin <= compare_range.end &&
-      compare_range.begin <= time_range.end
+    time_range.begin <= compare_range.time_range.end &&
+      compare_range.time_range.begin <= time_range.end
   end
 
   def overlaps?(days_time)

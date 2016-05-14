@@ -17,6 +17,16 @@ class Offering < ApplicationRecord
   validates :user, presence: { message: 'A professor must be selected!' }
   validates :section, presence: true
 
+  def display
+    "#{days_time.days} from #{display_time} Prof. #{user.last_name.capitalize}"
+  end
+
+  def display_time
+    unless days_time.start_time.blank?
+      days_time.start_time.split(' ')[0] + '-' + days_time.end_time
+    end
+  end
+
   def self.search(search, page)
     if search.nil? || search == ''
       includes(:course, :days_time, :user)

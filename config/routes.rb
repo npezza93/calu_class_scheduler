@@ -1,30 +1,15 @@
-class RoleConstraint
-  def initialize(role)
-    @role = role
-  end
+def warden(request)
+  request.env['warden']
+end
 
-  def user(request = nil)
-    @user ||= request.env['warden'].user
-  end
+def user?(request)
+  warden_req = warden(request)
+  warden_req.authenticate? && !warden_req.user.advisor?
+end
 
-  def advisor?(request)
-    user(request).try(:advisor?)
-  end
-
-  def advisor_role?
-    @role == :advisor
-  end
-
-  def student_role?
-    @role == :user
-  end
-
-  def matches?(request)
-    return true if advisor_role? && advisor?(request)
-    return true if student_role? && !advisor?(request)
-
-    false
-  end
+def advisor?(request)
+  warden_req = warden(request)
+  warden_req.authenticate? && warden_req.user.advisor?
 end
 
 Rails.application.routes.draw do
@@ -50,8 +35,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     authenticated :user do
-      root 'work_schedules#index', constraints: RoleConstraint.new(:user)
-      root 'users#index', constraints: RoleConstraint.new(:advisor)
+      root 'work_schedules#index', constraints: lambda{ |request| user?(request) }
+      root 'users#index', constraints: lambda{ |request| advisor?(request) }
     end
 
     unauthenticated do
@@ -64,12 +49,7 @@ Rails.application.routes.draw do
       post :import
     end
   end
-  resources :work_schedules, only: [:create, :new, :index, :destroy], path: :calendar do
-    collection do
-      post :create_day
-      post :create_time
-    end
-  end
+  resources :work_schedules, only: [:create, :index, :destroy], path: :calendar
   resources :schedules, only: [:index, :create, :destroy], path: :schedule
 
 

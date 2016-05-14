@@ -10,20 +10,20 @@
       %tr{:style => 'border:none;'}
         %th
         %th.day
-          = link_to 'monday', create_day_work_schedules_path(day: 'M'), method: :post
+          = link_to 'monday', work_schedules_path(day: 'M', type: :day), method: :post
         %th.day
-          = link_to 'tuesday', create_day_work_schedules_path(day: 'T'), method: :post
+          = link_to 'tuesday', work_schedules_path(day: 'T', type: :day), method: :post
         %th.day
-          = link_to 'wednesday', create_day_work_schedules_path(day: 'W'), method: :post
+          = link_to 'wednesday', work_schedules_path(day: 'W', type: :day), method: :post
         %th.day
-          = link_to 'thursday', create_day_work_schedules_path(day: 'R'), method: :post
+          = link_to 'thursday', work_schedules_path(day: 'R', type: :day), method: :post
         %th.day
-          = link_to 'friday', create_day_work_schedules_path(day: 'F'), method: :post
+          = link_to 'friday', work_schedules_path(day: 'F', type: :day), method: :post
 
       - @work_time_slots.each_slice(5) do |slots|
         %tr
           %td.time_slot
-            = link_to slots.first.parsed_start_time, create_time_work_schedules_path(time: slots.first.parsed_start_time), method: :post
+            = link_to slots.first.parsed_start_time, work_schedules_path(time: slots.first.parsed_start_time, type: :time), method: :post
           - slots.each do |slot|
             %td.day_time_slot
               - if @work_times.include? slot

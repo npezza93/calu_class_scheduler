@@ -22,6 +22,14 @@ class CurriculumCategory < ApplicationRecord
     end
   end
 
+  def scheduler_minor_display
+    " - #{major.major} Minor" if minor
+  end
+
+  def display
+    "#{category}#{scheduler_minor_display}"
+  end
+
   def complete?(sets)
     if or_sets?
       sets.compact.inject(:|)
