@@ -7,8 +7,11 @@ $(document).on 'turbolinks:load', ->
     return
 
   $(".close").click (e) ->
-    $(this).parent().parent().parent()[0].close();
+    $(this).parent().parent().parent()[0].close()
     return
 
-  if $("#notice").length
-    $("#notice")[0].MaterialSnackbar.showSnackbar message: $(".mdl-snackbar__text").text()
+  if $("#notice").length > 0
+    data =
+      message: $(".mdl-snackbar__text").text()
+      timeout: 2000
+    $("#notice")[0].MaterialSnackbar.showSnackbar data
