@@ -1,4 +1,4 @@
-$(document).on 'page:change', ->
+$(document).on 'turbolinks:load', ->
   componentHandler.upgradeDom()
 
   $("#forgot_password").click (e) ->

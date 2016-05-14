@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'turbolinks'
+gem 'turbolinks', '~> 5.0.0.beta2'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -30,6 +30,7 @@ gem 'haml'
 gem 'kaminari'
 gem 'cancancan', github: 'craig1410/cancancan', branch: 'rails_5'
 gem 'numbers_and_words'
+gem 'carrierwave'
 
 group :test do
   gem 'simplecov', require: false
