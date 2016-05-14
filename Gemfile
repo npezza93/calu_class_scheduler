@@ -28,7 +28,7 @@ gem 'pry-rails'
 gem 'cocoon'
 gem 'haml'
 gem 'kaminari'
-gem 'cancancan', github: 'craig1410/cancancan', branch: 'rails_5'
+gem 'cancancan', git: 'https://github.com/craig1410/cancancan.git', branch: 'rails_5'
 gem 'numbers_and_words'
 gem 'carrierwave'
 
