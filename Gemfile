@@ -33,7 +33,6 @@ gem 'numbers_and_words'
 gem 'carrierwave'
 
 group :test do
-  gem 'simplecov', require: false
   gem "codeclimate-test-reporter", require: nil
 end
 
