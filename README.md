@@ -1,4 +1,5 @@
-# <img src="https://raw.githubusercontent.com/npezza93/calu_class_scheduler/master/app/assets/images/callogo2.png" alt="CalU Advisor" width="75px" /> The California University of Pennsylvania Advisor
+# ![CalU Advisor](https://raw.githubusercontent.com/npezza93/calu_class_scheduler/master/app/assets/images/callogo75.png) The California University of Pennsylvania Advisor
+
 [![Build Status](https://travis-ci.org/npezza93/calu_class_scheduler.svg?branch=mkIII)](https://travis-ci.org/npezza93/calu_class_scheduler)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/npezza93/calu_class_scheduler/badges/quality-score.png?b=mkIII)](https://scrutinizer-ci.com/g/npezza93/calu_class_scheduler/?branch=mkIII)
 [![Code Climate](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/gpa.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler)
@@ -18,6 +19,6 @@ The Calu Advisor combines these two systems. Before every semester a faculty adv
 The student can also filter courses by times they don't want class. After building their schedule they can email it to their advisor and without setting up a meeting their advisor can approve their schedule.
 
 
-The Calu Advisor is a responsive web application built on Rails 4, Material Design Lite, and Materialize with a PostgreSQL database.
+The Calu Advisor is a responsive web application built on Rails 5.0.0rc1, [Material Design Lite](https://getmdl.io/), and [Materialize](http://materializecss.com/) with a PostgreSQL database.
 ___
 www.caluadvisor.com
