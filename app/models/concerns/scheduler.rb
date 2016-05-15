@@ -25,15 +25,4 @@ module Scheduler
       incomplete_category(category)
     end
   end
-
-  def covert_to_offerings(category)
-    unless incomplete[category].empty?
-      incomplete[category].select! do |course|
-        math_classes.push [course, category] if math_class?(course)
-        course.is_a? Course
-      end
-      incomplete[category].map!(&:offerings).flatten!
-    end
-  end
-
 end

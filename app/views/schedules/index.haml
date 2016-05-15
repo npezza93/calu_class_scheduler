@@ -20,7 +20,7 @@
               .collapsible-header= course.pretty_course
               .collapsible-body
                 - course_offerings.each do |offering|
-                  .layout.horizontal.center-center{:style => "height:50px;", id: "offering_#{offering.id}", class: "#{'hidden' if @hidden_offerings.include? offering.id}"}
+                  .layout.horizontal.center-center{:style => "height:50px;", id: offering.id, class: "#{'hidden' if @hidden_offerings.include? offering.id}"}
                     - if !@schedules.to_a.include? offering
                       = link_to schedules_path(offering_id: offering.id), method: :post, remote: true do
                         .input-field

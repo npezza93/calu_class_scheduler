@@ -1,4 +1,4 @@
-var schedule = $("#offering_<%= @schedule.offering_id %>");
+var schedule = $("#<%= @schedule.offering_id %>");
 schedule.find('input').prop('checked', true);
 var link = schedule.find('a');
 link.attr('data-method', 'delete');
@@ -6,6 +6,6 @@ link.data().method = 'delete';
 link.attr('href', "<%= schedule_path(@schedule.offering_id) %>");
 
 <% @hidden_offerings.each do |id| %>
-  var schedule = $("#offering_<%= id %>");
+  var schedule = $("#<%= id %>");
   schedule.fadeOut();
 <% end %>
