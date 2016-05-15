@@ -1,2 +1,11 @@
-$("#offering_<%= @schedule.offering_id %>").html("<%= j render 'destroy_schedule', offering: @schedule.offering %>");
-componentHandler.upgradeDom()
+var schedule = $("#offering_<%= @schedule.offering_id %>");
+schedule.find('input').prop('checked', true);
+var link = schedule.find('a');
+link.attr('data-method', 'delete');
+link.data().method = 'delete';
+link.attr('href', "<%= schedule_path(@schedule.offering_id) %>");
+
+<% @hidden_offerings.each do |id| %>
+  var schedule = $("#offering_<%= id %>");
+  schedule.fadeOut();
+<% end %>

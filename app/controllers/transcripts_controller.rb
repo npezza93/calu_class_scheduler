@@ -1,4 +1,5 @@
 class TranscriptsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_transcript, only: :destroy
   before_action :set_transcripts, only: [:index, :create]
   authorize_resource
@@ -10,11 +11,15 @@ class TranscriptsController < ApplicationController
   def create
     @transcript = @transcripts.new(transcript_params)
 
-    if @transcript.save
-      remove_schedules
-      redirect_to transcripts_path, notice: @transcript.course.title + ' added!'
-    else
-      render :index
+    respond_to do |format|
+      if @transcript.save
+        remove_schedules
+        flash[:notice] = @transcript.course.title + ' added!'
+        format.html { redirect_to transcripts_path }
+      else
+        format.html { render :index }
+      end
+      format.js { render layout: false }
     end
   end
 
@@ -31,7 +36,11 @@ class TranscriptsController < ApplicationController
 
   def destroy
     @transcript.destroy
-    redirect_to transcripts_path, notice: @transcript.course.title + ' removed!'
+    respond_to do |format|
+      flash[:notice] = @transcript.course.title + ' removed!'
+      format.html { redirect_to transcripts_path  }
+      format.js { render layout: false }
+    end
   end
 
   private

@@ -10,5 +10,18 @@ module Scheduler::CompleteCategory
       else
         category.courses & taken_courses
       end.uniq
+    add_completed_to_db(category)
+  end
+
+  def add_completed_to_db(category)
+    user_category = user_categories.where(
+      curriculum_category_id: category.id, completed: true
+    ).first_or_create
+
+    complete[category].each do |course|
+      user_category.user_category_courses.where(
+        course_id: course.id, completed: true
+      ).first_or_create
+    end
   end
 end

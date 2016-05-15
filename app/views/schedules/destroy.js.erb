@@ -1,2 +1,11 @@
-$("#offering_<%= @schedule.offering_id %>").html("<%= j render 'new_schedule', offering: @schedule.offering %>");
-componentHandler.upgradeDom()
+var schedule = $("#offering_<%= @offering.id %>");
+schedule.find('input').prop('checked', false);
+var link = schedule.find('a');
+link.attr('data-method', 'post');
+link.data().method = 'post';
+link.attr('href', "<%= schedules_path(offering_id: @offering.id) %>");
+
+<% @hidden_offerings.each do |id| %>
+  var schedule = $("#offering_<%= id %>");
+  schedule.fadeIn();
+<% end %>

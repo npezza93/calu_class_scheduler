@@ -3,6 +3,7 @@ class Course < ApplicationRecord
   has_many :prerequisites, through: :prerequisite_groups, dependent: :destroy
   has_many :courses, through: :prerequisites
   has_many :offerings
+  has_many :user_category_courses, dependent: :destroy
 
   accepts_nested_attributes_for :prerequisite_groups,
                                 allow_destroy: true, reject_if: :all_blank
@@ -57,7 +58,7 @@ class Course < ApplicationRecord
 
   def can_take(user, transcript, courses_taken)
     failed_prereqs = completed_prerequisites(transcript, courses_taken)
-    unless failed_prereqs.any?
+    unless failed_prereqs.any? { |prereq| prereq == false }
       if passed_tests?(user) || passed_placement_test_or_sat?(user)
         failed_prereqs.push self
       end

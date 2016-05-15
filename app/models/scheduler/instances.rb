@@ -15,6 +15,10 @@ module Scheduler::Instances
     @math_classes ||= []
   end
 
+  def pt_math_classes
+    @pt_math_classes ||= [mat_181, mat_191, mat_199, mat_281]
+  end
+
   def dma
     @dma ||= Course.find_by(subject: 'DMA', course: 92)
   end

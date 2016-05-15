@@ -13,7 +13,7 @@ class Schedule < ApplicationRecord
   end
 
   validate do
-    errors.add(:base, 'You\'ve already scheduled a course for that time') unless
+    errors.add(:base, 'You\'ve already scheduled a course for that time') if
       offering.days_time.overlaps_any?(user.offering_day_times)
   end
 end

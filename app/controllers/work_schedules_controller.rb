@@ -1,4 +1,5 @@
 class WorkSchedulesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_work_schedule, only: :destroy
   authorize_resource
 

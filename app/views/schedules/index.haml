@@ -6,35 +6,34 @@
 
 .horizontal.wrap.layout.around-justified
   %div
-    - current_user.incomplete.each do |category, offerings|
+    - @incomplete_categories.each do |user_category|
       .layout.vertical.center.incomplete-card
         %ul.collapsible{ data: { collapsible: :accordion } }
           %li
             .collapsible-header.category-card-header
-              %h4= category.display
-              - if offerings.empty?
+              %h4= user_category.curriculum_category.display
+              - if user_category.offerings.empty?
                 .no-courses-offered
                   Currently no courses are being offered that will fulfill this category
-          - offerings.group_by(&:course).each do |course, course_offerings|
+          - user_category.offerings.group_by(&:course).each do |course, course_offerings|
             %li
               .collapsible-header= course.pretty_course
               .collapsible-body
                 - course_offerings.each do |offering|
-                  .layout.horizontal.center-center{:style => "height:50px;", id: "offering_#{offering.id}"}
+                  .layout.horizontal.center-center{:style => "height:50px;", id: "offering_#{offering.id}", class: "#{'hidden' if @hidden_offerings.include? offering.id}"}
                     - if !@schedules.to_a.include? offering
-                      = link_to schedules_path(offering_id: offering.id), method: :post do
+                      = link_to schedules_path(offering_id: offering.id), method: :post, remote: true do
                         .input-field
                           %input{id: offering.id, type: 'checkbox'}
                           %label{for: offering.id }= offering.display
                     - else
-                      = link_to schedule_path(current_user.schedules.find_by(offering: offering)), method: :delete do
+                      = link_to schedule_path(offering), method: :delete, remote: true do
                         .input-field
                           %input{id: offering.id, type: 'checkbox', checked: true }
                           %label{for: offering.id }= offering.display
 
-          - current_user.complete.delete(category).each do |set, set_courses|
-            - set_courses.each do |course|
-              %li
-                .collapsible-header{:style => "color:#4CAF50;"}= course.pretty_course
+          - user_category.completed_courses.each do |course|
+            %li
+              .collapsible-header{:style => "color:#4CAF50;"}= course.pretty_course
   %div
     = render 'complete_categories'

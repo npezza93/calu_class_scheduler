@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :courses, through: :offerings
   has_many :work_schedules, -> { where(semester: Semester.active) }
   has_many :work_days_times, through: :work_schedules
+  has_many :user_categories
+  has_many :available_offerings, ->{ where('user_category_courses.completed = ?', false) }, class_name: 'Offering', through: :user_categories, source: :offerings
 
   scope :offering_advisors, lambda {
     where('advisor = ? OR email = ?', true, 'staff@calu.edu')
@@ -81,5 +83,20 @@ class User < ApplicationRecord
 
   def self.sort_options
     ['All Students', 'My Advisees']
+  end
+
+  def offerings_that_overlap
+    available = available_offerings.includes(:days_time)
+    taking = offerings.includes(:days_time)
+    available -= taking
+
+    taking = taking.collect(&:days_time)
+    taking.concat(work_days_times)
+
+    offering_ids = available.select do |offering|
+      offering.days_time.overlaps_any? taking
+    end
+
+    offering_ids.pluck(:id)
   end
 end

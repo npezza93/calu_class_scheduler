@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_category: one
+  course: one
+
+two:
+  user_category: two
+  course: two

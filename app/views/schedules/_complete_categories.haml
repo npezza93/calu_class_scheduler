@@ -1,10 +1,10 @@
-- current_user.complete.each do |category, courses|
+- @complete_categories.each do |user_category|
   .layout.vertical.center.complete-card
     %ul.collapsible{ data: {collapsible: :accordion } }
       %li
         .collapsible-header.category-card-header
-          %h4= category.display
+          %h4= user_category.curriculum_category.display
           .category-completed Completed
-      - courses.each do |course|
+      - user_category.courses.each do |course|
         %li
           .collapsible-header.course-li= course.pretty_course
