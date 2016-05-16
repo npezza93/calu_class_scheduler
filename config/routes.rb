@@ -21,8 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :curriculum_categories
-
-  resources :majors, except: :new
+  resources :majors
 
   resources :offerings do
     collection do
