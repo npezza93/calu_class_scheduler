@@ -115,7 +115,7 @@ class OfferingsControllerTest < ActionController::TestCase
     post :import,
          params: { offering_file: fixture_file_upload('files/test.jpg') }
 
-    assert_redirected_to new_offering_path
+    assert_redirected_to offerings_path
   end
 
   test 'should import offerings as advisor' do

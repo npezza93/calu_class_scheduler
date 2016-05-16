@@ -20,7 +20,6 @@ class Course < ApplicationRecord
   PLACEMENT_TEST_PARTS = [
     ['No Part Must Be Passed', ''],
     ['Pass Part A', 'A'],
-    ['Pass Part A', 'A'],
     ['Pass Part B', 'B'],
     ['Pass Part C', 'C'],
     ['Pass Part D (7-9)', 'D-'],
@@ -45,7 +44,11 @@ class Course < ApplicationRecord
   ].freeze
 
   def pretty_course
-    subject + course.to_s + ': ' + title
+    condensed_course + ': ' + title
+  end
+
+  def condensed_course
+    subject + course.to_s
   end
 
   def completed_prerequisites(transcript, courses_taken)
@@ -105,12 +108,13 @@ class Course < ApplicationRecord
   end
 
   def self.search(search)
-    if search.nil? || search == ''
+    if search.blank?
       all
     else
       search = search.downcase
       where('LOWER(title) LIKE ?
-             OR LOWER(subject) LIKE ?', "%#{search}%", "%#{search}%")
+             OR LOWER(subject) LIKE ?
+             OR course = ?', "%#{search}%", "%#{search}%", search.to_i)
     end.order(:subject, :course).group_by(&:subject)
   end
 end

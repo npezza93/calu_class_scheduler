@@ -10,7 +10,7 @@
     - unless current_user.major.major_categories.empty?
       %li
         .collapsible-header.active
-          major
+          Major
         .collapsible-body
           %ul.mdl-list.layout.vertical.center
             = render current_user.major.major_categories
@@ -18,12 +18,9 @@
     - unless current_user.major.minor_categories.empty?
       %li
         .collapsible-header
-          minor
+          Minor
         .collapsible-body
-          %ul.mdl-list
+          %ul.mdl-list.layout.vertical.center
             = render current_user.major.minor_categories
 
-= link_to new_curriculum_category_path do
-  %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab
-    %i.material-icons
-      add
+= new_fab new_curriculum_category_path

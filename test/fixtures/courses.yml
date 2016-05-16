@@ -13,3 +13,11 @@ two:
   minimum_class_standing: Senior
   minimum_sat_score: nil
   minimum_pt: nil
+
+three:
+  subject: DDD
+  course: 123
+  title: Course 3
+  minimum_class_standing: Senior
+  minimum_sat_score: nil
+  minimum_pt: nil

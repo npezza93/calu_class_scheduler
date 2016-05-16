@@ -4,6 +4,7 @@ class WorkSchedulesController < ApplicationController
   authorize_resource
 
   def index
+    @offerings = current_user.offerings.includes(:days_time)
     @work_schedule = WorkSchedule.new
     @work_schedules = current_user.work_schedules.to_a
     @work_times = current_user.work_days_times.to_a
@@ -15,7 +16,6 @@ class WorkSchedulesController < ApplicationController
 
   def create
     days = create_schedules_hash
-
     current_user.work_schedules.create(days) if days
 
     respond_to do |format|

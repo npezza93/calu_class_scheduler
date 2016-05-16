@@ -19,6 +19,22 @@ class MajorsControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
+  test 'should get new as advisor' do
+    @user = users(:advisor)
+    sign_in @user
+
+    get :new
+    assert_response :success
+  end
+
+  test 'should not get new as student' do
+    @user = users(:one)
+    sign_in @user
+
+    get :new
+    assert_redirected_to :root
+  end
+
   test 'should not update because invalid as advisor ' do
     @user = users(:advisor)
     sign_in @user

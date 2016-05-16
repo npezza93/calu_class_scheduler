@@ -6,6 +6,10 @@ class MajorsController < ApplicationController
     @majors = Major.all.order(:major)
   end
 
+  def new
+    @major = Major.new
+  end
+
   def edit
   end
 
@@ -15,7 +19,7 @@ class MajorsController < ApplicationController
     if @major.save
       redirect_to majors_path, notice: @major.major + ' is a new major!'
     else
-      redirect_to majors_url, notice: @major.errors.full_messages.first
+      render :new
     end
   end
 

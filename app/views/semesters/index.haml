@@ -19,7 +19,4 @@
       = f.collection_select(:id, Semester.all, :id, :semester)
       = f.submit "Set Session Semester"
 
-= link_to new_semester_path do
-  %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab
-    %i.material-icons
-      add
+= new_fab new_semester_path

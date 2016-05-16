@@ -5,10 +5,7 @@
   Courses
 
 .layout.vertical.center
-  = form_tag courses_path, method: :get, class: 'search-courses' do
-    .mdl-textfield.mdl-js-textfield
-      = text_field_tag :search, params[:search], class: 'mdl-textfield__input', autofocus: true
-      %label.mdl-textfield__label Search
+  = render 'layouts/search', link: courses_path
 
   %ul.collapsible.popout{ data: { collapsible: :accordion } }
     - @courses.each do |course_code, courses|
@@ -22,8 +19,4 @@
                 %span.mdl-list__item-primary-content.layout.horizontal.center-justified.center-text
                   = link_to course.pretty_course, edit_course_path(course)
 
-
-= link_to new_course_path do
-  %button.mdl-button.mdl-js-button.mdl-button--fab.red
-    %i.material-icons
-      add
+= new_fab new_course_path

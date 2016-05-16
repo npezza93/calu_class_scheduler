@@ -5,15 +5,13 @@
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     %h5.mdl-typography--display-2.header
       Sign up
-    .layout.horizontal{ style: 'width:300px;' }
+    .layout.horizontal.name-container
       = f.text_field :first_name, autofocus: true
       = f.text_field :last_name
     = f.email_field :email
-    = f.password_field :password, autocomplete: "off"
-    = f.password_field :password_confirmation, autocomplete: "off"
-    = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
-    = f.collection_select :advised_by, User.where(advisor: true), :id, :email, prompt: "Choose an Advisor"
+    = f.password_field :password
+    = f.password_field :password_confirmation
+    = f.collection_select :major_id, Major.all, :id, :major, prompt: 'choose a major'
+    = f.collection_select :advised_by, User.where(advisor: true), :id, :email, prompt: 'choose an advisor'
 
-    = f.submit "Sign up"
-
-  = link_to "log in", new_session_path(resource_name), style: 'margin-top: 35px;'
+    = f.submit 'Sign up'

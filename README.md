@@ -21,4 +21,4 @@ The student can also filter courses by times they don't want class. After buildi
 
 The Calu Advisor is a responsive web application built on Rails 5.0.0rc1, [Material Design Lite](https://getmdl.io/), and [Materialize](http://materializecss.com/) with a PostgreSQL database.
 ___
-www.caluadvisor.com
+[www.caluadvisor.com](www.caluadvisor.com)

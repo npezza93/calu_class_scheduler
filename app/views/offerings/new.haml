@@ -1,23 +1,5 @@
 - content_for :title do
   Offer a New Course
 
-= render 'form'
-
-%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.upload_offering_fab
-  %i.material-icons
-    file_upload
-
-
-.hidden
-  = form_tag import_offerings_path, multipart: true do
-    = file_field_tag :offering_file, id: "upload_offering_file"
-    %h5.mdl-typography--headline.bold.center-text
-      Upload a .CSV with 15 columns to quickly input offerings
-    .layout.vertical.start
-      %p Column 1,4,5,6,7,11,12,14,15 - Anything/Empty Column
-      %p Column 2 - The course formatted: CSC 110 Course Name
-      %p Column 3 - Course section
-      %p Column 8 - Days being offered(MWF, TR, W, etc.)
-      %p Column 9 - Start time formatted: 0330PM
-      %p Column 10 - End time formatted: 0330PM
-      %p Column 13 - Professor formmatted: "last name, first name"
+.layout.vertical.center
+  = render 'form'

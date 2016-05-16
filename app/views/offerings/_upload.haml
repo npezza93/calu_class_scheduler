@@ -1,0 +1,21 @@
+%dialog#upload-offerings-dialog.mdl-dialog
+  %h5.mdl-typography--headline.center-text
+    import offerings
+
+  = form_tag import_offerings_path, multipart: true do
+    %p.center-text
+      Upload a .CSV with 15 columns
+    .layout.vertical.start.instructions
+      %p Column 2 - The course formatted: CSC 110 Course Name
+      %p Column 3 - Course section
+      %p Column 8 - Days being offered(MWF, TR, W, etc.)
+      %p Column 9 - Start time formatted: 0330PM
+      %p Column 10 - End time formatted: 0330PM
+      %p Column 13 - Professor formmatted: "last name, first name"
+
+    = file_field_tag :offering_file, class: 'hidden'
+    = submit_tag 'Reset', class: 'hidden'
+
+    .mdl-dialog__actions
+      %button.mdl-button.choose-file{:type => 'button'} Choose File
+      %button.mdl-button.close{:type => 'button'} Cancel

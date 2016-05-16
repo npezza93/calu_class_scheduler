@@ -1,6 +1,6 @@
 = form_for @category do |f|
   %h3.mdl-display-2.header
-    - if params[:action] == 'new'
+    - if @category.new_record?
       New Category
     - else
       Edit Category
@@ -22,6 +22,6 @@
     = f.fields_for :curriculum_category_sets, @category_sets do |builder|
       = render "curriculum_category_set_fields", f: builder
 
-  = link_to_add_association 'add section', f, :curriculum_category_sets, "data-association-insertion-node" => ".collapsible", "data-association-insertion-method" => "append", style: 'margin-bottom: 35px;color: #66BB6A;'
+  = link_to_add_association 'add section', f, :curriculum_category_sets, 'data-association-insertion-node' => '.collapsible', 'data-association-insertion-method' => 'append', style: 'margin-bottom: 35px;color: #66BB6A;'
 
   = f.submit

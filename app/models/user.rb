@@ -41,6 +41,14 @@ class User < ApplicationRecord
     first_name + ' ' + last_name
   end
 
+  def professor
+    if !first_name.blank?
+      "#{first_name[0].capitalize}. "
+    else
+      ''
+    end + last_name.capitalize
+  end
+
   def current_credits
     courses.sum(&:credits)
   end
@@ -74,9 +82,10 @@ class User < ApplicationRecord
     if search.blank?
       user.advisees + user.students
     else
-      where('first_name LIKE ?
-             OR last_name LIKE ?
-             OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+      query = search.downcase
+      where('LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ?
+             OR LOWER(email) LIKE ?',
+            "%#{query}%", "%#{query}%", "%#{query}%")
         .where(advisor: false, administrator: false)
     end
   end
@@ -85,7 +94,7 @@ class User < ApplicationRecord
     ['All Students', 'My Advisees']
   end
 
-  def offerings_that_overlap
+  def offerings_that_overlap(offering = nil)
     available = available_offerings.includes(:days_time)
     taking = offerings.includes(:days_time)
     available -= taking

@@ -67,6 +67,23 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     assert_redirected_to :work_schedules
   end
 
+  test 'should remove time row as student' do
+    @user = users(:one)
+    sign_in @user
+
+    post :create, params: { time: '8:00am', type: :time }
+    assert @user.work_days_times.where(
+      start_time: DateTime.new(2000, 1, 1, 8, 00)
+    ).count == 5
+
+    post :create, params: { time: '8:00am', type: :time }
+    assert @user.work_days_times.where(
+      start_time: DateTime.new(2000, 1, 1, 8, 00)
+    ).count == 0
+
+    assert_redirected_to :work_schedules
+  end
+
   test 'should not create time row as advisor' do
     @user = users(:advisor)
     sign_in @user

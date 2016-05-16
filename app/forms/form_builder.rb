@@ -27,12 +27,11 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   def check_box(method, options = {}, checked_val = '1', unchecked_val = '0')
     label_text = options.delete(:label) || method.to_s.capitalize
-    options[:class] ||= ''
-    options[:class] = options[:class] + 'mdl-checkbox__input'
+    label_for = "#{object.class.to_s.underscore}_#{method}"
 
-    content_tag :label, class: mdl_checkbox_classes do
+    content_tag :div, class: 'input-field materialize-checkbox' do
       super(method, options, checked_val, unchecked_val) +
-        content_tag(:span, class: 'mdl-checkbox__label') { label_text }
+        content_tag(:label, label_text, for: label_for)
     end
   end
 
@@ -65,13 +64,16 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(value = nil, options = {})
-    options[:class] ||= ''
-    options[:class] = options[:class] + 'mdl-button'
+    options[:class] = "#{options[:class]} mdl-button #{submit_class}"
 
     super(value, options)
   end
 
   private
+
+  def submit_class
+    object.new_record? ? 'create' : 'update'
+  end
 
   def text_field_label(name)
     label(name, options[:label], class: 'mdl-textfield__label') +
@@ -83,9 +85,5 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   def text_field_error(name)
     'mdl-textfield mdl-js-textfield ' +
       (errors[name.to_sym].blank? ? '' : 'is-invalid')
-  end
-
-  def mdl_checkbox_classes
-    'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect'
   end
 end

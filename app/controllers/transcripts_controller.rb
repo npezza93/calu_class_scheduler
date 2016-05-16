@@ -14,6 +14,7 @@ class TranscriptsController < ApplicationController
     respond_to do |format|
       if @transcript.save
         remove_schedules
+        SchedulerJob.perform_later current_user
         flash[:notice] = @transcript.course.title + ' added!'
         format.html { redirect_to transcripts_path }
       else
@@ -36,9 +37,11 @@ class TranscriptsController < ApplicationController
 
   def destroy
     @transcript.destroy
+    flash[:notice] = @transcript.course.title + ' removed!'
+
+    SchedulerJob.perform_later current_user
     respond_to do |format|
-      flash[:notice] = @transcript.course.title + ' removed!'
-      format.html { redirect_to transcripts_path  }
+      format.html { redirect_to transcripts_path }
       format.js { render layout: false }
     end
   end

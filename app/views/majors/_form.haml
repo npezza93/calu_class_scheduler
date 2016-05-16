@@ -1,0 +1,8 @@
+= form_for(@major) do |f|
+  %h3.mdl-display-2.header
+    - if @major.new_record?
+      New Major
+    - else
+      Edit Major
+  = f.text_field :major
+  = f.submit

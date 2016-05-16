@@ -5,10 +5,7 @@
   Students
 
 .layout.vertical.center.users-index
-  = form_tag users_path, method: :get, class: 'search-users' do
-    .mdl-textfield.mdl-js-textfield
-      = text_field_tag :search, params[:search], class: 'mdl-textfield__input', autofocus: true
-      %label.mdl-textfield__label Search
+  = render 'layouts/search', link: users_path
 
   %ul.collapsible.popout{ data: { collapsible: :accordion } }
     - @students.each do |student|
@@ -17,8 +14,9 @@
           %div{ style: 'padding-left: 24px;'}
             = student.name
           .flex
-          %div.student-schedule-link
-            Schedule
+          - if !student.courses.to_a.empty?
+            %div.student-schedule-link
+              Schedule
 
         - if !student.courses.to_a.empty?
           .collapsible-body

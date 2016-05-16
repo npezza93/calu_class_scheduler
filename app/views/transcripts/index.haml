@@ -22,19 +22,4 @@
           %ul.demo-list-item.mdl-list.center-text
             = link_to 'Remove', transcript_path(transcript), method: :delete, remote: true
 
-
-%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_major_fab
-  %i.material-icons file_upload
-
-%dialog.new_major_dialog.mdl-dialog
-  %h5.mdl-typography--headline.bold.center-text To Upload an Updated Transcript
-
-  %ol#upload-transcript-list
-    %li Log in to VIP and go to DegreeWorks
-    %li Click the "Class History" link
-    %li
-      Once the new window opens, press CTRL+A to select all the text
-
-  = form_tag(import_transcripts_path) do
-    = text_area_tag 'Transcript',params[:text]
-    = submit_tag 'Submit'
+= render 'upload'

@@ -4,3 +4,10 @@ one:
   section: D3
   semester: one
   days_time: one
+
+two:
+  course: three
+  user: advisor
+  section: D3
+  semester: one
+  days_time: two

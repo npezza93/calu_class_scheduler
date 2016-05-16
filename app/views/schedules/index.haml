@@ -14,7 +14,7 @@
               %h4= user_category.curriculum_category.display
               - if user_category.offerings.empty?
                 .no-courses-offered
-                  Currently no courses are being offered that will fulfill this category
+                  No courses are being offered for this category
           - user_category.offerings.group_by(&:course).each do |course, course_offerings|
             %li
               .collapsible-header= course.pretty_course

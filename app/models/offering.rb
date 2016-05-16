@@ -18,7 +18,7 @@ class Offering < ApplicationRecord
   validates :section, presence: true
 
   def display
-    "#{days_time.days} from #{display_time} Prof. #{user.last_name.capitalize}"
+    "#{days_time.days} from #{display_time} with #{user.professor}"
   end
 
   def display_time

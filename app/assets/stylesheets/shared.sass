@@ -1,3 +1,5 @@
+@import colors
+
 @font-face
   font-family: 'Avenir'
   src: url("/assets/AvenirLTStd-Book.otf") format("otf")
@@ -9,8 +11,8 @@
 body
   font-family: 'Avenir' !important
   letter-spacing: 1.5px !important
-  background-color: #f4f4f4
-  color: #333
+  background-color: $grey-50
+  color: $grey-800
 
 main
   height: 100%
@@ -27,7 +29,7 @@ hr
   border-bottom: 1px solid #B6B6B6
 
 .center-text
-  text-align: center
+  text-align: center !important
 
 #user-avatar-container
   position: absolute
@@ -43,15 +45,6 @@ hr
 
 .mdl-button
   text-transform: lowercase !important
-
-.mdl-button--fab
-  position: fixed !important
-  bottom: 0
-  right: 0
-  margin-right: 20px !important
-  margin-bottom: 15px !important
-  a
-    color: #fff
 
 *
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
@@ -109,7 +102,3 @@ a
     width: 300px
     height: 200px !important
     overflow-y: scroll
-
-.mdl-button--fab.red
-  background-color: #E53935 !important
-  color: #fff !important

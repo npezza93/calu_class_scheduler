@@ -44,7 +44,7 @@ class OfferingsController < ApplicationController
       Offering.import(params[:offering_file])
       redirect_to offerings_path, notice: 'Offerings Uploaded!'
     else
-      redirect_to new_offering_path, notice: 'Only CSV files are acceptable!'
+      redirect_to offerings_path, notice: 'Only CSV files are acceptable!'
     end
   end
 

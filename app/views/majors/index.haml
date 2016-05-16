@@ -5,26 +5,23 @@
   majors
 
 .layout.vertical.center
-  %ul.collapsible.popout{ data: { collapsible: :accordion } }
-    - @majors.each do |major|
-      %li
-        .collapsible-header
-          = major.major
-        .collapsible-body.layout.vertical.center
-          = form_for major do |f|
-            = f.text_field :major
-          .flex
-          = link_to "delete", @major, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-major"
+  %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+    %tbody
+      - @majors.each do |major|
+        %tr.pointer.table-row{ href: edit_major_path(major) }
+          %td.mdl-data-table__cell--non-numeric.center-text
+            = major.major
 
+  -# %ul.collapsible.popout{ data: { collapsible: :accordion } }
+  -#   - @majors.each do |major|
+  -#     %li
+  -#       .collapsible-header
+  -#         = major.major
+  -#       .collapsible-body.layout.vertical.center
+  -#         = form_for major do |f|
+  -#           = f.text_field :major
+  -#         .flex
+  -#         = link_to "delete", @major, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-major"
+  -#
 
-%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_major_fab
-  %i.material-icons add
-
-%dialog.new_major_dialog.mdl-dialog
-  %h5.mdl-typography--headline.header{ style: 'margin-top: 0;' }
-    New Major
-  = form_for Major.new do |f|
-    = f.text_field :major
-    .mdl-dialog__actions
-      = f.submit "Submit"
-      %button.mdl-button.close{type: 'button'} Cancel
+= new_fab new_major_path

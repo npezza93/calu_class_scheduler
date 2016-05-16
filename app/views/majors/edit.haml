@@ -1,9 +1,5 @@
 - content_for :title do
   Editing #{@major.major}
 
-= form_for @major do |f|
-  %h5.mdl-typography--headline.header
-    Update Major
-
-  = f.text_field :major
-  = f.submit "Update"
+= render 'form'
+= destroy_fab @major
