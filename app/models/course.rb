@@ -12,31 +12,23 @@ class Course < ApplicationRecord
   validates :subject, presence: true
   validates :course, presence: true, numericality: { only_integer: true }
   validates :credits, presence: true, numericality: { only_integer: true }
-  validates_uniqueness_of :course, scope: [:subject]
+  validates :course, uniqueness: { scope: :subject }
 
-  CLASS_STANDINGS =
-    { 'Senior' => 1, 'Junior' => 2, 'Sophmore' => 3, 'Freshman' => 4 }.freeze
+  YEAR = {'Senior' => 1, 'Junior' => 2, 'Sophmore' => 3, 'Freshman' => 4}.freeze
 
   PLACEMENT_TEST_PARTS = [
-    ['No Part Must Be Passed', ''],
-    ['Pass Part A', 'A'],
-    ['Pass Part B', 'B'],
-    ['Pass Part C', 'C'],
-    ['Pass Part D (7-9)', 'D-'],
-    ['Pass Part D (10 or above)', 'D']
+    ['No Part Must Be Passed', nil], ['Pass Part A', 'A'],
+    ['Pass Part B', 'B'], ['Pass Part C', 'C'],
+    ['Pass Part D (7-9)', 'D-'], ['Pass Part D (10 or above)', 'D']
   ].freeze
 
-  YEARS = [
-    ['No minimum class standing', ''],
-    %w(Senior Senior),
-    %w(Junior Junior),
-    %w(Sophmore Sophmore),
-    %w(Freshman Freshman)
+  CLASS_STANDINGS = [
+    ['No minimum class standing', nil], %w(Senior Senior), %w(Junior Junior),
+    %w(Sophmore Sophmore), %w(Freshman Freshman)
   ].freeze
 
   SAT_SCORES = [
-    ['No minimum SAT score', ''],
-    ['440 on Mathematics or better', '440'],
+    ['No minimum SAT score', nil], ['440 on Mathematics or better', '440'],
     ['520 on Mathematics or better', '520'],
     ['580 on Mathematics or better', '580'],
     ['640 on Mathematics or better', '640'],
@@ -45,6 +37,10 @@ class Course < ApplicationRecord
 
   def pretty_course
     condensed_course + ': ' + title
+  end
+
+  def offering_display(section)
+    subject + course.to_s + '-' + section + ': ' + title
   end
 
   def condensed_course
@@ -70,17 +66,14 @@ class Course < ApplicationRecord
   end
 
   def passed_tests?(user)
-    !minimum_pt? &&
-      eligible_class_standing?(user) &&
-      passed_sat?(user)
+    !minimum_pt? && eligible_class_standing?(user) && passed_sat?(user)
   end
 
   def eligible_class_standing?(user)
     return true unless minimum_class_standing?
     return false unless user.class_standing?
 
-    CLASS_STANDINGS[user.class_standing] <=
-      CLASS_STANDINGS[minimum_class_standing]
+    YEAR[user.class_standing] <= YEAR[minimum_class_standing]
   end
 
   def passed_sat?(user)
@@ -112,8 +105,7 @@ class Course < ApplicationRecord
       all
     else
       search = search.downcase
-      where('LOWER(title) LIKE ?
-             OR LOWER(subject) LIKE ?
+      where('LOWER(title) LIKE ? OR LOWER(subject) LIKE ?
              OR course = ?', "%#{search}%", "%#{search}%", search.to_i)
     end.order(:subject, :course).group_by(&:subject)
   end

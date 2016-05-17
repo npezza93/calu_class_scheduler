@@ -11,6 +11,14 @@ class CoursesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should get search index as advisor' do
+    @user = users(:advisor)
+    sign_in @user
+
+    get :index, params: { search: 'AAA' }
+    assert_response :success
+  end
+
   test 'should not get index as student' do
     @user = users(:one)
     sign_in @user

@@ -1,0 +1,12 @@
+.fixed-action-btn.click-to-toggle
+  %a.main
+    %button.mdl-button.mdl-js-button.mdl-button--fab.new-fab
+      .i.material-icons
+        add
+  %ul
+    %li
+      = new_fab new_offering_path ,false
+    %li
+      %button.mdl-button.mdl-js-button.mdl-button--fab.alt-fab#upload-offerings
+        .i.material-icons
+          file_upload

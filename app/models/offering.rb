@@ -28,32 +28,26 @@ class Offering < ApplicationRecord
   end
 
   def self.search(search, page)
-    if search.nil? || search == ''
+    if search.blank?
       includes(:course, :days_time, :user)
-        .where(semester: Semester.find_by(active: true))
-        .page(page).per(20)
     else
-      joins(:course, :days_time, :user)
-        .where_search(search).where(semester: Semester.find_by(active: true))
-        .page(page).per(20)
-    end
-  end
-
-  def self.where_search(search)
-    where('LOWER(courses.title) LIKE ? OR LOWER(courses.subject) LIKE ? OR
-           LOWER(days_times.days) LIKE ? OR
-           LOWER(users.first_name) LIKE ? OR LOWER(users.last_name) LIKE ?',
-          "%#{search}%", "%#{search}%", "%#{search}%",
-          "%#{search}%", "%#{search}%")
+      search = "%#{search}%"
+      joins(:course, :days_time, :user).where(
+        'LOWER(courses.title) LIKE ? OR LOWER(courses.subject) LIKE ? OR
+         LOWER(days_times.days) LIKE ? OR
+         LOWER(users.first_name) LIKE ? OR LOWER(users.last_name) LIKE ?',
+        search, search, search, search, search
+      )
+    end.where(semester: Semester.active).page(page).per(20)
   end
 
   def self.import(file)
     CSV.foreach(file.path) do |row|
-      course   = Course.csv_get_course(row)
-      prof     = Course.csv_get_prof(row)
-      day_time = Course.csv_get_day_time(row)
-      offering = Offering.new(user: prof, days_time: day_time,
-                              course: course, section: row[2])
+      course   = csv_get_course(row)
+      prof     = csv_get_prof(row)
+      day_time = csv_get_day_time(row)
+      offering = new(user: prof, days_time: day_time, course: course,
+                     section: row[2])
       offering.save if offering.valid?
     end
   end
@@ -67,7 +61,7 @@ class Offering < ApplicationRecord
 
   def self.csv_get_prof(row)
     prof = row[12].split(',')
-    if prof[1].nil?
+    if prof[1].blank?
       User.find_by(first_name: nil)
     else
       last_name  = prof[0].strip.downcase
@@ -79,7 +73,7 @@ class Offering < ApplicationRecord
 
   def self.csv_get_day_time(row)
     if row[7].blank?
-      Course.csv_get_offsite(row)
+      csv_get_offsite(row)
     else
       DaysTime.find_by(
         'days = ? AND start_time = ? and end_time = ? ',
@@ -91,9 +85,9 @@ class Offering < ApplicationRecord
   end
 
   def self.csv_get_offsite(row)
-    if row[2][0].casecmp('w')
+    if row[2][0].casecmp('w') == 0
       DaysTime.find_by('days = ?', 'ONLINE')
-    elsif row[2][0].casecmp('x')
+    elsif row[2][0].casecmp('x') == 0
       DaysTime.find_by('days = ?', 'OFFSITE')
     end
   end
@@ -101,6 +95,6 @@ class Offering < ApplicationRecord
   private
 
   def default_semester
-    self.semester = Semester.find_by(active: true)
+    self.semester = Semester.active
   end
 end

@@ -17,6 +17,14 @@ class OfferingsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should get index with search as advisor' do
+    @user = users(:advisor)
+    sign_in @user
+
+    get :index, params: { search: 'AAA' }
+    assert_response :success
+  end
+
   test 'should not do anything as student' do
     @user = users(:one)
     sign_in @user
@@ -92,7 +100,7 @@ class OfferingsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to :offerings
-    assert_equal courses(:one).title + ' is now being offered!', flash[:notice]
+    assert_equal courses(:one).title + ' created!', flash[:notice]
   end
 
   test 'should delete offering as advisor' do
@@ -104,7 +112,7 @@ class OfferingsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to :offerings
-    assert_equal courses(:two).title + ' is no longer being offered!',
+    assert_equal courses(:two).title + ' removed!',
                  flash[:notice]
   end
 

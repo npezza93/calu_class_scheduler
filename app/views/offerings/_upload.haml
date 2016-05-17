@@ -4,16 +4,16 @@
 
   = form_tag import_offerings_path, multipart: true do
     %p.center-text
-      Upload a .CSV with 15 columns
+      Upload a .CSV formatted:
     .layout.vertical.start.instructions
-      %p Column 2 - The course formatted: CSC 110 Course Name
+      %p Column 2 - The course formatted: CSC 110 Name
       %p Column 3 - Course section
-      %p Column 8 - Days being offered(MWF, TR, W, etc.)
+      %p Column 8 - Days being offered(MWF, TR, etc.)
       %p Column 9 - Start time formatted: 0330PM
       %p Column 10 - End time formatted: 0330PM
-      %p Column 13 - Professor formmatted: "last name, first name"
+      %p Column 13 - Professor formmatted: "last, first"
 
-    = file_field_tag :offering_file, class: 'hidden'
+    = file_field_tag :offering_file, accept: '.csv', class: 'hidden'
     = submit_tag 'Reset', class: 'hidden'
 
     .mdl-dialog__actions

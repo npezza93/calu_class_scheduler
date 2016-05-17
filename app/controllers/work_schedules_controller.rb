@@ -15,8 +15,12 @@ class WorkSchedulesController < ApplicationController
   end
 
   def create
-    days = create_schedules_hash
-    current_user.work_schedules.create(days) if days
+    time_slots = create_schedules_hash
+    if time_slots
+      ActiveRecord::Base.transaction do
+        current_user.work_schedules.create(time_slots)
+      end
+    end
 
     respond_to do |format|
       format.html { redirect_to work_schedules_path }
@@ -37,7 +41,7 @@ class WorkSchedulesController < ApplicationController
 
   def create_schedules_hash
     if (type = params[:type])
-      map_type(type) if type == 'day' || type == 'time'
+      send("map_#{type}")
     else
       {
         work_days_time_id: params[:work_days_time_id], semester: active_semester
@@ -45,22 +49,20 @@ class WorkSchedulesController < ApplicationController
     end
   end
 
-  def map_type(type)
-    if type == 'day'
-      ws = current_work_schedules(WorkDaysTime.where(days: params[:day].upcase))
-      count = 27
-      ids = WorkDaysTime.where(days: params[:day]).pluck(:id)
-    else
-      ws = current_work_schedules(WorkDaysTime.with_start_time(params[:time]))
-      count = 5
-      ids = WorkDaysTime.with_start_time(params[:time]).pluck(:id)
-    end
-
-    make_hash(ws, count, ids)
+  def map_day
+    ws = current_work_schedules(WorkDaysTime.where(days: params[:day].upcase))
+    ids = WorkDaysTime.where(days: params[:day]).pluck(:id)
+    make_hash(ws, ids)
   end
 
-  def make_hash(work_days_time, count, ids)
-    if work_days_time.count != count
+  def map_time
+    ws = current_work_schedules(WorkDaysTime.with_start_time(params[:time]))
+    ids = WorkDaysTime.with_start_time(params[:time]).pluck(:id)
+    make_hash(ws, ids)
+  end
+
+  def make_hash(work_days_time, ids)
+    if work_days_time.count == 0
       ids.map do |id|
         { work_days_time_id: id, semester: active_semester }
       end

@@ -18,6 +18,9 @@ class UserCategory < ApplicationRecord
     where(completed: true).includes(:curriculum_category, :courses)
   }
   scope :incompleted, lambda {
-    where(completed: false).includes({offerings: [:course, :days_time, :user]}, :curriculum_category, :completed_courses)
+    where(completed: false).includes(
+      {offerings: [:course, :days_time, :user]},
+      :curriculum_category, :completed_courses
+    )
   }
 end

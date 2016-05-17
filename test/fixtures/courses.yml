@@ -2,22 +2,38 @@ one:
   subject: AAA
   course: 123
   title: Course 1
-  minimum_class_standing: nil
-  minimum_sat_score: nil
-  minimum_pt: nil
+  minimum_class_standing: ''
+  minimum_sat_score: ''
+  minimum_pt: ''
 
 two:
   subject: BBB
   course: 123
   title: Course 2
   minimum_class_standing: Senior
-  minimum_sat_score: nil
-  minimum_pt: nil
+  minimum_sat_score: 520
+  minimum_pt: C
 
 three:
   subject: DDD
   course: 123
   title: Course 3
   minimum_class_standing: Senior
-  minimum_sat_score: nil
-  minimum_pt: nil
+  minimum_sat_score: 520
+  minimum_pt: D
+
+four:
+  subject: EEE
+  course: 123
+  title: Course 4
+  minimum_class_standing: Senior
+  minimum_sat_score: 520
+  minimum_pt: F
+
+five:
+  subject: FFF
+  course: 123
+  title: Course 5
+  minimum_class_standing: Senior
+  minimum_sat_score: ''
+  minimum_pt: ''

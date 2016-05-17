@@ -2,4 +2,4 @@
   Editing #{@course.pretty_course}
 
 = render 'form'
-= link_to 'remove', @course, data: { method: :delete, confirm: 'Are you sure?' }, style: 'margin-top: 35px;', class: 'layout horizontal center-justified'
+= destroy_fab @course

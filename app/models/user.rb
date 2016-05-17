@@ -26,11 +26,14 @@ class User < ApplicationRecord
   has_many :work_schedules, -> { where(semester: Semester.active) }
   has_many :work_days_times, through: :work_schedules
   has_many :user_categories
-  has_many :available_offerings, ->{ where('user_category_courses.completed = ?', false) }, class_name: 'Offering', through: :user_categories, source: :offerings
+  has_many :available_offerings,
+           -> { where('user_category_courses.completed = ?', false) },
+           class_name: 'Offering', through: :user_categories, source: :offerings
 
   scope :offering_advisors, lambda {
     where('advisor = ? OR email = ?', true, 'staff@calu.edu')
   }
+
   serialize :minor, Array
 
   before_validation do |model|
@@ -51,6 +54,16 @@ class User < ApplicationRecord
 
   def current_credits
     courses.sum(&:credits)
+  end
+
+  def offerings_at(start_time)
+    offering_day_times.where(
+      start_time: Time.parse(start_time).strftime('%l:%M %P')
+    )
+  end
+
+  def offerings_on(day)
+    offering_day_times.where('days like ?', "%#{day}")
   end
 
   def send_for_approval
@@ -94,9 +107,9 @@ class User < ApplicationRecord
     ['All Students', 'My Advisees']
   end
 
-  def offerings_that_overlap(offering = nil)
+  def offerings_that_overlap(single_offering = nil)
     available = available_offerings.includes(:days_time)
-    taking = offerings.includes(:days_time)
+    taking = single_offering || offerings.includes(:days_time)
     available -= taking
 
     taking = taking.collect(&:days_time)

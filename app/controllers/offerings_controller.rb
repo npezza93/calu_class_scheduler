@@ -16,8 +16,7 @@ class OfferingsController < ApplicationController
     @offering = Offering.new(offering_params)
 
     if @offering.save
-      redirect_to offerings_path,
-                  notice: @offering.course.title + ' is now being offered!'
+      redirect_to offerings_path, notice: @offering.course.title + ' created!'
     else
       render :new
     end
@@ -25,8 +24,7 @@ class OfferingsController < ApplicationController
 
   def update
     if @offering.update(offering_params)
-      redirect_to offerings_path,
-                  notice: @offering.course.title + ' successfully updated!'
+      redirect_to offerings_path, notice: @offering.course.title + ' updated!'
     else
       render :new
     end
@@ -35,23 +33,19 @@ class OfferingsController < ApplicationController
   def destroy
     @offering.destroy
     Schedule.where(offering: @offering).delete_all
-    redirect_to offerings_url,
-                notice: @offering.course.title + ' is no longer being offered!'
+
+    redirect_to offerings_url, notice: @offering.course.title + ' removed!'
   end
 
   def import
-    if File.extname(params[:offering_file].original_filename) == '.csv'
-      Offering.import(params[:offering_file])
-      redirect_to offerings_path, notice: 'Offerings Uploaded!'
-    else
-      redirect_to offerings_path, notice: 'Only CSV files are acceptable!'
-    end
+    Offering.import(params[:offering_file])
+    redirect_to offerings_path, notice: 'Offerings Uploaded!'
   end
 
   private
 
   def offering_params
-    params.require(:offering).permit(:course_id, :days_time_id, :user_id,
-                                     :section)
+    params.require(:offering)
+          .permit(:course_id, :days_time_id, :user_id, :section)
   end
 end

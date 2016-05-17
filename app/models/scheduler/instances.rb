@@ -43,14 +43,12 @@ module Scheduler::Instances
     @active_semester ||= Semester.active
   end
 
-  def categories
+  def categories(course_id = nil)
     @categories ||= CurriculumCategory.where(
       '(major_id = ? and minor =?) or (minor = ? and major_id IN (?))',
       major_id, false, true, minor
-    ).includes(:courses, curriculum_category_sets: [{
-      courses: [{
-        prerequisites: [{ course: { offerings: [:days_time, :user] } }]
-      }, { offerings: [:days_time, :user] }]
-    }]).to_a
+    ).includes(:courses, curriculum_category_sets: {
+      courses: { prerequisites: :course }
+    }).with_course(course_id).to_a
   end
 end

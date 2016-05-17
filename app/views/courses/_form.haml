@@ -26,7 +26,7 @@
       .collapsible-body
         .layout.vertical.center
           = f.collection_select(:minimum_pt, Course::PLACEMENT_TEST_PARTS, :second, :first, prompt: "Math Placement Exam")
-          = f.collection_select(:minimum_class_standing, Course::YEARS, :second, :first, prompt: "Minimum class standing")
+          = f.collection_select(:minimum_class_standing, Course::CLASS_STANDINGS, :second, :first, prompt: "Minimum class standing")
           = f.collection_select(:minimum_sat_score, Course::SAT_SCORES, :second, :first, prompt: "Minimum SAT score")
 
     = f.fields_for :prerequisite_groups, @prerequisite_groups do |builder|

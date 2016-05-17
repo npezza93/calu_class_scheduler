@@ -9,7 +9,7 @@ class CurriculumCategorySet < ApplicationRecord
                                 reject_if: :all_blank, allow_destroy: true
 
   def pretty_count
-    if count.nil?
+    if count.blank?
       'all are required'
     else
       "choose #{count.to_words} of the following"

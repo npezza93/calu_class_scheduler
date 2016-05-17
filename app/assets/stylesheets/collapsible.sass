@@ -14,9 +14,10 @@
     list-style-type: none
 
 .collapsible.popout
-  .collapsible-header.active
-    font-weight: 700
-    font-size: 17px
+  li:not(.disabled).active
+    .collapsible-header
+      font-weight: 700
+      font-size: 17px
 
 .collapsible-header
   transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -56,6 +57,6 @@
   margin: 0 24px
   transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)
 
-.collapsible.popout > li.active
+.collapsible.popout > li:not(.disabled).active
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
   margin: 16px 0

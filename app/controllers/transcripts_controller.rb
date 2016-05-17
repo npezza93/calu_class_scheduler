@@ -11,16 +11,13 @@ class TranscriptsController < ApplicationController
   def create
     @transcript = @transcripts.new(transcript_params)
 
-    respond_to do |format|
-      if @transcript.save
-        remove_schedules
-        SchedulerJob.perform_later current_user
-        flash[:notice] = @transcript.course.title + ' added!'
-        format.html { redirect_to transcripts_path }
-      else
-        format.html { render :index }
-      end
-      format.js { render layout: false }
+    if @transcript.save
+      remove_schedules
+      SchedulerJob.perform_later current_user, @transcript.course_id
+
+      redirect_to transcripts_path, notice: @transcript.course.title + ' added!'
+    else
+      render :index
     end
   end
 
@@ -37,13 +34,9 @@ class TranscriptsController < ApplicationController
 
   def destroy
     @transcript.destroy
-    flash[:notice] = @transcript.course.title + ' removed!'
 
-    SchedulerJob.perform_later current_user
-    respond_to do |format|
-      format.html { redirect_to transcripts_path }
-      format.js { render layout: false }
-    end
+    SchedulerJob.perform_later current_user, @transcript.course_id
+    redirect_to transcripts_path, notice: @transcript.course.title + ' removed!'
   end
 
   private

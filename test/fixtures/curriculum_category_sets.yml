@@ -2,11 +2,11 @@
 
 one:
   curriculum_category: one
-  count: nil
+  count: ''
 
 two:
   curriculum_category: one
-  count: nil
+  count: 1
 
 three:
   curriculum_category: two

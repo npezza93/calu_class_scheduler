@@ -5,7 +5,7 @@
   Transcript
 
 .layout.vertical.center
-  = form_for @transcript, remote: true do |f|
+  = form_for @transcript do |f|
     .transcript-fields
       = f.collection_select(:course_id, Course.all.order(:subject, :course), :id, :pretty_course, prompt: 'Choose a Course')
       .grade
@@ -20,6 +20,6 @@
           = transcript.course.pretty_course
         .collapsible-body
           %ul.demo-list-item.mdl-list.center-text
-            = link_to 'Remove', transcript_path(transcript), method: :delete, remote: true
+            = link_to 'Remove', transcript_path(transcript), method: :delete
 
 = render 'upload'
