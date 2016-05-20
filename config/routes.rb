@@ -13,12 +13,7 @@ def advisor?(request)
 end
 
 Rails.application.routes.draw do
-  resources :semesters, only: [:index, :new, :create] do
-    collection do
-      put :system
-      put :set_session
-    end
-  end
+  resources :semesters, only: [:index, :new, :create, :update]
 
   resources :curriculum_categories
   resources :majors

@@ -3,3 +3,13 @@
 one:
   user: one
   course: two
+
+two:
+  user: one
+  course: four
+  grade_c_minus: true
+
+three:
+  user: one
+  course: five
+  grade_c: true

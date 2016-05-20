@@ -35,12 +35,12 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def collection_select(method, collection, value, text, options = {})
+  def collection_select(method, collection, value, text, opts = {}, html = {})
     error_msg = errors[method.to_s.gsub('_id', '').to_sym][0]
     div_class = "input-field #{'is-invalid' unless error_msg.blank?}"
 
     content_tag :div, class: div_class do
-      super(method, collection, value, text, options) +
+      super(method, collection, value, text, opts, html) +
         if !error_msg.blank?
           content_tag(:label, error_msg, class: 'active')
         else

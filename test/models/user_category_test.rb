@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UserCategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'has at least one completed course' do
+    refute user_categories(:one).completed_courses.empty?
+  end
 end

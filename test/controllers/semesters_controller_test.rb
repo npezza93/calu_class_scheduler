@@ -31,35 +31,17 @@ class SemestersControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    put :system, params: { semester: { id: semesters(:two).id } }
+    put :update, params:
+      { semester: { id: semesters(:two).id }, id: semesters(:one) }
     assert_redirected_to :root
-  end
-
-  test 'should set session semester as advisor' do
-    @user = users(:advisor)
-    sign_in @user
-
-    put :set_session, params: { semester: { id: semesters(:two).id } }
-
-    assert_redirected_to :semesters
-    assert_equal semesters(:two).semester + ' is now viewable', flash[:notice]
-  end
-
-  test 'should set session semester as student' do
-    @user = users(:one)
-    sign_in @user
-
-    put :set_session, params: { semester: { id: semesters(:two).id } }
-
-    assert_redirected_to :semesters
-    assert_equal semesters(:two).semester + ' is now viewable', flash[:notice]
   end
 
   test 'should set system as advisor' do
     @user = users(:advisor)
     sign_in @user
 
-    put :system, params: { semester: { id: semesters(:two).id } }
+    put :update, params:
+      { semester: { id: semesters(:two).id }, id: semesters(:one) }
 
     assert_redirected_to :semesters
   end

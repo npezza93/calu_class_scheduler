@@ -10,7 +10,7 @@ class CurriculumCategorySet < ApplicationRecord
 
   def pretty_count
     if count.blank?
-      'all are required'
+      'all courses are required'
     else
       "choose #{count.to_words} of the following"
     end

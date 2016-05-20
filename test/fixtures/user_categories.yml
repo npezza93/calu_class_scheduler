@@ -3,6 +3,7 @@
 one:
   user: one
   curriculum_category: one
+  completed: true
 
 two:
   user: two

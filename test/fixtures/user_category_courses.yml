@@ -3,6 +3,7 @@
 one:
   user_category: one
   course: one
+  completed: true
 
 two:
   user_category: two

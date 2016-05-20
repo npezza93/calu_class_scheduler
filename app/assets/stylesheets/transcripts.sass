@@ -1,6 +1,11 @@
-@import layout
+@import layout, colors
 
 .new_transcript
+  @extend .layout.vertical
+  @extend .layout.center-center
+
+  input[type='submit']
+    color: $green-A700
   .transcript-fields
     @extend .layout.horizontal
     @extend .layout.center-justified
@@ -16,3 +21,15 @@
     .grade
       @extend .flex
       margin-left: 10px
+
+.remove-transcript
+  color: #333
+  transition: all .1s ease
+  &:hover
+    color: $red-500
+
+.transcript-helper-text
+  text-align: center
+  width: 400px
+  max-width: 90%
+  margin: auto

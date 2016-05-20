@@ -1,22 +1,13 @@
 - content_for :title do
-  Semesters
+  <semesters>
 
 - if active_semester
   .layout.vertical.center
     %h3.mdl-display-2.header
-      system semester: #{active_semester.semester}
+      #{active_semester.semester} is active
 
-    = form_for active_semester, url: system_semesters_path, method: :put do |f|
+    = form_for active_semester, method: :put do |f|
       = f.collection_select(:id, Semester.all, :id, :semester)
-      = f.submit "Set System Semester"
-
-    - if active_semester != session_semester
-      %h3.mdl-display-2.header
-        session semester:
-        = session_semester.semester
-
-    = form_for session_semester, url: set_session_semesters_path, method: :put do |f|
-      = f.collection_select(:id, Semester.all, :id, :semester)
-      = f.submit "Set Session Semester"
+      = f.submit "change system semester"
 
 = new_fab new_semester_path

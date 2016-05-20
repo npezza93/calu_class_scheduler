@@ -8,6 +8,15 @@ module ApplicationHelper
     end
   end
 
+  def edit_fab(link)
+    button_classes = "#{fab_classes} edit-fab fixed"
+    link_to link do
+      content_tag(:button, class: button_classes) do
+        content_tag(:i, 'edit', class: 'material-icons')
+      end
+    end
+  end
+
   def destroy_fab(link, confirm_message = nil)
     confirm_message ||= 'Are you sure?'
     link_to link, data: { method: :delete, confirm: confirm_message } do

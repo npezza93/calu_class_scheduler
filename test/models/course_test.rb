@@ -34,7 +34,7 @@ class CourseTest < ActiveSupport::TestCase
       users(:two),
       users(:two).transcripts,
       users(:two).taken_courses
-    ).empty?
+    ).include? false
   end
 
   test 'can_take 5' do

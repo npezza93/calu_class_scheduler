@@ -1,5 +1,5 @@
 - content_for :title do
-  Courses Offered #{active_semester.semester}
+  <offerings>
 
 %h3.mdl-display-2.header
   Offerings (#{active_semester.semester})
@@ -7,7 +7,7 @@
 .layout.vertical.center.offering-index
   %p
     Click on a row to modify. You can add a single or upload
-    multiple by clicking the FAB in the bottom right.
+    multiple offerings by clicking the FAB in the bottom right.
 
   = render 'layouts/search', link: offerings_path
 

@@ -13,6 +13,6 @@
       = link_to_add_association 'add course', f, :course_sets, class: "add-courses mdl-button"
 
     .layout.vertical.center.center-text{ style: 'font-weight:400;'}
-      How many are of these courses are needed to fulfill this section:
+      How many are of these courses are needed to fulfill this section(leave blank for all):
       %span{ style: 'width: 50px;'}
         = f.number_field :count

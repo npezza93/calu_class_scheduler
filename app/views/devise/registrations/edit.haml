@@ -1,5 +1,5 @@
 - content_for :title do
-  Settings
+  <settings>
 
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   %h3.mdl-display-2.header Settings
@@ -8,7 +8,12 @@
   = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
   - unless current_user.advisor?
     = f.collection_select :advised_by, User.where(advisor: true), :id, :email, prompt: "Choose an Advisor"
-  = f.file_field :avatar
-  -# = f.collection_select :minor, Major.all, :id, :major, {}, { multiple: true, size: 3 }
+    = f.collection_select :minor, Major.all, :id, :major, {prompt: 'minor(s)' }, { multiple: true }
+  .file-field.input-field
+    .mdl-button
+      %span Avatar
+      = f.file_field :avatar
+    .file-path-wrapper
+      %input.file-path.validate{type: 'text', disabled: true}
 
   = f.submit "Update"

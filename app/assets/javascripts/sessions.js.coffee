@@ -1,10 +1,12 @@
 $(document).on 'turbolinks:load', ->
   componentHandler.upgradeDom()
 
-  $("#forgot_password").click (e) ->
-    e.preventDefault()
-    $(".forgot_password_dialog")[0].showModal()
-    return
+  if $(".forgot_password_dialog").length > 0
+    dialogPolyfill.registerDialog($(".forgot_password_dialog")[0])
+    $("#forgot_password").click (e) ->
+      e.preventDefault()
+      $(".forgot_password_dialog")[0].showModal()
+      return
 
   $(".close").click (e) ->
     $(this).parent().parent().parent()[0].close()

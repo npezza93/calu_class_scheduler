@@ -11,10 +11,10 @@
     content: "section " counter(idx)
 
 .remove-course-association
-  color: $grey-500
-  transition: all .5s ease
+  color: $orange-400 !important
+  transition: all .35s ease !important
   &:hover
-    color: #E52E2A
+    color: $orange-700 !important
 
 .category-set-logic-text
   @extend .layout.horizontal
@@ -30,3 +30,14 @@
   @extend .layout.justified
   width: 300px
   margin-bottom: 30px
+
+.new_curriculum_category, .edit_curriculum_category
+  @extend .layout.vertical
+  @extend .layout.center-center
+  margin-bottom: 75px
+  .update
+    color: $light-blue-A700
+
+  .add-courses
+    color: $light-blue-A700 !important
+    margin-bottom: 35px

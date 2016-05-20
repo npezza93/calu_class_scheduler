@@ -1,5 +1,5 @@
 - content_for :title do
-  = @category.category
+  <#{@category.category.downcase}>
 
 .layout.vertical.center{ style: 'margin-bottom: 35px;' }
   %h3.mdl-display-2.header
@@ -22,7 +22,4 @@
               %li.mdl-list__item.layout.horizontal.center-justified.center-text
                 = course.pretty_course
 
-= link_to edit_curriculum_category_path(@category) do
-  %button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.new_category_fab
-    %i.material-icons
-      edit
+= edit_fab edit_curriculum_category_path(@category)

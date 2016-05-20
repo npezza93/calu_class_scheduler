@@ -2,3 +2,12 @@ one:
   course: two
   prerequisite_group: one
   minimum_grade: 'C'
+
+two:
+  course: three
+  prerequisite_group: two
+
+three:
+  course: four
+  prerequisite_group: one
+  minimum_grade: 'C-'

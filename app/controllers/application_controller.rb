@@ -8,15 +8,6 @@ class ApplicationController < ActionController::Base
     @active_semester ||= Semester.active
   end
 
-  helper_method :session_semester
-  def session_semester
-    if !session[:semester_id].blank?
-      @session_semester = Semester.find(session[:semester_id])
-    else
-      @session_semester = active_semester
-    end
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: exception.message
   end
