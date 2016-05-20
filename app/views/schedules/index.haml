@@ -16,7 +16,7 @@
                 .no-courses-offered
                   No courses are being offered for this category
           - user_category.offerings.group_by(&:course).each do |course, course_offerings|
-            %li
+            %li{ class: "#{'hidden' if course_hidden?(course_offerings, @hidden_offerings)}"}
               .collapsible-header= course.pretty_course
               .collapsible-body
                 - course_offerings.each do |offering|
