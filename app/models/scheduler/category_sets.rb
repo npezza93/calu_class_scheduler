@@ -19,7 +19,7 @@ module Scheduler::CategorySets
     if !count.blank?
       eval_count_of_set(category, category_set, count)
     else
-      all = complete[category][category_set] == count
+      all = complete[category][category_set].count == category_set.courses.count
       add_incomplete_from_set(category, category_set) unless all
 
       all

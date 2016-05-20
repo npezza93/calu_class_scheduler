@@ -2,7 +2,9 @@ require 'test_helper'
 
 class CurriculumCategorySetTest < ActiveSupport::TestCase
   test 'nil count display text' do
-    assert curriculum_category_sets(:one).pretty_count == 'all are required'
+    assert(
+      curriculum_category_sets(:one).pretty_count == 'all courses are required'\
+    )
   end
 
   test 'has count display text' do
