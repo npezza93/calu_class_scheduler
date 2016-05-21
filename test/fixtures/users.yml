@@ -14,6 +14,7 @@ one:
   advised_by: advisor
   class_standing: Junior
   sat_520: true
+  minor: [2]
 
 two:
   email: two@calu.edu

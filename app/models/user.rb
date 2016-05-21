@@ -55,16 +55,6 @@ class User < ApplicationRecord
     courses.sum(&:credits)
   end
 
-  def offerings_at(start_time)
-    offering_day_times.where(
-      start_time: Time.parse(start_time).strftime('%l:%M %P')
-    )
-  end
-
-  def offerings_on(day)
-    offering_day_times.where('days like ?', "%#{day}")
-  end
-
   def advisees
     User.includes(:courses).where(advised_by: self)
   end
@@ -88,10 +78,6 @@ class User < ApplicationRecord
             "%#{query}%", "%#{query}%", "%#{query}%")
         .where(advisor: false, administrator: false)
     end
-  end
-
-  def self.sort_options
-    ['All Students', 'My Advisees']
   end
 
   def offerings_that_overlap
