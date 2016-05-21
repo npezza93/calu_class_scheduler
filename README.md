@@ -1,7 +1,7 @@
 # ![CalU Advisor](https://raw.githubusercontent.com/npezza93/calu_class_scheduler/mkIII/app/assets/images/callogo75.png) The California University of Pennsylvania Advisor
 
-[![Build Status](https://travis-ci.org/npezza93/calu_class_scheduler.svg?branch=mkIII)](https://travis-ci.org/npezza93/calu_class_scheduler)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/npezza93/calu_class_scheduler/badges/quality-score.png?b=mkIII)](https://scrutinizer-ci.com/g/npezza93/calu_class_scheduler/?branch=mkIII)
+[![Build Status](https://travis-ci.org/npezza93/calu_class_scheduler.svg)](https://travis-ci.org/npezza93/calu_class_scheduler)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/npezza93/calu_class_scheduler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/npezza93/calu_class_scheduler/?branch=master)
 [![Code Climate](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/gpa.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler)
 [![Test Coverage](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/coverage.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler/coverage)
 [![Issue Count](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/issue_count.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler)
