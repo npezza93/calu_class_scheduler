@@ -1,5 +1,3 @@
-# Devise registrations controller
-# needed to add additional params when signing up
 class RegistrationsController < Devise::RegistrationsController
   protected
 

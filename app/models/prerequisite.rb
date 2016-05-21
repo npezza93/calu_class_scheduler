@@ -4,7 +4,7 @@ class Prerequisite < ApplicationRecord
 
   validates :course, uniqueness: { scope: :prerequisite_group_id }
 
-  # checking if yhe user completed all the required prereqs for a course
+  # checking if the user completed all the required prereqs for a course
   # if they failed one of the prereqs it returns that course so they can retake
   # it. Returns nil if they are good to go.
   def passed?(transcript, courses_taken)

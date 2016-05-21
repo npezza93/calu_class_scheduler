@@ -107,16 +107,19 @@ class User < ApplicationRecord
     ['All Students', 'My Advisees']
   end
 
-  def offerings_that_overlap(single_offering = nil)
+  def offerings_that_overlap
     available = available_offerings.includes(:days_time)
-    taking = single_offering || offerings.includes(:days_time)
-    available -= taking
 
-    taking = taking.collect(&:days_time)
-    taking.concat(work_days_times)
+    taking = offerings.includes(:days_time)
+    taking_course_ids = offerings.pluck(:course_id)
+
+    available -= taking
+    taking = taking.collect(&:days_time) + work_days_times
+    return [] if taking.empty?
 
     offering_ids = available.select do |offering|
-      offering.days_time.overlaps_any? taking
+      offering.days_time.overlaps_any?(taking) ||
+        taking_course_ids.include?(offering.course_id)
     end
 
     offering_ids.pluck(:id)

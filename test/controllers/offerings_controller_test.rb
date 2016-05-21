@@ -47,10 +47,8 @@ class OfferingsControllerTest < ActionController::TestCase
     @user = users(:advisor)
     sign_in @user
 
-    put :update, params: {
-      id: offerings(:one),
-      offering: { course_id: courses(:one).id }
-    }
+    put :update, params: { id: offerings(:one),
+                           offering: { course_id: courses(:one).id } }
 
     assert_equal courses(:one), Offering.find(offerings(:one).id).course
     assert_redirected_to :offerings
@@ -69,10 +67,8 @@ class OfferingsControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    put :update,
-        params: {
-          id: offerings(:one), offering: { course_id: courses(:one).id }
-        }
+    put :update, params: { id: offerings(:one),
+                           offering: { course_id: courses(:one).id } }
     assert_redirected_to :root
   end
 
@@ -112,8 +108,7 @@ class OfferingsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to :offerings
-    assert_equal courses(:two).title + ' removed!',
-                 flash[:notice]
+    assert_equal courses(:two).title + ' removed!', flash[:notice]
   end
 
   test 'should not import offerings as advisor' do
@@ -130,8 +125,7 @@ class OfferingsControllerTest < ActionController::TestCase
     @user = users(:advisor)
     sign_in @user
 
-    post :import,
-         params: {
+    post :import, params: {
            offering_file: fixture_file_upload('files/test.csv', 'text/csv')
          }
 
