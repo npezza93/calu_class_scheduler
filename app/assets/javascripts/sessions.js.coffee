@@ -17,3 +17,9 @@ $(document).on 'turbolinks:load', ->
       message: $(".mdl-snackbar__text").text()
       timeout: 2000
     $("#notice")[0].MaterialSnackbar.showSnackbar data
+
+  if $('.placement-test-dialog').length > 0
+    dialogPolyfill.registerDialog($('.placement-test-dialog')[0])
+    $('.placement-test-dialog-toggle').click ->
+      $('.placement-test-dialog')[0].showModal()
+      return
