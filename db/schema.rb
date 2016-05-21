@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514232705) do
+ActiveRecord::Schema.define(version: 20160521192318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,19 +26,19 @@ ActiveRecord::Schema.define(version: 20160514232705) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string   "subject"
+    t.string   "subject",                limit: 255
     t.integer  "course"
-    t.string   "title"
+    t.string   "title",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "credits",                default: 3
-    t.string   "minimum_class_standing"
-    t.string   "minimum_sat_score"
-    t.string   "minimum_pt"
+    t.integer  "credits",                            default: 3
+    t.string   "minimum_class_standing", limit: 255
+    t.string   "minimum_sat_score",      limit: 255
+    t.string   "minimum_pt",             limit: 255
   end
 
   create_table "curriculum_categories", force: :cascade do |t|
-    t.string   "category"
+    t.string   "category",        limit: 255
     t.integer  "major_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,28 +57,17 @@ ActiveRecord::Schema.define(version: 20160514232705) do
   end
 
   create_table "days_times", force: :cascade do |t|
-    t.string   "days"
-    t.string   "start_time"
-    t.string   "end_time"
+    t.string   "days",       limit: 255
+    t.string   "start_time", limit: 255
+    t.string   "end_time",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "majors", force: :cascade do |t|
-    t.string   "major"
+    t.string   "major",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "needed_courses", force: :cascade do |t|
-    t.integer  "course_id"
-    t.integer  "user_id"
-    t.integer  "semester_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["course_id"], name: "index_needed_courses_on_course_id", using: :btree
-    t.index ["semester_id"], name: "index_needed_courses_on_semester_id", using: :btree
-    t.index ["user_id"], name: "index_needed_courses_on_user_id", using: :btree
   end
 
   create_table "offerings", force: :cascade do |t|
@@ -88,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160514232705) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "semester_id"
-    t.string   "section"
+    t.string   "section",      limit: 255
     t.index ["course_id"], name: "index_offerings_on_course_id", using: :btree
     t.index ["days_time_id"], name: "index_offerings_on_days_time_id", using: :btree
     t.index ["semester_id"], name: "index_offerings_on_semester_id", using: :btree
@@ -107,7 +96,7 @@ ActiveRecord::Schema.define(version: 20160514232705) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "prerequisite_group_id"
-    t.string   "minimum_grade"
+    t.string   "minimum_grade",         limit: 255
     t.index ["course_id"], name: "index_prerequisites_on_course_id", using: :btree
     t.index ["prerequisite_group_id"], name: "index_prerequisites_on_prerequisite_group_id", using: :btree
   end
@@ -134,8 +123,8 @@ ActiveRecord::Schema.define(version: 20160514232705) do
   end
 
   create_table "semesters", force: :cascade do |t|
-    t.string   "semester"
-    t.boolean  "active",     default: false
+    t.string   "semester",   limit: 255
+    t.boolean  "active",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -172,17 +161,17 @@ ActiveRecord::Schema.define(version: 20160514232705) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.boolean  "administrator",          default: false
-    t.boolean  "advisor",                default: false
+    t.string   "email",                  limit: 255
+    t.boolean  "administrator",                      default: false
+    t.boolean  "advisor",                            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "advised_by"
     t.integer  "major_id"
     t.text     "minor"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "class_standing"
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "class_standing",         limit: 255
     t.boolean  "sat_520"
     t.boolean  "sat_580"
     t.boolean  "sat_440"
@@ -192,11 +181,11 @@ ActiveRecord::Schema.define(version: 20160514232705) do
     t.integer  "pt_d"
     t.boolean  "sat_640"
     t.boolean  "sat_700"
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "encrypted_password",                 default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -208,7 +197,7 @@ ActiveRecord::Schema.define(version: 20160514232705) do
   end
 
   create_table "work_days_times", force: :cascade do |t|
-    t.string   "days"
+    t.string   "days",       limit: 255
     t.time     "start_time"
     t.time     "end_time"
     t.datetime "created_at"
