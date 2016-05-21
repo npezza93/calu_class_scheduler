@@ -11,10 +11,7 @@ class User < ApplicationRecord
   validates :major, presence: true
   validates :advised_by, presence: true, if: '!advisor'
   validates :email, uniqueness: true
-  validates :email,
-            format: {
-              with: /@calu.edu\Z/, message: 'must be a CalU email address'
-            }
+  validates :email, format: { with: Devise.email_regexp }
 
   belongs_to :major
   belongs_to :advisor_prof, class_name: 'User', foreign_key: :advised_by
