@@ -1,11 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  days: MyString
-  start_time: 2015-02-01 04:10:05
-  end_time: 2015-02-01 04:10:05
-
-two:
-  days: MyString
-  start_time: 2015-02-01 04:10:05
-  end_time: 2015-02-01 04:10:05
+<% %w(M T W R F).each do |day| %>
+  <% time = DateTime.new(2000,1,1,8, 0) %>
+  <% while time <= DateTime.new(2000,1,1,21, 0) %>
+    day_<%= day %>_<%=time.hour %>_<%= time.min %>:
+      days: <%= day %>
+      start_time: <%= time %>
+      end_time: <%= time += 30.minutes %>
+  <% end %>
+<% end %>

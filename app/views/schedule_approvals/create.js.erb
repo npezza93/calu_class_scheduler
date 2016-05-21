@@ -1,6 +1,0 @@
-<% if @approval.errors.any? %>
-    $("#schedule_errors").html("<paper-toast class=\"capsule\" text=\"<%= @approval.errors.full_messages[0] %>!\" style=\"padding-right: 60px;color: #eeff41;\" duration=\"10000\" opened ></paper-toast>");
-<% else %>
-    $("#sch_approval_div").html("<%= j render(:partial => 'schedule_approvals/show') %>");
-    $("#approval_notices").html("<paper-toast class=\"capsule\" text=\"<%= notice %>!\" style=\"padding-right: 60px;color: #4CAF50;\" duration=\"10000\" opened ></paper-toast>");
-<% end %>

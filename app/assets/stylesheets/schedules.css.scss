@@ -1,38 +1,80 @@
-// Place all the styles related to the Schedules controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.incomplete-card {
+  .no-courses-offered {
+    color:#EF5350;
+    text-align:center;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .input-field {
+    width:auto;
+    max-width: none;
 
-#upload-transcript-header, #upload-transcript-list, #upload-transcript-asterisk {
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size:16px;
+    label {
+      color: #212121;
+      top: -7px;
+      left: 0;
+
+      &:before {
+        top: -3px;
+      }
+    }
+  }
 }
+.complete-card {
+  .category-completed {
+    color:#4CAF50;
+    text-align:center;
+    font-size: 15px;
+    font-weight: 400;
+    cursor:initial;
+  }
+  .course-li {
+    font-size: 15px;
+    font-weight: 400;
+    cursor:initial;
+  }
+}
+.category-card-header {
+  cursor: default;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #upload-transcript-header {
   font-weight: bold;
-}
-#big_schedule_table {
-  margin: 8px;
 }
 .category-items {
     width:400px;
     margin:15px;
-    background:#fbfbfb;
+    background:#fff;
     padding:20px 20px;
 }
 .inactive {
     color: #bdbdbd;
 }
-.active {
-    color: #2196F3;
+.calendar {
+  margin:15px;
+  border-collapse:separate !important;
+  border-spacing: 11px 3px !important;
+  border:none;
 }
 
 
 
 
 
-
-#schedule_calendar {
-    text-align: center;
-}
 .day_time_slot {
     text-align: center;
     cursor:pointer;
@@ -120,15 +162,8 @@
         font-weight: 300;
         font-size:12px;
     }
-    .day_time_slot {
-        width: 100%;
-    }
 }
 
-paper-checkbox::shadow #checkbox.checked {
-  background-color: #4CAF50;
-  border-color: #4CAF50;
-}
 .next_day, .prev_day {
     background: #fafafa;
     text-align:center;

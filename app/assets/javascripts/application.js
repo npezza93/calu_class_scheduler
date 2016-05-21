@@ -10,9 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require webcomponentsjs/webcomponents-lite
 //= require jquery
 //= require jquery_ujs
-//= require jquery.remotipart
-//= require jquery-fileupload/basic
-//= require web-animations-js/web-animations-next-lite.min
+//= require_tree .
+//= require turbolinks
+//= require cocoon

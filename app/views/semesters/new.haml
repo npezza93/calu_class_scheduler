@@ -1,0 +1,8 @@
+- content_for :title do
+  <new semester>
+
+= form_for(@semester) do |f|
+  %h3.mdl-display-2.header
+    New Semester
+  = f.text_field :semester
+  = f.submit

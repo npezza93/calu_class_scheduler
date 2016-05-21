@@ -1,0 +1,25 @@
+- content_for :title do
+  <#{@category.category.downcase}>
+
+.layout.vertical.center{ style: 'margin-bottom: 35px;' }
+  %h3.mdl-display-2.header
+    = @category.category
+  %div
+    = @category.pretty_set_flag
+
+.vertical.layout.center
+  %ul.collapsible.popout{ data: { collapsible: :accordion } }
+    - @category.curriculum_category_sets.each_with_index do |category_set, index|
+      %li.category_section
+        .collapsible-header.layout.horizontal.start-justified{ class: "#{'active' if index == 0}"}
+          .category_section_number
+          .flex
+          = category_set.pretty_count
+
+        .collapsible-body
+          %ul.mdl-list
+            - category_set.courses.each do |course|
+              %li.mdl-list__item.layout.horizontal.center-justified.center-text
+                = course.pretty_course
+
+= edit_fab edit_curriculum_category_path(@category)

@@ -1,0 +1,13 @@
+%li.nested-fields.prerequisite_group
+  .collapsible-header
+    .layout.horizontal.start-justified
+      .prerequisite_group_number
+      .flex
+      = link_to_remove_association 'remove', f, class: "remove-prereq-group"
+  .collapsible-body
+    = f.fields_for :prerequisites, @prerequisites do |builder|
+      .set-courses-container
+        = render "prerequisite_fields", f: builder
+
+    %div.layout.horizontal.center-justified{ style: 'padding: 12px 0;'}
+      = link_to_add_association 'add prereq', f, :prerequisites, class: "add-prereq-course"

@@ -1,0 +1,36 @@
+@import layout, colors
+
+.mdl-data-table
+  position: static !important
+
+.new_offering, .edit_offering
+  @extend .layout.vertical
+  @extend .layout.center-center
+  max-width: 90%
+  width: 450px
+  .input-field
+    width: 100%
+    max-width: 450px
+  .mdl-textfield
+    width: 450px
+  .create
+    color: $green-A700
+  .update
+    color: $light-blue-A700
+
+#upload-offerings-dialog
+  width: 316px
+  max-width: 80%
+  h5
+    margin-top: 24px
+  .instructions
+    margin-bottom: 16px
+    p
+      margin: 0
+
+.offering-index
+  margin-bottom: 75px
+  p
+    text-align: center
+    width: 400px
+    max-width: 90%

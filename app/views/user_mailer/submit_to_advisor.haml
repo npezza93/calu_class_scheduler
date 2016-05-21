@@ -1,0 +1,11 @@
+%p
+  #{@user.name}(#{@user.email}) has submitted their
+  schedule for your approval. Their courses are as follows:
+
+%ul
+  - @schedules.each do |course|
+    %li= course.pretty_course
+%p
+  To approve #{@user.name}'s schedule, click the link below.
+
+= link_to 'Approve', user_schedule_approval_path(@user, @approval), method: :patch

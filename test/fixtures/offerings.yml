@@ -1,9 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  class_id: 1
-  time_id: 1
+  course: two
+  user: advisor
+  section: D3
+  semester: one
+  days_time: one
 
 two:
-  class_id: 1
-  time_id: 1
+  course: three
+  user: advisor
+  section: D3
+  semester: one
+  days_time: two

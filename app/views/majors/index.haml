@@ -1,0 +1,19 @@
+- content_for :title do
+  <majors>
+
+%h3.mdl-display-2.header
+  majors
+
+.layout.vertical.center.majors-index
+  %p
+    Click on a major to modify it or
+    the FAB in the bottom right to add a new major
+
+  %ul.collapsible{ data: { collapsible: :accordion } }
+    - @majors.each do |major|
+      %li
+        = link_to edit_major_path(major), class: 'collapsible-header' do
+          %div
+            = major.major
+
+= new_fab new_major_path

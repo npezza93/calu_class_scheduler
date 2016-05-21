@@ -1,0 +1,7 @@
+You submitted your schedule for approval. Your courses are as follows:
+
+<% @schedules.each do |course| %>
+  -  <%= course.pretty_course %>
+<% end %>
+
+Your advisor is reviewing your schedule.

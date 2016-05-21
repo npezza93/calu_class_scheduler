@@ -1,0 +1,39 @@
+- content_for :title do
+  <offerings>
+
+%h3.mdl-display-2.header
+  Offerings (#{active_semester.semester})
+
+.layout.vertical.center.offering-index
+  %p
+    Click on a row to modify. You can add a single or upload
+    multiple offerings by clicking the FAB in the bottom right.
+
+  = render 'layouts/search', link: offerings_path
+
+  %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+    %thead
+      %tr
+        %th.mdl-data-table__cell--non-numeric
+          course
+        %th.mdl-data-table__cell--non-numeric
+          instructor
+        %th.mdl-data-table__cell--non-numeric
+          time
+    %tbody
+      - @offerings.each do |offering|
+        %tr.pointer.table-row{ href: edit_offering_path(offering) }
+          %td.mdl-data-table__cell--non-numeric
+            = offering.course.offering_display(offering.section)
+          %td.mdl-data-table__cell--non-numeric
+            = offering.user.professor
+          %td.mdl-data-table__cell--non-numeric
+            = offering.days_time.pretty_day_time
+
+  .layout.horizontal.justified.paginated-links
+    = link_to_previous_page @offerings, 'previous', params: { search: params[:search] }
+    .flex
+    = link_to_next_page @offerings, 'next', params: { search: params[:search] }
+
+= render 'add_fab'
+= render 'upload'

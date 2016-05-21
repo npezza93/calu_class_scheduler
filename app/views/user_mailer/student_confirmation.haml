@@ -1,0 +1,9 @@
+%p
+  You submitted your schedule for approval. Your courses are as follows:
+
+%ul
+  - @schedules.each do |course|
+    %li
+      = course.pretty_course
+
+Your advisor is reviewing your schedule.

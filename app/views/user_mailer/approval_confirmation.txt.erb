@@ -1,7 +1,0 @@
-You have approved <%= @user.email %>'s schedule. Their schedule is as follows:
-
-<% @schedules.each do |schedule| %>
-        -  <%= schedule.offering.course.subject + schedule.offering.course.course.to_s + ": " + schedule.offering.course.title %>
-<% end %>    
-
-You can save this email for your records.

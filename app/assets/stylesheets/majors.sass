@@ -1,0 +1,35 @@
+@import layout, colors
+
+.major-container
+  margin: 15px
+  @extend .layout.vertical
+  @extend .layout.center
+  .mdl-list
+    background: $color-white
+    margin-bottom: 60px
+
+.delete-major
+  color: $red-500 !important
+  padding: 14px 0
+
+.new_major, .edit_major
+  @extend .layout.vertical
+  @extend .layout.center-center
+  margin: auto
+  max-width: 90%
+  width: 450px
+  .create
+    color: $green-A700
+  .update
+    color: $light-blue-A700
+
+.majors-index
+  a
+    color: #333
+  p
+    text-align: center
+    width: 400px
+    max-width: 90%
+  .collapsible-header
+    @extend .layout.horizontal
+    @extend .layout.center-center

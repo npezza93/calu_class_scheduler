@@ -1,8 +1,0 @@
-<paper-item style="height:72px;">
-    <paper-item-body two-line class="layout vertical">
-        <div><%= course_set.course.pretty_course %></div>
-        <div secondary style="font-size: 14px;line-height: 20px;" class="layout horizontal">
-            <%= button_to "Delete", curriculum_category_curriculum_category_set_course_set_path(@category,@curriculum_category_set, course_set), method: :delete, onclick: "confirm('Are you sure?');", id: "delete-course-link", style: "padding-left: 0;" %>
-        </div>
-    </paper-item-body>
-</paper-item>

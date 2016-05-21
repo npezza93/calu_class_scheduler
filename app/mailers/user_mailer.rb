@@ -1,37 +1,34 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@calu.edu"
+  def submit_to_advisor(approval)
+    set_users_schedules(approval)
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.password_reset.subject
-  #
-  def password_reset(user)
-    @user = user
-    mail to: user.email, subject: "Password Reset"
+    mail to: @user.advisor_prof.email,
+         subject: 'Schedule Submitted for Your Approval'
   end
-  
-  def submit_for_advising(user)
-    @user = user
-    @schedules = @user.schedules
-    mail to: (User.find(@user.advised_by)).email, subject: "Schedule Submitted for Approval"
+
+  def student_confirmation(approval)
+    set_users_schedules(approval)
+
+    mail to: @user.email, subject: 'Schedule Submitted for Approval'
   end
-  
-  def approval_submission_confirmation(user)
-    @user = user
-    @schedules = @user.schedules
-    mail to: @user.email, subject: "Schedule Submitted Confirmation"
+
+  def advisor_confirmation(approval)
+    set_users_schedules(approval)
+
+    mail to: @user.advisor_prof.email, subject: 'Schedule Approval Confirmation'
   end
-  
-  def approval_confirmation(user)
-    @user = user
-    @schedules = @user.schedules
-    mail to: (User.find(@user.advised_by)).email, subject: "Schedule Approval Confirmation"
+
+  def approved(approval)
+    set_users_schedules(approval)
+
+    mail to: @user.email, subject: 'Your Schedule Has Been Approved!'
   end
-  
-  def approved(user)
-    @user = user
-    @schedules = @user.schedules
-    mail to: @user.email, subject: "Your Schedule Has Been Approved!"
+
+  private
+
+  def set_users_schedules(approval)
+    @approval = approval
+    @user = approval.user
+    @schedules = @user.courses
   end
 end

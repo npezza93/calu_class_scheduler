@@ -1,9 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  class_id: 1
-  prerequisite_class_id: 1
+  course: two
+  prerequisite_group: one
+  minimum_grade: 'C'
 
 two:
-  class_id: 1
-  prerequisite_class_id: 1
+  course: three
+  prerequisite_group: two
+
+three:
+  course: four
+  prerequisite_group: one
+  minimum_grade: 'C-'

@@ -1,0 +1,5 @@
+- content_for :title do
+  <#{@course.pretty_course.downcase}>
+
+= render 'form'
+= destroy_fab @course

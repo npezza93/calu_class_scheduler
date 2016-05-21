@@ -1,13 +1,22 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+advisor:
+  email: advisor@calu.edu
+  first_name: advisor
+  last_name: advisor
+  advisor: true
+  major: one
 
 one:
-  email: MyString
-  password_digest: <%= BCrypt::Password.create('secret') %>
-  admin: false
+  email: one@calu.edu
+  first_name: one
+  last_name: one
   advisor: false
+  major: one
+  advised_by: advisor
+  class_standing: Junior
+  sat_520: true
 
 two:
-  email: MyString
-  password_digest: <%= BCrypt::Password.create('secret') %>
-  admin: false
-  advisor: false
+  email: two@calu.edu
+  last_name: one
+  advisor: true
+  major: one

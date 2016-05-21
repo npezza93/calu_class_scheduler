@@ -1,11 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  days: MyString
-  start_time: 2014-12-18 06:00:53
-  end_time: 2014-12-18 06:00:53
+  days: MWF
+  start_time: '8:00 am'
+  end_time: '8:50 am'
 
 two:
-  days: MyString
-  start_time: 2014-12-18 06:00:53
-  end_time: 2014-12-18 06:00:53
+  days: MWF
+  start_time: '4:00 pm'
+  end_time: '5:15 pm'
+
+three:
+  days: ONLINE
+
+four:
+  days: OFFSITE

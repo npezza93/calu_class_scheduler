@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  course_id: 
+  user: one
+  course: two
 
 two:
-  user_id: 
-  course_id: 
+  user: one
+  course: four
+  grade_c_minus: true
+
+three:
+  user: one
+  course: five
+  grade_c: true

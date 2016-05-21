@@ -1,0 +1,13 @@
+- content_for :title do
+  <semesters>
+
+- if active_semester
+  .layout.vertical.center
+    %h3.mdl-display-2.header
+      #{active_semester.semester} is active
+
+    = form_for active_semester, method: :put do |f|
+      = f.collection_select(:id, Semester.all, :id, :semester)
+      = f.submit "change system semester"
+
+= new_fab new_semester_path

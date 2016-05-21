@@ -1,0 +1,8 @@
+%p
+  You have approved #{@user.name}'s (#{@user.email}) schedule. Their schedule is as follows:
+
+%ul
+  - @schedules.each do |course|
+    %li= course.pretty_course
+
+You can save this email for your records.

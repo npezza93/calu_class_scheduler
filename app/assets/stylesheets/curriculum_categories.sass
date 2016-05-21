@@ -1,0 +1,43 @@
+@import layout, colors
+
+.category_link
+  cursor: pointer !important
+
+.category_section
+  counter-increment: idx
+
+.category_section_number
+  &:before
+    content: "section " counter(idx)
+
+.remove-course-association
+  color: $orange-400 !important
+  transition: all .35s ease !important
+  &:hover
+    color: $orange-700 !important
+
+.category-set-logic-text
+  @extend .layout.horizontal
+  @extend .layout.center-center
+  text-align: center
+  margin-top: 25px
+  margin-bottom: 10px
+  width: 400px
+  max-width: 90%
+
+.category-radio
+  @extend .layout.horizontal
+  @extend .layout.justified
+  width: 300px
+  margin-bottom: 30px
+
+.new_curriculum_category, .edit_curriculum_category
+  @extend .layout.vertical
+  @extend .layout.center-center
+  margin-bottom: 75px
+  .update
+    color: $light-blue-A700
+
+  .add-courses
+    color: $light-blue-A700 !important
+    margin-bottom: 35px

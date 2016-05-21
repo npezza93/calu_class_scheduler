@@ -1,0 +1,36 @@
+#drawer.mdl-layout__drawer
+  %nav.mdl-navigation
+    - if current_user.advisor?
+      = link_to users_path, class: "mdl-navigation__link" do
+        %i.mdi.mdi-account-multiple-outline
+        Students
+      = link_to courses_path, class: "mdl-navigation__link" do
+        %i.mdi.mdi-book-open-variant
+        Courses
+      = link_to offerings_path, class: "mdl-navigation__link" do
+        %i.mdi.mdi-calendar-clock
+        Offerings
+      = link_to majors_path, class: "mdl-navigation__link" do
+        %i.material-icons bookmark
+        Majors
+      = link_to semesters_path, class: "mdl-navigation__link" do
+        %i.mdi.mdi-calendar-multiple
+        Semesters
+      = link_to curriculum_categories_path, class: "mdl-navigation__link" do
+        %i.material-icons sort
+        Categories
+      .mdl-menu__item--full-bleed-divider
+    - else
+      = link_to transcripts_path, class: "mdl-navigation__link" do
+        %i.material-icons description
+        Transcript
+      = link_to work_schedules_path, class: "mdl-navigation__link" do
+        %i.material-icons access_time
+        Calendar
+      = link_to schedules_path, class: "mdl-navigation__link" do
+        %i.material-icons event
+        Schedule
+      .mdl-menu__item--full-bleed-divider
+    = link_to destroy_user_session_path, method: :delete, class: "mdl-navigation__link" do
+      %i.material-icons power_settings_new
+      Logout

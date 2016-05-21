@@ -1,11 +1,39 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  subject: MyString
-  course: 1
-  title: MyString
+  subject: AAA
+  course: 123
+  title: Course 1
+  minimum_class_standing: ''
+  minimum_sat_score: ''
+  minimum_pt: ''
 
 two:
-  subject: MyString
-  course: 1
-  title: MyString
+  subject: BBB
+  course: 123
+  title: Course 2
+  minimum_class_standing: Senior
+  minimum_sat_score: 520
+  minimum_pt: C
+
+three:
+  subject: DDD
+  course: 123
+  title: Course 3
+  minimum_class_standing: Senior
+  minimum_sat_score: 520
+  minimum_pt: D
+
+four:
+  subject: EEE
+  course: 123
+  title: Course 4
+  minimum_class_standing: Senior
+  minimum_sat_score: 520
+  minimum_pt: F
+
+five:
+  subject: FFF
+  course: 123
+  title: Course 5
+  minimum_class_standing: Senior
+  minimum_sat_score: ''
+  minimum_pt: ''

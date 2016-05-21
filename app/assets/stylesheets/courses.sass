@@ -1,0 +1,56 @@
+@import colors, layout
+
+.form-course-container
+  width: 450px
+  max-width: 95%
+
+.course-fields
+  width: 450px
+  max-width: 95%
+  .mdl-textfield
+    width: 450px
+    max-width: 100%
+
+.prerequisite_group
+  counter-increment: idx
+
+.prerequisite_group_number
+  &:before
+    content: "prerequisite group " counter(idx)
+
+.remove-prereq-group
+  color: $red-400
+  transition: all .35s ease
+  &:hover
+    color: $red-700
+
+.add-prereq-group
+  margin-bottom: 35px
+  color: $green-A700
+
+.remove-prereq-course
+  color: $orange-400 !important
+  transition: all .35s ease !important
+  &:hover
+    color: $orange-700 !important
+
+.add-prereq-course
+  margin-bottom: 35px
+  color: $light-blue-A700 !important
+
+.new_course, .edit_course
+  @extend .layout.vertical
+  @extend .layout.center-center
+
+  .update
+    color: $light-blue-A700
+  p
+    text-align: center
+    width: 400px
+    max-width: 90%
+
+  ul.collapsible
+    margin-bottom: 25px
+
+    .collapsible-body
+      padding: 0px 14px

@@ -1,11 +1,17 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  category: MyString
-  required_amount_of_credits: 1
-  major_id: 
+  category: Communication Skills
+  major_id: one
+  minor: false
+  set_and_or_flag: nil
 
 two:
-  category: MyString
-  required_amount_of_credits: 1
-  major_id: 
+  category: Mathematics
+  major_id: one
+  minor: false
+  set_and_or_flag: false
+
+three:
+  category: Computer Science
+  major_id: one
+  minor: false
+  set_and_or_flag: 'true'

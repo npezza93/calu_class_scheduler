@@ -1,0 +1,10 @@
+<%= @user.name %>(<%= @user.email %>) has submitted their
+schedule for your approval. Their courses are as follows:
+
+<% @schedules.each do |course| %>
+  -  <%= course.pretty_course %>
+<% end %>
+
+To approve <%= @user.name %>'s schedule, click the URL below.
+
+<%= link_to 'Approve', user_schedule_approval_path(@user, @approval), method: :patch %>

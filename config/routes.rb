@@ -1,39 +1,53 @@
+def warden(request)
+  request.env['warden']
+end
+
+def user?(request)
+  warden_req = warden(request)
+  warden_req.authenticate? && !warden_req.user.advisor?
+end
+
+def advisor?(request)
+  warden_req = warden(request)
+  warden_req.authenticate? && warden_req.user.advisor?
+end
+
 Rails.application.routes.draw do
-  
   resources :semesters, only: [:index, :new, :create, :update]
 
-  resources :curriculum_categories, except: :show do
-    resources :curriculum_category_sets do
-      resources :course_sets, only: [:new, :create, :destroy]
-    end
-  end
-
+  resources :curriculum_categories
   resources :majors
 
   resources :offerings do
-    collection { post :import}
+    collection do
+      post :import
+    end
   end
 
   resources :courses
 
-  controller :sessions do
-   get 'login' => :new
-   post 'login' => :create
-   delete 'logout' => :destroy
-  end
-
-  get 'signup'  => 'users#new'
-  
-  resources :users, :except => :show do
-    resources :transcripts, :only => [:index, :create, :destroy] do
-      collection { post :import}
+  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_scope :user do
+    authenticated :user do
+      root 'work_schedules#index', constraints: lambda{ |request| user?(request) }
+      root 'users#index', constraints: lambda{ |request| advisor?(request) }
     end
-    resources :schedules, :only => [:index, :create, :new, :destroy]
-    resources :schedule_approvals, :only => [:create, :new, :edit, :update]
-    resources :work_schedules, only: [:create, :new, :index, :destroy]
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
   end
 
-  resources :password_resets
-  
-  root 'sessions#new'
+  resources :transcripts, only: [:index, :create, :destroy], path: :transcript do
+    collection do
+      post :import
+    end
+  end
+  resources :work_schedules, only: [:create, :index, :destroy], path: :calendar
+  resources :schedules, only: [:index, :create, :destroy], path: :schedule
+
+
+  resources :users, only: :index do
+    resources :schedule_approvals, only: [:create, :update]
+  end
 end

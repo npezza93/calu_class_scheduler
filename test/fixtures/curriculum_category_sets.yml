@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  curriculum_category: one
+
+two:
+  curriculum_category: one
+  count: 1
+
+three:
+  curriculum_category: two
+  count: nil
+
+four:
+  curriculum_category: two
+  count: nil

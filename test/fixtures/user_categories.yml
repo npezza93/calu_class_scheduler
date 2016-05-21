@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  curriculum_category: one
+  completed: true
+
+two:
+  user: two
+  curriculum_category: two

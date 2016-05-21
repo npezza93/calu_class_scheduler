@@ -1,8 +1,0 @@
-<% if @category.errors %>
-    <% if not @category.errors[:category].blank? %>
-        $("#new-category-category").find('paper-input-error').html("<%= raw @category.errors[:category][0].capitalize %>");
-        $("#new-category-category").attr('invalid', "")
-    <% else %>
-        $("#new-category-category").removeAttr('invalid', '');
-    <% end %>
-<% end %>
