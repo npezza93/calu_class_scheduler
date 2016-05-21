@@ -18,6 +18,7 @@ class Ability
     can :manage, CurriculumCategory
     can :manage, Offering
     can :manage, Semester
+    can :update, ScheduleApproval
   end
 
   def student_resources
@@ -25,5 +26,6 @@ class Ability
     can :manage, Transcript
     can :manage, WorkSchedule
     can :set_session, Semester
+    can :create, ScheduleApproval
   end
 end

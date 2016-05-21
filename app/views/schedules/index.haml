@@ -37,3 +37,8 @@
               .collapsible-header{:style => "color:#4CAF50;"}= course.pretty_course
   %div
     = render 'complete_categories'
+
+- unless current_user.schedule_approval
+  = link_to user_schedule_approvals_path(current_user), method: :post, data: { confirm: 'Send to advisor for approval?'} do
+    %button.mdl-button.mdl-js-button.mdl-button--fab.edit-fab.fixed
+      %i.material-icons check

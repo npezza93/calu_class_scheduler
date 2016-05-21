@@ -1,39 +1,28 @@
 class ScheduleApprovalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
   before_action :set_approval, only: [:update]
+  authorize_resource
 
   def create
-    @approval = ScheduleApproval.new(user: @user)
+    if current_user.credits >= 12
+      @approval = ScheduleApproval.create(
+        user: current_user, semester: active_semester
+      )
 
-    if @approval.save
-      @user.send_for_approval
-      @user.send_approval_submission_confirmation
-      respond_to do |format|
-        flash[:notice] = 'Schedule successfully submitted for approval'
-        format.js {}
-        format.html { redirect_to user_schedules_path(@user) }
-      end
+      flash[:notice] = 'Schedule successfully submitted for approval'
+    else
+      flash[:notice] = 'You need to sign up for  12 or more credits'
     end
+    redirect_to work_schedules_path
   end
 
   def update
-    if User.find(session[:user_id]).advisor
-      if @approval.update(approved: 'true')
-        @user.send_approved_confirmation
-        @user.send_approved
-        redirect_to user_schedules_path(@user)
-      end
-    else
-      redirect_to user_schedules_path(@user), notice: 'You must be an advisor'
-    end
+    @approval.approve
+
+    redirect_to users_path, notice: "Approved #{@approval.user.name}'s schedule"
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
 
   def set_approval
     @approval = ScheduleApproval.find(params[:id])

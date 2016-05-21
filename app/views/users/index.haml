@@ -15,8 +15,15 @@
             = student.name
           .flex
           - if !student.courses.to_a.empty?
-            %div.student-schedule-link
-              Schedule
+            - if student.schedule_approval
+              %div.student-pending-link
+                - if !student.schedule_approval.approved
+                  Pending
+                - else
+                  Approved
+            - else
+              %div.student-schedule-link
+                Schedule
           - else
             %div.student-no-courses-link
               No Courses
@@ -28,6 +35,11 @@
                 %li.mdl-list__item
                   %span.mdl-list__item-primary-content.center-text.layout.horizontal.center-justified
                     = course.pretty_course
+              - if student.schedule_approval && !student.schedule_approval.approved
+                .layout.horizontal.center-justified.approve-schedule
+                  = link_to user_schedule_approval_path(student, student.schedule_approval), method: :patch, data: { confirm: 'Are you sure?' } do
+                    .mdl-button.mdl-js-button
+                      Approve
 
   .layout.horizontal.justified.paginated-links
     = link_to_previous_page @students, 'previous'

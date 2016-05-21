@@ -1,33 +1,27 @@
 class UserMailer < ActionMailer::Base
-  default from: 'no-reply@calu.edu'
-
-  def submit_for_advising(user)
-    @user = user
-    @schedules = @user.schedules
-    mail to: advisor_email(@user), subject: 'Schedule Submitted for Approval'
+  def submit_to_advisor(approval)
+    @approval = approval
+    @user = approval.user
+    @schedules = @user.courses
+    mail to: @user.advisor_prof.email,
+         subject: 'Schedule Submitted for Your Approval'
   end
 
-  def approval_submission_confirmation(user)
-    @user = user
+  def student_confirmation(approval)
+    @user = approval.user
     @schedules = @user.schedules
-    mail to: @user.email, subject: 'Schedule Submitted Confirmation'
+    mail to: @user.email, subject: 'Schedule Submitted for Approval'
   end
 
-  def approval_confirmation(user)
-    @user = user
+  def advisor_confirmation(approval)
+    @user = approval.user
     @schedules = @user.schedules
-    mail to: advisor_email(@user), subject: 'Schedule Approval Confirmation'
+    mail to: @user.advisor_prof.email, subject: 'Schedule Approval Confirmation'
   end
 
-  def approved(user)
-    @user = user
+  def approved(approval)
+    @user = approval.user
     @schedules = @user.schedules
     mail to: @user.email, subject: 'Your Schedule Has Been Approved!'
-  end
-
-  private
-
-  def advisor_email(user)
-    User.find(user.advised_by).email
   end
 end

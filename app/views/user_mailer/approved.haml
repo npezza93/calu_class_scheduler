@@ -1,0 +1,9 @@
+%p
+  Your advisor has approved your schedule! Your courses are as follows:
+
+%ul
+  - @schedules.each do |course|
+    %li= course.pretty_course
+
+%p
+  You can save this email for your records.

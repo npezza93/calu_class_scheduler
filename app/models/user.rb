@@ -17,6 +17,8 @@ class User < ApplicationRecord
             }
 
   belongs_to :major
+  belongs_to :advisor_prof, class_name: 'User', foreign_key: :advised_by
+  has_one :schedule_approval, -> { where(semester: Semester.active) }
   has_many :transcripts
   has_many :taken_courses, through: :transcripts, source: :course
   has_many :schedules, -> { where(semester: Semester.active) }
@@ -66,22 +68,6 @@ class User < ApplicationRecord
     offering_day_times.where('days like ?', "%#{day}")
   end
 
-  def send_for_approval
-    UserMailer.submit_for_advising(self).deliver
-  end
-
-  def send_approval_submission_confirmation
-    UserMailer.approval_submission_confirmation(self).deliver
-  end
-
-  def send_approved_confirmation
-    UserMailer.approval_confirmation(self).deliver
-  end
-
-  def send_approved
-    UserMailer.approved(self).deliver
-  end
-
   def advisees
     User.includes(:courses).where(advised_by: self)
   end
@@ -89,6 +75,10 @@ class User < ApplicationRecord
   def students
     User.includes(:courses).where(advisor: false, administrator: false)
         .where.not(advised_by: self)
+  end
+
+  def credits
+    courses.sum(&:credits)
   end
 
   def self.search(user, search = nil)

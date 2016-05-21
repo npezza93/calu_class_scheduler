@@ -48,6 +48,6 @@ Rails.application.routes.draw do
 
 
   resources :users, only: :index do
-    resources :schedule_approvals, only: [:create, :new, :edit, :update]
+    resources :schedule_approvals, only: [:create, :update]
   end
 end
