@@ -10,6 +10,10 @@ engines:
     enabled: true
   duplication:
     enabled: true
+    exclude_fingerprints:
+      - abd80ce0a73467f2ad0a26b2551c32dd
+      - ac9e558b5349693b953de4e7d1bed2e3
+      - 891c2e8cc71b9a5e6ed5f6d45cae3eeb
     config:
       languages:
       - ruby
@@ -20,9 +24,6 @@ engines:
     enabled: true
     exclude_fingerprints:
       - 81f1db8cc66fe7d124f1ecde5904b4e5
-      - abd80ce0a73467f2ad0a26b2551c32dd
-      - ac9e558b5349693b953de4e7d1bed2e3
-      - 891c2e8cc71b9a5e6ed5f6d45cae3eeb
   fixme:
     enabled: true
   rubocop:
