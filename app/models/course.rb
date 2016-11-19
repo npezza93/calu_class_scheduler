@@ -14,33 +14,33 @@ class Course < ApplicationRecord
   validates :credits, presence: true, numericality: { only_integer: true }
   validates :course, uniqueness: { scope: :subject }
 
-  YEAR = {'Senior' => 1, 'Junior' => 2, 'Sophmore' => 3, 'Freshman' => 4}.freeze
+  YEAR = {"Senior" => 1, "Junior" => 2, "Sophmore" => 3, "Freshman" => 4}.freeze
 
   PLACEMENT_TEST_PARTS = [
-    ['No Part Must Be Passed', nil], ['Pass Part A', 'A'],
-    ['Pass Part B', 'B'], ['Pass Part C', 'C'],
-    ['Pass Part D (7-9)', 'D-'], ['Pass Part D (10 or above)', 'D']
+    ["No Part Must Be Passed", nil], ["Pass Part A", "A"],
+    ["Pass Part B", "B"], ["Pass Part C", "C"],
+    ["Pass Part D (7-9)", "D-"], ["Pass Part D (10 or above)", "D"]
   ].freeze
 
   CLASS_STANDINGS = [
-    ['No minimum class standing', nil], %w(Senior Senior), %w(Junior Junior),
+    ["No minimum class standing", nil], %w(Senior Senior), %w(Junior Junior),
     %w(Sophmore Sophmore), %w(Freshman Freshman)
   ].freeze
 
   SAT_SCORES = [
-    ['No minimum SAT score', nil], ['440 on Mathematics or better', '440'],
-    ['520 on Mathematics or better', '520'],
-    ['580 on Mathematics or better', '580'],
-    ['640 on Mathematics or better', '640'],
-    ['700 on Mathematics or better', '700']
+    ["No minimum SAT score", nil], ["440 on Mathematics or better", "440"],
+    ["520 on Mathematics or better", "520"],
+    ["580 on Mathematics or better", "580"],
+    ["640 on Mathematics or better", "640"],
+    ["700 on Mathematics or better", "700"]
   ].freeze
 
   def pretty_course
-    condensed_course + ': ' + title
+    condensed_course + ": " + title
   end
 
   def offering_display(section)
-    subject + course.to_s + '-' + section + ': ' + title
+    subject + course.to_s + "-" + section + ": " + title
   end
 
   def condensed_course
@@ -89,7 +89,7 @@ class Course < ApplicationRecord
   def passed_placement_test?(user)
     if %w(A B C D-).include? minimum_pt
       user.send(user_pt_method) == 1
-    elsif minimum_pt == 'D'
+    elsif minimum_pt == "D"
       user.pt_d == 3
     else
       false
@@ -105,8 +105,8 @@ class Course < ApplicationRecord
       all
     else
       search = search.downcase
-      where('LOWER(title) LIKE ? OR LOWER(subject) LIKE ?
-             OR course = ?', "%#{search}%", "%#{search}%", search.to_i)
+      where("LOWER(title) LIKE ? OR LOWER(subject) LIKE ?
+             OR course = ?", "%#{search}%", "%#{search}%", search.to_i)
     end.order(:subject, :course).group_by(&:subject)
   end
 end

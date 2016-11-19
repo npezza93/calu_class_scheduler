@@ -16,14 +16,14 @@ class CurriculumCategory < ApplicationRecord
   scope :major, ->(major_id) { where(major_id: major_id, minor: false) }
   scope :with_course, lambda { |course_id = nil|
     unless course_id.blank?
-      joins(:course_sets).where('course_sets.course_id = ?', course_id)
+      joins(:course_sets).where("course_sets.course_id = ?", course_id)
     end
   }
   def pretty_set_flag
     if or_sets?
-      'One of the following sections has to be completed'
+      "One of the following sections has to be completed"
     else
-      'All the sections have to be completed'
+      "All the sections have to be completed"
     end
   end
 
@@ -44,6 +44,6 @@ class CurriculumCategory < ApplicationRecord
   end
 
   def or_sets?
-    set_and_or_flag == 'true'
+    set_and_or_flag == "true"
   end
 end

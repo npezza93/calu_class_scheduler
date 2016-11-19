@@ -1,6 +1,6 @@
 module TimeOverlaps
   def regex_days
-    days.split('').join('|')
+    days.split("").join("|")
   end
 
   def start_time_as_time

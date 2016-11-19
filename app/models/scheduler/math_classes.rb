@@ -23,8 +23,8 @@ module Scheduler::MathClasses
   def eval_prereq_maths
     math_check = prerequisite_check(pt_math_classes)
     [
-      math_check.include?(mat_281), math_check.include?(mat_199),
-      math_check.include?(mat_191), math_check.include?(mat_181)
+      math_check.include?(mat281), math_check.include?(mat199),
+      math_check.include?(mat191), math_check.include?(mat181)
     ]
   end
 

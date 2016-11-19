@@ -9,12 +9,12 @@ class Offering < ApplicationRecord
   validates :course,
             uniqueness: {
                           scope: [:days_time, :user, :semester_id],
-                          message: 'This is already being offered!'
+                          message: "This is already being offered!"
                         }
 
-  validates :course, presence: { message: 'A course must be selected!' }
-  validates :days_time, presence: { message: 'A time slot must be selected!' }
-  validates :user, presence: { message: 'A professor must be selected!' }
+  validates :course, presence: { message: "A course must be selected!" }
+  validates :days_time, presence: { message: "A time slot must be selected!" }
+  validates :user, presence: { message: "A professor must be selected!" }
   validates :section, presence: true
 
   def display
@@ -24,7 +24,7 @@ class Offering < ApplicationRecord
   def display_time
     return if days_time.start_time.blank?
 
-    days_time.start_time.split(' ')[0] + '-' + days_time.end_time
+    days_time.start_time.split(" ")[0] + "-" + days_time.end_time
   end
 
   def self.search(search, page)
@@ -56,17 +56,17 @@ class Offering < ApplicationRecord
   def self.csv_get_course(row)
     subject = row[1].split[0].upcase
     course  = row[1].split[1].to_i
-    Course.find_by('subject = ? AND course = ?', subject, course)
+    Course.find_by("subject = ? AND course = ?", subject, course)
   end
 
   def self.csv_get_prof(row)
-    prof = row[12].split(',')
+    prof = row[12].split(",")
     if prof[1].blank?
       User.find_by(first_name: nil)
     else
       last_name  = prof[0].strip.downcase
       first_name = prof[1].strip.downcase
-      User.find_by('lower(last_name) = ? AND lower(first_name) = ?',
+      User.find_by("lower(last_name) = ? AND lower(first_name) = ?",
                    last_name, first_name)
     end
   end
@@ -76,19 +76,19 @@ class Offering < ApplicationRecord
       csv_get_offsite(row)
     else
       DaysTime.find_by(
-        'days = ? AND start_time = ? and end_time = ? ',
+        "days = ? AND start_time = ? and end_time = ? ",
         row[7].upcase,
-        Time.strptime(row[8], '%I%M%p').strftime('%-l:%M %P'),
-        Time.strptime(row[9], '%I%M%p').strftime('%-l:%M %P')
+        Time.strptime(row[8], "%I%M%p").strftime("%-l:%M %P"),
+        Time.strptime(row[9], "%I%M%p").strftime("%-l:%M %P")
       )
     end
   end
 
   def self.csv_get_offsite(row)
-    if row[2][0].casecmp('w').zero?
-      DaysTime.find_by('days = ?', 'ONLINE')
-    elsif row[2][0].casecmp('x').zero?
-      DaysTime.find_by('days = ?', 'OFFSITE')
+    if row[2][0].casecmp("w").zero?
+      DaysTime.find_by("days = ?", "ONLINE")
+    elsif row[2][0].casecmp("x").zero?
+      DaysTime.find_by("days = ?", "OFFSITE")
     end
   end
 

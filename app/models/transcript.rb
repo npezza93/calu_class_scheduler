@@ -5,9 +5,9 @@ class Transcript < ApplicationRecord
   belongs_to :course
 
   validates_uniqueness_of :course, scope: :user,
-                                   message: 'You\'ve already taken this course!'
+                                   message: "You've already taken this course!"
 
-  validates :course, presence: { message: 'A course must be selected!' }
+  validates :course, presence: { message: "A course must be selected!" }
 
   # methods for importing transcript text
   class << self
@@ -16,7 +16,7 @@ class Transcript < ApplicationRecord
       text.reject!(&:empty?)
 
       return nil if text.blank? ||
-                    text[0].casecmp('DegreeWorks: New Production') == -1
+                    text[0].casecmp("DegreeWorks: New Production") == -1
       update_sat_scores(text, user)
       parsed_transcripts = parse_courses(text.drop(main_line(text)), Course.all)
 
@@ -72,7 +72,7 @@ class Transcript < ApplicationRecord
     def update_transcripts(user, parsed_transcripts)
       transcripts = user.transcripts
       parsed_transcripts.each do |transcript|
-        next if transcript[1] == 'w'
+        next if transcript[1] == "w"
 
         create_or_update(transcript, user.taken_courses, transcripts)
       end
@@ -93,8 +93,8 @@ class Transcript < ApplicationRecord
     end
 
     def not_an_actual_letter_grade?(grade)
-      (grade[0].casecmp('t') || grade.downcase.include?('reg') ||
-         grade.downcase.include?('p')) > -1
+      (grade[0].casecmp("t") || grade.downcase.include?("reg") ||
+         grade.downcase.include?("p")) > -1
     end
 
     def letter_grade_check(grade, index)

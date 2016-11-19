@@ -20,9 +20,9 @@ class Prerequisite < ApplicationRecord
   def passed_minimum_grade?(transcript)
     if !minimum_grade?
       true
-    elsif minimum_grade == 'C'
+    elsif minimum_grade == "C"
       transcript.find { |t| t.course_id == course_id }.grade_c
-    elsif minimum_grade == 'C-'
+    elsif minimum_grade == "C-"
       transcript.find { |t| t.course_id == course_id }.grade_c_minus
     end
   end

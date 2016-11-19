@@ -5,7 +5,7 @@ class WorkSchedule < ApplicationRecord
 
   validates_uniqueness_of :work_days_time, scope: :user
   validate do
-    errors.add(:base, 'You have a course scheduled for that time') if
+    errors.add(:base, "You have a course scheduled for that time") if
       work_days_time.overlaps_any?(user.offering_day_times)
   end
 
@@ -14,6 +14,6 @@ class WorkSchedule < ApplicationRecord
   end
 
   def prettier_day_time
-    work_days_time.days + work_days_time.start_time.strftime('%l:%M%p').strip
+    work_days_time.days + work_days_time.start_time.strftime("%l:%M%p").strip
   end
 end

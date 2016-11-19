@@ -6,18 +6,18 @@
 
 .layout.horizontal.center-justified.calendar
   %table.center-text.calendar
-    %tr{:style => 'border:none;'}
+    %tr{ style: "border:none;" }
       %th
       %th.day
-        = link_to 'monday', work_schedules_path(day: 'M', type: :day), method: :post, remote: true
+        = link_to "monday", work_schedules_path(day: "M", type: :day), method: :post, remote: true
       %th.day
-        = link_to 'tuesday', work_schedules_path(day: 'T', type: :day), method: :post, remote: true
+        = link_to "tuesday", work_schedules_path(day: "T", type: :day), method: :post, remote: true
       %th.day
-        = link_to 'wednesday', work_schedules_path(day: 'W', type: :day), method: :post, remote: true
+        = link_to "wednesday", work_schedules_path(day: "W", type: :day), method: :post, remote: true
       %th.day
-        = link_to 'thursday', work_schedules_path(day: 'R', type: :day), method: :post, remote: true
+        = link_to "thursday", work_schedules_path(day: "R", type: :day), method: :post, remote: true
       %th.day
-        = link_to 'friday', work_schedules_path(day: 'F', type: :day), method: :post, remote: true
+        = link_to "friday", work_schedules_path(day: "F", type: :day), method: :post, remote: true
 
     - @work_time_slots.each_slice(5) do |slots|
       %tr
