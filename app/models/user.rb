@@ -1,5 +1,11 @@
 class User < ApplicationRecord
-  include Scheduler
+  include Scheduler::CategorySets
+  include Scheduler::CompleteCategory
+  include Scheduler::IncompleteCategory
+  include Scheduler::IncompleteOrCategory
+  include Scheduler::Instances
+  include Scheduler::MathClasses
+
   mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:
@@ -36,7 +42,7 @@ class User < ApplicationRecord
   serialize :minor, Array
 
   before_validation do |model|
-    model.minor.reject!(&:blank?) if model.minor
+    model.minor&.reject!(&:blank?)
   end
 
   def name
@@ -49,10 +55,6 @@ class User < ApplicationRecord
     else
       ''
     end + last_name.capitalize
-  end
-
-  def current_credits
-    courses.sum(&:credits)
   end
 
   def advisees
@@ -68,16 +70,20 @@ class User < ApplicationRecord
     courses.sum(&:credits)
   end
 
-  def self.search(user, search = nil)
-    if search.blank?
-      user.advisees + user.students
-    else
-      query = search.downcase
-      where('LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ?
-             OR LOWER(email) LIKE ?',
-            "%#{query}%", "%#{query}%", "%#{query}%")
-        .where(advisor: false, administrator: false)
+  def scheduler
+    categories.each do |category|
+      complete[category] = {}
+      incomplete[category] = {}
+      sets = category_sets(category)
+
+      if category.complete?(sets)
+        complete_category(category, sets.index(true))
+      else
+        incomplete_category(category)
+      end
     end
+
+    # add_needed_math_classes
   end
 
   def offerings_that_overlap
@@ -96,5 +102,17 @@ class User < ApplicationRecord
     end
 
     offering_ids.pluck(:id)
+  end
+
+  def self.search(user, search = nil)
+    if search.blank?
+      user.advisees + user.students
+    else
+      query = search.downcase
+      where('LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ?
+             OR LOWER(email) LIKE ?',
+            "%#{query}%", "%#{query}%", "%#{query}%")
+        .where(advisor: false, administrator: false)
+    end
   end
 end

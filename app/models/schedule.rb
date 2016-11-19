@@ -9,7 +9,7 @@ class Schedule < ApplicationRecord
 
   validate do
     errors.add(:base, 'You cannot take more than 18 credits') if
-      (user.current_credits + course.credits) > 18
+      (user.credits + course.credits) > 18
   end
 
   validate do

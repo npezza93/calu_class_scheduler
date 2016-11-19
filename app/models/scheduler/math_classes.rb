@@ -29,12 +29,12 @@ module Scheduler::MathClasses
   end
 
   def add_needed_math_classes
-    unless math_classes.empty?
-      needed = math_pt(math_classes)
-      if !needed.nil? && used_courses.add?(needed[0])
-        offerings = Offering.where(course: needed[0], semester: active_semester)
-        incomplete[math_class_placed_in[1]] += offerings unless offerings.blank?
-      end
+    return if math_classes.empty?
+
+    needed = math_pt(math_classes)
+    if !needed.nil? && used_courses.add?(needed[0])
+      offerings = Offering.where(course: needed[0], semester: active_semester)
+      incomplete[math_class_placed_in[1]] += offerings unless offerings.blank?
     end
   end
 end
