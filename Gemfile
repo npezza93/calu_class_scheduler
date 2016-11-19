@@ -1,22 +1,14 @@
 source 'https://rubygems.org'
 
 ruby '2.3.0'
-gem 'rails', '5.0.0rc1'
+gem 'rails', '5.0.0.1'
 
-# Use SCSS for stylesheets
 gem 'sass-rails'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-# Use jquery as the JavaScript library
+gem 'coffee-rails'
 gem 'jquery-rails'
-
-gem 'turbolinks', '~> 5.0.0.beta2'
+gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'puma'
 
@@ -28,7 +20,7 @@ gem 'pry-rails'
 gem 'cocoon'
 gem 'haml'
 gem 'kaminari'
-gem 'cancancan', git: 'https://github.com/craig1410/cancancan.git', branch: 'rails_5'
+gem 'cancancan'
 gem 'numbers_and_words'
 gem 'carrierwave'
 

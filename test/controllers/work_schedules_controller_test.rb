@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class WorkSchedulesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   test 'should get index as student' do
     @user = users(:one)
@@ -73,13 +73,13 @@ class WorkSchedulesControllerTest < ActionController::TestCase
 
     post :create, params: { time: '8:00am', type: :time }
     assert @user.work_days_times.where(
-      start_time: DateTime.new(2000, 1, 1, 8, 00)
-    ).count > 0
+      start_time: DateTime.new(2000, 1, 1, 8)
+    ).count.positive?
 
     post :create, params: { time: '8:00am', type: :time }
     assert @user.work_days_times.where(
-      start_time: DateTime.new(2000, 1, 1, 8, 00)
-    ).count == 0
+      start_time: DateTime.new(2000, 1, 1, 8)
+    ).count.zero?
 
     assert_redirected_to :work_schedules
   end

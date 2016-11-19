@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SchedulesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   test 'should get index as student' do
     @user = users(:one)

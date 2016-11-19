@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class MajorsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   test 'should get index as advisor' do
     @user = users(:advisor)

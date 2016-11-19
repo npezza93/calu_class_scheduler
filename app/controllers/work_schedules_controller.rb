@@ -63,7 +63,7 @@ class WorkSchedulesController < ApplicationController
   end
 
   def make_hash(work_days_time, ids)
-    if work_days_time.count == 0
+    if work_days_time.count.zero?
       ids.map do |id|
         { work_days_time_id: id, semester: active_semester }
       end

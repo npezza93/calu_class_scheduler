@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class OfferingsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   test 'should get index, new, and edit as advisor' do
     @user = users(:advisor)

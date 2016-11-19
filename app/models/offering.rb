@@ -22,9 +22,9 @@ class Offering < ApplicationRecord
   end
 
   def display_time
-    unless days_time.start_time.blank?
-      days_time.start_time.split(' ')[0] + '-' + days_time.end_time
-    end
+    return if days_time.start_time.blank?
+
+    days_time.start_time.split(' ')[0] + '-' + days_time.end_time
   end
 
   def self.search(search, page)
@@ -85,9 +85,9 @@ class Offering < ApplicationRecord
   end
 
   def self.csv_get_offsite(row)
-    if row[2][0].casecmp('w') == 0
+    if row[2][0].casecmp('w').zero?
       DaysTime.find_by('days = ?', 'ONLINE')
-    elsif row[2][0].casecmp('x') == 0
+    elsif row[2][0].casecmp('x').zero?
       DaysTime.find_by('days = ?', 'OFFSITE')
     end
   end
