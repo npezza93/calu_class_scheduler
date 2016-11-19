@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class MajorsControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
-  test 'should get index as advisor' do
+  test "should get index as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -11,7 +11,7 @@ class MajorsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should not get index as student' do
+  test "should not get index as student" do
     @user = users(:one)
     sign_in @user
 
@@ -19,7 +19,7 @@ class MajorsControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should get new as advisor' do
+  test "should get new as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -27,7 +27,7 @@ class MajorsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should not get new as student' do
+  test "should not get new as student" do
     @user = users(:one)
     sign_in @user
 
@@ -35,75 +35,75 @@ class MajorsControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should not update because invalid as advisor ' do
+  test "should not update because invalid as advisor " do
     @user = users(:advisor)
     sign_in @user
 
     put :update, params: { id: majors(:one), major: { major: nil } }
 
-    assert_equal 'MyString', Major.find(majors(:one).id).major
+    assert_equal "MyString", Major.find(majors(:one).id).major
   end
 
-  test 'should update as advisor' do
+  test "should update as advisor" do
     @user = users(:advisor)
     sign_in @user
 
-    put :update, params: { id: majors(:one), major: { major: 'A new major' } }
+    put :update, params: { id: majors(:one), major: { major: "A new major" } }
 
-    assert_equal 'A new major', Major.find(majors(:one).id).major
+    assert_equal "A new major", Major.find(majors(:one).id).major
     assert_redirected_to :majors
   end
 
-  test 'should not put update as student' do
+  test "should not put update as student" do
     @user = users(:one)
     sign_in @user
 
-    put :update, params: { id: majors(:one), major: { major: 'major' } }
+    put :update, params: { id: majors(:one), major: { major: "major" } }
     assert_redirected_to :root
   end
 
-  test 'should not create because invalid as advisor ' do
+  test "should not create because invalid as advisor " do
     @user = users(:advisor)
     sign_in @user
 
-    assert_no_difference('Major.count') do
+    assert_no_difference("Major.count") do
       post :create, params: { major: { major: nil } }
     end
   end
 
-  test 'should create as advisor ' do
+  test "should create as advisor " do
     @user = users(:advisor)
     sign_in @user
 
-    assert_difference('Major.count') do
-      post :create, params: { major: { major: 'New major' } }
+    assert_difference("Major.count") do
+      post :create, params: { major: { major: "New major" } }
     end
 
     assert_redirected_to :majors
-    assert_equal 'New major is a new major!', flash[:notice]
+    assert_equal "New major is a new major!", flash[:notice]
   end
 
-  test 'should not post create as student' do
+  test "should not post create as student" do
     @user = users(:one)
     sign_in @user
 
-    post :create, params: { major: { major: 'new major' } }
+    post :create, params: { major: { major: "new major" } }
     assert_redirected_to :root
   end
 
-  test 'should delete major as advisor' do
+  test "should delete major as advisor" do
     @user = users(:advisor)
     sign_in @user
 
-    assert_difference('Major.count', -1) do
+    assert_difference("Major.count", -1) do
       delete :destroy, params: { id: majors(:one).id }
     end
 
     assert_redirected_to :majors
-    assert_equal 'Major was successfully destroyed.', flash[:notice]
+    assert_equal "Major was successfully destroyed.", flash[:notice]
   end
 
-  test 'should not delete course as student' do
+  test "should not delete course as student" do
     @user = users(:one)
     sign_in @user
 

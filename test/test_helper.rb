@@ -1,11 +1,9 @@
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-require 'minitest/pride'
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../../config/environment", __FILE__)
+require "rails/test_help"
+require "minitest/pride"
 
 class ActiveSupport::TestCase
   fixtures :all

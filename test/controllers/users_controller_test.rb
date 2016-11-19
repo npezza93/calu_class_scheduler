@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class UsersControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
-  test 'should get index as advisor' do
+  test "should get index as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -12,7 +12,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should not get index as student' do
+  test "should not get index as student" do
     @user = users(:one)
     sign_in @user
 

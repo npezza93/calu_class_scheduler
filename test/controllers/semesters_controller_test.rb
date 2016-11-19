@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class SemestersControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
-  test 'should get index as advisor' do
+  test "should get index as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -11,7 +11,7 @@ class SemestersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should not get index as student' do
+  test "should not get index as student" do
     @user = users(:one)
     sign_in @user
 
@@ -19,7 +19,7 @@ class SemestersControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should get new as advisor' do
+  test "should get new as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -27,7 +27,7 @@ class SemestersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should not set system as student' do
+  test "should not set system as student" do
     @user = users(:one)
     sign_in @user
 
@@ -36,7 +36,7 @@ class SemestersControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should set system as advisor' do
+  test "should set system as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -46,7 +46,7 @@ class SemestersControllerTest < ActionController::TestCase
     assert_redirected_to :semesters
   end
 
-  test 'should not get new as student' do
+  test "should not get new as student" do
     @user = users(:one)
     sign_in @user
 
@@ -54,32 +54,32 @@ class SemestersControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should not create because invalid as advisor ' do
+  test "should not create because invalid as advisor " do
     @user = users(:advisor)
     sign_in @user
 
-    assert_no_difference('Semester.count') do
+    assert_no_difference("Semester.count") do
       post :create, params: { semester: { semester: nil } }
     end
   end
 
-  test 'should create as advisor ' do
+  test "should create as advisor " do
     @user = users(:advisor)
     sign_in @user
 
-    assert_difference('Semester.count') do
-      post :create, params: { semester: { semester: 'Fall 2000' } }
+    assert_difference("Semester.count") do
+      post :create, params: { semester: { semester: "Fall 2000" } }
     end
 
     assert_redirected_to :semesters
-    assert_equal 'Fall 2000 has been created as a new semester!', flash[:notice]
+    assert_equal "Fall 2000 has been created as a new semester!", flash[:notice]
   end
 
-  test 'should not post create as student' do
+  test "should not post create as student" do
     @user = users(:one)
     sign_in @user
 
-    post :create, params: { semester: { semester: 'Fall 2000' } }
+    post :create, params: { semester: { semester: "Fall 2000" } }
     assert_redirected_to :root
   end
 end

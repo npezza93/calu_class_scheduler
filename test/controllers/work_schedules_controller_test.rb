@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class WorkSchedulesControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
-  test 'should get index as student' do
+  test "should get index as student" do
     @user = users(:one)
     sign_in @user
 
@@ -11,7 +11,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should not get index as advisor' do
+  test "should not get index as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -19,7 +19,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should create as student' do
+  test "should create as student" do
     @user = users(:one)
     sign_in @user
 
@@ -27,7 +27,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     assert_redirected_to :work_schedules
   end
 
-  test 'should not create as advisor' do
+  test "should not create as advisor" do
     @user = users(:advisor)
     sign_in @user
 
@@ -35,48 +35,48 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     assert_redirected_to :root
   end
 
-  test 'should create day column as student' do
+  test "should create day column as student" do
     @user = users(:one)
     sign_in @user
 
-    post :create, params: { day: 'M', type: :day }
+    post :create, params: { day: "M", type: :day }
     assert_redirected_to :work_schedules
   end
 
-  test 'should remove all day columns as student' do
+  test "should remove all day columns as student" do
     @user = users(:one)
     sign_in @user
 
-    post :create, params: { day: 'M', type: :day }
+    post :create, params: { day: "M", type: :day }
     assert_redirected_to :work_schedules
   end
 
-  test 'should not create day column as advisor' do
+  test "should not create day column as advisor" do
     @user = users(:advisor)
     sign_in @user
 
-    post :create, params: { day: 'M', type: :day }
+    post :create, params: { day: "M", type: :day }
     assert_redirected_to :root
   end
 
-  test 'should create time row as student' do
+  test "should create time row as student" do
     @user = users(:one)
     sign_in @user
 
-    post :create, params: { time: '8:00am', type: :time }
+    post :create, params: { time: "8:00am", type: :time }
     assert_redirected_to :work_schedules
   end
 
-  test 'should remove time row as student' do
+  test "should remove time row as student" do
     @user = users(:one)
     sign_in @user
 
-    post :create, params: { time: '8:00am', type: :time }
+    post :create, params: { time: "8:00am", type: :time }
     assert @user.work_days_times.where(
       start_time: DateTime.new(2000, 1, 1, 8)
     ).count.positive?
 
-    post :create, params: { time: '8:00am', type: :time }
+    post :create, params: { time: "8:00am", type: :time }
     assert @user.work_days_times.where(
       start_time: DateTime.new(2000, 1, 1, 8)
     ).count.zero?
@@ -84,15 +84,15 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     assert_redirected_to :work_schedules
   end
 
-  test 'should not create time row as advisor' do
+  test "should not create time row as advisor" do
     @user = users(:advisor)
     sign_in @user
 
-    post :create, params: { time: '8:00am', type: :time }
+    post :create, params: { time: "8:00am", type: :time }
     assert_redirected_to :root
   end
 
-  test 'should delete as student' do
+  test "should delete as student" do
     @user = users(:one)
     sign_in @user
 
@@ -100,7 +100,7 @@ class WorkSchedulesControllerTest < ActionController::TestCase
     assert_redirected_to :work_schedules
   end
 
-  test 'should not delete as advisor' do
+  test "should not delete as advisor" do
     @user = users(:advisor)
     sign_in @user
 
