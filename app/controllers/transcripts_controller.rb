@@ -15,18 +15,18 @@ class TranscriptsController < ApplicationController
       remove_schedules
       SchedulerJob.perform_later current_user, @transcript.course_id
 
-      redirect_to transcripts_path, notice: @transcript.course.title + ' added!'
+      redirect_to transcripts_path, notice: @transcript.course.title + " added!"
     else
       render :index
     end
   end
 
   def import
-    if Transcript.import(params['Transcript'], current_user)
+    if Transcript.import(params["Transcript"], current_user)
       Schedule.where(user: current_user, semester: active_semester).destroy_all
-      notice = 'Transcript Uploaded successfullly!'
+      notice = "Transcript Uploaded successfullly!"
     else
-      notice = 'Please Upload Correct Text!'
+      notice = "Please Upload Correct Text!"
     end
 
     redirect_to transcripts_path, notice: notice
@@ -36,14 +36,14 @@ class TranscriptsController < ApplicationController
     @transcript.destroy
 
     SchedulerJob.perform_later current_user, @transcript.course_id
-    redirect_to transcripts_path, notice: @transcript.course.title + ' removed!'
+    redirect_to transcripts_path, notice: @transcript.course.title + " removed!"
   end
 
   private
 
   def set_transcripts
     @transcripts = current_user.transcripts.includes(:course)
-                               .order('courses.subject asc')
+                               .order("courses.subject asc")
   end
 
   def set_transcript

@@ -41,8 +41,8 @@ class WorkSchedulesController < ApplicationController
 
   def create_schedules_hash
     if (type = params[:type])
-      map_day if type == 'day'
-      map_time if type == 'time'
+      map_day if type == "day"
+      map_time if type == "time"
     else
       {
         work_days_time_id: params[:work_days_time_id], semester: active_semester

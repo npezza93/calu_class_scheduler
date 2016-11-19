@@ -27,7 +27,7 @@ class CurriculumCategoriesController < ApplicationController
 
     if @category.save
       redirect_to curriculum_categories_path,
-                  notice: @category.category + ' has been created!'
+                  notice: @category.category + " has been created!"
     else
       @courses = Course.all.order(:subject)
       render :new
@@ -37,7 +37,7 @@ class CurriculumCategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       redirect_to curriculum_categories_url,
-                  notice: @category.category + ' successfully updated!'
+                  notice: @category.category + " successfully updated!"
     else
       @courses = Course.all.order(:subject)
       render :edit
@@ -47,7 +47,7 @@ class CurriculumCategoriesController < ApplicationController
   def destroy
     @category.destroy
     redirect_to curriculum_categories_url,
-                notice: @category.category + ' successfully deleted!'
+                notice: @category.category + " successfully deleted!"
   end
 
   private

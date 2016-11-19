@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
 
     if @course.save
       redirect_to courses_path,
-                  notice: @course.title + ' was successfully created!'
+                  notice: @course.title + " was successfully created!"
     else
       render :new
     end
@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
     if @course.update(course_params)
       redirect_to courses_path,
                   notice: @course.subject + @course.course.to_s +
-                          'successfully updated!'
+                          "successfully updated!"
     else
       render :edit
     end
@@ -41,7 +41,7 @@ class CoursesController < ApplicationController
     @course.destroy
 
     redirect_to courses_url,
-                notice: @course.title + ' was successfully destroyed.'
+                notice: @course.title + " was successfully destroyed."
   end
 
   private

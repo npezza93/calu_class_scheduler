@@ -16,7 +16,7 @@ class SemestersController < ApplicationController
 
     redirect_to semesters_path,
                 notice: active_semester.semester +
-                        ' is now the active semeter for the system'
+                        " is now the active semeter for the system"
   end
 
   def create
@@ -24,7 +24,7 @@ class SemestersController < ApplicationController
 
     if @semester.save
       flash[:notice] =
-        @semester.semester + ' has been created as a new semester!'
+        @semester.semester + " has been created as a new semester!"
       redirect_to semesters_path
     else
       render :new

@@ -3,25 +3,25 @@ class UserMailer < ActionMailer::Base
     set_users_schedules(approval)
 
     mail to: @user.advisor_prof.email,
-         subject: 'Schedule Submitted for Your Approval'
+         subject: "Schedule Submitted for Your Approval"
   end
 
   def student_confirmation(approval)
     set_users_schedules(approval)
 
-    mail to: @user.email, subject: 'Schedule Submitted for Approval'
+    mail to: @user.email, subject: "Schedule Submitted for Approval"
   end
 
   def advisor_confirmation(approval)
     set_users_schedules(approval)
 
-    mail to: @user.advisor_prof.email, subject: 'Schedule Approval Confirmation'
+    mail to: @user.advisor_prof.email, subject: "Schedule Approval Confirmation"
   end
 
   def approved(approval)
     set_users_schedules(approval)
 
-    mail to: @user.email, subject: 'Your Schedule Has Been Approved!'
+    mail to: @user.email, subject: "Your Schedule Has Been Approved!"
   end
 
   private

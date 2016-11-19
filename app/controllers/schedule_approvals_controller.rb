@@ -9,9 +9,9 @@ class ScheduleApprovalsController < ApplicationController
         user: current_user, semester: active_semester
       )
 
-      flash[:notice] = 'Schedule successfully submitted for approval'
+      flash[:notice] = "Schedule successfully submitted for approval"
     else
-      flash[:notice] = 'You need to sign up for  12 or more credits'
+      flash[:notice] = "You need to sign up for  12 or more credits"
     end
     redirect_to work_schedules_path
   end

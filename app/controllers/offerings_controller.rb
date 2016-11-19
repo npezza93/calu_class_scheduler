@@ -16,7 +16,7 @@ class OfferingsController < ApplicationController
     @offering = Offering.new(offering_params)
 
     if @offering.save
-      redirect_to offerings_path, notice: @offering.course.title + ' created!'
+      redirect_to offerings_path, notice: @offering.course.title + " created!"
     else
       render :new
     end
@@ -24,7 +24,7 @@ class OfferingsController < ApplicationController
 
   def update
     if @offering.update(offering_params)
-      redirect_to offerings_path, notice: @offering.course.title + ' updated!'
+      redirect_to offerings_path, notice: @offering.course.title + " updated!"
     else
       render :new
     end
@@ -34,12 +34,12 @@ class OfferingsController < ApplicationController
     @offering.destroy
     Schedule.where(offering: @offering).delete_all
 
-    redirect_to offerings_url, notice: @offering.course.title + ' removed!'
+    redirect_to offerings_url, notice: @offering.course.title + " removed!"
   end
 
   def import
     Offering.import(params[:offering_file])
-    redirect_to offerings_path, notice: 'Offerings Uploaded!'
+    redirect_to offerings_path, notice: "Offerings Uploaded!"
   end
 
   private
