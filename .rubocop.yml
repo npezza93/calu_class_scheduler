@@ -211,7 +211,7 @@ Metrics/AbcSize:
                  branches, and conditions.
   Reference: 'http://c2.com/cgi/wiki?AbcMetric'
   Enabled: true
-  Max: 20
+  Max: 15
 
 Metrics/BlockNesting:
   Description: 'Avoid excessive block nesting'
@@ -236,10 +236,10 @@ Metrics/LineLength:
   Enabled: true
 
 Metrics/MethodLength:
-  Description: 'Avoid methods longer than 15 lines of code.'
+  Description: 'Avoid methods longer than 10 lines of code.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#short-methods'
   Enabled: true
-  Max: 15
+  Max: 10
 
 Metrics/ModuleLength:
   Description: 'Avoid modules longer than 100 lines of code.'
@@ -1048,6 +1048,7 @@ Style/SpecialGlobalVars:
 Style/StringLiterals:
   Description: 'Checks if uses of quotes match the configured preference.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-string-literals'
+  EnforcedStyle: double_quotes
   Enabled: true
 
 Style/StringLiteralsInInterpolation:
@@ -1150,6 +1151,12 @@ Style/WhileUntilModifier:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#while-as-a-modifier'
   Enabled: true
 
+Style/MutableConstant:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/WordArray:
   Description: 'Use %w or %W for arrays of words.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-w'
@@ -1157,10 +1164,10 @@ Style/WordArray:
 AllCops:
   Exclude:
     - 'vendor/**/*'
-    - 'spec/**/*'
     - 'config/**/*'
     - 'db/**/*'
     - 'bin/*'
     - 'Gemfile'
     - 'Gemfile.lock'
     - 'Rakefile'
+  TargetRubyVersion: 2.3
