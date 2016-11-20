@@ -1,11 +1,11 @@
 - content_for :title do
-  <courses>
+  Courses
 
 %h3.mdl-display-2.header
   Courses
 
 .layout.vertical.center
-  = render 'layouts/search', link: courses_path
+  = render "layouts/search", link: courses_path
 
   %ul.collapsible.popout{ data: { collapsible: :accordion } }
     - @courses.each do |course_code, courses|

@@ -1,5 +1,5 @@
 - content_for :title do
-  <majors>
+  Majors
 
 %h3.mdl-display-2.header
   majors
@@ -12,7 +12,7 @@
   %ul.collapsible{ data: { collapsible: :accordion } }
     - @majors.each do |major|
       %li
-        = link_to edit_major_path(major), class: 'collapsible-header' do
+        = link_to edit_major_path(major), class: "collapsible-header" do
           %div
             = major.major
 

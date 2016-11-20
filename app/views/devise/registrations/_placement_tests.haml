@@ -1,13 +1,13 @@
 %dialog.mdl-dialog.placement-test-dialog
-  %h5.mdl-typography--headline.center-text{ style: 'margin-top: 24px;'}
+  %h5.mdl-typography--headline.center-text{ style: "margin-top: 24px;" }
     Placement Test Scores
 
   - %w(a b c).each do |letter|
     %h6.center-text placement test #{letter}
 
     .layout.horizontal.center-justified.wrap.radio-group
-      = f.radio_button "pt_#{letter}", 1, label: 'passed'
-      = f.radio_button "pt_#{letter}", 2, label: 'failed'
+      = f.radio_button "pt_#{letter}", 1, label: "passed"
+      = f.radio_button "pt_#{letter}", 2, label: "failed"
       = f.radio_button "pt_#{letter}", 0, label: "didn't take"
 
   %h6.center-text placement test d
@@ -20,5 +20,5 @@
 
   %span
     .mdl-dialog__actions
-      %button.mdl-button.close{:type => 'button'} Continue
-      %button.mdl-button.close{:type => 'button'} Cancel
+      %button.mdl-button.close{ type: "button" } Continue
+      %button.mdl-button.close{ type: "button" } Cancel

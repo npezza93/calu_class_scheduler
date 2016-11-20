@@ -16,29 +16,32 @@
                 .no-courses-offered
                   No courses are being offered for this category
           - user_category.offerings.group_by(&:course).each do |course, course_offerings|
-            %li{ class: "#{'hidden' if course_hidden?(course_offerings, @hidden_offerings)}"}
+            %li{ class: ("hidden" if course_hidden?(course_offerings, @hidden_offerings)).to_s }
               .collapsible-header= course.pretty_course
               .collapsible-body
                 - course_offerings.each do |offering|
-                  .layout.horizontal.center-center{:style => "height:50px;", id: offering.id, class: "#{'hidden' if @hidden_offerings.include? offering.id}"}
+                  .layout.horizontal.center-center{ style: "height:50px;", id: offering.id,
+                    class: ("hidden" if @hidden_offerings.include?(offering.id)).to_s }
                     - if !@schedules.to_a.include? offering
-                      = link_to schedules_path(offering_id: offering.id), method: :post, remote: true do
+                      = link_to schedules_path(offering_id: offering.id),
+                                method: :post, remote: true do
                         .input-field
-                          %input{id: offering.id, type: 'checkbox'}
-                          %label{for: offering.id }= offering.display
+                          %input{ id: offering.id, type: "checkbox" }
+                          %label{ for: offering.id }= offering.display
                     - else
                       = link_to schedule_path(offering), method: :delete, remote: true do
                         .input-field
-                          %input{id: offering.id, type: 'checkbox', checked: true }
-                          %label{for: offering.id }= offering.display
+                          %input{ id: offering.id, type: "checkbox", checked: true }
+                          %label{ for: offering.id }= offering.display
 
           - user_category.completed_courses.each do |course|
             %li
-              .collapsible-header{:style => "color:#4CAF50;"}= course.pretty_course
+              .collapsible-header{ style: "color:#4CAF50;" }= course.pretty_course
   %div
-    = render 'complete_categories'
+    = render "complete_categories"
 
 - unless current_user.schedule_approval
-  = link_to user_schedule_approvals_path(current_user), method: :post, data: { confirm: 'Send to advisor for approval?'} do
+  = link_to user_schedule_approvals_path(current_user),
+            method: :post, data: { confirm: "Send to advisor for approval?"} do
     %button.mdl-button.mdl-js-button.mdl-button--fab.edit-fab.fixed
       %i.material-icons check

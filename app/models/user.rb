@@ -8,16 +8,13 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, presence: true
   validates :major, presence: true
   validates :advised_by, presence: true, if: "!advisor"
-  validates :email, uniqueness: true
-  validates :email, format: { with: Devise.email_regexp }
+  validates :email, uniqueness: true, format: { with: Devise.email_regexp }
 
   belongs_to :major
   belongs_to :advisor_prof, class_name: "User", foreign_key: :advised_by
@@ -31,12 +28,12 @@ class User < ApplicationRecord
   has_many :work_schedules, -> { where(semester: Semester.active) }
   has_many :work_days_times, through: :work_schedules
   has_many :user_categories
-  has_many :available_offerings,
-           -> { where("user_category_courses.completed = ?", false) },
-           class_name: "Offering", through: :user_categories, source: :offerings
+  has_many :available_offerings, lambda {
+    where(user_category_courses: { completed: false })
+  }, class_name: "Offering", through: :user_categories, source: :offerings
 
   scope :offering_advisors, lambda {
-    where("advisor = ? OR email = ?", true, "staff@calu.edu")
+    where(advisor: true).or(where(email: "staff@calu.edu"))
   }
 
   serialize :minor, Array
@@ -108,11 +105,11 @@ class User < ApplicationRecord
     if search.blank?
       user.advisees + user.students
     else
-      query = search.downcase
-      where("LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ?
-             OR LOWER(email) LIKE ?",
-            "%#{query}%", "%#{query}%", "%#{query}%")
-        .where(advisor: false, administrator: false)
+      query = "%#{search.downcase}%"
+      where(
+        "LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? "\
+        "OR LOWER(email) LIKE ?", query, query, query
+      ).where(advisor: false, administrator: false)
     end
   end
 end

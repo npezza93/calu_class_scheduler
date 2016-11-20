@@ -1,4 +1,4 @@
-%dialog#upload-offerings-dialog.mdl-dialog
+%dialog.mdl-dialog#upload-offerings-dialog
   %h5.mdl-typography--headline.center-text
     import offerings
 
@@ -13,9 +13,9 @@
       %p Column 10 - End time formatted: 0330PM
       %p Column 13 - Professor formmatted: "last, first"
 
-    = file_field_tag :offering_file, accept: '.csv', class: 'hidden'
-    = submit_tag 'Reset', class: 'hidden'
+    = file_field_tag :offering_file, accept: ".csv", class: "hidden"
+    = submit_tag "Reset", class: "hidden"
 
     .mdl-dialog__actions
-      %button.mdl-button.choose-file{:type => 'button'} Choose File
-      %button.mdl-button.close{:type => 'button'} Cancel
+      %button.mdl-button.choose-file{ type: "button" } Choose File
+      %button.mdl-button.close{ type: "button" } Cancel

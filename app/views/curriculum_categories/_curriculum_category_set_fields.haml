@@ -3,16 +3,16 @@
     .layout.horizontal.start-justified
       .category_section_number
       .flex
-      = link_to_remove_association 'remove', f, class: "remove-prereq-group"
-  .collapsible-body{ style: 'padding: 0px 14px;'}
+      = link_to_remove_association "remove", f, class: "remove-prereq-group"
+  .collapsible-body{ style: "padding: 0px 14px;" }
     = f.fields_for :course_sets, @course_sets do |builder|
       .set-courses-container
         = render "course_set_fields", f: builder
 
-    %div.layout.horizontal.center-justified{ style: 'padding: 12px 0;'}
-      = link_to_add_association 'add course', f, :course_sets, class: "add-courses mdl-button"
+    .layout.horizontal.center-justified{ style: "padding: 12px 0;" }
+      = link_to_add_association "add course", f, :course_sets, class: "add-courses mdl-button"
 
-    .layout.vertical.center.center-text{ style: 'font-weight:400;'}
+    .layout.vertical.center.center-text{ style: "font-weight:400;" }
       How many are of these courses are needed to fulfill this section(leave blank for all):
-      %span{ style: 'width: 50px;'}
+      %span{ style: "width: 50px;" }
         = f.number_field :count

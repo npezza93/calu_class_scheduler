@@ -10,14 +10,12 @@ class CurriculumCategory < ApplicationRecord
   validates :minor, inclusion: { in: [true, false] }
   validates_uniqueness_of :category, scope: [:major, :minor]
 
-  accepts_nested_attributes_for :curriculum_category_sets,
-                                allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :curriculum_category_sets, allow_destroy: true,
+                                                           reject_if: :all_blank
 
   scope :major, ->(major_id) { where(major_id: major_id, minor: false) }
-  scope :with_course, lambda { |course_id = nil|
-    unless course_id.blank?
-      joins(:course_sets).where("course_sets.course_id = ?", course_id)
-    end
+  scope :with_course, lambda { |course_id|
+    joins(:course_sets).where(course_sets: { course_id: course_id })
   }
   def pretty_set_flag
     if or_sets?

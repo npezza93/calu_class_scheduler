@@ -5,30 +5,30 @@
   Students
 
 .layout.vertical.center.users-index
-  = render 'layouts/search', link: users_path
+  = render "layouts/search", link: users_path
 
   %ul.collapsible.popout{ data: { collapsible: :accordion } }
     - @students.each do |student|
-      %li{ class: "#{student.courses.to_a.empty? ? 'disabled' : ''}"}
+      %li{ class: student.courses.to_a.empty? ? "disabled" : "" }
         .collapsible-header.layout.horizontal.start-justified
-          %div{ style: 'padding-left: 24px;'}
+          %div{ style: "padding-left: 24px;" }
             = student.name
           .flex
           - if !student.courses.to_a.empty?
             - if student.schedule_approval
-              %div.student-pending-link
+              .student-pending-link
                 - if !student.schedule_approval.approved
                   Pending
                 - else
                   Approved
             - else
-              %div.student-schedule-link
+              .student-schedule-link
                 Schedule
           - else
-            %div.student-no-courses-link
+            .student-no-courses-link
               No Courses
 
-        - if !student.courses.to_a.empty?
+        - unless student.courses.to_a.empty?
           .collapsible-body
             %ul.demo-list-item.mdl-list
               - student.courses.each do |course|
@@ -37,11 +37,12 @@
                     = course.pretty_course
               - if student.schedule_approval && !student.schedule_approval.approved
                 .layout.horizontal.center-justified.approve-schedule
-                  = link_to user_schedule_approval_path(student, student.schedule_approval), method: :patch, data: { confirm: 'Are you sure?' } do
+                  = link_to user_schedule_approval_path(student, student.schedule_approval),
+                            method: :patch, data: { confirm: "Are you sure?" } do
                     .mdl-button.mdl-js-button
                       Approve
 
   .layout.horizontal.justified.paginated-links
-    = link_to_previous_page @students, 'previous'
+    = link_to_previous_page @students, "previous"
     .flex
-    = link_to_next_page @students, 'next'
+    = link_to_next_page @students, "next"

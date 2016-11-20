@@ -1,13 +1,12 @@
 class Transcript < ApplicationRecord
-  GRADES = %w(A A- B+ B B- C+ C C- D+ D D- F).freeze
+  GRADES = %w(A A- B+ B B- C+ C C- D+ D D- F)
 
   belongs_to :user
   belongs_to :course
 
-  validates_uniqueness_of :course, scope: :user,
-                                   message: "You've already taken this course!"
-
-  validates :course, presence: { message: "A course must be selected!" }
+  validates :course, uniqueness: {
+    scope: :user, message: "You've already taken this course!"
+  }, presence: { message: "A course must be selected!" }
 
   # methods for importing transcript text
   class << self

@@ -1,7 +1,7 @@
 - content_for :title do
-  <#{@category.category.downcase}>
+  = @category.category.capitalize
 
-.layout.vertical.center{ style: 'margin-bottom: 35px;' }
+.layout.vertical.center{ style: "margin-bottom: 35px;" }
   %h3.mdl-display-2.header
     = @category.category
   %div
@@ -11,7 +11,7 @@
   %ul.collapsible.popout{ data: { collapsible: :accordion } }
     - @category.curriculum_category_sets.each_with_index do |category_set, index|
       %li.category_section
-        .collapsible-header.layout.horizontal.start-justified{ class: "#{'active' if index == 0}"}
+        .collapsible-header.layout.horizontal.start-justified{ class: index.zero? ? "active" : "" }
           .category_section_number
           .flex
           = category_set.pretty_count

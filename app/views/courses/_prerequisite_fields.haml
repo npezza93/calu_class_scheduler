@@ -3,6 +3,6 @@
     Course.all.order(:subject),
     :id,
     :pretty_course,
-    prompt: 'Choose a Course'
+    prompt: "Choose a Course"
   .flex
-  = link_to_remove_association 'remove', f, class: 'remove-prereq-course'
+  = link_to_remove_association "remove", f, class: "remove-prereq-course"

@@ -1,5 +1,5 @@
 - content_for :title do
-  <offerings>
+  Offerings
 
 %h3.mdl-display-2.header
   Offerings (#{active_semester.semester})
@@ -9,7 +9,7 @@
     Click on a row to modify. You can add a single or upload
     multiple offerings by clicking the FAB in the bottom right.
 
-  = render 'layouts/search', link: offerings_path
+  = render "layouts/search", link: offerings_path
 
   %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
     %thead
@@ -31,9 +31,9 @@
             = offering.days_time.pretty_day_time
 
   .layout.horizontal.justified.paginated-links
-    = link_to_previous_page @offerings, 'previous', params: { search: params[:search] }
+    = link_to_previous_page @offerings, "previous", params: { search: params[:search] }
     .flex
-    = link_to_next_page @offerings, 'next', params: { search: params[:search] }
+    = link_to_next_page @offerings, "next", params: { search: params[:search] }
 
-= render 'add_fab'
-= render 'upload'
+= render "add_fab"
+= render "upload"
