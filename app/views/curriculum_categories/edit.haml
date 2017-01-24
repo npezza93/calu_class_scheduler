@@ -1,6 +1,8 @@
 - content_for :title do
   Edit #{@category.category.capitalize}
+  \-
 
 .layout.vertical.center
-  = render "form"
+  = render "form", category: @category, title: "Edit Category", category_sets: @category_sets
+
 = destroy_fab @category

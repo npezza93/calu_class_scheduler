@@ -1,9 +1,6 @@
-= form_for @offering do |f|
+= form_for offering do |f|
   %h3.mdl-display-2.header
-    - if @offering.new_record?
-      New Offering
-    - else
-      Edit Offering
+    = title
 
   = f.collection_select(:course_id, Course.all.order(:subject),
                         :id, :pretty_course, prompt: "Choose a Course")

@@ -9,7 +9,8 @@ class ScheduleApproval < ApplicationRecord
   after_update :send_approved
 
   def approve
-    update(approved: true)
+    self.approved = true
+    save
   end
 
   def send_to_advisor

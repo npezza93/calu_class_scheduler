@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119202918) do
+ActiveRecord::Schema.define(version: 20161121132607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20161119202918) do
     t.string   "end_time",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "hidden_user_offerings", force: :cascade do |t|
+    t.text     "offerings"
+    t.integer  "user_id"
+    t.integer  "semester_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["semester_id"], name: "index_hidden_user_offerings_on_semester_id", using: :btree
+    t.index ["user_id"], name: "index_hidden_user_offerings_on_user_id", using: :btree
   end
 
   create_table "majors", force: :cascade do |t|
@@ -163,7 +173,6 @@ ActiveRecord::Schema.define(version: 20161119202918) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255
-    t.boolean  "administrator",                      default: false
     t.boolean  "advisor",                            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -216,4 +225,6 @@ ActiveRecord::Schema.define(version: 20161119202918) do
     t.index ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id", using: :btree
   end
 
+  add_foreign_key "hidden_user_offerings", "semesters"
+  add_foreign_key "hidden_user_offerings", "users"
 end

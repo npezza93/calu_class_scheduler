@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   authorize_resource
 
   def index
-    @courses = Course.search(params[:search])
+    @courses = Course.order(:subject, :course).group_by(&:subject)
   end
 
   def new

@@ -1,9 +1,6 @@
-= form_for(@course) do |f|
+= form_for course do |f|
   %h3.mdl-display-2.header
-    - if @course.new_record?
-      New Course
-    - else
-      Edit Course
+    = title
   %p
     To fulfill the prerequisites, all the courses in a
     prerequisite group must be completed. If there's more than one group
@@ -22,7 +19,7 @@
     %li
       .collapsible-header
         .layout.horizontal.start-justified
-          course requirements (if any)
+          Course Requirements (if any)
       .collapsible-body
         .layout.vertical.center
           = f.collection_select :minimum_pt, Course::PLACEMENT_TEST_PARTS,
@@ -32,10 +29,10 @@
           = f.collection_select :minimum_sat_score, Course::SAT_SCORES,
                                 :second, :first, prompt: "Minimum SAT score"
 
-    = f.fields_for :prerequisite_groups, @prerequisite_groups do |builder|
+    = f.fields_for :prerequisite_groups, prerequisite_groups do |builder|
       = render "prerequisite_group_fields", f: builder
 
-  = link_to_add_association "add group", f, :prerequisite_groups,
+  = link_to_add_association "Add Prerequisite Group", f, :prerequisite_groups,
       "data-association-insertion-node" => ".collapsible",
       "data-association-insertion-method" => "append", class: "add-prereq-group"
 

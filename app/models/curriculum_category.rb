@@ -14,9 +14,7 @@ class CurriculumCategory < ApplicationRecord
                                                            reject_if: :all_blank
 
   scope :major, ->(major_id) { where(major_id: major_id, minor: false) }
-  scope :with_course, lambda { |course_id|
-    joins(:course_sets).where(course_sets: { course_id: course_id })
-  }
+
   def pretty_set_flag
     if or_sets?
       "One of the following sections has to be completed"

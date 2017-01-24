@@ -13,7 +13,7 @@ class TranscriptsController < ApplicationController
 
     if @transcript.save
       remove_schedules
-      SchedulerJob.perform_later current_user, @transcript.course_id
+      SchedulerJob.perform_now current_user, @transcript.course_id
 
       redirect_to transcripts_path, notice: @transcript.course.title + " added!"
     else
@@ -35,7 +35,7 @@ class TranscriptsController < ApplicationController
   def destroy
     @transcript.destroy
 
-    SchedulerJob.perform_later current_user, @transcript.course_id
+    SchedulerJob.perform_now current_user, @transcript.course_id
     redirect_to transcripts_path, notice: @transcript.course.title + " removed!"
   end
 
@@ -61,8 +61,9 @@ class TranscriptsController < ApplicationController
 
   def remove_schedules
     current_user.schedules.find_by(
-      offering: Offering.find_by(course: @transcript.course,
-                                 semester: active_semester)
-    ).try(:destroy)
+      offering: Offering.find_by(
+        course: @transcript.course, semester: active_semester
+      )
+    )&.destroy
   end
 end

@@ -1,5 +1,6 @@
 - content_for :title do
-  Edit #{@major.major.capitalize}
+  Edit #{@major.major.capitalize} -
 
-= render "form"
+= render "form", major: @major, title: "Edit Major"
+
 = destroy_fab @major

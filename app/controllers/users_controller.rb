@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   def index
     authorize! :index, User
 
-    @students = Kaminari.paginate_array(
-      User.search(current_user, params[:search])
-    ).page(params[:page]).per(15)
+    @students = current_user.advisees.page(params[:page]).per(15)
   end
 end
 

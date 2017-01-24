@@ -1,5 +1,5 @@
 - content_for :title do
-  Categories
+  Categories -
 
 %h3.mdl-display-2.header
   = current_user.major.major + " categories"
@@ -9,7 +9,7 @@
     - unless current_user.major.major_categories.empty?
       %li
         .collapsible-header.active
-          major
+          Major
         .collapsible-body
           %ul.mdl-list.layout.vertical.center
             = render current_user.major.major_categories
@@ -17,7 +17,7 @@
     - unless current_user.major.minor_categories.empty?
       %li
         .collapsible-header
-          minor
+          Minor
         .collapsible-body
           %ul.mdl-list.layout.vertical.center
             = render current_user.major.minor_categories

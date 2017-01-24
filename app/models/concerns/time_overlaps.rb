@@ -24,8 +24,8 @@ module TimeOverlaps
   end
 
   def range_overlap?(compare_range)
-    time_range.begin <= (compare_range.time_range.end - 1.minute) &&
-      compare_range.time_range.begin <= (time_range.end - 1.minute)
+    time_range.begin <= (compare_range.time_range.end - 1.second) &&
+      compare_range.time_range.begin <= (time_range.end - 1.second)
   end
 
   def overlaps?(days_time)

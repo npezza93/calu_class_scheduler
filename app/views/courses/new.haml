@@ -1,4 +1,4 @@
 - content_for :title do
-  New Course
+  New Course -
 
-= render "form"
+= render "form", course: @course, title: "New Course", prerequisite_groups: @prerequisite_groups

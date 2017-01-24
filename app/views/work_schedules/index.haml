@@ -9,23 +9,22 @@
     %tr{ style: "border:none;" }
       %th
       %th.day
-        = link_to "monday", work_schedules_path(day: "M", type: :day), method: :post, remote: true
+        = link_to "monday", work_schedules_path(day: "M", type: :day), method: :post
       %th.day
-        = link_to "tuesday", work_schedules_path(day: "T", type: :day), method: :post, remote: true
+        = link_to "tuesday", work_schedules_path(day: "T", type: :day), method: :post
       %th.day
-        = link_to "wednesday", work_schedules_path(day: "W", type: :day),
-                               method: :post, remote: true
+        = link_to "wednesday", work_schedules_path(day: "W", type: :day), method: :post
       %th.day
-        = link_to "thursday", work_schedules_path(day: "R", type: :day), method: :post, remote: true
+        = link_to "thursday", work_schedules_path(day: "R", type: :day), method: :post
       %th.day
-        = link_to "friday", work_schedules_path(day: "F", type: :day), method: :post, remote: true
+        = link_to "friday", work_schedules_path(day: "F", type: :day), method: :post
 
     - @work_time_slots.each_slice(5) do |slots|
       %tr
         %td.time_slot
           = link_to slots.first.parsed_start_time,
                     work_schedules_path(time: slots.first.parsed_start_time, type: :time),
-                    method: :post, remote: true
+                    method: :post
 
         - slots.each do |slot|
           %td.day_time_slot
@@ -37,7 +36,7 @@
                 = overlapping.display
             - elsif @work_times.include? slot
               = link_to "", @work_schedules.find { |work| work.work_days_time_id == slot.id },
-                            data: { method: :delete }, class: "blocked", remote: true
+                            data: { method: :delete }, class: "blocked"
             - else
               = link_to "", work_schedules_path(work_days_time_id: slot.id),
-                            method: :post, remote: true
+                            method: :post

@@ -3,7 +3,7 @@
     .layout.horizontal.start-justified
       .category_section_number
       .flex
-      = link_to_remove_association "remove", f, class: "remove-prereq-group"
+      = link_to_remove_association "Remove", f, class: "remove-prereq-group"
   .collapsible-body{ style: "padding: 0px 14px;" }
     = f.fields_for :course_sets, @course_sets do |builder|
       .set-courses-container

@@ -3,12 +3,13 @@ class UserCategory < ApplicationRecord
   belongs_to :curriculum_category
   has_many :user_category_courses, dependent: :destroy
   has_many :courses, through: :user_category_courses
+  has_one :hidden_user_offering, primary_key: :user_id, foreign_key: :user_id
+
   has_many :completed_courses, lambda {
     where(user_category_courses: { completed: true })
   }, class_name: "Course", through: :user_category_courses, source: :course
-  has_many :offerings, lambda {
-    where(user_category_courses: { completed: false })
-  }, through: :user_category_courses
+  has_many :offerings, ->{ where(user_category_courses: { completed: false }) },
+           through: :user_category_courses
 
   validates :curriculum_category, uniqueness: { scope: :user }
 
@@ -17,8 +18,8 @@ class UserCategory < ApplicationRecord
   }
   scope :incompleted, lambda {
     where(completed: false).includes(
-      {offerings: [:course, :days_time, :user]},
-      :curriculum_category, :completed_courses
+      :curriculum_category, :completed_courses,
+      offerings: [:course, :days_time, :user],
     )
   }
 end

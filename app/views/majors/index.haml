@@ -1,5 +1,5 @@
 - content_for :title do
-  Majors
+  Majors -
 
 %h3.mdl-display-2.header
   majors
@@ -7,7 +7,7 @@
 .layout.vertical.center.majors-index
   %p
     Click on a major to modify it or
-    the FAB in the bottom right to add a new major
+    the FAB in the bottom right to add a new major.
 
   %ul.collapsible{ data: { collapsible: :accordion } }
     - @majors.each do |major|

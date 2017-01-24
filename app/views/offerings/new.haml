@@ -1,5 +1,5 @@
 - content_for :title do
-  New Offering
+  New Offering -
 
 .layout.vertical.center
-  = render "form"
+  = render "form", offering: @offering, title: "New Offering"

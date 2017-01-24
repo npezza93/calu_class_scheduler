@@ -55,7 +55,7 @@ class Course < ApplicationRecord
     end.flatten
   end
 
-  def can_take(user, transcript, courses_taken)
+  def can_take?(user, transcript, courses_taken)
     failed_prereqs = completed_prerequisites(transcript, courses_taken)
     unless failed_prereqs.any? { |prereq| prereq == false }
       if passed_tests?(user) || passed_placement_test_or_sat?(user)
@@ -98,15 +98,5 @@ class Course < ApplicationRecord
 
   def user_pt_method
     "pt_#{minimum_pt.tr('-', '').downcase}"
-  end
-
-  def self.search(search)
-    if search.blank?
-      all
-    else
-      search = search.downcase
-      where("LOWER(title) LIKE ? OR LOWER(subject) LIKE ?
-             OR course = ?", "%#{search}%", "%#{search}%", search.to_i)
-    end.order(:subject, :course).group_by(&:subject)
   end
 end

@@ -22,19 +22,13 @@ class WorkSchedulesController < ApplicationController
       end
     end
 
-    respond_to do |format|
-      format.html { redirect_to work_schedules_path }
-      format.js { render layout: false }
-    end
+    redirect_to work_schedules_path
   end
 
   def destroy
     @work_schedule.destroy
 
-    respond_to do |format|
-      format.html { redirect_to work_schedules_path }
-      format.js { render layout: false }
-    end
+    redirect_to work_schedules_path
   end
 
   private

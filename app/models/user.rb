@@ -1,15 +1,8 @@
 class User < ApplicationRecord
-  include Scheduler::CategorySets
-  include Scheduler::CompleteCategory
-  include Scheduler::IncompleteCategory
-  include Scheduler::IncompleteOrCategory
-  include Scheduler::Instances
-  include Scheduler::MathClasses
-
   mount_uploader :avatar, AvatarUploader
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :trackable,
+         :validatable
 
   validates :first_name, :last_name, presence: true
   validates :major, presence: true
@@ -31,6 +24,7 @@ class User < ApplicationRecord
   has_many :available_offerings, lambda {
     where(user_category_courses: { completed: false })
   }, class_name: "Offering", through: :user_categories, source: :offerings
+  has_many :hidden_user_offerings
 
   scope :offering_advisors, lambda {
     where(advisor: true).or(where(email: "staff@calu.edu"))
@@ -47,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def professor
-    if !first_name.blank?
+    if first_name.present?
       "#{first_name[0].capitalize}. "
     else
       ""
@@ -55,32 +49,21 @@ class User < ApplicationRecord
   end
 
   def advisees
-    User.includes(:courses).where(advised_by: self)
-  end
-
-  def students
-    User.includes(:courses).where(advisor: false, administrator: false)
-        .where.not(advised_by: self)
+    User.includes(:courses, :schedule_approval).where(advised_by: self)
   end
 
   def credits
     courses.sum(&:credits)
   end
 
-  def scheduler
-    categories.each do |category|
-      complete[category] = {}
-      incomplete[category] = {}
-      sets = category_sets(category)
-
-      if category.complete?(sets)
-        complete_category(category, sets.index(true))
-      else
-        incomplete_category(category)
-      end
-    end
-
-    # add_needed_math_classes
+  def categories
+    @categories ||= CurriculumCategory.where(
+      major_id: major_id, minor: false
+    ).or(CurriculumCategory.where(major_id: minor, minor: true)).includes(
+      :courses, curriculum_category_sets: {
+        courses: { prerequisites: :course }
+      }
+    ).to_a
   end
 
   def offerings_that_overlap
@@ -99,17 +82,5 @@ class User < ApplicationRecord
     end
 
     offering_ids.pluck(:id)
-  end
-
-  def self.search(user, search = nil)
-    if search.blank?
-      user.advisees + user.students
-    else
-      query = "%#{search.downcase}%"
-      where(
-        "LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? "\
-        "OR LOWER(email) LIKE ?", query, query, query
-      ).where(advisor: false, administrator: false)
-    end
   end
 end

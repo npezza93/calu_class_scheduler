@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offerings: MyText
+  user: one
+  semester: one
+
+two:
+  offerings: MyText
+  user: two
+  semester: two

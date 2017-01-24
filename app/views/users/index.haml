@@ -1,39 +1,25 @@
 - content_for :title do
-  Students
+  Students -
 
 %h3.mdl-display-2.header
   Students
 
 .layout.vertical.center.users-index
-  = render "layouts/search", link: users_path
-
   %ul.collapsible.popout{ data: { collapsible: :accordion } }
     - @students.each do |student|
-      %li{ class: student.courses.to_a.empty? ? "disabled" : "" }
+      %li{ class: student.courses.size.zero? ? "disabled" : "" }
         .collapsible-header.layout.horizontal.start-justified
-          %div{ style: "padding-left: 24px;" }
-            = student.name
+          %div{ style: "padding-left: 24px;" }= student.name
           .flex
-          - if !student.courses.to_a.empty?
-            - if student.schedule_approval
-              .student-pending-link
-                - if !student.schedule_approval.approved
-                  Pending
-                - else
-                  Approved
-            - else
-              .student-schedule-link
-                Schedule
-          - else
-            .student-no-courses-link
-              No Courses
+          %div{ class: schedule_status(student)[:class] }
+            = schedule_status(student)[:display]
 
-        - unless student.courses.to_a.empty?
+        - unless student.courses.size.zero?
           .collapsible-body
             %ul.demo-list-item.mdl-list
               - student.courses.each do |course|
                 %li.mdl-list__item
-                  %span.mdl-list__item-primary-content.center-text.layout.horizontal.center-justified
+                  .mdl-list__item-primary-content.center-text.layout.horizontal.center-justified
                     = course.pretty_course
               - if student.schedule_approval && !student.schedule_approval.approved
                 .layout.horizontal.center-justified.approve-schedule

@@ -39,13 +39,15 @@ class OfferingsController < ApplicationController
 
   def import
     Offering.import(params[:offering_file])
+
     redirect_to offerings_path, notice: "Offerings Uploaded!"
   end
 
   private
 
   def offering_params
-    params.require(:offering)
-          .permit(:course_id, :days_time_id, :user_id, :section)
+    params.require(:offering).permit(
+      :course_id, :days_time_id, :user_id, :section
+    )
   end
 end

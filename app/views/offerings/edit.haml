@@ -1,6 +1,7 @@
 - content_for :title do
-  Edit Offering
+  Edit Offering - 
 
 .layout.vertical.center
-  = render "form"
+  = render "form", offering: @offering, title: "Edit Offering"
+
   = destroy_fab(@offering, "Are you sure you want to stop offering this course?")

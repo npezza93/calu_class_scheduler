@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def destroy_fab(link, confirm_message = nil)
-    confirm_message ||= "Are you sure?"
+    confirm_message ||= "Are you sure you want to delete this?"
     link_to link, data: { method: :delete, confirm: confirm_message } do
       content_tag(:button, class: "#{fab_classes} destroy-fab fixed") do
         content_tag(:i, "clear", class: "material-icons")

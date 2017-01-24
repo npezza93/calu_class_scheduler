@@ -1,4 +1,4 @@
 - content_for :title do
-  New Category
+  New Category -
 
-= render "form"
+= render "form", category: @category, title: "New Category", category_sets: @category_sets

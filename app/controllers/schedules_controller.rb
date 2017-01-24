@@ -21,7 +21,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to schedules_path }
-      format.js { render layout: false }
+      format.js
     end
   end
 
@@ -30,7 +30,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to schedules_path }
-      format.js { render layout: false }
+      format.js
     end
   end
 
