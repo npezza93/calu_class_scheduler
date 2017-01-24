@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PrerequisiteGroup < ApplicationRecord
   has_many :prerequisites
   has_many :courses, through: :prerequisites

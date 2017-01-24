@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Offering < ApplicationRecord
   belongs_to :days_time
   belongs_to :user

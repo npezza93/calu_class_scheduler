@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class WorkSchedule < ApplicationRecord
   belongs_to :user
   belongs_to :work_days_time

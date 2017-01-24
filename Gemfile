@@ -1,37 +1,38 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
+source "https://rubygems.org"
 
-ruby '2.3.1'
-gem 'rails', '5.0.0.1'
+ruby "2.3.3"
+gem "rails"
 
-gem 'sass-rails'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'turbolinks'
+gem "coffee-rails"
+gem "jquery-rails"
+gem "sass-rails"
+gem "turbolinks"
+gem "uglifier"
 
-gem 'puma'
+gem "puma"
 
-gem 'pg'
-gem 'rails_12factor', group: :production
-gem 'devise'
+gem "devise"
+gem "pg"
+gem "rails_12factor", group: :production
 
-gem 'pry-rails'
-gem 'cocoon'
-gem 'haml'
-gem 'kaminari'
-gem 'cancancan'
-gem 'numbers_and_words'
-gem 'carrierwave'
+gem "cancancan"
+gem "carrierwave"
+gem "cocoon"
+gem "haml"
+gem "kaminari"
+gem "numbers_and_words"
+gem "pry-rails"
 
 group :test do
-  gem 'codeclimate-test-reporter', require: nil
-  gem 'simplecov', require: false
+  gem "codeclimate-test-reporter", require: nil
+  gem "simplecov", require: false
 end
 
 group :development do
-  gem 'seed_dump'
-  gem 'web-console'
-  gem 'listen', '~> 3.0.5'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "listen"
+  gem "seed_dump"
+  gem "spring"
+  gem "spring-watcher-listen"
+  gem "web-console"
 end

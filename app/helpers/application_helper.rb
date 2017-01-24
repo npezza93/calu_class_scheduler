@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ApplicationHelper
   def new_fab(link, fixed = true)
     button_classes = "#{fab_classes} new-fab #{'fixed' if fixed}"

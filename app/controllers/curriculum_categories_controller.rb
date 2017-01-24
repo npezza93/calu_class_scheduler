@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CurriculumCategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, except: [:create, :new, :index]

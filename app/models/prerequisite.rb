@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Prerequisite < ApplicationRecord
   belongs_to :prerequisite_group
   belongs_to :course

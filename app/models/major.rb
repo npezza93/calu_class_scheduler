@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Major < ApplicationRecord
   validates :major, uniqueness: true, presence: true
 

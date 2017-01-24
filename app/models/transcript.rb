@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class Transcript < ApplicationRecord
-  GRADES = %w(A A- B+ B B- C+ C C- D+ D D- F)
+  GRADES = [%w(A A- B+ B B- C+ C C- D+ D D- F)].freeze
 
   belongs_to :user
   belongs_to :course

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class UserCategoryCourse < ApplicationRecord
   belongs_to :user_category
   belongs_to :course

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class MajorsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource

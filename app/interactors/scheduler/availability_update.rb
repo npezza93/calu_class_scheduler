@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Scheduler
   class AvailabilityUpdate
     attr_accessor :user, :time_block

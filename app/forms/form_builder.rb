@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class FormBuilder < ActionView::Helpers::FormBuilder
   delegate :content_tag, :tag, to: :@template
   delegate :errors, to: :@object

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Scheduler
   module IncompleteCategory
     def incomplete_category(category)

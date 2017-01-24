@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module UsersHelper
   def schedule_status(user)
     if user.courses.size.zero?

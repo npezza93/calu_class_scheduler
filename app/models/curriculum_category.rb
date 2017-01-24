@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CurriculumCategory < ApplicationRecord
   belongs_to :major
   has_many :user_categories, dependent: :destroy

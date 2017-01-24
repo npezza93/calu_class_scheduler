@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 def warden(request)
-  request.env['warden']
+  request.env["warden"]
 end
 
 def user?(request)
@@ -26,26 +27,26 @@ Rails.application.routes.draw do
 
   resources :courses
 
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: "registrations" }
   devise_scope :user do
     authenticated :user do
-      root 'work_schedules#index', constraints: lambda{ |request| user?(request) }
-      root 'users#index', constraints: lambda{ |request| advisor?(request) }
+      root "work_schedules#index", constraints: ->(request) { user?(request) }
+      root "users#index", constraints: ->(request) { advisor?(request) }
     end
 
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root "devise/sessions#new", as: :unauthenticated_root
     end
   end
 
-  resources :transcripts, only: [:index, :create, :destroy], path: :transcript do
+  resources :transcripts, only: [:index, :create, :destroy],
+                          path: :transcript do
     collection do
       post :import
     end
   end
   resources :work_schedules, only: [:create, :index, :destroy], path: :calendar
   resources :schedules, only: [:index, :create, :destroy], path: :schedule
-
 
   resources :users, only: :index do
     resources :schedule_approvals, only: [:create, :update]
