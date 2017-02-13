@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreatePrerequisites < ActiveRecord::Migration
   def change
     create_table :prerequisites do |t|

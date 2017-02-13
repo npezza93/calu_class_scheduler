@@ -1,1287 +1,1288 @@
+# frozen_string_literal: true
 Course.create(
   [
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 101,
-      title: 'Personal Productivity Software',
+      title: "Personal Productivity Software",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 120,
-      title: 'Problem Solving and Programming Constructs',
+      title: "Problem Solving and Programming Constructs",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 124,
-      title: 'Computer Programming I',
+      title: "Computer Programming I",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 201,
-      title: 'Internet Concepts',
+      title: "Internet Concepts",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 265,
-      title: 'Object Oriented Programming',
+      title: "Object Oriented Programming",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 302,
-      title: 'Visual Programming',
+      title: "Visual Programming",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 323,
-      title: 'Assembly Language Programming',
+      title: "Assembly Language Programming",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 328,
-      title: 'Data Structures',
+      title: "Data Structures",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 400,
-      title: 'Operating Systems',
+      title: "Operating Systems",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 419,
-      title: 'Internship',
+      title: "Internship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 455,
-      title: 'Structures of Programming Languages',
+      title: "Structures of Programming Languages",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 460,
-      title: 'Language Translation',
+      title: "Language Translation",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 492,
-      title: 'Senior Project II',
+      title: "Senior Project II",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 216,
-      title: 'Logic and Switching Theory',
+      title: "Logic and Switching Theory",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 304,
-      title: 'COBOL',
+      title: "COBOL",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 306,
-      title: 'FORTRAN',
+      title: "FORTRAN",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 350,
-      title: 'Technical Computing using Java',
+      title: "Technical Computing using Java",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 360,
-      title: 'Analysis of Algorithms',
+      title: "Analysis of Algorithms",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 378,
-      title: 'Computer Architecture',
+      title: "Computer Architecture",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 475,
-      title: 'Theory of Languages',
+      title: "Theory of Languages",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 490,
-      title: 'Senior Project I',
+      title: "Senior Project I",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 195,
-      title: 'Discrete Structures',
+      title: "Discrete Structures",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 282,
-      title: 'Calculus II',
+      title: "Calculus II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 341,
-      title: 'Linear Algebra I',
+      title: "Linear Algebra I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 281,
-      title: 'Calculus I',
+      title: "Calculus I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 215,
-      title: 'Statistics',
+      title: "Statistics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 406,
-      title: 'Differential Equations',
+      title: "Differential Equations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 217,
-      title: 'Scientific and Technical Writing I',
+      title: "Scientific and Technical Writing I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 101,
-      title: 'English Composition I',
+      title: "English Composition I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 102,
-      title: 'English Composition II',
+      title: "English Composition II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 321,
-      title: 'Data Base Management Systems and DB Design',
+      title: "Data Base Management Systems and DB Design",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 420,
-      title: 'Artificial Intelligence',
+      title: "Artificial Intelligence",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 424,
-      title: 'Numerical Analysis',
+      title: "Numerical Analysis",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 485,
-      title: 'Special Topics in Computer Science',
+      title: "Special Topics in Computer Science",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 440,
-      title: 'Computer Networking',
+      title: "Computer Networking",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'UNI',
+      subject: "UNI",
       course: 100,
-      title: 'First Year Seminar',
+      title: "First Year Seminar",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 100,
-      title: 'Honors & University Orientation',
+      title: "Honors & University Orientation",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 352,
-      title: 'Global, Economic and Social Ethical Issues in Computing',
+      title: "Global, Economic and Social Ethical Issues in Computing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 381,
-      title: 'Calculus III',
+      title: "Calculus III",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 441,
-      title: 'Linear Algebra II',
+      title: "Linear Algebra II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 101,
-      title: 'Oral Communication',
+      title: "Oral Communication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 382,
-      title: 'Calculus IV',
+      title: "Calculus IV",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 230,
-      title: 'Argument/Debate',
+      title: "Argument/Debate",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 250,
-      title: 'Oral Com Management',
+      title: "Oral Com Management",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 181,
-      title: 'College Algebra',
+      title: "College Algebra",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ATE',
+      subject: "ATE",
       course: 340,
-      title: 'Sports Nutrition',
+      title: "Sports Nutrition",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 112,
-      title: 'Bio Sex Tr Dis',
+      title: "Bio Sex Tr Dis",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 260,
-      title: 'Modern Dance',
+      title: "Modern Dance",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HSC',
+      subject: "HSC",
       course: 115,
-      title: 'Cur Iss Health',
+      title: "Cur Iss Health",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HSC',
+      subject: "HSC",
       course: 250,
-      title: 'Hth/Phy Ed Meth',
+      title: "Hth/Phy Ed Meth",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HSC',
+      subject: "HSC",
       course: 315,
-      title: 'Fst Aid/Per Safe',
+      title: "Fst Aid/Per Safe",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'NUR',
+      subject: "NUR",
       course: 101,
-      title: 'Women Health',
+      title: "Women Health",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PSY',
+      subject: "PSY",
       course: 222,
-      title: 'Psy Stress Mgt',
+      title: "Psy Stress Mgt",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'REC',
+      subject: "REC",
       course: 165,
-      title: 'Intro Rec Leis',
+      title: "Intro Rec Leis",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 101,
-      title: 'General Chemistry I',
+      title: "General Chemistry I",
       credits: 4,
       minimum_class_standing: nil,
-      minimum_sat_score: '520'
+      minimum_sat_score: "520"
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 102,
-      title: 'General Chemistry II',
+      title: "General Chemistry II",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 331,
-      title: 'Organic Chemistry I',
+      title: "Organic Chemistry I",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 101,
-      title: 'College Physics I',
+      title: "College Physics I",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 202,
-      title: 'College Physics II',
+      title: "College Physics II",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 203,
-      title: 'College Physics III',
+      title: "College Physics III",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 120,
-      title: 'General Zoology',
+      title: "General Zoology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 125,
-      title: 'General Botany',
+      title: "General Botany",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 215,
-      title: 'Intro to Cell and Molecular Biology',
+      title: "Intro to Cell and Molecular Biology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 321,
-      title: 'Intermediate Mechanics',
+      title: "Intermediate Mechanics",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 488,
-      title: 'Water Pollution Biology',
+      title: "Water Pollution Biology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 445,
-      title: 'Entomology',
+      title: "Entomology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 248,
-      title: 'General Ecology',
+      title: "General Ecology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 305,
-      title: 'Comparative Vertebrate Anatomy',
+      title: "Comparative Vertebrate Anatomy",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 306,
-      title: 'Human Anatomy',
+      title: "Human Anatomy",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 325,
-      title: 'Animal Histology',
+      title: "Animal Histology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 327,
-      title: 'Parasitology',
+      title: "Parasitology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 328,
-      title: 'Human Physiology',
+      title: "Human Physiology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 433,
-      title: 'Herpetology',
+      title: "Herpetology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 486,
-      title: 'Comparative Animal Physiology',
+      title: "Comparative Animal Physiology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'EAS',
+      subject: "EAS",
       course: 150,
-      title: 'Introduction to Geology',
+      title: "Introduction to Geology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'EAS',
+      subject: "EAS",
       course: 240,
-      title: 'Introduction to Meteorology',
+      title: "Introduction to Meteorology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CMD',
+      subject: "CMD",
       course: 350,
-      title: 'Sign/Braille I',
+      title: "Sign/Braille I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 351,
-      title: 'Rhet: His/The/Cr',
+      title: "Rhet: His/The/Cr",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 106,
-      title: 'Intro to Poetry',
+      title: "Intro to Poetry",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 107,
-      title: 'Intro to Fiction',
+      title: "Intro to Fiction",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 108,
-      title: 'Intro to Drama',
+      title: "Intro to Drama",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 112,
-      title: 'Myth, Magic, Mys',
+      title: "Myth, Magic, Mys",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 127,
-      title: 'Woman as Hero',
+      title: "Woman as Hero",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 148,
-      title: 'Horror in Lit',
+      title: "Horror in Lit",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 178,
-      title: 'Lit and Film',
+      title: "Lit and Film",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 205,
-      title: 'Wld Lit to 1600',
+      title: "Wld Lit to 1600",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 206,
-      title: 'Wld Lit after 1600',
+      title: "Wld Lit after 1600",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 301,
-      title: 'English Lit I',
+      title: "English Lit I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 306,
-      title: 'Press/Law/Eth',
+      title: "Press/Law/Eth",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 315,
-      title: 'Sur/American Wom',
+      title: "Sur/American Wom",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 337,
-      title: 'Sur/American Lit I',
+      title: "Sur/American Lit I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 354,
-      title: 'Amer Journalism',
+      title: "Amer Journalism",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 487,
-      title: 'Amer Lit Genres',
+      title: "Amer Lit Genres",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ESP',
+      subject: "ESP",
       course: 100,
-      title: 'Disab/Pop Med',
+      title: "Disab/Pop Med",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ESP',
+      subject: "ESP",
       course: 210,
-      title: 'Sp Ed Found/Col',
+      title: "Sp Ed Found/Col",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 101,
-      title: 'Elem French I',
+      title: "Elem French I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 102,
-      title: 'Elem French II',
+      title: "Elem French II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 203,
-      title: 'Inter French I',
+      title: "Inter French I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 204,
-      title: 'Inter French II',
+      title: "Inter French II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 341,
-      title: '17th Cent/Class',
+      title: "17th Cent/Class",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 343,
-      title: 'Age/Fr Romance',
+      title: "Age/Fr Romance",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 344,
-      title: 'Age/Fr Realism',
+      title: "Age/Fr Realism",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 345,
-      title: 'Birth Mod Fr Cul',
+      title: "Birth Mod Fr Cul",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 346,
-      title: 'Cont Fr Cult/Art',
+      title: "Cont Fr Cult/Art",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 100,
-      title: 'Persp in Philo',
+      title: "Persp in Philo",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 115,
-      title: 'Logic/Lang',
+      title: "Logic/Lang",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 200,
-      title: 'World Religions',
+      title: "World Religions",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 201,
-      title: 'Ancient Philo',
+      title: "Ancient Philo",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 206,
-      title: '16th-18th Philo',
+      title: "16th-18th Philo",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 220,
-      title: 'Ethics',
+      title: "Ethics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 305,
-      title: 'Medieval Philo',
+      title: "Medieval Philo",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 307,
-      title: 'Medieval Ethics',
+      title: "Medieval Ethics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 308,
-      title: 'Bioethics',
+      title: "Bioethics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 311,
-      title: 'Formal Logic I',
+      title: "Formal Logic I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 312,
-      title: 'Formal Logic II',
+      title: "Formal Logic II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 320,
-      title: 'Ethical Theory',
+      title: "Ethical Theory",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 326,
-      title: 'Soc/Polit Philo',
+      title: "Soc/Polit Philo",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 355,
-      title: 'Philo of Religion',
+      title: "Philo of Religion",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 405,
-      title: 'Epistemology',
+      title: "Epistemology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 410,
-      title: 'Metaphysics',
+      title: "Metaphysics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 415,
-      title: 'Philo of Mind',
+      title: "Philo of Mind",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 426,
-      title: 'Pheno/Existent',
+      title: "Pheno/Existent",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 101,
-      title: 'Elm Spanish I',
+      title: "Elm Spanish I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 102,
-      title: 'Elm Spanish II',
+      title: "Elm Spanish II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 304,
-      title: 'Span Law Enf',
+      title: "Span Law Enf",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 305,
-      title: 'Span Business',
+      title: "Span Business",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPT',
+      subject: "SPT",
       course: 305,
-      title: 'Ethics in Sport Management',
+      title: "Ethics in Sport Management",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'WST',
+      subject: "WST",
       course: 200,
-      title: 'Intro to Women Studies',
+      title: "Intro to Women Studies",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'WST',
+      subject: "WST",
       course: 320,
-      title: 'Gay, BiSex, Stud',
+      title: "Gay, BiSex, Stud",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'WST',
+      subject: "WST",
       course: 330,
-      title: 'Ex Gdr, Rc, Med',
+      title: "Ex Gdr, Rc, Med",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ART',
+      subject: "ART",
       course: 109,
-      title: 'Landmk Wld Art',
+      title: "Landmk Wld Art",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ART',
+      subject: "ART",
       course: 243,
-      title: 'Intro Asian Art',
+      title: "Intro Asian Art",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ART',
+      subject: "ART",
       course: 323,
-      title: 'Women in Art',
+      title: "Women in Art",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ART',
+      subject: "ART",
       course: 326,
-      title: 'Contemp Art',
+      title: "Contemp Art",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ART',
+      subject: "ART",
       course: 328,
-      title: 'Ital Ren Art',
+      title: "Ital Ren Art",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 275,
-      title: 'Art of Film',
+      title: "Art of Film",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 132,
-      title: 'Ballet Tech I',
+      title: "Ballet Tech I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 133,
-      title: 'Jazz Tech I',
+      title: "Jazz Tech I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 232,
-      title: 'Ballet Tech I',
+      title: "Ballet Tech I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 301,
-      title: 'Theater Dan I',
+      title: "Theater Dan I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 302,
-      title: 'Theater Dan II',
+      title: "Theater Dan II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GCM',
+      subject: "GCM",
       course: 101,
-      title: 'Time-Base Med',
+      title: "Time-Base Med",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 100,
-      title: 'Intro to Music',
+      title: "Intro to Music",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 104,
-      title: 'Voice Class',
+      title: "Voice Class",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 186,
-      title: 'Clavinova Ensemble',
+      title: "Clavinova Ensemble",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 187,
-      title: 'Guitar Ensemble',
+      title: "Guitar Ensemble",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 188,
-      title: 'String Ensemble',
+      title: "String Ensemble",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 192,
-      title: 'California Sing',
+      title: "California Sing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 193,
-      title: 'Univ Gosp Ch',
+      title: "Univ Gosp Ch",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 196,
-      title: 'Jazz Ensemble',
+      title: "Jazz Ensemble",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 198,
-      title: 'Marching Band',
+      title: "Marching Band",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 199,
-      title: 'Concert Band',
+      title: "Concert Band",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 211,
-      title: 'Keyboard I',
+      title: "Keyboard I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 215,
-      title: 'Comp Music I',
+      title: "Comp Music I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 300,
-      title: 'Jazz (Hist/Form)',
+      title: "Jazz (Hist/Form)",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 304,
-      title: 'American Musical',
+      title: "American Musical",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 305,
-      title: 'Carib and Gosip',
+      title: "Carib and Gosip",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 306,
-      title: 'Opera',
+      title: "Opera",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 307,
-      title: 'Spec Mus Proj',
+      title: "Spec Mus Proj",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 310,
-      title: 'Music in Media',
+      title: "Music in Media",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 313,
       title: 'Rock N\' Roll',
       credits: 3,
@@ -1289,127 +1290,127 @@ Course.create(
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 315,
-      title: 'Comp Mus II',
+      title: "Comp Mus II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 372,
-      title: 'Cre Art Elm Ed',
+      title: "Cre Art Elm Ed",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 335,
-      title: 'Aesthetic Theo',
+      title: "Aesthetic Theo",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 336,
-      title: 'Philo of Film',
+      title: "Philo of Film",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'THE',
+      subject: "THE",
       course: 100,
-      title: 'Intro Theat',
+      title: "Intro Theat",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'THE',
+      subject: "THE",
       course: 101,
-      title: 'Voice/Speech',
+      title: "Voice/Speech",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'THE',
+      subject: "THE",
       course: 131,
-      title: 'Fund of Acting',
+      title: "Fund of Acting",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'THE',
+      subject: "THE",
       course: 201,
-      title: 'Voice/Interpret',
+      title: "Voice/Interpret",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'THE',
+      subject: "THE",
       course: 231,
-      title: 'Intermed Acting',
+      title: "Intermed Acting",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'THE',
+      subject: "THE",
       course: 309,
-      title: 'Readers Theat',
+      title: "Readers Theat",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 307,
-      title: 'Plant Anatomy',
+      title: "Plant Anatomy",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 336,
-      title: 'Plant Taxonomy',
+      title: "Plant Taxonomy",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 407,
-      title: 'Mycology',
+      title: "Mycology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 150,
-      title: 'Honors Composition I',
+      title: "Honors Composition I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 250,
-      title: 'Honors Composition II',
+      title: "Honors Composition II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'EDE',
+      subject: "EDE",
       course: 211,
       title: 'Instructional Strategies in \
               Elementary and Early Childhood Education',
@@ -1418,1951 +1419,1951 @@ Course.create(
       minimum_sat_score: nil
     },
     {
-      subject: 'ANT',
+      subject: "ANT",
       course: 100,
-      title: 'Intro Anthropolgy',
+      title: "Intro Anthropolgy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ANT',
+      subject: "ANT",
       course: 231,
-      title: 'Medical Anthropolgy',
+      title: "Medical Anthropolgy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ANT',
+      subject: "ANT",
       course: 232,
-      title: 'Fund Bio Anthropolgy',
+      title: "Fund Bio Anthropolgy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ANT',
+      subject: "ANT",
       course: 300,
-      title: 'Cult Views of Women',
+      title: "Cult Views of Women",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BUS',
+      subject: "BUS",
       course: 100,
-      title: 'Intro Business',
+      title: "Intro Business",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CMD',
+      subject: "CMD",
       course: 105,
-      title: 'Lang and Speech Development',
+      title: "Lang and Speech Development",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CMD',
+      subject: "CMD",
       course: 108,
-      title: 'Nature of Lang',
+      title: "Nature of Lang",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CMD',
+      subject: "CMD",
       course: 220,
-      title: 'Communication Across Lifespan',
+      title: "Communication Across Lifespan",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ECO',
+      subject: "ECO",
       course: 100,
-      title: 'Elements of Economics',
+      title: "Elements of Economics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ECO',
+      subject: "ECO",
       course: 102,
-      title: 'Economics of Elementary Education',
+      title: "Economics of Elementary Education",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ECO',
+      subject: "ECO",
       course: 201,
-      title: 'Principles of Microeconomics',
+      title: "Principles of Microeconomics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ECO',
+      subject: "ECO",
       course: 202,
-      title: 'Principles of Macroeconomics',
+      title: "Principles of Macroeconomics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'EDU',
+      subject: "EDU",
       course: 310,
-      title: 'Teaching in a Multicultural Society',
+      title: "Teaching in a Multicultural Society",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GEO',
+      subject: "GEO",
       course: 100,
-      title: 'Intro to Geology',
+      title: "Intro to Geology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GEO',
+      subject: "GEO",
       course: 102,
-      title: 'Geographic Sys for Elementary Education',
+      title: "Geographic Sys for Elementary Education",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GEO',
+      subject: "GEO",
       course: 150,
-      title: 'Intro to Tourism Studies',
+      title: "Intro to Tourism Studies",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GEO',
+      subject: "GEO",
       course: 217,
-      title: 'Demographic Analysis',
+      title: "Demographic Analysis",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GEO',
+      subject: "GEO",
       course: 220,
-      title: 'Grography of North America and PA',
+      title: "Grography of North America and PA",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GEO',
+      subject: "GEO",
       course: 360,
-      title: 'Emergency Management',
+      title: "Emergency Management",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GTY',
+      subject: "GTY",
       course: 100,
-      title: 'Intro to Gerontotogy',
+      title: "Intro to Gerontotogy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'GTY',
+      subject: "GTY",
       course: 200,
-      title: 'Aging in American Society',
+      title: "Aging in American Society",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PSY',
+      subject: "PSY",
       course: 100,
-      title: 'General Psychology',
+      title: "General Psychology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PSY',
+      subject: "PSY",
       course: 211,
-      title: 'Social Psychology',
+      title: "Social Psychology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 100,
-      title: 'Principles of Sociology',
+      title: "Principles of Sociology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 205,
-      title: 'Contemporary Social Problems',
+      title: "Contemporary Social Problems",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 290,
-      title: 'Gender and Work',
+      title: "Gender and Work",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 312,
-      title: 'Sociology of Orginizations',
+      title: "Sociology of Orginizations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 315,
-      title: 'Social Minirities',
+      title: "Social Minirities",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 317,
-      title: 'Substance Use and Abuse',
+      title: "Substance Use and Abuse",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 325,
-      title: 'Sociology of the Family',
+      title: "Sociology of the Family",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 395,
-      title: 'Sociology of Elite Deviance',
+      title: "Sociology of Elite Deviance",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOC',
+      subject: "SOC",
       course: 411,
-      title: 'Symbolic Interaction',
+      title: "Symbolic Interaction",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOW',
+      subject: "SOW",
       course: 150,
-      title: 'Intro to Social Work',
+      title: "Intro to Social Work",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOW',
+      subject: "SOW",
       course: 215,
-      title: 'Human Behavior and Social Environment',
+      title: "Human Behavior and Social Environment",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOW',
+      subject: "SOW",
       course: 316,
-      title: 'Human Behavior and Social Environment II',
+      title: "Human Behavior and Social Environment II",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'SOW',
+      subject: "SOW",
       course: 330,
-      title: 'Child Welfare',
+      title: "Child Welfare",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOW',
+      subject: "SOW",
       course: 364,
-      title: 'Juvenile Delinquency',
+      title: "Juvenile Delinquency",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'WST',
+      subject: "WST",
       course: 300,
-      title: 'Selected Topics in Womens Studies',
+      title: "Selected Topics in Womens Studies",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'WST',
+      subject: "WST",
       course: 340,
-      title: 'International Violence',
+      title: "International Violence",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'WST',
+      subject: "WST",
       course: 400,
-      title: 'Capstone: Adv Womens Studies',
+      title: "Capstone: Adv Womens Studies",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ARB',
+      subject: "ARB",
       course: 102,
-      title: 'Elementary Arabic II',
+      title: "Elementary Arabic II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ARB',
+      subject: "ARB",
       course: 203,
-      title: 'Intermediate Arabic I',
+      title: "Intermediate Arabic I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 322,
-      title: 'US History/Religious Persecution',
+      title: "US History/Religious Persecution",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 325,
-      title: 'Women in US History',
+      title: "Women in US History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 347,
-      title: 'Race and Ethnicity in US',
+      title: "Race and Ethnicity in US",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 352,
-      title: 'Native American History to 1850',
+      title: "Native American History to 1850",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 353,
-      title: 'Native American History from 1850',
+      title: "Native American History from 1850",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MAT',
+      subject: "MAT",
       course: 202,
-      title: 'Math Around the World',
+      title: "Math Around the World",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 100,
-      title: 'Intro to Political Science',
+      title: "Intro to Political Science",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 101,
-      title: 'Contemporary Policy and Politics',
+      title: "Contemporary Policy and Politics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 102,
-      title: 'American Government for Elementary Eduction',
+      title: "American Government for Elementary Eduction",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 105,
-      title: 'American Politics',
+      title: "American Politics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 210,
-      title: 'Politics of Western Europe',
+      title: "Politics of Western Europe",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 222,
-      title: 'The Administration of Criminal Justice in the US',
+      title: "The Administration of Criminal Justice in the US",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 300,
-      title: 'Intro to Public Policy',
+      title: "Intro to Public Policy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 301,
-      title: 'Research Methods in Political Science',
+      title: "Research Methods in Political Science",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 303,
-      title: 'Mass Media and American Politics',
+      title: "Mass Media and American Politics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 306,
-      title: 'The Congress',
+      title: "The Congress",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 307,
-      title: 'Revolution',
+      title: "Revolution",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 308,
-      title: 'Municipal Government',
+      title: "Municipal Government",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 310,
-      title: 'The American Presidency',
+      title: "The American Presidency",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 311,
-      title: 'Cyberpolitics',
+      title: "Cyberpolitics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 312,
-      title: 'Politics of the World Economy',
+      title: "Politics of the World Economy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 314,
-      title: 'Constitutional Law/Governmental Powers',
+      title: "Constitutional Law/Governmental Powers",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 315,
-      title: 'Constitutional Law/Civil Liberties and Rights',
+      title: "Constitutional Law/Civil Liberties and Rights",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 316,
-      title: 'Judicial Policy and Politics',
+      title: "Judicial Policy and Politics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 317,
-      title: 'Nonquantitative Techniques',
+      title: "Nonquantitative Techniques",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 318,
-      title: 'Political Parties and Pressure Groups',
+      title: "Political Parties and Pressure Groups",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 319,
-      title: 'Campaign Management',
+      title: "Campaign Management",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 320,
-      title: 'US Foreign Policy',
+      title: "US Foreign Policy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 322,
-      title: 'Politics of the Middle East',
+      title: "Politics of the Middle East",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 323,
-      title: 'Politics of Latin America',
+      title: "Politics of Latin America",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 325,
-      title: 'Politics of Asia',
+      title: "Politics of Asia",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 326,
-      title: 'Politics of Africa',
+      title: "Politics of Africa",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 327,
-      title: 'Contemporary Political Thought',
+      title: "Contemporary Political Thought",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 329,
-      title: 'Internship in Political Science',
+      title: "Internship in Political Science",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 330,
-      title: 'American Political Ideas',
+      title: "American Political Ideas",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 335,
-      title: 'Administrative Law',
+      title: "Administrative Law",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 336,
-      title: 'International Organizations',
+      title: "International Organizations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 340,
-      title: 'The Politics of Empires',
+      title: "The Politics of Empires",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 344,
-      title: 'Intergovernmental Relations',
+      title: "Intergovernmental Relations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 346,
-      title: 'International Relations',
+      title: "International Relations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 347,
-      title: 'Political Thought/Classical',
+      title: "Political Thought/Classical",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 348,
-      title: 'Political Thought/Medieval and Modern',
+      title: "Political Thought/Medieval and Modern",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 355,
-      title: 'Public Administration',
+      title: "Public Administration",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 360,
-      title: 'Politics/Palaces/Art in Islam',
+      title: "Politics/Palaces/Art in Islam",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 379,
-      title: 'Special Topics in Political Science',
+      title: "Special Topics in Political Science",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 415,
-      title: 'Public Opinion and Political Behavior',
+      title: "Public Opinion and Political Behavior",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'POS',
+      subject: "POS",
       course: 450,
-      title: 'Seminar in Politics',
+      title: "Seminar in Politics",
       credits: 3,
       minimum_class_standing: 'Senior
-      ', minimum_sat_score: ''
+      ', minimum_sat_score: ""
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 103,
-      title: 'Contemporary Issues in Biology',
+      title: "Contemporary Issues in Biology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 130,
-      title: 'Biological Illustration',
+      title: "Biological Illustration",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 201,
-      title: 'Survey of Biotechnology',
+      title: "Survey of Biotechnology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 226,
-      title: 'Basic Microbiology',
+      title: "Basic Microbiology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 230,
-      title: 'Anatomy and Physiology I',
+      title: "Anatomy and Physiology I",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 232,
-      title: 'Fundamentals of Biological Anthropology',
+      title: "Fundamentals of Biological Anthropology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 260,
-      title: 'Anatomy and Physiology II',
+      title: "Anatomy and Physiology II",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 318,
-      title: 'Genetics',
+      title: "Genetics",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 326,
-      title: 'General Microbiology',
+      title: "General Microbiology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 335,
-      title: 'Plant Physiology',
+      title: "Plant Physiology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 337,
-      title: 'Ornithology',
+      title: "Ornithology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 400,
-      title: 'Mammalogy',
+      title: "Mammalogy",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 410,
-      title: 'Developmental Biology',
+      title: "Developmental Biology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 414,
-      title: 'Plant Ecology',
+      title: "Plant Ecology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 418,
-      title: 'Biological Research Investigations',
+      title: "Biological Research Investigations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 425,
-      title: 'Neurobiology',
+      title: "Neurobiology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 435,
-      title: 'Ichthyology',
+      title: "Ichthyology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 441,
-      title: 'Ethology',
+      title: "Ethology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 442,
-      title: 'Forest Ecology and Dendrology',
+      title: "Forest Ecology and Dendrology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 446,
-      title: 'Freshwater Invertebrate Zoology',
+      title: "Freshwater Invertebrate Zoology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 450,
-      title: 'Immunology',
+      title: "Immunology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 460,
-      title: 'Pathophysiology',
+      title: "Pathophysiology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 478,
-      title: 'Evolution',
+      title: "Evolution",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 480,
-      title: 'Cell Biology',
+      title: "Cell Biology",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'BIO',
+      subject: "BIO",
       course: 492,
-      title: 'Biological and Environmental Science Internship',
+      title: "Biological and Environmental Science Internship",
       credits: 3,
       minimum_class_standing: 'Junior
-      ', minimum_sat_score: ''
+      ', minimum_sat_score: ""
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 103,
-      title: 'Chemistry for the Everyday World',
+      title: "Chemistry for the Everyday World",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 104,
-      title: 'Intro to Experimental Chemistry',
+      title: "Intro to Experimental Chemistry",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 306,
-      title: 'Inorganic Chemistry',
+      title: "Inorganic Chemistry",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 320,
-      title: 'Analytical/Instrumental Chemistry',
+      title: "Analytical/Instrumental Chemistry",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 333,
-      title: 'Chemistry of Hazardous Materials',
+      title: "Chemistry of Hazardous Materials",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 341,
-      title: 'Organic Chemistry II',
+      title: "Organic Chemistry II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 342,
-      title: 'Organic Chemistry II Lab',
+      title: "Organic Chemistry II Lab",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 371,
-      title: 'Intermediate Chemistry Lab I',
+      title: "Intermediate Chemistry Lab I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 372,
-      title: 'Intermediate Chemistry Lab II',
+      title: "Intermediate Chemistry Lab II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 381,
-      title: 'Environmental Chemistry',
+      title: "Environmental Chemistry",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 410,
-      title: 'Chemistry Internship',
+      title: "Chemistry Internship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 415,
-      title: 'Biochemistry',
+      title: "Biochemistry",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 420,
-      title: 'Advanced Analytical Chemistry',
+      title: "Advanced Analytical Chemistry",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 421,
-      title: 'Advanced Inorganic Chemistry I',
+      title: "Advanced Inorganic Chemistry I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 433,
-      title: 'Advanced Organic Chemistry',
+      title: "Advanced Organic Chemistry",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 461,
-      title: 'Physical Chemistry I',
+      title: "Physical Chemistry I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 462,
-      title: 'Physical Chemistry II',
+      title: "Physical Chemistry II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 471,
-      title: 'Advanced Chemistry Lab I',
+      title: "Advanced Chemistry Lab I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 472,
-      title: 'Advanced Chemistry Lab II',
+      title: "Advanced Chemistry Lab II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 491,
-      title: 'Chemistry Research I',
+      title: "Chemistry Research I",
       credits: 2,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 492,
-      title: 'Chemistry Research II',
+      title: "Chemistry Research II",
       credits: 2,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 493,
-      title: 'Advanced Chemistry Research',
+      title: "Advanced Chemistry Research",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CHE',
+      subject: "CHE",
       course: 497,
-      title: 'Special Topics',
+      title: "Special Topics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 121,
-      title: 'General Physics I',
+      title: "General Physics I",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 122,
-      title: 'General Physics II',
+      title: "General Physics II",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 301,
-      title: 'Intermediate Electricity and Magnesium',
+      title: "Intermediate Electricity and Magnesium",
       credits: 4,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 331,
-      title: 'Modern Physics I',
+      title: "Modern Physics I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 341,
-      title: 'Math Methods of Physics I',
+      title: "Math Methods of Physics I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 376,
-      title: 'Statistical and Thermal Physics',
+      title: "Statistical and Thermal Physics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 405,
-      title: 'Quantum Mechanics',
+      title: "Quantum Mechanics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 410,
-      title: 'Physics Internship',
+      title: "Physics Internship",
       credits: 3,
       minimum_class_standing: 'Junior
-      ', minimum_sat_score: ''
+      ', minimum_sat_score: ""
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 451,
-      title: 'Advanced Laboratory I',
+      title: "Advanced Laboratory I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 455,
-      title: 'Solid State Physics',
+      title: "Solid State Physics",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 475,
-      title: 'Astrophysics',
+      title: "Astrophysics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHY',
+      subject: "PHY",
       course: 495,
-      title: 'Physics Seminar',
+      title: "Physics Seminar",
       credits: 1,
       minimum_class_standing: 'Junior
-      ', minimum_sat_score: ''
+      ', minimum_sat_score: ""
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 100,
-      title: 'Perspectives on Communication',
+      title: "Perspectives on Communication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 106,
-      title: 'Introduction to Mass Communication',
+      title: "Introduction to Mass Communication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 141,
-      title: 'Audio Production I',
+      title: "Audio Production I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 142,
-      title: 'Video Production I',
+      title: "Video Production I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 203,
-      title: 'Introduction to Public Relations',
+      title: "Introduction to Public Relations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 220,
-      title: 'Group Communication',
+      title: "Group Communication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 241,
-      title: 'Audio Production II',
+      title: "Audio Production II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 242,
-      title: 'Video Production II',
+      title: "Video Production II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 246,
-      title: 'Radio and Television Announcing',
+      title: "Radio and Television Announcing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 303,
-      title: 'Public Relations Applications',
+      title: "Public Relations Applications",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 310,
-      title: 'Organizational Communication',
+      title: "Organizational Communication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 319,
-      title: 'Communication & Gender',
+      title: "Communication & Gender",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 320,
-      title: 'Intercultural Communication',
+      title: "Intercultural Communication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 325,
-      title: 'Media Literacy',
+      title: "Media Literacy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 331,
-      title: 'Radio and Television Commercials',
+      title: "Radio and Television Commercials",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 335,
-      title: 'Radio Television Writing: Drama',
+      title: "Radio Television Writing: Drama",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 336,
-      title: 'Broadcast Reporting',
+      title: "Broadcast Reporting",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 350,
-      title: 'Persuasion',
+      title: "Persuasion",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 355,
-      title: 'Broadcast Management',
+      title: "Broadcast Management",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 363,
-      title: 'Sport Communication and Media Relations',
+      title: "Sport Communication and Media Relations",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 370,
-      title: 'Public Communication Law and Policy',
+      title: "Public Communication Law and Policy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 378,
-      title: 'Special Topics in Communication',
+      title: "Special Topics in Communication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 381,
-      title: 'Communication Research',
+      title: "Communication Research",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 436,
-      title: 'Public Relations Cases and Problems',
+      title: "Public Relations Cases and Problems",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 438,
-      title: 'Public Relations Campaign Management',
+      title: "Public Relations Campaign Management",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 446,
-      title: 'Mass Media and Society',
+      title: "Mass Media and Society",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 459,
-      title: 'Communication Studies Internship',
+      title: "Communication Studies Internship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 463,
-      title: 'Media Criticism',
+      title: "Media Criticism",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 490,
-      title: 'Communication Theory',
+      title: "Communication Theory",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'COM',
+      subject: "COM",
       course: 499,
-      title: 'Career Design Strategies',
+      title: "Career Design Strategies",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 109,
-      title: 'Private Instruction: Brass I',
+      title: "Private Instruction: Brass I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 119,
-      title: 'Private Instruction: Piano I',
+      title: "Private Instruction: Piano I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 129,
-      title: 'Private Instruction: Percussion I',
+      title: "Private Instruction: Percussion I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 149,
-      title: 'Private Instruction: Woodwinds I',
+      title: "Private Instruction: Woodwinds I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 159,
-      title: 'Private Instruction: Vocie I',
+      title: "Private Instruction: Vocie I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 170,
-      title: 'Private Instruction: Guitar I',
+      title: "Private Instruction: Guitar I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 179,
-      title: 'Private Instruction: String I',
+      title: "Private Instruction: String I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 191,
-      title: 'University Choir',
+      title: "University Choir",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 209,
-      title: 'Private Instruction: Brass II',
+      title: "Private Instruction: Brass II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 219,
-      title: 'Private Instruction: Piano II',
+      title: "Private Instruction: Piano II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 229,
-      title: 'Private Instruction: Percussion II',
+      title: "Private Instruction: Percussion II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 249,
-      title: 'Private Instruction: Woodwinds II',
+      title: "Private Instruction: Woodwinds II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 259,
-      title: 'Private Instruction: Voice II',
+      title: "Private Instruction: Voice II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 270,
-      title: 'Private Instruction: Guitar',
+      title: "Private Instruction: Guitar",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 275,
-      title: 'Music & Recording Technology I',
+      title: "Music & Recording Technology I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 279,
-      title: 'Private Instruction: String II',
+      title: "Private Instruction: String II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 309,
-      title: 'Private Instruction: Brass II',
+      title: "Private Instruction: Brass II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 316,
-      title: 'Comprehensive Musicianship III',
+      title: "Comprehensive Musicianship III",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 319,
-      title: 'Private Instruction: Piano III',
+      title: "Private Instruction: Piano III",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 329,
-      title: 'Private Instruction: Percussion III',
+      title: "Private Instruction: Percussion III",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 349,
-      title: 'Private Instruction: Woodwinds III',
+      title: "Private Instruction: Woodwinds III",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 359,
-      title: 'Private Instruction: Voice III',
+      title: "Private Instruction: Voice III",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 370,
-      title: 'Private Instruction: Guitar III',
+      title: "Private Instruction: Guitar III",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 375,
-      title: 'Music & Recording Technology II',
+      title: "Music & Recording Technology II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 379,
-      title: 'Private Instruction: String III',
+      title: "Private Instruction: String III",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 390,
-      title: 'Music Production I',
+      title: "Music Production I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 409,
-      title: 'Private Instruction: Brass IV',
+      title: "Private Instruction: Brass IV",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 416,
-      title: 'Comprehensive Musicianship IV',
+      title: "Comprehensive Musicianship IV",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 419,
-      title: 'Private Instruction: Piano IV',
+      title: "Private Instruction: Piano IV",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 425,
-      title: 'Commercial Music Arranging',
+      title: "Commercial Music Arranging",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 429,
-      title: 'Private Instruction: Percussion IV',
+      title: "Private Instruction: Percussion IV",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 449,
-      title: 'Private Instruction: Woodwinds IV',
+      title: "Private Instruction: Woodwinds IV",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 459,
-      title: 'Private Instruction: Voice IV',
+      title: "Private Instruction: Voice IV",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 469,
-      title: 'Independent Study Music',
+      title: "Independent Study Music",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 470,
-      title: 'Private Instruction: Guitar IV',
+      title: "Private Instruction: Guitar IV",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 475,
-      title: 'Music & Recording Technology III',
+      title: "Music & Recording Technology III",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 476,
-      title: 'Music & Recording Technology IV',
+      title: "Music & Recording Technology IV",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 479,
-      title: 'Private Instruction: String IV',
+      title: "Private Instruction: String IV",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 482,
-      title: 'Music Technology Practicum - Marketing',
+      title: "Music Technology Practicum - Marketing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 483,
-      title: 'Music Technology Practicum - Post Production',
+      title: "Music Technology Practicum - Post Production",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 484,
-      title: 'Music Technology Practicum - Sound Engineer',
+      title: "Music Technology Practicum - Sound Engineer",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 488,
-      title: 'Music Tech Internship',
+      title: "Music Tech Internship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'MUS',
+      subject: "MUS",
       course: 499,
-      title: 'Senior Project/Recital',
+      title: "Senior Project/Recital",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 311,
-      title: 'French Conversation, Composition and Phonetics I',
+      title: "French Conversation, Composition and Phonetics I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 312,
-      title: 'French Conversation, Composition and Phonetics II',
+      title: "French Conversation, Composition and Phonetics II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 401,
-      title: 'Aadvanced Composition: Grammer and Stylistics',
+      title: "Aadvanced Composition: Grammer and Stylistics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 421,
-      title: 'Survey of French Literature I',
+      title: "Survey of French Literature I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 422,
-      title: 'Survey of French Literature II',
+      title: "Survey of French Literature II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'FRE',
+      subject: "FRE",
       course: 450,
-      title: 'Foreign Language Colloquium in French',
+      title: "Foreign Language Colloquium in French",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 203,
-      title: 'Intermediate Spanish I',
+      title: "Intermediate Spanish I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 204,
-      title: 'Intermediate Spanish II',
+      title: "Intermediate Spanish II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 311,
-      title: 'Spanish Conversation, Composition and Phonetics I',
+      title: "Spanish Conversation, Composition and Phonetics I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 312,
-      title: 'Spanish Conversation, Composition and Phonetics II',
+      title: "Spanish Conversation, Composition and Phonetics II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 342,
-      title: 'Golden Age and Baroque',
+      title: "Golden Age and Baroque",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 345,
-      title: '20th Century Spain: 1900-1939',
+      title: "20th Century Spain: 1900-1939",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 346,
-      title: '20th Century Spain: 1939 to the Present',
+      title: "20th Century Spain: 1939 to the Present",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 348,
-      title: 'Romanticism in Latin America',
+      title: "Romanticism in Latin America",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 349,
-      title: 'Mexico in the 20th Century',
+      title: "Mexico in the 20th Century",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 350,
-      title: 'Contemporary Argentina',
+      title: "Contemporary Argentina",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 401,
-      title: 'Advanced Composition: Grammer and Stylistics',
+      title: "Advanced Composition: Grammer and Stylistics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 421,
-      title: 'Survey of Spanish Literature I',
+      title: "Survey of Spanish Literature I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 422,
-      title: 'Survey of Spanish-American Literature II',
+      title: "Survey of Spanish-American Literature II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 450,
-      title: 'Foreign Language Colloquium in Spanish',
+      title: "Foreign Language Colloquium in Spanish",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SPN',
+      subject: "SPN",
       course: 469,
-      title: 'Studies in Spanish Literature',
+      title: "Studies in Spanish Literature",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'WST',
+      subject: "WST",
       course: 430,
       title: 'Internship in Women\'s Studies',
       credits: 3,
@@ -3370,1341 +3371,1341 @@ Course.create(
       minimum_sat_score: nil
     },
     {
-      subject: 'UNI',
+      subject: "UNI",
       course: 98,
-      title: 'Tentative Schedule',
+      title: "Tentative Schedule",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'UNI',
+      subject: "UNI",
       course: 99,
-      title: 'Schedule Confirmation',
+      title: "Schedule Confirmation",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'UNI',
+      subject: "UNI",
       course: 101,
-      title: 'Introduction to University Studies',
+      title: "Introduction to University Studies",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'UNI',
+      subject: "UNI",
       course: 104,
-      title: 'Tentative First Year Seminar',
+      title: "Tentative First Year Seminar",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'UNI',
+      subject: "UNI",
       course: 200,
-      title: 'Career Readiness',
+      title: "Career Readiness",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 187,
-      title: 'Research Methods',
+      title: "Research Methods",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 200,
-      title: 'Honors Research Practice I',
+      title: "Honors Research Practice I",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 201,
-      title: 'Quantitative Problem Solving',
+      title: "Quantitative Problem Solving",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 265,
-      title: 'Global Transitions to 1300',
+      title: "Global Transitions to 1300",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 270,
-      title: 'Global Transitions Since 1300',
+      title: "Global Transitions Since 1300",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 300,
-      title: 'Honors Research Practice II',
+      title: "Honors Research Practice II",
       credits: 1,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 320,
-      title: 'Topics in Self and Society',
+      title: "Topics in Self and Society",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 325,
-      title: 'Topics in Education',
+      title: "Topics in Education",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 330,
-      title: 'Topics in Culture and Society',
+      title: "Topics in Culture and Society",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 335,
-      title: 'Topics in Science and Technology',
+      title: "Topics in Science and Technology",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 340,
-      title: 'Topics in Arts and Humanities',
+      title: "Topics in Arts and Humanities",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 450,
-      title: 'Honors Study Tour',
+      title: "Honors Study Tour",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 490,
-      title: 'Honors Research Seminar',
+      title: "Honors Research Seminar",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HON',
+      subject: "HON",
       course: 499,
-      title: 'Honors Thesis',
+      title: "Honors Thesis",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 233,
-      title: 'Jazz Tech II',
+      title: "Jazz Tech II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'DAN',
+      subject: "DAN",
       course: 399,
-      title: 'Dance History',
+      title: "Dance History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 225,
-      title: 'Social and Political Philosophy',
+      title: "Social and Political Philosophy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 247,
-      title: 'Science, Technology and Society',
+      title: "Science, Technology and Society",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 270,
-      title: 'Philosophy of Marxism',
+      title: "Philosophy of Marxism",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 310,
-      title: '19th-Century Philosophy',
+      title: "19th-Century Philosophy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 325,
-      title: 'Philosophy of Science',
+      title: "Philosophy of Science",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 370,
-      title: 'The Philosophy of Law',
+      title: "The Philosophy of Law",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 431,
-      title: 'Analytic Philosophy',
+      title: "Analytic Philosophy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 459,
-      title: 'Tutorial in Philosophy',
+      title: "Tutorial in Philosophy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 470,
-      title: 'Special Problems in Philosophy',
+      title: "Special Problems in Philosophy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'PHI',
+      subject: "PHI",
       course: 490,
-      title: 'Seminar in Philosophy',
+      title: "Seminar in Philosophy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 102,
-      title: 'Introduction to Windows',
+      title: "Introduction to Windows",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 105,
-      title: 'Basic Programming Language',
+      title: "Basic Programming Language",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 150,
-      title: 'Introduction to Database Applications',
+      title: "Introduction to Database Applications",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 199,
-      title: 'Field Experience in Computer Science',
+      title: "Field Experience in Computer Science",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 322,
-      title: 'Database Application Development',
+      title: "Database Application Development",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CSC',
+      subject: "CSC",
       course: 352,
-      title: 'Global, Economic and Social Ethical Issues in Computing',
+      title: "Global, Economic and Social Ethical Issues in Computing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 235,
-      title: 'Digital Electronics Design',
+      title: "Digital Electronics Design",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 270,
-      title: 'Introduction to Microprocessor Design',
+      title: "Introduction to Microprocessor Design",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 335,
-      title: 'Microprocessor Interfacing',
+      title: "Microprocessor Interfacing",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 360,
-      title: 'Microprocessor Engineering',
+      title: "Microprocessor Engineering",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 485,
-      title: 'Special Topics in CET',
+      title: "Special Topics in CET",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 490,
-      title: 'Senior Project I',
+      title: "Senior Project I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 492,
-      title: 'Senior Project II',
+      title: "Senior Project II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CET',
+      subject: "CET",
       course: 495,
-      title: 'Computer Engineering Technology Internship',
+      title: "Computer Engineering Technology Internship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 110,
-      title: 'Introduction to Information Systems',
+      title: "Introduction to Information Systems",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 120,
-      title: 'Application Programming I',
+      title: "Application Programming I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 220,
-      title: 'Application Programming II',
+      title: "Application Programming II",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 299,
-      title: 'Systems Analysis I',
+      title: "Systems Analysis I",
       credits: 3,
       minimum_class_standing: 'Sophmore
-      ', minimum_sat_score: ''
+      ', minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 302,
-      title: 'Visual Programming',
+      title: "Visual Programming",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 304,
-      title: 'COBOL',
+      title: "COBOL",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 322,
-      title: 'Database Application Development',
+      title: "Database Application Development",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 325,
-      title: 'Decision Support Systems',
+      title: "Decision Support Systems",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 330,
-      title: 'Web Programming I',
+      title: "Web Programming I",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 332,
-      title: 'Web Programming II',
+      title: "Web Programming II",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 341,
-      title: 'CISCO CCNA 1',
+      title: "CISCO CCNA 1",
       credits: 4,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 342,
-      title: 'CISCO CCNA 2',
+      title: "CISCO CCNA 2",
       credits: 4,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 343,
-      title: 'CISCO CCNA 3',
+      title: "CISCO CCNA 3",
       credits: 4,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 344,
-      title: 'CISCO CCNA 4',
+      title: "CISCO CCNA 4",
       credits: 4,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 354,
-      title: 'Systems Project Management',
+      title: "Systems Project Management",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 401,
-      title: 'Concepts in Enterprise Resource Planning',
+      title: "Concepts in Enterprise Resource Planning",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 419,
-      title: 'CIS Internship',
+      title: "CIS Internship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 474,
-      title: 'Special Topics Information Systems',
+      title: "Special Topics Information Systems",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 490,
-      title: 'System Analysis II',
+      title: "System Analysis II",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'CIS',
+      subject: "CIS",
       course: 492,
-      title: 'Systems Development an Implementation',
+      title: "Systems Development an Implementation",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 100,
-      title: 'English Language Skills',
+      title: "English Language Skills",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 104,
-      title: 'Tentative English 100 or 101',
+      title: "Tentative English 100 or 101",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 150,
-      title: 'Baseball in Literature',
+      title: "Baseball in Literature",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 155,
-      title: 'Black Literature',
+      title: "Black Literature",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 167,
-      title: 'Journalism I (News Writing)',
+      title: "Journalism I (News Writing)",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 169,
-      title: 'Journalism II (Feature Writing',
+      title: "Journalism II (Feature Writing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 170,
-      title: 'All About Words',
+      title: "All About Words",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 203,
-      title: 'Great Books',
+      title: "Great Books",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 211,
-      title: 'Business Writing I',
+      title: "Business Writing I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 302,
-      title: 'English Literature II',
+      title: "English Literature II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 308,
-      title: 'Research for Writers',
+      title: "Research for Writers",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 312,
-      title: 'Journalism III (Editing)',
+      title: "Journalism III (Editing)",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 320,
-      title: 'Multimedia Journalism',
+      title: "Multimedia Journalism",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 338,
-      title: 'Survey of American Literature II',
+      title: "Survey of American Literature II",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 345,
-      title: 'English Grammer and Usage',
+      title: "English Grammer and Usage",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 346,
-      title: 'History of the English Language',
+      title: "History of the English Language",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 347,
-      title: 'Introduction to Linguistics',
+      title: "Introduction to Linguistics",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 350,
-      title: 'Special Topics in Journalism Genres',
+      title: "Special Topics in Journalism Genres",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 351,
-      title: 'Publishing the Magazine',
+      title: "Publishing the Magazine",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 352,
-      title: 'Studies in Writing',
+      title: "Studies in Writing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 371,
-      title: 'Critical Theory and the Teaching of Literature',
+      title: "Critical Theory and the Teaching of Literature",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 372,
-      title: 'Composition Theory and the Teaching of Writing',
+      title: "Composition Theory and the Teaching of Writing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 375,
-      title: 'Advanced Writing',
+      title: "Advanced Writing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 376,
-      title: 'Creative Writing: Fiction',
+      title: "Creative Writing: Fiction",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 377,
-      title: 'Creating Writing: Poetry',
+      title: "Creating Writing: Poetry",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 378,
-      title: 'Creative Writing Drama',
+      title: "Creative Writing Drama",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 415,
-      title: 'Chaucer',
+      title: "Chaucer",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 419,
-      title: 'Internship in Professional Writing',
+      title: "Internship in Professional Writing",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 425,
-      title: 'Shakespeare I',
+      title: "Shakespeare I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 430,
-      title: 'Adaption of Literacy Materials',
+      title: "Adaption of Literacy Materials",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 448,
-      title: 'Practical Critcism',
+      title: "Practical Critcism",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 481,
-      title: 'Studies in Old and Middle English Literature',
+      title: "Studies in Old and Middle English Literature",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 484,
-      title: 'Studies in 19th-Century Literature',
+      title: "Studies in 19th-Century Literature",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 485,
-      title: 'Studies in 20th-Century English Literature',
+      title: "Studies in 20th-Century English Literature",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 489,
-      title: 'Studies in English Literacy Genres',
+      title: "Studies in English Literacy Genres",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 495,
-      title: 'Creative Writing Seminar',
+      title: "Creative Writing Seminar",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 496,
-      title: 'Writing for Publication',
+      title: "Writing for Publication",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ENG',
+      subject: "ENG",
       course: 499,
-      title: 'English Studies Capstone Class',
+      title: "English Studies Capstone Class",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ACC',
+      subject: "ACC",
       course: 200,
-      title: 'Financial Accounting',
+      title: "Financial Accounting",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 101,
-      title: 'History of US to 1877',
+      title: "History of US to 1877",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 102,
-      title: 'History of US Since 1877',
+      title: "History of US Since 1877",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 104,
-      title: 'History of Western Civilization to 1500',
+      title: "History of Western Civilization to 1500",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 106,
-      title: 'History of Western Society Since 1500',
+      title: "History of Western Society Since 1500",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 111,
-      title: 'World Civilization to 1500',
+      title: "World Civilization to 1500",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 112,
-      title: 'World Civilization Since 1500',
+      title: "World Civilization Since 1500",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 200,
-      title: 'History of Pennsylvania',
+      title: "History of Pennsylvania",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 240,
-      title: 'History of the Cold War',
+      title: "History of the Cold War",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 288,
-      title: 'Local History',
+      title: "Local History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 295,
-      title: 'The Craft of History',
+      title: "The Craft of History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 304,
-      title: 'Great Depression and WWII',
+      title: "Great Depression and WWII",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 305,
-      title: 'Contemporary History of the US',
+      title: "Contemporary History of the US",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 308,
-      title: 'History of American Constitution',
+      title: "History of American Constitution",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 309,
-      title: 'History of Gender in Latin America',
+      title: "History of Gender in Latin America",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 310,
-      title: 'Christianity to 1500',
+      title: "Christianity to 1500",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 311,
-      title: 'Intro to Public History',
+      title: "Intro to Public History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 312,
-      title: 'Women in Europe',
+      title: "Women in Europe",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 314,
-      title: 'History of Scientific Thought and Tech Innovations',
+      title: "History of Scientific Thought and Tech Innovations",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 316,
-      title: '20th Century US Foreign Policy',
+      title: "20th Century US Foreign Policy",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 317,
-      title: 'African-American History to 1877',
+      title: "African-American History to 1877",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 318,
-      title: 'African-American History Since 1877',
+      title: "African-American History Since 1877",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 320,
-      title: 'Anatomy of Dictatorship',
+      title: "Anatomy of Dictatorship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 323,
-      title: 'World Environmental History',
+      title: "World Environmental History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 327,
-      title: 'History of the Civil War & Reconstruction',
+      title: "History of the Civil War & Reconstruction",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 329,
-      title: 'History Internship',
+      title: "History Internship",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 331,
-      title: 'Ancient Greece',
+      title: "Ancient Greece",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 333,
-      title: 'Film and History',
+      title: "Film and History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 341,
-      title: 'Early Middle Ages',
+      title: "Early Middle Ages",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 342,
-      title: 'High and Late Middle Ages',
+      title: "High and Late Middle Ages",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 345,
-      title: 'Race and Expansion of Islam',
+      title: "Race and Expansion of Islam",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 348,
-      title: 'History of Sport',
+      title: "History of Sport",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 350,
-      title: 'Adolf Hitler',
+      title: "Adolf Hitler",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 356,
-      title: 'Colonial & Revolutionary America',
+      title: "Colonial & Revolutionary America",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 366,
-      title: 'History of Modern Latin America',
+      title: "History of Modern Latin America",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 367,
-      title: 'Conquest of the Americas',
+      title: "Conquest of the Americas",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 370,
-      title: 'Topics in Atlantic History',
+      title: "Topics in Atlantic History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 375,
-      title: 'Pittsburgh History',
+      title: "Pittsburgh History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 379,
-      title: 'Special Problems in History',
+      title: "Special Problems in History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 402,
-      title: '19th Century America',
+      title: "19th Century America",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 410,
-      title: 'Crusades',
+      title: "Crusades",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 416,
-      title: 'History of Britain',
+      title: "History of Britain",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 418,
-      title: 'History of Bourbon France',
+      title: "History of Bourbon France",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 420,
-      title: 'Renaissance and Reformation in Europe',
+      title: "Renaissance and Reformation in Europe",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 422,
-      title: 'History of Antebellum South',
+      title: "History of Antebellum South",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 423,
-      title: 'History of American West',
+      title: "History of American West",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 425,
-      title: 'Topics in Latin American Cultural History',
+      title: "Topics in Latin American Cultural History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 430,
-      title: 'Topics in Modern Asian Cultural History',
+      title: "Topics in Modern Asian Cultural History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 435,
-      title: 'History of Law',
+      title: "History of Law",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 440,
-      title: 'US at War/19th Century',
+      title: "US at War/19th Century",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 441,
-      title: 'US at War/20th Century',
+      title: "US at War/20th Century",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 445,
-      title: 'Social History of the US',
+      title: "Social History of the US",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 491,
-      title: 'Reading in History',
+      title: "Reading in History",
       credits: 3,
       minimum_class_standing: nil,
-      minimum_sat_score: ''
+      minimum_sat_score: ""
     },
     {
-      subject: 'HIS',
+      subject: "HIS",
       course: 495,
-      title: 'Seminar in History',
+      title: "Seminar in History",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'ARB',
+      subject: "ARB",
       course: 101,
-      title: 'Elementary Arabic I',
+      title: "Elementary Arabic I",
       credits: 3,
       minimum_class_standing: nil,
       minimum_sat_score: nil
     },
     {
-      subject: 'SOW',
+      subject: "SOW",
       course: 303,
-      title: 'Human Sexuality and Society',
+      title: "Human Sexuality and Society",
       credits: 3,
-      minimum_class_standing: 'Junior',
-      minimum_sat_score: ''
+      minimum_class_standing: "Junior",
+      minimum_sat_score: ""
     }
   ]
 )
 
 PrerequisiteGroup.create(course_id: 3)
 Prerequisite.create(prerequisite_group_id: 1, course_id: 2,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 5)
 Prerequisite.create(prerequisite_group_id: 2, course_id: 3,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 6)
 Prerequisite.create(prerequisite_group_id: 3, course_id: 5,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 6)
 Prerequisite.create(prerequisite_group_id: 4, course_id: 469,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 7)
 Prerequisite.create(prerequisite_group_id: 5, course_id: 8,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 8)
 Prerequisite.create(prerequisite_group_id: 6, course_id: 5,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 9)
 Prerequisite.create(prerequisite_group_id: 7, course_id: 19,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 11)
 Prerequisite.create(prerequisite_group_id: 8, course_id: 8,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 12)
 Prerequisite.create(prerequisite_group_id: 9, course_id: 20,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 13)
 Prerequisite.create(prerequisite_group_id: 10, course_id: 21,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 14)
 Prerequisite.create(prerequisite_group_id: 11, course_id: 22,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 15)
 Prerequisite.create(prerequisite_group_id: 12, course_id: 3,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 15)
 Prerequisite.create(prerequisite_group_id: 13, course_id: 16,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 15)
 Prerequisite.create(prerequisite_group_id: 14, course_id: 469,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 16)
 Prerequisite.create(prerequisite_group_id: 15, course_id: 2,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 18)
 Prerequisite.create(prerequisite_group_id: 16, course_id: 8,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 19)
 Prerequisite.create(prerequisite_group_id: 17, course_id: 7,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 20)
 Prerequisite.create(prerequisite_group_id: 18, course_id: 8,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 18, course_id: 14,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 21)
 Prerequisite.create(prerequisite_group_id: 19, course_id: 5,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 19, course_id: 28,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 28)
 Prerequisite.create(prerequisite_group_id: 20, course_id: 29,
                     minimum_grade: nil)
@@ -4716,13 +4717,13 @@ Prerequisite.create(prerequisite_group_id: 22, course_id: 29,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 31)
 Prerequisite.create(prerequisite_group_id: 23, course_id: 470,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 32)
 Prerequisite.create(prerequisite_group_id: 24, course_id: 8,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 33)
 Prerequisite.create(prerequisite_group_id: 25, course_id: 8,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 25, course_id: 23,
                     minimum_grade: nil)
 Prerequisite.create(prerequisite_group_id: 25, course_id: 24,
@@ -4812,34 +4813,34 @@ Prerequisite.create(prerequisite_group_id: 46, course_id: 3,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 45)
 Prerequisite.create(prerequisite_group_id: 47, course_id: 618,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 22)
 Prerequisite.create(prerequisite_group_id: 48, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 26)
 Prerequisite.create(prerequisite_group_id: 49, course_id: 618,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 23)
 Prerequisite.create(prerequisite_group_id: 50, course_id: 25,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 24)
 Prerequisite.create(prerequisite_group_id: 51, course_id: 625,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 24)
 Prerequisite.create(prerequisite_group_id: 52, course_id: 22,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 39)
 Prerequisite.create(prerequisite_group_id: 53, course_id: 23,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 42)
 Prerequisite.create(prerequisite_group_id: 54, course_id: 39,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 27)
 Prerequisite.create(prerequisite_group_id: 55, course_id: 39,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 40)
 Prerequisite.create(prerequisite_group_id: 56, course_id: 24,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 55)
 Prerequisite.create(prerequisite_group_id: 57, course_id: 618,
                     minimum_grade: nil)
@@ -5453,7 +5454,7 @@ Prerequisite.create(prerequisite_group_id: 219, course_id: 138,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 457)
 Prerequisite.create(prerequisite_group_id: 220, course_id: 31,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 460)
 Prerequisite.create(prerequisite_group_id: 221, course_id: 459,
                     minimum_grade: nil)
@@ -5470,74 +5471,74 @@ Prerequisite.create(prerequisite_group_id: 224, course_id: 464,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 469)
 Prerequisite.create(prerequisite_group_id: 225, course_id: 467,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 225, course_id: 468,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 470)
 Prerequisite.create(prerequisite_group_id: 226, course_id: 28,
                     minimum_grade: nil)
 Prerequisite.create(prerequisite_group_id: 226, course_id: 182,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 226, course_id: 467,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 226, course_id: 468,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 471)
 Prerequisite.create(prerequisite_group_id: 227, course_id: 5,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 471)
 Prerequisite.create(prerequisite_group_id: 228, course_id: 469,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 472)
 Prerequisite.create(prerequisite_group_id: 229, course_id: 3,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 472)
 Prerequisite.create(prerequisite_group_id: 230, course_id: 469,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 472)
 Prerequisite.create(prerequisite_group_id: 231, course_id: 16,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 473)
 Prerequisite.create(prerequisite_group_id: 232, course_id: 31,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 474)
 Prerequisite.create(prerequisite_group_id: 233, course_id: 470,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 475)
 Prerequisite.create(prerequisite_group_id: 234, course_id: 469,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 476)
 Prerequisite.create(prerequisite_group_id: 235, course_id: 473,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 235, course_id: 475,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 478)
 Prerequisite.create(prerequisite_group_id: 236, course_id: 477,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 479)
 Prerequisite.create(prerequisite_group_id: 237, course_id: 478,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 480)
 Prerequisite.create(prerequisite_group_id: 238, course_id: 479,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 481)
 Prerequisite.create(prerequisite_group_id: 239, course_id: 470,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 482)
 Prerequisite.create(prerequisite_group_id: 240, course_id: 182,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 240, course_id: 470,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 240, course_id: 525,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 485)
 Prerequisite.create(prerequisite_group_id: 241, course_id: 473,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 Prerequisite.create(prerequisite_group_id: 241, course_id: 481,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 486)
 Prerequisite.create(prerequisite_group_id: 242, course_id: 485,
-                    minimum_grade: 'C-')
+                    minimum_grade: "C-")
 PrerequisiteGroup.create(course_id: 491)
 Prerequisite.create(prerequisite_group_id: 243, course_id: 29,
                     minimum_grade: nil)
@@ -5824,7 +5825,7 @@ Prerequisite.create(prerequisite_group_id: 312, course_id: 201,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 594)
 Prerequisite.create(prerequisite_group_id: 313, course_id: 593,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 597)
 Prerequisite.create(prerequisite_group_id: 314, course_id: 26,
                     minimum_grade: nil)
@@ -5865,56 +5866,56 @@ Prerequisite.create(prerequisite_group_id: 321, course_id: 615,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 619)
 Prerequisite.create(prerequisite_group_id: 322, course_id: 618,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 622)
 Prerequisite.create(prerequisite_group_id: 323, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 623)
 Prerequisite.create(prerequisite_group_id: 324, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 324, course_id: 622,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 598)
 Prerequisite.create(prerequisite_group_id: 325, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 625)
 Prerequisite.create(prerequisite_group_id: 326, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 626)
 Prerequisite.create(prerequisite_group_id: 327, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 626)
 Prerequisite.create(prerequisite_group_id: 328, course_id: 623,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 25)
 Prerequisite.create(prerequisite_group_id: 329, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 329, course_id: 622,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 25)
 Prerequisite.create(prerequisite_group_id: 330, course_id: 623,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 627)
 Prerequisite.create(prerequisite_group_id: 331, course_id: 25,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 628)
 Prerequisite.create(prerequisite_group_id: 332, course_id: 45,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 332, course_id: 625,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 628)
 Prerequisite.create(prerequisite_group_id: 333, course_id: 622,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 333, course_id: 625,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 629)
 Prerequisite.create(prerequisite_group_id: 334, course_id: 23,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 334, course_id: 628,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 630)
 Prerequisite.create(prerequisite_group_id: 335, course_id: 25,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 631)
 Prerequisite.create(prerequisite_group_id: 336, course_id: 23,
                     minimum_grade: nil)
@@ -5927,7 +5928,7 @@ Prerequisite.create(prerequisite_group_id: 337, course_id: 625,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 632)
 Prerequisite.create(prerequisite_group_id: 338, course_id: 625,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 633)
 Prerequisite.create(prerequisite_group_id: 339, course_id: 26,
                     minimum_grade: nil)
@@ -5942,814 +5943,814 @@ Prerequisite.create(prerequisite_group_id: 342, course_id: 605,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 637)
 Prerequisite.create(prerequisite_group_id: 343, course_id: 39,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 343, course_id: 26,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 343, course_id: 24,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 638)
 Prerequisite.create(prerequisite_group_id: 344, course_id: 632,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 639)
 Prerequisite.create(prerequisite_group_id: 345, course_id: 26,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 345, course_id: 23,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 639)
 Prerequisite.create(prerequisite_group_id: 346, course_id: 23,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 346, course_id: 598,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 640)
 Prerequisite.create(prerequisite_group_id: 347, course_id: 639,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 641)
 Prerequisite.create(prerequisite_group_id: 348, course_id: 639,
                     minimum_grade: nil)
 PrerequisiteGroup.create(course_id: 642)
 Prerequisite.create(prerequisite_group_id: 349, course_id: 42,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 PrerequisiteGroup.create(course_id: 643)
 Prerequisite.create(prerequisite_group_id: 350, course_id: 39,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 Prerequisite.create(prerequisite_group_id: 350, course_id: 625,
-                    minimum_grade: 'C')
+                    minimum_grade: "C")
 
-DaysTime.create(days: 'MWF', start_time: '8:00 am', end_time: '8:50 am')
-DaysTime.create(days: 'MWF', start_time: '9:00 am', end_time: '9:50 am')
-DaysTime.create(days: 'MWF', start_time: '10:00 am', end_time: '10:50 am')
-DaysTime.create(days: 'MWF', start_time: '11:00 am', end_time: '11:50 am')
-DaysTime.create(days: 'MWF', start_time: '12:00 pm', end_time: '12:50 pm')
-DaysTime.create(days: 'MWF', start_time: '1:00 pm', end_time: '1:50 pm')
-DaysTime.create(days: 'MWF', start_time: '2:00 pm', end_time: '2:50 pm')
-DaysTime.create(days: 'MWF', start_time: '3:00 pm', end_time: '3:50 pm')
-DaysTime.create(days: 'MWF', start_time: '4:00 pm', end_time: '4:50 pm')
-DaysTime.create(days: 'MW', start_time: '4:00 pm', end_time: '5:15 pm')
-DaysTime.create(days: 'MW', start_time: '3:00 pm', end_time: '3:30 pm')
-DaysTime.create(days: 'MW', start_time: '2:00 pm', end_time: '2:50 pm')
-DaysTime.create(days: 'TR', start_time: '8:00 am', end_time: '9:15 am')
-DaysTime.create(days: 'TR', start_time: '9:30 am', end_time: '10:45 am')
-DaysTime.create(days: 'TR', start_time: '12:30 pm', end_time: '1:45 pm')
-DaysTime.create(days: 'TR', start_time: '2:00 pm', end_time: '3:15 pm')
-DaysTime.create(days: 'TR', start_time: '3:30 pm', end_time: '4:45 pm')
-DaysTime.create(days: 'M', start_time: '6:00 pm', end_time: '8:45 pm')
-DaysTime.create(days: 'W', start_time: '6:00 pm', end_time: '8:45 pm')
-DaysTime.create(days: 'R', start_time: '6:00 pm', end_time: '8:45 pm')
-DaysTime.create(days: 'T', start_time: '6:00 pm', end_time: '8:45 pm')
-DaysTime.create(days: 'W', start_time: '4:00 pm', end_time: '6:50 pm')
-DaysTime.create(days: 'ONLINE')
-DaysTime.create(days: 'OFFSITE')
+DaysTime.create(days: "MWF", start_time: "8:00 am", end_time: "8:50 am")
+DaysTime.create(days: "MWF", start_time: "9:00 am", end_time: "9:50 am")
+DaysTime.create(days: "MWF", start_time: "10:00 am", end_time: "10:50 am")
+DaysTime.create(days: "MWF", start_time: "11:00 am", end_time: "11:50 am")
+DaysTime.create(days: "MWF", start_time: "12:00 pm", end_time: "12:50 pm")
+DaysTime.create(days: "MWF", start_time: "1:00 pm", end_time: "1:50 pm")
+DaysTime.create(days: "MWF", start_time: "2:00 pm", end_time: "2:50 pm")
+DaysTime.create(days: "MWF", start_time: "3:00 pm", end_time: "3:50 pm")
+DaysTime.create(days: "MWF", start_time: "4:00 pm", end_time: "4:50 pm")
+DaysTime.create(days: "MW", start_time: "4:00 pm", end_time: "5:15 pm")
+DaysTime.create(days: "MW", start_time: "3:00 pm", end_time: "3:30 pm")
+DaysTime.create(days: "MW", start_time: "2:00 pm", end_time: "2:50 pm")
+DaysTime.create(days: "TR", start_time: "8:00 am", end_time: "9:15 am")
+DaysTime.create(days: "TR", start_time: "9:30 am", end_time: "10:45 am")
+DaysTime.create(days: "TR", start_time: "12:30 pm", end_time: "1:45 pm")
+DaysTime.create(days: "TR", start_time: "2:00 pm", end_time: "3:15 pm")
+DaysTime.create(days: "TR", start_time: "3:30 pm", end_time: "4:45 pm")
+DaysTime.create(days: "M", start_time: "6:00 pm", end_time: "8:45 pm")
+DaysTime.create(days: "W", start_time: "6:00 pm", end_time: "8:45 pm")
+DaysTime.create(days: "R", start_time: "6:00 pm", end_time: "8:45 pm")
+DaysTime.create(days: "T", start_time: "6:00 pm", end_time: "8:45 pm")
+DaysTime.create(days: "W", start_time: "4:00 pm", end_time: "6:50 pm")
+DaysTime.create(days: "ONLINE")
+DaysTime.create(days: "OFFSITE")
 
-WorkDaysTime.create(days: 'M', start_time: '8:00am', end_time: '8:30am')
-WorkDaysTime.create(days: 'M', start_time: '8:30am', end_time: '9:00am')
-WorkDaysTime.create(days: 'M', start_time: '9:00am', end_time: '9:30am')
-WorkDaysTime.create(days: 'M', start_time: '9:30am', end_time: '10:00am')
-WorkDaysTime.create(days: 'M', start_time: '10:00am', end_time: '10:30am')
-WorkDaysTime.create(days: 'M', start_time: '10:30am', end_time: '11:00am')
-WorkDaysTime.create(days: 'M', start_time: '11:00am', end_time: '11:30am')
-WorkDaysTime.create(days: 'M', start_time: '11:30am', end_time: '12:00pm')
-WorkDaysTime.create(days: 'M', start_time: '12:00pm', end_time: '12:30pm')
-WorkDaysTime.create(days: 'M', start_time: '12:30pm', end_time: '1:00pm')
-WorkDaysTime.create(days: 'M', start_time: '1:00pm', end_time: '1:30pm')
-WorkDaysTime.create(days: 'M', start_time: '1:30pm', end_time: '2:00pm')
-WorkDaysTime.create(days: 'M', start_time: '2:00pm', end_time: '2:30pm')
-WorkDaysTime.create(days: 'M', start_time: '2:30pm', end_time: '3:00pm')
-WorkDaysTime.create(days: 'M', start_time: '3:00pm', end_time: '3:30pm')
-WorkDaysTime.create(days: 'M', start_time: '3:30pm', end_time: '4:00pm')
-WorkDaysTime.create(days: 'M', start_time: '4:00pm', end_time: '4:30pm')
-WorkDaysTime.create(days: 'M', start_time: '4:30pm', end_time: '5:00pm')
-WorkDaysTime.create(days: 'M', start_time: '5:00pm', end_time: '5:30pm')
-WorkDaysTime.create(days: 'M', start_time: '5:30pm', end_time: '6:00pm')
-WorkDaysTime.create(days: 'M', start_time: '6:00pm', end_time: '6:30pm')
-WorkDaysTime.create(days: 'M', start_time: '6:30pm', end_time: '7:00pm')
-WorkDaysTime.create(days: 'M', start_time: '7:00pm', end_time: '7:30pm')
-WorkDaysTime.create(days: 'M', start_time: '7:30pm', end_time: '8:00pm')
-WorkDaysTime.create(days: 'M', start_time: '8:00pm', end_time: '8:30pm')
-WorkDaysTime.create(days: 'M', start_time: '8:30pm', end_time: '9:00pm')
-WorkDaysTime.create(days: 'M', start_time: '9:00pm', end_time: '9:30pm')
-WorkDaysTime.create(days: 'M', start_time: '9:30pm', end_time: '10:00pm')
-WorkDaysTime.create(days: 'T', start_time: '8:00am', end_time: '8:30am')
-WorkDaysTime.create(days: 'T', start_time: '8:30am', end_time: '9:00am')
-WorkDaysTime.create(days: 'T', start_time: '9:00am', end_time: '9:30am')
-WorkDaysTime.create(days: 'T', start_time: '9:30am', end_time: '10:00am')
-WorkDaysTime.create(days: 'T', start_time: '10:00am', end_time: '10:30am')
-WorkDaysTime.create(days: 'T', start_time: '10:30am', end_time: '11:00am')
-WorkDaysTime.create(days: 'T', start_time: '11:00am', end_time: '11:30am')
-WorkDaysTime.create(days: 'T', start_time: '11:30am', end_time: '12:00pm')
-WorkDaysTime.create(days: 'T', start_time: '12:00pm', end_time: '12:30pm')
-WorkDaysTime.create(days: 'T', start_time: '12:30pm', end_time: '1:00pm')
-WorkDaysTime.create(days: 'T', start_time: '1:00pm', end_time: '1:30pm')
-WorkDaysTime.create(days: 'T', start_time: '1:30pm', end_time: '2:00pm')
-WorkDaysTime.create(days: 'T', start_time: '2:00pm', end_time: '2:30pm')
-WorkDaysTime.create(days: 'T', start_time: '2:30pm', end_time: '3:00pm')
-WorkDaysTime.create(days: 'T', start_time: '3:00pm', end_time: '3:30pm')
-WorkDaysTime.create(days: 'T', start_time: '3:30pm', end_time: '4:00pm')
-WorkDaysTime.create(days: 'T', start_time: '4:00pm', end_time: '4:30pm')
-WorkDaysTime.create(days: 'T', start_time: '4:30pm', end_time: '5:00pm')
-WorkDaysTime.create(days: 'T', start_time: '5:00pm', end_time: '5:30pm')
-WorkDaysTime.create(days: 'T', start_time: '5:30pm', end_time: '6:00pm')
-WorkDaysTime.create(days: 'T', start_time: '6:00pm', end_time: '6:30pm')
-WorkDaysTime.create(days: 'T', start_time: '6:30pm', end_time: '7:00pm')
-WorkDaysTime.create(days: 'T', start_time: '7:00pm', end_time: '7:30pm')
-WorkDaysTime.create(days: 'T', start_time: '7:30pm', end_time: '8:00pm')
-WorkDaysTime.create(days: 'T', start_time: '8:00pm', end_time: '8:30pm')
-WorkDaysTime.create(days: 'T', start_time: '8:30pm', end_time: '9:00pm')
-WorkDaysTime.create(days: 'T', start_time: '9:00pm', end_time: '9:30pm')
-WorkDaysTime.create(days: 'T', start_time: '9:30pm', end_time: '10:00pm')
-WorkDaysTime.create(days: 'W', start_time: '8:00am', end_time: '8:30am')
-WorkDaysTime.create(days: 'W', start_time: '8:30am', end_time: '9:00am')
-WorkDaysTime.create(days: 'W', start_time: '9:00am', end_time: '9:30am')
-WorkDaysTime.create(days: 'W', start_time: '9:30am', end_time: '10:00am')
-WorkDaysTime.create(days: 'W', start_time: '10:00am', end_time: '10:30am')
-WorkDaysTime.create(days: 'W', start_time: '10:30am', end_time: '11:00am')
-WorkDaysTime.create(days: 'W', start_time: '11:00am', end_time: '11:30am')
-WorkDaysTime.create(days: 'W', start_time: '11:30am', end_time: '12:00pm')
-WorkDaysTime.create(days: 'W', start_time: '12:00pm', end_time: '12:30pm')
-WorkDaysTime.create(days: 'W', start_time: '12:30pm', end_time: '1:00pm')
-WorkDaysTime.create(days: 'W', start_time: '1:00pm', end_time: '1:30pm')
-WorkDaysTime.create(days: 'W', start_time: '1:30pm', end_time: '2:00pm')
-WorkDaysTime.create(days: 'W', start_time: '2:00pm', end_time: '2:30pm')
-WorkDaysTime.create(days: 'W', start_time: '2:30pm', end_time: '3:00pm')
-WorkDaysTime.create(days: 'W', start_time: '3:00pm', end_time: '3:30pm')
-WorkDaysTime.create(days: 'W', start_time: '3:30pm', end_time: '4:00pm')
-WorkDaysTime.create(days: 'W', start_time: '4:00pm', end_time: '4:30pm')
-WorkDaysTime.create(days: 'W', start_time: '4:30pm', end_time: '5:00pm')
-WorkDaysTime.create(days: 'W', start_time: '5:00pm', end_time: '5:30pm')
-WorkDaysTime.create(days: 'W', start_time: '5:30pm', end_time: '6:00pm')
-WorkDaysTime.create(days: 'W', start_time: '6:00pm', end_time: '6:30pm')
-WorkDaysTime.create(days: 'W', start_time: '6:30pm', end_time: '7:00pm')
-WorkDaysTime.create(days: 'W', start_time: '7:00pm', end_time: '7:30pm')
-WorkDaysTime.create(days: 'W', start_time: '7:30pm', end_time: '8:00pm')
-WorkDaysTime.create(days: 'W', start_time: '8:00pm', end_time: '8:30pm')
-WorkDaysTime.create(days: 'W', start_time: '8:30pm', end_time: '9:00pm')
-WorkDaysTime.create(days: 'W', start_time: '9:00pm', end_time: '9:30pm')
-WorkDaysTime.create(days: 'W', start_time: '9:30pm', end_time: '10:00pm')
-WorkDaysTime.create(days: 'R', start_time: '8:00am', end_time: '8:30am')
-WorkDaysTime.create(days: 'R', start_time: '8:30am', end_time: '9:00am')
-WorkDaysTime.create(days: 'R', start_time: '9:00am', end_time: '9:30am')
-WorkDaysTime.create(days: 'R', start_time: '9:30am', end_time: '10:00am')
-WorkDaysTime.create(days: 'R', start_time: '10:00am', end_time: '10:30am')
-WorkDaysTime.create(days: 'R', start_time: '10:30am', end_time: '11:00am')
-WorkDaysTime.create(days: 'R', start_time: '11:00am', end_time: '11:30am')
-WorkDaysTime.create(days: 'R', start_time: '11:30am', end_time: '12:00pm')
-WorkDaysTime.create(days: 'R', start_time: '12:00pm', end_time: '12:30pm')
-WorkDaysTime.create(days: 'R', start_time: '12:30pm', end_time: '1:00pm')
-WorkDaysTime.create(days: 'R', start_time: '1:00pm', end_time: '1:30pm')
-WorkDaysTime.create(days: 'R', start_time: '1:30pm', end_time: '2:00pm')
-WorkDaysTime.create(days: 'R', start_time: '2:00pm', end_time: '2:30pm')
-WorkDaysTime.create(days: 'R', start_time: '2:30pm', end_time: '3:00pm')
-WorkDaysTime.create(days: 'R', start_time: '3:00pm', end_time: '3:30pm')
-WorkDaysTime.create(days: 'R', start_time: '3:30pm', end_time: '4:00pm')
-WorkDaysTime.create(days: 'R', start_time: '4:00pm', end_time: '4:30pm')
-WorkDaysTime.create(days: 'R', start_time: '4:30pm', end_time: '5:00pm')
-WorkDaysTime.create(days: 'R', start_time: '5:00pm', end_time: '5:30pm')
-WorkDaysTime.create(days: 'R', start_time: '5:30pm', end_time: '6:00pm')
-WorkDaysTime.create(days: 'R', start_time: '6:00pm', end_time: '6:30pm')
-WorkDaysTime.create(days: 'R', start_time: '6:30pm', end_time: '7:00pm')
-WorkDaysTime.create(days: 'R', start_time: '7:00pm', end_time: '7:30pm')
-WorkDaysTime.create(days: 'R', start_time: '7:30pm', end_time: '8:00pm')
-WorkDaysTime.create(days: 'R', start_time: '8:00pm', end_time: '8:30pm')
-WorkDaysTime.create(days: 'R', start_time: '8:30pm', end_time: '9:00pm')
-WorkDaysTime.create(days: 'R', start_time: '9:00pm', end_time: '9:30pm')
-WorkDaysTime.create(days: 'R', start_time: '9:30pm', end_time: '10:00pm')
-WorkDaysTime.create(days: 'F', start_time: '8:00am', end_time: '8:30am')
-WorkDaysTime.create(days: 'F', start_time: '8:30am', end_time: '9:00am')
-WorkDaysTime.create(days: 'F', start_time: '9:00am', end_time: '9:30am')
-WorkDaysTime.create(days: 'F', start_time: '9:30am', end_time: '10:00am')
-WorkDaysTime.create(days: 'F', start_time: '10:00am', end_time: '10:30am')
-WorkDaysTime.create(days: 'F', start_time: '10:30am', end_time: '11:00am')
-WorkDaysTime.create(days: 'F', start_time: '11:00am', end_time: '11:30am')
-WorkDaysTime.create(days: 'F', start_time: '11:30am', end_time: '12:00pm')
-WorkDaysTime.create(days: 'F', start_time: '12:00pm', end_time: '12:30pm')
-WorkDaysTime.create(days: 'F', start_time: '12:30pm', end_time: '1:00pm')
-WorkDaysTime.create(days: 'F', start_time: '1:00pm', end_time: '1:30pm')
-WorkDaysTime.create(days: 'F', start_time: '1:30pm', end_time: '2:00pm')
-WorkDaysTime.create(days: 'F', start_time: '2:00pm', end_time: '2:30pm')
-WorkDaysTime.create(days: 'F', start_time: '2:30pm', end_time: '3:00pm')
-WorkDaysTime.create(days: 'F', start_time: '3:00pm', end_time: '3:30pm')
-WorkDaysTime.create(days: 'F', start_time: '3:30pm', end_time: '4:00pm')
-WorkDaysTime.create(days: 'F', start_time: '4:00pm', end_time: '4:30pm')
-WorkDaysTime.create(days: 'F', start_time: '4:30pm', end_time: '5:00pm')
-WorkDaysTime.create(days: 'F', start_time: '5:00pm', end_time: '5:30pm')
-WorkDaysTime.create(days: 'F', start_time: '5:30pm', end_time: '6:00pm')
-WorkDaysTime.create(days: 'F', start_time: '6:00pm', end_time: '6:30pm')
-WorkDaysTime.create(days: 'F', start_time: '6:30pm', end_time: '7:00pm')
-WorkDaysTime.create(days: 'F', start_time: '7:00pm', end_time: '7:30pm')
-WorkDaysTime.create(days: 'F', start_time: '7:30pm', end_time: '8:00pm')
-WorkDaysTime.create(days: 'F', start_time: '8:00pm', end_time: '8:30pm')
-WorkDaysTime.create(days: 'F', start_time: '8:30pm', end_time: '9:00pm')
-WorkDaysTime.create(days: 'F', start_time: '9:00pm', end_time: '9:30pm')
-WorkDaysTime.create(days: 'F', start_time: '9:30pm', end_time: '10:00pm')
+WorkDaysTime.create(days: "M", start_time: "8:00am", end_time: "8:30am")
+WorkDaysTime.create(days: "M", start_time: "8:30am", end_time: "9:00am")
+WorkDaysTime.create(days: "M", start_time: "9:00am", end_time: "9:30am")
+WorkDaysTime.create(days: "M", start_time: "9:30am", end_time: "10:00am")
+WorkDaysTime.create(days: "M", start_time: "10:00am", end_time: "10:30am")
+WorkDaysTime.create(days: "M", start_time: "10:30am", end_time: "11:00am")
+WorkDaysTime.create(days: "M", start_time: "11:00am", end_time: "11:30am")
+WorkDaysTime.create(days: "M", start_time: "11:30am", end_time: "12:00pm")
+WorkDaysTime.create(days: "M", start_time: "12:00pm", end_time: "12:30pm")
+WorkDaysTime.create(days: "M", start_time: "12:30pm", end_time: "1:00pm")
+WorkDaysTime.create(days: "M", start_time: "1:00pm", end_time: "1:30pm")
+WorkDaysTime.create(days: "M", start_time: "1:30pm", end_time: "2:00pm")
+WorkDaysTime.create(days: "M", start_time: "2:00pm", end_time: "2:30pm")
+WorkDaysTime.create(days: "M", start_time: "2:30pm", end_time: "3:00pm")
+WorkDaysTime.create(days: "M", start_time: "3:00pm", end_time: "3:30pm")
+WorkDaysTime.create(days: "M", start_time: "3:30pm", end_time: "4:00pm")
+WorkDaysTime.create(days: "M", start_time: "4:00pm", end_time: "4:30pm")
+WorkDaysTime.create(days: "M", start_time: "4:30pm", end_time: "5:00pm")
+WorkDaysTime.create(days: "M", start_time: "5:00pm", end_time: "5:30pm")
+WorkDaysTime.create(days: "M", start_time: "5:30pm", end_time: "6:00pm")
+WorkDaysTime.create(days: "M", start_time: "6:00pm", end_time: "6:30pm")
+WorkDaysTime.create(days: "M", start_time: "6:30pm", end_time: "7:00pm")
+WorkDaysTime.create(days: "M", start_time: "7:00pm", end_time: "7:30pm")
+WorkDaysTime.create(days: "M", start_time: "7:30pm", end_time: "8:00pm")
+WorkDaysTime.create(days: "M", start_time: "8:00pm", end_time: "8:30pm")
+WorkDaysTime.create(days: "M", start_time: "8:30pm", end_time: "9:00pm")
+WorkDaysTime.create(days: "M", start_time: "9:00pm", end_time: "9:30pm")
+WorkDaysTime.create(days: "M", start_time: "9:30pm", end_time: "10:00pm")
+WorkDaysTime.create(days: "T", start_time: "8:00am", end_time: "8:30am")
+WorkDaysTime.create(days: "T", start_time: "8:30am", end_time: "9:00am")
+WorkDaysTime.create(days: "T", start_time: "9:00am", end_time: "9:30am")
+WorkDaysTime.create(days: "T", start_time: "9:30am", end_time: "10:00am")
+WorkDaysTime.create(days: "T", start_time: "10:00am", end_time: "10:30am")
+WorkDaysTime.create(days: "T", start_time: "10:30am", end_time: "11:00am")
+WorkDaysTime.create(days: "T", start_time: "11:00am", end_time: "11:30am")
+WorkDaysTime.create(days: "T", start_time: "11:30am", end_time: "12:00pm")
+WorkDaysTime.create(days: "T", start_time: "12:00pm", end_time: "12:30pm")
+WorkDaysTime.create(days: "T", start_time: "12:30pm", end_time: "1:00pm")
+WorkDaysTime.create(days: "T", start_time: "1:00pm", end_time: "1:30pm")
+WorkDaysTime.create(days: "T", start_time: "1:30pm", end_time: "2:00pm")
+WorkDaysTime.create(days: "T", start_time: "2:00pm", end_time: "2:30pm")
+WorkDaysTime.create(days: "T", start_time: "2:30pm", end_time: "3:00pm")
+WorkDaysTime.create(days: "T", start_time: "3:00pm", end_time: "3:30pm")
+WorkDaysTime.create(days: "T", start_time: "3:30pm", end_time: "4:00pm")
+WorkDaysTime.create(days: "T", start_time: "4:00pm", end_time: "4:30pm")
+WorkDaysTime.create(days: "T", start_time: "4:30pm", end_time: "5:00pm")
+WorkDaysTime.create(days: "T", start_time: "5:00pm", end_time: "5:30pm")
+WorkDaysTime.create(days: "T", start_time: "5:30pm", end_time: "6:00pm")
+WorkDaysTime.create(days: "T", start_time: "6:00pm", end_time: "6:30pm")
+WorkDaysTime.create(days: "T", start_time: "6:30pm", end_time: "7:00pm")
+WorkDaysTime.create(days: "T", start_time: "7:00pm", end_time: "7:30pm")
+WorkDaysTime.create(days: "T", start_time: "7:30pm", end_time: "8:00pm")
+WorkDaysTime.create(days: "T", start_time: "8:00pm", end_time: "8:30pm")
+WorkDaysTime.create(days: "T", start_time: "8:30pm", end_time: "9:00pm")
+WorkDaysTime.create(days: "T", start_time: "9:00pm", end_time: "9:30pm")
+WorkDaysTime.create(days: "T", start_time: "9:30pm", end_time: "10:00pm")
+WorkDaysTime.create(days: "W", start_time: "8:00am", end_time: "8:30am")
+WorkDaysTime.create(days: "W", start_time: "8:30am", end_time: "9:00am")
+WorkDaysTime.create(days: "W", start_time: "9:00am", end_time: "9:30am")
+WorkDaysTime.create(days: "W", start_time: "9:30am", end_time: "10:00am")
+WorkDaysTime.create(days: "W", start_time: "10:00am", end_time: "10:30am")
+WorkDaysTime.create(days: "W", start_time: "10:30am", end_time: "11:00am")
+WorkDaysTime.create(days: "W", start_time: "11:00am", end_time: "11:30am")
+WorkDaysTime.create(days: "W", start_time: "11:30am", end_time: "12:00pm")
+WorkDaysTime.create(days: "W", start_time: "12:00pm", end_time: "12:30pm")
+WorkDaysTime.create(days: "W", start_time: "12:30pm", end_time: "1:00pm")
+WorkDaysTime.create(days: "W", start_time: "1:00pm", end_time: "1:30pm")
+WorkDaysTime.create(days: "W", start_time: "1:30pm", end_time: "2:00pm")
+WorkDaysTime.create(days: "W", start_time: "2:00pm", end_time: "2:30pm")
+WorkDaysTime.create(days: "W", start_time: "2:30pm", end_time: "3:00pm")
+WorkDaysTime.create(days: "W", start_time: "3:00pm", end_time: "3:30pm")
+WorkDaysTime.create(days: "W", start_time: "3:30pm", end_time: "4:00pm")
+WorkDaysTime.create(days: "W", start_time: "4:00pm", end_time: "4:30pm")
+WorkDaysTime.create(days: "W", start_time: "4:30pm", end_time: "5:00pm")
+WorkDaysTime.create(days: "W", start_time: "5:00pm", end_time: "5:30pm")
+WorkDaysTime.create(days: "W", start_time: "5:30pm", end_time: "6:00pm")
+WorkDaysTime.create(days: "W", start_time: "6:00pm", end_time: "6:30pm")
+WorkDaysTime.create(days: "W", start_time: "6:30pm", end_time: "7:00pm")
+WorkDaysTime.create(days: "W", start_time: "7:00pm", end_time: "7:30pm")
+WorkDaysTime.create(days: "W", start_time: "7:30pm", end_time: "8:00pm")
+WorkDaysTime.create(days: "W", start_time: "8:00pm", end_time: "8:30pm")
+WorkDaysTime.create(days: "W", start_time: "8:30pm", end_time: "9:00pm")
+WorkDaysTime.create(days: "W", start_time: "9:00pm", end_time: "9:30pm")
+WorkDaysTime.create(days: "W", start_time: "9:30pm", end_time: "10:00pm")
+WorkDaysTime.create(days: "R", start_time: "8:00am", end_time: "8:30am")
+WorkDaysTime.create(days: "R", start_time: "8:30am", end_time: "9:00am")
+WorkDaysTime.create(days: "R", start_time: "9:00am", end_time: "9:30am")
+WorkDaysTime.create(days: "R", start_time: "9:30am", end_time: "10:00am")
+WorkDaysTime.create(days: "R", start_time: "10:00am", end_time: "10:30am")
+WorkDaysTime.create(days: "R", start_time: "10:30am", end_time: "11:00am")
+WorkDaysTime.create(days: "R", start_time: "11:00am", end_time: "11:30am")
+WorkDaysTime.create(days: "R", start_time: "11:30am", end_time: "12:00pm")
+WorkDaysTime.create(days: "R", start_time: "12:00pm", end_time: "12:30pm")
+WorkDaysTime.create(days: "R", start_time: "12:30pm", end_time: "1:00pm")
+WorkDaysTime.create(days: "R", start_time: "1:00pm", end_time: "1:30pm")
+WorkDaysTime.create(days: "R", start_time: "1:30pm", end_time: "2:00pm")
+WorkDaysTime.create(days: "R", start_time: "2:00pm", end_time: "2:30pm")
+WorkDaysTime.create(days: "R", start_time: "2:30pm", end_time: "3:00pm")
+WorkDaysTime.create(days: "R", start_time: "3:00pm", end_time: "3:30pm")
+WorkDaysTime.create(days: "R", start_time: "3:30pm", end_time: "4:00pm")
+WorkDaysTime.create(days: "R", start_time: "4:00pm", end_time: "4:30pm")
+WorkDaysTime.create(days: "R", start_time: "4:30pm", end_time: "5:00pm")
+WorkDaysTime.create(days: "R", start_time: "5:00pm", end_time: "5:30pm")
+WorkDaysTime.create(days: "R", start_time: "5:30pm", end_time: "6:00pm")
+WorkDaysTime.create(days: "R", start_time: "6:00pm", end_time: "6:30pm")
+WorkDaysTime.create(days: "R", start_time: "6:30pm", end_time: "7:00pm")
+WorkDaysTime.create(days: "R", start_time: "7:00pm", end_time: "7:30pm")
+WorkDaysTime.create(days: "R", start_time: "7:30pm", end_time: "8:00pm")
+WorkDaysTime.create(days: "R", start_time: "8:00pm", end_time: "8:30pm")
+WorkDaysTime.create(days: "R", start_time: "8:30pm", end_time: "9:00pm")
+WorkDaysTime.create(days: "R", start_time: "9:00pm", end_time: "9:30pm")
+WorkDaysTime.create(days: "R", start_time: "9:30pm", end_time: "10:00pm")
+WorkDaysTime.create(days: "F", start_time: "8:00am", end_time: "8:30am")
+WorkDaysTime.create(days: "F", start_time: "8:30am", end_time: "9:00am")
+WorkDaysTime.create(days: "F", start_time: "9:00am", end_time: "9:30am")
+WorkDaysTime.create(days: "F", start_time: "9:30am", end_time: "10:00am")
+WorkDaysTime.create(days: "F", start_time: "10:00am", end_time: "10:30am")
+WorkDaysTime.create(days: "F", start_time: "10:30am", end_time: "11:00am")
+WorkDaysTime.create(days: "F", start_time: "11:00am", end_time: "11:30am")
+WorkDaysTime.create(days: "F", start_time: "11:30am", end_time: "12:00pm")
+WorkDaysTime.create(days: "F", start_time: "12:00pm", end_time: "12:30pm")
+WorkDaysTime.create(days: "F", start_time: "12:30pm", end_time: "1:00pm")
+WorkDaysTime.create(days: "F", start_time: "1:00pm", end_time: "1:30pm")
+WorkDaysTime.create(days: "F", start_time: "1:30pm", end_time: "2:00pm")
+WorkDaysTime.create(days: "F", start_time: "2:00pm", end_time: "2:30pm")
+WorkDaysTime.create(days: "F", start_time: "2:30pm", end_time: "3:00pm")
+WorkDaysTime.create(days: "F", start_time: "3:00pm", end_time: "3:30pm")
+WorkDaysTime.create(days: "F", start_time: "3:30pm", end_time: "4:00pm")
+WorkDaysTime.create(days: "F", start_time: "4:00pm", end_time: "4:30pm")
+WorkDaysTime.create(days: "F", start_time: "4:30pm", end_time: "5:00pm")
+WorkDaysTime.create(days: "F", start_time: "5:00pm", end_time: "5:30pm")
+WorkDaysTime.create(days: "F", start_time: "5:30pm", end_time: "6:00pm")
+WorkDaysTime.create(days: "F", start_time: "6:00pm", end_time: "6:30pm")
+WorkDaysTime.create(days: "F", start_time: "6:30pm", end_time: "7:00pm")
+WorkDaysTime.create(days: "F", start_time: "7:00pm", end_time: "7:30pm")
+WorkDaysTime.create(days: "F", start_time: "7:30pm", end_time: "8:00pm")
+WorkDaysTime.create(days: "F", start_time: "8:00pm", end_time: "8:30pm")
+WorkDaysTime.create(days: "F", start_time: "8:30pm", end_time: "9:00pm")
+WorkDaysTime.create(days: "F", start_time: "9:00pm", end_time: "9:30pm")
+WorkDaysTime.create(days: "F", start_time: "9:30pm", end_time: "10:00pm")
 
-Semester.create(semester: 'Fall 2014')
-Semester.create(semester: 'Spring 2015', active: true)
-Semester.create(semester: 'Fall 2015')
-Semester.create(semester: 'Spring 2016')
-Semester.create(semester: 'Fall 2016')
-Semester.create(semester: 'Spring 2017')
+Semester.create(semester: "Fall 2014")
+Semester.create(semester: "Spring 2015", active: true)
+Semester.create(semester: "Fall 2015")
+Semester.create(semester: "Spring 2016")
+Semester.create(semester: "Fall 2016")
+Semester.create(semester: "Spring 2017")
 
-Major.create(major: 'Computer Science')
-Major.create(major: 'Mathematics')
-Major.create(major: 'Computer Engineering Technology')
-Major.create(major: 'Chemistry')
-Major.create(major: 'Computer Information Systems')
-Major.create(major: 'Biological Science')
-Major.create(major: 'Physics')
-Major.create(major: 'Earth Science')
-Major.create(major: 'Women’s Studies')
-Major.create(major: 'Theatre')
-Major.create(major: 'History')
-Major.create(major: 'Psychology')
-Major.create(major: 'Business')
-Major.create(major: 'Music')
-Major.create(major: 'Communication Studies')
-Major.create(major: 'Art')
-Major.create(major: 'English')
+Major.create(major: "Computer Science")
+Major.create(major: "Mathematics")
+Major.create(major: "Computer Engineering Technology")
+Major.create(major: "Chemistry")
+Major.create(major: "Computer Information Systems")
+Major.create(major: "Biological Science")
+Major.create(major: "Physics")
+Major.create(major: "Earth Science")
+Major.create(major: "Women’s Studies")
+Major.create(major: "Theatre")
+Major.create(major: "History")
+Major.create(major: "Psychology")
+Major.create(major: "Business")
+Major.create(major: "Music")
+Major.create(major: "Communication Studies")
+Major.create(major: "Art")
+Major.create(major: "English")
 
 # staff = User.new(email: 'staff@calu.edu', last_name: 'Staff')
 # staff.save(validate: false)
 User.create(
-  first_name: 'Barbara', last_name: 'Bonfanti', email: 'bonfanti@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Barbara", last_name: "Bonfanti", email: "bonfanti@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 15, advisor: true
 )
 User.create(
-  first_name: 'Robert', last_name: 'Skwarecki', email: 'skwarecki@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Robert", last_name: "Skwarecki", email: "skwarecki@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 15, advisor: true
 )
 User.create(
-  first_name: 'Denise', last_name: 'Joseph', email: 'joseph@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Denise", last_name: "Joseph", email: "joseph@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 15, advisor: true
 )
 User.create(
-  first_name: 'Nancy', last_name: 'Carlino', email: 'carlino@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Nancy", last_name: "Carlino", email: "carlino@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 15, advisor: true
 )
 User.create(
-  first_name: 'Ralph', last_name: 'Belsterling', email: 'belsterling@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Ralph", last_name: "Belsterling", email: "belsterling@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 15, advisor: true
 )
 User.create(
-  first_name: 'Samantha', last_name: 'Procaccini', email: 'procaccini@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Samantha", last_name: "Procaccini", email: "procaccini@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 15, advisor: true
 )
 User.create(
-  first_name: 'Krystia', last_name: 'Nora', email: 'nora@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Krystia", last_name: "Nora", email: "nora@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Karen', last_name: 'McCullough', email: 'mccullough@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Karen", last_name: "McCullough", email: "mccullough@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Anthony', last_name: 'Carlisle', email: 'carlisle@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Anthony", last_name: "Carlisle", email: "carlisle@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Brent', last_name: 'House', email: 'house@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Brent", last_name: "House", email: "house@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Keat', last_name: 'Murray', email: 'murray@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Keat", last_name: "Murray", email: "murray@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'James', last_name: 'McVey', email: 'mcvey@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "James", last_name: "McVey", email: "mcvey@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Sarah', last_name: 'Downey', email: 'downey@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Sarah", last_name: "Downey", email: "downey@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Christina', last_name: 'Fisanick', email: 'fisanick@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Christina", last_name: "Fisanick", email: "fisanick@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Kim', last_name: 'Vanderlaan', email: 'vanderlaan@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kim", last_name: "Vanderlaan", email: "vanderlaan@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Carole', last_name: 'Waterhouse', email: 'waterhouse@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Carole", last_name: "Waterhouse", email: "waterhouse@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 17, advisor: true
 )
 User.create(
-  first_name: 'Yugo', last_name: 'Ikach', email: 'ikach@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Yugo", last_name: "Ikach", email: "ikach@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 14, advisor: true
 )
 User.create(
-  first_name: 'Kathryn', last_name: 'Sacco', email: 'sacco@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kathryn", last_name: "Sacco", email: "sacco@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 14, advisor: true
 )
 User.create(
-  first_name: 'Brian', last_name: 'Stahurski', email: 'stahurski@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Brian", last_name: "Stahurski", email: "stahurski@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 14, advisor: true
 )
 User.create(
-  first_name: 'Charles', last_name: 'Sharer', email: 'sharer@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Charles", last_name: "Sharer", email: "sharer@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 14, advisor: true
 )
 User.create(
-  first_name: 'Ismail', last_name: 'Cole', email: 'cole@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Ismail", last_name: "Cole", email: "cole@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Arshad', last_name: 'Chawdhry', email: 'chawdhry@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Arshad", last_name: "Chawdhry", email: "chawdhry@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'John', last_name: 'Michaels', email: 'michaels@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "John", last_name: "Michaels", email: "michaels@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Richard', last_name: 'LaRosa', email: 'larosa@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Richard", last_name: "LaRosa", email: "larosa@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Joseph', last_name: 'Schwerha', email: 'schwerha@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Joseph", last_name: "Schwerha", email: "schwerha@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'David', last_name: 'Jones', email: 'jones_dt@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "David", last_name: "Jones", email: "jones_dt@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Clyde', last_name: 'Roberts', email: 'roberts@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Clyde", last_name: "Roberts", email: "roberts@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Nan', last_name: 'Li', email: 'li_n@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Nan", last_name: "Li", email: "li_n@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Edmund', last_name: 'Matecki', email: 'matecki@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Edmund", last_name: "Matecki", email: "matecki@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Paul', last_name: 'Hettler', email: 'hettler@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Paul", last_name: "Hettler", email: "hettler@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Louise', last_name: 'Serafin', email: 'serafin@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Louise", last_name: "Serafin", email: "serafin@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Shirley', last_name: 'Lazorchak', email: 'lazorchak@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Shirley", last_name: "Lazorchak", email: "lazorchak@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 13, advisor: true
 )
 User.create(
-  first_name: 'Cynthia', last_name: 'Persinger', email: 'persinger@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Cynthia", last_name: "Persinger", email: "persinger@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Cara', last_name: 'Snyder', email: 'snyder@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Cara", last_name: "Snyder", email: "snyder@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Laura', last_name: 'Defazio', email: 'defazio@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Laura", last_name: "Defazio", email: "defazio@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Maggy', last_name: 'Aston', email: 'aston@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Maggy", last_name: "Aston", email: "aston@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'R. Scott', last_name: 'Lloyd', email: 'lloyd@calu.
-  edu', password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "R. Scott", last_name: "Lloyd", email: 'lloyd@calu.
+  edu', password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Todd', last_name: 'Pinkham', email: 'pinkham@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Todd", last_name: "Pinkham", email: "pinkham@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'James', last_name: 'Bove', email: 'bove@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "James", last_name: "Bove", email: "bove@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Spencer', last_name: 'Norman', email: 'norman@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Spencer", last_name: "Norman", email: "norman@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Greg', last_name: 'Harrison', email: 'Harrison_g@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Greg", last_name: "Harrison", email: "Harrison_g@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Richard', last_name: 'Miecznikowski',
-  email: 'miecznikowski@calu.edu', password: 'password!!15',
-  password_confirmation: 'password!!15', major_id: 16, advisor: true
+  first_name: "Richard", last_name: "Miecznikowski",
+  email: "miecznikowski@calu.edu", password: "password!!15",
+  password_confirmation: "password!!15", major_id: 16, advisor: true
 )
 User.create(
-  first_name: 'Marta', last_name: 'McClintock-Comeaux', email: 'mcclintock@calu.
-  edu', password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Marta", last_name: "McClintock-Comeaux", email: 'mcclintock@calu.
+  edu', password: "password!!15", password_confirmation: "password!!15",
   major_id: 9, advisor: true
 )
 User.create(
-  first_name: 'Malcolm', last_name: 'Callery', email: 'callery@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Malcolm", last_name: "Callery", email: "callery@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 10, advisor: true
 )
 User.create(
-  first_name: 'Michele', last_name: 'Pagen', email: 'pagen@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Michele", last_name: "Pagen", email: "pagen@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 10, advisor: true
 )
 User.create(
-  first_name: 'Michael', last_name: 'Slavin', email: 'slavin@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Michael", last_name: "Slavin", email: "slavin@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 10, advisor: true
 )
 User.create(
-  first_name: 'Melanie', last_name: 'Blumberg', email: 'blumberg@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Melanie", last_name: "Blumberg", email: "blumberg@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Laura', last_name: 'Tuennerman', email: 'tuennerman@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Laura", last_name: "Tuennerman", email: "tuennerman@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Clarissa', last_name: 'Confer', email: 'confer_c@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Clarissa", last_name: "Confer", email: "confer_c@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Kelton', last_name: 'Edmonds', email: 'Edmonds_k@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kelton", last_name: "Edmonds", email: "Edmonds_k@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Paul', last_name: 'Crawford', email: 'Crawford_p@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Paul", last_name: "Crawford", email: "Crawford_p@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Michael', last_name: 'Slaven', email: 'slaven@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Michael", last_name: "Slaven", email: "slaven@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Sean', last_name: 'Madden', email: 'madden@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Sean", last_name: "Madden", email: "madden@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Joseph', last_name: 'Heim', email: 'heim@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Joseph", last_name: "Heim", email: "heim@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Ambrus', last_name: 'Price', email: 'price_a@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Ambrus", last_name: "Price", email: "price_a@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 11, advisor: true
 )
 User.create(
-  first_name: 'Kirk', last_name: 'John', email: 'john_k@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kirk", last_name: "John", email: "john_k@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Carrie', last_name: 'Rosengart', email: 'rosengart@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Carrie", last_name: "Rosengart", email: "rosengart@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Justin', last_name: 'Hackett', email: 'hackett@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Justin", last_name: "Hackett", email: "hackett@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Linda', last_name: 'Toth', email: 'toth@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Linda", last_name: "Toth", email: "toth@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Dana', last_name: 'Schneider', email: 'schneider@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Dana", last_name: "Schneider", email: "schneider@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Elizabeth', last_name: 'Mason', email: 'mason@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Elizabeth", last_name: "Mason", email: "mason@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Holiday', last_name: 'Adair', email: 'adair@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Holiday", last_name: "Adair", email: "adair@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Rebecca', last_name: 'Regeth', email: 'regeth@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Rebecca", last_name: "Regeth", email: "regeth@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'Angela', last_name: 'Bloomquist', email: 'bloomquist@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Angela", last_name: "Bloomquist", email: "bloomquist@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 12, advisor: true
 )
 User.create(
-  first_name: 'James', last_name: 'Means', email: 'means@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "James", last_name: "Means", email: "means@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 3, advisor: true
 )
 User.create(
-  first_name: 'Jeffrey', last_name: 'Sumey', email: 'sumey@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Jeffrey", last_name: "Sumey", email: "sumey@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 3, advisor: true
 )
 User.create(
-  first_name: 'Ghassan', last_name: 'Salim', email: 'salim@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Ghassan", last_name: "Salim", email: "salim@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 3, advisor: true
 )
 User.create(
-  first_name: 'Paul', last_name: 'Sible', email: 'sible@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Paul", last_name: "Sible", email: "sible@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 1, advisor: true
 )
 User.create(
-  first_name: 'Weifeng', last_name: 'Chen', email: 'chen@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Weifeng", last_name: "Chen", email: "chen@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 1, advisor: true
 )
 User.create(
-  first_name: 'Anthony', last_name: 'Pyzdrowski', email: 'pyzdrowski@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Anthony", last_name: "Pyzdrowski", email: "pyzdrowski@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 1, advisor: true
 )
 User.create(
-  first_name: 'Paula', last_name: 'Caffrey', email: 'caffrey@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Paula", last_name: "Caffrey", email: "caffrey@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Sarah', last_name: 'Meiss', email: 'meiss@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Sarah", last_name: "Meiss", email: "meiss@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Summer', last_name: 'Arrigo-Nelson', email: 'arrigonelson@calu.
-  edu', password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Summer", last_name: "Arrigo-Nelson", email: 'arrigonelson@calu.
+  edu', password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Derek', last_name: 'Gray', email: 'gray_d@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Derek", last_name: "Gray", email: "gray_d@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Mark', last_name: 'Tebbitt', email: 'tebbitt@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Mark", last_name: "Tebbitt", email: "tebbitt@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'David', last_name: 'Boehm', email: 'boehm@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "David", last_name: "Boehm", email: "boehm@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Brian', last_name: 'Paulson', email: 'paulson@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Brian", last_name: "Paulson", email: "paulson@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'David', last_name: 'Argent', email: 'argent@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "David", last_name: "Argent", email: "argent@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Edwin', last_name: 'Zuchelkowski',
-  email: 'zuchelkowski@calu.edu', password: 'password!!15',
-  password_confirmation: 'password!!15', major_id: 6, advisor: true
+  first_name: "Edwin", last_name: "Zuchelkowski",
+  email: "zuchelkowski@calu.edu", password: "password!!15",
+  password_confirmation: "password!!15", major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Chadwick', last_name: 'Hanna', email: 'hanna@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Chadwick", last_name: "Hanna", email: "hanna@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Louise', last_name: 'Nicholson', email: 'nicholson@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Louise", last_name: "Nicholson", email: "nicholson@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Robert', last_name: 'Whyte', email: 'whyte@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Robert", last_name: "Whyte", email: "whyte@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Carol', last_name: 'Bocetti', email: 'bochetti@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Carol", last_name: "Bocetti", email: "bochetti@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 6, advisor: true
 )
 User.create(
-  first_name: 'Ali', last_name: 'Sezer', email: 'sezer@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Ali", last_name: "Sezer", email: "sezer@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 4, advisor: true
 )
 User.create(
-  first_name: 'Gregg', last_name: 'Gould', email: 'gould@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Gregg", last_name: "Gould", email: "gould@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 4, advisor: true
 )
 User.create(
-  first_name: 'Kimberly', last_name: 'Woznack', email: 'woznack@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kimberly", last_name: "Woznack", email: "woznack@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 4, advisor: true
 )
 User.create(
-  first_name: 'Matthew', last_name: 'Price', email: 'price@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Matthew", last_name: "Price", email: "price@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 4, advisor: true
 )
 User.create(
-  first_name: 'Min', last_name: 'Li', email: 'li@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Min", last_name: "Li", email: "li@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 4, advisor: true
 )
 User.create(
-  first_name: 'William', last_name: 'Dieterle', email: 'dieterle@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "William", last_name: "Dieterle", email: "dieterle@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 7, advisor: true
 )
 User.create(
-  first_name: 'Kausar', last_name: 'Yasmin', email: 'yasmin@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kausar", last_name: "Yasmin", email: "yasmin@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 7, advisor: true
 )
 User.create(
-  first_name: 'Swarndeep', last_name: 'Gill', email: 'hill@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Swarndeep", last_name: "Gill", email: "hill@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Mario', last_name: 'Majcen', email: 'majcen@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Mario", last_name: "Majcen", email: "majcen@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Kyle', last_name: 'Fredrick', email: 'fredrick@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kyle", last_name: "Fredrick", email: "fredrick@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Daniel', last_name: 'Harris', email: 'Harris_D@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Daniel", last_name: "Harris", email: "Harris_D@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Chad', last_name: 'Kauffman', email: 'kauffman@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Chad", last_name: "Kauffman", email: "kauffman@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Thomas', last_name: 'Mueller', email: 'mueller@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Thomas", last_name: "Mueller", email: "mueller@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Susan', last_name: 'Ryan', email: 'ryan@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Susan", last_name: "Ryan", email: "ryan@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'John', last_name: 'Confer', email: 'confer@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "John", last_name: "Confer", email: "confer@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Thomas', last_name: 'Wickham', email: 'wickham@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Thomas", last_name: "Wickham", email: "wickham@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 8, advisor: true
 )
 User.create(
-  first_name: 'Gary', last_name: 'Delorenzo', email: 'delorenzo@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Gary", last_name: "Delorenzo", email: "delorenzo@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 5, advisor: true
 )
 User.create(
-  first_name: 'Lisa', last_name: 'Kovalchick', email: 'kovalchick@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Lisa", last_name: "Kovalchick", email: "kovalchick@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 5, advisor: true
 )
 User.create(
-  first_name: 'Anthony', last_name: 'Rodi', email: 'rodi@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Anthony", last_name: "Rodi", email: "rodi@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 5, advisor: true
 )
 User.create(
-  first_name: 'Gina', last_name: 'Boff', email: 'boff@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Gina", last_name: "Boff", email: "boff@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 5, advisor: true
 )
 User.create(
-  first_name: 'George', last_name: 'Novak', email: 'novak@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "George", last_name: "Novak", email: "novak@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 5, advisor: true
 )
 User.create(
-  first_name: 'Barbara', last_name: 'Hess', email: 'hess@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Barbara", last_name: "Hess", email: "hess@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 2, advisor: true
 )
 User.create(
-  first_name: 'Kaddour', last_name: 'Boukaabar', email: 'boukaabar@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Kaddour", last_name: "Boukaabar", email: "boukaabar@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 2, advisor: true
 )
 User.create(
-  first_name: 'Melissa', last_name: 'Sovak', email: 'sovak@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Melissa", last_name: "Sovak", email: "sovak@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 2, advisor: true
 )
 User.create(
-  first_name: 'Leandro', last_name: 'Junes', email: 'junes@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Leandro", last_name: "Junes", email: "junes@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 2, advisor: true
 )
 User.create(
-  first_name: 'Mohamed', last_name: 'Benbourenane',
-  email: 'benbourenane@calu.edu', password: 'password!!15',
-  password_confirmation: 'password!!15', major_id: 2, advisor: true
+  first_name: "Mohamed", last_name: "Benbourenane",
+  email: "benbourenane@calu.edu", password: "password!!15",
+  password_confirmation: "password!!15", major_id: 2, advisor: true
 )
 User.create(
-  first_name: 'Maggie', last_name: 'Habeeb', email: 'habeeb@calu.edu',
-  password: 'password!!15', password_confirmation: 'password!!15',
+  first_name: "Maggie", last_name: "Habeeb", email: "habeeb@calu.edu",
+  password: "password!!15", password_confirmation: "password!!15",
   major_id: 2, advisor: true
 )
 
 CurriculumCategory.create!(
   [
-    { category: 'Core', major_id: 1, minor: false, set_and_or_flag: false },
-    { category: 'Values', major_id: 1, minor: false, set_and_or_flag: nil },
-    { category: 'Electives', major_id: 1, minor: false, set_and_or_flag: nil },
-    { category: 'Critical Thinking Skills', major_id: 1, minor: false,
+    { category: "Core", major_id: 1, minor: false, set_and_or_flag: false },
+    { category: "Values", major_id: 1, minor: false, set_and_or_flag: nil },
+    { category: "Electives", major_id: 1, minor: false, set_and_or_flag: nil },
+    { category: "Critical Thinking Skills", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Technological Literacy', major_id: 1, minor: false,
+    { category: "Technological Literacy", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Building a Sense of Community', major_id: 1, minor: false,
+    { category: "Building a Sense of Community", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Communication Skills', major_id: 1, minor: false,
+    { category: "Communication Skills", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Mathematics', major_id: 1, minor: false,
+    { category: "Mathematics", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Natural Sciences', major_id: 1, minor: false,
+    { category: "Natural Sciences", major_id: 1, minor: false,
       set_and_or_flag: true },
-    { category: 'Social Sciences', major_id: 1, minor: false,
+    { category: "Social Sciences", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Humanities', major_id: 1, minor: false, set_and_or_flag: nil },
-    { category: 'Fine Arts', major_id: 1, minor: false, set_and_or_flag: nil },
-    { category: 'Multiculutual Awareness', major_id: 1, minor: false,
+    { category: "Humanities", major_id: 1, minor: false, set_and_or_flag: nil },
+    { category: "Fine Arts", major_id: 1, minor: false, set_and_or_flag: nil },
+    { category: "Multiculutual Awareness", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Health and Wellness', major_id: 1, minor: false,
+    { category: "Health and Wellness", major_id: 1, minor: false,
       set_and_or_flag: nil },
-    { category: 'Required', major_id: 1, minor: true, set_and_or_flag: nil },
-    { category: 'Electives', major_id: 1, minor: true, set_and_or_flag: nil },
-    { category: 'Required', major_id: 2, minor: true, set_and_or_flag: nil },
-    { category: 'Electives', major_id: 2, minor: true, set_and_or_flag: nil },
-    { category: 'Required', major_id: 4, minor: true, set_and_or_flag: nil },
-    { category: 'Electives', major_id: 4, minor: true, set_and_or_flag: nil }
+    { category: "Required", major_id: 1, minor: true, set_and_or_flag: nil },
+    { category: "Electives", major_id: 1, minor: true, set_and_or_flag: nil },
+    { category: "Required", major_id: 2, minor: true, set_and_or_flag: nil },
+    { category: "Electives", major_id: 2, minor: true, set_and_or_flag: nil },
+    { category: "Required", major_id: 4, minor: true, set_and_or_flag: nil },
+    { category: "Electives", major_id: 4, minor: true, set_and_or_flag: nil }
   ]
 )
 

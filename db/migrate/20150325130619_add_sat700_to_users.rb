@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddSat700ToUsers < ActiveRecord::Migration
   def change
     add_column :users, :sat_700, :boolean

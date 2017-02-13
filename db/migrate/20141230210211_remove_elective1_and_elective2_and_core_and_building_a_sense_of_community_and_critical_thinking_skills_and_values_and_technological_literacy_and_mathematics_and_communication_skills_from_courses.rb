@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RemoveElective1AndElective2AndCoreAndBuildingASenseOfCommunityAndCriticalThinkingSkillsAndValuesAndTechnologicalLiteracyAndMathematicsAndCommunicationSkillsFromCourses < ActiveRecord::Migration
   def change
     remove_column :courses, :elective1, :boolean

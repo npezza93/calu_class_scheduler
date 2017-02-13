@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateCurriculumCategories < ActiveRecord::Migration
   def change
     create_table :curriculum_categories do |t|

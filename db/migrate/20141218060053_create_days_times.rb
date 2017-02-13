@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateDaysTimes < ActiveRecord::Migration
   def change
     create_table :days_times do |t|
