@@ -36,3 +36,8 @@ group :development do
   gem "spring-watcher-listen"
   gem "web-console"
 end
+
+group :development, :test do
+  gem "haml-lint"
+  gem "rubocop"
+end
