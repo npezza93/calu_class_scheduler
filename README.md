@@ -6,7 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/coverage.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler/coverage)
 [![Issue Count](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/issue_count.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler)
 
-Currently at CalU there are two systems in place that help students build their schedule for the upcoming semester. The first of the systems is the Vulcan Information Portal(VIP), here students submit the classes they want to enroll in, the students prerequisites are validated, and all the courses that are being offered for the upcoming semester can be viewed. The second system is DegreeWorks which tells the student all the courses that are needed to fulfill their major and minor(s).
+At CalU there are two systems in place that help students build their schedule for the upcoming semester. The first of the systems is the Vulcan Information Portal(VIP), here students submit the classes they want to enroll in, the students prerequisites are validated, and all the courses that are being offered for the upcoming semester can be viewed. The second system is DegreeWorks which tells the student all the courses that are needed to fulfill their major and minor(s).
 
 These two systems should be communicating, but are not. Instead every student has to setup a meeting with their faculty advisor before every semester to go over what courses to enroll in for the next semester. In these meetings students and advisors have to go back and forth between these systems to develop a schedule which is time consuming and a hassle for everyone involved.
 
