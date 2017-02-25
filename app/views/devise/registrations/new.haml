@@ -1,18 +1,17 @@
 - content_for :title do
   Sign up
 
-.layout.vertical.center-center{ style: "height:100vh;" }
+.layout.vertical.center
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    %h5.mdl-typography--display-2.header
-      Sign up
+    %h5.mdl-typography--display-2.header Sign up
     .layout.horizontal.name-container
       = f.text_field :first_name, autofocus: true
       = f.text_field :last_name
     = f.email_field :email
     = f.password_field :password
     = f.password_field :password_confirmation
-    = f.collection_select :major_id, Major.all, :id, :major, prompt: "choose a major"
+    = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
     = f.collection_select :advised_by, User.where(advisor: true),
-                                       :id, :email, prompt: "choose an advisor"
+                                       :id, :email, prompt: "Choose an Advisor"
 
     = f.submit "Sign up"
