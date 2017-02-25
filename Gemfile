@@ -20,8 +20,7 @@ gem "pry-rails"
 gem "cancancan"
 gem "carrierwave"
 gem "cocoon"
-gem "erubis"
-gem "haml"
+gem "haml", git: "https://github.com/haml/haml"
 gem "kaminari"
 gem "numbers_and_words"
 
@@ -38,7 +37,7 @@ group :test do
 end
 
 group :development, :test do
-  gem "haml-lint"
+  gem "haml_lint", git: "https://github.com/brigade/haml-lint"
   gem "rubocop"
 end
 
