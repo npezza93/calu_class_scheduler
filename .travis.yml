@@ -10,5 +10,5 @@ script:
 before_script:
   - RAILS_ENV=test bundle exec rake --trace db:create test
 addons:
-    code_climate:
-        repo_token: b5c170c1afddc9215d8ff5831d10afaf4349fbe5f5df8eec750ff0e5c6410725
+  code_climate:
+    repo_token: b5c170c1afddc9215d8ff5831d10afaf4349fbe5f5df8eec750ff0e5c6410725

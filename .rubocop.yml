@@ -1172,5 +1172,4 @@ AllCops:
     - 'vendor/**/*'
     - 'db/**/*'
     - 'Gemfile.lock'
-    - 'Rakefile'
   TargetRubyVersion: 2.3
