@@ -1,23 +1,20 @@
 # frozen_string_literal: true
-def warden(request)
-  request.env["warden"]
-end
-
 def user?(request)
-  warden_req = warden(request)
+  warden_req = request.env["warden"]
   warden_req.authenticate? && !warden_req.user.advisor?
 end
 
 def advisor?(request)
-  warden_req = warden(request)
+  warden_req = request.env["warden"]
   warden_req.authenticate? && warden_req.user.advisor?
 end
 
 Rails.application.routes.draw do
   resources :semesters, only: [:index, :new, :create, :update]
 
-  resources :curriculum_categories
-  resources :majors
+  resources :majors do
+    resources :curriculum_categories, except: :index
+  end
 
   resources :offerings do
     collection do
