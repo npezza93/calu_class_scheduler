@@ -6720,7 +6720,7 @@ User.create(
   major_id: 2, advisor: true
 )
 
-CurriculumCategory.create!(
+CurriculumCategory.create(
   [
     { category: "Core", major_id: 1, minor: false, set_and_or_flag: false },
     { category: "Values", major_id: 1, minor: false, set_and_or_flag: nil },
@@ -6754,7 +6754,7 @@ CurriculumCategory.create!(
   ]
 )
 
-CurriculumCategorySet.create!(
+CurriculumCategorySet.create(
   [
     { curriculum_category_id: 1, count: nil },
     { curriculum_category_id: 2, count: nil },
