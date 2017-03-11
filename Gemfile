@@ -3,24 +3,24 @@ source "https://rubygems.org"
 
 ruby "2.4.0"
 
+gem "devise"
+gem "pg"
+gem "puma"
 gem "rails", "~> 5.1.0beta1"
 
 gem "coffee-rails"
 gem "jquery-rails"
+gem "material_icons"
 gem "sass-rails"
 gem "turbolinks"
 gem "uglifier"
 
-gem "puma"
-
-gem "devise"
-gem "pg"
 gem "pry-rails"
 
 gem "cancancan"
 gem "carrierwave"
 gem "cocoon"
-gem "haml", git: "https://github.com/haml/haml"
+gem "haml", "~> 5.0.0.beta.2"
 gem "kaminari"
 gem "numbers_and_words"
 
@@ -37,7 +37,7 @@ group :test do
 end
 
 group :development, :test do
-  gem "haml_lint", git: "https://github.com/brigade/haml-lint"
+  gem "haml_lint"
   gem "rubocop"
 end
 
