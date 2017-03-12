@@ -47,40 +47,40 @@
   flex: 1
 
 .flex-1
-  flex: 1
+  flex: 1 !important
 
 .flex-2
-  flex: 2
+  flex: 2 !important
 
 .flex-3
-  flex: 3
+  flex: 3 !important
 
 .flex-4
-  flex: 4
+  flex: 4 !important
 
 .flex-5
-  flex: 5
+  flex: 5 !important
 
 .flex-6
-  flex: 6
+  flex: 6 !important
 
 .flex-7
-  flex: 7
+  flex: 7 !important
 
 .flex-8
-  flex: 8
+  flex: 8 !important
 
 .flex-9
-  flex: 9
+  flex: 9 !important
 
 .flex-10
-  flex: 10
+  flex: 10 !important
 
 .flex-11
-  flex: 11
+  flex: 11 !important
 
 .flex-12
-  flex: 12
+  flex: 12 !important
 
 .self-start
   align-self: flex-start
@@ -142,3 +142,40 @@
 
 body.fullbleed
   margin: 0
+
+@for $i from 0 through 15
+  .m-#{$i}
+    margin: calc(#{$i} * 8px) calc(#{$i} * 8px) !important
+  .mt-#{$i}
+    margin-top: calc(#{$i} * 8px) !important
+  .mr-#{$i}
+    margin-right: calc(#{$i} * 8px) !important
+  .mb-#{$i}
+    margin-bottom: calc(#{$i} * 8px) !important
+  .ml-#{$i}
+    margin-left: calc(#{$i} * 8px) !important
+  .mx-#{$i}
+    margin-right: calc(#{$i} * 8px) !important
+    margin-left: calc(#{$i} * 8px) !important
+  .my-#{$i}
+    margin-top: calc(#{$i} * 8px) !important
+    margin-bottom: calc(#{$i} * 8px) !important
+  .p-#{$i}
+    padding: calc(#{$i} * 8px) calc(#{$i} * 8px) !important
+  .pt-#{$i}
+    padding-top: calc(#{$i} * 8px) !important
+  .pr-#{$i}
+    padding-right: calc(#{$i} * 8px) !important
+  .pb-#{$i}
+    padding-bottom: calc(#{$i} * 8px) !important
+  .pl-#{$i}
+    padding-left: calc(#{$i} * 8px) !important
+  .px-#{$i}
+    padding-right: calc(#{$i} * 8px) !important
+    padding-left: calc(#{$i} * 8px) !important
+  .py-#{$i}
+    padding-top: calc(#{$i} * 8px) !important
+    padding-bottom: calc(#{$i} * 8px) !important
+
+.w-100
+  width: 100%
