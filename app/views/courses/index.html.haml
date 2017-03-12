@@ -1,0 +1,20 @@
+- content_for :title, "Courses"
+
+.layout.vertical.center.mt-2
+  - @courses.each do |course_code, courses|
+    .mdc-typography--subheading2{ style: "width: 400px;max-width: 90%;"}= course_code
+    .mdc-card{ style: "width: 400px;max-width: 90%;margin-bottom: 40px;background:#fff;"}
+      .mdc-list
+        - courses.each do |course|
+          = link_to course, class: "mdc-list-item", style: "width: 100%;", "data-mdc-auto-init" => "MDCRipple" do
+            .mdc-list-item__text= course.pretty_course
+            %i.mdc-list-item__end-detail.material-icons
+              chevron_right
+  .layout.horizontal.around-justified.mb-3{ style: "width: 500px;max-width: 90%;"}
+    = link_to courses_path(letter: previous_letter(params[:letter])), class: "mdc-ripple-surface layout vertical center-center black-text", "data-mdc-ripple-is-unbounded" => true do
+      = material_icon.chevron_left
+    - paginated_letters.each do |letter|
+      = link_to letter.upcase, courses_path(letter: letter), class: "mdc-ripple-surface layout vertical center-center black-text", "data-mdc-ripple-is-unbounded" => true
+    = link_to courses_path(letter: next_letter(params[:letter])), class: "mdc-ripple-surface layout vertical center-center black-text", "data-mdc-ripple-is-unbounded" => true do
+      = material_icon.chevron_right
+= new_fab new_course_path

@@ -1,0 +1,30 @@
+- content_for :title, "Courses"
+- content_for :back_url, courses_path
+
+.layout.vertical.center.mt-4
+  .mdc-card{ style: "width: 400px;max-width: 90%;background:#fff;"}
+    %section.mdc-card__primary
+      %h1.mdc-card__title.mdc-card__title--large= @course.condensed_course
+      %h2.mdc-typography--title.mdc-card__subtitle= @course.title
+    %section.mdc-card__supporting-text
+      .mdc-typography--subheading1
+        - if @course.prerequisites.present?
+          Prerequisites
+
+          .mdc-typography--caption= @course.prerequisite_info
+        - else
+          No Prerequisites Required
+      - @course.prerequisite_groups.each_with_index do |prereq_group, index|
+        .mt-2
+          - if @course.prerequisite_groups.size > 1
+            Group #{index + 1}
+          %ul
+            - prereq_group.prerequisites.each do |prereq|
+              %li= prereq.course.pretty_course
+
+    %section.mdc-card__actions
+      = link_to "Edit", edit_course_path(@course),
+          class: "mdc-button mdc-button--compact mdc-card__action"
+      = link_to "Destroy", @course, data: { confirm: "Are you sure?" },
+          method: :delete,
+          class: "mdc-button mdc-button--compact mdc-card__action delete-action"

@@ -1,0 +1,11 @@
+.nested-fields.prerequisite_group.form-course-container.layout.vertical.center
+  .layout.horizontal.center.w-100.mb-1
+    .prerequisite_group_number
+    .flex
+    = link_to_remove_association "Remove", f, class: "mdc-button mdc-button--compact mdc-card__action delete-action"
+  .mdc-card.mb-3.p-2{ style: "width: 400px;max-width: 90%;background:#fff;"}
+    %ul.mdc-list
+      = f.fields_for :prerequisites, @prerequisites do |builder|
+        = render "prerequisite_fields", f: builder
+    %section.mdc-card__actions
+      = link_to_add_association "Add Prerequisite", f, :prerequisites, class: "mdc-button mdc-button--compact mdc-card__action"

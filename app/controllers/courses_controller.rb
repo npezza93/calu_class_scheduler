@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 class CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_course, only: [:destroy, :edit, :update]
+  before_action :set_course, only: [:destroy, :edit, :update, :show]
   authorize_resource
 
   def index
-    @courses = Course.order(:subject, :course).group_by(&:subject)
+    @courses = Course.subject_by_letter(params[:letter]).group_by(&:subject)
+  end
+
+  def show
   end
 
   def new
     @course = Course.new
-    @prerequisite_groups = @course.prerequisite_groups.build
-    @prerequisites = @course.prerequisites.build
   end
 
   def edit
@@ -21,8 +22,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if @course.save
-      redirect_to courses_path,
-                  notice: @course.title + " was successfully created!"
+      redirect_to courses_path, notice: "Course was successfully created!"
     else
       render :new
     end
@@ -30,9 +30,7 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
-      redirect_to courses_path,
-                  notice: @course.subject + @course.course.to_s +
-                          "successfully updated!"
+      redirect_to @course, notice: "Course successfully updated!"
     else
       render :edit
     end
@@ -41,15 +39,15 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
 
-    redirect_to courses_url,
-                notice: @course.title + " was successfully destroyed."
+    redirect_to courses_url, notice: "Course was successfully destroyed."
   end
 
   private
 
   def set_course
-    @course = Course.includes(prerequisite_groups: :prerequisites)
-                    .find(params[:id])
+    @course = Course.includes(
+      prerequisite_groups: { prerequisites: :course }
+    ).find(params[:id])
   end
 
   def course_params

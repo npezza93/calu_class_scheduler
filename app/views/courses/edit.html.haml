@@ -1,0 +1,4 @@
+- content_for :title, "Courses"
+- content_for :back_url, course_path(@course)
+
+= render "form", course: @course, prerequisite_groups: @prerequisite_groups

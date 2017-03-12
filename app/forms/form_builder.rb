@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 class FormBuilder < ActionView::Helpers::FormBuilder
+  include CollectionSelect
+
   delegate :content_tag, :tag, to: :@template
   delegate :errors, to: :@object
 
   %w(text_field email_field number_field password_field).each do |method_name|
     define_method(method_name) do |name, options = {}|
-      error = text_field_error(name)
-      options[:class] ||= ""
-      options[:class] = options[:class] + " mdl-textfield__input"
+      options[:class] = "#{options[:class]} mdc-textfield__input"
 
-      content_tag :div, class: error do
-        super(name, options) + text_field_label(name)
+      content_tag(:div) do
+        content_tag(:div, class: "mdc-textfield") do
+          super(name, options) + text_field_label(name, options)
+        end + help_text(options)
       end
     end
   end
@@ -36,38 +38,25 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def collection_select(method, collection, value, text, opts = {}, html = {})
-    error_msg = errors[method.to_s.gsub("_id", "").to_sym][0]
-    div_class = "input-field #{'is-invalid' unless error_msg.blank?}"
-
-    content_tag :div, class: div_class do
-      super(method, collection, value, text, opts, html) +
-        if !error_msg.blank?
-          content_tag(:label, error_msg, class: "active")
-        else
-          ""
-        end
-    end
-  end
-
-  def select(method, choices = nil, options = {}, html_options = {})
-    error_msg = errors[method.to_s.gsub("_id", "").to_sym][0]
-    div_class = "input-field #{'is-invalid' unless error_msg.blank?}"
-
-    content_tag :div, class: div_class do
-      super(method, choices, options, html_options) +
-        if !error_msg.blank?
-          content_tag(:label, error_msg, class: "active")
-        else
-          ""
-        end
-    end
-  end
+  # def select(method, choices = nil, options = {}, html_options = {})
+  #   error_msg = errors[method.to_s.gsub("_id", "").to_sym][0]
+  #   div_class = "input-field #{'is-invalid' unless error_msg.blank?}"
+  #
+  #   content_tag :div, class: div_class do
+  #     super(method, choices, options, html_options) +
+  #       if !error_msg.blank?
+  #         content_tag(:label, error_msg, class: "active")
+  #       else
+  #         ""
+  #       end
+  #   end
+  # end
 
   def submit(value = nil, options = {})
-    options[:class] = "#{options[:class]} mdl-button #{submit_class}"
+    options[:class] = "#{options[:class]} mdc-button #{submit_class}"
+    options[:type] = "submit"
 
-    super(value, options)
+    content_tag(:button, value || submit_default_value, options)
   end
 
   private
@@ -76,11 +65,25 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     object.new_record? ? "create" : "update"
   end
 
-  def text_field_label(name)
-    label(name, options[:label], class: "mdl-textfield__label") +
-      content_tag(:span, class: "mdl-textfield__error") do
-        errors[name.to_sym][0]
-      end
+  def text_field_label(name, options)
+    label_class = "mdc-textfield__label"
+    if object.send(name).present?
+      label_class += " mdc-textfield__label--float-above"
+    end
+
+    label(name, options[:label] || name.to_s.titleize, class: label_class)# +
+      # content_tag(:span, class: "mdl-textfield__error") do
+      #   errors[name.to_sym][0]
+      # end
+  end
+
+  def help_text(options)
+    return "" if options[:help_text].blank?
+
+    content_tag(
+      :p, options[:help_text],
+      class: "mdc-textfield-helptext", "aria-hidden" => true
+    )
   end
 
   def text_field_error(name)

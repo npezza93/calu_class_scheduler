@@ -1,5 +1,12 @@
 @import colors, layout
 
+.delete-action
+  color: $red-500 !important
+  &:before
+    background-color: rgba(244, 67, 54, 0.12) !important
+
+.mdc-snackbar
+  transform: translateY(100%)
 .form-course-container
   width: 450px
   max-width: 95%
@@ -16,7 +23,7 @@
 
 .prerequisite_group_number
   &:before
-    content: "Prerequisite Group #" counter(idx)
+    content: "Group #" counter(idx)
 
 .remove-prereq-group
   color: $red-400
@@ -44,7 +51,7 @@
 
   .update
     color: $light-blue-A700
-  p
+  p.description
     text-align: center
     width: 400px
     max-width: 90%

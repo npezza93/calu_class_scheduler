@@ -15,6 +15,12 @@ class Course < ApplicationRecord
   validates :credits, presence: true, numericality: { only_integer: true }
   validates :course, uniqueness: { scope: :subject }
 
+  scope :subject_by_letter, lambda { |letter|
+    order(:subject, :course).where(
+      arel_table[:subject].matches("#{letter || 'a'}%")
+    )
+  }
+
   YEAR = {"Senior" => 1, "Junior" => 2, "Sophmore" => 3, "Freshman" => 4}.freeze
 
   PLACEMENT_TEST_PARTS = [
@@ -36,6 +42,10 @@ class Course < ApplicationRecord
     ["700 on Mathematics or better", "700"]
   ].freeze
 
+  def self.paginated_letters
+    select(:subject).distinct.flat_map(&:subject).map(&:first).uniq.sort
+  end
+
   def pretty_course
     condensed_course + ": " + title
   end
@@ -46,6 +56,16 @@ class Course < ApplicationRecord
 
   def condensed_course
     subject + course.to_s
+  end
+
+  def prerequisite_info
+    return "No Prerequisites Required" if prerequisites.blank?
+
+    if prerequisite_groups.size > 1
+      "All the courses in at least one of the groups needs to be completed"
+    else
+      "All the following courses must be completed"
+    end
   end
 
   def completed_prerequisites(transcript, courses_taken)
