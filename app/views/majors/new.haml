@@ -1,4 +1,4 @@
-- content_for :title do
-  New Major -
+- content_for :title, "Majors"
+- content_for :back_url, majors_path
 
-= render "form", major: @major, title: "New Major"
+= render "form", major: @major

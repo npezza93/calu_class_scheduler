@@ -1,25 +1,23 @@
-- content_for :title do
-  = @category.category
-  \-
-.layout.vertical.center{ style: "margin-bottom: 35px;" }
-  %h3.mdl-display-2.header
-    = @category.category
-  %div
-    = @category.pretty_set_flag
+- content_for :title, @category.category
+- content_for :back_url, major_path(@major)
+- content_for :toolbar_actions do
+  = link_to edit_major_curriculum_category_path(@major, @category), class: "ml-2", style: "color: #fff;display:flex;" do
+    = material_icon.mode_edit
+  = link_to major_curriculum_category_path(@major, @category), data: { confirm: "Are you sure?" }, method: :delete, class: "ml-2", style: "color: #fff;display:flex;" do
+    = material_icon.delete
+
+
+.layout.vertical.center.mt-2.mb-3
+  = @category.pretty_set_flag
 
 .vertical.layout.center
-  %ul.collapsible.popout{ data: { collapsible: :accordion } }
-    - @category.curriculum_category_sets.each_with_index do |category_set, index|
-      %li.category_section
-        .collapsible-header.layout.horizontal.start-justified{ class: index.zero? ? "active" : "" }
-          .category_section_number
-          .flex
-          = category_set.pretty_count
-
-        .collapsible-body
-          %ul.mdl-list
-            - category_set.courses.each do |course|
-              %li.mdl-list__item.layout.horizontal.center-justified.center-text
-                = course.pretty_course
-
-= edit_fab edit_curriculum_category_path(@category)
+  - @category.curriculum_category_sets.each_with_index do |category_set, index|
+    .mdc-typography--subheading2.layout.horizontal.start-justified{ style: "width: 400px;max-width: 90%;"}
+      Section #{index + 1}
+      .flex
+      = category_set.pretty_count
+    .mdc-card{ style: "width: 400px;max-width: 90%;margin-bottom: 40px;background:#fff;"}
+      .mdc-list
+        - category_set.courses.each do |course|
+          .mdc-list-item
+            .mdc-list-item__text= course.pretty_course

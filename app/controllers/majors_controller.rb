@@ -7,6 +7,9 @@ class MajorsController < ApplicationController
     @majors = Major.all.order(:major)
   end
 
+  def show
+  end
+
   def new
     @major = Major.new
   end

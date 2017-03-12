@@ -1,19 +1,16 @@
-- content_for :title do
-  Majors -
-
-%h3.mdl-display-2.header
-  majors
+- content_for :title, "Majors"
 
 .layout.vertical.center.majors-index
   %p
     Click on a major to modify it or
     the FAB in the bottom right to add a new major.
 
-  %ul.collapsible{ data: { collapsible: :accordion } }
-    - @majors.each do |major|
-      %li
-        = link_to edit_major_path(major), class: "collapsible-header" do
-          %div
-            = major.major
+  .mdc-card{ style: "width: 400px;max-width: 90%;margin-bottom: 40px;background:#fff;"}
+    .mdc-list
+      - @majors.each do |major|
+        = link_to major, class: "mdc-list-item", style: "width: 100%;", "data-mdc-auto-init" => "MDCRipple" do
+          .mdc-list-item__text= major.major
+          %i.mdc-list-item__end-detail.material-icons
+            chevron_right
 
 = new_fab new_major_path

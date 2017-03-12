@@ -1,8 +1,5 @@
-- content_for :title do
-  Edit #{@category.category.capitalize}
-  \-
+- content_for :title, @category.category
+- content_for :back_url, major_curriculum_category_path(@major, @category)
 
 .layout.vertical.center
-  = render "form", category: @category, title: "Edit Category", category_sets: @category_sets
-
-= destroy_fab @category
+  = render "form", major: @major, category: @category, category_sets: @category_sets

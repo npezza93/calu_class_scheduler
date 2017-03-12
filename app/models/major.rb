@@ -6,4 +6,5 @@ class Major < ApplicationRecord
            class_name: "CurriculumCategory"
   has_many :minor_categories, -> { where minor: true },
            class_name: "CurriculumCategory"
+  has_many :categories, class_name: "CurriculumCategory"
 end

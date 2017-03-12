@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 class CurriculumCategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, except: [:create, :new, :index]
   before_action :set_major
+  before_action :set_category, except: [:create, :new, :index]
   authorize_resource
 
   def index
@@ -54,21 +54,22 @@ class CurriculumCategoriesController < ApplicationController
   private
 
   def set_category
-    @category = CurriculumCategory.includes(curriculum_category_sets: :courses)
-                                  .find(params[:id])
+    @category = @major.categories.includes(
+      curriculum_category_sets: :courses
+    ).find(params[:id])
   end
 
   def set_major
-    @major = current_user.major
+    @major = Major.find(params[:major_id])
   end
 
   def category_params
     params.require(:curriculum_category).permit(
-      :category, :minor, :set_and_or_flag,
+      :category, :minor, :set_and_or_flag, :major_id,
       curriculum_category_sets_attributes: [
         :id, :count, :_destroy, course_sets_attributes:
           [:id, :course_id, :_destroy]
       ]
-    ).merge(major_id: current_user.major_id)
+    )
   end
 end

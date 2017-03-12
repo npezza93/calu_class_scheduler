@@ -1,7 +1,4 @@
-= form_for category do |f|
-  %h3.mdl-display-2.header
-    = title
-
+= form_for [major, category] do |f|
   = f.text_field :category, label: "Category (ex: Electives, Core, etc.)"
 
   .category-radio
