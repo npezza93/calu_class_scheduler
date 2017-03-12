@@ -17,4 +17,4 @@
       = link_to letter.upcase, courses_path(letter: letter), class: "mdc-ripple-surface layout vertical center-center black-text", "data-mdc-ripple-is-unbounded" => true
     = link_to courses_path(letter: next_letter(params[:letter])), class: "mdc-ripple-surface layout vertical center-center black-text", "data-mdc-ripple-is-unbounded" => true do
       = material_icon.chevron_right
-= new_fab new_course_path
+= fab new_course_path
