@@ -1,18 +1,16 @@
-%li.nested-fields.category_section
-  .collapsible-header
-    .layout.horizontal.start-justified
-      .category_section_number
-      .flex
-      = link_to_remove_association "Remove", f, class: "remove-prereq-group"
-  .collapsible-body{ style: "padding: 0px 14px;" }
-    = f.fields_for :course_sets, @course_sets do |builder|
-      .set-courses-container
+.nested-fields.category_section.form-course-container.layout.vertical.center
+  .layout.horizontal.center.w-100.mb-1
+    .category_section_number
+    .flex
+    = link_to_remove_association "Remove", f, class: "mdc-button mdc-button--compact mdc-card__action delete-action"
+  .mdc-card.mb-3.p-2{ style: "width: 400px;max-width: 90%;background:#fff;"}
+    %ul.mdc-list
+      = f.fields_for :course_sets, @course_sets do |builder|
         = render "course_set_fields", f: builder
-
-    .layout.horizontal.center-justified{ style: "padding: 12px 0;" }
-      = link_to_add_association "add course", f, :course_sets, class: "add-courses mdl-button"
 
     .layout.vertical.center.center-text{ style: "font-weight:400;" }
       How many are of these courses are needed to fulfill this section(leave blank for all):
-      %span{ style: "width: 50px;" }
-        = f.number_field :count
+      = f.number_field :count
+
+    %section.mdc-card__actions
+      = link_to_add_association "Add Course", f, :course_sets, class: "mdc-button mdc-button--compact mdc-card__action"

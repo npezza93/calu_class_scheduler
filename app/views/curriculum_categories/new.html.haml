@@ -1,0 +1,4 @@
+- content_for :title, "New Category"
+- content_for :back_url, major_path(@major)
+
+= render "form", major: @major, category: @category

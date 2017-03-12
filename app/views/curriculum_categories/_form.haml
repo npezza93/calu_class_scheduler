@@ -1,24 +1,27 @@
 = form_for [major, category] do |f|
-  = f.text_field :category, label: "Category (ex: Electives, Core, etc.)"
+  = f.text_field :category, label: "Category",
+      help_text: "Ex: Electives, Core, etc.", required: true
 
-  .category-radio
+  .layout.horizontal.center{ style: "width: 200px;" }
     = f.radio_button :minor, false, checked: true, label: "Major"
+    .flex
     = f.radio_button :minor, true, label: "Minor"
 
   .category-set-logic-text
     Will the student only need to complete one or all of these sections to
     complete this category?
 
-  .category-radio
+  .layout.horizontal.center.category-radio
+    = f.radio_button :set_and_or_flag, "and", checked: true, label: "All sections"
     = f.radio_button :set_and_or_flag, "or", label: "One section"
-    = f.radio_button :set_and_or_flag, "and", label: "All sections"
 
-  %ul.collapsible{ data: { collapsible: :accordion }, style: "margin-bottom: 25px;" }
-    = f.fields_for :curriculum_category_sets, category_sets do |builder|
+  .category-set-container.mt-4
+    = f.fields_for :curriculum_category_sets do |builder|
       = render "curriculum_category_set_fields", f: builder
 
   = link_to_add_association "Add Section", f, :curriculum_category_sets,
-      "data-association-insertion-node" => ".collapsible",
-      "data-association-insertion-method" => "append", style: "margin-bottom: 35px;color: #66BB6A;"
+      "data-association-insertion-node" => ".category-set-container",
+      "data-association-insertion-method" => "append",
+      class: "mdc-button mdc-button--compact mb-5"
 
   = f.submit

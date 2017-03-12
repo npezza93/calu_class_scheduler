@@ -7,25 +7,31 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   %w(text_field email_field number_field password_field).each do |method_name|
     define_method(method_name) do |name, options = {}|
+      if (@template.request.post? || @template.request.put?) && object.invalid?
+        error_class = "mdc-textfield--invalid"
+      end
+
       options[:class] = "#{options[:class]} mdc-textfield__input"
 
       content_tag(:div) do
-        content_tag(:div, class: "mdc-textfield") do
+        content_tag(:div, class: "mdc-textfield #{error_class}") do
           super(name, options) + text_field_label(name, options)
-        end + help_text(options)
+        end + help_text(options) + error_msg(name)
       end
     end
   end
 
   def radio_button(name, value, options = {})
     label_text = options.delete(:label)
-    options[:class] ||= ""
-    options[:class] = options[:class] + "mdl-radio__button"
+    options[:class] = "#{options[:class]} mdc-radio__native-control"
 
-    content_tag :label, class: "mdl-radio mdl-js-radio mdl-js-ripple-effect" do
+    content_tag(:div, class: "mdc-radio") do
       super(name, value, options) +
-        content_tag(:span, class: "mdl-radio__label") { label_text }
-    end
+        content_tag(:div, class: "mdc-radio__background") do
+          content_tag(:div, nil, class: "mdc-radio__outer-circle") +
+          content_tag(:div, nil, class: "mdc-radio__inner-circle")
+        end
+    end + label("#{name}_#{value}", label_text)
   end
 
   def check_box(method, options = {}, checked_val = "1", unchecked_val = "0")
@@ -38,22 +44,8 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  # def select(method, choices = nil, options = {}, html_options = {})
-  #   error_msg = errors[method.to_s.gsub("_id", "").to_sym][0]
-  #   div_class = "input-field #{'is-invalid' unless error_msg.blank?}"
-  #
-  #   content_tag :div, class: div_class do
-  #     super(method, choices, options, html_options) +
-  #       if !error_msg.blank?
-  #         content_tag(:label, error_msg, class: "active")
-  #       else
-  #         ""
-  #       end
-  #   end
-  # end
-
   def submit(value = nil, options = {})
-    options[:class] = "#{options[:class]} mdc-button #{submit_class}"
+    options[:class] = "#{options[:class]} mdc-button"
     options[:type] = "submit"
 
     content_tag(:button, value || submit_default_value, options)
@@ -61,20 +53,13 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   private
 
-  def submit_class
-    object.new_record? ? "create" : "update"
-  end
-
   def text_field_label(name, options)
     label_class = "mdc-textfield__label"
     if object.send(name).present?
       label_class += " mdc-textfield__label--float-above"
     end
 
-    label(name, options[:label] || name.to_s.titleize, class: label_class)# +
-      # content_tag(:span, class: "mdl-textfield__error") do
-      #   errors[name.to_sym][0]
-      # end
+    label(name, options[:label] || name.to_s.titleize, class: label_class)
   end
 
   def help_text(options)
@@ -86,8 +71,13 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
-  def text_field_error(name)
-    "mdl-textfield mdl-js-textfield " +
-      (errors[name.to_sym].blank? ? "" : "is-invalid")
+  def error_msg(name)
+    return "" unless object.errors.key?(name)
+
+    content_tag(:p, class: "mdc-textfield-helptext
+          mdc-textfield-helptext--persistent
+          mdc-textfield-helptext--validation-msg") do
+      object.errors[name].first.capitalize
+    end
   end
 end

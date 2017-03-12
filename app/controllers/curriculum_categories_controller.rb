@@ -3,34 +3,26 @@ class CurriculumCategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_major
   before_action :set_category, except: [:create, :new, :index]
+  before_action :set_courses, only: [:new, :create, :edit, :update]
   authorize_resource
-
-  def index
-    @courses = Course.all.order(:subject)
-  end
 
   def show
   end
 
   def new
-    @category = CurriculumCategory.new
-    @category_sets = @category.curriculum_category_sets.build
-    @course_sets = @category.course_sets.build
-    @courses = Course.all.order(:subject)
+    @category = @major.categories.new
   end
 
   def edit
-    @courses = Course.all.order(:subject)
   end
 
   def create
     @category = CurriculumCategory.new(category_params)
 
     if @category.save
-      redirect_to curriculum_categories_path,
-                  notice: @category.category + " has been created!"
+      redirect_to major_curriculum_categories_path(@major),
+                  notice: "Category was successfully created!"
     else
-      @courses = Course.all.order(:subject)
       render :new
     end
   end
@@ -38,9 +30,8 @@ class CurriculumCategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       redirect_to curriculum_categories_url,
-                  notice: @category.category + " successfully updated!"
+                  notice: "Category was successfully updated!"
     else
-      @courses = Course.all.order(:subject)
       render :edit
     end
   end
@@ -48,7 +39,7 @@ class CurriculumCategoriesController < ApplicationController
   def destroy
     @category.destroy
     redirect_to curriculum_categories_url,
-                notice: @category.category + " successfully deleted!"
+                notice: "Category was successfully deleted!"
   end
 
   private
@@ -63,9 +54,13 @@ class CurriculumCategoriesController < ApplicationController
     @major = Major.find(params[:major_id])
   end
 
+  def set_courses
+    @courses ||= Course.order(:subject)
+  end
+
   def category_params
     params.require(:curriculum_category).permit(
-      :category, :minor, :set_and_or_flag, :major_id,
+      :category, :minor, :set_and_or_flag,
       curriculum_category_sets_attributes: [
         :id, :count, :_destroy, course_sets_attributes:
           [:id, :course_id, :_destroy]
