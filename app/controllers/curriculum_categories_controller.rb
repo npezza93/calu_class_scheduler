@@ -20,7 +20,7 @@ class CurriculumCategoriesController < ApplicationController
     @category = CurriculumCategory.new(category_params)
 
     if @category.save
-      redirect_to major_curriculum_categories_path(@major),
+      redirect_to major_curriculum_category_path(@major, @category),
                   notice: "Category was successfully created!"
     else
       render :new
@@ -29,7 +29,7 @@ class CurriculumCategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to curriculum_categories_url,
+      redirect_to major_curriculum_category_path(@major, @category),
                   notice: "Category was successfully updated!"
     else
       render :edit
@@ -38,8 +38,7 @@ class CurriculumCategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to curriculum_categories_url,
-                notice: "Category was successfully deleted!"
+    redirect_to @major, notice: "Category was successfully deleted!"
   end
 
   private

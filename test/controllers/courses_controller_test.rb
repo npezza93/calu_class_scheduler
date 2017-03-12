@@ -64,7 +64,7 @@ class CoursesControllerTest < ActionController::TestCase
     put :update, params: { id: courses(:one), course: { title: "A course" } }
 
     assert_equal "A course", Course.find(courses(:one).id).title
-    assert_redirected_to :courses
+    assert_redirected_to courses(:one)
   end
 
   test "should not put update as student" do
@@ -94,8 +94,8 @@ class CoursesControllerTest < ActionController::TestCase
       }
     end
 
-    assert_redirected_to :courses
-    assert_equal "Course 1 was successfully created!", flash[:notice]
+    assert_redirected_to Course.find_by(title: "Course 1", subject: "CCC")
+    assert_equal "Course was successfully created!", flash[:notice]
   end
 
   test "should not post create as student" do
@@ -115,7 +115,7 @@ class CoursesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to :courses
-    assert_equal courses(:one).title + " was successfully destroyed.",
+    assert_equal "Course was successfully destroyed.",
                  flash[:notice]
   end
 

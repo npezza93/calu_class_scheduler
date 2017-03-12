@@ -1,17 +1,17 @@
 one:
   category: Communication Skills
-  major_id: one
+  major: one
   minor: false
   set_and_or_flag: nil
 
 two:
   category: Mathematics
-  major_id: one
+  major: one
   minor: false
   set_and_or_flag: false
 
 three:
   category: Computer Science
-  major_id: one
+  major: one
   minor: false
   set_and_or_flag: 'true'
