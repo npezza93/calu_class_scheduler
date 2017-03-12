@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
   validates :major, presence: true
-  validates :advised_by, presence: true, if: "!advisor"
+  validates :advised_by, presence: true, if: :student
   validates :email, uniqueness: true, format: { with: Devise.email_regexp }
 
   belongs_to :major
@@ -35,6 +35,10 @@ class User < ApplicationRecord
 
   before_validation do |model|
     model.minor&.reject!(&:blank?)
+  end
+
+  def student
+    !advisor
   end
 
   def name
