@@ -2,15 +2,15 @@
 %html
   %head
     %title
-      = (yield :title) + "  "
-      CalU Advisor
+      - if content_for?(:title)
+        = "#{yield :title} | CalU Advisor"
+      - else
+        CalU Advisor
     = stylesheet_link_tag "application",
-        "https://fonts.googleapis.com/icon?family=Material+Icons",
-        "http://cdn.materialdesignicons.com/1.5.54/css/materialdesignicons.min.css",
-        "https://code.getmdl.io/1.1.3/material.blue_grey-red.min.css",
+        "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css",
         media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application",
-        "https://code.getmdl.io/1.1.3/material.min.js",
+        "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js",
         "data-turbolinks-track" => true
     = csrf_meta_tags
     = favicon_link_tag "callogo2.png"
@@ -22,26 +22,31 @@
     %meta{ content: "#2196F3", name: "theme-color" }/
 
   %body.fullbleed.vertical.layout
-    - if notice || alert
-      .mdl-js-snackbar.mdl-snackbar#notice
-        .mdl-snackbar__text
-          = notice
-          = alert
-        %button.mdl-snackbar__action{ type: "button" }
+    = snackbar_notice(notice || alert)
 
     - if current_user
-      .mdl-layout.mdl-js-layout.mdl-layout--fixed-drawer
-        = render "layouts/drawer"
-        %main.mdl-layout__content
-          .page-content
-            #user-avatar-container
-              - if current_user.avatar_url
-                = current_user.email
-                = link_to edit_user_registration_path do
-                  = image_tag current_user.avatar_url
-              - else
-                = link_to edit_user_registration_path, class: "no-avatar" do
-                  = current_user.email
-            = yield
-    - else
-      = yield
+      %header.mdc-toolbar
+        %section.mdc-toolbar__section.mdc-toolbar__section--align-start.flex-2
+          - if content_for?(:back_url)
+            = link_to yield(:back_url), style: "color: #fff;", class: "layout horizontal mr-3 ml-1" do
+              %i.material-icons arrow_back
+          - else
+            .mr-3.ml-1{ style: "width: 24px; height: 24px;"}
+          %span.mdc-toolbar__title= yield(:title)
+        %section.mdc-toolbar__section.mdc-toolbar__section--align-end
+          = yield(:toolbar_actions) if content_for?(:toolbar_actions)
+          = link_to destroy_user_session_path, method: :delete, class: "mx-2", style: "color: #fff;display:flex;" do
+            = material_icon.exit_to_app
+
+    %main= yield
+    -# .mt-10
+    -#   = render "layouts/drawer"
+      -# #user-avatar-container
+      -#   - if current_user.avatar_url
+      -#     = current_user.email
+      -#     = link_to edit_user_registration_path do
+      -#       = image_tag current_user.avatar_url
+      -#   - else
+      -#     = link_to edit_user_registration_path, class: "no-avatar" do
+      -#       = current_user.email
+    -# = yield
