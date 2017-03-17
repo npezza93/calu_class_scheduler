@@ -27,6 +27,12 @@ function initialize_mdc() {
       $(this).find("input[type='hidden']").val(e.detail.value);
     });
   });
+  $.each($(".mdc-simple-menu"), function(index, element) {
+    var menu = mdc.menu.MDCSimpleMenu.attachTo(element);
+    $(element).parent().find(".menu-toggle").click(function() {
+      menu.open = !menu.open;
+    });
+  });
   if ($(".mdc-snackbar").length > 0) {
     var snackbar = mdc.snackbar.MDCSnackbar.attachTo($(".mdc-snackbar")[0]);
     snackbar.show({ message: $(".mdc-snackbar").find(".mdc-snackbar__text").text() });
