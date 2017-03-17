@@ -1,18 +1,17 @@
 @import colors
 
 @font-face
-  font-family: 'Avenir'
-  src: url("/assets/AvenirLTStd-Book.otf") format("otf")
   font-weight: normal
   font-style: normal
   -webkit-font-smoothing: antialiased
 
-
 body
-  font-family: 'Avenir' !important
-  letter-spacing: 1.5px !important
+  font-family: Roboto, sans-serif
   background-color: $grey-50
   color: $grey-800
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeLegibility
+  -moz-osx-font-smoothing: grayscale
 
 hr
   border: 0
@@ -39,11 +38,7 @@ hr
   max-width: 90%
   margin-top: 40px
   a
-    color: $light-blue-A700
-
-.mdl-list__item, h3, h5, .mdl-textfield__input, .mdl-button
-  font-family: 'Avenir' !important
-  letter-spacing: 1px !important
+    color: $grey-900
 
 .mdl-button
   text-transform: capitalize !important
