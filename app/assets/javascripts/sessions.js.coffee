@@ -7,7 +7,7 @@ $(document).on 'turbolinks:load', ->
       return
 
   $(".close").click (e) ->
-    $(this).parent().parent().parent()[0].close()
+    $(this).closest("dialog")[0].close()
     return
 
   if $('.placement-test-dialog').length > 0
