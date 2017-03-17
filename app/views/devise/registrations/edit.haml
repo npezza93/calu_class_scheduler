@@ -15,11 +15,4 @@
     .placement-test-dialog-toggle placement test scores
     = render "placement_tests", f: f
 
-  .file-field.input-field
-    .mdl-button
-      %span Avatar
-      = f.file_field :avatar
-    .file-path-wrapper
-      %input.file-path.validate{ type: "text", disabled: true }
-
   = f.submit "Update"
