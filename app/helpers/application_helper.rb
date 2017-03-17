@@ -10,4 +10,13 @@ module ApplicationHelper
       end
     end
   end
+
+  def active_semester
+    @active_semester ||= Semester.active
+  end
+
+  def current_semester
+    @current_semester ||=
+      Semester.find_by(id: session[:semester_id]) || active_semester
+  end
 end

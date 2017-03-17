@@ -1,23 +1,21 @@
-- if current_user&.advisor?
-  = link_to users_path, class: "mdl-navigation__link" do
-    %i.mdi.mdi-account-multiple-outline
-    Students
-  = link_to courses_path, class: "mdl-navigation__link" do
-    %i.mdi.mdi-book-open-variant
-    Courses
-  = link_to majors_path, class: "mdl-navigation__link" do
-    %i.material-icons bookmark
-    Majors
-  = link_to semesters_path, class: "mdl-navigation__link" do
-    %i.mdi.mdi-calendar-multiple
-    Semesters
-- else
-  = link_to transcripts_path, class: "mdl-navigation__link" do
-    %i.material-icons description
-    Transcript
-  = link_to work_schedules_path, class: "mdl-navigation__link" do
-    %i.material-icons access_time
-    Calendar
-  = link_to schedules_path, class: "mdl-navigation__link" do
-    %i.material-icons event
-    Schedule
+%div{ style: "width: 300px;" }
+  - if current_user&.advisor?
+    = link_to users_path, class: "mdl-navigation__link" do
+      %i.mdi.mdi-account-multiple-outline
+      Students
+    = link_to courses_path, class: "mdl-navigation__link" do
+      %i.mdi.mdi-book-open-variant
+      Courses
+    = link_to majors_path, class: "mdl-navigation__link" do
+      %i.material-icons bookmark
+      Majors
+  - else
+    = link_to transcripts_path, class: "mdl-navigation__link" do
+      %i.material-icons description
+      Transcript
+    = link_to work_schedules_path, class: "mdl-navigation__link" do
+      %i.material-icons access_time
+      Calendar
+    = link_to schedules_path, class: "mdl-navigation__link" do
+      %i.material-icons event
+      Schedule

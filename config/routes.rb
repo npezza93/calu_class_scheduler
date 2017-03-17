@@ -10,7 +10,7 @@ def advisor?(request)
 end
 
 Rails.application.routes.draw do
-  resources :semesters, only: [:index, :new, :create, :update]
+  resources :semesters, only: :update
 
   resources :majors do
     resources :curriculum_categories, except: :index

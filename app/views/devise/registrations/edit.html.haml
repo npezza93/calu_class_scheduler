@@ -1,0 +1,28 @@
+- content_for :title, "Settings"
+- content_for :back_url, root_url
+- content_for :toolbar do
+  .mdc-select.semester-toggle{ role: :listbox, tabindex: 0 }
+    %span.mdc-select__selected-text Toggle Semester
+    .mdc-simple-menu.mdc-select__menu
+      %ul.mdc-list.mdc-simple-menu__items
+        - Semester.find_each do |semester|
+          %li.mdc-list-item{ role: :option, tabindex: 0, aria: { selected: current_semester == semester } }
+            = link_to semester.semester, semester, method: :put, style: "z-index: 100"
+
+
+= form_for resource, as: resource_name, url: registration_path(resource_name),
+           html: { method: :put } do |f|
+
+  = f.password_field :password
+  = f.password_field :password_confirmation, label: "Confirm"
+  .settings-major-select.my-4{ style: "width: 249px;" }
+    = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
+
+  - unless current_user.advisor?
+    = f.collection_select :advised_by, User.where(advisor: true),
+                                       :id, :email, prompt: "Choose an Advisor"
+    = f.collection_select :minor, Major.all, :id, :major, {prompt: "minor(s)" }, { multiple: true }
+    .placement-test-dialog-toggle placement test scores
+    = render "placement_tests", f: f
+
+  = f.submit "Update"
