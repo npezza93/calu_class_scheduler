@@ -1,25 +1,36 @@
-- content_for :title, "Offerings"
+- content_for :title, "#{@course.condensed_course} Offerings"
+- content_for :back_url, course_path(@course)
+- content_for :toolbar do
+  = material_icon.file_upload.css_class("upload-offerings")
 
-.layout.vertical.center.offering-index
-  %p
-    Click on a row to modify. You can add a single or upload
-    multiple offerings by clicking the FAB in the bottom right.
+.layout.vertical.center
+  .mdc-card.mt-2{ style: "width: 400px;max-width: 90%;" }
+    %section.mdc-card__primary
+      %h1.mdc-card__title.mdc-card__title--large Offerings
+    %section.mdc-card__supporting-text
+      %ul.mdc-list
+        - @offerings.each do |offering|
+          %li.mdc-list-item
+            %span.mdc-list-item__text
+              %span.mdc-list-item__text__primary
+                = "#{offering.section}-#{offering.user.professor}"
+              %span.mdc-list-item__text__primary.mdc-typography--caption
+                = offering.days_time.pretty_day_time
+            .mdc-list-item__end-detail{ style: "position:relative;" }
+              = material_icon.more_vert.css_class("menu-toggle")
+              .mdc-simple-menu{ tabindex: -1, style: "z-index:2;position:absolute;top:0;right:0;" }
+                .mdc-simple-menu__items.mdc-list{ "aria-hidden" => true, role: :menu }
+                  = link_to edit_course_offering_path(@course, offering),
+                      class: "mdc-list-item", role: :menuitem, tabindex: 0 do
+                    = material_icon.mode_edit.css_class("mr-2")
+                    Edit
+                  = link_to course_offering_path(@course, offering),
+                      class: "mdc-list-item", method: :delete,
+                      data: { confirm: "Are you sure?" }, role: :menuitem,
+                      tabindex: 0 do
+                    = material_icon.delete.css_class("mr-2")
+                    Delete
 
-  = render "layouts/search", link: offerings_path
+= fab new_course_offering_path(@course)
 
-  - @offerings.each do |offering|
-    %tr.pointer.table-row{ href: edit_offering_path(offering) }
-      %td.mdl-data-table__cell--non-numeric
-        = offering.course.offering_display(offering.section)
-      %td.mdl-data-table__cell--non-numeric
-        = offering.user.professor
-      %td.mdl-data-table__cell--non-numeric
-        = offering.days_time.pretty_day_time
-
-  .layout.horizontal.justified.paginated-links
-    = link_to_previous_page @offerings, "Previous", params: { search: params[:search] }
-    .flex
-    = link_to_next_page @offerings, "Next", params: { search: params[:search] }
-
-= render "add_fab"
-= render "upload"
+= render "offerings/upload"

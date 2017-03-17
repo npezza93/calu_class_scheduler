@@ -16,6 +16,10 @@ class Offering < ApplicationRecord
   validates :user, presence: { message: "A professor must be selected!" }
   validates :section, presence: true
 
+  scope :for_semester, lambda { |semester = Semester.active|
+    where(semester: semester)
+  }
+
   def display
     "#{days_time.days} from #{display_time} with #{user.professor}"
   end
@@ -27,15 +31,18 @@ class Offering < ApplicationRecord
   end
 
   class << self
-    def search(search, page)
-      if search.blank?
-        includes(:course, :days_time, :user)
-      else
-        search = "%#{search}%"
-        joins(:course, :days_time, :user).where(
-          search_query, search, search, search, search, search
+    def search_courses(query, page)
+      course_ids = Offering.where(semester: Semester.active).pluck(:course_id)
+      courses = Course.where(id: course_ids).distinct
+      if query.present?
+        query = "%#{query}%"
+        courses = courses.where(
+          "courses.title ILIKE ? OR courses.subject ILIKE ?",
+          "%#{query}%", "%#{query}%"
         )
-      end.where(semester: Semester.active).page(page).per(20)
+      end
+
+      courses.order(:subject).page(page).per(20)
     end
 
     def import(file)
@@ -91,9 +98,7 @@ class Offering < ApplicationRecord
     private
 
     def search_query
-      "LOWER(courses.title) LIKE ? OR LOWER(courses.subject) LIKE ? OR "\
-      "LOWER(days_times.days) LIKE ? OR "\
-      "LOWER(users.first_name) LIKE ? OR LOWER(users.last_name) LIKE ?"
+      "LOWER(courses.title) LIKE ? OR LOWER(courses.subject) LIKE ?"
     end
   end
 

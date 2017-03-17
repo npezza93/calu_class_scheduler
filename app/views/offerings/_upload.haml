@@ -1,21 +1,21 @@
-%dialog.mdl-dialog#upload-offerings-dialog
-  %h5.mdl-typography--headline.center-text
-    Import Offerings
+%dialog.p-0#upload-offerings-dialog
+  .py-2.px-3.mdc-card
+    %h5.mdc-typography--headline.center-text.m-0
+      Import Offerings
 
-  = form_tag import_offerings_path, multipart: true do
-    %p.center-text
-      Upload a .CSV formatted:
-    .layout.vertical.start.instructions
-      %p Column 2 - The course formatted: CSC 110 Name
-      %p Column 3 - Course section
-      %p Column 8 - Days being offered(MWF, TR, etc.)
-      %p Column 9 - Start time formatted: 0330PM
-      %p Column 10 - End time formatted: 0330PM
-      %p Column 13 - Professor formmatted: "last, first"
+    = form_tag offerings_import_path, multipart: true do
+      %h3.mdc-typography--subheading2.center-text.my-1
+        Upload a .CSV formatted:
+      .layout.vertical.start.instructions.m-0
+        %p.m-0.mdc-typography--body1 Column 2 - The course formatted: CSC 110 Name
+        %p.m-0.mdc-typography--body1 Column 3 - Course section
+        %p.m-0.mdc-typography--body1 Column 8 - Days being offered(MWF, TR, etc.)
+        %p.m-0.mdc-typography--body1 Column 9 - Start time formatted: 0330PM
+        %p.m-0.mdc-typography--body1 Column 10 - End time formatted: 0330PM
+        %p.m-0.mdc-typography--body1 Column 13 - Professor formmatted: "last, first"
 
-    = file_field_tag :offering_file, accept: ".csv", class: "hidden"
-    = submit_tag "Reset", class: "hidden"
+      = file_field_tag :offering_file, accept: ".csv", class: "hidden"
 
-    .mdl-dialog__actions
-      %button.mdl-button.choose-file{ type: "button" } Choose File
-      %button.mdl-button.close{ type: "button" } Cancel
+      %section.mdc-card__actions.px-0.pt-2
+        %button.mdc-button.mdc-button--compact.mdc-card__action.choose-file{ type: "button" } Choose File
+        %button.mdc-button.mdc-button--compact.mdc-card__action.close{ type: "button" } Cancel

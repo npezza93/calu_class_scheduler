@@ -16,13 +16,13 @@ Rails.application.routes.draw do
     resources :curriculum_categories, except: :index
   end
 
-  resources :offerings do
-    collection do
-      post :import
-    end
+  resources :courses do
+    resources :offerings, except: :show
   end
 
-  resources :courses
+  namespace :offerings do
+    post :import
+  end
 
   devise_for :users, controllers: { registrations: "registrations" }
   devise_scope :user do

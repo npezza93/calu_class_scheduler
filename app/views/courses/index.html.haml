@@ -1,4 +1,6 @@
 - content_for :title, "Courses"
+- content_for :toolbar do
+  = material_icon.file_upload.css_class("upload-offerings")
 
 .layout.vertical.center.mt-2
   - @courses.each do |course_code, courses|
@@ -17,4 +19,7 @@
       = link_to letter.upcase, courses_path(letter: letter), class: "mdc-ripple-surface layout vertical center-center black-text", "data-mdc-ripple-is-unbounded" => true
     = link_to courses_path(letter: next_letter(params[:letter])), class: "mdc-ripple-surface layout vertical center-center black-text", "data-mdc-ripple-is-unbounded" => true do
       = material_icon.chevron_right
+
 = fab new_course_path
+
+= render "offerings/upload"

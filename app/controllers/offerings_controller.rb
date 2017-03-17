@@ -1,23 +1,27 @@
 # frozen_string_literal: true
 class OfferingsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  before_action :set_course
+  before_action :set_offering, only: [:destroy, :edit, :update]
+  authorize_resource
 
   def index
-    @offerings = Offering.search(params[:search], params[:page])
+    @offerings = @course.offerings.for_semester
   end
 
   def new
+    @offering = @course.offerings.for_semester.new
   end
 
   def edit
   end
 
   def create
-    @offering = Offering.new(offering_params)
+    @offering = @course.offerings.for_semester.new(offering_params)
 
     if @offering.save
-      redirect_to offerings_path, notice: @offering.course.title + " created!"
+      redirect_to course_offerings_path(@course),
+                  notice: "Offering was successfully created!"
     else
       render :new
     end
@@ -35,7 +39,8 @@ class OfferingsController < ApplicationController
     @offering.destroy
     Schedule.where(offering: @offering).delete_all
 
-    redirect_to offerings_url, notice: @offering.course.title + " removed!"
+    redirect_to course_offerings_path(@course),
+                notice: "Offering was successfully deleted!"
   end
 
   def import
@@ -46,9 +51,15 @@ class OfferingsController < ApplicationController
 
   private
 
+  def set_offering
+    @offering = @course.offerings.for_semester.find(params[:id])
+  end
+
+  def set_course
+    @course = Course.find(params[:course_id])
+  end
+
   def offering_params
-    params.require(:offering).permit(
-      :course_id, :days_time_id, :user_id, :section
-    )
+    params.require(:offering).permit(:days_time_id, :user_id, :section)
   end
 end

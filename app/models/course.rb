@@ -50,10 +50,6 @@ class Course < ApplicationRecord
     condensed_course + ": " + title
   end
 
-  def offering_display(section)
-    subject + course.to_s + "-" + section + ": " + title
-  end
-
   def condensed_course
     subject + course.to_s
   end

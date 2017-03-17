@@ -1,5 +1,7 @@
 - content_for :title, "Courses"
 - content_for :back_url, courses_path
+- content_for :toolbar do
+  = material_icon.file_upload.css_class("upload-offerings")
 
 .layout.vertical.center.mt-4
   .mdc-card{ style: "width: 400px;max-width: 90%;background:#fff;"}
@@ -23,8 +25,12 @@
               %li= prereq.course.pretty_course
 
     %section.mdc-card__actions
+      = link_to "Offerings", course_offerings_path(@course),
+          class: "mdc-button mdc-button--compact mdc-card__action"
       = link_to "Edit", edit_course_path(@course),
           class: "mdc-button mdc-button--compact mdc-card__action"
       = link_to "Destroy", @course, data: { confirm: "Are you sure?" },
           method: :delete,
           class: "mdc-button mdc-button--compact mdc-card__action delete-action"
+
+= render "offerings/upload"
