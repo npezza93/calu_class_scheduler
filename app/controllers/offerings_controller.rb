@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class OfferingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_course
+  before_action :set_course, except: :import
   before_action :set_offering, only: [:destroy, :edit, :update]
   authorize_resource
 
@@ -29,7 +29,7 @@ class OfferingsController < ApplicationController
 
   def update
     if @offering.update(offering_params)
-      redirect_to offerings_path, notice: @offering.course.title + " updated!"
+      redirect_to course_offerings_path, notice: "Offering updated!"
     else
       render :new
     end
@@ -46,7 +46,7 @@ class OfferingsController < ApplicationController
   def import
     Offering.import(params[:offering_file])
 
-    redirect_to offerings_path, notice: "Offerings Uploaded!"
+    redirect_to courses_path, notice: "Offerings Uploaded!"
   end
 
   private

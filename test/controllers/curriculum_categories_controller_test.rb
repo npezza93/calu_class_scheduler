@@ -3,6 +3,7 @@ require "test_helper"
 
 class CurriculumCategoriesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
+
   setup do
     @major = majors(:one)
   end
