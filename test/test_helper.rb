@@ -6,6 +6,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/pride"
 
+ActiveSupport::Deprecation.silenced = true
+
 class ActiveSupport::TestCase
   fixtures :all
 end
