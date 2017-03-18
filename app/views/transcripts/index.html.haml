@@ -1,0 +1,24 @@
+- content_for :title, "Transcript"
+
+.layout.vertical.center.mt-3
+  .container{ style: "width: 400px;max-width: 90%;" }
+    %p.mt-0.center-text.mb-3
+      To add a course to your transcript use the FAB in the bottom right. You can
+      also upload a brand new transcript from there as well.
+
+    .mdc-card.mb-5{ style: "background:#fff;" }
+      .mdc-list
+        - @transcripts.each do |transcript|
+          .mdc-list-item.w-100
+            .mdc-list-item__text= transcript.course.pretty_course
+            .mdc-list-item__end-detail.relative.pl-2
+              = material_icon.more_vert.css_class("menu-toggle")
+              .mdc-simple-menu{ tabindex: -1, style: "z-index:2;position:absolute;top:0;right:0;" }
+                .mdc-simple-menu__items.mdc-list{ "aria-hidden" => true, role: :menu }
+                  = link_to transcript, class: "mdc-list-item", method: :delete,
+                      data: { confirm: "Are you sure?" }, role: :menuitem,
+                      tabindex: 0 do
+                    = material_icon.delete.css_class("mr-2")
+                    Delete
+
+= fab new_transcript_path

@@ -1,0 +1,7 @@
+= form_for transcript do |f|
+  = f.collection_select :course_id,
+                        Course.all.order(:subject, :course),
+                        :id, :pretty_course, prompt: "Choose a Course"
+
+  = f.select :grade_c, Transcript::GRADES, prompt: "Grade"
+  = f.submit

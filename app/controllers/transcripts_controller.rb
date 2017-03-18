@@ -2,11 +2,15 @@
 class TranscriptsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_transcript, only: :destroy
-  before_action :set_transcripts, only: [:index, :create]
   authorize_resource
 
   def index
-    @transcript = Transcript.new
+    @transcripts =
+      current_user.transcripts.includes(:course).order("courses.subject asc")
+  end
+
+  def new
+    @transcript = current_user.transcripts.new
   end
 
   def create
@@ -42,13 +46,8 @@ class TranscriptsController < ApplicationController
 
   private
 
-  def set_transcripts
-    @transcripts = current_user.transcripts.includes(:course)
-                               .order("courses.subject asc")
-  end
-
   def set_transcript
-    @transcript = Transcript.find(params[:id])
+    @transcript = current_user.transcripts.find(params[:id])
   end
 
   def transcript_params

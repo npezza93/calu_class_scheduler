@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :transcripts, only: [:index, :create, :destroy],
+  resources :transcripts, only: [:index, :create, :destroy, :new],
                           path: :transcript do
     collection do
       post :import
