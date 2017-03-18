@@ -1,18 +1,13 @@
-$(document).on("turbolinks:load", function() {
-  $(".upload-offerings").click(function(e) {
-    e.preventDefault();
-    document.querySelector("#upload-offerings-dialog").show();
-    return;
-  });
+$(document).on("click", ".upload-offerings", function(e) {
+  e.preventDefault();
+  $("#upload-offerings-dialog")[0].show();
+});
 
-  $(".choose-file").click(function(e) {
-    e.preventDefault();
-    $("#offering_file").click();
-    return;
-  });
+$(document).on("click", ".choose-file", function(e) {
+  e.preventDefault();
+  $("#offering_file").click();
+});
 
-  $("#offering_file").on("change", function() {
-    $(this).parent().submit();
-    return;
-  });
+$(document).on("change", "#offering_file", function() {
+  this.parentNode.submit();
 });
