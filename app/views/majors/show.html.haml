@@ -1,18 +1,19 @@
 - content_for :title, "Majors"
 - content_for :back_url, majors_path
 
-.layout.vertical.center.mt-4
-  .mdc-card{ style: "width: 400px;max-width: 90%;background:#fff;"}
-    %section.mdc-card__primary
-      %h1.mdc-card__title.mdc-card__title--large= @major.major
-    %section.mdc-card__actions
-      = link_to "New Category", new_major_curriculum_category_path(@major),
-          class: "mdc-button mdc-button--compact mdc-card__action"
-      = link_to "Edit", edit_major_path(@major),
-          class: "mdc-button mdc-button--compact mdc-card__action"
-      = link_to "Destroy", @major, data: { confirm: "Are you sure?" },
-          method: :delete,
-          class: "mdc-button mdc-button--compact mdc-card__action delete-action"
+.layout.vertical.center.mt-3
+  .container
+    .mdc-card.white
+      %section.mdc-card__primary
+        %h1.mdc-card__title.mdc-card__title--large.layout.horizontal
+          = @major.major
+          .flex
+          = overflow_menu edit_link: edit_major_path(@major),
+                          destroy_link: major_path(@major)
+
+      %section.mdc-card__actions
+        = link_to "New Category", new_major_curriculum_category_path(@major),
+            class: "mdc-button mdc-button--compact mdc-card__action"
 
   - if @major.major_categories.empty?
     .mdc-typography--subheading2.mt-5 No Major Categories

@@ -1,16 +1,16 @@
 - content_for :title, "Majors"
 
-.layout.vertical.center.majors-index
-  %p
-    Click on a major to modify it or
-    the FAB in the bottom right to add a new major.
+.layout.vertical.center.mt-3
+  .container
+    %p.center-text.mt-0.mb-3
+      Click on the FAB in the bottom right to add a new major. Alternatively,
+      click on a major to modify it, or see its curriculum categories.
 
-  .mdc-card{ style: "width: 400px;max-width: 90%;margin-bottom: 40px;background:#fff;"}
-    .mdc-list
-      - @majors.each do |major|
-        = link_to major, class: "mdc-list-item", style: "width: 100%;", "data-mdc-auto-init" => "MDCRipple" do
-          .mdc-list-item__text= major.major
-          %i.mdc-list-item__end-detail.material-icons
-            chevron_right
+    .mdc-card.white.mb-5
+      .mdc-list
+        - @majors.each do |major|
+          = link_to major, class: "mdc-list-item w-100 with-ripple" do
+            .mdc-list-item__text= major.major
+            = material_icon.chevron_right.css_class("mdc-list-item__end-detail")
 
 = fab new_major_path
