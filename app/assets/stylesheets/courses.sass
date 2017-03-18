@@ -7,16 +7,37 @@
 
 .mdc-snackbar
   transform: translateY(100%)
-.form-course-container
-  width: 450px
-  max-width: 95%
 
-.course-fields
-  width: 450px
-  max-width: 95%
-  .mdl-textfield
+.container
+  width: 400px
+  max-width: 90%
+
+.paginated_letters_container
+  width: 500px
+  max-width: 90%
+
+.overflow-menu
+  .mdc-simple-menu
+    z-index: 2
+    position: absolute
+    top: 0
+    right: 0
+
+.new_course, .edit_course
+  @extend .layout.vertical
+  @extend .layout.center-center
+  @extend .mt-3
+
+  .form-container
     width: 450px
-    max-width: 100%
+    max-width: 90%
+
+.mdc-textfield--multiline
+  margin: 0 29px 32px 29px !important
+
+
+
+
 
 .prerequisite_group
   counter-increment: idx
@@ -44,12 +65,3 @@
 .add-prereq-course
   margin-bottom: 35px
   color: $light-blue-A700 !important
-
-.new_course, .edit_course
-  @extend .layout.vertical
-  @extend .layout.center-center
-
-  p.description
-    text-align: center
-    width: 400px
-    max-width: 90%

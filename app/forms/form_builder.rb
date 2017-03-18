@@ -21,6 +21,17 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def text_area(method, options = {})
+    label_text = options[:label] || method.to_s.titleize
+    text_area_container_classes =
+      "mdc-textfield mdc-textfield--multiline mdc-textfield--fullwidth"
+    options[:class] = "#{options[:class]} mdc-textfield__input"
+
+    content_tag(:div, class: text_area_container_classes) do
+      super + label(method, label_text, class: "mdc-textfield__label")
+    end
+  end
+
   def radio_button(name, value, options = {})
     label_text = options.delete(:label)
     options[:class] = "#{options[:class]} mdc-radio__native-control"

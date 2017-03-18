@@ -72,12 +72,14 @@ class Course < ApplicationRecord
   end
 
   def prerequisite_info
-    return "No Prerequisites Required" if prerequisites.blank?
+    return "" if prerequisites.blank?
 
     if prerequisite_groups.size > 1
-      "All the courses in at least one of the groups needs to be completed"
+      prerequisite_groups.map do |prerequisite_group|
+        prerequisite_group.courses.map(&:condensed_course).join(" and ")
+      end.join(" or ")
     else
-      "All the following courses must be completed"
+      courses.map(&:condensed_course).join(" and ")
     end
   end
 

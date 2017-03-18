@@ -1,36 +1,36 @@
 = form_for course do |f|
-  %p.description
-    To fulfill the prerequisites, all the courses in a
-    prerequisite group must be completed. If there's more than one group
-    only one of the groups needs to be completed.
+  .form-container
+    %p.center-text.mt-0.mb-3
+      To fulfill the prerequisites, all the courses in a
+      prerequisite group must be completed. If there's more than one group
+      only one of the groups needs to be completed.
 
-  .form-course-container.layout.horizontal.around-justified
-    = f.text_field :subject, label: "Subject", minlength: 3,
-                             required: true, help_text: "Ex: CSC"
-    = f.text_field :course, label: "Number", minlength: 3,
-                             required: true, help_text: "Ex: 120"
+    .layout.horizontal.around-justified.wrap
+      = f.text_field :subject, label: "Subject", minlength: 3,
+                               required: true, help_text: "Ex: CSC"
+      = f.text_field :course, label: "Number", minlength: 3,
+                               required: true, help_text: "Ex: 120"
+      = f.text_field :title, label: "Title", help_text: "Ex: Operating Systems",
+          required: true
+      = f.number_field :credits, label: "Credits"
+      = f.text_area :description
 
-  .course-fields.layout.horizontal.around-justified
-    = f.text_field :title, label: "Title", help_text: "Ex: Operating Systems",
-        required: true
-    = f.number_field :credits, label: "Credits"
+    .layout.vertical.center
+      = f.collection_select :minimum_pt, Course::PLACEMENT_TEST_PARTS,
+                            :second, :first, prompt: "Math Placement Exam",
+                            class: "mb-4"
+      = f.collection_select :minimum_class_standing, Course::CLASS_STANDINGS,
+                            :second, :first, prompt: "Minimum class standing",
+                            class: "mb-4"
+      = f.collection_select :minimum_sat_score, Course::SAT_SCORES,
+                            :second, :first, prompt: "Minimum SAT score"
 
-  .form-course-container.layout.vertical.center
-    = f.collection_select :minimum_pt, Course::PLACEMENT_TEST_PARTS,
-                          :second, :first, prompt: "Math Placement Exam",
-                          class: "mb-4"
-    = f.collection_select :minimum_class_standing, Course::CLASS_STANDINGS,
-                          :second, :first, prompt: "Minimum class standing",
-                          class: "mb-4"
-    = f.collection_select :minimum_sat_score, Course::SAT_SCORES,
-                          :second, :first, prompt: "Minimum SAT score"
+    .prerequisites-container.mt-4
+      = f.fields_for :prerequisite_groups, prerequisite_groups do |builder|
+        = render "prerequisite_group_fields", f: builder
 
-  .prerequisites-container.mt-4
-    = f.fields_for :prerequisite_groups, prerequisite_groups do |builder|
-      = render "prerequisite_group_fields", f: builder
+    = link_to_add_association "Add Prerequisite Group", f, :prerequisite_groups,
+        "data-association-insertion-node" => ".prerequisites-container",
+        "data-association-insertion-method" => "append", class: "add-prereq-group"
 
-  = link_to_add_association "Add Prerequisite Group", f, :prerequisite_groups,
-      "data-association-insertion-node" => ".prerequisites-container",
-      "data-association-insertion-method" => "append", class: "add-prereq-group"
-
-  = f.submit
+    = f.submit

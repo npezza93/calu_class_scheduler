@@ -16,4 +16,15 @@ module CoursesHelper
 
     paginated_letters[current_index.to_i + 1]
   end
+
+  def paginated_letter_attrs
+    {
+      class: "mdc-ripple-surface layout vertical center-center black-text",
+      "data-mdc-ripple-is-unbounded" => true
+    }
+  end
+
+  def letter_path(letter)
+    courses_path(letter: letter)
+  end
 end

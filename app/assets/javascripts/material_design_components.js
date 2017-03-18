@@ -21,6 +21,9 @@ function initialize_mdc() {
   $.each($(".mdc-ripple-surface"), function(index, element) {
     mdc.ripple.MDCRipple.attachTo(element);
   });
+  $.each($(".mdc-list-item.with-ripple"), function(index, element) {
+    mdc.ripple.MDCRipple.attachTo(element);
+  });
   $.each($(".mdc-select"), function(index, element) {
     mdc.select.MDCSelect.attachTo(element).listen('MDCSelect:change', function(e) {
       $(this).find("input[type='hidden']").val(e.detail.value);
@@ -32,9 +35,9 @@ function initialize_mdc() {
       menu.open = !menu.open;
     });
   });
-  $.each($(".mdc-dialog"), function(index, element) {
-    var dialog = mdc.dialog.MDCDialog.attachTo(element);
-  });
+  // $.each($(".mdc-dialog"), function(index, element) {
+  //   var dialog = mdc.dialog.MDCDialog.attachTo(element);
+  // });
 
   if ($(".mdc-snackbar").length > 0) {
     var snackbar = mdc.snackbar.MDCSnackbar.attachTo($(".mdc-snackbar")[0]);

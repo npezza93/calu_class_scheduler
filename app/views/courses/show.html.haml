@@ -1,36 +1,29 @@
 - content_for :title, "Courses"
-- content_for :back_url, courses_path
+- content_for :back_url, courses_path(letter: @course.subject.first)
 - content_for :toolbar do
   = material_icon.file_upload.css_class("upload-offerings")
 
-.layout.vertical.center.mt-4
-  .mdc-card{ style: "width: 400px;max-width: 90%;background:#fff;"}
-    %section.mdc-card__primary
-      %h1.mdc-card__title.mdc-card__title--large= @course.condensed_course
-      %h2.mdc-typography--title.mdc-card__subtitle= @course.title
-    %section.mdc-card__supporting-text
-      .mdc-typography--subheading1
-        - if @course.prerequisites.present?
-          Prerequisites
+.layout.vertical.center.mt-3
+  .container
+    .mdc-card.white
+      %section.mdc-card__primary
+        %h1.mdc-card__title.mdc-card__title--large.layout.horizontal
+          = @course.condensed_course
+          .flex
+          = overflow_menu edit_link: edit_course_path(@course),
+                          destroy_link: course_path(@course)
 
-          .mdc-typography--caption= @course.prerequisite_info
-        - else
-          No Prerequisites Required
-      - @course.prerequisite_groups.each_with_index do |prereq_group, index|
-        .mt-2
-          - if @course.prerequisite_groups.size > 1
-            Group #{index + 1}
-          %ul
-            - prereq_group.prerequisites.each do |prereq|
-              %li= prereq.course.pretty_course
+        %h2.mdc-card__subtitle= @course.title
+      %section.mdc-card__supporting-text
+        .mdc-typography--subheading1
+          = @course.description
+          - if @course.prerequisites.present?
+            Prerequisites: #{@course.prerequisite_info}
+            %br
+          (#{@course.credits} credits)
 
-    %section.mdc-card__actions
-      = link_to "Offerings", course_offerings_path(@course),
-          class: "mdc-button mdc-button--compact mdc-card__action"
-      = link_to "Edit", edit_course_path(@course),
-          class: "mdc-button mdc-button--compact mdc-card__action"
-      = link_to "Destroy", @course, data: { confirm: "Are you sure?" },
-          method: :delete,
-          class: "mdc-button mdc-button--compact mdc-card__action delete-action"
+      %section.mdc-card__actions
+        = link_to "Offerings", course_offerings_path(@course),
+            class: "mdc-button mdc-card__action"
 
 = render "offerings/upload"

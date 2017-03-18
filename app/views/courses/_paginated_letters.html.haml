@@ -1,0 +1,9 @@
+.layout.horizontal.around-justified.mb-3.paginated_letters_container
+  = link_to letter_path(previous_letter(params[:letter])), paginated_letter_attrs do
+    = material_icon.chevron_left
+
+  - paginated_letters.each do |letter|
+    = link_to letter.upcase, letter_path(letter), paginated_letter_attrs
+
+  = link_to letter_path(next_letter(params[:letter])), paginated_letter_attrs do
+    = material_icon.chevron_right
