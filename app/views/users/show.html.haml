@@ -1,0 +1,19 @@
+- content_for :title, "Students"
+- content_for :back_url, users_path
+
+.layout.vertical.center.mt-4
+  .mdc-card{ style: "width: 400px;max-width: 90%;background:#fff;"}
+    %section.mdc-card__primary
+      %h1.mdc-card__title.mdc-card__title--large= @student.name
+      %h2.mdc-typography--title.mdc-card__subtitle{ class: schedule_status(@student)[:class] }
+        = schedule_status(@student)[:display]
+    %section.mdc-card__supporting-text
+      %ul
+        - @student.courses.each do |course|
+          %li= course.pretty_course
+
+    - if @student.schedule_approval && !@student.schedule_approval.approved
+      %section.mdc-card__actions
+        = link_to "Approve", user_schedule_approval_path(@student, @student.schedule_approval),
+            method: :patch, data: { confirm: "Are you sure?" },
+            class: "mdc-button mdc-button--compact mdc-card__action"

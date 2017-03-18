@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resources :work_schedules, only: [:create, :index, :destroy], path: :calendar
   resources :schedules, only: [:index, :create, :destroy], path: :schedule
 
-  resources :users, only: :index do
+  resources :users, only: [:index, :show] do
     resources :schedule_approvals, only: [:create, :update]
   end
 end
