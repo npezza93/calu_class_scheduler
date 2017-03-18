@@ -1,7 +1,7 @@
 $(document).on("turbolinks:load", function() {
   $(".upload-offerings").click(function(e) {
     e.preventDefault();
-    $("#upload-offerings-dialog")[0].showModal();
+    document.querySelector("#upload-offerings-dialog").show();
     return;
   });
 
