@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317021251) do
+ActiveRecord::Schema.define(version: 20170318163843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170317021251) do
     t.string "minimum_class_standing", limit: 255
     t.string "minimum_sat_score", limit: 255
     t.string "minimum_pt", limit: 255
+    t.text "description"
     t.index ["course"], name: "index_courses_on_course"
     t.index ["subject"], name: "index_courses_on_subject"
   end
