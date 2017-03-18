@@ -1,4 +1,21 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: courses
+#
+#  id                     :integer          not null, primary key
+#  subject                :string(255)
+#  course                 :integer
+#  title                  :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  credits                :integer          default(3)
+#  minimum_class_standing :string(255)
+#  minimum_sat_score      :string(255)
+#  minimum_pt             :string(255)
+#  description            :text
+#
+
 require "test_helper"
 
 class CourseTest < ActiveSupport::TestCase

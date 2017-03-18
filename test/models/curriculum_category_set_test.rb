@@ -1,4 +1,15 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: curriculum_category_sets
+#
+#  id                     :integer          not null, primary key
+#  curriculum_category_id :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  count                  :integer
+#
+
 require "test_helper"
 
 class CurriculumCategorySetTest < ActiveSupport::TestCase

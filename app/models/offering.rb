@@ -1,4 +1,18 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: offerings
+#
+#  id           :integer          not null, primary key
+#  course_id    :integer
+#  days_time_id :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#  user_id      :integer
+#  semester_id  :integer
+#  section      :string(255)
+#
+
 class Offering < ApplicationRecord
   belongs_to :days_time
   belongs_to :user

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: semesters
+#
+#  id         :integer          not null, primary key
+#  semester   :string(255)
+#  active     :boolean          default(FALSE)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

@@ -1,4 +1,17 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: curriculum_categories
+#
+#  id              :integer          not null, primary key
+#  category        :string(255)
+#  major_id        :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  minor           :boolean
+#  set_and_or_flag :string
+#
+
 class CurriculumCategory < ApplicationRecord
   belongs_to :major
   has_many :user_categories, dependent: :destroy

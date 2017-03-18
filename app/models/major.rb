@@ -1,4 +1,14 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: majors
+#
+#  id         :integer          not null, primary key
+#  major      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Major < ApplicationRecord
   validates :major, uniqueness: true, presence: true
 

@@ -1,4 +1,16 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: prerequisites
+#
+#  id                    :integer          not null, primary key
+#  course_id             :integer
+#  created_at            :datetime
+#  updated_at            :datetime
+#  prerequisite_group_id :integer
+#  minimum_grade         :string(255)
+#
+
 class Prerequisite < ApplicationRecord
   belongs_to :prerequisite_group
   belongs_to :course

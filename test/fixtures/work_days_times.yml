@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: work_days_times
+#
+#  id         :integer          not null, primary key
+#  days       :string(255)
+#  start_time :time
+#  end_time   :time
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 <% %w(M T W R F).each do |day| %>
   <% time = DateTime.new(2000,1,1,8, 0) %>
   <% while time <= DateTime.new(2000,1,1,21, 0) %>

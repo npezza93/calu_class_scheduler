@@ -1,4 +1,17 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: curriculum_categories
+#
+#  id              :integer          not null, primary key
+#  category        :string(255)
+#  major_id        :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  minor           :boolean
+#  set_and_or_flag :string
+#
+
 require "test_helper"
 
 class CurriculumCategoryTest < ActiveSupport::TestCase

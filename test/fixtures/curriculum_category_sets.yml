@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: curriculum_category_sets
+#
+#  id                     :integer          not null, primary key
+#  curriculum_category_id :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  count                  :integer
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

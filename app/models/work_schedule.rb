@@ -1,4 +1,16 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: work_schedules
+#
+#  id                :integer          not null, primary key
+#  user_id           :integer
+#  work_days_time_id :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  semester_id       :integer
+#
+
 class WorkSchedule < ApplicationRecord
   belongs_to :user
   belongs_to :work_days_time

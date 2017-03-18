@@ -1,4 +1,16 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: work_schedules
+#
+#  id                :integer          not null, primary key
+#  user_id           :integer
+#  work_days_time_id :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  semester_id       :integer
+#
+
 require "test_helper"
 
 class WorkScheduleTest < ActiveSupport::TestCase
