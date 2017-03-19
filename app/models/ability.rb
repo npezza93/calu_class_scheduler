@@ -26,7 +26,7 @@ class Ability
     can :manage, Schedule
     can :manage, Transcript
     can :manage, WorkSchedule
-    can :set_session, Semester
+    can :update, Semester
     can :create, ScheduleApproval
   end
 end
