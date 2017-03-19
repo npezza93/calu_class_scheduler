@@ -1,11 +1,7 @@
 !!!
 %html
   %head
-    %title
-      - if content_for?(:title)
-        = "#{yield :title} | CalU Advisor"
-      - else
-        CalU Advisor
+    %title= render_title(yield(:title))
     = stylesheet_link_tag "application",
         "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css",
         media: "all", "data-turbolinks-track" => true
@@ -21,23 +17,19 @@
       height=device-height, initial-scale=1.0, maximum-scale=1.0", name: "viewport" }/
     %meta{ content: "#2196F3", name: "theme-color" }/
 
-  %body.fullbleed.vertical.layout
+  %body.vertical.layout
     = snackbar_notice(notice || alert)
 
     - if current_user
       %header.mdc-toolbar
         %section.mdc-toolbar__section.mdc-toolbar__section--align-start.flex-2
-          - if content_for?(:back_url)
-            = link_to yield(:back_url), style: "color: #fff;", class: "layout horizontal mr-3 ml-1" do
-              %i.material-icons arrow_back
-          - else
-            .mr-3.ml-1{ style: "width: 24px; height: 24px;"}
+          = render_back_url(yield(:back_url))
           %span.mdc-toolbar__title= yield(:title)
         %section.mdc-toolbar__section.mdc-toolbar__section--align-end
           = yield(:toolbar)
-          = link_to edit_user_registration_path, class: "ml-2", style: "color: #fff;display:flex;" do
+          = link_to edit_user_registration_path, class: "ml-2 white d-flex" do
             = material_icon.settings
-          = link_to destroy_user_session_path, method: :delete, class: "mx-2", style: "color: #fff;display:flex;" do
+          = link_to destroy_user_session_path, method: :delete, class: "mx-2 white d-flex" do
             = material_icon.exit_to_app
 
     %main= yield
