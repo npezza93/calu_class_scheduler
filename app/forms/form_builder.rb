@@ -45,16 +45,6 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end + label("#{name}_#{value}", label_text)
   end
 
-  def check_box(method, options = {}, checked_val = "1", unchecked_val = "0")
-    label_text = options.delete(:label) || method.to_s.capitalize
-    label_for = "#{object.class.to_s.underscore}_#{method}"
-
-    content_tag :div, class: "input-field materialize-checkbox" do
-      super(method, options, checked_val, unchecked_val) +
-        content_tag(:label, label_text, for: label_for)
-    end
-  end
-
   def submit(value = nil, options = {})
     options[:class] = "#{options[:class]} mdc-button"
     options[:type] = "submit"

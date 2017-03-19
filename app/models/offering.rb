@@ -45,20 +45,6 @@ class Offering < ApplicationRecord
   end
 
   class << self
-    def search_courses(query, page)
-      course_ids = Offering.where(semester: Semester.active).pluck(:course_id)
-      courses = Course.where(id: course_ids).distinct
-      if query.present?
-        query = "%#{query}%"
-        courses = courses.where(
-          "courses.title ILIKE ? OR courses.subject ILIKE ?",
-          "%#{query}%", "%#{query}%"
-        )
-      end
-
-      courses.order(:subject).page(page).per(20)
-    end
-
     def import(file)
       CSV.foreach(file.path) do |row|
         course   = csv_get_course(row)
@@ -107,12 +93,6 @@ class Offering < ApplicationRecord
       elsif row[2][0].casecmp("x").zero?
         DaysTime.find_by(days: "OFFSITE")
       end
-    end
-
-    private
-
-    def search_query
-      "LOWER(courses.title) LIKE ? OR LOWER(courses.subject) LIKE ?"
     end
   end
 
