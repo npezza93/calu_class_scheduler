@@ -1,91 +1,80 @@
 # frozen_string_literal: true
 require "test_helper"
 
-class TranscriptsControllerTest < ActionController::TestCase
-  include Devise::Test::ControllerHelpers
+class TranscriptsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
+  setup do
+    @user   = users(:one)
+    @course = courses(:one)
+  end
 
   test "should get index as student" do
-    @user = users(:one)
     sign_in @user
 
-    get :index
+    get transcripts_path
     assert_response :success
   end
 
-  test "should not get index as advisor" do
-    @user = users(:advisor)
-    sign_in @user
-
-    get :index
-    assert_redirected_to :root
-  end
-
   test "should not create because invalid as student " do
-    @user = users(:one)
     sign_in @user
 
     assert_no_difference("Transcript.count") do
-      post :create, params: { transcript: { course_id: nil } }
+      post transcripts_path, params: { transcript: { course_id: nil } }
     end
   end
 
-  test "should create as student " do
-    @user = users(:one)
+  test "should create as student" do
     sign_in @user
 
     assert_difference("Transcript.count") do
-      post :create, params: {
-        transcript: { course_id: courses(:one).id, grade_c: "A" }
+      post transcripts_path, params: {
+        transcript: { course_id: @course.id, grade_c: "A" }
       }
     end
 
-    assert_redirected_to :transcripts
-    assert_equal courses(:one).title + " added!", flash[:notice]
-  end
-
-  test "should not post create as advisor" do
-    @user = users(:advisor)
-    sign_in @user
-
-    post :create, params: { transcript: { course_id: courses(:one).id } }
-    assert_redirected_to :root
+    assert_redirected_to transcripts_path
+    assert_equal "Course added to transcript", flash[:notice]
   end
 
   test "should delete course as student" do
-    @user = users(:one)
     sign_in @user
 
     assert_difference("Transcript.count", -1) do
-      delete :destroy, params: { id: transcripts(:one).id }
+      delete transcript_path(transcripts(:one))
     end
 
-    assert_redirected_to :transcripts
-    assert_equal courses(:two).title + " removed!",
-                 flash[:notice]
-  end
-
-  test "should not delete course as advisor" do
-    @user = users(:advisor)
-    sign_in @user
-
-    delete :destroy, params: { id: transcripts(:one).id }
-
-    assert_redirected_to :root
+    assert_redirected_to transcripts_path
+    assert_equal "Course removed from transcript", flash[:notice]
   end
 
   test "should import as student" do
-    @user = users(:one)
     sign_in @user
 
-    post :import, params: { "Transcript" => nil }
-    assert_redirected_to :transcripts
+    post import_transcripts_path, params: { "Transcript" => nil }
+    assert_redirected_to transcripts_path
   end
 
-  test "should not import as advisor" do
+  test "should get new as student" do
+    sign_in @user
+
+    get new_transcript_path
+    assert_response :success
+  end
+
+  test "should not access as advisor" do
     @user = users(:advisor)
     sign_in @user
 
-    post :import
+    get transcripts_path
+    assert_redirected_to :root
+    get new_transcript_path
+    assert_redirected_to :root
+    post import_transcripts_path
+    assert_redirected_to :root
+    delete transcript_path(transcripts(:one))
+    assert_redirected_to :root
+    post transcripts_path, params: { transcript: { course_id: @course.id } }
     assert_redirected_to :root
   end
 end

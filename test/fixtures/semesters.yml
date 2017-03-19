@@ -16,5 +16,5 @@ one:
   active: true
 
 two:
-  semester: MyString
+  semester: MyString2
   active: false

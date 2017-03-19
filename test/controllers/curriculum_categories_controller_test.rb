@@ -6,58 +6,31 @@ class CurriculumCategoriesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @major = majors(:one)
+    @user  = users(:advisor)
   end
 
   test "should get show as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     get major_curriculum_category_url(@major, curriculum_categories(:one))
     assert_response :success
-  end
-
-  test "should not get show as student" do
-    @user = users(:one)
-    sign_in @user
-
-    get major_curriculum_category_url(@major, curriculum_categories(:one))
-    assert_redirected_to :root
   end
 
   test "should get new as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     get new_major_curriculum_category_url(@major)
     assert_response :success
-  end
-
-  test "should not get new as student" do
-    @user = users(:one)
-    sign_in @user
-
-    get new_major_curriculum_category_url(@major)
-    assert_redirected_to :root
   end
 
   test "should get edit as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     get edit_major_curriculum_category_url(@major, curriculum_categories(:one))
     assert_response :success
   end
 
-  test "should not get edit as student" do
-    @user = users(:one)
-    sign_in @user
-
-    get edit_major_curriculum_category_url(@major, curriculum_categories(:one))
-    assert_redirected_to :root
-  end
-
   test "should delete course as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     assert_difference("CurriculumCategory.count", -1) do
@@ -68,27 +41,7 @@ class CurriculumCategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Category was successfully deleted!", flash[:notice]
   end
 
-  test "should not delete course as student" do
-    @user = users(:one)
-    sign_in @user
-
-    delete major_curriculum_category_url(@major, curriculum_categories(:one))
-
-    assert_redirected_to :root
-  end
-
-  test "should not put update as student" do
-    @user = users(:one)
-    sign_in @user
-
-    put major_curriculum_category_url(@major, curriculum_categories(:one)),
-        params: { curriculum_category: { category: "Math" } }
-
-    assert_redirected_to :root
-  end
-
   test "should create as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     assert_difference("CurriculumCategory.count") do
@@ -107,7 +60,6 @@ class CurriculumCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not create as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     assert_no_difference("CurriculumCategory.count") do
@@ -121,7 +73,6 @@ class CurriculumCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     put major_curriculum_category_url(@major, curriculum_categories(:one)),
@@ -135,7 +86,6 @@ class CurriculumCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update as advisor" do
-    @user = users(:advisor)
     sign_in @user
 
     put major_curriculum_category_url(@major, curriculum_categories(:one)),
@@ -143,5 +93,22 @@ class CurriculumCategoriesControllerTest < ActionDispatch::IntegrationTest
 
     category = CurriculumCategory.find(curriculum_categories(:one).id)
     assert_equal "Communication Skills", category.category
+  end
+
+  test "should not access as student" do
+    @user = users(:one)
+    sign_in @user
+
+    get new_major_curriculum_category_url(@major)
+    assert_redirected_to :root
+    get edit_major_curriculum_category_url(@major, curriculum_categories(:one))
+    assert_redirected_to :root
+    get major_curriculum_category_url(@major, curriculum_categories(:one))
+    assert_redirected_to :root
+    delete major_curriculum_category_url(@major, curriculum_categories(:one))
+    assert_redirected_to :root
+    put major_curriculum_category_url(@major, curriculum_categories(:one)),
+        params: { curriculum_category: { category: "Math" } }
+    assert_redirected_to :root
   end
 end

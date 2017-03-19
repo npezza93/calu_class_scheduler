@@ -1,14 +1,23 @@
 # frozen_string_literal: true
 require "test_helper"
 
-class UsersControllerTest < ActionController::TestCase
-  include Devise::Test::ControllerHelpers
+class UsersControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
 
   test "should get index as advisor" do
     @user = users(:advisor)
     sign_in @user
 
-    get :index
+    get users_path
+
+    assert_response :success
+  end
+
+  test "should show student as advisor" do
+    @user = users(:advisor)
+    sign_in @user
+
+    get user_path(users(:one))
 
     assert_response :success
   end
@@ -17,7 +26,7 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
 
-    get :index
+    get users_path
 
     assert_redirected_to :root
   end
