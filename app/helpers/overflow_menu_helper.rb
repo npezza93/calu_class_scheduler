@@ -27,9 +27,9 @@ module OverflowMenuHelper
   def overflow_menu_items(edit_link, destroy_link, other)
     content_tag(:div, class: "mdc-simple-menu__items mdc-list",
                       role: :menu, aria: { hidden: true }) do
-      (overflow_edit_link(edit_link) if edit_link).to_s +
+      ((overflow_edit_link(edit_link) if edit_link).to_s +
         (overflow_destroy_link(destroy_link) if destroy_link).to_s +
-        other.to_s
+        other.to_s).html_safe
     end
   end
 end

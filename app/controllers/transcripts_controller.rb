@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+# SchedulerJob.perform_now current_user, @transcript.course_id
 class TranscriptsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_transcript, only: :destroy
   authorize_resource
+  before_action :set_transcript, only: :destroy
 
   def index
     @transcripts =
@@ -14,20 +15,19 @@ class TranscriptsController < ApplicationController
   end
 
   def create
-    @transcript = @transcripts.new(transcript_params)
+    @transcript = current_user.transcripts.new(transcript_params)
 
-    if @transcript.save
-      remove_schedules
-      SchedulerJob.perform_now current_user, @transcript.course_id
-
-      redirect_to transcripts_path, notice: @transcript.course.title + " added!"
+    if @transcript.save && remove_schedule(@transcript)
+      redirect_to transcripts_path, notice: "Course added to transcript"
     else
-      render :index
+      render :new
     end
   end
 
   def import
-    if Transcript.import(params["Transcript"], current_user)
+    @import = Transcript::Import.new(current_user)
+
+    if @import.perform(params["Transcript"])
       Schedule.where(user: current_user, semester: active_semester).destroy_all
       notice = "Transcript Uploaded successfullly!"
     else
@@ -40,8 +40,7 @@ class TranscriptsController < ApplicationController
   def destroy
     @transcript.destroy
 
-    SchedulerJob.perform_now current_user, @transcript.course_id
-    redirect_to transcripts_path, notice: @transcript.course.title + " removed!"
+    redirect_to transcripts_path, notice: "Course removed from transcript"
   end
 
   private
@@ -51,19 +50,21 @@ class TranscriptsController < ApplicationController
   end
 
   def transcript_params
-    attrs = params.require(:transcript).permit(:course_id, :grade_c)
-    unless attrs[:grade_c].blank?
+    params.require(:transcript).permit(:course_id, :grade_c).tap do |attrs|
+      next if attrs[:grade_c].blank?
+
       attrs[:grade_c_minus] = Transcript.c_minus?(attrs[:grade_c])
       attrs[:grade_c] = Transcript.c?(attrs[:grade_c])
     end
-    attrs
   end
 
-  def remove_schedules
-    current_user.schedules.find_by(
-      offering: Offering.find_by(
-        course: @transcript.course, semester: active_semester
-      )
-    )&.destroy
+  def remove_schedule(transcript)
+    schedule = current_user.schedules.joins(:offering).find_by(
+      offerings: { course: transcript.course, semester: current_semester }
+    )
+
+    return true if schedule.blank?
+
+    schedule.destroy
   end
 end

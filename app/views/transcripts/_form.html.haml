@@ -1,7 +1,9 @@
-= form_for transcript do |f|
-  = f.collection_select :course_id,
-                        Course.all.order(:subject, :course),
-                        :id, :pretty_course, prompt: "Choose a Course"
+= form_for transcript, html: { class: "layout vertical center-center" } do |f|
+  .my-3
+    = f.collection_select :course_id,
+        Course.all.order(:subject, :course), :id, :pretty_course, prompt: "Choose a Course"
+  .mb-3
+    = f.collection_select :grade_c,
+        Transcript::GRADES, :to_s, :to_s, prompt: "Grade"
 
-  = f.select :grade_c, Transcript::GRADES, prompt: "Grade"
-  = f.submit
+  = f.submit "Add To Transcript"
