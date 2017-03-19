@@ -48,13 +48,6 @@ class TranscriptsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Course removed from transcript", flash[:notice]
   end
 
-  test "should import as student" do
-    sign_in @user
-
-    post import_transcripts_path, params: { "Transcript" => nil }
-    assert_redirected_to transcripts_path
-  end
-
   test "should get new as student" do
     sign_in @user
 
@@ -69,8 +62,6 @@ class TranscriptsControllerTest < ActionDispatch::IntegrationTest
     get transcripts_path
     assert_redirected_to :root
     get new_transcript_path
-    assert_redirected_to :root
-    post import_transcripts_path
     assert_redirected_to :root
     delete transcript_path(transcripts(:one))
     assert_redirected_to :root

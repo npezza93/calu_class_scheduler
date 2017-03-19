@@ -23,14 +23,8 @@ class Transcript < ApplicationRecord
   }, presence: { message: "A course must be selected!" }
 
   class << self
-    def not_an_actual_letter_grade?(grade)
-      (grade[0].casecmp("t") || grade.downcase.include?("reg") ||
-         grade.downcase.include?("p")) > -1
-    end
-
     def letter_grade_check(grade, index)
-      not_an_actual_letter_grade?(grade) ||
-        (GRADES.index(grade) && GRADES.index(grade) <= index)
+      GRADES.index(grade) && GRADES.index(grade) <= index
     end
 
     def c?(grade)

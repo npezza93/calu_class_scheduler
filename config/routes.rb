@@ -37,11 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :transcripts, only: [:index, :create, :destroy, :new],
-                          path: :transcript do
-    collection do
-      post :import
-    end
-  end
+                          path: :transcript
   resources :work_schedules, only: [:create, :index, :destroy], path: :calendar
   resources :schedules, only: [:index, :create, :destroy], path: :schedule
 

@@ -24,19 +24,6 @@ class TranscriptsController < ApplicationController
     end
   end
 
-  def import
-    @import = Transcript::Import.new(current_user)
-
-    if @import.perform(params["Transcript"])
-      Schedule.where(user: current_user, semester: active_semester).destroy_all
-      notice = "Transcript Uploaded successfullly!"
-    else
-      notice = "Please Upload Correct Text!"
-    end
-
-    redirect_to transcripts_path, notice: notice
-  end
-
   def destroy
     @transcript.destroy
 
