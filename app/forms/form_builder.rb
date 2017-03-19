@@ -11,10 +11,12 @@ class FormBuilder < ActionView::Helpers::FormBuilder
         error_class = "mdc-textfield--invalid"
       end
 
-      options[:class] = "#{options[:class]} mdc-textfield__input"
+      full_width        = "mdc-textfield--fullwidth" if options[:full_width]
+      options[:class]   = "#{options[:class]} mdc-textfield__input"
+      container_classes = "mdc-textfield #{error_class} #{full_width}"
 
       content_tag(:div) do
-        content_tag(:div, class: "mdc-textfield #{error_class}") do
+        content_tag(:div, class: container_classes) do
           super(name, options) + text_field_label(name, options)
         end + help_text(options) + error_msg(name)
       end

@@ -1,21 +1,21 @@
 %div{ style: "width: 300px;" }
   - if current_user&.advisor?
-    = link_to users_path, class: "mdl-navigation__link" do
+    = link_to users_path do
       %i.mdi.mdi-account-multiple-outline
       Students
-    = link_to courses_path, class: "mdl-navigation__link" do
+    = link_to courses_path do
       %i.mdi.mdi-book-open-variant
       Courses
-    = link_to majors_path, class: "mdl-navigation__link" do
+    = link_to majors_path do
       %i.material-icons bookmark
       Majors
   - else
-    = link_to transcripts_path, class: "mdl-navigation__link" do
+    = link_to transcripts_path do
       %i.material-icons description
       Transcript
-    = link_to work_schedules_path, class: "mdl-navigation__link" do
+    = link_to work_schedules_path do
       %i.material-icons access_time
       Calendar
-    = link_to schedules_path, class: "mdl-navigation__link" do
+    = link_to schedules_path do
       %i.material-icons event
       Schedule

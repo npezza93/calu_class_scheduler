@@ -11,3 +11,8 @@ $(document).on("click", ".choose-file", function(e) {
 $(document).on("change", "#offering_file", function() {
   this.parentNode.submit();
 });
+
+$(document).on("click", ".close", function(e) {
+  e.preventDefault();
+  $(this).closest("dialog")[0].close();
+});

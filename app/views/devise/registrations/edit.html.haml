@@ -11,18 +11,19 @@
 
 
 = form_for resource, as: resource_name, url: registration_path(resource_name),
-           html: { method: :put } do |f|
+           html: { method: :put, class: "layout vertical center-center" } do |f|
+  .container.mt-3
+    = f.password_field :password, full_width: true
+    = f.password_field :password_confirmation, full_width: true
+    .mt-2.mb-1
+      = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
 
-  = f.password_field :password
-  = f.password_field :password_confirmation, label: "Confirm"
-  .settings-major-select.my-4{ style: "width: 249px;" }
-    = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
-
-  - unless current_user.advisor?
-    = f.collection_select :advised_by, User.where(advisor: true),
-                                       :id, :email, prompt: "Choose an Advisor"
-    = f.collection_select :minor, Major.all, :id, :major, {prompt: "minor(s)" }, { multiple: true }
-    .placement-test-dialog-toggle placement test scores
-    = render "placement_tests", f: f
+    - unless current_user.advisor?
+      .mt-2.mb-1
+        = f.collection_select :advised_by, User.where(advisor: true),
+                                         :id, :email, prompt: "Choose an Advisor"
+      .mt-2.mb-1
+        = f.collection_select :minor, Major.all, :id, :major, prompt: "minor(s)", multiple: true
+      = render "placement_tests", f: f
 
   = f.submit "Update"
