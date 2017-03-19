@@ -1,75 +1,8 @@
 @import layout, colors
 
-.advisee-row
-  background: $red-50
-  &:hover
-    background: $grey-200
-
-.user-index-column
-  width: 25em
-  background: $grey-50
-  padding-top: 12px
-
 .student-schedule-link
   color: $green-400 !important
 .student-no-courses-link
   color: $red-400 !important
 .student-pending-link
   color: $purple-A700 !important
-
-.new_user
-  @extend .layout.vertical
-  @extend .layout.center-center
-  height: 100%
-  width: 450px
-  max-width: 90%
-
-  .mdl-textfield
-    width: 450px
-  .input-field
-    width: 100%
-    max-width: 450px
-  .name-container
-    width: 450px
-    max-width: 100%
-
-.no-avatar
-  color: #333
-  transition: all .3s ease
-  &:hover
-    color: $red-400
-
-.edit_user
-  @extend .layout.vertical
-  @extend .layout.center-center
-
-  .update
-    margin-top: 35px
-    margin-bottom: 75px
-    color: $light-blue-A700
-.placement-test-dialog-toggle
-  color: $purple-A700
-  transition: all .1s ease
-  cursor: pointer
-  &:hover
-    color: $purple-A400
-
-.placement-test-dialog
-  width: 550px !important
-  max-width: 90%
-  .radio-group > .mdl-radio:not(:last-child)
-    margin-right: 24px
-  .mdl-dialog__actions
-    margin-top: 25px
-
-
-.semester-toggle
-  width: 100px !important
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important
-  &:focus
-    background-color: rgba(255, 255, 255, .06) !important
-  .mdc-select__selected-text
-    color: #fff
-  a
-    text-decoration: none
-    color: rgba(0,0,0,.54)
