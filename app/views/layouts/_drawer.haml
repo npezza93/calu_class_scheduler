@@ -1,21 +1,21 @@
-%div{ style: "width: 300px;" }
+.layout.vertical.container
   - if current_user&.advisor?
     = link_to users_path do
-      %i.mdi.mdi-account-multiple-outline
+      = material_icon.people
       Students
     = link_to courses_path do
-      %i.mdi.mdi-book-open-variant
+      = material_icon.local_library
       Courses
     = link_to majors_path do
-      %i.material-icons bookmark
+      = material_icon.bookmark
       Majors
   - else
     = link_to transcripts_path do
-      %i.material-icons description
-      Transcript
+      = material_icon.description
+    Transcript
     = link_to work_schedules_path do
-      %i.material-icons access_time
+      = material_icon.access_time
       Calendar
     = link_to schedules_path do
-      %i.material-icons event
+      = material_icon.event
       Schedule
