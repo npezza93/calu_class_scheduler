@@ -6,7 +6,7 @@ ruby "2.4.0"
 gem "devise"
 gem "pg"
 gem "puma"
-gem "rails", "~> 5.1.0beta1"
+gem "rails", "~> 5.1.0.rc1"
 
 gem "coffee-rails"
 gem "jquery-rails"
