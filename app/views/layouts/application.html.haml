@@ -2,12 +2,8 @@
 %html
   %head
     %title= render_title(yield(:title))
-    = stylesheet_link_tag "application",
-        "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css",
-        media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application",
-        "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js",
-        "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = favicon_link_tag "callogo2.png"
     %link{ href: image_url("callogo2.png"), rel: "apple-touch-icon" }/
