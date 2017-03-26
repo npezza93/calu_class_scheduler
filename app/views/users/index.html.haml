@@ -1,10 +1,9 @@
 - content_for :title, "Students"
 
 .layout.vertical.center
-  .mdc-card.mt-3{ style: "width: 400px;max-width: 90%;margin-bottom: 40px;background:#fff;"}
+  .mdc-card.mt-3.mb-5.white.container
     .mdc-list
       - @students.each do |student|
-        = link_to student, class: "mdc-list-item", style: "width: 100%;", "data-mdc-auto-init" => "MDCRipple" do
+        = link_to student, class: "mdc-list-item with-ripple w-100" do
           .mdc-list-item__text= student.name
-          %i.mdc-list-item__end-detail.material-icons
-            chevron_right
+          %i.mdc-list-item__end-detail.material-icons chevron_right

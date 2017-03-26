@@ -3,5 +3,5 @@
     .prerequisite_group_number
     .flex
     = link_to_remove_association "Remove", f, class: "mdc-button mdc-button--compact mdc-card__action delete-action"
-  .mdc-card.mb-3.p-2{ style: "width: 400px;max-width: 90%;background:#fff;"}
+  .mdc-card.mb-3.p-2.container.white
     = f.multiple_course_select(:course_ids, selected: f.object.course_ids)

@@ -2,7 +2,7 @@
 - content_for :back_url, users_path
 
 .layout.vertical.center.mt-4
-  .mdc-card{ style: "width: 400px;max-width: 90%;background:#fff;"}
+  .mdc-card.white.container
     %section.mdc-card__primary
       %h1.mdc-card__title.mdc-card__title--large= @student.name
       %h2.mdc-typography--title.mdc-card__subtitle{ class: schedule_status(@student)[:class] }

@@ -11,11 +11,11 @@
 
 .vertical.layout.center
   - @category.curriculum_category_sets.each_with_index do |category_set, index|
-    .mdc-typography--subheading2.layout.horizontal.start-justified{ style: "width: 400px;max-width: 90%;"}
+    .mdc-typography--subheading2.layout.horizontal.start-justified.container
       Section #{index + 1}
       .flex
       = category_set.pretty_count
-    .mdc-card{ style: "width: 400px;max-width: 90%;margin-bottom: 40px;background:#fff;"}
+    .mdc-card.mb-5.white.container
       .mdc-list
         - category_set.courses.each do |course|
           .mdc-list-item
