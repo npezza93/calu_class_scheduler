@@ -7,8 +7,7 @@
     = material_icon.delete
 
 
-.layout.vertical.center.mt-2.mb-3
-  = @category.pretty_set_flag
+.layout.vertical.center.mt-2.mb-3= @category.pretty_set_flag
 
 .vertical.layout.center
   - @category.curriculum_category_sets.each_with_index do |category_set, index|
