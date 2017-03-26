@@ -7,9 +7,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   %w(text_field email_field number_field password_field).each do |method_name|
     define_method(method_name) do |name, options = {}|
-      if (@template.request.post? || @template.request.put?) && object.invalid?
-        error_class = "mdc-textfield--invalid"
-      end
+      error_class = "mdc-textfield--invalid" if validate_form? && invalid?
 
       full_width        = "mdc-textfield--fullwidth" if options[:full_width]
       options[:class]   = "#{options[:class]} mdc-textfield__input"
@@ -89,5 +87,15 @@ class FormBuilder < ActionView::Helpers::FormBuilder
           mdc-textfield-helptext--validation-msg") do
       object.errors[name].first.capitalize
     end
+  end
+
+  def invalid?
+    (@template.request.post? || @template.request.put?) && object.invalid?
+  end
+
+  def validate_form?
+    return true unless options.key?(:validation)
+
+    options[:validation]
   end
 end
