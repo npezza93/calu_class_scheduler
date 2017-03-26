@@ -26,15 +26,21 @@ class Course < ApplicationRecord
   accepts_nested_attributes_for :prerequisite_groups,
                                 allow_destroy: true, reject_if: :all_blank
 
-  validates :title, presence: true
+  validates :title,   presence: true
   validates :subject, presence: true
-  validates :course, presence: true, numericality: { only_integer: true }
+  validates :course,  presence: true, numericality: { only_integer: true }
   validates :credits, presence: true, numericality: { only_integer: true }
-  validates :course, uniqueness: { scope: :subject }
+  validates :course,  uniqueness: { scope: :subject }
 
   scope :subject_by_letter, lambda { |letter|
-    order(:subject, :course).where(
+    select(:id, :subject, :course, :title).order(:subject, :course).where(
       arel_table[:subject].matches("#{letter || 'a'}%")
+    )
+  }
+  scope :autocomplete_fields, lambda {
+    order(:subject, :course).select(
+      :id, :subject,
+      "concat(courses.subject, courses.course, ': ', courses.title) AS title"
     )
   }
 

@@ -1,8 +1,0 @@
-.layout.horizontal.start-justified.center.nested-fields
-  = f.collection_select :course_id,
-    @courses,
-    :id,
-    :pretty_course,
-    label: "Choose a Course"
-  .flex
-  = link_to_remove_association "Remove", f, class: "remove-course-association"

@@ -7,12 +7,13 @@
     - @courses.each do |course_code, courses|
       .mdc-typography--subheading2= course_code
       .mdc-card.mb-5.white
-        .mdc-list
+        .mdc-list.mdc-list--two-line
           - courses.each do |course|
             = link_to course, class: "mdc-list-item w-100 with-ripple" do
-              .mdc-list-item__text= course.pretty_course
+              .mdc-list-item__text
+                .mdc-list-item__text__primary= course.condensed_course
+                .mdc-list-item__text__secondary= course.title
               = material_icon.chevron_right.css_class("mdc-list-item__end-detail")
-
   = render "paginated_letters"
 
 = fab new_course_path

@@ -1,0 +1,113 @@
+.selectize-control
+  position: relative
+
+.selectize-input,
+.selectize-control.single .selectize-input.input-active
+  background: #ffffff
+  cursor: text
+  display: inline-block
+
+.selectize-input
+  display: inline-block
+  width: 100%
+  overflow: hidden
+  position: relative
+  z-index: 1
+  box-sizing: border-box
+
+.selectize-control.multi .selectize-input.has-items
+  padding: 5px 8px 2px
+
+.selectize-input.full
+  background-color: #ffffff
+
+.selectize-input > input
+  display: inline-block !important
+  padding: 0 !important
+  min-height: 0 !important
+  max-height: none !important
+  max-width: 100% !important
+  margin: 0 1px !important
+  text-indent: 0 !important
+  border: 0 none !important
+  background: none !important
+  line-height: inherit !important
+  box-shadow: none !important
+  width: 100% !important
+  position: relative !important
+  left: 0px !important
+
+.selectize-input > input:focus
+  outline: none !important
+
+.selectize-input::after
+  content: ' '
+  display: block
+  clear: left
+
+.selectize-input.dropdown-active::before
+  content: ' '
+  display: block
+  position: absolute
+  background: #f0f0f0
+  height: 1px
+  bottom: 0
+  left: 0
+  right: 0
+
+.selectize-dropdown
+  position: absolute
+  z-index: 10
+  background: #ffffff
+  margin: -2px 0 0 0
+  box-sizing: border-box
+  border-radius: 0 0 3px 3px
+  max-height: 300px
+  overflow-x: hidden
+  overflow-y: auto
+
+.selectize-dropdown [data-selectable]
+  cursor: pointer
+  overflow: hidden
+
+.selectize-dropdown .optgroup:first-child .optgroup-header
+  border-top: 0 none
+
+.selectize-dropdown .optgroup-header
+  color: #303030
+  background: #ffffff
+  cursor: default
+
+.selectize-dropdown .active
+  background-color: var(--mdc-theme-accent, #000)
+  color: var(--mdc-theme-text-primary-on-primary, #fff)
+
+.selectize-dropdown-content
+  overflow-y: auto
+  overflow-x: hidden
+  max-height: 200px
+  -webkit-overflow-scrolling: touch
+
+.selectize-control.multi .selectize-input.has-items
+  padding-left: 5px
+  padding-right: 5px
+
+.selectize-dropdown .optgroup-header
+  color: var(--mdc-theme-text-hint-on-light, rgba(0, 0, 0, 0.38))
+
+.selectize-dropdown
+  .mdc-multi-select.mdl-list
+    border: none
+    width: auto
+
+  .mdc-list-item
+    padding-left: 38px !important
+
+  .mdc-multi-select .mdc-list-group .mdc-list-item:nth-child(2)
+    margin-top: 12px
+
+  .mdc-multi-select .mdc-list-group .mdc-list-item:nth-last-child(2)
+    margin-bottom: 8px
+
+.selectize-control.course-select .remove-course
+  cursor: pointer

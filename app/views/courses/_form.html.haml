@@ -1,5 +1,5 @@
-= form_for course do |f|
-  .form-container
+= form_for course, html: { data: { courses: true } } do |f|
+  .form-container.layout.vertical.center
     %p.center-text.mt-0.mb-3
       To fulfill the prerequisites, all the courses in a
       prerequisite group must be completed. If there's more than one group
@@ -26,11 +26,11 @@
                             :second, :first, prompt: "Minimum SAT score"
 
     .prerequisites-container.mt-4
-      = f.fields_for :prerequisite_groups, prerequisite_groups do |builder|
+      = f.fields_for :prerequisite_groups do |builder|
         = render "prerequisite_group_fields", f: builder
 
     = link_to_add_association "Add Prerequisite Group", f, :prerequisite_groups,
         "data-association-insertion-node" => ".prerequisites-container",
-        "data-association-insertion-method" => "append", class: "add-prereq-group"
+        "data-association-insertion-method" => "append", class: "mb-3"
 
     = f.submit

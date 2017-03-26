@@ -61,8 +61,7 @@ class CurriculumCategoriesController < ApplicationController
     params.require(:curriculum_category).permit(
       :category, :minor, :set_and_or_flag,
       curriculum_category_sets_attributes: [
-        :id, :count, :_destroy, course_sets_attributes:
-          [:id, :course_id, :_destroy]
+        :id, :count, :_destroy, course_ids: []
       ]
     )
   end

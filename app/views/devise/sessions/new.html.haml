@@ -4,7 +4,8 @@
   = image_tag "callogo2.png"
 
   = form_for resource, as: resource_name, url: session_path(resource_name),
-             html: { class: "layout vertical center" } do |f|
+             html: { class: "layout vertical center" },
+             validation: false do |f|
     = f.email_field :email, autofocus: true, required: true
     = f.password_field :password, required: true
     = f.submit "Log in"

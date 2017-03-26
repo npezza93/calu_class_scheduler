@@ -1,6 +1,0 @@
-%li.mdc-list-item.layout.horizontal.center-center.nested-fields
-  = f.collection_select :course_id,
-    Course.order(:subject), :id, :pretty_course, prompt: "Choose a Course"
-  .flex
-  = link_to_remove_association f, class: "layout vertical" do
-    %i.material-icons.black-text.ml-1 delete

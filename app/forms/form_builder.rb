@@ -54,6 +54,13 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     content_tag(:button, value || submit_default_value, options)
   end
 
+  def multiple_course_select(method, selected: nil)
+    select(
+      method, [], {}, class: "course-select", multiple: true,
+                      data: { selected: selected }
+    )
+  end
+
   private
 
   def text_field_label(name, options)

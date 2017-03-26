@@ -37,6 +37,7 @@ class MajorsController < ApplicationController
 
   def destroy
     @major.destroy
+
     redirect_to majors_path, notice: "Major was successfully destroyed"
   end
 

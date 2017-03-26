@@ -5,7 +5,17 @@ class CoursesController < ApplicationController
   authorize_resource
 
   def index
-    @courses = Course.subject_by_letter(params[:letter]).group_by(&:subject)
+    respond_to do |format|
+      format.html do
+        @courses = Course.subject_by_letter(params[:letter]).group_by(&:subject)
+      end
+      format.json do
+        render json: {
+          courses: Course.autocomplete_fields,
+          subjects: Course.select(:subject).distinct
+        }
+      end
+    end
   end
 
   def show
@@ -53,7 +63,10 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(
       :subject, :course, :title, :credits, :minimum_class_standing,
-      :minimum_sat_score, :minimum_pt, prerequisites: []
+      :description, :minimum_sat_score, :minimum_pt,
+      prerequisite_groups_attributes: [
+        :id, :_destroy, course_ids: []
+      ]
     )
   end
 end
