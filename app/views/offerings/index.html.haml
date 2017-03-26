@@ -13,10 +13,10 @@
           %li.mdc-list-item
             %span.mdc-list-item__text
               %span.mdc-list-item__text__primary
-                = "#{offering.section}-#{offering.user.professor}"
+                #{offering.section}-#{offering.user.professor}
               %span.mdc-list-item__text__primary.mdc-typography--caption
                 = offering.days_time.pretty_day_time
-            .mdc-list-item__end-detail{ style: "position:relative;" }
+            .mdc-list-item__end-detail.relative
               = material_icon.more_vert.css_class("menu-toggle")
               .mdc-simple-menu{ tabindex: -1, style: "z-index:2;position:absolute;top:0;right:0;" }
                 .mdc-simple-menu__items.mdc-list{ "aria-hidden" => true, role: :menu }

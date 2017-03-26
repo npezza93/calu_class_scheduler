@@ -1,10 +1,10 @@
-%aside#upload-offerings-dialog.mdc-dialog{ aria: { describedby: "upload-offerings-description",
+%aside.mdc-dialog#upload-offerings-dialog{ aria: { describedby: "upload-offerings-description",
   hidden: true, labelledby: "upload-offering-heading", role: :alertdialog } }
   = form_tag offerings_import_path, multipart: true, class: "mdc-dialog__surface" do
     %header.mdc-dialog__header
-      %h2#upload-offering-heading.mdc-dialog__header__title
+      %h2.mdc-dialog__header__title#upload-offering-heading
         Import Offerings
-    %section#upload-offerings-description.mdc-dialog__body
+    %section.mdc-dialog__body#upload-offerings-description
       %h3.mdc-typography--subheading2.center-text.my-1
         Upload a .CSV formatted:
       .layout.vertical.start.instructions.m-0
@@ -16,6 +16,8 @@
         %p.m-0.mdc-typography--body1 Column 13 - Professor formmatted: "last, first"
         = file_field_tag :offering_file, accept: ".csv", class: "hidden"
     %footer.mdc-dialog__footer
-      %button.mdc-button.mdc-dialog__footer__button.mdc-dialog__footer__button--cancel{ type: :button } Cancel
-      %button.mdc-button.mdc-dialog__footer__button.mdc-dialog__footer__button--accept.choose-file{ type: :button } Choose File
+      %button.mdc-button.mdc-dialog__footer__button.mdc-dialog__footer__button--cancel
+        Cancel
+      %button.mdc-button.mdc-dialog__footer__button.mdc-dialog__footer__button--accept.choose-file
+        Choose File
   .mdc-dialog__backdrop

@@ -6,7 +6,8 @@
     .mdc-simple-menu.mdc-select__menu
       %ul.mdc-list.mdc-simple-menu__items
         - Semester.find_each do |semester|
-          %li.mdc-list-item{ role: :option, tabindex: 0, aria: { selected: current_semester == semester } }
+          %li.mdc-list-item{ role: :option, tabindex: 0,
+                             aria: { selected: current_semester == semester } }
             = link_to semester.semester, semester, method: :put, style: "z-index: 100"
 
 
