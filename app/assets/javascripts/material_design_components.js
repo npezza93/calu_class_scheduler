@@ -35,9 +35,6 @@ function initialize_mdc() {
       menu.open = !menu.open;
     });
   });
-  // $.each($(".mdc-dialog"), function(index, element) {
-  //   var dialog = mdc.dialog.MDCDialog.attachTo(element);
-  // });
 
   if ($(".mdc-snackbar").length > 0) {
     var snackbar = mdc.snackbar.MDCSnackbar.attachTo($(".mdc-snackbar")[0]);

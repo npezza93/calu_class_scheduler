@@ -1,4 +1,4 @@
-%aside#upload-offerings-dialog.mdc-dialog.hidden{ aria: { describedby: "upload-offerings-description",
+%aside#upload-offerings-dialog.mdc-dialog{ aria: { describedby: "upload-offerings-description",
   hidden: true, labelledby: "upload-offering-heading", role: :alertdialog } }
   = form_tag offerings_import_path, multipart: true, class: "mdc-dialog__surface" do
     %header.mdc-dialog__header
