@@ -2,7 +2,7 @@
 module OverflowMenuHelper
   def overflow_menu(edit_link: nil, destroy_link: nil, other: nil)
     content_tag(:div, class: "relative overflow-menu") do
-      material_icon.more_vert.css_class("menu-toggle").to_s +
+      material_icon.more_vert.css_class("menu-toggle pointer").to_s +
         content_tag(:div, class: "mdc-simple-menu", tabindex: -1) do
           overflow_menu_items(edit_link, destroy_link, other)
         end
