@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Scheduler
-  include IncompleteCategory, MathClasses
+  include IncompleteCategory
+  include MathClasses
 
   attr_accessor :user, :complete, :incomplete, :math_classes, :used_courses,
                 :active_semester

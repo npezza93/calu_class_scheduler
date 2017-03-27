@@ -18,6 +18,8 @@
 #
 
 class Course < ApplicationRecord
+  include UserDescriptorConstants
+
   has_many :prerequisite_groups, dependent: :destroy
   has_many :prerequisites, through: :prerequisite_groups, dependent: :destroy
   has_many :courses, through: :prerequisites
@@ -44,27 +46,6 @@ class Course < ApplicationRecord
       "concat(courses.subject, courses.course, ': ', courses.title) AS title"
     )
   }
-
-  YEAR = {"Senior" => 1, "Junior" => 2, "Sophmore" => 3, "Freshman" => 4}.freeze
-
-  PLACEMENT_TEST_PARTS = [
-    ["No Part Must Be Passed", nil], ["Pass Part A", "A"],
-    ["Pass Part B", "B"], ["Pass Part C", "C"],
-    ["Pass Part D (7-9)", "D-"], ["Pass Part D (10 or above)", "D"]
-  ].freeze
-
-  CLASS_STANDINGS = [
-    ["No minimum class standing", nil], %w(Senior Senior), %w(Junior Junior),
-    %w(Sophmore Sophmore), %w(Freshman Freshman)
-  ].freeze
-
-  SAT_SCORES = [
-    ["No minimum SAT score", nil], ["440 on Mathematics or better", "440"],
-    ["520 on Mathematics or better", "520"],
-    ["580 on Mathematics or better", "580"],
-    ["640 on Mathematics or better", "640"],
-    ["700 on Mathematics or better", "700"]
-  ].freeze
 
   def self.paginated_letters
     select(:subject).distinct.flat_map(&:subject).map(&:first).uniq.sort

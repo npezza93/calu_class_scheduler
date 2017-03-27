@@ -11,10 +11,7 @@ class CoursesController < ApplicationController
         @courses = Course.subject_by_letter(params[:letter]).group_by(&:subject)
       end
       format.json do
-        render json: {
-          courses: Course.autocomplete_fields,
-          subjects: Course.select(:subject).distinct
-        }
+        render json: course_catalog_hash
       end
     end
   end
@@ -69,5 +66,12 @@ class CoursesController < ApplicationController
         :id, :_destroy, course_ids: []
       ]
     )
+  end
+
+  def course_catalog_hash
+    @course_catalog_hash ||= {
+      courses: Course.autocomplete_fields,
+      subjects: Course.select(:subject).distinct
+    }
   end
 end
