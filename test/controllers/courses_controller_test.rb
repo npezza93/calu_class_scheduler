@@ -51,6 +51,13 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get index as json" do
+    sign_in @user
+
+    get courses_path(format: :json)
+    assert_response :success
+  end
+
   test "should get course as advisor" do
     sign_in @user
 
