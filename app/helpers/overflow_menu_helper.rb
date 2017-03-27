@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module OverflowMenuHelper
   def overflow_menu(edit_link: nil, destroy_link: nil, other: nil)
     content_tag(:div, class: "relative overflow-menu") do

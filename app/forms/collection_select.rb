@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module CollectionSelect
   def collection_select(method, collection, val_method, text_method, opts = {})
     content_tag :div, collection_select_attrs(opts) do

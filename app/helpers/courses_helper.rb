@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module CoursesHelper
   def paginated_letters
     @paginated_letters ||= Course.paginated_letters

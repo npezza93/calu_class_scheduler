@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Scheduler
   module MathClasses
     def pt_math_classes

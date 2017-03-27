@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: work_days_times
@@ -14,7 +15,7 @@
 class WorkDaysTime < ApplicationRecord
   include TimeOverlaps
 
-  validates :days, uniqueness: { scope: [:start_time, :end_time] }
+  validates :days, uniqueness: { scope: %i(start_time end_time) }
 
   scope :with_start_time, lambda { |sel|
     all.select { |day_time| day_time.parsed_start_time == sel }

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 def user?(request)
   warden_req = request.env["warden"]
   warden_req.authenticate? && !warden_req.user.advisor?
@@ -36,12 +37,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :transcripts, only: [:index, :create, :destroy, :new],
+  resources :transcripts, only: %i(index create destroy new),
                           path: :transcript
-  resources :work_schedules, only: [:create, :index, :destroy], path: :calendar
-  resources :schedules, only: [:index, :create, :destroy], path: :schedule
+  resources :work_schedules, only: %i(create index destroy), path: :calendar
+  resources :schedules, only: %i(index create destroy), path: :schedule
 
-  resources :users, only: [:index, :show] do
-    resources :schedule_approvals, only: [:create, :update]
+  resources :users, only: %i(index show) do
+    resources :schedule_approvals, only: %i(create update)
   end
 end

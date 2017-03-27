@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: days_times
@@ -14,7 +15,7 @@
 class DaysTime < ApplicationRecord
   include TimeOverlaps
 
-  validates_uniqueness_of :days, scope: [:start_time, :end_time]
+  validates_uniqueness_of :days, scope: %i(start_time end_time)
 
   def pretty_day_time
     if days == "ONLINE" || days == "OFFSITE"

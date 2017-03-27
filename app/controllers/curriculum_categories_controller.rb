@@ -1,9 +1,10 @@
 # frozen_string_literal: true
+
 class CurriculumCategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_major
-  before_action :set_category, except: [:create, :new, :index]
-  before_action :set_courses, only: [:new, :create, :edit, :update]
+  before_action :set_category, except: %i(create new index)
+  before_action :set_courses, only: %i(new create edit update)
   authorize_resource
 
   def show

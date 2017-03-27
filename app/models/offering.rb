@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: offerings
@@ -22,7 +23,7 @@ class Offering < ApplicationRecord
   before_save :default_semester
 
   validates :course, uniqueness: {
-    scope: [:days_time, :user, :semester_id],
+    scope: %i(days_time user semester_id),
     message: "This is already being offered!"
   }
   validates :course, presence: { message: "A course must be selected!" }

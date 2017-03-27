@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class OfferingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_course, except: :import
-  before_action :set_offering, only: [:destroy, :edit, :update]
+  before_action :set_offering, only: %i(destroy edit update)
   authorize_resource
 
   def index

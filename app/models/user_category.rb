@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: user_categories
@@ -32,7 +33,7 @@ class UserCategory < ApplicationRecord
   scope :incompleted, lambda {
     where(completed: false).includes(
       :curriculum_category, :completed_courses,
-      offerings: [:course, :days_time, :user],
+      offerings: %i(course days_time user),
     )
   }
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: curriculum_categories
@@ -22,7 +23,7 @@ class CurriculumCategory < ApplicationRecord
 
   validates :category, presence: true
   validates :minor, inclusion: { in: [true, false] }
-  validates_uniqueness_of :category, scope: [:major, :minor]
+  validates_uniqueness_of :category, scope: %i(major minor)
 
   accepts_nested_attributes_for :curriculum_category_sets, allow_destroy: true,
                                                            reject_if: :all_blank

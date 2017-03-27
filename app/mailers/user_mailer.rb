@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UserMailer < ActionMailer::Base
   def submit_to_advisor(approval)
     set_users_schedules(approval)

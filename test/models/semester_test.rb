@@ -2,17 +2,19 @@
 
 # == Schema Information
 #
-# Table name: prerequisite_groups
+# Table name: semesters
 #
 #  id         :integer          not null, primary key
-#  course_id  :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  semester   :string(255)
+#  active     :boolean          default(FALSE)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
+#
 require "test_helper"
 
-class PrerequisiteGroupTest < ActiveSupport::TestCase
+class SemesterTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

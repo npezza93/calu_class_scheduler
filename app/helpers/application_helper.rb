@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module ApplicationHelper
   def fab(link)
     button_classes = "mdc-fab material-icons new-fab app-fab--absolute"

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # SchedulerJob.perform_now current_user, @transcript.course_id
 class TranscriptsController < ApplicationController
   before_action :authenticate_user!

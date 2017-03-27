@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Devise.setup do |config|
   config.mailer_sender = "please-change-me-at-config-initializers-devise"
   require "devise/orm/active_record"

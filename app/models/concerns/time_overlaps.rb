@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module TimeOverlaps
   def regex_days
     days.split("").join("|")

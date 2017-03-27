@@ -8,6 +8,9 @@
 #  created_at        :datetime
 #  updated_at        :datetime
 #  semester_id       :integer
+#  day               :string
+#  start_time        :time
+#  end_time          :time
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

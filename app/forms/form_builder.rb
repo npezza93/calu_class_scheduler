@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class FormBuilder < ActionView::Helpers::FormBuilder
   include CollectionSelect
 

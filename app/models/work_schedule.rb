@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: work_schedules
@@ -9,6 +10,9 @@
 #  created_at        :datetime
 #  updated_at        :datetime
 #  semester_id       :integer
+#  day               :string
+#  start_time        :time
+#  end_time          :time
 #
 
 class WorkSchedule < ApplicationRecord

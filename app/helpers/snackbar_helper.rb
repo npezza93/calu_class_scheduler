@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module SnackbarHelper
   def snackbar_notice(message)
     return if message.blank?
