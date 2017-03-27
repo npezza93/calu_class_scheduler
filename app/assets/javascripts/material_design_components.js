@@ -12,16 +12,7 @@ function initialize_mdc() {
   $.each($(".mdc-textfield"), function(index, element) {
     mdc.textfield.MDCTextfield.attachTo(element);
   });
-  $.each($(".mdc-button"), function(index, element) {
-    mdc.ripple.MDCRipple.attachTo(element);
-  });
-  $.each($(".mdc-fab"), function(index, element) {
-    mdc.ripple.MDCRipple.attachTo(element);
-  });
-  $.each($(".mdc-ripple-surface"), function(index, element) {
-    mdc.ripple.MDCRipple.attachTo(element);
-  });
-  $.each($(".mdc-list-item.with-ripple"), function(index, element) {
+  $.each($(".mdc-fab, .mdc-button, .mdc-ripple-surface, .mdc-list-item.with-ripple"), function(index, element) {
     mdc.ripple.MDCRipple.attachTo(element);
   });
   $.each($(".mdc-select"), function(index, element) {
