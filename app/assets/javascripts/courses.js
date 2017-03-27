@@ -1,5 +1,5 @@
 $(document).on("turbolinks:load", function() {
-  if ($(".course-select").length > 0 && typeof(courses) == "undefined") {
+  if ($(".course-select").length > 0 && typeof(courses) === "undefined") {
     fetchCourses($(".course-select"));
   } else if ($(".course-select").length > 0) {
     $.each($(".course-select"), function(element, index) {
@@ -10,7 +10,7 @@ $(document).on("turbolinks:load", function() {
 
 $(document).on("cocoon:after-insert", function(e, insertedItem) {
   element = $(insertedItem).find(".course-select");
-  if (typeof(courses) == "undefined") {
+  if (typeof(courses) === "undefined") {
     fetchCourses([element]);
   } else {
     selectizeElement(element, courses, subjects, element.data("selected"));
@@ -30,7 +30,7 @@ function fetchCourses(elements) {
       selectizeElement($(this), courses, subjects, $(this).data("selected"));
     });
   });
-};
+}
 
 function selectizeElement(element, courses, subjects, selected_items) {
   element.selectize({
@@ -67,7 +67,7 @@ function selectizeElement(element, courses, subjects, selected_items) {
       },
       optgroup: function(data, escape) {
         return "<div class='mdc-list-group'>" + data.html + "<div class='mdc-list-divider'></div></div>";
-      },
-    },
+      }
+    }
   });
-};
+}

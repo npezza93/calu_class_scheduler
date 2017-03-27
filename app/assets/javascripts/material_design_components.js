@@ -31,4 +31,4 @@ function initialize_mdc() {
     var snackbar = mdc.snackbar.MDCSnackbar.attachTo($(".mdc-snackbar")[0]);
     snackbar.show({ message: $(".mdc-snackbar").find(".mdc-snackbar__text").text() });
   }
-};
+}
