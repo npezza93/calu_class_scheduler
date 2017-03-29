@@ -14,11 +14,14 @@
       %tr
         %td.time_slot= Time.at(start_time).utc.strftime("%l:%M%P")
         - %w(M T W R F).each do |day|
-          %td.day_time_slot{ id: work_schedule_id(day, start_time) }
-            - if (overlapping_o = find_overlapping_offering(@offerings, day, start_time))
+          - if (overlapping_o = find_overlapping_offering(@offerings, day, start_time))
+            %td.day_time_slot.mdc-ripple-surface.mdc-ripple-surface--accent{ id: work_schedule_id(day, start_time),
+                data: { id: overlapping_o.course.condensed_course } }
               .schedule= overlapping_o.course.condensed_course
-            - elsif (overlapping_ws = find_overlapping_work_schedule(@work_schedules, day, start_time))
-              = link_to "", overlapping_ws, data: { method: :delete }, class: "blocked", remote: true
-            - else
+          - elsif (overlapping_ws = find_overlapping_work_schedule(@work_schedules, day, start_time))
+            %td.day_time_slot.mdc-ripple-surface.mdc-ripple-surface--accent.mdc-theme--accent-bg{ id: work_schedule_id(day, start_time) }
+              = link_to "", overlapping_ws, data: { method: :delete }, remote: true
+          - else
+            %td.day_time_slot.mdc-ripple-surface.mdc-ripple-surface--accent{ id: work_schedule_id(day, start_time) }
               = link_to "", work_schedules_path(day: day, start_time: start_time),
                             method: :post, remote: true
