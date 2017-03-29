@@ -2,7 +2,7 @@
 
 class Scheduler
   module IncompleteCategory
-    def incomplete_category(category)
+    def incomplete_category(category, user_category)
       incomplete_or_category(category) if category.or_sets?
 
       incomplete[category] = prerequisite_check(category).flatten

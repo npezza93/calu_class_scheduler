@@ -17,6 +17,8 @@ class DaysTime < ApplicationRecord
 
   validates_uniqueness_of :days, scope: %i(start_time end_time)
 
+  scope :has_meeting_time, -> { where.not(start_time: nil, end_time: nil) }
+
   def pretty_day_time
     if days == "ONLINE" || days == "OFFSITE"
       days
@@ -26,6 +28,6 @@ class DaysTime < ApplicationRecord
   end
 
   def meeting_time?
-    !start_time.blank? && !end_time.blank?
+    start_time.present? && end_time.present?
   end
 end

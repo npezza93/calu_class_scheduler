@@ -33,7 +33,9 @@ class Scheduler
     if category.complete?(sets)
       complete_category(category, sets.index(true))
     else
-      incomplete_category(category)
+      incomplete_category(category, user.user_categories.where(
+        curriculum_category_id: category.id, completed: false
+      ).first_or_create)
     end
   end
 

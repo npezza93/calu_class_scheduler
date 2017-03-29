@@ -5,33 +5,17 @@ module TimeOverlaps
     days.split("").join("|")
   end
 
-  def start_time_as_time
-    if start_time.is_a? Time
-      start_time
-    else
-      Time.parse("2000-01-01 #{start_time} utc")
-    end
-  end
-
-  def end_time_as_time
-    if end_time.is_a? Time
-      end_time
-    else
-      Time.parse("2000-01-01 #{end_time} utc")
-    end
-  end
-
   def time_range
-    start_time_as_time..end_time_as_time
+    start_time..end_time
   end
 
   def range_overlap?(compare_range)
-    time_range.begin <= (compare_range.time_range.end - 1.second) &&
-      compare_range.time_range.begin <= (time_range.end - 1.second)
+    time_range.begin <= compare_range.end &&
+      compare_range.begin <= time_range.end
   end
 
   def overlaps?(days_time)
-    return false if !meeting_time? || !days_time.meeting_time?
+    return false unless meeting_time?
 
     days =~ Regexp.new(days_time.regex_days) && range_overlap?(days_time)
   end
