@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class WorkSchedulesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_work_schedule, only: :destroy
-  authorize_resource
+  load_and_authorize_resource
 
   def index
     set_work_schedules_offerings
@@ -28,10 +26,6 @@ class WorkSchedulesController < ApplicationController
   end
 
   private
-
-  def set_work_schedule
-    @work_schedule = WorkSchedule.find(params[:id])
-  end
 
   def current_work_schedules
     @current_work_schedules ||=

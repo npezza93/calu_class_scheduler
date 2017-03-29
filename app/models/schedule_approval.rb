@@ -16,15 +16,15 @@ class ScheduleApproval < ApplicationRecord
   belongs_to :user
   belongs_to :semester
 
-  validates_uniqueness_of :user, scope: [:semester]
+  validates :user_id, uniqueness: { scope: %i(semester_id) }
+
   after_create :send_to_advisor
   after_create :send_student_confirmation
   after_update :send_advisor_confirmation
   after_update :send_approved
 
   def approve
-    self.approved = true
-    save
+    update(approved: true)
   end
 
   def send_to_advisor

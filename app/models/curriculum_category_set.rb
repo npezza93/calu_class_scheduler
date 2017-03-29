@@ -18,9 +18,6 @@ class CurriculumCategorySet < ApplicationRecord
 
   validates :count, numericality: { only_integer: true }, allow_blank: true
 
-  accepts_nested_attributes_for :course_sets, reject_if: :all_blank,
-                                              allow_destroy: true
-
   def pretty_count
     if count.blank?
       "All courses are required"

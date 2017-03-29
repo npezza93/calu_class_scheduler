@@ -8,7 +8,7 @@ class Scheduler
                 :semester
   delegate :categories, :taken_courses, :transcripts, to: :user
 
-  def initialize(user, semester)
+  def initialize(user:, semester:)
     @user            = user
     @complete        = {}
     @incomplete      = {}

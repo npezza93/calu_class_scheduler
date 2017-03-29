@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class CoursesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_course, only: %i(destroy edit update show)
-  authorize_resource
+  load_and_authorize_resource :course, through_association: {
+    prerequisite_groups: { prerequisites: :course }
+  }
 
   def index
     respond_to do |format|
@@ -46,25 +46,16 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-
     redirect_to courses_url, notice: "Course was successfully destroyed."
   end
 
   private
 
-  def set_course
-    @course = Course.includes(
-      prerequisite_groups: { prerequisites: :course }
-    ).find(params[:id])
-  end
-
   def course_params
     params.require(:course).permit(
       :subject, :course, :title, :credits, :minimum_class_standing,
       :description, :minimum_sat_score, :minimum_pt,
-      prerequisite_groups_attributes: [
-        :id, :_destroy, course_ids: []
-      ]
+      prerequisite_groups_attributes: [:id, :_destroy, course_ids: []]
     )
   end
 

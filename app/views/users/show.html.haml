@@ -4,16 +4,16 @@
 .layout.vertical.center.mt-4
   .mdc-card.white.container
     %section.mdc-card__primary
-      %h1.mdc-card__title.mdc-card__title--large= @student.name
-      %h2.mdc-typography--title.mdc-card__subtitle{ class: schedule_status(@student)[:class] }
-        = schedule_status(@student)[:display]
+      %h1.mdc-card__title.mdc-card__title--large= @user.name
+      %h2.mdc-typography--title.mdc-card__subtitle{ class: schedule_status(@user)[:class] }
+        = schedule_status(@user)[:display]
     %section.mdc-card__supporting-text
       %ul
-        - @student.courses.each do |course|
+        - @user.courses.each do |course|
           %li= course.pretty_course
 
-    - if @student.schedule_approval && !@student.schedule_approval.approved
+    - if @user.schedule_approval && !@user.schedule_approval.approved
       %section.mdc-card__actions
-        = link_to "Approve", user_schedule_approval_path(@student, @student.schedule_approval),
+        = link_to "Approve", user_schedule_approval_path(@user, @user.schedule_approval),
             method: :patch, data: { confirm: "Are you sure?" },
             class: "mdc-button mdc-button--compact mdc-card__action"

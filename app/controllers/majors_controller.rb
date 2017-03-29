@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class MajorsController < ApplicationController
-  before_action :authenticate_user!
   load_and_authorize_resource
 
   def index
-    @majors = Major.all.order(:major)
+    @majors = Major.order(:major)
   end
 
   def show

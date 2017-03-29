@@ -66,16 +66,6 @@ ActiveRecord::Schema.define(version: 20170328175624) do
     t.datetime "updated_at"
   end
 
-  create_table "hidden_user_offerings", id: :serial, force: :cascade do |t|
-    t.text "offerings"
-    t.integer "user_id"
-    t.integer "semester_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["semester_id"], name: "index_hidden_user_offerings_on_semester_id"
-    t.index ["user_id"], name: "index_hidden_user_offerings_on_user_id"
-  end
-
   create_table "majors", id: :serial, force: :cascade do |t|
     t.string "major", limit: 255
     t.datetime "created_at"
@@ -227,6 +217,4 @@ ActiveRecord::Schema.define(version: 20170328175624) do
     t.index ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id"
   end
 
-  add_foreign_key "hidden_user_offerings", "semesters"
-  add_foreign_key "hidden_user_offerings", "users"
 end

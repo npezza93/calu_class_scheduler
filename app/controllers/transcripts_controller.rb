@@ -2,7 +2,6 @@
 
 # SchedulerJob.perform_now current_user, @transcript.course_id
 class TranscriptsController < ApplicationController
-  before_action :authenticate_user!
   authorize_resource
   before_action :set_transcript, only: :destroy
 
@@ -41,8 +40,10 @@ class TranscriptsController < ApplicationController
     params.require(:transcript).permit(:course_id, :grade_c).tap do |attrs|
       next if attrs[:grade_c].blank?
 
-      attrs[:grade_c_minus] = Transcript.c_minus?(attrs[:grade_c])
-      attrs[:grade_c] = Transcript.c?(attrs[:grade_c])
+      attrs[:grade_c_minus] =
+        Transcript::GRADES.index(attrs[:grade_c]).to_i <= 7
+      attrs[:grade_c] =
+        Transcript::GRADES.index(attrs[:grade_c]).to_i <= 6
     end
   end
 

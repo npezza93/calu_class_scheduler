@@ -22,22 +22,4 @@ class Transcript < ApplicationRecord
   validates :course, uniqueness: {
     scope: :user, message: "You've already taken this course!"
   }, presence: { message: "A course must be selected!" }
-
-  class << self
-    def letter_grade_check(grade, index)
-      GRADES.index(grade) && GRADES.index(grade) <= index
-    end
-
-    def c?(grade)
-      return true if letter_grade_check(grade, 6)
-
-      false
-    end
-
-    def c_minus?(grade)
-      return true if letter_grade_check(grade, 7)
-
-      false
-    end
-  end
 end

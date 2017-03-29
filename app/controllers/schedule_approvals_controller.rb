@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class ScheduleApprovalsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_approval, only: [:update]
-  authorize_resource
+  load_and_authorize_resource
 
   def create
     if current_user.credits >= 12
@@ -19,14 +17,9 @@ class ScheduleApprovalsController < ApplicationController
   end
 
   def update
-    @approval.approve
+    @schedule_approval.approve
 
-    redirect_to users_path, notice: "Approved #{@approval.user.name}'s schedule"
-  end
-
-  private
-
-  def set_approval
-    @approval = ScheduleApproval.find(params[:id])
+    redirect_to users_path,
+                notice: "Approved #{@schedule_approval.user.name}'s schedule"
   end
 end
