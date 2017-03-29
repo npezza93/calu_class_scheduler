@@ -16,8 +16,7 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = current_user.schedules.create(
-      offering_id: params[:offering_id],
-      semester: active_semester
+      offering_id: params[:offering_id], semester: current_semester
     )
     set_hidden_offerings
 

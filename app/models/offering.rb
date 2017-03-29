@@ -20,8 +20,6 @@ class Offering < ApplicationRecord
   belongs_to :course
   belongs_to :semester
 
-  before_save :default_semester
-
   validates :course, uniqueness: {
     scope: %i(days_time user semester_id),
     message: "This is already being offered!"
@@ -31,8 +29,9 @@ class Offering < ApplicationRecord
   validates :user, presence: { message: "A professor must be selected!" }
   validates :section, presence: true
 
-  scope :for_semester, lambda { |semester = Semester.active|
-    where(semester: semester)
+  scope :for_semester, ->(semester) { where(semester: semester) }
+  scope :has_meeting_time, lambda {
+    joins(:days_time).merge(DaysTime.has_meeting_time)
   }
 
   def display
@@ -95,11 +94,5 @@ class Offering < ApplicationRecord
         DaysTime.find_by(days: "OFFSITE")
       end
     end
-  end
-
-  private
-
-  def default_semester
-    self.semester = Semester.active
   end
 end

@@ -5,16 +5,16 @@ class Scheduler
   include MathClasses
 
   attr_accessor :user, :complete, :incomplete, :math_classes, :used_courses,
-                :active_semester
+                :semester
   delegate :categories, :taken_courses, :transcripts, to: :user
 
-  def initialize(user)
+  def initialize(user, semester)
     @user            = user
     @complete        = {}
     @incomplete      = {}
     @math_classes    = []
     @used_courses    = Set.new
-    @active_semester = Semester.active
+    @semester        = semester
   end
 
   def perform

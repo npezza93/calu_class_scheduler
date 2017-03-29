@@ -9,14 +9,15 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: exception.message
   end
 
-  def active_semester
-    @active_semester ||= Semester.active
-  end
-  helper_method :active_semester
-
   def current_semester
-    @current_semester ||=
-      Semester.find_by(id: session[:semester_id]) || active_semester
+    return @current_semester if defined?(@current_semester)
+
+    @current_semester =
+      if session[:semester_id]
+        Semester.find_by(id: session[:semester_id]) || Semester.active
+      else
+        Semester.active
+      end
   end
   helper_method :current_semester
 end

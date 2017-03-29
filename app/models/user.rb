@@ -46,15 +46,14 @@ class User < ApplicationRecord
 
   belongs_to :major
   belongs_to :advisor_prof, class_name: "User", foreign_key: :advised_by
-  has_one :schedule_approval, -> { where(semester: Semester.active) }
+  has_one :schedule_approval
   has_many :transcripts
   has_many :taken_courses, through: :transcripts, source: :course
-  has_many :schedules, -> { where(semester: Semester.active) }
+  has_many :schedules
   has_many :offerings, through: :schedules
   has_many :offering_day_times, through: :offerings, source: :days_time
   has_many :courses, through: :offerings
-  has_many :work_schedules, -> { where(semester: Semester.active) }
-  has_many :work_days_times, through: :work_schedules
+  has_many :work_schedules
   has_many :user_categories
   has_many :available_offerings, lambda {
     where(user_category_courses: { completed: false })

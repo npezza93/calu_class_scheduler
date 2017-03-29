@@ -7,18 +7,18 @@ class OfferingsController < ApplicationController
   authorize_resource
 
   def index
-    @offerings = @course.offerings.for_semester
+    @offerings = semester_offerings
   end
 
   def new
-    @offering = @course.offerings.for_semester.new
+    @offering = semester_offerings.new
   end
 
   def edit
   end
 
   def create
-    @offering = @course.offerings.for_semester.new(offering_params)
+    @offering = semester_offerings.new(offering_params)
 
     if @offering.save
       redirect_to course_offerings_path(@course),
@@ -53,11 +53,15 @@ class OfferingsController < ApplicationController
   private
 
   def set_offering
-    @offering = @course.offerings.for_semester.find(params[:id])
+    @offering = semester_offerings.find(params[:id])
   end
 
   def set_course
     @course = Course.find(params[:course_id])
+  end
+
+  def semester_offerings
+    @semester_offerings ||= @course.offerings.for_semester(current_semester)
   end
 
   def offering_params

@@ -8,7 +8,7 @@ class ScheduleApprovalsController < ApplicationController
   def create
     if current_user.credits >= 12
       @approval = ScheduleApproval.create(
-        user: current_user, semester: active_semester
+        user: current_user, semester: current_semester
       )
 
       flash[:notice] = "Schedule successfully submitted for approval"
