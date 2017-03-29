@@ -17,7 +17,6 @@
 
 class WorkSchedule < ApplicationRecord
   belongs_to :user
-  belongs_to :work_days_time
   belongs_to :semester
 
   scope :with_start_time, lambda { |sel|

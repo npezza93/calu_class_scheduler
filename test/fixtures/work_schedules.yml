@@ -17,8 +17,10 @@
 
 one:
   user:  one
-  work_days_time: day_M_8_30
+  day: M
+  start_time: <%= Time.parse("2001-01-01 08:30 AM utc") %>
 
 two:
   user_id: one
-  work_days_time: day_M_9_30
+  day: M
+  start_time: <%= Time.parse("2001-01-01 09:30 AM utc") %>

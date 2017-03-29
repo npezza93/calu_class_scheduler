@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328175624) do
+ActiveRecord::Schema.define(version: 20170329234157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,17 +196,8 @@ ActiveRecord::Schema.define(version: 20170328175624) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "work_days_times", id: :serial, force: :cascade do |t|
-    t.string "days", limit: 255
-    t.time "start_time"
-    t.time "end_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "work_schedules", id: :serial, force: :cascade do |t|
     t.integer "user_id"
-    t.integer "work_days_time_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "semester_id"
@@ -214,7 +205,6 @@ ActiveRecord::Schema.define(version: 20170328175624) do
     t.time "start_time"
     t.index ["semester_id"], name: "index_work_schedules_on_semester_id"
     t.index ["user_id"], name: "index_work_schedules_on_user_id"
-    t.index ["work_days_time_id"], name: "index_work_schedules_on_work_days_time_id"
   end
 
 end
