@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329234157) do
+ActiveRecord::Schema.define(version: 20170330022644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,37 @@ ActiveRecord::Schema.define(version: 20170329234157) do
     t.index ["user_id"], name: "index_schedule_approvals_on_user_id"
   end
 
+  create_table "schedule_categories", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "curriculum_category_id"
+    t.integer "semester_id"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_category_id"], name: "index_schedule_categories_on_curriculum_category_id"
+    t.index ["semester_id"], name: "index_schedule_categories_on_semester_id"
+    t.index ["user_id"], name: "index_schedule_categories_on_user_id"
+  end
+
+  create_table "schedule_category_courses", id: :serial, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_schedule_category_courses_on_category_id"
+    t.index ["course_id"], name: "index_schedule_category_courses_on_course_id"
+  end
+
+  create_table "schedule_category_offerings", force: :cascade do |t|
+    t.bigint "offering_id"
+    t.bigint "category_id"
+    t.boolean "hidden", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_schedule_category_offerings_on_category_id"
+    t.index ["offering_id"], name: "index_schedule_category_offerings_on_offering_id"
+  end
+
   create_table "schedules", id: :serial, force: :cascade do |t|
     t.integer "offering_id"
     t.integer "user_id"
@@ -140,26 +171,6 @@ ActiveRecord::Schema.define(version: 20170329234157) do
     t.boolean "grade_c"
     t.index ["course_id"], name: "index_transcripts_on_course_id"
     t.index ["user_id"], name: "index_transcripts_on_user_id"
-  end
-
-  create_table "user_categories", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "curriculum_category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "completed"
-    t.index ["curriculum_category_id"], name: "index_user_categories_on_curriculum_category_id"
-    t.index ["user_id"], name: "index_user_categories_on_user_id"
-  end
-
-  create_table "user_category_courses", id: :serial, force: :cascade do |t|
-    t.integer "user_category_id"
-    t.integer "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "completed"
-    t.index ["course_id"], name: "index_user_category_courses_on_course_id"
-    t.index ["user_category_id"], name: "index_user_category_courses_on_user_category_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

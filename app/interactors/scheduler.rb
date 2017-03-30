@@ -96,14 +96,12 @@ class Scheduler
   end
 
   def add_completed_to_db(category)
-    user_category = user.user_categories.where(
+    user_category = user.schedule_categories.where(
       curriculum_category_id: category.id, completed: true
     ).first_or_create
 
     complete[category].each do |course|
-      user_category.user_category_courses.where(
-        course_id: course.id, completed: true
-      ).first_or_create
+      user_category.category_courses.where(course_id: course.id).first_or_create
     end
   end
 end

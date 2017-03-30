@@ -43,7 +43,7 @@ class Scheduler
     end
 
     def add_incomplete_to_db(category)
-      user_category = user.user_categories.where(
+      user_category = user.schedule_categories.where(
         curriculum_category_id: category.id, completed: false
       ).first_or_create
 

@@ -46,19 +46,18 @@ class User < ApplicationRecord
 
   belongs_to :major
   belongs_to :advisor_prof, class_name: "User", foreign_key: :advised_by
-  has_one :schedule_approval
-  has_many :transcripts
-  has_many :taken_courses, through: :transcripts, source: :course
-  has_many :schedules
-  has_many :offerings, through: :schedules
-  has_many :offering_day_times, through: :offerings, source: :days_time
-  has_many :courses, through: :offerings
-  has_many :work_schedules
-  has_many :user_categories
-  has_many :available_offerings, lambda {
+  has_one    :schedule_approval
+  has_many   :transcripts
+  has_many   :taken_courses, through: :transcripts, source: :course
+  has_many   :schedules
+  has_many   :offerings, through: :schedules
+  has_many   :offering_day_times, through: :offerings, source: :days_time
+  has_many   :courses, through: :offerings
+  has_many   :work_schedules
+  has_many   :schedule_categories, class_name: "Schedule::Category"
+  has_many   :available_offerings, lambda {
     where(user_category_courses: { completed: false })
   }, class_name: "Offering", through: :user_categories, source: :offerings
-  has_many :hidden_user_offerings
 
   scope :offering_advisors, lambda {
     where(advisor: true).or(where(email: "staff@calu.edu"))
