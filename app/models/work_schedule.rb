@@ -19,14 +19,7 @@ class WorkSchedule < ApplicationRecord
   belongs_to :user
   belongs_to :semester
 
-  scope :with_start_time, lambda { |sel|
-    select { |day_time| day_time.parsed_start_time == sel }
-  }
   scope :for_semester, ->(semester) { where(semester: semester) }
-
-  def parsed_start_time
-    start_time.strftime("%l:%M%P").strip
-  end
 
   def end_time
     (start_time + 30.minutes) - 1.second

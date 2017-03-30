@@ -22,13 +22,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get index with search as advisor" do
-    sign_in @user
-
-    get course_offerings_path(courses(:one)), params: { search: "AAA" }
-    assert_response :success
-  end
-
   test "should not do anything as student" do
     @user = users(:one)
     sign_in @user

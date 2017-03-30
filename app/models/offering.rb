@@ -80,9 +80,8 @@ class Offering < ApplicationRecord
         csv_get_offsite(row)
       else
         DaysTime.find_by(
-          days: row[7].upcase,
-          start_time: Time.strptime(row[8], "%I%M%p").strftime("%-l:%M %P"),
-          end_time: Time.strptime(row[9], "%I%M%p").strftime("%-l:%M %P")
+          days: row[7].upcase, start_time: convert_to_time(row[8]),
+          end_time: convert_to_time(row[9]),
         )
       end
     end
@@ -93,6 +92,10 @@ class Offering < ApplicationRecord
       elsif row[2][0].casecmp("x").zero?
         DaysTime.find_by(days: "OFFSITE")
       end
+    end
+
+    def convert_to_time(time)
+      Time.strptime("2001-01-01 #{time} +0000", "%Y-%m-%d %I%M%p %z")
     end
   end
 end

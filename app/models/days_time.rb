@@ -23,7 +23,8 @@ class DaysTime < ApplicationRecord
     if days == "ONLINE" || days == "OFFSITE"
       days
     else
-      days + " at " + start_time + " to " + end_time
+      days + " at " +
+        start_time.strftime("%l:%M %P") + " to " + end_time.strftime("%l:%M %P")
     end
   end
 
