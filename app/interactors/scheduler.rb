@@ -28,13 +28,13 @@ class Scheduler
   def evaluate_category(category)
     complete[category] = {}
     incomplete[category] = {}
-    sets = category_sets(category)
 
-    if category.complete?(sets)
+    if category.complete?((sets = category_sets(category)))
       complete_category(category, sets.index(true))
     else
-      incomplete_category(category, user.user_categories.where(
-        curriculum_category_id: category.id, completed: false
+      incomplete_category(category, user.schedule_categories.where(
+        curriculum_category_id: category.id,
+        completed: false, semester: semester
       ).first_or_create)
     end
   end
@@ -85,23 +85,33 @@ class Scheduler
 
     # if only one set is needed to complete category, returns
     # the first complete set instead of all of them
-    complete[category] =
+    complete[category] = (
       if category.or_sets?
-        category.curriculum_category_sets[set_index].courses & taken_courses
+        category.curriculum_category_sets[set_index].courses
       else
-        category.courses & taken_courses
-      end.uniq
+        category.courses
+      end & taken_courses).uniq
 
-    add_completed_to_db(category)
+    add_completed_to_db(complete[category], category: category)
   end
 
-  def add_completed_to_db(category)
-    user_category = user.schedule_categories.where(
-      curriculum_category_id: category.id, completed: true
+  def add_completed_to_db(courses, category: nil, schedule_category: nil)
+    schedule_category ||= user.schedule_categories.where(
+      curriculum_category_id: category.id, completed: true, semester: semester
     ).first_or_create
 
-    complete[category].each do |course|
-      user_category.category_courses.where(course_id: course.id).first_or_create
+    courses.each do |course|
+      schedule_category.category_courses.where(
+        course_id: course.id
+      ).first_or_create
+    end
+  end
+
+  def add_schedule_offering_from_course(schedule_category, course)
+    course.offerings.for_semester(semester).each do |offering|
+      schedule_category.category_offerings.where(
+        offering_id: offering.id
+      ).first_or_create
     end
   end
 end

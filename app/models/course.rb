@@ -24,7 +24,6 @@ class Course < ApplicationRecord
   has_many :prerequisites, through: :prerequisite_groups, dependent: :destroy
   has_many :courses, through: :prerequisites
   has_many :offerings
-  has_many :user_category_courses, dependent: :destroy
 
   accepts_nested_attributes_for :prerequisite_groups,
                                 allow_destroy: true, reject_if: :all_blank

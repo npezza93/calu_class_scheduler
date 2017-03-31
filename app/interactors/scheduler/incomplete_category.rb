@@ -2,14 +2,17 @@
 
 class Scheduler
   module IncompleteCategory
-    def incomplete_category(category, user_category)
+    def incomplete_category(category, schedule_category)
       incomplete_or_category(category) if category.or_sets?
 
-      incomplete[category] = prerequisite_check(category).flatten
-      used_courses.merge(incomplete[category])
+      used_courses.merge(
+        (incomplete[category] = prerequisite_check(category).flatten)
+      )
 
-      add_incomplete_to_db(category)
-      add_completed_courses_from_incomplete_category(category, user_category)
+      add_incomplete_to_db(category, schedule_category)
+      add_completed_to_db(
+        complete[category].values.flatten, schedule_category: schedule_category
+      )
     end
 
     # handle category with sets that are ored together
@@ -42,32 +45,12 @@ class Scheduler
       end.flatten.compact
     end
 
-    def add_incomplete_to_db(category)
-      user_category = user.schedule_categories.where(
-        curriculum_category_id: category.id, completed: false
-      ).first_or_create
-
+    def add_incomplete_to_db(category, schedule_category)
       incomplete[category].each do |course|
         next unless course.is_a? Course
 
         capture_math_class(course, category)
-        user_category.user_category_courses.where(
-          course_id: course.id, completed: false
-        ).first_or_create
-      end
-    end
-
-    def capture_math_class(course, category)
-      return unless math_class?(course)
-
-      math_classes << [course, category]
-    end
-
-    def add_completed_courses_from_incomplete_category(category, user_category)
-      complete[category].values.flatten.each do |course|
-        user_category.user_category_courses.where(
-          course_id: course.id, completed: true
-        ).first_or_create
+        add_schedule_offering_from_course(schedule_category, course)
       end
     end
   end

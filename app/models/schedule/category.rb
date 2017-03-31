@@ -17,8 +17,12 @@ class Schedule
   class Category < ApplicationRecord
     belongs_to :user
     belongs_to :curriculum_category
+    belongs_to :semester
+
     has_many :category_courses, dependent: :destroy
     has_many :courses, through: :category_courses
+    has_many :category_offerings, dependent: :destroy
+    has_many :offerings, through: :category_offerings
 
     validates :curriculum_category, uniqueness: {
       scope: %i(semester_id user_id)

@@ -26,6 +26,12 @@ class Scheduler
       @mat281 ||= Course.find_by(subject: "MAT", course: 281)
     end
 
+    def capture_math_class(course, category)
+      return unless math_class?(course)
+
+      math_classes << [course, category]
+    end
+
     def math_class?(course)
       pt_math_classes.include? course
     end
@@ -70,11 +76,13 @@ class Scheduler
       needed_courses.each do |needed_course|
         next unless used_courses.add?(needed_course.first)
 
-        user.user_categories.find_by(
-          curriculum_category_id: needed_course.second.id, completed: false
-        ).user_category_courses.where(
-          course_id: needed_course.first.id, completed: false
-        ).first_or_create
+        schedule_category = user.schedule_categories.find_by(
+          curriculum_category_id: needed_course.second.id, semester: semester
+        ).update(completed: false)
+
+        add_schedule_offering_from_course(
+          schedule_category, needed_course.first
+        )
       end
     end
   end

@@ -15,7 +15,6 @@
 
 class CurriculumCategory < ApplicationRecord
   belongs_to :major
-  has_many :user_categories, dependent: :destroy
   has_many :curriculum_category_sets, dependent: :destroy
   has_many :course_sets, through: :curriculum_category_sets, dependent: :destroy
   has_many :courses, through: :course_sets
