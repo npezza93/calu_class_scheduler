@@ -8,12 +8,12 @@
           = schedule_category.curriculum_category.display
         .mdc-card.white.w-100.mb-5
           .mdc-list
-            - if schedule_category.offerings.blank?
+            - if schedule_category.visible_offerings.blank?
               .mdc-list-item.danger-text No courses are being offered
             - else
-              - schedule_category.offerings.group_by(&:course).each do |course, course_offerings|
+              - schedule_category.visible_offerings.group_by(&:course).each do |course, offerings|
                 .mdc-list-item= course.pretty_course
-                - course_offerings.each do |offering|
+                - offerings.each do |offering|
                   - if !@schedules.to_a.include? offering
                     = link_to schedules_path(offering_id: offering.id),
                               method: :post, remote: true, class: "mdc-list-item" do

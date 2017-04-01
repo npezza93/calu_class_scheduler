@@ -24,6 +24,10 @@ class Schedule
     has_many :courses, through: :category_courses
     has_many :category_offerings, dependent: :destroy
     has_many :offerings, through: :category_offerings
+    has_many :visible_category_offerings, -> { where(hidden: false) },
+             class_name: "CategoryOffering"
+    has_many :visible_offerings, through: :visible_category_offerings,
+                                 class_name: "Offering", source: :offering
 
     validates :curriculum_category, uniqueness: {
       scope: %i(semester_id user_id)

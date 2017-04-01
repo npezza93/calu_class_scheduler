@@ -18,11 +18,21 @@ class WorkSchedule < ApplicationRecord
 
   belongs_to :user
 
+  validates :start_time, uniqueness: { scope: %i(user_id semester_id day) }
+
   def end_time
     (start_time + 30.minutes) - 1.second
   end
 
   def time_range
     start_time..end_time
+  end
+
+  def time_id
+    "#{day}_#{start_time.hour}_#{start_time.min}"
+  end
+
+  def path_id
+    { day: day, start_time: start_time.to_i }
   end
 end

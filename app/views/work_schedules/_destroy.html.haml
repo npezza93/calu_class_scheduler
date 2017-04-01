@@ -1,0 +1,4 @@
+%td{ class: "day_time_slot mdc-ripple-surface mdc-ripple-surface--accent",
+     id: service.work_schedule.time_id }
+  = link_to "", work_schedules_path(service.work_schedule.path_id),
+                method: :post, remote: true

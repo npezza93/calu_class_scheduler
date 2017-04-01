@@ -9,4 +9,13 @@ module UserContextHelper
         Semester.active
       end
   end
+
+  def current_semester_id
+    @current_semester ||=
+      if session[:semester_id]
+        session[:semester_id]
+      else
+        Semester.active.id
+      end
+  end
 end

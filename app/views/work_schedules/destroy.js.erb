@@ -1,2 +1,4 @@
-var el = $("#<%= work_schedule_id(@work_schedule.day, @work_schedule.start_time.to_i) %>");
-el.replaceWith("<%= j render 'work_schedule', work_schedules: @work_schedules, day: @work_schedule.day, start_time: @work_schedule.start_time.to_i, offerings: @offerings %>");
+var el = $("#<%= @service.work_schedule.time_id %>");
+<% if @service.destroyed? %>
+  el.replaceWith("<%= j render 'destroy', service: @service %>");
+<% end %>

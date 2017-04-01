@@ -15,4 +15,7 @@
 class Schedule::CategoryOffering < ApplicationRecord
   belongs_to :offering
   belongs_to :category
+
+  scope :visible, -> { where(hidden: false) }
+  scope :hidden,  -> { where(hidden: true)  }
 end

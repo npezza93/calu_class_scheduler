@@ -8,8 +8,12 @@ class WorkSchedulesController < ApplicationController
   end
 
   def create
-    @work_schedule = current_work_schedules.create(work_schedule_params)
-    set_work_schedules_offerings
+    work_schedule = current_work_schedules.new(work_schedule_params)
+    @service = WorkSchedules::Create.new(
+      work_schedule, current_user, current_semester_id
+    )
+
+    @service.perform
 
     respond_to do |format|
       format.js
@@ -17,8 +21,11 @@ class WorkSchedulesController < ApplicationController
   end
 
   def destroy
-    @work_schedule.destroy
-    set_work_schedules_offerings
+    @service = WorkSchedules::Destroy.new(
+      @work_schedule, current_user, current_semester_id
+    )
+
+    @service.perform
 
     respond_to do |format|
       format.js
@@ -29,12 +36,12 @@ class WorkSchedulesController < ApplicationController
 
   def current_work_schedules
     @current_work_schedules ||=
-      current_user.work_schedules.for_semester(current_semester)
+      current_user.work_schedules.for_semester(current_semester_id)
   end
 
   def set_work_schedules_offerings
     @work_schedules = current_work_schedules.group_by(&:day)
-    @offerings = current_user.offerings.for_semester(current_semester)
+    @offerings = current_user.offerings.for_semester(current_semester_id)
                              .has_meeting_time.includes(:days_time).load
   end
 

@@ -8,7 +8,8 @@ class SchedulesController < ApplicationController
     schedule_categories = current_user.schedule_categories.for_semester(
       current_semester
     ).eager_load(
-      :curriculum_category, :courses, offerings: %i(course days_time user)
+      :curriculum_category, :courses,
+      visible_offerings: %i(course days_time user)
     )
 
     @completed_categories = schedule_categories.select(&:completed?)
