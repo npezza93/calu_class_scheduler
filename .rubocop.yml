@@ -1172,4 +1172,4 @@ AllCops:
     - 'vendor/**/*'
     - 'db/**/*'
     - 'Gemfile.lock'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
