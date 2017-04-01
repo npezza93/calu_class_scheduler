@@ -34,8 +34,7 @@ class Schedule
     }
     scope :incompleted, lambda {
       where(completed: false).includes(
-        :curriculum_category, :completed_courses,
-        offerings: %i(course days_time user),
+        :curriculum_category, offerings: %i(course days_time user),
       )
     }
   end

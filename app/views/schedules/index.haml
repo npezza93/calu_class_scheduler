@@ -1,40 +1,44 @@
 - content_for :title, "Schedule"
 
-.horizontal.wrap.layout.around-justified
-  %div
-    - @incomplete_categories.each do |user_category|
-      .layout.vertical.center.incomplete-card
-        %ul.collapsible{ data: { collapsible: :accordion } }
-          %li
-            .collapsible-header.category-card-header
-              %h4= user_category.curriculum_category.display
-              - if user_category.offerings.empty?
-                .no-courses-offered
-                  No courses are being offered for this category
-          - user_category.offerings.group_by(&:course).each do |course, course_offerings|
-            %li{ class: ("hidden" if course_hidden?(course_offerings, @hidden_offerings)).to_s }
-              .collapsible-header= course.pretty_course
-              .collapsible-body
+.horizontal.wrap.layout.around-justified.mt-3
+  .container
+    - @incomplete_categories.each do |schedule_category|
+      .layout.vertical.center.mx-1
+        .mdc-typography--subheading2.w-100
+          = schedule_category.curriculum_category.display
+        .mdc-card.white.w-100.mb-5
+          .mdc-list
+            - if schedule_category.offerings.blank?
+              .mdc-list-item.danger-text No courses are being offered
+            - else
+              - schedule_category.offerings.group_by(&:course).each do |course, course_offerings|
+                .mdc-list-item= course.pretty_course
                 - course_offerings.each do |offering|
-                  .layout.horizontal.center-center{ style: "height:50px;", id: offering.id,
-                    class: ("hidden" if @hidden_offerings.include?(offering.id)).to_s }
-                    - if !@schedules.to_a.include? offering
-                      = link_to schedules_path(offering_id: offering.id),
-                                method: :post, remote: true do
-                        .input-field
-                          %input{ id: offering.id, type: "checkbox" }
-                          %label{ for: offering.id }= offering.display
-                    - else
-                      = link_to schedule_path(offering), method: :delete, remote: true do
-                        .input-field
-                          %input{ id: offering.id, type: "checkbox", checked: true }
-                          %label{ for: offering.id }= offering.display
+                  - if !@schedules.to_a.include? offering
+                    = link_to schedules_path(offering_id: offering.id),
+                              method: :post, remote: true, class: "mdc-list-item" do
+                      = mdc_check_box_tag(nil, "1", false)
+                      = offering.display
+                  - else
+                    = link_to schedule_path(offering), method: :delete, remote: true, class: "mdc-list-item" do
+                      = mdc_check_box_tag(nil, "1", false)
+            - if schedule_category.courses.present?
+              .mdc-list-divider{ role: :separator }
+            - schedule_category.courses.each do |course|
+              .mdc-list-item
+                .mdc-list-item__text= course.pretty_course
 
-          - user_category.completed_courses.each do |course|
-            %li
-              .collapsible-header{ style: "color:#4CAF50;" }= course.pretty_course
-  %div
-    = render "complete_categories"
+  .container
+    - @completed_categories.each do |schedule_category|
+      .mdc-typography--subheading2.layout.horizontal.start-justified.w-100
+        = schedule_category.curriculum_category.display
+        .flex
+        .success-text Completed
+      .mdc-card.white.mb-5
+        .mdc-list
+          - schedule_category.courses.each do |course|
+            .mdc-list-item
+              .mdc-list-item__text= course.pretty_course
 
 - unless current_user.schedule_approval
   = link_to user_schedule_approvals_path(current_user),
