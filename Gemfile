@@ -27,6 +27,7 @@ gem "numbers_and_words"
 
 group :development do
   gem "listen"
+  gem "rack-mini-profiler"
   gem "seed_dump"
   gem "spring"
   gem "web-console"

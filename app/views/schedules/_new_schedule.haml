@@ -1,9 +1,0 @@
-= link_to schedules_path(offering_id: offering.id), method: :post, remote: true do
-  %label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect
-    %input.mdl-checkbox__input{ type: "checkbox" }
-    %span.mdl-checkbox__label
-      = offering.days_time.days
-      from
-      - if offering.days_time.start_time.present?
-        = offering.days_time.start_time.split(" ")[0] + "-" + offering.days_time.end_time
-      Prof. #{offering.user.last_name.capitalize}

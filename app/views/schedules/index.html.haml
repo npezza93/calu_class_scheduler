@@ -20,7 +20,8 @@
                       = mdc_check_box_tag(nil, "1", false)
                       = offering.display
                   - else
-                    = link_to schedule_path(offering), method: :delete, remote: true, class: "mdc-list-item" do
+                    = link_to schedule_path(offering), method: :delete,
+                        remote: true, class: "mdc-list-item" do
                       = mdc_check_box_tag(nil, "1", false)
             - if schedule_category.courses.present?
               .mdc-list-divider{ role: :separator }
