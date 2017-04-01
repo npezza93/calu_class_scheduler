@@ -17,7 +17,8 @@ module TimeOverlaps
   def overlaps?(days_time)
     return false unless meeting_time?
 
-    days =~ Regexp.new(days_time.regex_days) && range_overlap?(days_time)
+    days =~ Regexp.new(days_time.regex_days) &&
+      range_overlap?(days_time.time_range)
   end
 
   def overlaps_any?(collection)

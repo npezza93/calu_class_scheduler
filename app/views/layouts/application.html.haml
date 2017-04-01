@@ -30,4 +30,24 @@
 
     = yield
 
-    = render "layouts/drawer"
+    .layout.vertical.container#drawer{ "data-turbolinks-permanent" => true }
+      - if current_user&.advisor?
+        = link_to users_path do
+          = material_icon.people
+          Students
+        = link_to courses_path do
+          = material_icon.local_library
+          Courses
+        = link_to majors_path do
+          = material_icon.bookmark
+          Majors
+      - else
+        = link_to transcripts_path do
+          = material_icon.description
+          Transcript
+        = link_to work_schedules_path do
+          = material_icon.access_time
+          Calendar
+        = link_to schedules_path do
+          = material_icon.event
+          Schedule

@@ -13,8 +13,9 @@
 #
 
 class ScheduleApproval < ApplicationRecord
+  include SemesterHelpers
+
   belongs_to :user
-  belongs_to :semester
 
   validates :user_id, uniqueness: { scope: %i(semester_id) }
 

@@ -14,10 +14,9 @@
 #
 
 class WorkSchedule < ApplicationRecord
-  belongs_to :user
-  belongs_to :semester
+  include SemesterHelpers
 
-  scope :for_semester, ->(semester) { where(semester: semester) }
+  belongs_to :user
 
   def end_time
     (start_time + 30.minutes) - 1.second

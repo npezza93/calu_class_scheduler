@@ -13,9 +13,10 @@
 #
 
 class Schedule < ApplicationRecord
+  include SemesterHelpers
+
   belongs_to :offering
   belongs_to :user
-  belongs_to :semester
 
   has_one :course, through: :offering
 

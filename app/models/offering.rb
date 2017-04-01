@@ -15,10 +15,11 @@
 #
 
 class Offering < ApplicationRecord
+  include SemesterHelpers
+
   belongs_to :days_time
   belongs_to :user
   belongs_to :course
-  belongs_to :semester
 
   validates :course, uniqueness: {
     scope: %i(days_time user semester_id),
@@ -29,7 +30,6 @@ class Offering < ApplicationRecord
   validates :user, presence: { message: "A professor must be selected!" }
   validates :section, presence: true
 
-  scope :for_semester, ->(semester) { where(semester: semester) }
   scope :has_meeting_time, lambda {
     joins(:days_time).merge(DaysTime.has_meeting_time)
   }
@@ -41,7 +41,8 @@ class Offering < ApplicationRecord
   def display_time
     return if days_time.start_time.blank?
 
-    days_time.start_time.split(" ")[0] + "-" + days_time.end_time
+    days_time.start_time.strftime("%l:%M") + " -" +
+      days_time.end_time.strftime("%l:%M")
   end
 
   class << self

@@ -15,9 +15,10 @@
 
 class Schedule
   class Category < ApplicationRecord
+    include SemesterHelpers
+
     belongs_to :user
     belongs_to :curriculum_category
-    belongs_to :semester
 
     has_many :category_courses, dependent: :destroy
     has_many :courses, through: :category_courses
