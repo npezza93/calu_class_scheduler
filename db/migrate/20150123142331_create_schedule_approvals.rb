@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateScheduleApprovals < ActiveRecord::Migration
   def change
     create_table :schedule_approvals do |t|

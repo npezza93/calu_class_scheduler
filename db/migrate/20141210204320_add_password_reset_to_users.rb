@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AddPasswordResetToUsers < ActiveRecord::Migration
   def change
     add_column :users, :password_reset_token, :string

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
-class CreateScheduleCategories < ActiveRecord::Migration[5.0]
+
+class CreateSchedulesCategories < ActiveRecord::Migration[5.0]
   def change
-    create_table :schedule_categories do |t|
+    create_table :schedules_categories do |t|
       t.belongs_to :user
       t.belongs_to :curriculum_category
       t.belongs_to :semester

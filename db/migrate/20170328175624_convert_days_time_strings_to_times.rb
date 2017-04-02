@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ConvertDaysTimeStringsToTimes < ActiveRecord::Migration[5.1]
   def up
     days_time_hash

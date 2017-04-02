@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDayAndStartTimeAndEndTimeToWorkSchedules < ActiveRecord::Migration[5.1]
   def change
     add_column :work_schedules, :day, :string
