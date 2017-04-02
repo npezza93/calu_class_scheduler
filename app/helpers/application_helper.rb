@@ -27,10 +27,11 @@ module ApplicationHelper
     end
   end
 
-  def mdc_check_box_tag(name, value = "1", checked = false)
+  def mdc_check_box_tag(disabled = false, checked = false)
     content_tag(:div, class: "mdc-checkbox") do
       check_box_tag(
-        name, value, checked, class: "mdc-checkbox__native-control"
+        nil, "1", checked,
+        class: "mdc-checkbox__native-control", disabled: disabled
       ) + content_tag(:div, class: "mdc-checkbox__background") do
         check_box_svg + content_tag(:div, nil, class: "mdc-checkbox__mixedmark")
       end
@@ -41,9 +42,11 @@ module ApplicationHelper
 
   def check_box_svg
     content_tag(:svg, class: "mdc-checkbox__checkmark", viewBox: "0 0 24 24") do
-      content_tag(:path, nil, class: "mdc-checkbox__checkmark__path",
-                              fill: :none, stroke: :white,
-                              d: "M1.73,12.91, 8.1,19.28 22.79, 4.59")
+      content_tag(
+        :path, nil,
+        class: "mdc-checkbox__checkmark__path", fill: :none, stroke: :white,
+        d: "M1.73,12.91, 8.1,19.28 22.79, 4.59"
+      )
     end
   end
 end

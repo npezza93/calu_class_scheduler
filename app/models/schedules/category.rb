@@ -13,7 +13,7 @@
 #  updated_at             :datetime         not null
 #
 
-class Schedule
+module Schedules
   class Category < ApplicationRecord
     include SemesterHelpers
 
@@ -24,10 +24,6 @@ class Schedule
     has_many :courses, through: :category_courses
     has_many :category_offerings, dependent: :destroy
     has_many :offerings, through: :category_offerings
-    has_many :visible_category_offerings, -> { where(hidden: false) },
-             class_name: "CategoryOffering"
-    has_many :visible_offerings, through: :visible_category_offerings,
-                                 class_name: "Offering", source: :offering
 
     validates :curriculum_category, uniqueness: {
       scope: %i(semester_id user_id)
@@ -41,5 +37,9 @@ class Schedule
         :curriculum_category, offerings: %i(course days_time user),
       )
     }
+
+    def category_offerings_by_course
+      category_offerings.group_by(&:course)
+    end
   end
 end

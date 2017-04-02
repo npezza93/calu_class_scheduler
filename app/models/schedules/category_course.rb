@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Schedule
+module Schedules
   class CategoryCourse < ApplicationRecord
     belongs_to :category
     belongs_to :course

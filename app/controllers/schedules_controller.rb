@@ -9,13 +9,13 @@ class SchedulesController < ApplicationController
       current_semester
     ).eager_load(
       :curriculum_category, :courses,
-      visible_offerings: %i(course days_time user)
+      category_offerings: [offering: %i(course days_time user)]
     )
 
     @completed_categories = schedule_categories.select(&:completed?)
     @incomplete_categories = schedule_categories.reject(&:completed?)
 
-    @schedules = current_user.offerings
+    # @schedules = current_user.offerings
   end
 
   def create

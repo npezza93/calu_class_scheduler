@@ -12,10 +12,10 @@
 #  updated_at  :datetime         not null
 #
 
-class Schedule::CategoryOffering < ApplicationRecord
-  belongs_to :offering
-  belongs_to :category
+require "test_helper"
 
-  scope :visible, -> { where(hidden: false) }
-  scope :hidden,  -> { where(hidden: true)  }
+class Schedules::CategoryOfferingTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
