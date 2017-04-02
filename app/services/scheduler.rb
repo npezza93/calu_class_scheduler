@@ -6,15 +6,16 @@ class Scheduler
 
   attr_accessor :user, :complete, :incomplete, :math_classes, :used_courses,
                 :semester
-  delegate :categories, :taken_courses, :transcripts, to: :user
+  delegate :taken_courses, :transcripts, to: :user
 
-  def initialize(user:, semester:)
+  def initialize(user:, semester:, categories: nil)
     @user            = user
     @complete        = {}
     @incomplete      = {}
     @math_classes    = []
     @used_courses    = Set.new
     @semester        = semester
+    @categories      = (Array.wrap(categories) || user.categories).to_a
   end
 
   def perform
@@ -32,7 +33,7 @@ class Scheduler
     if category.complete?((sets = category_sets(category)))
       complete_category(category, sets.index(true))
     else
-      incomplete_category(category, user.schedule_categories.where(
+      incomplete_category(category, user.schedules_categories.where(
         curriculum_category_id: category.id,
         completed: false, semester: semester
       ).first_or_create)
@@ -95,21 +96,21 @@ class Scheduler
     add_completed_to_db(complete[category], category: category)
   end
 
-  def add_completed_to_db(courses, category: nil, schedule_category: nil)
-    schedule_category ||= user.schedule_categories.where(
+  def add_completed_to_db(courses, category: nil, schedules_category: nil)
+    schedules_category ||= user.schedules_categories.where(
       curriculum_category_id: category.id, completed: true, semester: semester
     ).first_or_create
 
     courses.each do |course|
-      schedule_category.category_courses.where(
+      schedules_category.category_courses.where(
         course_id: course.id
       ).first_or_create
     end
   end
 
-  def add_schedule_offering_from_course(schedule_category, course)
+  def add_schedule_offering_from_course(schedules_category, course)
     course.offerings.for_semester(semester).each do |offering|
-      schedule_category.category_offerings.where(
+      schedules_category.category_offerings.where(
         offering_id: offering.id
       ).first_or_create
     end

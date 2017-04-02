@@ -2,16 +2,16 @@
 
 .horizontal.wrap.layout.around-justified.mt-3
   .container
-    - @incomplete_categories.each do |schedule_category|
+    - @incomplete_categories.each do |schedules_category|
       .layout.vertical.center.mx-1
         .mdc-typography--subheading2.w-100
-          = schedule_category.curriculum_category.display
+          = schedules_category.curriculum_category.display
         .mdc-card.white.w-100.mb-5
           .mdc-list
-            - if schedule_category.category_offerings.blank?
+            - if schedules_category.category_offerings.blank?
               .mdc-list-item.danger-text No courses are being offered
             - else
-              - schedule_category.category_offerings_by_course.each do |course, category_offerings|
+              - schedules_category.category_offerings_by_course.each do |course, category_offerings|
                 .mdc-list-item= course.pretty_course
                 - category_offerings.each do |category_offering|
                   .layout.horizontal.center
@@ -24,21 +24,21 @@
                           remote: true, class: "mdc-list-item" do
                         = mdc_check_box_tag
                     = category_offering.offering.display
-            - if schedule_category.courses.present?
+            - if schedules_category.courses.present?
               .mdc-list-divider{ role: :separator }
-            - schedule_category.courses.each do |course|
+            - schedules_category.courses.each do |course|
               .mdc-list-item
                 .mdc-list-item__text= course.pretty_course
 
   .container
-    - @completed_categories.each do |schedule_category|
+    - @completed_categories.each do |schedules_category|
       .mdc-typography--subheading2.layout.horizontal.start-justified.w-100
-        = schedule_category.curriculum_category.display
+        = schedules_category.curriculum_category.display
         .flex
         .success-text Completed
       .mdc-card.white.mb-5
         .mdc-list
-          - schedule_category.courses.each do |course|
+          - schedules_category.courses.each do |course|
             .mdc-list-item
               .mdc-list-item__text= course.pretty_course
 

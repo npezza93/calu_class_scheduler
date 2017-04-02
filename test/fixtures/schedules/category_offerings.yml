@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: schedule_category_offerings
+# Table name: schedules_category_offerings
 #
 #  id          :integer          not null, primary key
 #  offering_id :integer

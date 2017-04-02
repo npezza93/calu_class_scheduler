@@ -5,15 +5,15 @@ class SchedulesController < ApplicationController
   authorize_resource
 
   def index
-    schedule_categories = current_user.schedule_categories.for_semester(
+    schedules_categories = current_user.schedules_categories.for_semester(
       current_semester
     ).eager_load(
       :curriculum_category, :courses,
       category_offerings: [offering: %i(course days_time user)]
     )
 
-    @completed_categories = schedule_categories.select(&:completed?)
-    @incomplete_categories = schedule_categories.reject(&:completed?)
+    @completed_categories = schedules_categories.select(&:completed?)
+    @incomplete_categories = schedules_categories.reject(&:completed?)
 
     # @schedules = current_user.offerings
   end

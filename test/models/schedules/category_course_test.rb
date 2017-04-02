@@ -11,15 +11,12 @@
 #  updated_at  :datetime         not null
 #
 
+require "test_helper"
+
 module Schedules
-  class CategoryCourse < ApplicationRecord
-    belongs_to :category
-    belongs_to :course
-
-    validates :course, uniqueness: { scope: :category_id }
-
-    def self.table_name_prefix
-      "schedules_"
-    end
+  class CategoryCourseTest < ActiveSupport::TestCase
+    # test "the truth" do
+    #   assert true
+    # end
   end
 end

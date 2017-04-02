@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: schedule_categories
+# Table name: schedules_categories
 #
 #  id                     :integer          not null, primary key
 #  user_id                :integer
@@ -15,6 +15,8 @@
 
 module Schedules
   class Category < ApplicationRecord
+    default_scope { order(:curriculum_category_id) }
+
     include SemesterHelpers
 
     belongs_to :user
@@ -37,6 +39,10 @@ module Schedules
         :curriculum_category, offerings: %i(course days_time user),
       )
     }
+
+    def self.table_name_prefix
+      "schedules_"
+    end
 
     def category_offerings_by_course
       category_offerings.group_by(&:course)

@@ -76,12 +76,12 @@ class Scheduler
       needed_courses.each do |needed_course|
         next unless used_courses.add?(needed_course.first)
 
-        schedule_category = user.schedule_categories.find_by(
+        schedules_category = user.schedules_categories.find_by(
           curriculum_category_id: needed_course.second.id, semester: semester
         ).update(completed: false)
 
         add_schedule_offering_from_course(
-          schedule_category, needed_course.first
+          schedules_category, needed_course.first
         )
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: schedules_categories
@@ -11,11 +13,12 @@
 #  updated_at             :datetime         not null
 #
 
-one:
-  user: one
-  curriculum_category: one
-  completed: true
+require "test_helper"
 
-two:
-  user: two
-  curriculum_category: two
+module Schedules
+  class CategoryTest < ActiveSupport::TestCase
+    # test "the truth" do
+    #   assert true
+    # end
+  end
+end

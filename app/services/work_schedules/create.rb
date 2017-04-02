@@ -10,7 +10,7 @@ module WorkSchedules
 
     def schedule_offerings
       @schedule_offerings ||= user.schedule_offerings.where(
-        schedule_categories: { semester_id: semester_id }
+        schedules_categories: { semester_id: semester_id }
       ).visible.includes(offering: :days_time)
     end
 

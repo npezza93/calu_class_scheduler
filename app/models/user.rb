@@ -98,6 +98,10 @@ class User < ApplicationRecord
       :courses, curriculum_category_sets: {
         courses: { prerequisites: :course }
       }
-    ).to_a
+    )
+  end
+
+  def categories_from_courses(course_ids)
+    categories.where(course_sets: { course_id: course_ids })
   end
 end

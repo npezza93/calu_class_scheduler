@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
   def account_update_params
     params.require(:user).permit(
       :password, :password_confirmation, :major_id, :pt_a, :pt_b, :pt_c, :pt_d,
-      :first_name, :last_name, :email, :advised_by, minor: []
+      :first_name, :last_name, :email, :advised_by, :advisor, minor: []
     )
   end
   alias sign_up_params account_update_params

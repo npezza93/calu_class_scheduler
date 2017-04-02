@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: schedule_category_offerings
+# Table name: schedules_category_offerings
 #
 #  id          :integer          not null, primary key
 #  offering_id :integer
@@ -14,8 +14,10 @@
 
 require "test_helper"
 
-class Schedules::CategoryOfferingTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+module Schedules
+  class CategoryOfferingTest < ActiveSupport::TestCase
+    # test "the truth" do
+    #   assert true
+    # end
+  end
 end
