@@ -5,11 +5,11 @@ module WorkSchedules
     def perform
       return false if overlapping_offering.present?
 
-      hide_schedule_offerings if work_schedule.save
+      hide_schedules_offerings if work_schedule.save
     end
 
-    def schedule_offerings
-      @schedule_offerings ||= user.schedule_offerings.where(
+    def schedules_offerings
+      @schedules_offerings ||= user.schedules_offerings.where(
         schedules_categories: { semester_id: semester_id }
       ).visible.includes(offering: :days_time)
     end
@@ -26,8 +26,8 @@ module WorkSchedules
       !new_record?
     end
 
-    def hide_schedule_offerings
-      schedule_offerings.select do |schedule_offering|
+    def hide_schedules_offerings
+      schedules_offerings.select do |schedule_offering|
         offering = schedule_offering.offering
 
         schedule_offering.update(hidden: true) if offering_overlap?(offering)

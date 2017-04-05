@@ -56,6 +56,9 @@ class User < ApplicationRecord
   has_many   :work_schedules
 
   has_many   :schedules_categories, class_name: "Schedules::Category"
+  has_many   :schedules_offerings, through: :schedules_categories,
+                                   source: :category_offerings,
+                                   class_name: "Schedules::CategoryOffering"
 
   scope :offering_advisors, lambda {
     where(advisor: true).or(where(email: "staff@calu.edu"))

@@ -15,9 +15,9 @@
 
 module Schedules
   class Category < ApplicationRecord
-    default_scope { order(:curriculum_category_id) }
-
     include SemesterHelpers
+
+    default_scope { order(:curriculum_category_id) }
 
     belongs_to :user
     belongs_to :curriculum_category
@@ -29,15 +29,6 @@ module Schedules
 
     validates :curriculum_category, uniqueness: {
       scope: %i(semester_id user_id)
-    }
-
-    scope :completed, lambda {
-      where(completed: true).includes(:curriculum_category, :courses)
-    }
-    scope :incompleted, lambda {
-      where(completed: false).includes(
-        :curriculum_category, offerings: %i(course days_time user),
-      )
     }
 
     def self.table_name_prefix
