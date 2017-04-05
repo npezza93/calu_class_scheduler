@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Scheduler
+module Scheduler
   module MathClasses
     def pt_math_classes
       @pt_math_classes ||= [mat181, mat191, mat199, mat281]

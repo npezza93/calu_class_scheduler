@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Scheduler
+module Scheduler
   module IncompleteCategory
     def incomplete_category(category, schedules_category)
       incomplete_or_category(category) if category.or_sets?
