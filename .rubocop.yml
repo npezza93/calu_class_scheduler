@@ -16,6 +16,9 @@ Lint/AmbiguousRegexpLiteral:
                  a method invocation without parenthesis.
   Enabled: true
 
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
 Lint/AssignmentInCondition:
   Description: "Don't use assignment in conditions."
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition'
@@ -848,6 +851,13 @@ Style/PercentLiteralDelimiters:
   Description: 'Use `%`-literal delimiters consistently'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-literal-braces'
   Enabled: true
+  PreferredDelimiters:
+    default: ()
+    '%i': '()'
+    '%I': '()'
+    '%r': '{}'
+    '%w': '()'
+    '%W': '()'
 
 Style/PercentQLiterals:
   Description: 'Checks if uses of %Q/%q match the configured preference.'
