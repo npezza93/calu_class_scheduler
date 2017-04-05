@@ -11,4 +11,8 @@ ActiveSupport::Deprecation.silenced = true
 
 class ActiveSupport::TestCase
   fixtures :all
+
+  set_fixture_class schedules_categories: Schedules::Category,
+                    schedules_category_courses: Schedules::CategoryCourse,
+                    schedules_category_offerings: Schedules::CategoryOffering
 end
