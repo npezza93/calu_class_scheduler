@@ -60,6 +60,18 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
+  def switch_field(method, options = {}, checked_val = "1", unchecked_val = "0")
+    options[:class] = "#{options[:class]} mdc-switch__native-control"
+    content_tag(:div, class: "layout vertical center-center mt-3") do
+      content_tag(:div, class: "mdc-switch") do
+        check_box(method, options, checked_val, unchecked_val) +
+        content_tag(:div, class: "mdc-switch__background") do
+          content_tag(:div, nil, class: "mdc-switch__knob")
+        end
+      end + label(method, options[:label], class: "mt-1 mb-2 mdc-switch-label")
+    end
+  end
+
   private
 
   def text_field_label(name, options)

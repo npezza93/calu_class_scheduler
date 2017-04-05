@@ -26,5 +26,6 @@
       .mt-2.mb-1
         = f.collection_select :minor, Major.all, :id, :major, prompt: "minor(s)", multiple: true
       = render "placement_tests", f: f
+    = f.switch_field :advisor, label: "Advisor?"
 
   = f.submit "Update"
