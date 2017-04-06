@@ -6,7 +6,7 @@ module Scheduler
     include MathClasses
 
     attr_accessor :user, :complete, :incomplete, :math_classes, :used_courses,
-                  :semester
+                  :semester, :categories
     delegate :taken_courses, :transcripts, to: :user
 
     def initialize(user:, semester:, categories: nil)

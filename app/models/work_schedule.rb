@@ -25,7 +25,7 @@ class WorkSchedule < ApplicationRecord
   end
 
   def time_range
-    start_time..end_time
+    start_time.to_i..end_time.to_i
   end
 
   def time_id

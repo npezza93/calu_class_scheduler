@@ -16,9 +16,7 @@ module WorkSchedules
 
     def overlapping_offering
       @overlapping_offering ||= offerings.find do |offering|
-        offering.days_time.meeting_time? &&
-          offering.days_time.days.split("").include?(work_schedule.day) &&
-          offering.days_time.range_overlap?(work_schedule.time_range)
+        offering_overlap?(offering)
       end
     end
 

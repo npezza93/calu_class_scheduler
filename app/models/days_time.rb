@@ -13,9 +13,7 @@
 #
 
 class DaysTime < ApplicationRecord
-  include TimeOverlaps
-
-  validates_uniqueness_of :days, scope: %i(start_time end_time)
+  validates :days, uniqueness: { scope: %i(start_time end_time) }
 
   scope :has_meeting_time, -> { where.not(start_time: nil, end_time: nil) }
 
@@ -30,5 +28,26 @@ class DaysTime < ApplicationRecord
 
   def meeting_time?
     start_time.present? && end_time.present?
+  end
+
+  def time_range
+    start_time.to_i..end_time.to_i
+  end
+
+  def regex_days
+    days.split("").join("|")
+  end
+
+  def overlaps?(days_time)
+    return false unless meeting_time?
+
+    days =~ Regexp.new(days_time.regex_days) &&
+      time_range.overlaps?(days_time.time_range)
+  end
+
+  def overlaps_any?(collection)
+    collection.any? do |day_time|
+      overlaps? day_time
+    end
   end
 end

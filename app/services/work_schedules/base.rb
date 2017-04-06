@@ -24,9 +24,9 @@ module WorkSchedules
     end
 
     def offering_overlap?(offering)
-      offering.days_time.meeting_time? &&
-        offering.days_time.days.split("").include?(work_schedule.day) &&
-        offering.days_time.range_overlap?(work_schedule.time_range)
+      offering.meeting_time? &&
+        offering.days.split("").include?(work_schedule.day) &&
+        offering.time_range.overlaps?(work_schedule.time_range)
     end
   end
 end
