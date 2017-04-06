@@ -9,10 +9,12 @@ gem "pg"
 gem "puma"
 gem "rails", "~> 5.1.0.rc1"
 
+gem "babel-transpiler"
 gem "coffee-rails"
 gem "jquery-rails"
 gem "material_icons"
 gem "sass-rails"
+gem "sprockets", "~> 4.0.0beta4"
 gem "turbolinks"
 gem "uglifier"
 

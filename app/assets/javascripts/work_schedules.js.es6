@@ -8,7 +8,6 @@ $(document).on("turbolinks:load", function() {
 
 function expandClassRow(element) {
   var td = element;
-  var tr = element.closest("tr");
   var id = element.data("id");
 
   var currentCol = td.index();
