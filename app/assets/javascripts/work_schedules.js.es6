@@ -1,3 +1,5 @@
+/*global $:true*/
+
 $(document).on("turbolinks:load", function() {
   if ($(".schedule").length > 0) {
     $("[data-id]").each(function() {

@@ -1,8 +1,10 @@
+/*global mdc $:true*/
+
 $(document).on("turbolinks:load", function() {
   initialize_mdc();
 });
 
-$(document).on("cocoon:after-insert", function(e, insertedItem) {
+$(document).on("cocoon:after-insert", function() {
   initialize_mdc();
 });
 

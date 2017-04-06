@@ -1,3 +1,5 @@
+/*global mdc $:true*/
+
 $(document).on("click", ".upload-offerings", function(e) {
   e.preventDefault();
   var dialog = mdc.dialog.MDCDialog.attachTo($("#upload-offerings-dialog")[0]);

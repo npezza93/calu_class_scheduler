@@ -1,15 +1,17 @@
+/*global courses subjects $:true*/
+
 $(document).on("turbolinks:load", function() {
   if ($(".course-select").length > 0 && typeof(courses) === "undefined") {
     fetchCourses($(".course-select"));
   } else if ($(".course-select").length > 0) {
-    $.each($(".course-select"), function(element, index) {
+    $.each($(".course-select"), function() {
       selectizeElement($(this), courses, subjects, $(this).data("selected"));
     });
   }
 });
 
 $(document).on("cocoon:after-insert", function(e, insertedItem) {
-  element = $(insertedItem).find(".course-select");
+  var element = $(insertedItem).find(".course-select");
   if (typeof(courses) === "undefined") {
     fetchCourses([element]);
   } else {
@@ -26,7 +28,7 @@ function fetchCourses(elements) {
   $.getJSON("/courses.json", function(data) {
     window.courses = data["courses"];
     window.subjects = data["subjects"];
-    $.each(elements, function(element, index) {
+    $.each(elements, function() {
       selectizeElement($(this), courses, subjects, $(this).data("selected"));
     });
   });
@@ -56,7 +58,7 @@ function selectizeElement(element, courses, subjects, selected_items) {
         return "<div class='mdc-list-item item'>" +
             "<div class='mdc-list-item__text'>" +
               "<div class='mdc-list-item__text__primary'>" +
-                item.title +
+                escape(item.title) +
               "</div>" +
             "</div>" +
             "<i class='material-icons remove-course mdc-list-item__end-detail'>close</i>" +
@@ -66,7 +68,7 @@ function selectizeElement(element, courses, subjects, selected_items) {
         return "<div class='mdc-list-item'>" + escape(item.title) + "</div>";
       },
       optgroup: function(data, escape) {
-        return "<div class='mdc-list-group'>" + data.html + "<div class='mdc-list-divider'></div></div>";
+        return "<div class='mdc-list-group'>" + escape(data.html) + "<div class='mdc-list-divider'></div></div>";
       }
     }
   });
