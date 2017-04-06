@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Transcripts
+module Transcripts
   class Base
     attr_accessor :transcript, :user, :semester_id
     delegate :new_record?, :destroyed?, to: :transcript

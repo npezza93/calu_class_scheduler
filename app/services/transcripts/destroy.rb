@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Transcripts
+module Transcripts
   class Destroy < Base
     def perform
       return false unless transcript.destroy
