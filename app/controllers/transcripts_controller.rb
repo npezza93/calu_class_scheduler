@@ -17,7 +17,11 @@ class TranscriptsController < ApplicationController
   def create
     @transcript = current_user.transcripts.new(transcript_params)
 
-    if @transcript.save && remove_schedule(@transcript)
+    @service = Transcripts::Create.new(
+      @transcript, current_user, current_semester_id
+    )
+
+    if @service.perform
       redirect_to transcripts_path, notice: "Course added to transcript"
     else
       render :new
@@ -25,7 +29,10 @@ class TranscriptsController < ApplicationController
   end
 
   def destroy
-    @transcript.destroy
+    @service = Transcripts::Destroy.new(
+      @transcript, current_user, current_semester_id
+    )
+    @service.perform
 
     redirect_to transcripts_path, notice: "Course removed from transcript"
   end
@@ -45,15 +52,5 @@ class TranscriptsController < ApplicationController
       attrs[:grade_c] =
         Transcript::GRADES.index(attrs[:grade_c]).to_i <= 6
     end
-  end
-
-  def remove_schedule(transcript)
-    schedule = current_user.schedules.joins(:offering).find_by(
-      offerings: { course: transcript.course, semester: current_semester }
-    )
-
-    return true if schedule.blank?
-
-    schedule.destroy
   end
 end
