@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class SchedulesController < ApplicationController
-  before_action :set_offering, only: :destroy
   authorize_resource
 
   def index
@@ -14,17 +13,19 @@ class SchedulesController < ApplicationController
 
     @completed_categories = schedules_categories.select(&:completed?)
     @incomplete_categories = schedules_categories.reject(&:completed?)
-
-    # @schedules = current_user.offerings
+    @schedules = current_user.offerings
   end
 
   def create
-    @schedule = current_user.schedules.create(
-      offering_id: params[:offering_id], semester: current_semester
+    schedule = current_user.schedules.new(
+      offering_id: params[:offering_id], semester_id: current_semester_id
     )
+    @service = Schedules::Create.new(
+      schedule, current_user, current_semester_id
+    )
+    @service.perform
 
     respond_to do |format|
-      format.html { redirect_to schedules_path }
       format.js
     end
   end
@@ -36,11 +37,5 @@ class SchedulesController < ApplicationController
       format.html { redirect_to schedules_path }
       format.js
     end
-  end
-
-  private
-
-  def set_offering
-    @offering = Offering.find(params[:id])
   end
 end

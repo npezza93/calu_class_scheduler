@@ -5,9 +5,4 @@
   link.attr('data-method', 'delete');
   link.data().method = 'delete';
   link.attr('href', "<%= schedule_path(@schedule.offering_id) %>");
-
-  <% @hidden_offerings.each do |id| %>
-    var schedule = $("#<%= id %>");
-    schedule.fadeOut();
-  <% end %>
 <% end %>
