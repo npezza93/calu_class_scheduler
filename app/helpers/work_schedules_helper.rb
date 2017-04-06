@@ -12,29 +12,22 @@ module WorkSchedulesHelper
     return if work_schedules.blank?
 
     work_schedules.find do |work_schedule|
-      work_schedule.start_time == Time.at(start_time).utc
+      work_schedule.start_time.to_i == start_time
     end
   end
 
   def find_overlapping_offering(offerings, day, start_time)
-    offerings = offerings.select do |offering|
-      offering.days_time.meeting_time? &&
-        offering.days_time.days.split("").include?(day)
-    end
-
-    return if offerings.blank?
-
     offerings.find do |offering|
-      offering.days_time.range_overlap?(work_schedule_range(start_time))
+      offering.meeting_time? &&
+        offering.days.split("").include?(day)
+        offering.time_range.overlaps?(
+          WorkSchedule.new(start_time: Time.at(start_time).utc).time_range
+        )
     end
   end
 
   def work_schedule_id(weekday, start_time)
     start_time = Time.at(start_time).utc
     "#{weekday}_#{start_time.hour}_#{start_time.min}"
-  end
-
-  def work_schedule_range(start_time)
-    WorkSchedule.new(start_time: Time.at(start_time).utc).time_range
   end
 end
