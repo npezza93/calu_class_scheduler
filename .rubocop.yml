@@ -544,6 +544,7 @@ Style/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
   Enabled: true
+  EnforcedStyle: trailing
 
 Style/DoubleNegation:
   Description: 'Checks for uses of double negation (!!).'
@@ -754,6 +755,9 @@ Style/MultilineIfThen:
   Description: 'Do not use then for multi-line if/unless.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-then'
   Enabled: true
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
 
 Style/MultilineOperationIndentation:
   Description: >-
