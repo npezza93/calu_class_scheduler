@@ -14,15 +14,15 @@
               - schedules_category.category_offerings_by_course.each do |course, category_offerings|
                 .mdc-list-item= course.pretty_course
                 - category_offerings.each do |category_offering|
-                  .layout.horizontal.center
-                    - if @schedules.to_a.exclude?(category_offering)
+                  .layout.horizontal.center{ data: { offering_id: category_offering.offering_id } }
+                    - if @schedules.exclude?(category_offering.offering_id)
                       = link_to schedules_path(offering_id: category_offering.offering_id),
                                 method: :post, remote: true, class: "mdc-list-item" do
                         = mdc_check_box_tag(category_offering.hidden)
                     - else
                       = link_to schedule_path(category_offering.offering), method: :delete,
                           remote: true, class: "mdc-list-item" do
-                        = mdc_check_box_tag
+                        = mdc_check_box_tag(false, true)
                     = category_offering.offering.display
             - if schedules_category.courses.present?
               .mdc-list-divider{ role: :separator }

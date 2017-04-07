@@ -19,6 +19,7 @@ class Schedule < ApplicationRecord
   belongs_to :user
 
   has_one :course, through: :offering
+  has_one :days_time, through: :offering
 
   validates :offering, uniqueness: { scope: :user }
 

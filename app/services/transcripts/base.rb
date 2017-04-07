@@ -18,12 +18,11 @@ module Transcripts
     end
 
     def hide_schedules_category_offerings
-      schedules_categories.reload.each do |category|
-        category.category_offerings.each do |category_offering|
-          user.work_schedules.each do |work_schedule|
-            if offering_overlap?(category_offering.offering, work_schedule)
-              category_offering.update(hidden: true)
-            end
+      schedules_categories.reload.flat_map(&:category_offerings).
+        each do |category_offering|
+        user.work_schedules.each do |work_schedule|
+          if offering_overlap?(category_offering.offering, work_schedule)
+            category_offering.update(hidden: true)
           end
         end
       end

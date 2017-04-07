@@ -1,8 +1,9 @@
-<% unless @schedule.new_record? %>
-  var schedule = $("#<%= @schedule.offering_id %>");
-  schedule.find('input').prop('checked', true);
-  var link = schedule.find('a');
-  link.attr('data-method', 'delete');
-  link.data().method = 'delete';
-  link.attr('href', "<%= schedule_path(@schedule.offering_id) %>");
+<% if @service.saved? %>
+  <% @service.modified.each do |offering_id| %>
+    $("[data-offering-id=<%= offering_id %>] input")[0].disabled = true;
+  <% end %>
+  var element = $("[data-offering-id=<%= @service.schedule.offering_id %>] a");
+  element.data("method", "delete");
+  element.attr("href", "<%= schedule_path(@service.schedule.offering_id) %>");
+  element.find("input")[0].checked = true;
 <% end %>

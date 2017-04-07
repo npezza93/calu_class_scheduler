@@ -13,7 +13,7 @@ class SchedulesController < ApplicationController
 
     @completed_categories = schedules_categories.select(&:completed?)
     @incomplete_categories = schedules_categories.reject(&:completed?)
-    @schedules = current_user.offerings
+    @schedules = current_user.offerings.map(&:id)
   end
 
   def create
@@ -31,10 +31,15 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    current_user.schedules.find_by(offering: @offering).destroy
+    schedule = current_user.schedules.find_by(
+      offering_id: params[:id], semester_id: current_semester_id
+    )
+    @service = Schedules::Destroy.new(
+      schedule, current_user, current_semester_id
+    )
+    @service.perform
 
     respond_to do |format|
-      format.html { redirect_to schedules_path }
       format.js
     end
   end

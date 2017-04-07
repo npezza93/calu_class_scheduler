@@ -39,10 +39,11 @@ class DaysTime < ApplicationRecord
   end
 
   def overlaps?(days_time)
-    return false unless meeting_time?
+    return false if !meeting_time? || !days_time.meeting_time?
 
     days =~ Regexp.new(days_time.regex_days) &&
-      time_range.overlaps?(days_time.time_range)
+      (time_range.overlaps?(days_time.time_range) ||
+       time_range == days_time.time_range)
   end
 
   def overlaps_any?(collection)

@@ -41,8 +41,8 @@ class WorkSchedulesController < ApplicationController
 
   def set_work_schedules_offerings
     @work_schedules = current_work_schedules.group_by(&:day)
-    @offerings = current_user.offerings.for_semester(current_semester_id)
-                             .has_meeting_time.includes(:days_time).load
+    @offerings = current_user.offerings.for_semester(current_semester_id).
+      has_meeting_time.includes(:days_time).load
   end
 
   def work_schedule_params

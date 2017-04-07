@@ -1,11 +1,9 @@
-var schedule = $("#<%= @offering.id %>");
-schedule.find('input').prop('checked', false);
-var link = schedule.find('a');
-link.attr('data-method', 'post');
-link.data().method = 'post';
-link.attr('href', "<%= schedules_path(offering_id: @offering.id) %>");
-
-<% @hidden_offerings.each do |id| %>
-  var schedule = $("#<%= id %>");
-  schedule.fadeIn();
+<% if @service.destroyed? %>
+  <% @service.modified.each do |offering_id| %>
+    $("[data-offering-id=<%= offering_id %>] input")[0].disabled = false;
+  <% end %>
+  var element = $("[data-offering-id=<%= @service.schedule.offering_id %>] a");
+  element.data("method", "post");
+  element.attr("href", "<%= schedules_path(offering_id: @service.schedule.offering_id) %>");
+  element.find("input")[0].checked = false;
 <% end %>
