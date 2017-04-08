@@ -49,9 +49,9 @@ class DaysTime < ApplicationRecord
   end
 
   def overlaps_any?(collection)
-    collection.any? do |day_time|
+    collection.find do |day_time|
       overlaps? day_time
-    end
+    end.present?
   end
 
   private

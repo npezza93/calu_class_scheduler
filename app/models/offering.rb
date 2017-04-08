@@ -34,7 +34,8 @@ class Offering < ApplicationRecord
     joins(:days_time).merge(DaysTime.has_meeting_time)
   }
 
-  delegate :time_range, :meeting_time?, :days, :overlaps?, to: :days_time
+  delegate :time_range, :meeting_time?, :days, :overlaps?, :overlaps_any?,
+           to: :days_time
 
   def display
     "#{days_time.days} from #{display_time} with #{user.professor}"

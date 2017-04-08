@@ -17,22 +17,5 @@ module Transcripts
         offerings: { course_id: transcript.course_id, semester_id: semester_id }
       ).destroy_all
     end
-
-    def schedules_categories
-      @schedules_categories ||= user.schedules_categories.where(
-        curriculum_category: categories.map(&:id), semester_id: semester_id
-      )
-    end
-
-    def categories
-      @categories ||=
-        user.categories.where(courses: { id: transcript.course_id })
-    end
-
-    def scheduler
-      @scheduler ||= Scheduler::Runner.new(
-        user: user, semester: semester_id, categories: categories
-      )
-    end
   end
 end
