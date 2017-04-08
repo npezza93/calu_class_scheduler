@@ -12,8 +12,12 @@ module Schedules
       @modified    = []
     end
 
-    def offering_overlap?(offering, scheduled_offering)
-      offering.overlaps?(scheduled_offering.days_time)
+    def schedules_offerings
+      @schedules_offerings ||= user.schedules_offerings.where(
+        schedules_categories: { semester_id: semester_id }
+      ).includes(offering: :days_time).where.not(
+        offering_id: schedule.offering_id
+      )
     end
   end
 end
