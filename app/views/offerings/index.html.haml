@@ -2,9 +2,10 @@
 - content_for :back_url, course_path(@course)
 - content_for :toolbar do
   = material_icon.file_upload.css_class("upload-offerings")
+- content_for :active_tab, :courses
 
 .layout.vertical.center
-  .mdc-card.mt-2.container
+  .mdc-card.mt-2.container.white
     %section.mdc-card__primary
       %h1.mdc-card__title.mdc-card__title--large Offerings
     %section.mdc-card__supporting-text

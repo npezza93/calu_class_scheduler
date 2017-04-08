@@ -1,13 +1,14 @@
 - content_for :title, @category.category
 - content_for :back_url, major_path(@major)
-- content_for :toolbar_actions do
+- content_for :toolbar do
   = link_to edit_major_curriculum_category_path(@major, @category),
-      class: "ml-2 white d-flex" do
+      class: "ml-2 white-text d-flex" do
     = material_icon.mode_edit
   = link_to major_curriculum_category_path(@major, @category),
       data: { confirm: "Are you sure?" }, method: :delete,
       class: "ml-2 white-text d-flex" do
     = material_icon.delete
+- content_for :active_tab, :majors
 
 
 .layout.vertical.center.mt-2.mb-3= @category.pretty_set_flag

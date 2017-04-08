@@ -1,4 +1,5 @@
 - content_for :title, "Edit Course"
 - content_for :back_url, course_path(@course)
+- content_for :active_tab, :courses
 
 = render "form", course: @course, prerequisite_groups: @prerequisite_groups

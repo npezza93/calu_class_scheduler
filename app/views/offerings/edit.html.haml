@@ -1,4 +1,5 @@
 - content_for :title, "Edit Offering"
 - content_for :back_url, course_offerings_path(@course)
+- content_for :active_tab, :courses
 
 = render "form", course: @course, offering: @offering

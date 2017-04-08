@@ -19,11 +19,6 @@ $(document).on("cocoon:after-insert", function(e, insertedItem) {
   }
 });
 
-$(document).on("click", ".selectize-control.course-select .remove-course", function() {
-  var value = $(this).parent().data("value");
-
-});
-
 function fetchCourses(elements) {
   $.getJSON("/courses.json", function(data) {
     window.courses = data["courses"];
@@ -61,14 +56,13 @@ function selectizeElement(element, courses, subjects, selected_items) {
                 escape(item.title) +
               "</div>" +
             "</div>" +
-            "<i class='material-icons remove-course mdc-list-item__end-detail'>close</i>" +
           "</div>";
       },
       option: function(item, escape) {
         return "<div class='mdc-list-item'>" + escape(item.title) + "</div>";
       },
-      optgroup: function(data, escape) {
-        return "<div class='mdc-list-group'>" + escape(data.html) + "<div class='mdc-list-divider'></div></div>";
+      optgroup: function(data) {
+        return "<div class='mdc-list-group'>" + data.html + "<div class='mdc-list-divider'></div></div>";
       }
     }
   });

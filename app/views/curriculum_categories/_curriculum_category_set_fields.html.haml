@@ -7,6 +7,6 @@
   .mdc-card.mb-3.p-2.white.container
     = f.multiple_course_select(:course_ids, selected: f.object.course_ids)
 
-    .layout.vertical.center.center-text
+    .layout.vertical.center.center-text.mt-2
       How many are of these courses are needed to fulfill this section(leave blank for all):
       = f.number_field :count

@@ -22,7 +22,7 @@
           %section.mdc-toolbar__section.mdc-toolbar__section--align-start.flex-2
             = render_back_url(yield(:back_url))
             %span.mdc-toolbar__title= yield(:title)
-          %section.mdc-toolbar__section.mdc-toolbar__section--align-end
+          %section.mdc-toolbar__section.mdc-toolbar__section--align-end.layout.center
             = yield(:toolbar)
             = link_to edit_user_registration_path, class: "ml-2 white-text d-flex" do
               = material_icon.settings

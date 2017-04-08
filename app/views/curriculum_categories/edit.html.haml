@@ -1,5 +1,6 @@
 - content_for :title, @category.category
 - content_for :back_url, major_curriculum_category_path(@major, @category)
+- content_for :active_tab, :majors
 
 .layout.vertical.center
   = render "form", major: @major, category: @category, category_sets: @category_sets

@@ -2,6 +2,7 @@
 - content_for :back_url, courses_path(letter: @course.subject.first)
 - content_for :toolbar do
   = material_icon.file_upload.css_class("upload-offerings")
+- content_for :active_tab, :courses
 
 .layout.vertical.center.mt-3
   .container
