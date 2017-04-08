@@ -1,4 +1,7 @@
-var el = $("#<%= @service.work_schedule.time_id %>");
+var el = $("#<%= @service.work_schedule.time_id %> a");
 <% if @service.destroyed? %>
-  el.replaceWith("<%= j render 'destroy', service: @service %>");
+  el.attr("data-method", "post");
+  el.data("method", "post");
+  el.attr("href", "<%= raw work_schedules_path(@service.work_schedule.path_id) %>");
+  el.removeClass("mdc-theme--accent-bg");
 <% end %>

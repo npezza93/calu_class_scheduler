@@ -1,4 +1,7 @@
-var el = $("#<%= @service.work_schedule.time_id %>");
+var el = $("#<%= @service.work_schedule.time_id %> a");
 <% if @service.saved? %>
-  el.replaceWith("<%= j render 'create', service: @service %>");
+  el.attr("data-method", "delete");
+  el.data("method", "delete");
+  el.attr("href", "<%= url_for(@service.work_schedule) %>");
+  el.addClass("mdc-theme--accent-bg");
 <% end %>

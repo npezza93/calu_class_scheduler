@@ -38,17 +38,37 @@ class DaysTime < ApplicationRecord
     days.split("").join("|")
   end
 
-  def overlaps?(days_time)
-    return false if !meeting_time? || !days_time.meeting_time?
+  def overlaps?(record)
+    return false unless meeting_time?
 
-    days =~ Regexp.new(days_time.regex_days) &&
-      (time_range.overlaps?(days_time.time_range) ||
-       time_range == days_time.time_range)
+    if record.is_a?(WorkSchedule)
+      overlaps_work_schedule?(record)
+    elsif record.is_a?(Offering)
+      overlaps_offering?(record)
+    end
   end
 
   def overlaps_any?(collection)
     collection.any? do |day_time|
       overlaps? day_time
     end
+  end
+
+  private
+
+  def overlaps_work_schedule?(work_schedule)
+    days.split("").include?(work_schedule.day) &&
+      overlapping_time_range?(work_schedule.time_range)
+  end
+
+  def overlaps_offering?(offering)
+    return false unless offering.meeting_time?
+
+    days =~ Regexp.new(offering.days_time.regex_days) &&
+      overlapping_time_range?(offering.time_range)
+  end
+
+  def overlapping_time_range?(other_time_range)
+    time_range.overlaps?(other_time_range) || time_range == other_time_range
   end
 end

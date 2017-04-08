@@ -11,22 +11,10 @@ module WorkSchedules
       @semester_id   = semester_id
     end
 
-    def work_schedules
-      @work_schedules ||= user.work_schedules.for_semester(
-        semester_id
-      ).group_by(&:day)
-    end
-
-    def offerings
-      @offerings ||= user.offerings.for_semester(
-        semester_id
-      ).has_meeting_time.includes(:days_time)
-    end
-
-    def offering_overlap?(offering)
-      offering.meeting_time? &&
-        offering.days.split("").include?(work_schedule.day) &&
-        offering.time_range.overlaps?(work_schedule.time_range)
+    def schedules_offerings
+      @schedules_offerings ||= user.schedules_offerings.where(
+        schedules_categories: { semester_id: semester_id }
+      ).includes(offering: :days_time)
     end
   end
 end
