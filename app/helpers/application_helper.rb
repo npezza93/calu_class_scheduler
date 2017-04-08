@@ -38,6 +38,19 @@ module ApplicationHelper
     end
   end
 
+  def drawer_link(link, icon, title, active_tab)
+    opts =
+      if title.downcase == active_tab.to_s
+        { class: "active" }
+      else
+        {}
+      end
+
+    link_to link, opts do
+      material_icon.send(icon).to_s + content_tag(:span, title)
+    end
+  end
+
   private
 
   def check_box_svg

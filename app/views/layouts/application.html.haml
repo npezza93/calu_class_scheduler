@@ -17,7 +17,7 @@
     = snackbar_notice(notice || alert)
 
     - if current_user
-      %header.mdc-toolbar
+      %header.mdc-toolbar.mdc-toolbar--fixed
         %section.mdc-toolbar__section.mdc-toolbar__section--align-start.flex-2
           = render_back_url(yield(:back_url))
           %span.mdc-toolbar__title= yield(:title)
@@ -28,26 +28,6 @@
           = link_to destroy_user_session_path, method: :delete, class: "mx-2 white-text d-flex" do
             = material_icon.exit_to_app
 
-    = yield
+    %main.mdc-toolbar-fixed-adjust.mb-10= yield
 
-    .layout.vertical.container#drawer{ "data-turbolinks-permanent" => true }
-      - if current_user&.advisor?
-        = link_to users_path do
-          = material_icon.people
-          Students
-        = link_to courses_path do
-          = material_icon.local_library
-          Courses
-        = link_to majors_path do
-          = material_icon.bookmark
-          Majors
-      - else
-        = link_to transcripts_path do
-          = material_icon.description
-          Transcript
-        = link_to work_schedules_path do
-          = material_icon.access_time
-          Calendar
-        = link_to schedules_path do
-          = material_icon.event
-          Schedule
+    = render "layouts/drawer", active_tab: yield(:active_tab)
