@@ -4,7 +4,7 @@ rvm:
 before_install:
   - cp config/database.yml config/database.yml.example
   - cp config/secrets.yml config/secrets.yml.example
-  - npm install eslint --save-dev
+  - npm install -g eslint
 before_script:
   - RAILS_ENV=test bundle exec rake --trace db:create test
 script:
