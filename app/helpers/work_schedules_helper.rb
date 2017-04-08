@@ -18,11 +18,9 @@ module WorkSchedulesHelper
 
   def find_overlapping_offering(offerings, day, start_time)
     offerings.find do |offering|
-      offering.meeting_time? &&
-        offering.days.split("").include?(day)
-        offering.time_range.overlaps?(
-          WorkSchedule.new(start_time: Time.at(start_time).utc).time_range
-        )
+      work_schedule =
+        WorkSchedule.new(day: day, start_time: Time.at(start_time).utc)
+      offering.overlaps?(work_schedule)
     end
   end
 
