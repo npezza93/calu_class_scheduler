@@ -16,7 +16,7 @@ chdir APP_ROOT do
   system! "rake test"
 
   puts "\nChecking rubocop\n"
-  system! "bundle exec rubocop | lolcat"
+  system! "bundle exec rubocop"
 
   puts "\nChecking haml\n"
   system! "bundle exec haml-lint app/views"
