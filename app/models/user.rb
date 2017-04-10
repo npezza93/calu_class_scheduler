@@ -116,6 +116,12 @@ class User < ApplicationRecord
     )
   end
 
+  def after_database_authentication
+    return if schedules_categories.for_semester(Semester.active).exists?
+
+    Scheduler::Runner.new(user: self, semester: Semester.active).perform
+  end
+
   private
 
   def categories_query
