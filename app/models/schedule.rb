@@ -21,20 +21,16 @@ class Schedule < ApplicationRecord
   has_one :course, through: :offering
   has_one :days_time, through: :offering
 
-  validates :offering, uniqueness: { scope: :user }
-
+  validates :offering, uniqueness: { scope: %i(user_id semester_id) }
   validate do
     errors.add(:base, "You cannot take more than 18 credits") if
-      (user.credits + course.credits) > 18
+      user.credits(semester_id) > 18
   end
-
   validate do
     errors.add(:base, "You've already scheduled for that course") if
-      user.courses.include? offering.course
-  end
-
-  validate do
-    errors.add(:base, "You've already scheduled a course for that time") if
-      offering.days_time.overlaps_any?(user.offering_day_times)
+      user.courses.where(
+        offerings: { course_id: offering.course_id },
+        schedules: { semester_id: semester_id }
+      ).exists?
   end
 end

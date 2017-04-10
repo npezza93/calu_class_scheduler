@@ -90,21 +90,37 @@ class User < ApplicationRecord
     User.includes(:courses, :schedule_approval).where(advised_by: self)
   end
 
-  def credits
-    courses.sum(&:credits)
+  def credits(semester)
+    schedules.select do |schedule|
+      schedule.semester_id == semester
+    end.sum { |schedule| schedule.course.credits }
   end
 
   def categories
-    @categories ||= CurriculumCategory.where(
-      major_id: major_id, minor: false
-    ).or(CurriculumCategory.where(major_id: minor, minor: true)).includes(
-      :courses, curriculum_category_sets: {
-        courses: { prerequisites: :course }
-      }
+    @categories ||= categories_query.includes(
+      curriculum_category_sets: { courses: [
+        :prerequisites, :offerings, prerequisite_groups: :prerequisites
+      ] }
     )
   end
 
-  def categories_from_courses(course_ids)
-    categories.where(course_sets: { course_id: course_ids })
+  def categories_for_courses(course_ids)
+    categories.where(
+      id: categories_query.joins(:courses).where(courses: { id: course_ids })
+    )
+  end
+
+  def plain_categories_for_courses(course_ids)
+    categories_query.where(
+      id: categories_query.joins(:courses).where(courses: { id: course_ids })
+    )
+  end
+
+  private
+
+  def categories_query
+    CurriculumCategory.where(major_id: major_id, minor: false).or(
+      CurriculumCategory.where(major_id: minor, minor: true)
+    )
   end
 end

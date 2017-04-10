@@ -19,18 +19,18 @@ module Transcripts
     end
 
     def categories
-      @categories ||=
-        user.categories.where(courses: { id: transcript.course_id })
+      @categories ||= user.categories_for_courses(transcript.course_id)
     end
 
     def schedules_categories
       @schedules_categories ||= user.schedules_categories.where(
         curriculum_category: categories.map(&:id), semester_id: semester_id
-      ).includes(offerings: :days_time)
+      )
     end
 
     def schedules_category_offerings
-      schedules_categories.reload.flat_map(&:category_offerings)
+      schedules_categories.includes(offerings: :days_time).
+        reload.flat_map(&:category_offerings)
     end
 
     def scheduler

@@ -70,22 +70,31 @@ class Course < ApplicationRecord
     end
   end
 
-  def completed_prerequisites(transcript, courses_taken)
-    prerequisite_groups.map do |group|
-      group.prerequisites.map do |prereq|
-        prereq.passed?(transcript, courses_taken)
-      end.compact
-    end.flatten
-  end
+  def prerequisites_fulfilled?(transcript, course_ids_taken)
+    return true if prerequisite_groups.blank?
 
-  def can_take?(user, transcript, courses_taken)
-    failed_prereqs = completed_prerequisites(transcript, courses_taken)
-    unless failed_prereqs.any? { |prereq| prereq == false }
-      if passed_tests?(user) || passed_placement_test_or_sat?(user)
-        failed_prereqs.push self
+    prerequisite_groups.find do |prereq_group|
+      prereq_group.prerequisites.all? do |prereq|
+        prereq.passed?(transcript, course_ids_taken)
       end
     end
-    failed_prereqs
+  end
+
+  def can_take?(user, transcript, course_ids_taken)
+    courses_to_take = failed_prerequisites(transcript, course_ids_taken)
+
+    if prerequisites_fulfilled?(transcript, course_ids_taken) &&
+        (passed_tests?(user) || passed_placement_test_or_sat?(user))
+      courses_to_take << self
+    end
+
+    courses_to_take
+  end
+
+  def failed_prerequisites(transcript, course_ids_taken)
+    prerequisites.select do |prerequisite|
+      prerequisite.failed_course(transcript, course_ids_taken)
+    end.compact
   end
 
   def passed_tests?(user)

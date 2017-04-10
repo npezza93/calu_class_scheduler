@@ -27,7 +27,7 @@ module Schedules
     has_many :category_offerings, dependent: :destroy
     has_many :offerings, through: :category_offerings
 
-    validates :curriculum_category, uniqueness: {
+    validates :curriculum_category_id, uniqueness: {
       scope: %i(semester_id user_id)
     }
 

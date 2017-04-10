@@ -47,9 +47,9 @@ class CurriculumCategory < ApplicationRecord
 
   def complete?(sets)
     if or_sets?
-      sets.compact.inject(:|)
+      sets.compact.any?
     else
-      sets.compact.inject(:&)
+      sets.compact.all?
     end
   end
 

@@ -41,18 +41,9 @@ module Scheduler
 
     # returns courses that user is eligible to take
     def prerequisite_check(category)
-      incomplete[category].values.flatten.collect do |course|
-        course.can_take?(user, transcripts, taken_courses)
-      end.flatten.compact
-    end
-
-    def add_incomplete_to_db(category, schedules_category)
-      incomplete[category].each do |course|
-        next unless course.is_a? Course
-
-        capture_math_class(course, category)
-        add_schedule_offering_from_course(schedules_category, course)
-      end
+      incomplete[category].values.flatten.flat_map do |course|
+        course.can_take?(user, transcripts, taken_courses.map(&:id))
+      end.compact
     end
   end
 end

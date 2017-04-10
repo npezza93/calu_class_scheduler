@@ -33,7 +33,7 @@ module Scheduler
     end
 
     def math_class?(course)
-      pt_math_classes.include? course
+      course.subject == "MAT" && pt_math_classes.include?(course)
     end
 
     def add_needed_math_classes

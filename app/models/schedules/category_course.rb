@@ -16,7 +16,7 @@ module Schedules
     belongs_to :category
     belongs_to :course
 
-    validates :course, uniqueness: { scope: :category_id }
+    validates :course_id, uniqueness: { scope: :category_id }
 
     def self.table_name_prefix
       "schedules_"

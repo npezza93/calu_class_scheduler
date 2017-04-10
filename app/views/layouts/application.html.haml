@@ -17,18 +17,17 @@
     = snackbar_notice(notice || alert)
 
     - if current_user
-      %header.mdc-toolbar.mdc-toolbar--fixed
+      %header.mdc-toolbar
         .mdc-toolbar__row
           %section.mdc-toolbar__section.mdc-toolbar__section--align-start.flex-2
             = render_back_url(yield(:back_url))
-            %span.mdc-toolbar__title= yield(:title)
           %section.mdc-toolbar__section.mdc-toolbar__section--align-end.layout.center
             = yield(:toolbar)
-            = link_to edit_user_registration_path, class: "ml-2 white-text d-flex" do
+            = link_to edit_user_registration_path, class: "ml-2 black-text d-flex" do
               = material_icon.settings
-            = link_to destroy_user_session_path, method: :delete, class: "mx-2 white-text d-flex" do
+            = link_to destroy_user_session_path, method: :delete, class: "mx-2 black-text d-flex" do
               = material_icon.exit_to_app
 
-    %main.mdc-toolbar-fixed-adjust.mb-10= yield
+    %main.mb-10= yield
 
     = render "layouts/drawer", active_tab: yield(:active_tab)

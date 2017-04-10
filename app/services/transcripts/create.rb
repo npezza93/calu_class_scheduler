@@ -5,7 +5,10 @@ module Transcripts
     def perform
       return false unless transcript.save
 
-      schedules_categories.destroy_all
+      Schedules::CategoryOffering.where(
+        id: schedules_category_offerings
+      ).delete_all
+
       scheduler.perform
       remove_schedules
       hide_schedules_category_offerings

@@ -17,26 +17,27 @@ class Prerequisite < ApplicationRecord
   belongs_to :course
 
   validates :course, uniqueness: { scope: :prerequisite_group_id }
+  validates :minimum_grade, inclusion: { in: ["C", "C-"] }, allow_nil: true
 
   # checking if the user completed all the required prereqs for a course
   # if they failed one of the prereqs it returns that course so they can retake
   # it. Returns nil if they are good to go.
   def passed?(transcript, courses_taken)
-    return false unless courses_taken.include?(course)
+    return false unless courses_taken.include?(course_id)
 
-    if passed_minimum_grade?(transcript)
-      nil
-    elsif !passed_minimum_grade?(transcript)
-      course
-    end
+    passed_minimum_grade?(transcript)
   end
 
   def passed_minimum_grade?(transcript)
-    if !minimum_grade?
-      true
-    elsif c_or_c_minus_method
-      transcript.find { |t| t.course_id == course_id }.send(c_or_c_minus_method)
-    end
+    return true unless minimum_grade?
+
+    transcript.find { |t| t.course_id == course_id }.send(c_or_c_minus_method)
+  end
+
+  def failed_course(transcript, courses_taken)
+    return unless courses_taken.include?(course_id)
+
+    return course unless passed_minimum_grade?(transcript)
   end
 
   private
