@@ -28,7 +28,7 @@ class CourseTest < ActiveSupport::TestCase
     assert courses(:one).can_take?(
       users(:one),
       users(:one).transcripts,
-      users(:one).taken_courses
+      users(:one).taken_courses.ids
     ).include? courses(:one)
   end
 
@@ -36,7 +36,7 @@ class CourseTest < ActiveSupport::TestCase
     assert courses(:two).can_take?(
       users(:two),
       users(:two).transcripts,
-      users(:two).taken_courses
+      users(:two).taken_courses.ids
     ).empty?
   end
 
@@ -44,23 +44,23 @@ class CourseTest < ActiveSupport::TestCase
     assert courses(:three).can_take?(
       users(:two),
       users(:two).transcripts,
-      users(:two).taken_courses
+      users(:two).taken_courses.ids
     ).empty?
   end
 
-  test "can_take 4" do
+  test "can not take 4" do
     assert courses(:four).can_take?(
       users(:two),
       users(:two).transcripts,
-      users(:two).taken_courses
-    ).include? false
+      users(:two).taken_courses.ids
+    ).exclude?(courses(:four))
   end
 
   test "can_take 5" do
     assert courses(:five).can_take?(
       users(:one),
       users(:one).transcripts,
-      users(:one).taken_courses
+      users(:one).taken_courses.ids
     ).include? courses(:two)
   end
 end

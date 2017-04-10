@@ -92,7 +92,7 @@ class Course < ApplicationRecord
   end
 
   def failed_prerequisites(transcript, course_ids_taken)
-    prerequisites.select do |prerequisite|
+    prerequisites.map do |prerequisite|
       prerequisite.failed_course(transcript, course_ids_taken)
     end.compact
   end
