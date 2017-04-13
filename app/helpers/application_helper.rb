@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def render_back_url(url)
     if url.present?
-      link_to url, class: "white-text layout horizontal mr-3 ml-1" do
+      link_to url, class: "black-text layout horizontal mr-3 ml-1" do
         material_icon.arrow_back.to_s
       end
     else

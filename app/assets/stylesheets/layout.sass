@@ -208,7 +208,7 @@ a
 
 
 #drawer
-  width: 100%
+  width: 100vw
   height: 56px
   position: fixed
   bottom: 0
@@ -218,18 +218,36 @@ a
     @extend .layout.vertical
     @extend .layout.center
     color: var(--mdc-theme-text-disabled-on-dark)
-    transition: all 0.5s ease
-    span
-      visibility: hidden
-      margin-top: -17px
+    min-width: 56px
+    max-width: 96px
+    width: 100%
+    transition: 0.15s cubic-bezier(0.0, 0.0, 1, 1)
+    .ripple
+      position: absolute
+      top: 0
+      left: 0
+      width: 200%
+      height: 200%
+      z-index: -1
+      transform: scale(0)
       opacity: 0
-      transition: all 0.5s ease
-      font-size: 15px
+      transition: .15s linear
+    span
+      opacity: 0
+      font-size: 14px
+      margin-top: -17px
+      transition: opacity 0.15s cubic-bezier(0.0, 0.0, 1, 1)
+      transition: margin 0.15s cubic-bezier(0.0, 0.0, 1, 1)
     &.active
       color: #fff
+      min-width: 96px
+      max-width: 168px
+      .ripple
+        transform: scale(1)
+        opacity: 1
       span
-        visibility: visible
         margin-top: 0px
+        display: block
         opacity: 1
 
 header.mdc-toolbar

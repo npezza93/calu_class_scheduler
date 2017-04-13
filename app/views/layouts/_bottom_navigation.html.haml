@@ -1,4 +1,4 @@
-.layout.horizontal.around-justified.center#drawer{ "data-turbolinks-permanent" => true }
+.layout.horizontal.center-center#drawer{ "data-turbolinks-permanent" => true }
   - if current_user&.advisor?
     = drawer_link(users_path, "people", "Students", active_tab)
     = drawer_link(courses_path, "local_library", "Courses", active_tab)

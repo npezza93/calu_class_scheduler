@@ -1,8 +1,8 @@
-/*global $:true*/
+/*global Turbolinks $:true*/
 
-$(document).on("turbolinks:load", function() {
-  $(document).on("click", "#drawer a", function() {
-    $("#drawer a.active").removeClass("active");
-    $(this).addClass("active");
-  });
+$(document).on("click", "#drawer a", function(e) {
+  e.preventDefault();
+  $("#drawer a.active").toggleClass("active");
+  $(this).toggleClass("active");
+  Turbolinks.visit($(this).attr("href"));
 });
