@@ -10,8 +10,8 @@
         %h1.mdc-card__title.mdc-card__title--large.layout.horizontal
           = @major.major
           .flex
-          = overflow_menu edit_link: edit_major_path(@major),
-                          destroy_link: major_path(@major)
+          = overflow_menu Major, edit_link: edit_major_path(@major),
+                                 destroy_link: major_path(@major)
 
       %section.mdc-card__actions
         = link_to "New Category", new_major_curriculum_category_path(@major),

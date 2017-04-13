@@ -1,7 +1,8 @@
 - content_for :title, "New Offering"
 - content_for :back_url, course_offerings_path(@course)
 - content_for :toolbar do
-  = material_icon.file_upload.css_class("upload-offerings")
+  - if can?(:import, Offering)
+    = material_icon.file_upload.css_class("upload-offerings")
 - content_for :active_tab, :courses
 
 = render "form", course: @course, offering: @offering

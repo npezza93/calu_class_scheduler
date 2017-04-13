@@ -1,6 +1,7 @@
 - content_for :title, "Courses"
 - content_for :toolbar do
-  = material_icon.file_upload.css_class("upload-offerings")
+  - if can?(:import, Offering)
+    = material_icon.file_upload.css_class("upload-offerings")
 - content_for :active_tab, :courses
 
 .layout.vertical.center.mt-3

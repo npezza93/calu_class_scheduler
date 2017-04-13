@@ -7,9 +7,17 @@ class Ability
     user ||= User.new
 
     if user.advisor?
-      advisor_resources
+      advisor_guest_resources(user)
     else
       student_resources
+    end
+  end
+
+  def advisor_guest_resources(user)
+    if user.guest?
+      guest_resources
+    else
+      advisor_resources
     end
   end
 
@@ -29,5 +37,14 @@ class Ability
     can :manage, WorkSchedule
     can :update, Semester
     can :create, ScheduleApproval
+  end
+
+  def guest_resources
+    can :read, User
+    can %i(read new edit), Course
+    can %i(read new edit), Major
+    can %i(read new edit), CurriculumCategory
+    can %i(read new edit), Offering
+    can :update, Semester
   end
 end

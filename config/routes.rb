@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     post :import
   end
 
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: {
+    registrations: :registrations, sessions: :sessions
+  }
   devise_scope :user do
     authenticated :user do
       root "work_schedules#index", constraints: ->(request) { user?(request) }

@@ -1,0 +1,5 @@
+= f.password_field :password, full_width: true
+= f.password_field :password_confirmation, full_width: true
+
+.mt-2.mb-1
+  = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"

@@ -1,0 +1,8 @@
+.mt-2.mb-1= f.switch_field :advisor, label: "Toggle Advisor View"
+
+.mt-2.mb-1
+  = f.collection_select :major_id, Major.all, :id, :major, prompt: "Choose a Major"
+
+.mt-2.mb-1
+  = f.collection_select :minor, Major.all, :id, :major, prompt: "minor(s)", multiple: true
+= render "placement_tests", f: f

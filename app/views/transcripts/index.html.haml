@@ -7,12 +7,13 @@
       To add a course to your transcript use the FAB in the bottom right. You can
       also upload a brand new transcript from there as well.
 
-    .mdc-card.mb-5.white
-      .mdc-list
-        - @transcripts.each do |transcript|
-          .mdc-list-item.w-100
-            .mdc-list-item__text= transcript.course.pretty_course
-            .mdc-list-item__end-detail.pl-2
-              = overflow_menu(destroy_link: transcript_path(transcript))
+    - if @transcripts.present?
+      .mdc-card.mb-5.white
+        .mdc-list
+          - @transcripts.each do |transcript|
+            .mdc-list-item.w-100
+              .mdc-list-item__text= transcript.course.pretty_course
+              .mdc-list-item__end-detail.pl-2
+                = overflow_menu(Transcript, destroy_link: transcript_path(transcript))
 
 = fab new_transcript_path

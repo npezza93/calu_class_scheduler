@@ -33,6 +33,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  guest                  :boolean
 #
 
 class User < ApplicationRecord
@@ -41,21 +42,22 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
   validates :major, presence: true
-  validates :advised_by, presence: true, if: :student
+  validates :advised_by, presence: true, if: :student?
   validates :email, uniqueness: true, format: { with: Devise.email_regexp }
 
   belongs_to :major
   belongs_to :advisor_prof, class_name: "User", foreign_key: :advised_by
-  has_one    :schedule_approval
+  has_one    :schedule_approval, dependent: :destroy
   has_many   :transcripts
   has_many   :taken_courses, through: :transcripts, source: :course
-  has_many   :schedules
+  has_many   :schedules, dependent: :destroy
   has_many   :offerings, through: :schedules
   has_many   :offering_day_times, through: :offerings, source: :days_time
   has_many   :courses, through: :offerings
-  has_many   :work_schedules
+  has_many   :work_schedules, dependent: :destroy
 
-  has_many   :schedules_categories, class_name: "Schedules::Category"
+  has_many   :schedules_categories, class_name: "Schedules::Category",
+                                    dependent: :destroy
   has_many   :schedules_offerings, through: :schedules_categories,
                                    source: :category_offerings,
                                    class_name: "Schedules::CategoryOffering"
@@ -70,8 +72,8 @@ class User < ApplicationRecord
     model.minor&.reject!(&:blank?)
   end
 
-  def student
-    !advisor
+  def student?
+    !advisor? && !guest?
   end
 
   def name

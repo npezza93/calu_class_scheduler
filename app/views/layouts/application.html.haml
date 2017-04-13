@@ -30,4 +30,5 @@
 
     %main.mb-10= yield
 
-    = render "layouts/bottom_navigation", active_tab: yield(:active_tab)
+    - if signed_in?
+      = render "layouts/bottom_navigation", active_tab: yield(:active_tab)
