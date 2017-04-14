@@ -2,6 +2,8 @@
 
 class SeedCourseDescriptions < ActiveRecord::Migration[5.1]
   def up
+    return if Rails.env.test?
+
     subject_links.each do |link|
       seed_from_nodes(
         Nokogiri::HTML(open(link)).css("#main_content .subsection")
