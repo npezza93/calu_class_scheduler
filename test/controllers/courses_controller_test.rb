@@ -111,13 +111,20 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     get courses_path
     assert_redirected_to root_url
-    get course_path(@course)
-    assert_redirected_to root_url
     get edit_course_path(@course)
     assert_redirected_to root_url
     put course_path(@course), params: { course: { title: "CSC" } }
     assert_redirected_to root_url
     delete course_path(@course)
     assert_redirected_to root_url
+  end
+
+  test "should access course catalog entry as student" do
+    @user = users(:one)
+    sign_in @user
+
+    get course_path(@course)
+
+    assert_response :success
   end
 end
