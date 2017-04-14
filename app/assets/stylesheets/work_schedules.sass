@@ -25,7 +25,10 @@
   border-collapse: collapse !important
   border-spacing: 11px 3px !important
   border: none
-
+  thead tr
+    border: none
+  .day a
+    display: none
   .schedule
     cursor: default
     display: flex
@@ -35,3 +38,13 @@
     height: 100%
     background-color: var(--mdc-theme-primary, #000)
     color: var(--mdc-theme-text-primary-on-primary, #fff)
+  @media only screen and (max-width: 900px)
+    width: 90%
+    .day
+      width: 100%
+      i
+        color: black
+      a
+        display: block
+    td:not([data-active]):not(.time_slot), th:not([data-active]):not(.time_slot)
+      display: none
