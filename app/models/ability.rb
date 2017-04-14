@@ -37,6 +37,7 @@ class Ability
     can :manage, WorkSchedule
     can :update, Semester
     can :create, ScheduleApproval
+    can :show,   Course
   end
 
   def guest_resources

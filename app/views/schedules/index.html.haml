@@ -13,7 +13,10 @@
               .mdc-list-item.danger-text No courses are being offered
             - else
               - schedules_category.category_offerings_by_course.each do |course, category_offerings|
-                .mdc-list-item= course.pretty_course
+                = link_to course, class: "mdc-list-item w-100 with-ripple" do
+                  .mdc-list-item__text
+                    .mdc-list-item__text__primary= course.pretty_course
+                  = material_icon.chevron_right.css_class("mdc-list-item__end-detail")
                 - category_offerings.each do |category_offering|
                   .layout.horizontal.center{ data: { offering_id: category_offering.offering_id } }
                     - if @schedules.exclude?(category_offering.offering_id)

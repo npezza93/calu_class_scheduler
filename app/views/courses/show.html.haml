@@ -1,9 +1,13 @@
 - content_for :title, "Courses"
-- content_for :back_url, courses_path(letter: @course.subject.first)
+- content_for :back_url do
+  - if current_user.student?
+    = schedules_path
+  - else
+    = courses_path(letter: @course.subject.first)
 - content_for :toolbar do
   - if can?(:import, Offering)
     = material_icon.file_upload.css_class("upload-offerings")
-- content_for :active_tab, :courses
+- content_for :active_tab, current_user.student? ? :schedule : :courses
 
 .layout.vertical.center.mt-3
   .container
@@ -12,8 +16,10 @@
         %h1.mdc-card__title.mdc-card__title--large.layout.horizontal
           = @course.condensed_course
           .flex
-          = overflow_menu Course, edit_link: edit_course_path(@course),
-                                  destroy_link: course_path(@course)
+          - if can?(:edit, Course) || can?(:destroy, Course)
+            = overflow_menu Course,
+                edit_link: edit_course_path(@course),
+                destroy_link: course_path(@course)
 
         %h2.mdc-card__subtitle= @course.title
       %section.mdc-card__supporting-text
@@ -24,8 +30,10 @@
             %br
           (#{@course.credits} credits)
 
-      %section.mdc-card__actions
-        = link_to "Offerings", course_offerings_path(@course),
-            class: "mdc-button mdc-card__action"
+      - if can?(:index, Offering)
+        %section.mdc-card__actions
+          = link_to "Offerings", course_offerings_path(@course),
+              class: "mdc-button mdc-card__action"
 
-= render "offerings/upload"
+- if can?(:import, Offering)
+  = render "offerings/upload"
