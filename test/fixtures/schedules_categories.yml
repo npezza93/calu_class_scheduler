@@ -15,9 +15,9 @@ one:
   user: one
   curriculum_category: one
   completed: true
-  semester: one
+  semester: spring_2017
 
 two:
   user: one
   curriculum_category: two
-  semester: one
+  semester: spring_2017

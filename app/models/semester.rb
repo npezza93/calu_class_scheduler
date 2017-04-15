@@ -12,11 +12,11 @@
 #
 
 class Semester < ApplicationRecord
-  default_scope { order(:semester) }
-
   validates :semester, uniqueness: true, presence: true
 
-  def self.active
-    find_by(active: true)
+  def self.active(date = Date.current)
+    where(arel_table[:start_on].lteq(date)).find_by(
+      arel_table[:end_on].gteq(date)
+    )
   end
 end

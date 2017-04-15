@@ -16,12 +16,12 @@ one:
   course: two
   user: advisor
   section: D3
-  semester: one
+  semester: spring_2017
   days_time: one
 
 two:
   course: three
   user: advisor
   section: D3
-  semester: one
+  semester: spring_2017
   days_time: two

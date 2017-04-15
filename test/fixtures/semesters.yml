@@ -11,10 +11,112 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  semester: MyString
-  active: true
+spring_2014:
+  semester: Spring 2014
+  start_on: <%= Date.new(2014, 6).beginning_of_year %>
+  end_on: <%= Date.new(2014, 6) - 1.second %>
 
-two:
-  semester: MyString2
-  active: false
+fall_2014:
+  semester: Fall 2014
+  start_on: <%= Date.new(2014, 6) %>
+  end_on: <%= Date.new(2014, 6).end_of_year %>
+
+spring_2015:
+  semester: Spring 2015
+  start_on: <%= Date.new(2015, 6).beginning_of_year %>
+  end_on: <%= Date.new(2015, 6) - 1.second %>
+
+fall_2015:
+  semester: Fall 2015
+  start_on: <%= Date.new(2015, 6) %>
+  end_on: <%= Date.new(2015, 6).end_of_year %>
+
+spring_2016:
+  semester: Spring 2016
+  start_on: <%= Date.new(2016, 6).beginning_of_year %>
+  end_on: <%= Date.new(2016, 6) - 1.second %>
+
+fall_2016:
+  semester: Fall 2016
+  start_on: <%= Date.new(2016, 6) %>
+  end_on: <%= Date.new(2016, 6).end_of_year %>
+
+spring_2017:
+  semester: Spring 2017
+  start_on: <%= Date.new(2017, 6).beginning_of_year %>
+  end_on: <%= Date.new(2017, 6) - 1.second %>
+
+fall_2017:
+  semester: Fall 2017
+  start_on: <%= Date.new(2017, 6) %>
+  end_on: <%= Date.new(2017, 6).end_of_year %>
+
+spring_2018:
+  semester: Spring 2018
+  start_on: <%= Date.new(2018, 6).beginning_of_year %>
+  end_on: <%= Date.new(2018, 6) - 1.second %>
+
+fall_2018:
+  semester: Fall 2018
+  start_on: <%= Date.new(2018, 6) %>
+  end_on: <%= Date.new(2018, 6).end_of_year %>
+
+spring_2019:
+  semester: Spring 2019
+  start_on: <%= Date.new(2019, 6).beginning_of_year %>
+  end_on: <%= Date.new(2019, 6) - 1.second %>
+
+fall_2019:
+  semester: Fall 2019
+  start_on: <%= Date.new(2019, 6) %>
+  end_on: <%= Date.new(2019, 6).end_of_year %>
+
+spring_2020:
+  semester: Spring 2020
+  start_on: <%= Date.new(2020, 6).beginning_of_year %>
+  end_on: <%= Date.new(2020, 6) - 1.second %>
+
+fall_2020:
+  semester: Fall 2020
+  start_on: <%= Date.new(2020, 6) %>
+  end_on: <%= Date.new(2020, 6).end_of_year %>
+
+spring_2021:
+  semester: Spring 2021
+  start_on: <%= Date.new(2021, 6).beginning_of_year %>
+  end_on: <%= Date.new(2021, 6) - 1.second %>
+
+fall_2021:
+  semester: Fall 2021
+  start_on: <%= Date.new(2021, 6) %>
+  end_on: <%= Date.new(2021, 6).end_of_year %>
+
+spring_2022:
+  semester: Spring 2022
+  start_on: <%= Date.new(2022, 6).beginning_of_year %>
+  end_on: <%= Date.new(2022, 6) - 1.second %>
+
+fall_2022:
+  semester: Fall 2022
+  start_on: <%= Date.new(2022, 6) %>
+  end_on: <%= Date.new(2022, 6).end_of_year %>
+
+spring_2023:
+  semester: Spring 2023
+  start_on: <%= Date.new(2023, 6).beginning_of_year %>
+  end_on: <%= Date.new(2023, 6) - 1.second %>
+
+fall_2023:
+  semester: Fall 2023
+  start_on: <%= Date.new(2023, 6) %>
+  end_on: <%= Date.new(2023, 6).end_of_year %>
+
+spring_2024:
+  semester: Spring 2024
+  start_on: <%= Date.new(2024, 6).beginning_of_year %>
+  end_on: <%= Date.new(2024, 6) - 1.second %>
+
+fall_2024:
+  semester: Fall 2024
+  start_on: <%= Date.new(2024, 6) %>
+  end_on: <%= Date.new(2024, 6).end_of_year %>

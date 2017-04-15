@@ -11,9 +11,9 @@ class SemestersControllerTest < ActionController::TestCase
 
     assert session[:semester_id].blank?
 
-    put :update, params: { id: semesters(:two).id }
+    put :update, params: { id: semesters(:spring_2014).id }
 
-    assert_equal session[:semester_id], semesters(:two).id
+    assert_equal session[:semester_id], semesters(:spring_2014).id
     assert_redirected_to edit_user_registration_path
   end
 end
