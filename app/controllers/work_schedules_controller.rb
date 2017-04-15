@@ -4,7 +4,11 @@ class WorkSchedulesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    set_work_schedules_offerings
+    @work_schedules = current_work_schedules.group_by(&:day)
+    @offerings = current_user.offerings.for_semester(current_semester_id).
+      includes(:days_time).load
+    @online_courses = @offerings.reject(&:meeting_time?)
+    @offerings = @offerings.select(&:meeting_time?)
   end
 
   def create
@@ -37,12 +41,6 @@ class WorkSchedulesController < ApplicationController
   def current_work_schedules
     @current_work_schedules ||=
       current_user.work_schedules.for_semester(current_semester_id)
-  end
-
-  def set_work_schedules_offerings
-    @work_schedules = current_work_schedules.group_by(&:day)
-    @offerings = current_user.offerings.for_semester(current_semester_id).
-      has_meeting_time.includes(:days_time).load
   end
 
   def work_schedule_params
