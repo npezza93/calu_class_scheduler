@@ -29,18 +29,18 @@ class ScheduleApproval < ApplicationRecord
   end
 
   def send_to_advisor
-    UserMailer.submit_to_advisor(self).deliver_later
+    UserMailer.submit_to_advisor(self).deliver_now
   end
 
   def send_student_confirmation
-    UserMailer.student_confirmation(self).deliver_later
+    UserMailer.student_confirmation(self).deliver_now
   end
 
   def send_advisor_confirmation
-    UserMailer.advisor_confirmation(self).deliver_later
+    UserMailer.advisor_confirmation(self).deliver_now
   end
 
   def send_approved
-    UserMailer.approved(self).deliver_later
+    UserMailer.approved(self).deliver_now
   end
 end

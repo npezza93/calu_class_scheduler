@@ -4,7 +4,7 @@ class ScheduleApprovalsController < ApplicationController
   load_and_authorize_resource
 
   def create
-    if current_user.credits >= 12
+    if current_user.credits(current_semester_id) >= 12
       @approval = ScheduleApproval.create(
         user: current_user, semester: current_semester
       )
@@ -13,7 +13,7 @@ class ScheduleApprovalsController < ApplicationController
     else
       flash[:notice] = "You need to sign up for  12 or more credits"
     end
-    redirect_to work_schedules_path
+    redirect_to schedules_path
   end
 
   def update

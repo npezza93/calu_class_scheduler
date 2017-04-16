@@ -7,15 +7,15 @@
   .mdc-card.white.container
     %section.mdc-card__primary
       %h1.mdc-card__title.mdc-card__title--large= @user.name
-      %h2.mdc-typography--title.mdc-card__subtitle{ class: schedule_status(@user)[:class] }
-        = schedule_status(@user)[:display]
+      %h2.mdc-typography--title.mdc-card__subtitle
+        = schedule_status_display(@user, @schedule_approval)
     %section.mdc-card__supporting-text
       %ul
         - @user.courses.each do |course|
           %li= course.pretty_course
 
-    - if @user.schedule_approval && !@user.schedule_approval.approved
+    - if @schedule_approval && !@schedule_approval.approved
       %section.mdc-card__actions
-        = link_to "Approve", user_schedule_approval_path(@user, @user.schedule_approval),
+        = link_to "Approve", user_schedule_approval_path(@user, @schedule_approval),
             method: :patch, data: { confirm: "Are you sure?" },
             class: "mdc-button mdc-button--compact mdc-card__action"

@@ -49,7 +49,7 @@ class User < ApplicationRecord
 
   belongs_to :major
   belongs_to :advisor_prof, class_name: "User", foreign_key: :advised_by
-  has_one    :schedule_approval, dependent: :destroy
+  has_many   :schedule_approvals, dependent: :destroy
   has_many   :transcripts
   has_many   :taken_courses, through: :transcripts, source: :course
   has_many   :schedules, dependent: :destroy
@@ -93,7 +93,7 @@ class User < ApplicationRecord
   end
 
   def advisees
-    User.includes(:courses, :schedule_approval).where(advised_by: self)
+    User.includes(:schedules, :schedule_approvals).where(advised_by: self)
   end
 
   def credits(semester)
@@ -129,6 +129,8 @@ class User < ApplicationRecord
   end
 
   def check_schedule_reset
+    return if advisor?
+
     @reset = major_id_changed? || minor_changed? || class_standing_changed? ||
       sat_score_changed? || pt_changed?
   end

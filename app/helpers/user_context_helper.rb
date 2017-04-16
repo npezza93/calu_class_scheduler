@@ -11,7 +11,7 @@ module UserContextHelper
   end
 
   def current_semester_id
-    @current_semester ||=
+    @current_semester_id ||=
       if session[:semester_id]
         session[:semester_id]
       else

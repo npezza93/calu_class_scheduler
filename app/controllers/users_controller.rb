@@ -8,5 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @schedule_approval =
+      @user.schedule_approvals.for_semester(current_semester).first
   end
 end

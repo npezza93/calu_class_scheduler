@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
 module UsersHelper
-  def schedule_status(user)
-    if user.courses.size.zero?
-      { class: "student-no-courses-link", display: "No Schedule" }
-    elsif user.schedule_approval && user.schedule_approval.approved
-      { class: "student-pending-link", display: "Approved" }
-    elsif user.schedule_approval && !user.schedule_approval.approved
-      { class: "student-pending-link", display: "Pending" }
+  def schedule_status_display(user, schedule_approval)
+    if user.schedules.for_semester(current_semester).blank?
+      "No Schedule"
+    elsif schedule_approval && schedule_approval.approved
+      "Approved"
+    elsif schedule_approval && !schedule_approval.approved
+      "Pending"
     else
-      { class: "student-schedule-link", display: "Schedule" }
+      "Schedule"
     end
+  end
+
+  def approve_schedule?
+    current_user.schedule_approvals.for_semester(current_semester_id).empty? &&
+      current_user.student?
   end
 end
