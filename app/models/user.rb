@@ -45,7 +45,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :major, presence: true
   validates :advised_by, presence: true, if: :student?
-  validates :email, uniqueness: true, format: { with: Devise.email_regexp }
+  validates :email, uniqueness: true, format: { with: Devise.email_regexp },
+                    unless: :guest?
 
   belongs_to :major
   belongs_to :advisor_prof, class_name: "User", foreign_key: :advised_by

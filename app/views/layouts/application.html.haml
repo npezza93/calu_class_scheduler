@@ -11,7 +11,7 @@
     %meta{ content: "yes", name: "apple-mobile-web-app-capable" }/
     %meta{ content: "minimal-ui, width=device-width,
       height=device-height, initial-scale=1.0, maximum-scale=1.0", name: "viewport" }/
-    %meta{ content: "#2196F3", name: "theme-color" }/
+    %meta{ content: "#3f51b5", name: "theme-color" }/
 
   %body.vertical.layout
     = snackbar_notice(notice || alert, "#{'pushup' if signed_in? && yield(:active_tab).present?}")

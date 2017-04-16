@@ -1,13 +1,13 @@
 - content_for :title, "Courses"
 - content_for :back_url do
-  - if current_user.student?
-    = schedules_path
-  - else
+  - if current_user.advisor?
     = courses_path(letter: @course.subject.first)
+  - else
+    = schedules_path
 - content_for :toolbar do
   - if can?(:import, Offering)
     = material_icon.file_upload.css_class("upload-offerings")
-- content_for :active_tab, current_user.student? ? :schedule : :courses
+- content_for :active_tab, current_user.advisor? ? :courses : :schedule
 
 .layout.vertical.center.mt-3
   .container
