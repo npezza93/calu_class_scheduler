@@ -6,9 +6,7 @@ class SemestersController < ApplicationController
   def update
     session[:semester_id] = @semester.id
 
-    unless current_user.schedules_categories.for_semester(@semester).exists?
-      scheduler.perform
-    end
+    scheduler.perform unless current_user.advisor?
 
     redirect_to edit_user_registration_path,
                 notice: "Changed to the #{@semester.semester} semester"
@@ -17,6 +15,8 @@ class SemestersController < ApplicationController
   private
 
   def scheduler
+    return if current_user.schedules_categories.for_semester(@semester).exists?
+
     @schedules = Scheduler::Runner.new(
       user: current_user, semester: @semester.id
     )

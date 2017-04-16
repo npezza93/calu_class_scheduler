@@ -2,9 +2,12 @@
 - content_for :active_tab, :students
 
 .layout.vertical.center
-  .mdc-card.mt-3.mb-5.white.container
-    .mdc-list
-      - @students.each do |student|
-        = link_to student, class: "mdc-list-item with-ripple w-100" do
-          .mdc-list-item__text= student.name
-          %i.mdc-list-item__end-detail.material-icons chevron_right
+  - if @students.present?
+    .mdc-card.mt-3.mb-5.white.container
+      .mdc-list
+        - @students.each do |student|
+          = link_to student, class: "mdc-list-item with-ripple w-100" do
+            .mdc-list-item__text= student.name
+            %i.mdc-list-item__end-detail.material-icons chevron_right
+  - else
+    %h1.mdc-typography--headline You have no advisees
