@@ -14,7 +14,7 @@
     %meta{ content: "#2196F3", name: "theme-color" }/
 
   %body.vertical.layout
-    = snackbar_notice(notice || alert)
+    = snackbar_notice(notice || alert, "#{'pushup' if signed_in? && yield(:active_tab).present?}")
 
     - if current_user
       %header.mdc-toolbar

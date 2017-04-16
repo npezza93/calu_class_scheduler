@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 module SnackbarHelper
-  def snackbar_notice(message)
+  def snackbar_notice(message, opts = nil)
     return if message.blank?
 
-    content_tag(:div, snackbar_text(message), class: "mdc-snackbar", aria: {
-      live: :assertive, atomic: "", hidden: ""
-    })
+    content_tag(
+      :div, snackbar_text(message),
+      class: "mdc-snackbar #{opts}",
+      aria: { live: :assertive, atomic: "", hidden: "" }
+    )
   end
 
   def snackbar_text(message)
