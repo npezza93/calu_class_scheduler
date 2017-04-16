@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update_resource(resource, params)
     resource.update_without_password(params)
+    reset_schedules(resource) if resource.reset
   end
 
   private
@@ -18,4 +19,11 @@ class RegistrationsController < Devise::RegistrationsController
     )
   end
   alias sign_up_params account_update_params
+
+  def reset_schedules(user)
+    user.schedules.for_semester(current_semester_id).destroy_all
+    user.schedules_categories.for_semester(current_semester_id).destroy_all
+
+    Scheduler::Runner.new(user: user, semester: current_semester_id).perform
+  end
 end

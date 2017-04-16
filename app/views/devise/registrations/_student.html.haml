@@ -6,6 +6,10 @@
 .mt-2.mb-1
   = f.collection_select :advised_by, User.where(advisor: true),
                         :id, :email, prompt: "Choose an Advisor"
-.mt-2.mb-1
-  = f.collection_select :minor, Major.all, :id, :major, prompt: "minor(s)", multiple: true
+.mt-3.mb-1
+  = f.label :minor, "Minor(s)"
+  = f.select :minor, options_for_select(Major.all.map { |major| [major.major,
+      major.id, { class: "mdc-list-item"}]}), {}, multiple: true,
+      class: "mdc-multi-select mdc-list mt-1"
+
 = render "placement_tests", f: f

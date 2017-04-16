@@ -37,6 +37,8 @@
 #
 
 class User < ApplicationRecord
+  attr_accessor :reset
+
   devise :database_authenticatable, :registerable, :recoverable, :trackable,
          :validatable
 
@@ -71,6 +73,8 @@ class User < ApplicationRecord
   before_validation do |model|
     model.minor&.reject!(&:blank?)
   end
+
+  after_update :check_schedule_reset
 
   def student?
     !advisor? && !guest?
@@ -124,11 +128,25 @@ class User < ApplicationRecord
     Scheduler::Runner.new(user: self, semester: Semester.active).perform
   end
 
+  def check_schedule_reset
+    @reset = major_id_changed? || minor_changed? || class_standing_changed? ||
+      sat_score_changed? || pt_changed?
+  end
+
   private
 
   def categories_query
     CurriculumCategory.where(major_id: major_id, minor: false).or(
       CurriculumCategory.where(major_id: minor, minor: true)
     )
+  end
+
+  def sat_score_changed?
+    sat_520_changed? || sat_580_changed? || sat_440_changed? ||
+      sat_640_changed? || sat_700_changed?
+  end
+
+  def pt_changed?
+    pt_a_changed? || pt_b_changed? || pt_c_changed? || pt_d_changed?
   end
 end
