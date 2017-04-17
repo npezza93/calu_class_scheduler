@@ -13,12 +13,16 @@ module Schedules
     def show_schedules_offerings
       categories.each { |category| evaluate_category(category) }
 
-      schedules_offerings.hidden.select do |schedule_offering|
-        next if keep_hidden?(schedule_offering)
+      modified = schedules_offerings.select do |schedule_offering|
+        next if !schedule_offering.hidden? || keep_hidden?(schedule_offering)
 
-        modified << schedule_offering.offering_id
-        schedule_offering.update(hidden: false)
+        schedule_offering
       end
+
+      Schedules::CategoryOffering.where(id: modified.map(&:id)).update_all(
+        hidden: false
+      )
+      @modified = modified.map(&:offering_id)
     end
 
     def work_schedules
@@ -27,10 +31,17 @@ module Schedules
 
     def keep_hidden?(schedule_offering)
       return true if schedule_offering.offering.overlaps_any?(work_schedules)
+      return true if schedules.map(&:course).include?(
+        schedule_offering.offering.course
+      )
 
-      keep_hidden_state?(schedule_offering) &&
-        user.course_ids.include?(schedule_offering.offering.course_id) &&
-        @to_hide.exclude?(schedule_offering)
+      hide = keep_hidden_state?(schedule_offering)
+      if @to_hide.key?(schedule_offering.curriculum_category)
+        hidden_offerings = @to_hide[schedule_offering.curriculum_category]
+        hide &&= hidden_offerings.include?(schedule_offering)
+      end
+
+      hide
     end
   end
 end

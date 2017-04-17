@@ -18,6 +18,7 @@ module Schedules
 
     belongs_to :offering
     belongs_to :category
+    has_one :curriculum_category, through: :category
     delegate :course, to: :offering
 
     scope :visible, -> { where(hidden: false) }

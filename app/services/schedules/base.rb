@@ -17,13 +17,15 @@ module Schedules
       @modified    = []
       @complete    = {}
       @incomplete  = {}
-      @to_hide     = []
+      @to_hide     = {}
     end
 
     def schedules_offerings
       @schedules_offerings ||= user.schedules_offerings.where(
         schedules_categories: { semester_id: semester_id }
-      ).includes(:category, offering: %i(days_time course)).where.not(
+      ).includes(
+        :category, :curriculum_category, offering: %i(days_time course)
+      ).where.not(
         offering_id: schedule.offering_id
       ).where.not(offering_id: scheduled_offerings)
     end
@@ -75,14 +77,14 @@ module Schedules
     end
 
     def add_incomplete_to_hide(category, courses)
-      @to_hide += schedules_offerings.select do |schedules_offering|
+      @to_hide[category] = schedules_offerings.select do |schedules_offering|
         schedules_offering.category.curriculum_category_id == category.id &&
         courses.exclude?(schedules_offering.course)
       end
     end
 
     def add_complete_to_hide(category)
-      @to_hide += schedules_offerings.select do |schedules_offering|
+      @to_hide[category] = schedules_offerings.select do |schedules_offering|
         schedules_offering.category.curriculum_category_id == category.id
       end
     end
