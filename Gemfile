@@ -14,6 +14,7 @@ gem "coffee-rails"
 gem "jquery-rails"
 gem "material_icons"
 gem "sass-rails"
+gem "spring"
 gem "sprockets", "~> 4.0.0beta4"
 gem "turbolinks"
 gem "uglifier"
@@ -31,7 +32,6 @@ group :development do
   gem "listen"
   gem "rack-mini-profiler"
   gem "seed_dump"
-  gem "spring"
   gem "web-console"
 end
 
