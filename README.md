@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/npezza93/calu_class_scheduler.svg)](https://travis-ci.org/npezza93/calu_class_scheduler)
 [![Code Climate](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/gpa.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler)
-[![Issue Count](https://codeclimate.com/github/npezza93/calu_class_scheduler/badges/issue_count.svg)](https://codeclimate.com/github/npezza93/calu_class_scheduler)
 
 At CalU there are two systems in place that help students build their schedule for the upcoming semester. The first of the systems is the Vulcan Information Portal(VIP), here students submit the classes they want to enroll in, the students prerequisites are validated, and all the courses that are being offered for the upcoming semester can be viewed. The second system is DegreeWorks which tells the student all the courses that are needed to fulfill their major and minor(s).
 
