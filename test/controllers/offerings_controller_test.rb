@@ -7,11 +7,11 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:advisor)
+    sign_in @user
+    put semester_path(semesters(:spring_2017))
   end
 
   test "should get index, new, and edit as advisor" do
-    sign_in @user
-
     get course_offerings_path(courses(:one))
     assert_response :success
 
@@ -23,6 +23,7 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not do anything as student" do
+    sign_out @user
     @user = users(:one)
     sign_in @user
 
@@ -42,7 +43,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update as advisor" do
     @offering = offerings(:one)
-    sign_in @user
     put course_offering_path(courses(:two), @offering), params: {
       offering: { section: "YA" }
     }
@@ -52,8 +52,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update because invalid as advisor " do
-    sign_in @user
-
     put course_offering_path(courses(:two), offerings(:one)), params: {
       offering: { section: nil }
     }
@@ -62,6 +60,7 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not put update as student" do
+    sign_out @user
     @user = users(:one)
     sign_in @user
 
@@ -73,8 +72,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not create because invalid as advisor " do
-    sign_in @user
-
     assert_no_difference("Offering.count") do
       post course_offerings_path(courses(:two)), params: {
         offering: { section: nil }
@@ -83,8 +80,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create as advisor " do
-    sign_in @user
-
     assert_difference("Offering.count") do
       post course_offerings_path(courses(:two)), params: { offering: {
         user_id: users(:advisor).id,
@@ -98,8 +93,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should delete offering as advisor" do
-    sign_in @user
-
     assert_difference("Offering.count", -1) do
       delete course_offering_path(courses(:two), offerings(:one))
     end
@@ -109,8 +102,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not import offerings as advisor" do
-    sign_in @user
-
     post offerings_import_path,
          params: { offering_file: fixture_file_upload("files/test.jpg") }
 
@@ -118,8 +109,6 @@ class OfferingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should import offerings as advisor" do
-    sign_in @user
-
     post offerings_import_path, params: {
            offering_file: fixture_file_upload("files/test.csv", "text/csv")
          }

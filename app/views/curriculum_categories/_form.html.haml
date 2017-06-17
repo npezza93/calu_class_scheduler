@@ -2,7 +2,7 @@
   = f.text_field :category, label: "Category",
       help_text: "Ex: Electives, Core, etc.", required: true
 
-  .layout.horizontal.center{ style: "width: 200px;" }
+  .layout.horizontal.center.curriculum-category-minor-radio-container
     = f.radio_button :minor, false, checked: true, label: "Major"
     .flex
     = f.radio_button :minor, true, label: "Minor"

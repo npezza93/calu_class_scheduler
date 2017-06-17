@@ -34,6 +34,7 @@ class SchedulesController < ApplicationController
     schedule = current_user.schedules.find_by(
       offering_id: params[:id], semester_id: current_semester_id
     )
+
     @service = Schedules::Destroy.new(
       schedule, current_user, current_semester_id
     )

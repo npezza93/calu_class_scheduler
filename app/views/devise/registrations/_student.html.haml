@@ -9,7 +9,7 @@
 .mt-3.mb-1
   = f.label :minor, "Minor(s)"
   = f.select :minor, options_for_select(Major.all.map { |major| [major.major,
-      major.id, { class: "mdc-list-item"}]}), {}, multiple: true,
+      major.id, { class: "mdc-list-item" }]}), {}, multiple: true,
       class: "mdc-multi-select mdc-list mt-1"
 
 = render "placement_tests", f: f

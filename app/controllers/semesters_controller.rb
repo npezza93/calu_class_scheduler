@@ -6,7 +6,7 @@ class SemestersController < ApplicationController
   def update
     session[:semester_id] = @semester.id
 
-    scheduler.perform unless current_user.advisor?
+    scheduler.perform if !current_user.advisor? && scheduler.present?
 
     redirect_to edit_user_registration_path,
                 notice: "Changed to the #{@semester.semester} semester"

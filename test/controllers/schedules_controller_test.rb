@@ -7,16 +7,17 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:one)
+    sign_in @user
+    put semester_path(semesters(:spring_2017))
   end
 
   test "should get index as student" do
-    sign_in @user
-
     get schedules_path
     assert_response :success
   end
 
   test "should not schedule actions as advisor" do
+    sign_out @user
     @user = users(:advisor)
     sign_in @user
 
@@ -33,8 +34,6 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy schedule as student" do
-    sign_in @user
-
     assert_difference "Schedule.count", -1 do
       delete schedule_path(offerings(:one), format: :js)
     end
@@ -43,8 +42,6 @@ class SchedulesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create schedule as student" do
-    sign_in @user
-
     assert_difference "Schedule.count" do
       post schedules_path(offering_id: offerings(:two).id, format: :js)
     end
