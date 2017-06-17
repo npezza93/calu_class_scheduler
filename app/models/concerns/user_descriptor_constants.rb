@@ -3,7 +3,9 @@
 module UserDescriptorConstants
   extend ActiveSupport::Concern
 
-  YEAR = {"Senior" => 1, "Junior" => 2, "Sophmore" => 3, "Freshman" => 4}.freeze
+  YEAR = {
+    "Senior" => 1, "Junior" => 2, "Sophmore" => 3, "Freshman" => 4
+  }.freeze
 
   PLACEMENT_TEST_PARTS = [
     ["No Part Must Be Passed", nil], ["Pass Part A", "A"],

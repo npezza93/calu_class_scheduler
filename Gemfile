@@ -2,12 +2,12 @@
 
 source "https://rubygems.org"
 
-ruby "2.4.0"
+ruby "2.4.1"
 
 gem "devise"
 gem "pg"
 gem "puma"
-gem "rails", "~> 5.1.0.rc1"
+gem "rails"
 
 gem "babel-transpiler"
 gem "coffee-rails"
@@ -24,7 +24,7 @@ gem "pry-rails"
 gem "cancancan"
 gem "carrierwave"
 gem "cocoon"
-gem "haml", "~> 5.0.0.beta.2"
+gem "haml"
 gem "kaminari"
 gem "numbers_and_words"
 

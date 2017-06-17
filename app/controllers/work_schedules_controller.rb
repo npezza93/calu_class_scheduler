@@ -5,8 +5,9 @@ class WorkSchedulesController < ApplicationController
 
   def index
     @work_schedules = current_work_schedules.group_by(&:day)
-    @offerings = current_user.offerings.for_semester(current_semester_id).
-      includes(:days_time).load
+    @offerings = current_user.offerings.for_semester(
+      current_semester_id
+    ).includes(:days_time).load
     @online_courses = @offerings.reject(&:meeting_time?)
     @offerings = @offerings.select(&:meeting_time?)
   end

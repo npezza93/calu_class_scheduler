@@ -29,8 +29,9 @@ module Transcripts
     end
 
     def schedules_category_offerings
-      schedules_categories.includes(offerings: :days_time).
-        reload.flat_map(&:category_offerings)
+      schedules_categories.includes(
+        offerings: :days_time
+      ).reload.flat_map(&:category_offerings)
     end
 
     def scheduler
