@@ -23,7 +23,7 @@ class SessionsController < Devise::SessionsController
     password = SecureRandom.hex
 
     User.create(
-      email: "guest@caluadvisor.com",
+      email: "guest_#{SecureRandom.hex(3)}@caluadvisor.com",
       password: password,
       password_confirmation: password,
       first_name: "Guest",
