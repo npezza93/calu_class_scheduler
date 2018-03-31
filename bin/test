@@ -13,7 +13,7 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
-  system! "rake test"
+  system! "bundle exec rake test"
 
   puts "\nChecking rubocop\n"
   system! "bundle exec rubocop"
