@@ -11,7 +11,6 @@
 #  updated_at :datetime
 #
 
-#
 require "test_helper"
 
 class SemesterTest < ActiveSupport::TestCase

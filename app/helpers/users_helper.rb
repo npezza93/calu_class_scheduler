@@ -4,7 +4,7 @@ module UsersHelper
   def schedule_status_display(user, schedule_approval)
     if user.schedules.for_semester(current_semester).blank?
       "No Schedule"
-    elsif schedule_approval && schedule_approval.approved
+    elsif schedule_approval&.approved
       "Approved"
     elsif schedule_approval && !schedule_approval.approved
       "Pending"

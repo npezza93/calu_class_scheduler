@@ -20,7 +20,7 @@ class SeedCourseDescriptions < ActiveRecord::Migration[5.1]
     url = "http://www.calu.edu/current-students/academic-resources/"\
           "catalogs/undergraduate/"
 
-    @links ||= Nokogiri::HTML(open(url + "ug-course-desc.htm")).css(
+    @subject_links ||= Nokogiri::HTML(open(url + "ug-course-desc.htm")).css(
       "#main_content"
     ).children.css("a").map { |node| url + node["href"] }
   end

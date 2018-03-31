@@ -27,12 +27,12 @@ class AddDeviseToUsers < ActiveRecord::Migration[4.2]
 
     private
 
-    def add_trackers(t)
-      t.integer  :sign_in_count, default: 0, null: false
-      t.datetime :current_sign_in_at
-      t.datetime :last_sign_in_at
-      t.inet     :current_sign_in_ip
-      t.inet     :last_sign_in_ip
+    def add_trackers(table)
+      table.integer  :sign_in_count, default: 0, null: false
+      table.datetime :current_sign_in_at
+      table.datetime :last_sign_in_at
+      table.inet     :current_sign_in_ip
+      table.inet     :last_sign_in_ip
     end
   end
 end
