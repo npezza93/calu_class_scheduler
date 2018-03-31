@@ -9,6 +9,7 @@ install:
   - npm install -g eslint
   - bundle install --jobs=3 --retry=3 --deployment
 before_install:
+  - gem update --system
   - cp config/database.yml config/database.yml.example
   - cp config/secrets.yml config/secrets.yml.example
 before_script:
