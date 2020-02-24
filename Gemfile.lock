@@ -123,7 +123,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.13.0)
     nio4r (2.1.0)
-    nokogiri (1.10.5)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     numbers_and_words (0.10.6)
       activesupport
