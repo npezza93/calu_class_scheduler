@@ -120,11 +120,12 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.1)
     minitest (5.14.1)
     nio4r (2.1.0)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.4)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     numbers_and_words (0.10.6)
       activesupport
       i18n
@@ -141,6 +142,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     puma (3.12.6)
+    racc (1.5.2)
     rack (2.2.3)
     rack-mini-profiler (0.10.5)
       rack (>= 1.2.0)
